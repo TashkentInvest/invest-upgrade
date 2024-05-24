@@ -2,101 +2,165 @@
 
 
 @section('content')
+    <!-- Content Header (Page header) -->
+    <div class="row">
+        <div class="col-12">
+            <div class="page-title-box d-sm-flex align-items-center justify-content-between">
+                <h4 class="mb-sm-0 font-size-18">@lang('cruds.client.title')</h4>
 
-<!-- Content Header (Page header) -->
-<div class="row">
-    <div class="col-12">
-        <div class="page-title-box d-sm-flex align-items-center justify-content-between">
-            <h4 class="mb-sm-0 font-size-18">@lang('cruds.user.title')</h4>
-
-            <div class="page-title-right">
-                <ol class="breadcrumb m-0">
-                    <li class="breadcrumb-item"><a href="{{ route('home') }}" style="color: #007bff;">@lang('global.home')</a></li>
-                    <li class="breadcrumb-item"><a href="{{ route('userIndex') }}" style="color: #007bff;">@lang('cruds.user.title')</a></li>
-                    <li class="breadcrumb-item active">@lang('global.add')</li>
-                </ol>
-            </div>
-
-        </div>
-    </div>
-</div>
-<!-- Main content -->
-
-<div class="row">
-    <div class="col-lg-8 offset-lg-2 col-sm-12">
-        <div class="card">
-            <div class="card-header">
-                <h3 class="card-title">@lang('global.add')</h3>
-            </div>
-            <!-- /.card-header -->
-            <div class="card-body">
-
-                <form action="{{ route('userCreate') }}" method="post">
-                    @csrf
-                    <div class="mb-3">
-                        <label for="name" class="col-md-2 col-form-label">@lang('cruds.user.fields.name')</label>
-                        <input class="form-control {{ $errors->has('name') ? 'is-invalid' : '' }}" type="text" name="name" id="name" placeholder="@lang('cruds.user.fields.name')" value="{{ old('name') }}" required>
-                        @if($errors->has('name'))
-                            <span class="error invalid-feedback">{{ $errors->first('name') }}</span>
-                        @endif
-                    </div>
-
-                    <div class="mb-3">
-                        <label for="email" class="col-md-2 col-form-label">@lang('cruds.user.fields.email')</label>
-                        <input class="form-control {{ $errors->has('email') ? 'is-invalid' : '' }}" type="email" name="email" id="email" placeholder="@lang('cruds.user.fields.email')" value="{{ old('email') }}" required>
-                        @if($errors->has('email'))
-                            <span class="error invalid-feedback">{{ $errors->first('name') }}</span>
-                        @endif
-                    </div>
-
-                    <div class="mb-3">
-                        <label>@lang('cruds.role.fields.roles')</label>
-                        <select name="roles[]" 
-                        class="select2 form-control select2-multiple" 
-                        multiple="multiple" 
-                        data-placeholder="@lang('pleaseSelect')" 
-                        style="width: 100%;">
-                            @foreach($roles as $role)
-                            <option value="{{ $role->name }}">{{ $role->name }}</option>
-                            @endforeach
-                        </select>
-                    </div>
-
-                    <div class="mb-3">
-                        <label for="password" class="form-label">@lang('cruds.user.fields.password')</label>
-                        <div class="input-group auth-pass-inputgroup">
-                            <input id="password" type="password" class="form-control {{ $errors->has('password') ? 'is-invalid': '' }}" name="password" required placeholder="@lang('cruds.user.fields.password')" aria-label="Password" aria-describedby="password-addon">
-                            <button class="btn btn-light " type="button" onclick="togglePassword('password', 'toggle-icon-1')">
-                                <i id="toggle-icon-1" class="mdi mdi-eye-outline"></i>
-                            </button>
-                        </div>
-                        @if($errors->has('password'))
-                            <span class="error invalid-feedback">{{ $errors->first('password') }}</span>
-                        @endif
-                    </div>
-
-                    <div class="mb-3">
-                        <label for="password_confirmation" class="form-label">@lang('global.login_password_confirmation')</label>
-                        <div class="input-group auth-pass-inputgroup">
-                            <input id="password_confirmation" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password" placeholder="@lang('global.login_password_confirmation')" aria-label="Password" aria-describedby="password-addon">
-                            <button class="btn btn-light " type="button" onclick="togglePassword('password_confirmation', 'toggle-icon-2')">
-                                <i id="toggle-icon-2" class="mdi mdi-eye-outline"></i>
-                            </button>
-                        </div>
-                        @if($errors->has('password_confirmation'))
-                            <span class="error invalid-feedback">{{ $errors->first('password_confirmation') }}</span>
-                        @endif
-                    </div>
-
-                    <div class="form-group">
-                        <button type="submit" class="btn btn-success waves-effect waves-light float-right">@lang('global.save')</button>
-                        <a href="{{ route('userIndex') }}" class="btn btn-light waves-effect float-left">@lang('global.cancel')</a>
-                    </div>
-                </form>
+                <div class="page-title-right">
+                    <ol class="breadcrumb m-0">
+                        <li class="breadcrumb-item"><a href="{{ route('home') }}" style="color: #007bff;">@lang('global.home')</a>
+                        </li>
+                        <li class="breadcrumb-item"><a href="{{ route('clientIndex') }}"
+                                style="color: #007bff;">@lang('cruds.client.title')</a></li>
+                        <li class="breadcrumb-item active">@lang('global.add')</li>
+                    </ol>
+                </div>
 
             </div>
         </div>
     </div>
-</div>
+    <!-- Main content -->
 
+    <div class="row">
+        <div class="col-lg-8 offset-lg-2 col-sm-12">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">@lang('global.add')</h3>
+                </div>
+                <!-- /.card-header -->
+                <div class="card-body">
+
+                    <form action="{{ route('clientCreate') }}" method="post">
+                        @csrf
+
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-12 col-lg-6 mb-2">
+                                    <label for="name" class="col-md-2 col-form-label">@lang('cruds.client.fields.name')</label>
+                                    <input class="form-control {{ $errors->has('first_name') ? 'is-invalid' : '' }}"
+                                        type="text" name="first_name" id="first_name" placeholder="@lang('cruds.client.fields.first_name')"
+                                        value="{{ old('first_name') }}" required>
+                                    @if ($errors->has('first_name'))
+                                        <span class="error invalid-feedback">{{ $errors->first('first_name') }}</span>
+                                    @endif
+                                </div>
+
+                                <div class="col-12 col-lg-6 mb-2">
+                                    <label for="last_name" class="col-md-2 col-form-label">@lang('cruds.client.fields.last_name')</label>
+                                    <input class="form-control {{ $errors->has('last_name') ? 'is-invalid' : '' }}"
+                                        type="text" name="last_name" id="last_name" placeholder="@lang('cruds.client.fields.last_name')"
+                                        value="{{ old('last_name') }}" required>
+                                    @if ($errors->has('last_name'))
+                                        <span class="error invalid-feedback">{{ $errors->first('last_name') }}</span>
+                                    @endif
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-12 col-lg-6 mb-2">
+                                    <label for="name" class="col-md-2 col-form-label">@lang('cruds.client.fields.contact')</label>
+                                    <input class="form-control {{ $errors->has('contact') ? 'is-invalid' : '' }}"
+                                        type="text" name="contact" id="contact" placeholder="@lang('cruds.client.fields.contact')"
+                                        value="{{ old('contact') }}" required>
+                                    @if ($errors->has('contact'))
+                                        <span class="error invalid-feedback">{{ $errors->first('contact') }}</span>
+                                    @endif
+                                </div>
+
+                                <div class="col-12 col-lg-6 mb-2">
+                                    <label for="email" class="col-md-2 col-form-label">@lang('cruds.client.fields.email')</label>
+                                    <select class="form-control" name="mijoz_turi" id="mijoz_turi">
+                                        <option value="fizik">fizik</option>
+                                        <option value="yuridik">yuridik</option>
+                                    </select>
+                                    @if ($errors->has('email'))
+                                        <span class="error invalid-feedback">{{ $errors->first('name') }}</span>
+                                    @endif
+                                </div>
+                            </div>
+                        </div>
+
+                        
+                        <div class="form-group" id="additionalFields" style="display: none;">
+                            <div class="row">
+                                <div class="col-12 col-lg-6 mb-2">
+                                    <label for="name" class="col-md-4 col-form-label">@lang('cruds.client.fields.passport_serial')</label>
+                                    <input class="form-control {{ $errors->has('passport_serial') ? 'is-invalid' : '' }}"
+                                        type="text" name="passport_serial" id="passport_serial" placeholder="@lang('cruds.client.fields.passport_serial')"
+                                        value="{{ old('passport_serial') }}" required>
+                                    @if ($errors->has('passport_serial'))
+                                        <span class="error invalid-feedback">{{ $errors->first('passport_serial') }}</span>
+                                    @endif
+                                </div>
+
+                                <div class="col-12 col-lg-6 mb-2">
+                                    <label for="passport_pinfl" class="col-md-4 col-form-label">@lang('cruds.client.fields.passport_pinfl')</label>
+                                    <input class="form-control {{ $errors->has('passport_pinfl') ? 'is-invalid' : '' }}"
+                                        type="passport_pinfl" name="passport_pinfl" id="passport_pinfl" placeholder="@lang('cruds.client.fields.passport_pinfl')"
+                                        value="{{ old('passport_pinfl') }}" required>
+                                    @if ($errors->has('passport_pinfl'))
+                                        <span class="error invalid-feedback">{{ $errors->first('passport_pinfl') }}</span>
+                                    @endif
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12 col-lg-6 mb-2">
+                                    <label for="name" class="col-md-4 col-form-label">@lang('cruds.client.fields.yuridik_address')</label>
+                                    <input class="form-control {{ $errors->has('yuridik_address') ? 'is-invalid' : '' }}"
+                                        type="text" name="yuridik_address" id="yuridik_address" placeholder="@lang('cruds.client.fields.yuridik_address')"
+                                        value="{{ old('yuridik_address') }}" required>
+                                    @if ($errors->has('yuridik_address'))
+                                        <span class="error invalid-feedback">{{ $errors->first('yuridik_address') }}</span>
+                                    @endif
+                                </div>
+
+                                <div class="col-12 col-lg-6 mb-2">
+                                    <label for="yuridik_rekvizid" class="col-md-4 col-form-label">@lang('cruds.client.fields.yuridik_rekvizid')</label>
+                                    <input class="form-control {{ $errors->has('yuridik_rekvizid') ? 'is-invalid' : '' }}"
+                                        type="yuridik_rekvizid" name="yuridik_rekvizid" id="yuridik_rekvizid" placeholder="@lang('cruds.client.fields.yuridik_rekvizid')"
+                                        value="{{ old('yuridik_rekvizid') }}" required>
+                                    @if ($errors->has('yuridik_rekvizid'))
+                                        <span class="error invalid-feedback">{{ $errors->first('yuridik_rekvizid') }}</span>
+                                    @endif
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <script>
+                            document.addEventListener('DOMContentLoaded', function () {
+                                var mijozTuri = document.getElementById('mijoz_turi');
+                                var additionalFields = document.getElementById('additionalFields');
+                        
+                                mijozTuri.addEventListener('change', function () {
+                                    if (mijozTuri.value === 'yuridik') {
+                                        additionalFields.style.display = 'block';
+                                    } else {
+                                        additionalFields.style.display = 'none';
+                                    }
+                                });
+                        
+                                mijozTuri.dispatchEvent(new Event('change'));
+                            });
+                        </script>
+                        
+                        
+
+                        <div class="mb-3">
+
+                            <div class="form-group">
+                                <button type="submit"
+                                    class="btn btn-success waves-effect waves-light float-right">@lang('global.save')</button>
+                                <a href="{{ route('clientIndex') }}"
+                                    class="btn btn-light waves-effect float-left">@lang('global.cancel')</a>
+                            </div>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
 @endsection

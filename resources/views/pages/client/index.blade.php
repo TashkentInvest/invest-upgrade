@@ -24,8 +24,8 @@
         <div class="card">
             <div class="card-header">
                 <h3 class="card-title">@lang('cruds.client.title_singular')</h3>
-                @can('user.add')
-                <a href="{{ route('userAdd') }}" class="btn btn-success waves-effect waves-light float-right">
+                @can('client.add')
+                <a href="{{ route('clientAdd') }}" class="btn btn-success waves-effect waves-light float-right">
                     <span class="fas fa-plus-circle"></span>
                     @lang('global.add')
                 </a>
@@ -40,34 +40,22 @@
                             <th>@lang('cruds.client.fields.id')</th>
                             <th>@lang('cruds.client.fields.name')</th>
                             <th>@lang('cruds.client.fields.email')</th>
-                            <th>@lang('cruds.client.fields.roles')</th>
-                            <th>@lang('cruds.permission.fields.permissions')</th>
                             <th class="w-25">@lang('global.actions')</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach($clients as $user)
+                        @foreach($clients as $client)
                         <tr>
-                            <td>{{ $user->id }}</td>
-                            <td>{{ $user->name }}</td>
-                            <td>{{ $user->email }}</td>
-                            <td>
-                                @foreach($user->roles()->pluck('name') as $role)
-                                <span class="badge badge-soft-primary">{{ $role }} </span>
-                                @endforeach
-                            </td>
-                            <td>
-                                @foreach($user->getAllPermissions()->pluck('name') as $permission)
-                                <span class="badge badge-soft-secondary">{{ $permission }} </span>
-                                @endforeach
-                            </td>
+                            <td>{{ $client->id }}</td>
+                            <td>{{ $client->name }}</td>
+                            <td>{{ $client->email }}</td>
                             <td class="text-center">
-                                @can('user.delete')
-                                <form action="{{ route('userDestroy',$user->id) }}" method="post">
+                                @can('client.delete')
+                                <form action="{{ route('clientDestroy',$client->id) }}" method="post">
                                     @csrf
                                     <div class="btn-group">
-                                        @can('user.edit')
-                                        <a href="{{ route('userEdit',$user->id) }}" type="button" class="btn btn-sm btn-info waves-effect waves-light"> @lang('global.edit')</a>
+                                        @can('client.edit')
+                                        <a href="{{ route('clientEdit',$client->id) }}" type="button" class="btn btn-sm btn-info waves-effect waves-light"> @lang('global.edit')</a>
                                         @endcan
                                         <input name="_method" type="hidden" value="DELETE">
                                         <button type="button" class="btn btn-danger btn-sm waves-effect waves-light" onclick="if (confirm('Вы уверены?')) { this.form.submit() } "> @lang('global.delete')</button>

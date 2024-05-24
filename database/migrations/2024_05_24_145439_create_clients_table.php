@@ -21,9 +21,9 @@ class CreateClientsTable extends Migration
             $table->string('first_name');
             $table->string('last_name');
             $table->string('father_name');
-            $table->dateTime('user_birht');
-            $table->string('serial_serial')->nullable();
-            $table->string('serial_pinfl')->nullable();
+            $table->string('contact');
+            $table->string('passport_serial')->nullable();
+            $table->string('passport_pinfl')->nullable();
             $table->string('yuridik_address')->nullable();
             $table->string('yuridik_rekvizid')->nullable();
             $table->timestamps();
