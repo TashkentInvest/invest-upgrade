@@ -52,7 +52,7 @@ Route::group(['middleware' => 'auth'],function (){
     Route::get('/setting/start/message/{id}',[SettingsController::class, 'startMessageEdit'])->name('settingStartMessageEdit');
     Route::post('/setting/start/message/{id}/update',[SettingsController::class, 'startMessageUpdate'])->name('settingStartMessageUpdate');
 
-    // Regions
+    // Regions  
     Route::get('/regions',[RegionController::class, 'index'])->name('regionIndex');
     Route::get('/region/add',[RegionController::class, 'add'])->name('regionAdd');
     Route::post('/region/create',[RegionController::class, 'create'])->name('regionCreate');
