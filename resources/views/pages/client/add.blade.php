@@ -95,68 +95,71 @@
                         </div>
 
                         
-                        <div class="form-group" id="additionalFields" style="display: none;">
-                            <div class="row">
-                                <div class="col-12 col-lg-6 mb-2">
-                                    <label for="name" class="col-md-4 col-form-label">@lang('cruds.client.fields.passport_serial')</label>
-                                    <input class="form-control {{ $errors->has('passport_serial') ? 'is-invalid' : '' }}"
-                                        type="text" name="passport_serial" id="passport_serial" placeholder="@lang('cruds.client.fields.passport_serial')"
-                                        value="{{ old('passport_serial') }}" required>
-                                    @if ($errors->has('passport_serial'))
-                                        <span class="error invalid-feedback">{{ $errors->first('passport_serial') }}</span>
-                                    @endif
-                                </div>
-
-                                <div class="col-12 col-lg-6 mb-2">
-                                    <label for="passport_pinfl" class="col-md-4 col-form-label">@lang('cruds.client.fields.passport_pinfl')</label>
-                                    <input class="form-control {{ $errors->has('passport_pinfl') ? 'is-invalid' : '' }}"
-                                        type="passport_pinfl" name="passport_pinfl" id="passport_pinfl" placeholder="@lang('cruds.client.fields.passport_pinfl')"
-                                        value="{{ old('passport_pinfl') }}" required>
-                                    @if ($errors->has('passport_pinfl'))
-                                        <span class="error invalid-feedback">{{ $errors->first('passport_pinfl') }}</span>
-                                    @endif
-                                </div>
+                          <!-- Additional Fields for Yuridik Clients -->
+                    <div class="form-group" id="additionalFields" style="display: none;">
+                        <div class="row">
+                            <div class="col-12 col-lg-6 mb-2">
+                                <label for="passport_serial" class="col-md-4 col-form-label">@lang('cruds.client.fields.passport_serial')</label>
+                                <input class="form-control {{ $errors->has('passport_serial') ? 'is-invalid' : '' }}" type="text" name="passport_serial" id="passport_serial" placeholder="@lang('cruds.client.fields.passport_serial')" value="{{ old('passport_serial') }}" required>
+                                @if ($errors->has('passport_serial'))
+                                    <span class="error invalid-feedback">{{ $errors->first('passport_serial') }}</span>
+                                @endif
                             </div>
-                            <div class="row">
-                                <div class="col-12 col-lg-6 mb-2">
-                                    <label for="name" class="col-md-4 col-form-label">@lang('cruds.client.fields.yuridik_address')</label>
-                                    <input class="form-control {{ $errors->has('yuridik_address') ? 'is-invalid' : '' }}"
-                                        type="text" name="yuridik_address" id="yuridik_address" placeholder="@lang('cruds.client.fields.yuridik_address')"
-                                        value="{{ old('yuridik_address') }}" required>
-                                    @if ($errors->has('yuridik_address'))
-                                        <span class="error invalid-feedback">{{ $errors->first('yuridik_address') }}</span>
-                                    @endif
-                                </div>
 
-                                <div class="col-12 col-lg-6 mb-2">
-                                    <label for="yuridik_rekvizid" class="col-md-4 col-form-label">@lang('cruds.client.fields.yuridik_rekvizid')</label>
-                                    <input class="form-control {{ $errors->has('yuridik_rekvizid') ? 'is-invalid' : '' }}"
-                                        type="yuridik_rekvizid" name="yuridik_rekvizid" id="yuridik_rekvizid" placeholder="@lang('cruds.client.fields.yuridik_rekvizid')"
-                                        value="{{ old('yuridik_rekvizid') }}" required>
-                                    @if ($errors->has('yuridik_rekvizid'))
-                                        <span class="error invalid-feedback">{{ $errors->first('yuridik_rekvizid') }}</span>
-                                    @endif
-                                </div>
+                            <div class="col-12 col-lg-6 mb-2">
+                                <label for="passport_pinfl" class="col-md-4 col-form-label">@lang('cruds.client.fields.passport_pinfl')</label>
+                                <input class="form-control {{ $errors->has('passport_pinfl') ? 'is-invalid' : '' }}" type="text" name="passport_pinfl" id="passport_pinfl" placeholder="@lang('cruds.client.fields.passport_pinfl')" value="{{ old('passport_pinfl') }}" required>
+                                @if ($errors->has('passport_pinfl'))
+                                    <span class="error invalid-feedback">{{ $errors->first('passport_pinfl') }}</span>
+                                @endif
                             </div>
                         </div>
-                        
-                        <script>
-                            document.addEventListener('DOMContentLoaded', function () {
-                                var mijozTuri = document.getElementById('mijoz_turi');
-                                var additionalFields = document.getElementById('additionalFields');
-                        
-                                mijozTuri.addEventListener('change', function () {
-                                    if (mijozTuri.value === 'yuridik') {
-                                        additionalFields.style.display = 'block';
-                                    } else {
-                                        additionalFields.style.display = 'none';
-                                    }
-                                });
-                        
-                                mijozTuri.dispatchEvent(new Event('change'));
+
+                        <div class="row">
+                            <div class="col-12 col-lg-6 mb-2">
+                                <label for="yuridik_address" class="col-md-4 col-form-label">@lang('cruds.client.fields.yuridik_address')</label>
+                                <input class="form-control {{ $errors->has('yuridik_address') ? 'is-invalid' : '' }}" type="text" name="yuridik_address" id="yuridik_address" placeholder="@lang('cruds.client.fields.yuridik_address')" value="{{ old('yuridik_address') }}" required>
+                                @if ($errors->has('yuridik_address'))
+                                    <span class="error invalid-feedback">{{ $errors->first('yuridik_address') }}</span>
+                                @endif
+                            </div>
+
+                            <div class="col-12 col-lg-6 mb-2">
+                                <label for="yuridik_rekvizid" class="col-md-4 col-form-label">@lang('cruds.client.fields.yuridik_rekvizid')</label>
+                                <input class="form-control {{ $errors->has('yuridik_rekvizid') ? 'is-invalid' : '' }}" type="text" name="yuridik_rekvizid" id="yuridik_rekvizid" placeholder="@lang('cruds.client.fields.yuridik_rekvizid')" value="{{ old('yuridik_rekvizid') }}" required>
+                                @if ($errors->has('yuridik_rekvizid'))
+                                    <span class="error invalid-feedback">{{ $errors->first('yuridik_rekvizid') }}</span>
+                                @endif
+                            </div>
+                        </div>
+                    </div>
+
+                    <script>
+                        document.addEventListener('DOMContentLoaded', function () {
+                            var mijozTuri = document.getElementById('mijoz_turi');
+                            var additionalFields = document.getElementById('additionalFields');
+
+                            mijozTuri.addEventListener('change', function () {
+                                if (mijozTuri.value === 'yuridik') {
+                                    additionalFields.style.display = 'block';
+                                    // Set required attribute to additional fields
+                                    document.getElementById('passport_serial').required = true;
+                                    document.getElementById('passport_pinfl').required = true;
+                                    document.getElementById('yuridik_address').required = true;
+                                    document.getElementById('yuridik_rekvizid').required = true;
+                                } else {
+                                    additionalFields.style.display = 'none';
+                                    // Remove required attribute from additional fields
+                                    document.getElementById('passport_serial').required = false;
+                                    document.getElementById('passport_pinfl').required = false;
+                                    document.getElementById('yuridik_address').required = false;
+                                    document.getElementById('yuridik_rekvizid').required = false;
+                                }
                             });
-                        </script>
-                        
+
+                            mijozTuri.dispatchEvent(new Event('change'));
+                        });
+                    </script>
                         
 
                         <div class="mb-3">
