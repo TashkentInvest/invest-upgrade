@@ -119,7 +119,6 @@ Route::group(['middleware' => 'auth'],function (){
     Route::get('/client/{id}/edit',[ClientController::class,'edit'])->name('clientEdit');
     Route::post('/client/update/{id}',[ClientController::class,'update'])->name('clientUpdate');
     Route::delete('/client/delete/{id}',[ClientController::class,'destroy'])->name('clientDestroy');
-    Route::get('/client/theme-set/{id}',[ClientController::class,'setTheme'])->name('clientSetTheme');
     
 
     // Permissions

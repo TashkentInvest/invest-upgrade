@@ -13,7 +13,7 @@ class ClientController extends Controller
 {
     public function index()
     {
-        // abort_if_forbidden('user.show');
+        // abort_if_forbidden('client.show');
         $clients = Client::where('id','!=',auth()->user()->id)->get();
         return view('pages.client.index',compact('clients'));
     }
@@ -33,25 +33,23 @@ class ClientController extends Controller
     {
         abort_if_forbidden('client.add');
         $this->validate($request,[
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'first_name' => ['required', 'string', 'max:255'],
+            'last_name' => ['required', 'string', 'max:255'],
         ]);
 
         $client = Client::create([
-            'name' => $request->get('name'),
-            'email' => $request->get('email'),
-            'password' => Hash::make($request->get('password')),
+            'first_name' => $request->get('first_name'),
+            'last_name' => $request->get('last_name'),
+            'father_name' => $request->get('father_name'),
+            'mijoz_turi' => $request->get('mijoz_turi'),
+            'contact' => $request->get('contact'),
+            'passport_serial' => $request->get('passport_serial'),
+            'passport_pinfl' => $request->get('passport_pinfl'),
+            'yuridik_address' => $request->get('yuridik_address'),
+            'yuridik_rekvizid' => $request->get('yuridik_rekvizid'),
         ]);
 
-        $client->assignRole($request->get('roles'));
-
-        $activity = "\nCreated by: ".json_encode(auth()->user())
-            ."\nNew Client: ".json_encode($client)
-            ."\nRoles: ".implode(", ",$request->get('roles') ?? []);
-
-        LogWriter::user_activity($activity,'AddingUsers');
-
-        return redirect()->route('userIndex');
+        return redirect()->route('clientIndex');
     }
 
     // user edit page
@@ -72,7 +70,7 @@ class ClientController extends Controller
         else
             $roles = Role::where('name','!=','Super Admin')->get();
 
-        return view('pages.client.edit',compact('user','roles'));
+        return view('pages.client.edit',compact('client','roles'));
     }
 
     // update user dates
@@ -80,37 +78,21 @@ class ClientController extends Controller
     {
         abort_if((!auth()->user()->can('client.edit') && auth()->id() != $id),403);
 
-        $activity = "\nUpdated by: ".logObj(auth()->user());
-        $this->validate($request,[
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users,email,'.$id],
-            'password' => ['nullable', 'string', 'min:8', 'confirmed'],
-        ]);
-
         $client = Client::find($id);
 
-        if ($request->get('password') != null)
-        {
-            $client->password = Hash::make($request->get('password'));
-        }
+        $client->first_name = $request->get('first_name');
+        $client->last_name = $request->get('last_name');
+        $client->father_name = $request->get('father_name');
+        $client->mijoz_turi = $request->get('mijoz_turi');
 
-        unset($request['password']);
-        $activity .="\nBefore updates Client: ".logObj($client);
-        $activity .=' Roles before: "'.implode(',',$client->getRoleNames()->toArray()).'"';
-
-        $client->fill($request->all());
-        $client->save();
-
-        if (isset($request->roles)) $client->syncRoles($request->get('roles'));
-        unset($client->roles);
-
-        $activity .="\nAfter updates Client: ".logObj($client);
-        $activity .=' Roles after: "'.implode(',',$client->getRoleNames()->toArray()).'"';
-
-        LogWriter::user_activity($activity,'EditingUsers');
+        $client->contact = $request->get('contact');
+        $client->passport_serial = $request->get('passport_serial');
+        $client->passport_pinfl = $request->get('passport_pinfl');
+        $client->yuridik_address = $request->get('yuridik_address');
+        $client->yuridik_rekvizid = $request->get('yuridik_rekvizid');
 
         if (auth()->user()->can('client.edit'))
-            return redirect()->route('userIndex');
+            return redirect()->route('clientIndex');
         else
             return redirect()->route('home');
     }
@@ -132,26 +114,7 @@ class ClientController extends Controller
         $client_log = logObj(Client::find($id));
         $message = "\nDeleted By: $deleted_by\nDeleted Client: $client_log";
         LogWriter::user_activity($message,'DeletingUsers');
-        return redirect()->route('userIndex');
+        return redirect()->route('clientIndex');
     }
 
-    public function setTheme(Request $request,$id)
-    {
-        $this->validate($request,[
-            'theme' => 'required'
-        ]);
-
-        if (!in_array($request->theme,['default','dark','light']))
-        {
-            message_set("There is no theme like $request->theme!",'warning',3);
-        }
-        else
-        {
-            $client = Client::findOrFail($id);
-            $client->setTheme($request->theme);
-            message_set("Theme `$request->theme` is installed!",'success',1);
-        }
-
-        return redirect()->back();
-    }
 }
