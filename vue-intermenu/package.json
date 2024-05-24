@@ -1,0 +1,25 @@
+{
+  "name": "intermenudelivery",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@fortawesome/fontawesome-free": "^6.4.0",
+    "axios": "^1.4.0",
+    "axios-http-client": "^1.0.15",
+    "bottom-sheet-vue3": "^2.0.5",
+    "vue": "^3.3.4",
+    "vue-axios": "^3.5.2",
+    "vue-i18n": "^9.2.2",
+    "vue-toastification": "^2.0.0-rc.5"
+  },
+  "devDependencies": {
+    "@intlify/unplugin-vue-i18n": "^0.12.0",
+    "@vitejs/plugin-vue": "^4.2.3",
+    "vite": "^4.3.9"
+  }
+}

@@ -1,0 +1,22 @@
+[
+    {
+        "id": "1",
+        "name_uz": "Word",
+        "name_ru": "Word"
+    },
+    {
+        "id": "2",
+        "name_uz": "Excel",
+        "name_ru": "Excel"
+    },
+    {
+        "id": "3",
+        "name_uz": "PowerPoint",
+        "name_ru": "PowerPoint"
+    },
+    {
+        "id": "4",
+        "name_uz": "1C",
+        "name_ru": "1C"
+    }
+]
