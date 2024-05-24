@@ -15,6 +15,15 @@ class CreateCompaniesTable extends Migration
     {
         Schema::create('companies', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('client_id');
+            $table->foreign('client_id')->references('id')->on('clients')->onDelete('cascade');
+            $table->unsignedBigInteger('region_id')->nullable();
+            $table->foreign('region_id')->references('id')->on('regions');
+
+            $table->string('name');
+            $table->string('raxbar');
+            $table->string('object_location');
+            $table->string('object_kubmetr');
             $table->timestamps();
         });
     }

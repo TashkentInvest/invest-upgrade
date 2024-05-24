@@ -8,4 +8,24 @@ use Illuminate\Database\Eloquent\Model;
 class Company extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'client_id',
+        'region_id',
+        'name',
+        'raxbar',
+        'object_location',
+        'object_kubmetr',
+    ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function region()
+    {
+        return $this->hasOne(Regions::class,'id', 'region_id');
+    }
+
 }
