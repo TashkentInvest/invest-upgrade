@@ -17,6 +17,13 @@ class UserController extends Controller
     {
         abort_if_forbidden('user.show');
         $users = User::where('id','!=',auth()->user()->id)->get();
+
+        if (auth()->user()->hasRole('Super Admin'))
+            $users = User::where('id','!=',auth()->user()->id)->get();
+        else
+            $users = User::where('id','!=',auth()->user()->id)
+        ->where('id', '!=' ,1)->get();
+
         return view('pages.user.index',compact('users'));
     }
 

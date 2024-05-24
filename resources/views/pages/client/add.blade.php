@@ -37,7 +37,7 @@
 
                         <div class="form-group">
                             <div class="row">
-                                <div class="col-12 col-lg-6 mb-2">
+                                <div class="col-12 col-lg-4 mb-2">
                                     <label for="name" class="col-md-4 col-form-label">@lang('cruds.client.fields.name')</label>
                                     <input class="form-control {{ $errors->has('first_name') ? 'is-invalid' : '' }}"
                                         type="text" name="first_name" id="first_name" placeholder="@lang('cruds.client.fields.first_name')"
@@ -47,13 +47,23 @@
                                     @endif
                                 </div>
 
-                                <div class="col-12 col-lg-6 mb-2">
+                                <div class="col-12 col-lg-4 mb-2">
                                     <label for="last_name" class="col-md-4 col-form-label">@lang('cruds.client.fields.last_name')</label>
                                     <input class="form-control {{ $errors->has('last_name') ? 'is-invalid' : '' }}"
                                         type="text" name="last_name" id="last_name" placeholder="@lang('cruds.client.fields.last_name')"
                                         value="{{ old('last_name') }}" required>
                                     @if ($errors->has('last_name'))
                                         <span class="error invalid-feedback">{{ $errors->first('last_name') }}</span>
+                                    @endif
+                                </div>
+
+                                <div class="col-12 col-lg-4 mb-2">
+                                    <label for="father_name" class="col-md-4 col-form-label">@lang('cruds.client.fields.father_name')</label>
+                                    <input class="form-control {{ $errors->has('father_name') ? 'is-invalid' : '' }}"
+                                        type="text" name="father_name" id="father_name" placeholder="@lang('cruds.client.fields.father_name')"
+                                        value="{{ old('father_name') }}" required>
+                                    @if ($errors->has('father_name'))
+                                        <span class="error invalid-feedback">{{ $errors->first('father_name') }}</span>
                                     @endif
                                 </div>
                             </div>
@@ -72,13 +82,13 @@
                                 </div>
 
                                 <div class="col-12 col-lg-6 mb-2">
-                                    <label for="email" class="col-md-4 col-form-label">@lang('cruds.client.fields.mijoz_turi')</label>
+                                    <label for="mijoz_turi" class="col-md-4 col-form-label">@lang('cruds.client.fields.mijoz_turi')</label>
                                     <select class="form-control" name="mijoz_turi" id="mijoz_turi">
                                         <option value="fizik">@lang('cruds.client.fields.mijoz_turi_fizik')</option>
                                         <option value="yuridik">@lang('cruds.client.fields.mijoz_turi_yuridik')</option>
                                     </select>
-                                    @if ($errors->has('email'))
-                                        <span class="error invalid-feedback">{{ $errors->first('name') }}</span>
+                                    @if ($errors->has('mijoz_turi'))
+                                        <span class="error invalid-feedback">{{ $errors->first('mijoz_turi') }}</span>
                                     @endif
                                 </div>
                             </div>

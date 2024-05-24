@@ -121,6 +121,7 @@
                                                                 <td class="text-start">@lang('cruds.blogs.fields.address'):</td>
                                                                 <td>
                                                                     @if(!is_null($item->longitude) && !is_null($item->latitude))
+                                                                
                                                                         <a href="https://www.google.com/maps?q={{ $item->longitude }},{{ $item->latitude }}" target="_blank" rel="noopener noreferrer">@lang('cruds.blogs.fields.open_with_google_maps')</a>
                                                                     @else
                                                                         @lang('global.empty')
