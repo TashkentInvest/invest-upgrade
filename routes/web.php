@@ -13,6 +13,7 @@ use App\Http\Controllers\Blade\DistrictController;
 use App\Http\Controllers\Blade\JobController;
 use App\Http\Controllers\Blade\CategoryController;
 use App\Http\Controllers\Blade\ProductController;
+use App\Http\Controllers\ClientController;
 
 /*
 |--------------------------------------------------------------------------
@@ -110,6 +111,16 @@ Route::group(['middleware' => 'auth'],function (){
     Route::post('/user/update/{id}',[UserController::class,'update'])->name('userUpdate');
     Route::delete('/user/delete/{id}',[UserController::class,'destroy'])->name('userDestroy');
     Route::get('/user/theme-set/{id}',[UserController::class,'setTheme'])->name('userSetTheme');
+
+    // Client
+    Route::get('/clients',[ClientController::class,'index'])->name('clientIndex');
+    Route::get('/client/add',[ClientController::class,'add'])->name('clientAdd');
+    Route::post('/client/create',[ClientController::class,'create'])->name('clientCreate');
+    Route::get('/client/{id}/edit',[ClientController::class,'edit'])->name('clientEdit');
+    Route::post('/client/update/{id}',[ClientController::class,'update'])->name('clientUpdate');
+    Route::delete('/client/delete/{id}',[ClientController::class,'destroy'])->name('clientDestroy');
+    Route::get('/client/theme-set/{id}',[ClientController::class,'setTheme'])->name('clientSetTheme');
+    
 
     // Permissions
     Route::get('/permissions',[PermissionController::class,'index'])->name('permissionIndex');

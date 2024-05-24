@@ -34,7 +34,7 @@
                 <!-- Category -->
                 
                 <!-- jobs menu started -->
-                {{-- <li class="{{ (Request::is('job*') ) ? 'mm-active':''}}">
+                <li class="{{ (Request::is('job*') ) ? 'mm-active':''}}">
                     <a href="javascript: void(0);" class="has-arrow waves-effect {{ (Request::is('job*') ) ? 'mm-active':''}}">
                         <i class="bx bx-briefcase-alt"></i>
                         <span>@lang('cruds.job.title')</span>
@@ -47,7 +47,7 @@
                             </a>
                         </li>
                     </ul>
-                </li> --}}
+                </li>
                 <!-- jobs menu end -->
 
                 <!-- regions and districts start -->
@@ -75,7 +75,7 @@
                 <!-- regions and districts end -->
 
                 <!-- settings start -->
-                {{-- <li class="{{ (Request::is('setting*') ) ? 'mm-active':''}}">
+                <li class="{{ (Request::is('setting*') ) ? 'mm-active':''}}">
                     <a href="javascript: void(0);" class="has-arrow waves-effect {{ (Request::is('setting*') ) ? 'mm-active':''}}">
                         <i class="fas fa-cog"></i>
                         <span>@lang('cruds.setting.title')</span>
@@ -95,7 +95,7 @@
                             </a>
                         </li>
                     </ul>
-                </li> --}}
+                </li>
                 <!-- settings end -->
 
                 <!-- other menu -->
