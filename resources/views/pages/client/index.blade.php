@@ -5,12 +5,12 @@
 <div class="row">
     <div class="col-12">
         <div class="page-title-box d-sm-flex align-items-center justify-content-between">
-            <h4 class="mb-sm-0 font-size-18">@lang('cruds.user.title')</h4>
+            <h4 class="mb-sm-0 font-size-18">@lang('cruds.client.title')</h4>
 
             <div class="page-title-right">
                 <ol class="breadcrumb m-0">
                     <li class="breadcrumb-item"><a href="{{ route('home') }}" style="color: #007bff;">@lang('global.home')</a></li>
-                    <li class="breadcrumb-item active">@lang('cruds.user.title')</li>
+                    <li class="breadcrumb-item active">@lang('cruds.client.title')</li>
                 </ol>
             </div>
 
@@ -23,7 +23,7 @@
     <div class="col-12">
         <div class="card">
             <div class="card-header">
-                <h3 class="card-title">@lang('cruds.user.title_singular')</h3>
+                <h3 class="card-title">@lang('cruds.client.title_singular')</h3>
                 @can('user.add')
                 <a href="{{ route('userAdd') }}" class="btn btn-success waves-effect waves-light float-right">
                     <span class="fas fa-plus-circle"></span>
@@ -37,16 +37,16 @@
                 <table id="datatable" class="table table-bordered  w-100">
                     <thead>
                         <tr>
-                            <th>@lang('cruds.user.fields.id')</th>
-                            <th>@lang('cruds.user.fields.name')</th>
-                            <th>@lang('cruds.user.fields.email')</th>
-                            <th>@lang('cruds.user.fields.roles')</th>
+                            <th>@lang('cruds.client.fields.id')</th>
+                            <th>@lang('cruds.client.fields.name')</th>
+                            <th>@lang('cruds.client.fields.email')</th>
+                            <th>@lang('cruds.client.fields.roles')</th>
                             <th>@lang('cruds.permission.fields.permissions')</th>
                             <th class="w-25">@lang('global.actions')</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach($users as $user)
+                        @foreach($clients as $user)
                         <tr>
                             <td>{{ $user->id }}</td>
                             <td>{{ $user->name }}</td>

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateClinetsTable extends Migration
+class CreateClientsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateClinetsTable extends Migration
      */
     public function up()
     {
-        Schema::create('clinets', function (Blueprint $table) {
+        Schema::create('clients', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
@@ -37,6 +37,6 @@ class CreateClinetsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('clinets');
+        Schema::dropIfExists('Clients');
     }
 }

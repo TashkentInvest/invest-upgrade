@@ -7,14 +7,14 @@ use Illuminate\Http\Request;
 use App\Services\LogWriter;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
-use App\Models\Clinet;
+use App\Models\Client;
 
 class ClientController extends Controller
 {
     public function index()
     {
-        abort_if_forbidden('client.show');
-        $clients = Clinet::where('id','!=',auth()->user()->id)->get();
+        // abort_if_forbidden('user.show');
+        $clients = Client::where('id','!=',auth()->user()->id)->get();
         return view('pages.client.index',compact('clients'));
     }
 
@@ -37,7 +37,7 @@ class ClientController extends Controller
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
         ]);
 
-        $client = Clinet::create([
+        $client = Client::create([
             'name' => $request->get('name'),
             'email' => $request->get('email'),
             'password' => Hash::make($request->get('password')),
@@ -46,7 +46,7 @@ class ClientController extends Controller
         $client->assignRole($request->get('roles'));
 
         $activity = "\nCreated by: ".json_encode(auth()->user())
-            ."\nNew Clinet: ".json_encode($client)
+            ."\nNew Client: ".json_encode($client)
             ."\nRoles: ".implode(", ",$request->get('roles') ?? []);
 
         LogWriter::user_activity($activity,'AddingUsers');
@@ -59,7 +59,7 @@ class ClientController extends Controller
     {
         abort_if((!auth()->user()->can('client.edit') && auth()->id() != $id),403);
 
-        $client = Clinet::find($id);
+        $client = Client::find($id);
 
         if ($client->hasRole('Super Admin') && !auth()->user()->hasRole('Super Admin'))
         {
@@ -87,7 +87,7 @@ class ClientController extends Controller
             'password' => ['nullable', 'string', 'min:8', 'confirmed'],
         ]);
 
-        $client = Clinet::find($id);
+        $client = Client::find($id);
 
         if ($request->get('password') != null)
         {
@@ -95,7 +95,7 @@ class ClientController extends Controller
         }
 
         unset($request['password']);
-        $activity .="\nBefore updates Clinet: ".logObj($client);
+        $activity .="\nBefore updates Client: ".logObj($client);
         $activity .=' Roles before: "'.implode(',',$client->getRoleNames()->toArray()).'"';
 
         $client->fill($request->all());
@@ -104,7 +104,7 @@ class ClientController extends Controller
         if (isset($request->roles)) $client->syncRoles($request->get('roles'));
         unset($client->roles);
 
-        $activity .="\nAfter updates Clinet: ".logObj($client);
+        $activity .="\nAfter updates Client: ".logObj($client);
         $activity .=' Roles after: "'.implode(',',$client->getRoleNames()->toArray()).'"';
 
         LogWriter::user_activity($activity,'EditingUsers');
@@ -120,7 +120,7 @@ class ClientController extends Controller
     {
         abort_if_forbidden('client.delete');
 
-        $client = Clinet::destroy($id);
+        $client = Client::destroy($id);
         if ($client->hasRole('Super Admin') && !auth()->user()->hasRole('Super Admin'))
         {
             message_set("У вас нет разрешения на редактирование администратора",'error',5);
@@ -129,8 +129,8 @@ class ClientController extends Controller
         DB::table('model_has_roles')->where('model_id',$id)->delete();
         DB::table('model_has_permissions')->where('model_id',$id)->delete();
         $deleted_by = logObj(auth()->user());
-        $client_log = logObj(Clinet::find($id));
-        $message = "\nDeleted By: $deleted_by\nDeleted Clinet: $client_log";
+        $client_log = logObj(Client::find($id));
+        $message = "\nDeleted By: $deleted_by\nDeleted Client: $client_log";
         LogWriter::user_activity($message,'DeletingUsers');
         return redirect()->route('userIndex');
     }
@@ -147,7 +147,7 @@ class ClientController extends Controller
         }
         else
         {
-            $client = Clinet::findOrFail($id);
+            $client = Client::findOrFail($id);
             $client->setTheme($request->theme);
             message_set("Theme `$request->theme` is installed!",'success',1);
         }

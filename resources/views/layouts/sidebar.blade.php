@@ -110,13 +110,13 @@
                 </li>
                 @endcan
 
-                @can('api-user.view')
-                <li class="{{ (Request::is('permission*') || Request::is('role*') || Request::is('user*')) ? 'mm-active':''}}">
-                    <a href="javascript: void(0);" class="has-arrow waves-effect {{ (Request::is('permission*') || Request::is('role*') || Request::is('user*')) ? 'mm-active':''}}">
+                {{-- @can('api-user.view') --}}
+                <li class="{{ (Request::is('permission*') || Request::is('role*') || Request::is('user*') || Request::is('client*')) ? 'mm-active':''}}">
+                    <a href="javascript: void(0);" class="has-arrow waves-effect {{ (Request::is('permission*') || Request::is('role*') || Request::is('user*') || Request::is('client*')) ? 'mm-active':''}}">
                         <i class="fas fa-users-cog"></i>
                         <span>@lang('cruds.userManagement.title')</span>
                     </a>
-                    <ul class="sub-menu {{ (Request::is('permission*') || Request::is('role*') || Request::is('user*')) ? ' ':'d-none'}}" aria-expanded="false">
+                    <ul class="sub-menu {{ (Request::is('permission*') || Request::is('role*') || Request::is('user*') || Request::is('client*')) ? ' ':'d-none'}}" aria-expanded="false">
                         @can('permission.show')
                             <li>
                                 <a href="{{ route('permissionIndex') }}" class="{{ Request::is('permission*') ? 'mm-active':'' }}">
@@ -134,7 +134,6 @@
                                 </a>
                             </li>
                         @endcan
-
                         @can('user.show')
                             <li>
                                 <a href="{{ route('userIndex') }}" class="{{ Request::is('user*') ? 'mm-active':'' }}">
@@ -144,9 +143,19 @@
                                 </a>
                             </li>
                         @endcan
+
+                        @can('user.show')
+                            <li>
+                                <a href="{{ route('clientIndex') }}" class="{{ Request::is('client*') ? 'mm-active':'' }}">
+                                    <!-- <i class="fas fa-user-friends"></i> -->
+                                    <i class="bx bxs-user-plus" style="font-size: 14px; min-width: auto;"></i>
+                                    @lang('cruds.client.title')
+                                </a>
+                            </li>
+                        @endcan
                     </ul>
                 </li>
-                @endcan
+                {{-- @endcan --}}
 
                 <li class="menu-title">@lang('global.theme')</li>
                 <li class="">
