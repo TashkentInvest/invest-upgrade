@@ -151,7 +151,7 @@
 				<div class="container-fluid">
 					<div class="row">
 						<div class="col-sm-6">
-						    <strong>Copyright &copy; {{ date('Y') }} <a href="https://t.me/#">Tashkent </a>.</strong>
+						    <strong>Copyright &copy; {{ date('Y') }} <a href="https://t.me/#">Tashkent Invest</a>.</strong>
 			                All rights reserved.
 						</div>
 						<div class="col-sm-6">
