@@ -59,18 +59,7 @@ class ClientController extends Controller
 
         $client = Client::find($id);
 
-        if ($client->hasRole('Super Admin') && !auth()->user()->hasRole('Super Admin'))
-        {
-            message_set("У вас нет разрешения на редактирование администратора",'error',5);
-            return redirect()->back();
-        }
-
-        if (auth()->user()->hasRole('Super Admin'))
-            $roles = Role::all();
-        else
-            $roles = Role::where('name','!=','Super Admin')->get();
-
-        return view('pages.client.edit',compact('client','roles'));
+        return view('pages.client.edit',compact('client'));
     }
 
     // update user dates
@@ -90,6 +79,7 @@ class ClientController extends Controller
         $client->passport_pinfl = $request->get('passport_pinfl');
         $client->yuridik_address = $request->get('yuridik_address');
         $client->yuridik_rekvizid = $request->get('yuridik_rekvizid');
+        $client->save();
 
         if (auth()->user()->can('client.edit'))
             return redirect()->route('clientIndex');
