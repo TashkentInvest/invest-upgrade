@@ -126,7 +126,7 @@ return [
     'user_name'                            => 'Ism',
     'verifyYourEmail'                      => 'Iltimos, elektron pochtangizni tasdiqlang',
     'verifyYourUser'                       => 'Ro\'yxatdan o\'tishni tugatish uchun sayt elektron pochtangizni tasdiqlashingizni so\'raydi',
-    'view'                                 => 'Ko\'rinish',
+    'view'                                 => 'Ko\'rish',
     'view_file'                            => 'Faylni ko\'rish',
     'year'                                 => 'Yil',
     'yes'                                  => 'Ha',
