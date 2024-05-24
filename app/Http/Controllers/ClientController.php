@@ -32,10 +32,10 @@ class ClientController extends Controller
     public function create(Request $request)
     {
         abort_if_forbidden('client.add');
-        $this->validate($request,[
-            'first_name' => ['required', 'string', 'max:255'],
-            'last_name' => ['required', 'string', 'max:255'],
-        ]);
+        // $this->validate($request,[
+        //     'first_name' => ['required', 'string', 'max:255'],
+        //     'last_name' => ['required', 'string', 'max:255'],
+        // ]);
 
         $client = Client::create([
             'first_name' => $request->get('first_name'),
