@@ -39,7 +39,7 @@
                         <tr>
                             <th>@lang('cruds.client.fields.id')</th>
                             <th>@lang('cruds.client.fields.first_name')</th>
-                            <th>@lang('cruds.client.fields.last_name')</th>
+                            <th>@lang('cruds.client.fields.contact')</th>
                             <th class="w-25">@lang('global.actions')</th>
                         </tr>
                     </thead>
@@ -47,9 +47,9 @@
                         {{-- @dump($clients) --}}
                         @foreach($clients as $client)
                         <tr>
-                            <td>{{ $client->id }}</td>
+                            <td>{{ $loop->iteration }}</td>
                             <td>{{ $client->first_name }}</td>
-                            <td>{{ $client->last_name }}</td>
+                            <td>{{ $client->contact }}</td>
                             <td class="text-center">
                                 @can('client.delete')
                                 <form action="{{ route('clientDestroy',$client->id) }}" method="post">

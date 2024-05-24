@@ -84,7 +84,7 @@ return [
             'name'                     => 'Имя',
             'first_name'                     => 'Имя',
             'last_name'                     => 'Фамилия',
-            'father_name'                     => 'Имя отца',
+            'father_name'                     => 'Отчество',
             'contact'                     => 'Контакт',
             'passport_serial'                     => 'Серия паспорта',
             'passport_pinfl'                     => 'Пинфл паспорта',

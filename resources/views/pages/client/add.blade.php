@@ -142,14 +142,12 @@
                             mijozTuri.addEventListener('change', function () {
                                 if (mijozTuri.value === 'yuridik') {
                                     additionalFields.style.display = 'block';
-                                    // Set required attribute to additional fields
                                     document.getElementById('passport_serial').required = true;
                                     document.getElementById('passport_pinfl').required = true;
                                     document.getElementById('yuridik_address').required = true;
                                     document.getElementById('yuridik_rekvizid').required = true;
                                 } else {
                                     additionalFields.style.display = 'none';
-                                    // Remove required attribute from additional fields
                                     document.getElementById('passport_serial').required = false;
                                     document.getElementById('passport_pinfl').required = false;
                                     document.getElementById('yuridik_address').required = false;
