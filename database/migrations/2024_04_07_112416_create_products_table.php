@@ -20,10 +20,12 @@ class CreateProductsTable extends Migration
             $table->text('text_uz')->nullable();
             $table->text('text_ru')->nullable();
             $table->string('photo')->nullable();
-            $table->string('longitude')->nullable();
-            $table->string('latitude')->nullable();
+
             $table->unsignedBigInteger('region_id')->nullable();
             $table->foreign('region_id')->references('id')->on('regions');
+
+            $table->unsignedBigInteger('clinet_id')->nullable();
+            $table->foreign('clinet_id')->references('id')->on('clients');
 
             $table->unsignedBigInteger('category_id')->nullable();
             $table->foreign('category_id')->references('id')->on('category');

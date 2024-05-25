@@ -6,11 +6,8 @@ use App\Http\Controllers\Blade\RoleController;
 use App\Http\Controllers\Blade\PermissionController;
 use App\Http\Controllers\Blade\HomeController;
 use App\Http\Controllers\Blade\ApiUserController;
-use App\Http\Controllers\Blade\BlogController;
-use App\Http\Controllers\Blade\SettingsController;
 use App\Http\Controllers\Blade\RegionController;
 use App\Http\Controllers\Blade\DistrictController;
-use App\Http\Controllers\Blade\JobController;
 use App\Http\Controllers\Blade\CategoryController;
 use App\Http\Controllers\Blade\ProductController;
 use App\Http\Controllers\ClientController;
@@ -41,17 +38,6 @@ Route::group(['middleware' => 'auth'],function (){
     // there should be graphics, diagrams about total conditions
     Route::get('/home', [HomeController::class,'index'])->name('home');
 
-    // Settings
-    Route::get('/setting/about',[SettingsController::class, 'aboutCompany'])->name('settingAbout');
-    Route::get('/setting/about/edit',[SettingsController::class, 'editCompany'])->name('settingEdit');
-    Route::post('/setting/about/update',[SettingsController::class, 'updateCompany'])->name('settingUpdate');
-
-    Route::get('/setting/start/message',[SettingsController::class, 'startMessage'])->name('settingStartMessage');
-    Route::get('/setting/start/message/add',[SettingsController::class, 'startMessageAdd'])->name('settingStartMessageAdd');
-    Route::post('/setting/start/message/create',[SettingsController::class, 'startMessageCreate'])->name('settingStartMessageCreate');
-    Route::get('/setting/start/message/{id}',[SettingsController::class, 'startMessageEdit'])->name('settingStartMessageEdit');
-    Route::post('/setting/start/message/{id}/update',[SettingsController::class, 'startMessageUpdate'])->name('settingStartMessageUpdate');
-
     // Regions  
     Route::get('/regions',[RegionController::class, 'index'])->name('regionIndex');
     Route::get('/region/add',[RegionController::class, 'add'])->name('regionAdd');
@@ -68,15 +54,6 @@ Route::group(['middleware' => 'auth'],function (){
     Route::post('/district/update/{id}',[DistrictController::class, 'update'])->name('districtUpdate');
     Route::delete('/district/delete/{id}',[DistrictController::class,'destroy'])->name('districtDestroy');
 
-    // Jobs
-    Route::get('/job-programs',[JobController::class, 'index'])->name('jobProgramIndex');
-    Route::get('/job-program/add',[JobController::class, 'add'])->name('jobProgramAdd');
-    Route::post('/job-program/create',[JobController::class, 'create'])->name('jobProgramCreate');
-    Route::get('/job-program/edit/{id}',[JobController::class, 'edit'])->name('jobProgramEdit');
-    Route::post('/job-program/update/{id}',[JobController::class, 'update'])->name('jobProgramUpdate');
-    Route::delete('/job-program/delete/{id}',[JobController::class,'destroy'])->name('jobProgramDestroy');
-    Route::post('/job-program/toggle-status/{id}',[JobController::class,'toggleProductActivation'])->name('productActivation');
-
     // Products
     Route::get('/products',[ProductController::class, 'index'])->name('productIndex');
     Route::get('/product/add',[ProductController::class, 'add'])->name('productAdd');
@@ -86,14 +63,6 @@ Route::group(['middleware' => 'auth'],function (){
     Route::delete('/product/delete/{id}',[ProductController::class,'destroy'])->name('productDestroy');
     Route::post('/product/toggle-status/{id}',[ProductController::class,'toggleProductActivation'])->name('productActivation');
 
-    // Blogs
-    Route::get('/blogs',[BlogController::class, 'index'])->name('blogIndex');
-    Route::get('/blog/add',[BlogController::class, 'add'])->name('blogAdd');
-    Route::post('/blog/create',[BlogController::class, 'create'])->name('blogCreate');
-    Route::get('/blog/edit/{id}',[BlogController::class, 'edit'])->name('blogEdit');
-    Route::post('/blog/update/{id}',[BlogController::class, 'update'])->name('blogUpdate');
-    Route::delete('/blog/delete/{id}',[BlogController::class,'destroy'])->name('blogDestroy');
-    Route::post('/blog/toggle-status/{id}',[BlogController::class,'toggleBlogActivation'])->name('blogActivation');
 
     // Categories
     Route::get('/categories',[CategoryController::class, 'index'])->name('categoryIndex');

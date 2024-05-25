@@ -38,6 +38,10 @@ class Products extends Model
         return $this->hasOne(Regions::class,'id', 'region_id');
     }
 
+    public function client()
+    {
+        return $this->belongsTo(Client::class,'id', 'client_id');
+    }
     public function category(){
         return $this->belongsTo(Category::class);
     }
