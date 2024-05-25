@@ -25,4 +25,9 @@ class Client extends Model
     public function users(){
         return $this->belongsTo(User::class,'id', 'user_id');
     }
+
+    
+    public function companies(){
+        return $this->hasMany(Company::class);
+    }
 }

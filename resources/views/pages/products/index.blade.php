@@ -34,7 +34,6 @@
                     <thead>
                     <tr>
                         <th>ID</th>
-                        <th>@lang('cruds.branches.fields.name_uz')</th>
                         <th>@lang('cruds.branches.fields.name_ru')</th>
                         <th>@lang('cruds.category.title')</th>
                         <th>@lang('cruds.branches.fields.photo')</th>
@@ -44,18 +43,13 @@
                     </thead>
                     <tbody>
                         @foreach($products as $item)
+                        {{-- @dump($item->client->companies) --}}
                             <tr>
                                 <td>{{ $item->id }}</td>
-                                <td>{{ $item->name_uz }}</td>
-                                <td>{{ $item->name_ru }}</td>
-                                <td>{{ $item->category->{'name_' . $locale } }}</td>
-                                <td>
-                                    @if(!is_null($item->photo))
-                                        <a target="_blank"  href="{{ url('/') }}/images/{{ $item->photo }}">{{ $item->photo }}</a>
-                                    @else
-                                        @lang('global.empty')
-                                    @endif
-                                </td>
+                                <td>{{ $item->client_id }}</td>
+                                <td>{{ $item->company_id }}</td>
+                                <td>{{ $item->category_id }}</td>
+                             
                                 <td class="text-center">
                                     <i style="cursor: pointer; font-size: 16px;" id="program_{{ $item->id }}" 
                                     class="fas {{ $item->status === 1 ? "fa-check-circle text-success":"fa-times-circle text-danger" }}"
@@ -95,31 +89,14 @@
                                                 <div class="modal-body">
                                                     <table class="table table-striped">
                                                         <tbody>
-                                                            <tr>
-                                                                <td class="text-start">@lang('cruds.branches.fields.name_uz'):</td>
-                                                                <td>
-                                                                    <b>{{ $item->name_uz }}</b>
-                                                                </td>
-                                                            </tr>
+
                                                             <tr>
                                                                 <td class="text-start">@lang('cruds.branches.fields.name_ru'):</td>
                                                                 <td>
                                                                     <b>{{ $item->name_ru }}</b>
                                                                 </td>
                                                             </tr>
-                                                            <tr>
-                                                                <td class="text-start">@lang('cruds.branches.fields.region_id'):</td>
-                                                                <td>
-                                                                    <b>{{ $item->region->{'name_' . $locale } }}</b>
-                                                                </td>
-                                                            </tr>
-
-                                                            <tr>
-                                                                <td class="text-start">@lang('cruds.category.title'):</td>
-                                                                <td>
-                                                                    <b>{{ $item->category->name_uz}}</b>
-                                                                </td>
-                                                            </tr>
+ 
                                                             <tr>
                                                                 <td class="text-start">@lang('cruds.branches.fields.photo'):</td>
                                                                 <td>

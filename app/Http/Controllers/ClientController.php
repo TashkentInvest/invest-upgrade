@@ -8,6 +8,7 @@ use App\Services\LogWriter;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use App\Models\Client;
+use App\Models\Company;
 
 class ClientController extends Controller
 {
@@ -35,10 +36,10 @@ class ClientController extends Controller
     {
         // dd($request);
         abort_if_forbidden('client.add');
-        // $this->validate($request,[
-        //     'first_name' => ['required', 'string', 'max:255'],
-        //     'last_name' => ['required', 'string', 'max:255'],
-        // ]);
+        $this->validate($request,[
+            'first_name' => ['required', 'string', 'max:255'],
+            'last_name' => ['required', 'string', 'max:255'],
+        ]);
 
         $client = Client::create([
             'first_name' => $request->get('first_name'),
@@ -52,6 +53,21 @@ class ClientController extends Controller
             'yuridik_rekvizid' => $request->get('yuridik_rekvizid'),
         ]);
 
+        // $client_id = $client->id;
+
+
+
+      
+        // $company = Company::create([
+        //     'client_id' => $client_id, 
+        //     'company_location' => $request->get('company_location'),
+        //     'company_type' => $request->get('company_type'),
+        //     'company_kubmetr' => $request->get('company_kubmetr'), 
+        //     'company_name' => $request->get('company_name'), 
+        // ]);
+        
+
+        
         return redirect()->route('clientIndex');
     }
 

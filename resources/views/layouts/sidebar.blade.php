@@ -16,12 +16,7 @@
          
 
                 <!-- Category -->
-                <li class="{{ (Request::is('categories*') || Request::is('category*') ) ? 'mm-active':'' }}">
-                    <a href="{{ route('categoryIndex') }}" class=" waves-effect {{ (Request::is('categories*') || Request::is('category*') ) ? 'mm-active':'' }}">
-                        <i class="bx bx-border-all"></i>
-                        <span>@lang('cruds.category.title')</span>
-                    </a>
-                </li>
+             
                 <!-- Category -->
              
 
@@ -50,7 +45,7 @@
                 <!-- regions and districts end -->
 
                 <!-- other menu -->
-                @can('api-user.view')
+                {{-- @can('api-user.view')
                 <li class="menu-title">@lang('cruds.menu_top.api_users')</li>
                 <li class="{{ Request::is('api-user*') ? 'mm-active':'' }}">
                     <a href="{{ route('api-userIndex') }}" class=" waves-effect {{ Request::is('api-users*') ? 'mm-active':'' }}">
@@ -59,7 +54,7 @@
                         <span>@lang('cruds.menu_top.api_users')</span>
                     </a>
                 </li>
-                @endcan
+                @endcan --}}
 
                 {{-- @can('api-user.view') --}}
                 <li class="{{ (Request::is('permission*') || Request::is('role*') || Request::is('user*') || Request::is('client*')) ? 'mm-active':''}}">

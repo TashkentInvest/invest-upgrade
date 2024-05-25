@@ -10,6 +10,11 @@ class Products extends Model
     use HasFactory;
     protected $table = 'products';
 
+    protected $fillable = [
+        'client_id',
+        'company_id',
+        'minimum_wage'
+    ];
     public function public_path():string
     {
         return public_path()."/images/";
@@ -33,15 +38,17 @@ class Products extends Model
         return $this->delete();
     }
 
-    public function region()
-    {
-        return $this->hasOne(Regions::class,'id', 'region_id');
-    }
 
     public function client()
     {
-        return $this->belongsTo(Client::class,'id', 'client_id');
+        return $this->belongsTo(Client::class);
     }
+
+    public function company()
+    {
+        return $this->belongsTo(Company::class);
+    }
+
     public function category(){
         return $this->belongsTo(Category::class);
     }

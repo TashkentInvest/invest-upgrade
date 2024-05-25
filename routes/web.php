@@ -63,15 +63,6 @@ Route::group(['middleware' => 'auth'],function (){
     Route::delete('/product/delete/{id}',[ProductController::class,'destroy'])->name('productDestroy');
     Route::post('/product/toggle-status/{id}',[ProductController::class,'toggleProductActivation'])->name('productActivation');
 
-
-    // Categories
-    Route::get('/categories',[CategoryController::class, 'index'])->name('categoryIndex');
-    Route::get('/category/add',[CategoryController::class, 'add'])->name('categoryAdd');
-    Route::post('/category/create',[CategoryController::class, 'create'])->name('categoryCreate');
-    Route::get('/category/edit/{id}',[CategoryController::class, 'edit'])->name('categoryEdit');
-    Route::post('/category/update/{id}',[CategoryController::class, 'update'])->name('categoryUpdate');
-    Route::delete('/category/delete/{id}',[CategoryController::class,'destroy'])->name('categoryDestroy');
-
     // Users
     Route::get('/users',[UserController::class,'index'])->name('userIndex');
     Route::get('/user/add',[UserController::class,'add'])->name('userAdd');

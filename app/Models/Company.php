@@ -12,10 +12,12 @@ class Company extends Model
     protected $fillable = [
         'client_id',
         'region_id',
-        'name',
+        'company_name',
         'raxbar',
-        'object_location',
-        'object_kubmetr',
+        'company_location',
+        'company_type',
+        'company_kubmetr',
+
     ];
 
     public function user()
@@ -23,9 +25,19 @@ class Company extends Model
         return $this->belongsTo(User::class);
     }
 
+    public function client()
+    {
+        return $this->belongsTo(Client::class);
+    }
+
+
     public function region()
     {
         return $this->hasOne(Regions::class,'id', 'region_id');
     }
-
+    
+    public function products()
+    {
+        return $this->hasMany(Products::class);
+    }
 }

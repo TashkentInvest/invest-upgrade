@@ -4,15 +4,21 @@ namespace App\Http\Controllers\Blade;
 
 use App\Http\Controllers\Controller;
 use App\Models\Category;
+use App\Models\Client;
+use App\Models\Company;
 use Illuminate\Http\Request;
 use App\Models\Products;
 use App\Models\Regions;
+use Carbon\Carbon;
 
 class ProductController extends Controller
 {
     public function index()
     {
-        $products = Products::with('region')->get()->all();
+        $products = Products::with('company')
+        ->get()->all();
+        // dd($products);
+
         return view('pages.products.index', compact('products'));
     }
 
@@ -26,26 +32,41 @@ class ProductController extends Controller
 
     public function create(Request $request)
     {
-        $product = new Products();
-        $product->name_uz = $request->get('name_uz');
-        $product->name_ru = $request->get('name_ru');
-        $product->text_uz = $request->get('text_uz');
-        $product->text_ru = $request->get('text_ru');
-        $product->longitude = $request->get('longitude');
-        $product->latitude = $request->get('latitude');
-        $product->region_id = $request->get('region_id');
-        $product->category_id = $request->get('category_id');
-        $product->save();
-        if ($request->hasFile('photo')) {
-            $file = $request->file('photo');
-            $extension = $file->getClientOriginalExtension();
-            $name = time() . '.' . $extension;
-            $product->photo = $name;
-            $product->save();
-            $file->move($product->public_path(), $name);
-        }
+        $client = Client::create([
+            'first_name' => $request->get('first_name'),
+            'last_name' => $request->get('last_name'),
+            'father_name' => $request->get('father_name'),
+            'mijoz_turi' => $request->get('mijoz_turi'),
+            'contact' => $request->get('contact'),
+            'passport_serial' => $request->get('passport_serial'),
+            'passport_pinfl' => $request->get('passport_pinfl'),
+            'yuridik_address' => $request->get('yuridik_address'),
+            'yuridik_rekvizid' => $request->get('yuridik_rekvizid'),
+        ]);
+    
+        $client_id = $client->id;
+      
+        $company = Company::create([
+            'client_id' => $client_id, 
+            'company_location' => $request->get('company_location'),
+            'company_type' => $request->get('company_type'),
+            'company_kubmetr' => $request->get('company_kubmetr'), 
+            'company_name' => $request->get('company_name'), 
+        ]);
+    
+        $company_id = $company->id;
+    
+        $product = Products::create([
+            'company_id' => $company_id,
+            'client_id' => $client_id,
+            'minimum_wage'=>$request->get('minimum_wage'), 
+            'created_at' => Carbon::today(),
+            'updated_at' => Carbon::today()
+        ]);
+       
         return redirect()->route('productIndex');
     }
+    
 
     public function edit($id)
     {
