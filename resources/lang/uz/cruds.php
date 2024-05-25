@@ -180,5 +180,11 @@ return [
             'parent_id'=>'Bosh kategoriya',
             'address' => "Manzil"
         ]
+        ],
+    'company' => [
+        'title' => 'Kompaniya',
+        'fields' => [
+            'address' => "Адрес"
+        ]
     ]
 ];

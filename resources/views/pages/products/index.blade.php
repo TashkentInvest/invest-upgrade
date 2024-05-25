@@ -34,21 +34,24 @@
                     <thead>
                     <tr>
                         <th>ID</th>
-                        <th>@lang('cruds.branches.fields.name_ru')</th>
-                        <th>@lang('cruds.category.title')</th>
-                        <th>@lang('cruds.branches.fields.photo')</th>
+                        <th>@lang('cruds.client.fields.first_name')</th>
+                        <th>@lang('cruds.client.fields.contact')</th>
+                        <th>@lang('cruds.company.title')</th>
                         <th style="width: 100px;">Active</th>
                         <th style="width: 150px;">@lang('global.actions')</th>
                     </tr>
                     </thead>
                     <tbody>
                         @foreach($products as $item)
-                        {{-- @dump($item->client->companies) --}}
+                        {{-- @dump($item->client) --}}
                             <tr>
                                 <td>{{ $item->id }}</td>
                                 <td>{{ $item->client_id }}</td>
-                                <td>{{ $item->company_id }}</td>
-                                <td>{{ $item->category_id }}</td>
+                                <td>{{ $item->clients->contact ?? '' }}</td>
+                                @foreach ($item->client->companies as $i)
+                                <td>{{ $i->company_name}}</td>
+                                    
+                                @endforeach
                              
                                 <td class="text-center">
                                     <i style="cursor: pointer; font-size: 16px;" id="program_{{ $item->id }}" 
