@@ -62,7 +62,7 @@ Route::group(['middleware' => 'auth'],function (){
     // Route::post('/product/update/{id}', [ProductController::class, 'update'])->name('productUpdate');
     Route::match(['put', 'post'], '/product/update/{id}', [ProductController::class, 'update'])->name('productUpdate');
 
-    Route::delete('/product/delete/{id}',[ProductController::class,'destroy'])->name('productDestroy');
+    Route::delete('/product/delete/{id}',[ProductController::class,'delete'])->name('productDestroy');
     Route::post('/product/toggle-status/{id}',[ProductController::class,'toggleProductActivation'])->name('productActivation');
 
     // Users

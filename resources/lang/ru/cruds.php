@@ -144,7 +144,7 @@ return [
         ]
     ],
     'branches' => [
-        'title' => 'Магазины',
+        'title' => 'TEST',
         'fields' => [
             'name_uz' => 'Название на узбекском',
             'name_ru' => 'Название на русском',

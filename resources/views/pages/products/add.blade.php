@@ -32,7 +32,10 @@
                         <div id="basic-example">
                             <!-- Seller Details -->
                             <h3>Shartnoma Rekvizitlari</h3>
+
+
                             <section>
+                              
                                 <div class="row">
                                     <div class="col-lg-6">
                                         <div class="mb-3">
@@ -212,21 +215,69 @@
 
                                 </div>
                                 <div class="row">
-                                    <div class="col-lg-4">
+                                    {{-- <div class="col-lg-4">
                                         <div class="mb-3">
                                             <label for="basicpill-cardno-input">Obyekt bo'yicha tolanadigan yeg'im
                                                 miqdori</label>
                                             <input type="text" class="form-control" id="basicpill-cardno-input"
                                                 placeholder="Metr Kub" name="company_kubmetr">
                                         </div>
-                                    </div>
+                                    </div> --}}
+                                        <div class="col-4">
+                                            <div class="inner-repeater mb-4">
+                                                <div data-repeater-list="inner-group" class="inner mb-3">
+                                                    <label for="basicpill-cardno-input">Obyekt bo'yicha tolanadigan yeg'im
+                                                        miqdori</label>    
+                                                    <!-- Additional phone field -->
+                                                    <div data-repeater-item="" class="inner mb-3 row">
+                                                        <div class="col-md-10 col-8">
+                                                            <input type="text" class="form-control" id="basicpill-cardno-input"
+                                                placeholder="Metr Kub" name="company_kubmetr">
+
+
+                                                        </div>
+                                                        <div class="col-md-2 col-4">
+                                                            <div class="d-grid">
+                                                                <input data-repeater-delete="" type="button"
+                                                                    class="btn btn-primary inner" value="Delete">
+
+                                                                    
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <input data-repeater-create="" type="button" class="btn btn-success inner"
+                                                    value="Add Number">
+                                            </div>
+                                        </div>
+    
+                                        <!-- jQuery -->
+                                        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+                                        <!-- Repeater Plugin -->
+                                        <script src="https://cdn.jsdelivr.net/npm/jquery.repeater/jquery.repeater.min.js"></script>
+    
+                                        <script>
+                                            $(document).ready(function() {
+                                                // Initialize the repeater plugin
+                                                $('.inner-repeater').repeater({
+                                                    // options if needed
+                                                });
+    
+                                                // Disable the "Add Number" button
+                                                $('[data-repeater-create]').prop('disabled', false);
+                                            });
+                                        </script>
+    
+
+
 
                                     <div class="col-lg-4">
                                         <div class="mb-3">
                                             <label for="basicpill-card-verification-input">Bazaviy xisoblash
                                                 miqdori</label>
                                             <input type="text" class="form-control"
-                                                id="basicpill-card-verification-input" placeholder="340 min" value="340" name="minimum_wage">
+                                                id="basicpill-card-verification-input" placeholder="340 min"
+                                                value="340" name="minimum_wage">
                                         </div>
                                     </div>
 
@@ -235,7 +286,8 @@
                                             <label for="basicpill-card-verification-input">Jami to'lanishi kerak bo'gan
                                                 miqdor</label>
                                             <input type="text" class="form-control"
-                                                id="basicpill-card-verification-input" name="generate_price" placeholder="------------">
+                                                id="basicpill-card-verification-input" name="generate_price"
+                                                placeholder="------------">
                                         </div>
                                     </div>
                                 </div>
@@ -293,36 +345,6 @@
 
                         </div>
 
-                        {{-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
-                        <script>
-                            $(document).ready(function() {
-                                $('form').submit(function(e) {
-                                    e.preventDefault(); // Prevent the form from submitting traditionally
-
-                                    // Construct a FormData company, which serializes the form data
-                                    const formData = new FormData(this);
-
-                                    // Send an AJAX request
-                                    $.ajax({
-                                        type: 'POST',
-                                        url: '{{ route('clientCreate') }}',
-                                        data: formData,
-                                        processData: false, // Prevent jQuery from transforming the data into a query string
-                                        contentType: false, // Do not let jQuery set the Content-Type header
-                                        success: function(response) {
-                                            window.location.href = '{{ route('clientIndex') }}';
-
-                                            // alert('Form submitted successfully!');
-                                        },
-                                        error: function(xhr, status, error) {
-                                            // Handle errors gracefully
-                                            console.log('An error occurred while submitting the form: ' + error);
-                                        }
-                                    });
-                                });
-                            });
-                        </script> --}}
 
                     </form>
 
@@ -342,7 +364,10 @@
 @section('scripts')
     <script src="{{ asset('assets/libs/jquery/jquery.min.js') }}"></script>
     <script src="{{ asset('assets/libs/node-waves/waves.min.js') }}"></script>
-
     <script src="{{ asset('assets/libs/jquery-steps/build/jquery.steps.min.js') }}"></script>
     <script src="{{ asset('assets/js/pages/form-wizard.init.js') }}"></script>
+    <script src="{{ asset('assets/js/pages/form-repeater.int.js') }}"></script>
+    <script src="{{ asset('assets/libs/jquery.repeater/jquery.repeater.min.js') }}"></script>
+
+    {{-- <link rel="stylesheet" href="../../../../public/assets/js/pages/form-repeater.int.js"> --}}
 @endsection
