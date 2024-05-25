@@ -170,11 +170,11 @@
                                     </div>
 
                                     <div class="col-12 col-lg-6 mb-2">
-                                        <label for="name" class="col-md-4 col-form-label">Jarima Rekviztlari</label>
+                                        <label for="name" class="col-md-4 col-form-label">Jamg'arma Rekviztlari</label>
                                         <input
                                             class="form-control {{ $errors->has('jamgarma_rekvizitlari') ? 'is-invalid' : '' }}"
                                             type="text" name="jamgarma_rekvizitlari" id="jamgarma_rekvizitlari"
-                                            placeholder="Jarima Rekvizitlari" value="{{ old('jamgarma_rekvizitlari') }}">
+                                            placeholder="Jamgarma Rekvizitlari" value="{{ old('jamgarma_rekvizitlari') }}">
                                         @if ($errors->has('jamgarma_rekvizitlari'))
                                             <span
                                                 class="error invalid-feedback">{{ $errors->first('jamgarma_rekvizitlari') }}</span>
@@ -187,7 +187,7 @@
                             <!-- Bank Details -->
                             <h3>Obyekt</h3>
                             <section>
-                                <div class="row">
+                                <div class="row" data-repeater-item="">
                                     <div class="col-lg-4">
                                         <div class="mb-3">
                                             <label for="basicpill-namecard-input">Loyixa Turi</label>
@@ -215,15 +215,15 @@
 
                                 </div>
                                 <div class="row">
-                                    {{-- <div class="col-lg-4">
+                                    <div class="col-lg-4">
                                         <div class="mb-3">
-                                            <label for="basicpill-cardno-input">Obyekt bo'yicha tolanadigan yeg'im
+                                            <label for="company_kubmetr">Obyekt bo'yicha tolanadigan yeg'im
                                                 miqdori</label>
-                                            <input type="text" class="form-control" id="basicpill-cardno-input"
+                                            <input type="text" class="form-control" id="company_kubmetr"
                                                 placeholder="Metr Kub" name="company_kubmetr">
                                         </div>
-                                    </div> --}}
-                                    <div class="col-lg-4">
+                                    </div>
+                                    {{-- <div class="col-lg-4">
                                         <div class="inner-repeater mb-4">
                                             <div data-repeater-list="inner-group" class="inner mb-3">
                                                 <label for="company_kubmetr">Obyekt bo'yicha tolanadigan yeg'im miqdori</label>
@@ -231,7 +231,7 @@
                                                 <div data-repeater-item="" class="inner mb-3 row">
                                                     <div class="col-8">
                                                         <input type="text" class="form-control" id="company_kubmetr" placeholder="Metr Kub"
-                                                            name="company_kubmetr">
+                                                            name="company_kubmetr[]">
                                                     </div>
                                                     <div class="col-4">
                                                         <div class="d-grid">
@@ -242,7 +242,8 @@
                                             </div>
                                             <input data-repeater-create="" type="button" class="btn btn-success inner" value="Add Number">
                                         </div>
-                                    </div>
+                                    </div> --}}
+                                    
                                 
                                     <div class="col-lg-4">
                                         <div class="mb-3">
@@ -256,7 +257,7 @@
                                         <div class="mb-3">
                                             <label for="generate_price">Jami to'lanishi kerak bo'gan miqdor</label>
                                             <input type="text" class="form-control" id="generate_price" name="generate_price"
-                                                placeholder="------------">
+                                                placeholder="------------" disabled>
                                         </div>
                                     </div>
 

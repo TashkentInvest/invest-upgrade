@@ -1,7 +1,6 @@
 @extends('layouts.admin')
 
 @section('content')
-<!-- Content Header (Page header) -->
 <div class="row">
     <div class="col-12">
         <div class="page-title-box d-sm-flex align-items-center justify-content-between">
@@ -43,14 +42,15 @@
                     </thead>
                     <tbody>
                         @foreach($products as $item)
-                        {{-- @dump($item->client) --}}
+
+                        {{-- @dump($item) --}}
                             <tr>
                                 <td>{{ $item->id }}</td>
                                 <td>{{ $item->client->first_name }}</td>
                                 <td>{{ $item->client->contact ?? '' }}</td>
+
                                 @foreach ($item->client->companies as $i)
                                 <td>{{ $i->company_name ?? ''}}</td>
-                                    
                                 @endforeach
                              
                                 <td class="text-center">
@@ -94,7 +94,7 @@
                                                         <tbody>
                                                             <tr>
                                                                 <td class="text-center"><strong>Shartnoma Rekvizitlari</strong></td>
-                                                            </tr>
+                                                            </tr>   
                                                             <tr>
                                                                 <td>APT Raqami</td>
                                                                 <td>{{ $item->contract_apt }}</td>

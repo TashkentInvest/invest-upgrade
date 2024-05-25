@@ -14,3 +14,10 @@ Laravel is accessible, powerful, and provides tools required for large, robust a
 ## Iframe
 
 <iframe src="https://dbdiagram.io/d/664f2659f84ecd1d22f46bcf" width="100" height="100" style="margin: auto; display: flex;justify-content: center; width: 100%; height: 900px;" frameborder="0"></iframe>
+
+
+## bugs clean code qlsh kere
+cdn lani ob tashash kere
+table ga exel qoshish kere
+multi company create qlsh kere
+database skeletini korb chqsh kere

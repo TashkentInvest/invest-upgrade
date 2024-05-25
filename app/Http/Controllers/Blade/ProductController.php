@@ -46,6 +46,9 @@ public function create(Request $request)
             'passport_pinfl' => $request->get('passport_pinfl'),
             'yuridik_address' => $request->get('yuridik_address'),
             'yuridik_rekvizid' => $request->get('yuridik_rekvizid'),
+            'jamgarma_rekvizitlari' => $request->get('jamgarma_rekvizitlari'),
+
+            
         ]);
 
         $company = Company::create([
@@ -102,6 +105,7 @@ public function create(Request $request)
                 'passport_pinfl' => $request->passport_pinfl,
                 'yuridik_address' => $request->yuridik_address,
                 'yuridik_rekvizid' => $request->yuridik_rekvizid,
+                'jamgarma_rekvizitlari' => $request->jamgarma_rekvizitlari,
                 
             ]);
     
