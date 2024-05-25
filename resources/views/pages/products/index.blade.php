@@ -83,7 +83,7 @@
                                     </form>
                                     <!-- Modal -->
                                     <div class="modal fade" id="exampleModal_{{ $item->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                        <div class="modal-dialog modal-dialog-scrollable modal-lg">
+                                        <div class="modal-dialog modal-dialog-scrollable modal-xl">
                                             <div class="modal-content">
                                                 <div class="modal-header">
                                                     <h5 class="modal-title" id="exampleModalLabel">{{ $item->{'name_' . app()->getLocale()} }}</h5>
@@ -92,43 +92,100 @@
                                                 <div class="modal-body">
                                                     <table class="table table-striped">
                                                         <tbody>
-                                                          
                                                             <tr>
-                                                                <td class="text-start">Client Name:</td>
-                                                                <td><b>{{ $item->client->first_name }} {{ $item->client->last_name }}</b></td>
+                                                                <td class="text-center"><strong>Shartnoma Rekvizitlari</strong></td>
                                                             </tr>
                                                             <tr>
-                                                                <td class="text-start">Client Father Name:</td>
-                                                                <td><b>{{ $item->client->father_name }}</b></td>
+                                                                <td>APT Raqami</td>
+                                                                <td>{{ $item->contract_apt }}</td>
                                                             </tr>
                                                             <tr>
-                                                                <td class="text-start">Client Type:</td>
-                                                                <td><b>{{ $item->client->mijoz_turi }}</b></td>
+                                                                <td>Sanasi</td>
+                                                                <td>{{ $item->contract_date }}</td>
+                                                            </tr>
+                                    
+                                                            <tr>
+                                                                <td><strong>Shaxsiy Malumotlar</strong></td>
                                                             </tr>
                                                             <tr>
-                                                                <td class="text-start">Client Address:</td>
-                                                                <td><b>{{ $item->client->yuridik_address }}</b></td>
+                                                                <td>Mijoz Turi</td>
+                                                                <td>{{ $item->client->mijoz_turi }}</td>
                                                             </tr>
                                                             <tr>
-                                                                <td class="text-start">Client Contact:</td>
-                                                                <td><b>{{ $item->client->contact }}</b></td>
-                                                            </tr>
-                                                            <!-- Company Details -->
-                                                            <tr>
-                                                                <td class="text-start">Company Name:</td>
-                                                                <td><b>{{ $item->company->company_name }}</b></td>
+                                                                <td>Name</td>
+                                                                <td>{{ $item->client->first_name }}</td>
                                                             </tr>
                                                             <tr>
-                                                                <td class="text-start">Company Location:</td>
-                                                                <td><b>{{ $item->company->company_location }}</b></td>
+                                                                <td>Last Name</td>
+                                                                <td>{{ $item->client->last_name }}</td>
                                                             </tr>
                                                             <tr>
-                                                                <td class="text-start">Company Type:</td>
-                                                                <td><b>{{ $item->company->company_type }}</b></td>
+                                                                <td>Father Name</td>
+                                                                <td>{{ $item->client->father_name }}</td>
                                                             </tr>
                                                             <tr>
-                                                                <td class="text-start">Company Kubmetr:</td>
-                                                                <td><b>{{ $item->company->company_kubmetr }}</b></td>
+                                                                <td>Passport Serial</td>
+                                                                <td>{{ $item->client->passport_serial }}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Passport Pinfl</td>
+                                                                <td>{{ $item->client->passport_pinfl }}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Yuridik Address</td>
+                                                                <td>{{ $item->client->yuridik_address }}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Yuridik Rekvizid</td>
+                                                                <td>{{ $item->client->yuridik_rekvizid }}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Contact</td>
+                                                                <td>{{ $item->client->contact }}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Jarima Rekvizitlari</td>
+                                                                <td>{{ $item->client->jamgarma_rekvizitlari }}</td>
+                                                            </tr>
+                                    
+                                                            <tr>
+                                                                <td><strong>Obyekt</strong></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Loyixa Turi</td>
+                                                                <td>{{ $item->company->company_type }}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Loyixa Manzili</td>
+                                                                <td>{{ $item->company->company_location }}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Loyixa Nomi</td>
+                                                                <td>{{ $item->company->company_name }}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Obyekt bo'yicha tolanadigan yeg'im miqdori</td>
+                                                                <td>{{ $item->company->company_kubmetr }}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Bazaviy xisoblash miqdori</td>
+                                                                <td>{{ $item->company->minimum_wage }}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Jami to'lanishi kerak bo'gan miqdor</td>
+                                                                <td>{{ $item->company->generate_price }}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>To'lash turlari</td>
+                                                                <td>{{ $item->company->payment_type }}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Bo'lib to'lash foizi oldindan</td>
+                                                                <td>{{ $item->company->installment_percentage }}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Bo'lib to'lash kvartalniy</td>
+                                                                <td>{{ $item->company->installment_quarterly }}</td>
                                                             </tr>
                                                         </tbody>
                                                     </table>
@@ -139,6 +196,7 @@
                                             </div>
                                         </div>
                                     </div>
+                                    
                                 </td>
                             </tr>
                         @endforeach
