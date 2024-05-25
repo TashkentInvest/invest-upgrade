@@ -49,7 +49,7 @@
                                 <td>{{ $item->client_id }}</td>
                                 <td>{{ $item->clients->contact ?? '' }}</td>
                                 @foreach ($item->client->companies as $i)
-                                <td>{{ $i->company_name}}</td>
+                                <td>{{ $i->company_name ?? ''}}</td>
                                     
                                 @endforeach
                              
@@ -86,63 +86,49 @@
                                         <div class="modal-dialog modal-dialog-scrollable">
                                             <div class="modal-content">
                                                 <div class="modal-header">
-                                                    <h5 class="modal-title" id="exampleModalLabel">{{ $item->{'name_' . $locale } }}</h5>
+                                                    <h5 class="modal-title" id="exampleModalLabel">{{ $item->{'name_' . app()->getLocale()} }}</h5>
                                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                 </div>
                                                 <div class="modal-body">
                                                     <table class="table table-striped">
                                                         <tbody>
-
+                                                          
                                                             <tr>
-                                                                <td class="text-start">@lang('cruds.branches.fields.name_ru'):</td>
-                                                                <td>
-                                                                    <b>{{ $item->name_ru }}</b>
-                                                                </td>
-                                                            </tr>
- 
-                                                            <tr>
-                                                                <td class="text-start">@lang('cruds.branches.fields.photo'):</td>
-                                                                <td>
-                                                                    @if(!is_null($item->photo))
-                                                                        <a target="_blank"  href="{{ url('/') }}/images/{{ $item->photo }}">{{ $item->photo }}</a>
-                                                                    @else
-                                                                        @lang('global.empty')
-                                                                    @endif
-                                                                </td>
+                                                                <td class="text-start">Client Name:</td>
+                                                                <td><b>{{ $item->client->first_name }} {{ $item->client->last_name }}</b></td>
                                                             </tr>
                                                             <tr>
-                                                                <td class="text-start">@lang('cruds.branches.fields.address'):</td>
-                                                                <td>
-                                                                    @if(!is_null($item->longitude) && !is_null($item->latitude))
-                                                                        <a href="https://www.google.com/maps?q={{ $item->longitude }},{{ $item->latitude }}" target="_blank" rel="noopener noreferrer">@lang('cruds.branches.fields.open_with_google_maps')</a>
-                                                                    @else
-                                                                        @lang('global.empty')
-                                                                    @endif
-                                                                </td>
+                                                                <td class="text-start">Client Father Name:</td>
+                                                                <td><b>{{ $item->client->father_name }}</b></td>
                                                             </tr>
                                                             <tr>
-                                                                <td colspan="2">@lang('cruds.branches.fields.description_uz'):</td>
+                                                                <td class="text-start">Client Type:</td>
+                                                                <td><b>{{ $item->client->mijoz_turi }}</b></td>
                                                             </tr>
                                                             <tr>
-                                                                <td colspan="2">
-                                                                    @if(!is_null($item->text_uz))
-                                                                        <b>{{ $item->text_uz }}</b>
-                                                                    @else
-                                                                        @lang('global.empty')
-                                                                    @endif
-                                                                </td>
+                                                                <td class="text-start">Client Address:</td>
+                                                                <td><b>{{ $item->client->yuridik_address }}</b></td>
                                                             </tr>
                                                             <tr>
-                                                                <td colspan="2">@lang('cruds.branches.fields.description_ru'):</td>
+                                                                <td class="text-start">Client Contact:</td>
+                                                                <td><b>{{ $item->client->contact }}</b></td>
+                                                            </tr>
+                                                            <!-- Company Details -->
+                                                            <tr>
+                                                                <td class="text-start">Company Name:</td>
+                                                                <td><b>{{ $item->company->company_name }}</b></td>
                                                             </tr>
                                                             <tr>
-                                                                <td colspan="2">
-                                                                    @if(!is_null($item->text_ru))
-                                                                        <b>{{ $item->text_uz }}</b>
-                                                                    @else
-                                                                        @lang('global.empty')
-                                                                    @endif
-                                                                </td>
+                                                                <td class="text-start">Company Location:</td>
+                                                                <td><b>{{ $item->company->company_location }}</b></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="text-start">Company Type:</td>
+                                                                <td><b>{{ $item->company->company_type }}</b></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="text-start">Company Kubmetr:</td>
+                                                                <td><b>{{ $item->company->company_kubmetr }}</b></td>
                                                             </tr>
                                                         </tbody>
                                                     </table>
