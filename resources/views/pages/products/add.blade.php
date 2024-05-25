@@ -223,73 +223,78 @@
                                                 placeholder="Metr Kub" name="company_kubmetr">
                                         </div>
                                     </div> --}}
-                                        <div class="col-4">
-                                            <div class="inner-repeater mb-4">
-                                                <div data-repeater-list="inner-group" class="inner mb-3">
-                                                    <label for="basicpill-cardno-input">Obyekt bo'yicha tolanadigan yeg'im
-                                                        miqdori</label>    
-                                                    <!-- Additional phone field -->
-                                                    <div data-repeater-item="" class="inner mb-3 row">
-                                                        <div class="col-md-10 col-8">
-                                                            <input type="text" class="form-control" id="basicpill-cardno-input"
-                                                placeholder="Metr Kub" name="company_kubmetr">
-
-
-                                                        </div>
-                                                        <div class="col-md-2 col-4">
-                                                            <div class="d-grid">
-                                                                <input data-repeater-delete="" type="button"
-                                                                    class="btn btn-primary inner" value="Delete">
-
-                                                                    
-                                                            </div>
+                                    <div class="col-lg-4">
+                                        <div class="inner-repeater mb-4">
+                                            <div data-repeater-list="inner-group" class="inner mb-3">
+                                                <label for="company_kubmetr">Obyekt bo'yicha tolanadigan yeg'im miqdori</label>
+                                                <!-- Additional phone field -->
+                                                <div data-repeater-item="" class="inner mb-3 row">
+                                                    <div class="col-8">
+                                                        <input type="text" class="form-control" id="company_kubmetr" placeholder="Metr Kub"
+                                                            name="company_kubmetr">
+                                                    </div>
+                                                    <div class="col-4">
+                                                        <div class="d-grid">
+                                                            <input data-repeater-delete="" type="button" class="btn btn-primary inner" value="Delete">
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <input data-repeater-create="" type="button" class="btn btn-success inner"
-                                                    value="Add Number">
                                             </div>
-                                        </div>
-    
-                                        <!-- jQuery -->
-                                        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-                                        <!-- Repeater Plugin -->
-                                        <script src="https://cdn.jsdelivr.net/npm/jquery.repeater/jquery.repeater.min.js"></script>
-    
-                                        <script>
-                                            $(document).ready(function() {
-                                                // Initialize the repeater plugin
-                                                $('.inner-repeater').repeater({
-                                                    // options if needed
-                                                });
-    
-                                                // Disable the "Add Number" button
-                                                $('[data-repeater-create]').prop('disabled', false);
-                                            });
-                                        </script>
-    
-
-
-
-                                    <div class="col-lg-4">
-                                        <div class="mb-3">
-                                            <label for="basicpill-card-verification-input">Bazaviy xisoblash
-                                                miqdori</label>
-                                            <input type="text" class="form-control"
-                                                id="basicpill-card-verification-input" placeholder="340 min"
-                                                value="340" name="minimum_wage">
+                                            <input data-repeater-create="" type="button" class="btn btn-success inner" value="Add Number">
                                         </div>
                                     </div>
-
+                                
                                     <div class="col-lg-4">
                                         <div class="mb-3">
-                                            <label for="basicpill-card-verification-input">Jami to'lanishi kerak bo'gan
-                                                miqdor</label>
-                                            <input type="text" class="form-control"
-                                                id="basicpill-card-verification-input" name="generate_price"
+                                            <label for="minimum_wage">Bazaviy xisoblash miqdori</label>
+                                            <input type="text" class="form-control" id="minimum_wage" placeholder="340 min" value="340"
+                                                name="minimum_wage">
+                                        </div>
+                                    </div>
+                                
+                                    <div class="col-lg-4">
+                                        <div class="mb-3">
+                                            <label for="generate_price">Jami to'lanishi kerak bo'gan miqdor</label>
+                                            <input type="text" class="form-control" id="generate_price" name="generate_price"
                                                 placeholder="------------">
                                         </div>
                                     </div>
+
+                                       <!-- jQuery -->
+                                       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+                                       <!-- Repeater Plugin -->
+                                       <script src="https://cdn.jsdelivr.net/npm/jquery.repeater/jquery.repeater.min.js"></script>
+   
+                                       <script>
+                                           $(document).ready(function() {
+                                               $('.inner-repeater').repeater({
+                                               });
+   
+                                               $('[data-repeater-create]').prop('disabled', false);
+                                           });
+                                       </script>
+
+
+                                        <script>
+                                            $(document).ready(function () {
+                                                // Function to calculate generate_price
+                                                function calculateGeneratePrice() {
+                                                    var companyKubmetr = $('#company_kubmetr').val();
+                                                    var minimumWage = $('#minimum_wage').val();
+                                                    var generatePrice = companyKubmetr * minimumWage;
+                                                    $('#generate_price').val(generatePrice.toFixed(2));
+                                                }
+
+                                                // Event listener for input fields
+                                                $('#company_kubmetr, #minimum_wage').on('input', function () {
+                                                    calculateGeneratePrice();
+                                                });
+
+                                                // Initialize generate_price on page load
+                                                calculateGeneratePrice();
+                                            });
+                                        </script>
+   
                                 </div>
                                 <div class="row">
 
