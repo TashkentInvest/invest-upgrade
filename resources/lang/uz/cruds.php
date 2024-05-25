@@ -144,7 +144,7 @@ return [
         ]
     ],
     'branches' => [
-        'title' => 'Magazinlar',
+        'title' => 'Test',
         'fields' => [
             'name_uz' => "O'zbekcha nomi",
             'name_ru' => 'Rus tilida nomi',
