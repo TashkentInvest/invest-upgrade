@@ -19,7 +19,11 @@ class Client extends Model
         'serial_serial',
         'serial_pinfl',
         'yuridik_address',
-        'yuridik_rekvizid'
+        'yuridik_rekvizid',
+        'passport_serial',
+        'passport_pinfl',
+        'jamgarma_rekvizitlari',
+        'contact'
     ];
 
     public function users(){

@@ -3,13 +3,13 @@
 namespace App\Http\Controllers\Blade;
 
 use App\Http\Controllers\Controller;
-use App\Models\Category;
 use App\Models\Client;
 use App\Models\Company;
 use Illuminate\Http\Request;
 use App\Models\Products;
 use App\Models\Regions;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\DB;
 
 class ProductController extends Controller
 {
@@ -25,13 +25,17 @@ class ProductController extends Controller
     public function add()
     {
         $regions = Regions::get()->all();
-        $categories = Category::where('parent_id', 1)->get()->all();
 
-        return view('pages.products.add', compact('regions','categories'));
+        return view('pages.products.add', compact('regions'));
     }
 
-    public function create(Request $request)
-    {
+   
+public function create(Request $request)
+{
+
+    DB::beginTransaction();
+
+    try {
         $client = Client::create([
             'first_name' => $request->get('first_name'),
             'last_name' => $request->get('last_name'),
@@ -43,30 +47,34 @@ class ProductController extends Controller
             'yuridik_address' => $request->get('yuridik_address'),
             'yuridik_rekvizid' => $request->get('yuridik_rekvizid'),
         ]);
-    
-        $client_id = $client->id;
-      
+
         $company = Company::create([
-            'client_id' => $client_id, 
+            'client_id' => $client->id,
             'company_location' => $request->get('company_location'),
             'company_type' => $request->get('company_type'),
-            'company_kubmetr' => $request->get('company_kubmetr'), 
-            'company_name' => $request->get('company_name'), 
+            'company_kubmetr' => $request->get('company_kubmetr'),
+            'company_name' => $request->get('company_name'),
         ]);
-    
-        $company_id = $company->id;
-    
-        $product = Products::create([
-            'company_id' => $company_id,
-            'client_id' => $client_id,
-            'minimum_wage'=>$request->get('minimum_wage'), 
+
+        Products::create([
+            'company_id' => $company->id,
+            'client_id' => $client->id,
+            'minimum_wage' => $request->get('minimum_wage'),
+            'contract_apt' => $request->get('contract_apt'),
+            'contract_date' => $request->get('contract_date'),
             'created_at' => Carbon::today(),
             'updated_at' => Carbon::today()
         ]);
-       
-        return redirect()->route('productIndex');
+
+        DB::commit();
+
+        return redirect()->route('productIndex')->with('success', 'Product created successfully');
+    } catch (\Exception $e) {
+        DB::rollback();
+
+        return redirect()->back()->with('error', 'An error occurred while creating the product: ' . $e->getMessage());
     }
-    
+}
 
     public function edit($id)
     {
@@ -75,51 +83,87 @@ class ProductController extends Controller
         return view('pages.products.edit', compact('product', 'regions'));
     }
 
-    public function update(Request $request, $id)
+   
+    public function update(Request $request, $client_id)
     {
-        $product = Products::where('id', $id)->get()->first();
-        if($product){
-            $product->name_uz = $request->get('name_uz');
-            $product->name_ru = $request->get('name_ru');
-            $product->text_uz = $request->get('text_uz');
-            $product->text_ru = $request->get('text_ru');
-            $product->longitude = $request->get('longitude');
-            $product->latitude = $request->get('latitude');
-            $product->region_id = $request->get('region_id');
-            $product->save();
 
-            if ($request->hasFile('photo')) {
-                if ($product->photo) {
-                    $imagePath = public_path('images/' . $product->photo);
-                    if (file_exists($imagePath)) {
-                        unlink($imagePath);
-                    }
-                }
+        DB::beginTransaction();
+    
+        try {
+            // Update client information
+            $client = Client::findOrFail($client_id);
+            $client->update([
+                'first_name' => $request->first_name,
+                'last_name' => $request->last_name,
+                'father_name' => $request->father_name,
+                'mijoz_turi' => $request->mijoz_turi,
+                'contact' => $request->contact,
+                'passport_serial' => $request->passport_serial,
+                'passport_pinfl' => $request->passport_pinfl,
+                'yuridik_address' => $request->yuridik_address,
+                'yuridik_rekvizid' => $request->yuridik_rekvizid,
                 
-                $file = $request->file('photo');
-                // Extract the file extension
-                $extension = $file->getClientOriginalExtension();
-                // Combine the modified filename with the extension
-                $name = time() . '.' . $extension;
-                // Save the modified filename to the database
-                $product->photo = $name;
-                $product->save();
-                // Move the file using the modified filename
-                $file->move($product->public_path(), $name);
-            }
-            return redirect()->route('productIndex');
-        }else{
-            message_set("Data not found !",'error',1);
-            return redirect()->route('productIndex');
+            ]);
+    
+            // Update company information
+            $company = Company::where('client_id', $client_id)->firstOrFail();
+            $company->update([
+                'company_location' => $request->company_location,
+                'company_type' => $request->company_type,
+                'company_kubmetr' => $request->company_kubmetr,
+                'company_name' => $request->company_name,
+            ]);
+    
+            // Update product information
+            $product = Products::where('company_id', $company->id)
+                                ->where('client_id', $client_id)
+                                ->firstOrFail();
+            $product->update([
+                'minimum_wage' => $request->minimum_wage,
+                'contract_apt' => $request->get('contract_apt'),
+                'contract_date' => $request->get('contract_date'),
+
+                'updated_at' => Carbon::today()
+            ]);
+    
+            DB::commit();
+    
+            return redirect()->route('productIndex')->with('success', 'Product updated successfully');
+        } catch (\Exception $e) {
+            DB::rollback();
+    
+            return redirect()->back()->with('error', 'An error occurred while updating the product: ' . $e->getMessage());
         }
     }
+    
 
-    public function destroy($id)
+    public function delete($client_id)
     {
-        $product = Products::find($id);
-        $product->delete();
-        message_set("product deleted !",'success',1);
-        return redirect()->back();
+        DB::beginTransaction();
+
+        try {
+            $client = Client::findOrFail($client_id);
+
+            $company = Company::where('client_id', $client_id)->firstOrFail();
+
+            $product = Products::where('company_id', $company->id)
+                                ->where('client_id', $client_id)
+                                ->firstOrFail();
+
+            $product->delete();
+
+            $company->delete();
+
+            $client->delete();
+
+            DB::commit();
+
+            return redirect()->route('productIndex')->with('success', 'Product deleted successfully');
+        } catch (\Exception $e) {
+            DB::rollback();
+
+            return redirect()->back()->with('error', 'An error occurred while deleting the product: ' . $e->getMessage());
+        }
     }
 
     public function toggleProductActivation($id)

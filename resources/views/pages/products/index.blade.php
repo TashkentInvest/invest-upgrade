@@ -46,8 +46,8 @@
                         {{-- @dump($item->client) --}}
                             <tr>
                                 <td>{{ $item->id }}</td>
-                                <td>{{ $item->client_id }}</td>
-                                <td>{{ $item->clients->contact ?? '' }}</td>
+                                <td>{{ $item->client->first_name }}</td>
+                                <td>{{ $item->client->contact ?? '' }}</td>
                                 @foreach ($item->client->companies as $i)
                                 <td>{{ $i->company_name ?? ''}}</td>
                                     
@@ -83,7 +83,7 @@
                                     </form>
                                     <!-- Modal -->
                                     <div class="modal fade" id="exampleModal_{{ $item->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                        <div class="modal-dialog modal-dialog-scrollable">
+                                        <div class="modal-dialog modal-dialog-scrollable modal-lg">
                                             <div class="modal-content">
                                                 <div class="modal-header">
                                                     <h5 class="modal-title" id="exampleModalLabel">{{ $item->{'name_' . app()->getLocale()} }}</h5>
