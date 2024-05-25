@@ -7,7 +7,7 @@
             <ul class="metismenu list-unstyled" id="side-menu">
                 <li class="menu-title">@lang('cruds.menu_top.menu')</li>
                 <!-- Branches -->
-                {{-- <li class="{{ Request::is('product*') ? 'mm-active':'' }}">
+                <li class="{{ Request::is('product*') ? 'mm-active':'' }}">
                     <a href="{{ route('productIndex') }}" class=" waves-effect {{ Request::is('product*') ? 'mm-active':'' }}">
                         <i class="bx bx-map-alt"></i>
                         <span>@lang('cruds.branches.title')</span>
@@ -15,7 +15,7 @@
                 </li>
                 <!-- Branches -->
 
-                    <!-- Branches -->
+                 {{--    <!-- Branches -->
                 <li class="{{ Request::is('blog*') ? 'mm-active':'' }}">
                     <a href="{{ route('blogIndex') }}" class=" waves-effect {{ Request::is('blog*') ? 'mm-active':'' }}">
                         <i class="bx bx-map-alt"></i>
