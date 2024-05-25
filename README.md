@@ -21,3 +21,8 @@ cdn lani ob tashash kere
 table ga exel qoshish kere
 multi company create qlsh kere
 database skeletini korb chqsh kere
+
+
+composer require maatwebsite/excel
+
+php artisan make:export ProductsExport --model=Products

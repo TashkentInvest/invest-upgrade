@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Blade;
 
+use App\Exports\ProductsExport;
 use App\Http\Controllers\Controller;
 use App\Models\Client;
 use App\Models\Company;
@@ -10,9 +11,19 @@ use App\Models\Products;
 use App\Models\Regions;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
+use Maatwebsite\Excel\Facades\Excel;
+
+
 
 class ProductController extends Controller
 {
+    public function downloadTableData($id)
+    {
+        // Export the data to Excel using the ProductsExport class
+        return Excel::download(new ProductsExport($id), 'products_data.xls');
+        // return Excel::download(new ProductsExport($id, $clientName), 'products_data_' . $clientName . '.xls');
+// 
+    }
     public function index()
     {
         $products = Products::with('company')

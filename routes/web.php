@@ -64,6 +64,8 @@ Route::group(['middleware' => 'auth'],function (){
 
     Route::delete('/product/delete/{id}',[ProductController::class,'delete'])->name('productDestroy');
     Route::post('/product/toggle-status/{id}',[ProductController::class,'toggleProductActivation'])->name('productActivation');
+    Route::get('/download-table-data/{id}', [ProductController::class, 'downloadTableData'])->name('download.table.data');
+
 
     // Users
     Route::get('/users',[UserController::class,'index'])->name('userIndex');
@@ -108,6 +110,9 @@ Route::group(['middleware' => 'auth'],function (){
     Route::post('/api-user/update/{id}',[ApiUserController::class,'update'])->name('api-userUpdate');
     Route::delete('/api-user/delete/{id}',[ApiUserController::class,'destroy'])->name('api-userDestroy');
     Route::delete('/api-user-token/delete/{id}',[ApiUserController::class,'destroyToken'])->name('api-tokenDestroy');
+
+    // Exel
+
 });
 
 // Change language session condition
