@@ -15,6 +15,8 @@ class ClientController extends Controller
     {
         // abort_if_forbidden('client.show');
         $clients = Client::where('id','!=',auth()->user()->id)->get();
+        // dd($clients);
+
         return view('pages.client.index',compact('clients'));
     }
 
@@ -31,6 +33,7 @@ class ClientController extends Controller
     // user create
     public function create(Request $request)
     {
+        // dd($request);
         abort_if_forbidden('client.add');
         // $this->validate($request,[
         //     'first_name' => ['required', 'string', 'max:255'],
