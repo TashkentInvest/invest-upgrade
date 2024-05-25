@@ -222,13 +222,10 @@
     </div>
 @endsection
 @section('scripts')
-    <!-- Right bar overlay-->
-    <div class="rightbar-overlay"></div>
+<script src="{{ asset('assets/libs/jquery/jquery.min.js') }}"></script>
+<script src="{{ asset('assets/libs/node-waves/waves.min.js') }}"></script>
 
-    <!-- JAVASCRIPT -->
-    <script src="{{ asset('assets/libs/jquery/jquery.min.js') }}"></script>
-    <script src="{{ asset('assets/libs/node-waves/waves.min.js') }}"></script>
+<script src="{{ asset('assets/libs/jquery-steps/build/jquery.steps.min.js') }}"></script>
+<script src="{{ asset('assets/js/pages/form-wizard.init.js') }}"></script>
 
-    <script src="{{ asset('assets/libs/jquery-steps/build/jquery.steps.min.js') }}"></script>
-    <script src="{{ asset('assets/js/pages/form-wizard.init.js') }}"></script>
 @endsection
