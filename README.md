@@ -56,12 +56,14 @@ Fizik: FIO, Manzili, Passport datas, Tel,ID-CARD,
     </div>
 </div>
 
-bank kod = 5
+bank kod = 5 +++
 
-mestapalojenya comp keermas 
-
-Юридический реквизит = xisob raqam
+mestapalojenya comp keermas ++++
+ 
+Юридический реквизит = xisob raqam +++
 
 Jamg'arma Rekviztlari = keremas
 
 naxt va rasrochka option qoysh kere naxt boganda foiz kratdgan input disable bolsh kere
+
+id passport radio blan qoshish kere 
