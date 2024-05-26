@@ -80,40 +80,6 @@
                                                     <i class="bx bxs-download" style="font-size: 16px;"></i>
                                                 </a>
                                             </li>
-                                            
-
-                                            {{-- <li data-bs-toggle="tooltip" data-bs-placement="top" title="@lang('global.downloadFile')">
-                                                <button type="button" id="downloadButton" data-bs-toggle="modal" class="btn btn-warning">
-                                                    <i class="bx bxs-download" style="font-size: 16px;"></i>
-                                                </button>
-                                            </li> --}}
-                                            
-                                            {{-- <script>
-                                                let downloadInitiated = false; // Flag to track if download has been initiated
-                                            
-                                                document.getElementById('downloadButton').addEventListener('click', function() {
-                                                    if (!downloadInitiated) { // Check if download has not been initiated yet
-                                                        downloadInitiated = true; // Set flag to true
-                                                        // Send an AJAX request to download the table data
-                                                        
-                                                        fetch('{{ route("download.table.data") }}')
-                                                            .then(response => response.blob())
-                                                            .then(blob => {
-                                                                // Create a temporary anchor element
-                                                                const a = document.createElement('a');
-                                                                a.href = window.URL.createObjectURL(blob);
-                                                                a.download = 'table_data.xls';
-                                                                document.body.appendChild(a);
-                                                                a.click();
-                                                                document.body.removeChild(a);
-                                                            })
-                                                            .catch(error => {
-                                                                console.error('Error downloading table data:', error);
-                                                                downloadInitiated = false; // Reset flag if download fails
-                                                            });
-                                                    }
-                                                });
-                                            </script> --}}
                                         </ul>
                                     </form>
                                     <!-- Modal -->
