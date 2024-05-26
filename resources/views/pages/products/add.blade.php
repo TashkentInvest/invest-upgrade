@@ -321,51 +321,35 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                            
                                                     <div class="row">
                                                         <div class="col-lg-4">
                                                             <div class="mb-3">
                                                                 <label>To'lash turlari</label>
-                                                                <select class="form-select" id="payment-type">
+                                                                <select class="form-select payment-type" name="accordions[0][payment_type]">
                                                                     <option value="pay_full">To'liq xajimda to'lash</option>
                                                                     <option value="pay_bolib">Bo'lib to'lash</option>
                                                                 </select>
                                                             </div>
                                                         </div>
-                            
                                                         <div class="col-lg-4">
                                                             <div class="mb-3">
-                                                                <label for="percentage-input">Bo'lib to'lash foizi oldindan </label>
-                                                                <input type="text" class="form-control" id="percentage-input" placeholder="100%" disabled>
+                                                                <label for="percentage-input">Bo'lib to'lash foizi oldindan</label>
+                                                                <input type="text" class="form-control percentage-input" name="accordions[0][percentage_input]" placeholder="100%" disabled>
                                                             </div>
                                                         </div>
-                            
                                                         <div class="col-lg-4">
                                                             <div class="mb-3">
                                                                 <label for="quarterly-input">Bo'lib to'lash har chorakda</label>
-                                                                <input type="text" class="form-control" id="quarterly-input" placeholder="Bo'lib to'lash har chorakda" disabled>
+                                                                <input type="text" class="form-control quarterly-input" name="accordions[0][quarterly_input]" placeholder="Bo'lib to'lash har chorakda" disabled>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-4">
+                                                            <div class="mb-3">
+                                                                <label for="calculated-quarterly-payment">Quarterly Payment</label>
+                                                                <input type="text" class="form-control calculated-quarterly-payment" placeholder="------------" readonly>
                                                             </div>
                                                         </div>
                                                     </div>
-                            
-                                                    <script>
-                                                        document.getElementById('payment-type').addEventListener('change', function() {
-                                                            var selectedOption = this.value;
-                                                            var percentageInput = document.getElementById('percentage-input');
-                                                            var quarterlyInput = document.getElementById('quarterly-input');
-                            
-                                                            if (selectedOption === 'pay_full') {
-                                                                percentageInput.disabled = true;
-                                                                quarterlyInput.disabled = true;
-                                                                percentageInput.value = "100%";
-                                                            } else {
-                                                                percentageInput.disabled = false;
-                                                                quarterlyInput.disabled = false;
-                                                                percentageInput.value = "";
-                                                            }
-                                                        });
-                                                    </script>
-                            
                                                 </main>
                                             </div>
                                         </div>
@@ -373,11 +357,11 @@
                                 </div>
                                 <div id="addAccordion" class="btn btn-primary mt-3">Add Accordion</div>
                             </section>
-                            
+                        {{-- foyiz kalkulyator calc --}}
                             <script>
                                 $(document).ready(function() {
                                     let accordionCount = 1;
-                            
+                        
                                     $('#addAccordion').on('click', function() {
                                         let accordion = $('.accordion-item').first().clone();
                                         let newId = 'flush-collapse' + accordionCount;
@@ -386,7 +370,7 @@
                                         accordion.find('.accordion-header').attr('id', 'flush-heading' + accordionCount);
                                         accordion.find('.accordion-button').attr('aria-controls', newId);
                                         accordion.find('.accordion-button').text('Accordion Item #' + accordionCount);
-                            
+                        
                                         accordion.find('input').each(function() {
                                             let name = $(this).attr('name');
                                             if (name) { // Ensure the name attribute exists before trying to replace
@@ -396,27 +380,59 @@
                                             $(this).val('');
                                             $(this).attr('id', name + '-' + accordionCount); // Adding unique ID for each input
                                         });
-                            
+                        
                                         accordion.appendTo('#accordionFlushExample');
                                         accordionCount++;
                                     });
-                            
-                                    $(document).on('input', '.company_kubmetr, .minimum_wage', function() {
+                        
+                                    $(document).on('input', '.company_kubmetr, .minimum_wage, .percentage-input, .quarterly-input', function() {
                                         let parentAccordion = $(this).closest('.accordion-body');
                                         calculateGeneratePrice(parentAccordion);
                                     });
-                            
+                        
                                     function calculateGeneratePrice(parentAccordion) {
                                         let companyKubmetr = parentAccordion.find('.company_kubmetr').val();
                                         let minimumWage = parentAccordion.find('.minimum_wage').val();
                                         let generatePrice = companyKubmetr * minimumWage;
                                         parentAccordion.find('.generate_price').val(generatePrice.toFixed(2));
+                        
+                                        let percentageInput = parentAccordion.find('.percentage-input').val();
+                                        let quarterlyInput = parentAccordion.find('.quarterly-input').val();
+                        
+                                        if (percentageInput) {
+                                            let z = (generatePrice * percentageInput) / 100;
+                                            let n = generatePrice - z;
+                        
+                                            if (quarterlyInput) {
+                                                let y = n / quarterlyInput;
+                                                parentAccordion.find('.calculated-quarterly-payment').val(y.toFixed(2));
+                                            }
+                                        }
                                     }
-                            
+                        
+                                    $(document).on('change', '.payment-type', function() {
+                                        var selectedOption = $(this).val();
+                                        var parentAccordion = $(this).closest('.accordion-body');
+                                        var percentageInput = parentAccordion.find('.percentage-input');
+                                        var quarterlyInput = parentAccordion.find('.quarterly-input');
+                        
+                                        if (selectedOption === 'pay_full') {
+                                            percentageInput.prop('disabled', true);
+                                            quarterlyInput.prop('disabled', true);
+                                            percentageInput.val("100%");
+                                            quarterlyInput.val("");
+                                        } else {
+                                            percentageInput.prop('disabled', false);
+                                            quarterlyInput.prop('disabled', false);
+                                            percentageInput.val("");
+                                        }
+                        
+                                        calculateGeneratePrice(parentAccordion);
+                                    });
+                        
                                     calculateGeneratePrice($('.accordion-item').first().find('.accordion-body'));
                                 });
                             </script>
-
 
                             <!-- Confirm Details -->
                             <h3>Tasdiqlash</h3>
