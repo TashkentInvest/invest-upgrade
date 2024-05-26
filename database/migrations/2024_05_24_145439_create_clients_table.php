@@ -15,8 +15,6 @@ class CreateClientsTable extends Migration
     {
         Schema::create('clients', function (Blueprint $table) {
             $table->id();
-            // $table->unsignedBigInteger('user_id')->nullable();
-            // $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->enum('mijoz_turi', ['yuridik', 'fizik']);
             $table->string('first_name')->nullable();
             $table->string('last_name')->nullable();
@@ -27,11 +25,10 @@ class CreateClientsTable extends Migration
             $table->string('yuridik_address')->nullable();
             $table->string('yuridik_rekvizid')->nullable();
             $table->string('jamgarma_rekvizitlari')->nullable();
-            
             $table->timestamps();
         });
     }
-
+    
     /**
      * Reverse the migrations.
      *

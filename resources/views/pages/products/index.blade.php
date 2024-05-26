@@ -35,23 +35,20 @@
                         <th>ID</th>
                         <th>@lang('cruds.client.fields.first_name')</th>
                         <th>@lang('cruds.client.fields.contact')</th>
-                        <th>@lang('cruds.company.title')</th>
                         <th style="width: 100px;">Active</th>
                         <th style="width: 150px;">@lang('global.actions')</th>
                     </tr>
                     </thead>
                     <tbody>
-                        @foreach($products as $item)
+                        @foreach($clients as $item)
 
                         {{-- @dump($item) --}}
                             <tr>
                                 <td>{{ $item->id }}</td>
-                                <td>{{ $item->client->first_name }}</td>
-                                <td>{{ $item->client->contact ?? '' }}</td>
+                                <td>{{ $item->first_name }}</td>
+                                <td>{{ $item->contact ?? '' }}</td>
 
-                                @foreach ($item->client->companies as $i)
-                                <td>{{ $i->company_name ?? ''}}</td>
-                                @endforeach
+                            
                              
                                 <td class="text-center">
                                     <i style="cursor: pointer; font-size: 16px;" id="program_{{ $item->id }}" 
@@ -149,84 +146,93 @@
                                                             </tr>
                                                             <tr>
                                                                 <td>Mijoz Turi</td>
-                                                                <td>{{ $item->client->mijoz_turi }}</td>
+                                                                <td>{{ $item->mijoz_turi }}</td>
                                                             </tr>
                                                             <tr>
                                                                 <td>Name</td>
-                                                                <td>{{ $item->client->first_name }}</td>
+                                                                <td>{{ $item->first_name }}</td>
                                                             </tr>
                                                             <tr>
                                                                 <td>Last Name</td>
-                                                                <td>{{ $item->client->last_name }}</td>
+                                                                <td>{{ $item->last_name }}</td>
                                                             </tr>
                                                             <tr>
                                                                 <td>Father Name</td>
-                                                                <td>{{ $item->client->father_name }}</td>
+                                                                <td>{{ $item->father_name }}</td>
                                                             </tr>
                                                             <tr>
                                                                 <td>Passport Serial</td>
-                                                                <td>{{ $item->client->passport_serial }}</td>
+                                                                <td>{{ $item->passport_serial }}</td>
                                                             </tr>
                                                             <tr>
                                                                 <td>Passport Pinfl</td>
-                                                                <td>{{ $item->client->passport_pinfl }}</td>
+                                                                <td>{{ $item->passport_pinfl }}</td>
                                                             </tr>
                                                             <tr>
                                                                 <td>Yuridik Address</td>
-                                                                <td>{{ $item->client->yuridik_address }}</td>
+                                                                <td>{{ $item->yuridik_address }}</td>
                                                             </tr>
                                                             <tr>
                                                                 <td>Yuridik Rekvizid</td>
-                                                                <td>{{ $item->client->yuridik_rekvizid }}</td>
+                                                                <td>{{ $item->yuridik_rekvizid }}</td>
                                                             </tr>
                                                             <tr>
                                                                 <td>Contact</td>
-                                                                <td>{{ $item->client->contact }}</td>
+                                                                <td>{{ $item->contact }}</td>
                                                             </tr>
                                                             <tr>
                                                                 <td>Jarima Rekvizitlari</td>
-                                                                <td>{{ $item->client->jamgarma_rekvizitlari }}</td>
+                                                                <td>{{ $item->jamgarma_rekvizitlari }}</td>
                                                             </tr>
+
+
+                                                            
                                     
                                                             <tr>
                                                                 <td><strong>Obyekt</strong></td>
                                                             </tr>
+
+                                                            @foreach ($item->companies as $comp)
+                                                                
                                                             <tr>
                                                                 <td>Loyixa Turi</td>
-                                                                <td>{{ $item->company->company_type }}</td>
+                                                                
+                                                                <td>{{ $comp->company_type }}</td>
                                                             </tr>
                                                             <tr>
                                                                 <td>Loyixa Manzili</td>
-                                                                <td>{{ $item->company->company_location }}</td>
+                                                                <td>{{ $comp->company_location }}</td>
                                                             </tr>
                                                             <tr>
                                                                 <td>Loyixa Nomi</td>
-                                                                <td>{{ $item->company->company_name }}</td>
+                                                                <td>{{ $comp->company_name }}</td>
                                                             </tr>
                                                             <tr>
                                                                 <td>Obyekt bo'yicha tolanadigan yeg'im miqdori</td>
-                                                                <td>{{ $item->company->company_kubmetr }}</td>
+                                                                <td>{{ $comp->company_kubmetr }}</td>
                                                             </tr>
                                                             <tr>
                                                                 <td>Bazaviy xisoblash miqdori</td>
-                                                                <td>{{ $item->company->minimum_wage }}</td>
+                                                                <td>{{ $comp->minimum_wage }}</td>
                                                             </tr>
                                                             <tr>
                                                                 <td>Jami to'lanishi kerak bo'gan miqdor</td>
-                                                                <td>{{ $item->company->generate_price }}</td>
+                                                                <td>{{ $comp->generate_price }}</td>
                                                             </tr>
                                                             <tr>
                                                                 <td>To'lash turlari</td>
-                                                                <td>{{ $item->company->payment_type }}</td>
+                                                                <td>{{ $comp->payment_type }}</td>
                                                             </tr>
                                                             <tr>
                                                                 <td>Bo'lib to'lash foizi oldindan</td>
-                                                                <td>{{ $item->company->installment_percentage }}</td>
+                                                                <td>{{ $comp->installment_percentage }}</td>
                                                             </tr>
                                                             <tr>
                                                                 <td>Bo'lib to'lash kvartalniy</td>
-                                                                <td>{{ $item->company->installment_quarterly }}</td>
+                                                                <td>{{ $comp->installment_quarterly }}</td>
                                                             </tr>
+                                                            @endforeach
+
                                                         </tbody>
                                                     </table>
                                                 </div>

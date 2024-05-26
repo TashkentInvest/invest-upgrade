@@ -27,6 +27,7 @@ class CreateCompaniesTable extends Migration
             $table->timestamps();
         });
     }
+    
 
     /**
      * Reverse the migrations.

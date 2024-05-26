@@ -28,9 +28,11 @@ class ProductController extends Controller
     {
         $products = Products::with('company')
         ->get()->all();
+
+        $clients = Client::get()->all();
         // dd($products);
 
-        return view('pages.products.index', compact('products'));
+        return view('pages.products.index', compact('products','clients'));
     }
 
     public function add()
@@ -46,21 +48,25 @@ class ProductController extends Controller
     DB::beginTransaction();
 
     try {
-        // Create the client
-        $client = Client::create([
-            'first_name' => $request->get('first_name'),
-            'last_name' => $request->get('last_name'),
-            'father_name' => $request->get('father_name'),
-            'mijoz_turi' => $request->get('mijoz_turi'),
-            'contact' => $request->get('contact'),
-            'passport_serial' => $request->get('passport_serial'),
-            'passport_pinfl' => $request->get('passport_pinfl'),
-            'yuridik_address' => $request->get('yuridik_address'),
-            'yuridik_rekvizid' => $request->get('yuridik_rekvizid'),
-            'jamgarma_rekvizitlari' => $request->get('jamgarma_rekvizitlari'),
-        ]);
+        // Check if the client already exists
+        $client = Client::where('passport_serial', $request->get('passport_serial'))->first();
 
-        // Loop through each set of accordion data and create related records
+        if (!$client) {
+            // Create the client if it doesn't exist
+            $client = Client::create([
+                'first_name' => $request->get('first_name'),
+                'last_name' => $request->get('last_name'),
+                'father_name' => $request->get('father_name'),
+                'mijoz_turi' => $request->get('mijoz_turi'),
+                'contact' => $request->get('contact'),
+                'passport_serial' => $request->get('passport_serial'),
+                'passport_pinfl' => $request->get('passport_pinfl'),
+                'yuridik_address' => $request->get('yuridik_address'),
+                'yuridik_rekvizid' => $request->get('yuridik_rekvizid'),
+                'jamgarma_rekvizitlari' => $request->get('jamgarma_rekvizitlari'),
+            ]);
+        }
+
         foreach ($request->accordions as $accordion) {
             $company = Company::create([
                 'client_id' => $client->id,
