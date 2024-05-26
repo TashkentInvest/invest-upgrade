@@ -164,43 +164,43 @@
                                     <div class="accordion-item">
                                         <h2 class="accordion-header" id="flush-headingOne">
                                             <button class="accordion-button fw-medium collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
-                                                Accordion Item #1
+                                                Accordion Item #0
                                             </button>
                                         </h2>
-                                        <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample" style="">
+                                        <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
                                             <div class="accordion-body text-muted">
                                                 <main class="main_of_objects">
                                                     <div class="row">
                                                         <div class="col-lg-6">
                                                             <div class="mb-3">
-                                                                <label for="basicpill-firstname-input">APT Raqami</label>
-                                                                <input type="text" class="form-control" id="basicpill-firstname-input" placeholder="APT" name="contract_apt">
+                                                                <label for="contract_apt">APT Raqami</label>
+                                                                <input type="text" class="form-control" name="accordions[0][contract_apt]" placeholder="APT">
                                                             </div>
                                                         </div>
                                                         <div class="col-lg-6">
                                                             <div class="mb-3">
-                                                                <label for="basicpill-lastname-input">Sanasi</label>
-                                                                <input class="form-control" type="datetime-local" id="example-datetime-local-input" name="contract_date">
+                                                                <label for="contract_date">Sanasi</label>
+                                                                <input class="form-control" type="datetime-local" name="accordions[0][contract_date]">
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div class="row" data-repeater-item="">
+                                                    <div class="row">
                                                         <div class="col-lg-4">
                                                             <div class="mb-3">
-                                                                <label for="basicpill-namecard-input">Loyixa Turi</label>
-                                                                <input type="text" class="form-control" id="basicpill-namecard-input" placeholder="Loyixa Turi" name="company_type">
+                                                                <label for="company_type">Loyixa Turi</label>
+                                                                <input type="text" class="form-control" name="accordions[0][company_type]" placeholder="Loyixa Turi">
                                                             </div>
                                                         </div>
                                                         <div class="col-lg-4">
                                                             <div class="mb-3">
-                                                                <label for="basicpill-namecard-input">Loyixa Manzili</label>
-                                                                <input type="text" class="form-control" id="basicpill-namecard-input" placeholder="Loyixa Manzili" name="company_location">
+                                                                <label for="company_location">Loyixa Manzili</label>
+                                                                <input type="text" class="form-control" name="accordions[0][company_location]" placeholder="Loyixa Manzili">
                                                             </div>
                                                         </div>
                                                         <div class="col-lg-4">
                                                             <div class="mb-3">
-                                                                <label for="basicpill-namecard-input">Loyixa Nomi</label>
-                                                                <input type="text" class="form-control" id="basicpill-namecard-input" placeholder="Loyixa Manzili" name="company_name">
+                                                                <label for="company_name">Loyixa Nomi</label>
+                                                                <input type="text" class="form-control" name="accordions[0][company_name]" placeholder="Loyixa Nomi">
                                                             </div>
                                                         </div>
                                                     </div>
@@ -208,44 +208,19 @@
                                                         <div class="col-lg-4">
                                                             <div class="mb-3">
                                                                 <label for="company_kubmetr">Obyekt bo'yicha tolanadigan yeg'im miqdori</label>
-                                                                <input type="text" class="form-control" id="company_kubmetr" placeholder="Metr Kub" name="company_kubmetr">
+                                                                <input type="text" class="form-control" name="accordions[0][company_kubmetr]" placeholder="Metr Kub">
                                                             </div>
                                                         </div>
                                                         <div class="col-lg-4">
                                                             <div class="mb-3">
                                                                 <label for="minimum_wage">Bazaviy xisoblash miqdori</label>
-                                                                <input type="text" class="form-control" id="minimum_wage" placeholder="340 min" value="340" name="minimum_wage">
+                                                                <input type="text" class="form-control" name="accordions[0][minimum_wage]" placeholder="340 min" value="340">
                                                             </div>
                                                         </div>
                                                         <div class="col-lg-4">
                                                             <div class="mb-3">
                                                                 <label for="generate_price">Jami to'lanishi kerak bo'gan miqdor</label>
-                                                                <input type="text" class="form-control" id="generate_price" name="generate_price" placeholder="------------" disabled>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="row">
-                                                        <div class="col-lg-4">
-                                                            <div class="mb-3">
-                                                                <label>To'lash turlari</label>
-                                                                <select class="form-select">
-                                                                    <option selected>To'lash turini tanlang</option>
-                                                                    <option value="pay_full">To'liq xajimda to'lash </option>
-                                                                    <option value="pay_bolib">Bo'lib to'lash</option>
-                                                                    <option value="pay_kvartalniy">Kvartalniy</option>
-                                                                </select>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-lg-4">
-                                                            <div class="mb-3">
-                                                                <label for="basicpill-expiration-input">Bo'lib to'lash foizi oldindan </label>
-                                                                <input type="text" class="form-control" id="basicpill-expiration-input" placeholder="20% ">
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-lg-4">
-                                                            <div class="mb-3">
-                                                                <label for="basicpill-expiration-input">Bo'lib to'lash kvartalniy</label>
-                                                                <input type="text" class="form-control" id="basicpill-expiration-input" placeholder="Bo'lib to'lash kvartalniy ">
+                                                                <input type="text" class="form-control" name="accordions[0][generate_price]" placeholder="------------" disabled>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -256,21 +231,32 @@
                                 </div>
                                 <div id="addAccordion" class="btn btn-primary mt-3">Add Accordion</div>
                             </section>
-                       
+                            
                             <script>
                                 $(document).ready(function () {
+                                    let accordionCount = 1;
                                     $('#addAccordion').on('click', function () {
                                         let accordion = $('.accordion-item').first().clone();
-                                        let newId = 'flush-collapse' + ($('.accordion-item').length + 1);
+                                        let newId = 'flush-collapse' + accordionCount;
                                         accordion.find('.accordion-collapse').attr('id', newId);
                                         accordion.find('.accordion-button').attr('data-bs-target', '#' + newId);
-                                        accordion.find('.accordion-header').attr('id', 'flush-heading' + ($('.accordion-item').length + 1));
+                                        accordion.find('.accordion-header').attr('id', 'flush-heading' + accordionCount);
                                         accordion.find('.accordion-button').attr('aria-controls', newId);
-                                        accordion.find('.accordion-button').text('Accordion Item #' + ($('.accordion-item').length + 1));
+                                        accordion.find('.accordion-button').text('Accordion Item #' + accordionCount);
+                                        
+                                        accordion.find('input').each(function() {
+                                            let name = $(this).attr('name');
+                                            let newName = name.replace(/\[0\]/, '[' + accordionCount + ']');
+                                            $(this).attr('name', newName);
+                                            $(this).val('');
+                                        });
+                            
                                         accordion.appendTo('#accordionFlushExample');
+                                        accordionCount++;
                                     });
                                 });
                             </script>
+                            
                             <!-- Confirm Details -->
                             <h3>Tasdiqlash</h3>
                             <section>

@@ -41,12 +41,12 @@ class ProductController extends Controller
     }
 
    
-public function create(Request $request)
+    public function create(Request $request)
 {
-
     DB::beginTransaction();
 
     try {
+        // Create the client
         $client = Client::create([
             'first_name' => $request->get('first_name'),
             'last_name' => $request->get('last_name'),
@@ -58,27 +58,28 @@ public function create(Request $request)
             'yuridik_address' => $request->get('yuridik_address'),
             'yuridik_rekvizid' => $request->get('yuridik_rekvizid'),
             'jamgarma_rekvizitlari' => $request->get('jamgarma_rekvizitlari'),
-
-            
         ]);
 
-        $company = Company::create([
-            'client_id' => $client->id,
-            'company_location' => $request->get('company_location'),
-            'company_type' => $request->get('company_type'),
-            'company_kubmetr' => $request->get('company_kubmetr'),
-            'company_name' => $request->get('company_name'),
-        ]);
+        // Loop through each set of accordion data and create related records
+        foreach ($request->accordions as $accordion) {
+            $company = Company::create([
+                'client_id' => $client->id,
+                'company_location' => $accordion['company_location'],
+                'company_type' => $accordion['company_type'],
+                'company_kubmetr' => $accordion['company_kubmetr'],
+                'company_name' => $accordion['company_name'],
+            ]);
 
-        Products::create([
-            'company_id' => $company->id,
-            'client_id' => $client->id,
-            'minimum_wage' => $request->get('minimum_wage'),
-            'contract_apt' => $request->get('contract_apt'),
-            'contract_date' => $request->get('contract_date'),
-            'created_at' => Carbon::today(),
-            'updated_at' => Carbon::today()
-        ]);
+            Products::create([
+                'company_id' => $company->id,
+                'client_id' => $client->id,
+                'minimum_wage' => $accordion['minimum_wage'],
+                'contract_apt' => $accordion['contract_apt'],
+                'contract_date' => $accordion['contract_date'],
+                'created_at' => Carbon::today(),
+                'updated_at' => Carbon::today()
+            ]);
+        }
 
         DB::commit();
 
@@ -89,6 +90,8 @@ public function create(Request $request)
         return redirect()->back()->with('error', 'An error occurred while creating the product: ' . $e->getMessage());
     }
 }
+
+
 
     public function edit($id)
     {
