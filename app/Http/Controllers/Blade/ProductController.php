@@ -131,6 +131,13 @@ class ProductController extends Controller
                 'contact' => $request->contact,
                 'passport_serial' => $request->passport_serial,
                 'passport_pinfl' => $request->passport_pinfl,
+                'passport_date' => $request->passport_pinfl,
+                'passport_location' => $request->passport_pinfl,
+
+                'id_passport_serial' => $request->passport_serial,
+                'id_passport_pinfl' => $request->passport_pinfl,
+                'id_passport_date' => $request->passport_pinfl,
+                'id_passport_location' => $request->passport_pinfl,
                 'yuridik_address' => $request->yuridik_address,
                 'yuridik_rekvizid' => $request->yuridik_rekvizid,
                 'jamgarma_rekvizitlari' => $request->jamgarma_rekvizitlari,

@@ -62,8 +62,14 @@ mestapalojenya comp keermas ++++
  
 Юридический реквизит = xisob raqam +++
 
-Jamg'arma Rekviztlari = keremas
+Jamg'arma Rekviztlari = keremas +++
+
+id passport radio blan qoshish kere +++
+
+enter btn = disabled +++
+
+accardion default open +++
 
 naxt va rasrochka option qoysh kere naxt boganda foiz kratdgan input disable bolsh kere
 
-id passport radio blan qoshish kere 
+

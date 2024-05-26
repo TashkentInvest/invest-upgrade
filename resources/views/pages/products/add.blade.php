@@ -77,7 +77,10 @@
                                             <span class="error invalid-feedback">{{ $errors->first('contact') }}</span>
                                         @endif
                                     </div>
+                                </div>
 
+                                <div class="row" id="passport">
+                                    
                                     <div class="col-12 col-lg-3 mb-2">
                                         <label for="passport_serial" class="col-md-4 col-form-label">@lang('cruds.client.fields.passport_serial')</label>
                                         <input class="form-control {{ $errors->has('passport_serial') ? 'is-invalid' : '' }}" type="text" name="passport_serial" id="passport_serial" placeholder="@lang('cruds.client.fields.passport_serial')" value="{{ old('passport_serial') }}">
@@ -110,6 +113,43 @@
                                         @endif
                                     </div>
                                 </div>
+                            
+
+                                <div class="row" id="id_passport">
+                                    
+                                    <div class="col-12 col-lg-3 mb-2">
+                                        <label for="id_passport_serial" class="col-md-4 col-form-label">@lang('cruds.client.fields.id_passport_serial')</label>
+                                        <input class="form-control {{ $errors->has('id_passport_serial') ? 'is-invalid' : '' }}" type="text" name="id_passport_serial" id="id_passport_serial" placeholder="@lang('cruds.client.fields.id_passport_serial')" value="{{ old('id_passport_serial') }}">
+                                        @if ($errors->has('id_passport_serial'))
+                                            <span class="error invalid-feedback">{{ $errors->first('id_passport_serial') }}</span>
+                                        @endif
+                                    </div>
+                                
+                                    <div class="col-12 col-lg-3 mb-2">
+                                        <label for="id_passport_pinfl" class="col-md-4 col-form-label">@lang('cruds.client.fields.id_passport_pinfl')</label>
+                                        <input class="form-control {{ $errors->has('id_passport_pinfl') ? 'is-invalid' : '' }}" type="text" name="id_passport_pinfl" id="id_passport_pinfl" placeholder="@lang('cruds.client.fields.id_passport_pinfl')" value="{{ old('id_passport_pinfl') }}">
+                                        @if ($errors->has('id_passport_pinfl'))
+                                            <span class="error invalid-feedback">{{ $errors->first('id_passport_pinfl') }}</span>
+                                        @endif
+                                    </div>
+
+                                    <div class="col-12 col-lg-3 mb-2">
+                                        <label for="id_passport_date" class="col-md-4 col-form-label">@lang('cruds.client.fields.id_passport_date')</label>
+                                        <input class="form-control {{ $errors->has('id_passport_date') ? 'is-invalid' : '' }}" type="text" name="id_passport_date" id="id_passport_date" placeholder="@lang('cruds.client.fields.id_passport_date')" value="{{ old('id_passport_date') }}">
+                                        @if ($errors->has('id_passport_date'))
+                                            <span class="error invalid-feedback">{{ $errors->first('id_passport_date') }}</span>
+                                        @endif
+                                    </div>
+
+                                    <div class="col-12 col-lg-3 mb-2">
+                                        <label for="id_passport_location" class="col-md-6 col-form-label">@lang('cruds.client.fields.id_passport_location')</label>
+                                        <input class="form-control {{ $errors->has('id_passport_location') ? 'is-invalid' : '' }}" type="text" name="id_passport_location" id="id_passport_location" placeholder="@lang('cruds.client.fields.id_passport_location')" value="{{ old('id_passport_location') }}">
+                                        @if ($errors->has('id_passport_location'))
+                                            <span class="error invalid-feedback">{{ $errors->first('id_passport_location') }}</span>
+                                        @endif
+                                    </div>
+                                </div>
+                                
                                 
                                 <div class="row" id="make_hide">
                              
@@ -228,7 +268,7 @@
                                                 Accordion Item #0
                                             </button>
                                         </h2>
-                                        <div id="flush-collapseOne" class="accordion-collapse collapse"
+                                        <div id="flush-collapseOne" class="accordion-collapse collapse show"
                                             aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
                                             <div class="accordion-body text-muted">
                                                 <main class="main_of_objects">
