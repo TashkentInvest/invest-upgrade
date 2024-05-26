@@ -186,10 +186,18 @@ return [
         ]
         ],
 
-    'company' => [
-        'title' => 'Компания',
-        'fields' => [
-            'address' => "Адрес"
+        'company' => [
+            'title' => 'Компания',
+            'fields' => [
+                'address' => "Адрес",
+                'company_name' => 'Название компании',
+                'raxbar' => 'Рахбар',
+                'company_location' => 'Местоположение компании',
+                'bank_service' => 'Банковское обслуживание',
+                'bank_code' => 'Банковский код',
+                'stir' => 'СТИР',
+                'oked' => 'ОКЭД'
+            ]
         ]
-    ]
+        
 ];

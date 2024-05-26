@@ -88,7 +88,7 @@ return [
             'passport_serial'          => 'Pasport seriyasi',
             'passport_pinfl'           => 'Pasport PINFL',
             'yuridik_address'          => 'Yuridik manzil',
-            'yuridik_rekvizid'         => 'Yuridik rekvizit',
+            'yuridik_rekvizid'         => 'Xisob raqam',
             'mijoz_turi_yuridik'       => 'Yuridik shaxs',
             'mijoz_turi_fizik'         => 'Jismoniy shaxs',
             'mijoz_turi'               => 'Shaxs turi',
@@ -183,10 +183,18 @@ return [
             'address' => "Manzil"
         ]
         ],
-    'company' => [
-        'title' => 'Kompaniya',
-        'fields' => [
-            'address' => "Адрес"
+        'company' => [
+            'title' => 'Kompaniya',
+            'fields' => [
+                'address' => "Manzil",
+                'company_name' => 'Kompaniya nomi',
+                'raxbar' => 'Rahbar',
+                'company_location' => 'Kompaniya joylashuvi',
+                'bank_service' => 'Bank xizmati',
+                'bank_code' => 'Bank kodi',
+                'stir' => 'STIR',
+                'oked' => 'OKED'
+            ]
         ]
-    ]
+        
 ];

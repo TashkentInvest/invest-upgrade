@@ -72,28 +72,28 @@ class ProductController extends Controller
         foreach ($request->accordions as $accordion) {
             $company = Company::create([
                 'client_id' => $client->id,
-                'company_location' => $accordion['company_location'],
-                'company_type' => $accordion['company_type'],
-                'company_kubmetr' => $accordion['company_kubmetr'],
-                'company_name' => $accordion['company_name'],
-                'contract_apt' => $accordion['contract_apt'],
-                'contract_date' => $accordion['contract_date'],
-                'raxbar' => $accordion['raxbar'],
-                'bank_code' => $accordion['bank_code'],
-                'bank_service' => $accordion['bank_service'],
-                'stir' => $accordion['stir'],
-                'oked' => $accordion['oked'],
-
+                'company_location' => $accordion['company_location'] ?? null,
+                'company_type' => $accordion['company_type'] ?? null,
+                'company_kubmetr' => $accordion['company_kubmetr'] ?? null,
+                'company_name' => $accordion['company_name'] ?? null,
+                'contract_apt' => $accordion['contract_apt'] ?? null,
+                'contract_date' => $accordion['contract_date'] ?? null,
+                'raxbar' => $accordion['raxbar'] ?? null,
+                'bank_code' => $accordion['bank_code'] ?? null,
+                'bank_service' => $accordion['bank_service'] ?? null,
+                'stir' => $accordion['stir'] ?? null,
+                'oked' => $accordion['oked'] ?? null,
             ]);
-
+        
             Products::create([
                 'company_id' => $company->id,
                 'client_id' => $client->id,
-                'minimum_wage' => $accordion['minimum_wage'],
+                'minimum_wage' => $accordion['minimum_wage'] ?? null,
                 'created_at' => Carbon::today(),
                 'updated_at' => Carbon::today()
             ]);
         }
+                
 
         DB::commit();
 
