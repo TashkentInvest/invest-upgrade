@@ -205,22 +205,29 @@
                                                         </div>
                                                     </div>
                                                     <div class="row">
-                                                        <div class="col-lg-4">
-                                                            <div class="mb-3">
-                                                                <label for="company_kubmetr">Obyekt bo'yicha tolanadigan yeg'im miqdori</label>
-                                                                <input type="text" class="form-control" name="accordions[0][company_kubmetr]" placeholder="Metr Kub">
+                                                        <div class="col-4">
+                                                            <div class="inner-repeater mb-4">
+                                                                <div data-repeater-list="inner-group" class="inner mb-3">
+                                                                    <label for="basicpill-cardno-input">Obyekt bo'yicha tolanadigan yeg'im miqdori</label>
+                                                                    <!-- Additional phone field -->
+                                                                    <input type="number" class="form-control" id="company_kubmetr"
+                                                                                placeholder="Metr Kub" name="company_kubmetr">
+                                                                </div>
                                                             </div>
                                                         </div>
                                                         <div class="col-lg-4">
                                                             <div class="mb-3">
-                                                                <label for="minimum_wage">Bazaviy xisoblash miqdori</label>
-                                                                <input type="text" class="form-control" name="accordions[0][minimum_wage]" placeholder="340 min" value="340">
+                                                                <label for="basicpill-card-verification-input">Bazaviy xisoblash miqdori</label>
+                                                                <input type="number" class="form-control" id="minimum_wage" placeholder="340 min" value="340000"
+                                                                    name="minimum_wage">
                                                             </div>
                                                         </div>
+                                            
                                                         <div class="col-lg-4">
                                                             <div class="mb-3">
-                                                                <label for="generate_price">Jami to'lanishi kerak bo'gan miqdor</label>
-                                                                <input type="text" class="form-control" name="accordions[0][generate_price]" placeholder="------------" disabled>
+                                                                <label for="basicpill-card-verification-input">Jami to'lanishi kerak bo'gan miqdor</label>
+                                                                <input type="text" class="form-control" id="generate_price" name="generate_price"
+                                                                    placeholder="------------" readonly>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -254,6 +261,24 @@
                                         accordion.appendTo('#accordionFlushExample');
                                         accordionCount++;
                                     });
+                                });
+                            </script>
+
+                                                    
+                            <script>
+                                $(document).ready(function () {
+                                    function calculateGeneratePrice() {
+                                        var companyKubmetr = $('#company_kubmetr').val();
+                                        var minimumWage = $('#minimum_wage').val();
+                                        var generatePrice = companyKubmetr * minimumWage;
+                                        $('#generate_price').val(generatePrice.toFixed(2));
+                                    }
+
+                                    $('#company_kubmetr, #minimum_wage').on('input', function () {
+                                        calculateGeneratePrice();
+                                    });
+
+                                    calculateGeneratePrice();
                                 });
                             </script>
                             
