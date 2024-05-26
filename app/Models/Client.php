@@ -28,6 +28,7 @@ class Client extends Model
         'passport_pinfl',
         'passport_date',
         'passport_location',
+        'passport_type'
 
     ];
 

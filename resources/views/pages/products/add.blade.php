@@ -116,13 +116,7 @@
                                         @endif
                                     </div>
                                 
-                                    <div class="col-12 col-lg-3 mb-2">
-                                        <label for="yuridik_rekvizid" class="col-md-4 col-form-label">@lang('cruds.client.fields.yuridik_rekvizid')</label>
-                                        <input class="form-control {{ $errors->has('yuridik_rekvizid') ? 'is-invalid' : '' }}" type="text" name="yuridik_rekvizid" id="yuridik_rekvizid" placeholder="@lang('cruds.client.fields.yuridik_rekvizid')" value="{{ old('yuridik_rekvizid') }}">
-                                        @if ($errors->has('yuridik_rekvizid'))
-                                            <span class="error invalid-feedback">{{ $errors->first('yuridik_rekvizid') }}</span>
-                                        @endif
-                                    </div>
+
                                 </div>
                                 
                                 <div class="row">
@@ -192,8 +186,12 @@
                                             <span class="error invalid-feedback">{{ $errors->first('passport_location') }}</span>
                                         @endif
                                     </div>
+
                                 </div>
-                            
+                                <label for="is_passport_id">Is passport ID?</label>
+                                <input type="checkbox" name="passport_type" id="is_passport_id" value="1">
+
+                                
 
                 
                                 
@@ -415,7 +413,6 @@
                                         parentAccordion.find('.generate_price').val(generatePrice.toFixed(2));
                                     }
                             
-                                    // Initial calculation for the first accordion
                                     calculateGeneratePrice($('.accordion-item').first().find('.accordion-body'));
                                 });
                             </script>

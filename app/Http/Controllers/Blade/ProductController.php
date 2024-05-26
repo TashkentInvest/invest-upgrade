@@ -44,7 +44,9 @@ class ProductController extends Controller
 
    
     public function create(Request $request)
+    
 {
+    // dd($request);
     DB::beginTransaction();
 
     try {
@@ -66,7 +68,11 @@ class ProductController extends Controller
                 'jamgarma_rekvizitlari' => $request->get('jamgarma_rekvizitlari'),
                 'passport_date' => $request->get('passport_date'),
                 'passport_location' => $request->get('passport_location'),
+                'passport_type' => $request->get('passport_type', 0) ,
+
             ]);
+
+            // dd($client);
         }
 
         foreach ($request->accordions as $accordion) {
