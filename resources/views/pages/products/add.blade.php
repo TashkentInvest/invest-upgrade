@@ -157,130 +157,125 @@
 
                             </section>
 
-                            <!-- Bank Details -->
-                            <h3>Obyekt</h3>
-                            <section>
-                                <div class="accordion accordion-flush" id="accordionFlushExample">
-                                    <div class="accordion-item">
-                                        <h2 class="accordion-header" id="flush-headingOne">
-                                            <button class="accordion-button fw-medium collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
-                                                Accordion Item #0
-                                            </button>
-                                        </h2>
-                                        <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
-                                            <div class="accordion-body text-muted">
-                                                <main class="main_of_objects">
-                                                    <div class="row">
-                                                        <div class="col-lg-6">
-                                                            <div class="mb-3">
-                                                                <label for="contract_apt">APT Raqami</label>
-                                                                <input type="text" class="form-control" name="accordions[0][contract_apt]" placeholder="APT">
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-lg-6">
-                                                            <div class="mb-3">
-                                                                <label for="contract_date">Sanasi</label>
-                                                                <input class="form-control" type="datetime-local" name="accordions[0][contract_date]">
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="row">
-                                                        <div class="col-lg-4">
-                                                            <div class="mb-3">
-                                                                <label for="company_type">Loyixa Turi</label>
-                                                                <input type="text" class="form-control" name="accordions[0][company_type]" placeholder="Loyixa Turi">
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-lg-4">
-                                                            <div class="mb-3">
-                                                                <label for="company_location">Loyixa Manzili</label>
-                                                                <input type="text" class="form-control" name="accordions[0][company_location]" placeholder="Loyixa Manzili">
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-lg-4">
-                                                            <div class="mb-3">
-                                                                <label for="company_name">Loyixa Nomi</label>
-                                                                <input type="text" class="form-control" name="accordions[0][company_name]" placeholder="Loyixa Nomi">
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="row">
-                                                        <div class="col-4">
-                                                            <div class="inner-repeater mb-4">
-                                                                <div data-repeater-list="inner-group" class="inner mb-3">
-                                                                    <label for="basicpill-cardno-input">Obyekt bo'yicha tolanadigan yeg'im miqdori</label>
-                                                                    <!-- Additional phone field -->
-                                                                    <input type="number" class="form-control" id="company_kubmetr"
-                                                                                placeholder="Metr Kub" name="company_kubmetr">
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-lg-4">
-                                                            <div class="mb-3">
-                                                                <label for="basicpill-card-verification-input">Bazaviy xisoblash miqdori</label>
-                                                                <input type="number" class="form-control" id="minimum_wage" placeholder="340 min" value="340000"
-                                                                    name="minimum_wage">
-                                                            </div>
-                                                        </div>
-                                            
-                                                        <div class="col-lg-4">
-                                                            <div class="mb-3">
-                                                                <label for="basicpill-card-verification-input">Jami to'lanishi kerak bo'gan miqdor</label>
-                                                                <input type="text" class="form-control" id="generate_price" name="generate_price"
-                                                                    placeholder="------------" readonly>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </main>
-                                            </div>
-                                        </div>
+                       <!-- Bank Details -->
+<h3>Obyekt</h3>
+<section>
+    <div class="accordion accordion-flush" id="accordionFlushExample">
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="flush-headingOne">
+                <button class="accordion-button fw-medium collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                    Accordion Item #0
+                </button>
+            </h2>
+            <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+                <div class="accordion-body text-muted">
+                    <main class="main_of_objects">
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="mb-3">
+                                    <label for="contract_apt">APT Raqami</label>
+                                    <input type="text" class="form-control" name="accordions[0][contract_apt]" placeholder="APT">
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="mb-3">
+                                    <label for="contract_date">Sanasi</label>
+                                    <input class="form-control" type="datetime-local" name="accordions[0][contract_date]">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-4">
+                                <div class="mb-3">
+                                    <label for="company_type">Loyixa Turi</label>
+                                    <input type="text" class="form-control" name="accordions[0][company_type]" placeholder="Loyixa Turi">
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="mb-3">
+                                    <label for="company_location">Loyixa Manzili</label>
+                                    <input type="text" class="form-control" name="accordions[0][company_location]" placeholder="Loyixa Manzili">
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="mb-3">
+                                    <label for="company_name">Loyixa Nomi</label>
+                                    <input type="text" class="form-control" name="accordions[0][company_name]" placeholder="Loyixa Nomi">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-4">
+                                <div class="inner-repeater mb-4">
+                                    <div data-repeater-list="inner-group" class="inner mb-3">
+                                        <label for="basicpill-cardno-input">Obyekt bo'yicha tolanadigan yeg'im miqdori</label>
+                                        <input type="number" class="form-control company_kubmetr" placeholder="Metr Kub" name="accordions[0][company_kubmetr]">
                                     </div>
                                 </div>
-                                <div id="addAccordion" class="btn btn-primary mt-3">Add Accordion</div>
-                            </section>
-                            
-                            <script>
-                                $(document).ready(function () {
-                                    let accordionCount = 1;
-                                    $('#addAccordion').on('click', function () {
-                                        let accordion = $('.accordion-item').first().clone();
-                                        let newId = 'flush-collapse' + accordionCount;
-                                        accordion.find('.accordion-collapse').attr('id', newId);
-                                        accordion.find('.accordion-button').attr('data-bs-target', '#' + newId);
-                                        accordion.find('.accordion-header').attr('id', 'flush-heading' + accordionCount);
-                                        accordion.find('.accordion-button').attr('aria-controls', newId);
-                                        accordion.find('.accordion-button').text('Accordion Item #' + accordionCount);
-                                        
-                                        accordion.find('input').each(function() {
-                                            let name = $(this).attr('name');
-                                            let newName = name.replace(/\[0\]/, '[' + accordionCount + ']');
-                                            $(this).attr('name', newName);
-                                            $(this).val('');
-                                        });
-                            
-                                        accordion.appendTo('#accordionFlushExample');
-                                        accordionCount++;
-                                    });
-                                });
-                            </script>
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="mb-3">
+                                    <label for="basicpill-card-verification-input">Bazaviy xisoblash miqdori</label>
+                                    <input type="number" class="form-control minimum_wage" placeholder="340 min" value="340000" name="accordions[0][minimum_wage]">
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="mb-3">
+                                    <label for="basicpill-card-verification-input">Jami to'lanishi kerak bo'gan miqdor</label>
+                                    <input type="text" class="form-control generate_price" name="accordions[0][generate_price]" placeholder="------------" readonly>
+                                </div>
+                            </div>
+                        </div>
+                    </main>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="addAccordion" class="btn btn-primary mt-3">Add Accordion</div>
+</section>
 
-                                                    
-                            <script>
-                                $(document).ready(function () {
-                                    function calculateGeneratePrice() {
-                                        var companyKubmetr = $('#company_kubmetr').val();
-                                        var minimumWage = $('#minimum_wage').val();
-                                        var generatePrice = companyKubmetr * minimumWage;
-                                        $('#generate_price').val(generatePrice.toFixed(2));
-                                    }
+<script>
+    $(document).ready(function () {
+        let accordionCount = 1;
 
-                                    $('#company_kubmetr, #minimum_wage').on('input', function () {
-                                        calculateGeneratePrice();
-                                    });
+        $('#addAccordion').on('click', function () {
+            let accordion = $('.accordion-item').first().clone();
+            let newId = 'flush-collapse' + accordionCount;
+            accordion.find('.accordion-collapse').attr('id', newId);
+            accordion.find('.accordion-button').attr('data-bs-target', '#' + newId);
+            accordion.find('.accordion-header').attr('id', 'flush-heading' + accordionCount);
+            accordion.find('.accordion-button').attr('aria-controls', newId);
+            accordion.find('.accordion-button').text('Accordion Item #' + accordionCount);
+            
+            accordion.find('input').each(function() {
+                let name = $(this).attr('name');
+                let newName = name.replace(/\[0\]/, '[' + accordionCount + ']');
+                $(this).attr('name', newName);
+                $(this).val('');
+                $(this).attr('id', newName); // Adding unique ID for each input
+            });
+            
+            accordion.appendTo('#accordionFlushExample');
+            accordionCount++;
+        });
 
-                                    calculateGeneratePrice();
-                                });
-                            </script>
+        $(document).on('input', '.company_kubmetr, .minimum_wage', function () {
+            let parentAccordion = $(this).closest('.accordion-body');
+            calculateGeneratePrice(parentAccordion);
+        });
+
+        function calculateGeneratePrice(parentAccordion) {
+            let companyKubmetr = parentAccordion.find('.company_kubmetr').val();
+            let minimumWage = parentAccordion.find('.minimum_wage').val();
+            let generatePrice = companyKubmetr * minimumWage;
+            parentAccordion.find('.generate_price').val(generatePrice.toFixed(2));
+        }
+
+        // Initial calculation for the first accordion
+        calculateGeneratePrice($('.accordion-item').first().find('.accordion-body'));
+    });
+</script>
+
                             
                             <!-- Confirm Details -->
                             <h3>Tasdiqlash</h3>
