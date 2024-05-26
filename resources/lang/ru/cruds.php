@@ -92,6 +92,8 @@ return [
             'yuridik_rekvizid'                     => 'Юридический реквизит',
             'mijoz_turi_yuridik'                     => 'Юридическое лицо',
             'mijoz_turi_fizik'                     => 'Физическое лицо',
+            'passport_date'                     => 'паспорт_дата',
+            'passport_location'                     => 'паспорт_местоположение',
             'mijoz_turi'                     => 'Тип человека',
             'name_helper'              => ' ',
             'email'                    => 'Email',
@@ -110,6 +112,8 @@ return [
             'updated_at_helper'        => ' ',
             'deleted_at'               => 'Deleted at',
             'deleted_at_helper'        => ' ',
+
+            
         ],
     ],
     'setting'        => [

@@ -92,6 +92,8 @@ return [
             'mijoz_turi_yuridik'       => 'Yuridik shaxs',
             'mijoz_turi_fizik'         => 'Jismoniy shaxs',
             'mijoz_turi'               => 'Shaxs turi',
+            'passport_date'                     => 'Passport sanasi',
+            'passport_location'                     => 'Passport Olingan Manzil',
             'name_helper'              => ' ',
             'email'                    => 'Email',
             'email_helper'             => ' ',

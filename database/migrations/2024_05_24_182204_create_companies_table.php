@@ -26,6 +26,10 @@ class CreateCompaniesTable extends Migration
             $table->text('contract_apt');
             $table->dateTime('contract_date');
             $table->string('raxbar')->nullable();
+            $table->string('bank_code')->nullable();
+            $table->string('bank_service')->nullable();
+            $table->string('stir')->nullable();
+            $table->string('oked')->nullable();
             $table->timestamps();
         });
     }

@@ -64,6 +64,8 @@ class ProductController extends Controller
                 'yuridik_address' => $request->get('yuridik_address'),
                 'yuridik_rekvizid' => $request->get('yuridik_rekvizid'),
                 'jamgarma_rekvizitlari' => $request->get('jamgarma_rekvizitlari'),
+                'passport_date' => $request->get('passport_date'),
+                'passport_location' => $request->get('passport_location'),
             ]);
         }
 
@@ -76,6 +78,12 @@ class ProductController extends Controller
                 'company_name' => $accordion['company_name'],
                 'contract_apt' => $accordion['contract_apt'],
                 'contract_date' => $accordion['contract_date'],
+                'raxbar' => $accordion['raxbar'],
+                'bank_code' => $accordion['bank_code'],
+                'bank_service' => $accordion['bank_service'],
+                'stir' => $accordion['stir'],
+                'oked' => $accordion['oked'],
+
             ]);
 
             Products::create([

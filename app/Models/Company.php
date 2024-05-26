@@ -18,7 +18,11 @@ class Company extends Model
         'company_type',
         'company_kubmetr',
         'contract_apt',
-        'contract_date'
+        'contract_date',
+        'bank_code',
+        'bank_service',
+        'stir',
+        'oked'
 
     ];
 

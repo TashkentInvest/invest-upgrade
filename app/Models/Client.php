@@ -23,7 +23,9 @@ class Client extends Model
         'passport_serial',
         'passport_pinfl',
         'jamgarma_rekvizitlari',
-        'contact'
+        'contact',
+        'passport_date',
+        'passport_location'
     ];
 
     public function users(){
