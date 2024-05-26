@@ -346,6 +346,37 @@
                                                             </div>
                                                         </div>
                                                     </div>
+
+                                                    <div class="row">
+
+                                                        <div class="col-lg-4">
+                                                            <div class="mb-3">
+                                                                <label>To'lash turlari</label>
+                                                                <select class="form-select">
+                                                                    <option selected>To'lash turini tanlang</option>
+                                                                    <option value="pay_full">To'liq xajimda to'lash </option>
+                                                                    <option value="pay_bolib">Bo'lib to'lash</option>
+                                                                    <option value="pay_kvartalniy">Kvartalniy</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                    
+                                                        <div class="col-lg-4">
+                                                            <div class="mb-3">
+                                                                <label for="basicpill-expiration-input">Bo'lib to'lash foizi oldindan </label>
+                                                                <input type="text" class="form-control" id="basicpill-expiration-input"
+                                                                    placeholder="20% ">
+                                                            </div>
+                                                        </div>
+                    
+                                                        <div class="col-lg-4">
+                                                            <div class="mb-3">
+                                                                <label for="basicpill-expiration-input">Bo'lib to'lash kvartalniy</label>
+                                                                <input type="text" class="form-control" id="basicpill-expiration-input"
+                                                                    placeholder="Bo'lib to'lash kvartalniy ">
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                                 </main>
                                             </div>
                                         </div>
