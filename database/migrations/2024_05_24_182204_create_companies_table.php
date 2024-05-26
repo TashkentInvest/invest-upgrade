@@ -23,6 +23,8 @@ class CreateCompaniesTable extends Migration
             $table->string('company_kubmetr');
             $table->string('company_type');
             $table->string('company_name');
+            $table->text('contract_apt');
+            $table->dateTime('contract_date');
             $table->string('raxbar')->nullable();
             $table->timestamps();
         });

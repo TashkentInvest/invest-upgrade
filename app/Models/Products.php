@@ -13,9 +13,7 @@ class Products extends Model
     protected $fillable = [
         'client_id',
         'company_id',
-        'minimum_wage',
-        'contract_apt',
-        'contract_date'
+        'minimum_wage'
     ];
     public function public_path():string
     {

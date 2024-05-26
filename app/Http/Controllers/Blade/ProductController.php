@@ -74,14 +74,14 @@ class ProductController extends Controller
                 'company_type' => $accordion['company_type'],
                 'company_kubmetr' => $accordion['company_kubmetr'],
                 'company_name' => $accordion['company_name'],
+                'contract_apt' => $accordion['contract_apt'],
+                'contract_date' => $accordion['contract_date'],
             ]);
 
             Products::create([
                 'company_id' => $company->id,
                 'client_id' => $client->id,
                 'minimum_wage' => $accordion['minimum_wage'],
-                'contract_apt' => $accordion['contract_apt'],
-                'contract_date' => $accordion['contract_date'],
                 'created_at' => Carbon::today(),
                 'updated_at' => Carbon::today()
             ]);

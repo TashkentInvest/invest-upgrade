@@ -17,6 +17,8 @@ class Company extends Model
         'company_location',
         'company_type',
         'company_kubmetr',
+        'contract_apt',
+        'contract_date'
 
     ];
 

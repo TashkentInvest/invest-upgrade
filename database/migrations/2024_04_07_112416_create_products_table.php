@@ -20,8 +20,6 @@ class CreateProductsTable extends Migration
             $table->unsignedBigInteger('company_id');
             $table->foreign('company_id')->references('id')->on('companies');
             $table->text('minimum_wage');
-            $table->text('contract_apt');
-            $table->dateTime('contract_date');
             $table->integer('status')->default(1);
             $table->timestamps();
         });

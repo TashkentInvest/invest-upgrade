@@ -42,13 +42,11 @@
                     <tbody>
                         @foreach($clients as $item)
 
-                        {{-- @dump($item) --}}
                             <tr>
                                 <td>{{ $item->id }}</td>
                                 <td>{{ $item->first_name }}</td>
-                                <td>{{ $item->contact ?? '' }}</td>
 
-                            
+                                <td>{{ $item->contact ?? '---' }}</td>
                              
                                 <td class="text-center">
                                     <i style="cursor: pointer; font-size: 16px;" id="program_{{ $item->id }}" 
@@ -129,18 +127,7 @@
                                                 <div class="modal-body">
                                                     <table class="table table-striped">
                                                         <tbody>
-                                                            <tr>
-                                                                <td class="text-center"><strong>Shartnoma Rekvizitlari</strong></td>
-                                                            </tr>   
-                                                            <tr>
-                                                                <td>APT Raqami</td>
-                                                                <td>{{ $item->contract_apt }}</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>Sanasi</td>
-                                                                <td>{{ $item->contract_date }}</td>
-                                                            </tr>
-                                    
+                                                          
                                                             <tr>
                                                                 <td><strong>Shaxsiy Malumotlar</strong></td>
                                                             </tr>
@@ -188,16 +175,26 @@
 
                                                             
                                     
-                                                            <tr>
-                                                                <td><strong>Obyekt</strong></td>
-                                                            </tr>
 
+                                                          
+                                    
                                                             @foreach ($item->companies as $comp)
+                                                            <tr>
+                                                                <td class="text-center"><strong>Shartnoma Rekvizitlari</strong></td>
+                                                            </tr>   
+                                                            <tr>
+                                                                <td>APT Raqami</td>
+                                                                <td>{{ $comp->contract_apt }}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Sanasi</td>
+                                                                <td>{{ $comp->contract_date }}</td>
+                                                            </tr>
                                                                 
                                                             <tr>
-                                                                <td>Loyixa Turi</td>
+                                                                <td class="text-center"><strong>Obyekt</strong></td>
+
                                                                 
-                                                                <td>{{ $comp->company_type }}</td>
                                                             </tr>
                                                             <tr>
                                                                 <td>Loyixa Manzili</td>
