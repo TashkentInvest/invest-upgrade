@@ -348,35 +348,49 @@
                                                     </div>
 
                                                     <div class="row">
-
                                                         <div class="col-lg-4">
                                                             <div class="mb-3">
                                                                 <label>To'lash turlari</label>
-                                                                <select class="form-select">
-                                                                    <option selected>To'lash turini tanlang</option>
-                                                                    <option value="pay_full">To'liq xajimda to'lash </option>
+                                                                <select class="form-select" id="payment-type">
+                                                                    <option value="pay_full">To'liq xajimda to'lash</option>
                                                                     <option value="pay_bolib">Bo'lib to'lash</option>
-                                                                    <option value="pay_kvartalniy">Kvartalniy</option>
                                                                 </select>
                                                             </div>
                                                         </div>
-                    
+                                                    
                                                         <div class="col-lg-4">
                                                             <div class="mb-3">
-                                                                <label for="basicpill-expiration-input">Bo'lib to'lash foizi oldindan </label>
-                                                                <input type="text" class="form-control" id="basicpill-expiration-input"
-                                                                    placeholder="20% ">
+                                                                <label for="percentage-input">Bo'lib to'lash foizi oldindan </label>
+                                                                <input type="text" class="form-control" id="percentage-input" placeholder="100%" disabled>
                                                             </div>
                                                         </div>
-                    
+                                                    
                                                         <div class="col-lg-4">
                                                             <div class="mb-3">
-                                                                <label for="basicpill-expiration-input">Bo'lib to'lash kvartalniy</label>
-                                                                <input type="text" class="form-control" id="basicpill-expiration-input"
-                                                                    placeholder="Bo'lib to'lash kvartalniy ">
+                                                                <label for="quarterly-input">Bo'lib to'lash kvartalniy</label>
+                                                                <input type="text" class="form-control" id="quarterly-input" placeholder="Bo'lib to'lash kvartalniy" disabled>
                                                             </div>
                                                         </div>
                                                     </div>
+                                                    
+                                                    <script>
+                                                        document.getElementById('payment-type').addEventListener('change', function() {
+                                                            var selectedOption = this.value;
+                                                            var percentageInput = document.getElementById('percentage-input');
+                                                            var quarterlyInput = document.getElementById('quarterly-input');
+                                                    
+                                                            if (selectedOption === 'pay_full') {
+                                                                percentageInput.disabled = true;
+                                                                quarterlyInput.disabled = true;
+                                                                percentageInput.value = "100%";
+                                                            } else {
+                                                                percentageInput.disabled = false;
+                                                                quarterlyInput.disabled = false;
+                                                                percentageInput.value = ""; // Clearing the value if not pay_full
+                                                            }
+                                                        });
+                                                    </script>
+                                                    
                                                 </main>
                                             </div>
                                         </div>
