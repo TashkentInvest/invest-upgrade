@@ -31,7 +31,7 @@
 
                         <div id="basic-example">
                             <!-- Seller Details -->
-                            <h3>Shartnoma Rekvizitlari</h3>
+                            {{-- <h3>Shartnoma Rekvizitlari</h3>
 
 
                             <section>
@@ -53,7 +53,7 @@
                                         </div>
                                     </div>
                                 </div>
-                            </section>
+                            </section> --}}
 
                             <!-- Company Document -->
                             <h3>Shaxsiy Malumotlar</h3>
@@ -187,6 +187,24 @@
                             <!-- Bank Details -->
                             <h3>Obyekt</h3>
                             <section>
+                                <h3>1 raqam</h3>
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <div class="mb-3">
+                                            <label for="basicpill-firstname-input">APT Raqami</label>
+                                            <input type="text" class="form-control" id="basicpill-firstname-input"
+                                                placeholder="APT" name="contract_apt">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="mb-3">
+                                            <label for="basicpill-lastname-input">Sanasi</label>
+
+                                            <input class="form-control" type="datetime-local"
+                                                id="example-datetime-local-input" name="contract_date">
+                                        </div>
+                                    </div>
+                                </div>
                                 <div class="row" data-repeater-item="">
                                     <div class="col-lg-4">
                                         <div class="mb-3">
