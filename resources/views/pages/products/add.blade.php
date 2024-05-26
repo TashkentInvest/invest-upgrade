@@ -1,7 +1,6 @@
 @extends('layouts.admin')
 
 @section('content')
-    <!-- Content Header (Page header) -->
     <div class="row">
         <div class="col-12">
             <div class="page-title-box d-sm-flex align-items-center justify-content-between">
@@ -30,32 +29,6 @@
                         @csrf
 
                         <div id="basic-example">
-                            <!-- Seller Details -->
-                            {{-- <h3>Shartnoma Rekvizitlari</h3>
-
-
-                            <section>
-                              
-                                <div class="row">
-                                    <div class="col-lg-6">
-                                        <div class="mb-3">
-                                            <label for="basicpill-firstname-input">APT Raqami</label>
-                                            <input type="text" class="form-control" id="basicpill-firstname-input"
-                                                placeholder="APT" name="contract_apt">
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-6">
-                                        <div class="mb-3">
-                                            <label for="basicpill-lastname-input">Sanasi</label>
-
-                                            <input class="form-control" type="datetime-local"
-                                                id="example-datetime-local-input" name="contract_date">
-                                        </div>
-                                    </div>
-                                </div>
-                            </section> --}}
-
-                            <!-- Company Document -->
                             <h3>Shaxsiy Malumotlar</h3>
                             <section>
 
@@ -283,13 +256,7 @@
                                 </div>
                                 <div id="addAccordion" class="btn btn-primary mt-3">Add Accordion</div>
                             </section>
-                             <!-- jQuery -->
-                            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-                            <!-- Bootstrap JS -->
-                            <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
-                            <!-- Repeater Plugin -->
-                            <script src="https://cdn.jsdelivr.net/npm/jquery.repeater/jquery.repeater.min.js"></script>
-
+                       
                             <script>
                                 $(document).ready(function () {
                                     $('#addAccordion').on('click', function () {
@@ -339,9 +306,6 @@
     </div>
 @endsection
 
-
-
-
 @section('scripts')
     <script src="{{ asset('assets/libs/jquery/jquery.min.js') }}"></script>
     <script src="{{ asset('assets/libs/node-waves/waves.min.js') }}"></script>
@@ -349,6 +313,4 @@
     <script src="{{ asset('assets/js/pages/form-wizard.init.js') }}"></script>
     <script src="{{ asset('assets/js/pages/form-repeater.int.js') }}"></script>
     <script src="{{ asset('assets/libs/jquery.repeater/jquery.repeater.min.js') }}"></script>
-
-    {{-- <link rel="stylesheet" href="../../../../public/assets/js/pages/form-repeater.int.js"> --}}
 @endsection
