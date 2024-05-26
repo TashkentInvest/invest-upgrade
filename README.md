@@ -26,3 +26,8 @@ database skeletini korb chqsh kere
 composer require maatwebsite/excel
 
 php artisan make:export ProductsExport --model=Products
+
+
+bolib tolanadigan kvartllar soni 
+
+1) mi to'lanishi kerak bo'gan miqdor * Bo'lib to'lash foizi oldindan = 
