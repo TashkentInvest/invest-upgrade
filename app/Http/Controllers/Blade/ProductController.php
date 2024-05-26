@@ -133,11 +133,8 @@ class ProductController extends Controller
                 'passport_pinfl' => $request->passport_pinfl,
                 'passport_date' => $request->passport_pinfl,
                 'passport_location' => $request->passport_pinfl,
+                'passport_type' => $request->passport_pinfl,
 
-                'id_passport_serial' => $request->passport_serial,
-                'id_passport_pinfl' => $request->passport_pinfl,
-                'id_passport_date' => $request->passport_pinfl,
-                'id_passport_location' => $request->passport_pinfl,
                 'yuridik_address' => $request->yuridik_address,
                 'yuridik_rekvizid' => $request->yuridik_rekvizid,
                 'jamgarma_rekvizitlari' => $request->jamgarma_rekvizitlari,

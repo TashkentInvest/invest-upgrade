@@ -29,10 +29,6 @@ class Client extends Model
         'passport_date',
         'passport_location',
 
-        'id_passport_serial',
-        'id_passport_pinfl',
-        'id_passport_date',
-        'id_passport_location'
     ];
 
     public function users(){

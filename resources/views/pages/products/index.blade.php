@@ -33,7 +33,7 @@
                     <thead>
                     <tr>
                         <th>ID</th>
-                        <th>@lang('cruds.client.fields.first_name')</th>
+                        <th>F.I.O</th>
                         <th>@lang('cruds.client.fields.contact')</th>
                         <th style="width: 100px;">Active</th>
                         <th style="width: 150px;">@lang('global.actions')</th>
@@ -41,10 +41,10 @@
                     </thead>
                     <tbody>
                         @foreach($clients as $item)
-
+                        {{-- @dump($item->companies[0]->company_name ) --}}
                             <tr>
                                 <td>{{ $item->id }}</td>
-                                <td>{{ $item->first_name }}</td>
+                                <td>{{ $item->first_name }} {{ $item->last_name }} {{ $item->father_name }}</td>
 
                                 <td>{{ $item->contact ?? '---' }}</td>
                              

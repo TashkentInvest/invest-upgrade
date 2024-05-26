@@ -70,6 +70,9 @@ enter btn = disabled +++
 
 accardion default open +++
 
-naxt va rasrochka option qoysh kere naxt boganda foiz kratdgan input disable bolsh kere
+naxt va rasrochka option qoysh kere naxt boganda foiz kratdgan input disable bolsh kere +++
+
+yashash manzili 
 
 
+Passport sanasi = type 
