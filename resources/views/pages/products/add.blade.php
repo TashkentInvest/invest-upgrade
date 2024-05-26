@@ -188,163 +188,530 @@
                             <h3>Obyekt</h3>
                             <section>
                                 <h3>1 raqam</h3>
-                                <div class="row">
-                                    <div class="col-lg-6">
-                                        <div class="mb-3">
-                                            <label for="basicpill-firstname-input">APT Raqami</label>
-                                            <input type="text" class="form-control" id="basicpill-firstname-input"
-                                                placeholder="APT" name="contract_apt">
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-6">
-                                        <div class="mb-3">
-                                            <label for="basicpill-lastname-input">Sanasi</label>
 
-                                            <input class="form-control" type="datetime-local"
-                                                id="example-datetime-local-input" name="contract_date">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row" data-repeater-item="">
-                                    <div class="col-lg-4">
-                                        <div class="mb-3">
-                                            <label for="basicpill-namecard-input">Loyixa Turi</label>
-                                            <input type="text" class="form-control" id="basicpill-namecard-input"
-                                                placeholder="Loyixa Turi" name="company_type">
-                                        </div>
-                                    </div>
-
-                                    <div class="col-lg-4">
-                                        <div class="mb-3">
-                                            <label for="basicpill-namecard-input">Loyixa Manzili</label>
-                                            <input type="text" class="form-control" id="basicpill-namecard-input"
-                                                placeholder="Loyixa Manzili" name="company_location">
-                                        </div>
-                                    </div>
-
-                                    <div class="col-lg-4">
-                                        <div class="mb-3">
-                                            <label for="basicpill-namecard-input">Loyixa Nomi</label>
-                                            <input type="text" class="form-control" id="basicpill-namecard-input"
-                                                placeholder="Loyixa Manzili" name="company_name">
-                                        </div>
-                                    </div>
-
-
-                                </div>
-                                <div class="row">
-                                    <div class="col-lg-4">
-                                        <div class="mb-3">
-                                            <label for="company_kubmetr">Obyekt bo'yicha tolanadigan yeg'im
-                                                miqdori</label>
-                                            <input type="text" class="form-control" id="company_kubmetr"
-                                                placeholder="Metr Kub" name="company_kubmetr">
-                                        </div>
-                                    </div>
-                                    {{-- <div class="col-lg-4">
-                                        <div class="inner-repeater mb-4">
-                                            <div data-repeater-list="inner-group" class="inner mb-3">
-                                                <label for="company_kubmetr">Obyekt bo'yicha tolanadigan yeg'im miqdori</label>
-                                                <!-- Additional phone field -->
-                                                <div data-repeater-item="" class="inner mb-3 row">
-                                                    <div class="col-8">
-                                                        <input type="text" class="form-control" id="company_kubmetr" placeholder="Metr Kub"
-                                                            name="company_kubmetr[]">
-                                                    </div>
-                                                    <div class="col-4">
-                                                        <div class="d-grid">
-                                                            <input data-repeater-delete="" type="button" class="btn btn-primary inner" value="Delete">
+                                <div class="accordion accordion-flush" id="accordionFlushExample">
+                                    <div class="accordion-item">
+                                        <h2 class="accordion-header" id="flush-headingOne">
+                                            <button class="accordion-button fw-medium collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                                            Accordion Item #1
+                                            </button>
+                                        </h2>
+                                        <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample" style="">
+                                            <div class="accordion-body text-muted">
+                                                <main class="main_of_objects">
+                                                    <div class="row">
+                                                        <div class="col-lg-6">
+                                                            <div class="mb-3">
+                                                                <label for="basicpill-firstname-input">APT Raqami</label>
+                                                                <input type="text" class="form-control" id="basicpill-firstname-input"
+                                                                    placeholder="APT" name="contract_apt">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-6">
+                                                            <div class="mb-3">
+                                                                <label for="basicpill-lastname-input">Sanasi</label>
+                    
+                                                                <input class="form-control" type="datetime-local"
+                                                                    id="example-datetime-local-input" name="contract_date">
+                                                            </div>
                                                         </div>
                                                     </div>
-                                                </div>
+                                                    <div class="row" data-repeater-item="">
+                                                        <div class="col-lg-4">
+                                                            <div class="mb-3">
+                                                                <label for="basicpill-namecard-input">Loyixa Turi</label>
+                                                                <input type="text" class="form-control" id="basicpill-namecard-input"
+                                                                    placeholder="Loyixa Turi" name="company_type">
+                                                            </div>
+                                                        </div>
+                    
+                                                        <div class="col-lg-4">
+                                                            <div class="mb-3">
+                                                                <label for="basicpill-namecard-input">Loyixa Manzili</label>
+                                                                <input type="text" class="form-control" id="basicpill-namecard-input"
+                                                                    placeholder="Loyixa Manzili" name="company_location">
+                                                            </div>
+                                                        </div>
+                    
+                                                        <div class="col-lg-4">
+                                                            <div class="mb-3">
+                                                                <label for="basicpill-namecard-input">Loyixa Nomi</label>
+                                                                <input type="text" class="form-control" id="basicpill-namecard-input"
+                                                                    placeholder="Loyixa Manzili" name="company_name">
+                                                            </div>
+                                                        </div>
+                    
+                    
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-lg-4">
+                                                            <div class="mb-3">
+                                                                <label for="company_kubmetr">Obyekt bo'yicha tolanadigan yeg'im
+                                                                    miqdori</label>
+                                                                <input type="text" class="form-control" id="company_kubmetr"
+                                                                    placeholder="Metr Kub" name="company_kubmetr">
+                                                            </div>
+                                                        </div>
+                                                        {{-- <div class="col-lg-4">
+                                                            <div class="inner-repeater mb-4">
+                                                                <div data-repeater-list="inner-group" class="inner mb-3">
+                                                                    <label for="company_kubmetr">Obyekt bo'yicha tolanadigan yeg'im miqdori</label>
+                                                                    <!-- Additional phone field -->
+                                                                    <div data-repeater-item="" class="inner mb-3 row">
+                                                                        <div class="col-8">
+                                                                            <input type="text" class="form-control" id="company_kubmetr" placeholder="Metr Kub"
+                                                                                name="company_kubmetr[]">
+                                                                        </div>
+                                                                        <div class="col-4">
+                                                                            <div class="d-grid">
+                                                                                <input data-repeater-delete="" type="button" class="btn btn-primary inner" value="Delete">
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <input data-repeater-create="" type="button" class="btn btn-success inner" value="Add Number">
+                                                            </div>
+                                                        </div> --}}
+                                                        
+                                                    
+                                                        <div class="col-lg-4">
+                                                            <div class="mb-3">
+                                                                <label for="minimum_wage">Bazaviy xisoblash miqdori</label>
+                                                                <input type="text" class="form-control" id="minimum_wage" placeholder="340 min" value="340"
+                                                                    name="minimum_wage">
+                                                            </div>
+                                                        </div>
+                                                    
+                                                        <div class="col-lg-4">
+                                                            <div class="mb-3">
+                                                                <label for="generate_price">Jami to'lanishi kerak bo'gan miqdor</label>
+                                                                <input type="text" class="form-control" id="generate_price" name="generate_price"
+                                                                    placeholder="------------" disabled>
+                                                            </div>
+                                                        </div>
+                    
+                                                           <!-- jQuery -->
+                                                           <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+                                                           <!-- Repeater Plugin -->
+                                                           <script src="https://cdn.jsdelivr.net/npm/jquery.repeater/jquery.repeater.min.js"></script>
+                       
+                                                           <script>
+                                                               $(document).ready(function() {
+                                                                   $('.inner-repeater').repeater({
+                                                                   });
+                       
+                                                                   $('[data-repeater-create]').prop('disabled', false);
+                                                               });
+                                                           </script>
+                    
+                    
+                                                            <script>
+                                                                $(document).ready(function () {
+                                                                    // Function to calculate generate_price
+                                                                    function calculateGeneratePrice() {
+                                                                        var companyKubmetr = $('#company_kubmetr').val();
+                                                                        var minimumWage = $('#minimum_wage').val();
+                                                                        var generatePrice = companyKubmetr * minimumWage;
+                                                                        $('#generate_price').val(generatePrice.toFixed(2));
+                                                                    }
+                    
+                                                                    // Event listener for input fields
+                                                                    $('#company_kubmetr, #minimum_wage').on('input', function () {
+                                                                        calculateGeneratePrice();
+                                                                    });
+                    
+                                                                    // Initialize generate_price on page load
+                                                                    calculateGeneratePrice();
+                                                                });
+                                                            </script>
+                       
+                                                    </div>
+                                                    <div class="row">
+                    
+                                                        <div class="col-lg-4">
+                                                            <div class="mb-3">
+                                                                <label>To'lash turlari</label>
+                                                                <select class="form-select">
+                                                                    <option selected>To'lash turini tanlang</option>
+                                                                    <option value="pay_full">To'liq xajimda to'lash </option>
+                                                                    <option value="pay_bolib">Bo'lib to'lash</option>
+                                                                    <option value="pay_kvartalniy">Kvartalniy</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                    
+                                                        <div class="col-lg-4">
+                                                            <div class="mb-3">
+                                                                <label for="basicpill-expiration-input">Bo'lib to'lash foizi oldindan </label>
+                                                                <input type="text" class="form-control" id="basicpill-expiration-input"
+                                                                    placeholder="20% ">
+                                                            </div>
+                                                        </div>
+                    
+                                                        <div class="col-lg-4">
+                                                            <div class="mb-3">
+                                                                <label for="basicpill-expiration-input">Bo'lib to'lash kvartalniy</label>
+                                                                <input type="text" class="form-control" id="basicpill-expiration-input"
+                                                                    placeholder="Bo'lib to'lash kvartalniy ">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </main>
+                                              
                                             </div>
-                                            <input data-repeater-create="" type="button" class="btn btn-success inner" value="Add Number">
-                                        </div>
-                                    </div> --}}
-                                    
-                                
-                                    <div class="col-lg-4">
-                                        <div class="mb-3">
-                                            <label for="minimum_wage">Bazaviy xisoblash miqdori</label>
-                                            <input type="text" class="form-control" id="minimum_wage" placeholder="340 min" value="340"
-                                                name="minimum_wage">
                                         </div>
                                     </div>
-                                
-                                    <div class="col-lg-4">
-                                        <div class="mb-3">
-                                            <label for="generate_price">Jami to'lanishi kerak bo'gan miqdor</label>
-                                            <input type="text" class="form-control" id="generate_price" name="generate_price"
-                                                placeholder="------------" disabled>
+                                    <div class="accordion-item">
+                                        <h2 class="accordion-header" id="flush-headingTwo">
+                                            <button class="accordion-button fw-medium collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+                                            Accordion Item #2
+                                            </button>
+                                        </h2>
+                                        <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample" style="">
+                                            <div class="accordion-body text-muted">
+                                                <main class="main_of_objects">
+                                                    <div class="row">
+                                                        <div class="col-lg-6">
+                                                            <div class="mb-3">
+                                                                <label for="basicpill-firstname-input">APT Raqami</label>
+                                                                <input type="text" class="form-control" id="basicpill-firstname-input"
+                                                                    placeholder="APT" name="contract_apt">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-6">
+                                                            <div class="mb-3">
+                                                                <label for="basicpill-lastname-input">Sanasi</label>
+                    
+                                                                <input class="form-control" type="datetime-local"
+                                                                    id="example-datetime-local-input" name="contract_date">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row" data-repeater-item="">
+                                                        <div class="col-lg-4">
+                                                            <div class="mb-3">
+                                                                <label for="basicpill-namecard-input">Loyixa Turi</label>
+                                                                <input type="text" class="form-control" id="basicpill-namecard-input"
+                                                                    placeholder="Loyixa Turi" name="company_type">
+                                                            </div>
+                                                        </div>
+                    
+                                                        <div class="col-lg-4">
+                                                            <div class="mb-3">
+                                                                <label for="basicpill-namecard-input">Loyixa Manzili</label>
+                                                                <input type="text" class="form-control" id="basicpill-namecard-input"
+                                                                    placeholder="Loyixa Manzili" name="company_location">
+                                                            </div>
+                                                        </div>
+                    
+                                                        <div class="col-lg-4">
+                                                            <div class="mb-3">
+                                                                <label for="basicpill-namecard-input">Loyixa Nomi</label>
+                                                                <input type="text" class="form-control" id="basicpill-namecard-input"
+                                                                    placeholder="Loyixa Manzili" name="company_name">
+                                                            </div>
+                                                        </div>
+                    
+                    
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-lg-4">
+                                                            <div class="mb-3">
+                                                                <label for="company_kubmetr">Obyekt bo'yicha tolanadigan yeg'im
+                                                                    miqdori</label>
+                                                                <input type="text" class="form-control" id="company_kubmetr"
+                                                                    placeholder="Metr Kub" name="company_kubmetr">
+                                                            </div>
+                                                        </div>
+                                                        {{-- <div class="col-lg-4">
+                                                            <div class="inner-repeater mb-4">
+                                                                <div data-repeater-list="inner-group" class="inner mb-3">
+                                                                    <label for="company_kubmetr">Obyekt bo'yicha tolanadigan yeg'im miqdori</label>
+                                                                    <!-- Additional phone field -->
+                                                                    <div data-repeater-item="" class="inner mb-3 row">
+                                                                        <div class="col-8">
+                                                                            <input type="text" class="form-control" id="company_kubmetr" placeholder="Metr Kub"
+                                                                                name="company_kubmetr[]">
+                                                                        </div>
+                                                                        <div class="col-4">
+                                                                            <div class="d-grid">
+                                                                                <input data-repeater-delete="" type="button" class="btn btn-primary inner" value="Delete">
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <input data-repeater-create="" type="button" class="btn btn-success inner" value="Add Number">
+                                                            </div>
+                                                        </div> --}}
+                                                        
+                                                    
+                                                        <div class="col-lg-4">
+                                                            <div class="mb-3">
+                                                                <label for="minimum_wage">Bazaviy xisoblash miqdori</label>
+                                                                <input type="text" class="form-control" id="minimum_wage" placeholder="340 min" value="340"
+                                                                    name="minimum_wage">
+                                                            </div>
+                                                        </div>
+                                                    
+                                                        <div class="col-lg-4">
+                                                            <div class="mb-3">
+                                                                <label for="generate_price">Jami to'lanishi kerak bo'gan miqdor</label>
+                                                                <input type="text" class="form-control" id="generate_price" name="generate_price"
+                                                                    placeholder="------------" disabled>
+                                                            </div>
+                                                        </div>
+                    
+                                                           <!-- jQuery -->
+                                                           <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+                                                           <!-- Repeater Plugin -->
+                                                           <script src="https://cdn.jsdelivr.net/npm/jquery.repeater/jquery.repeater.min.js"></script>
+                       
+                                                           <script>
+                                                               $(document).ready(function() {
+                                                                   $('.inner-repeater').repeater({
+                                                                   });
+                       
+                                                                   $('[data-repeater-create]').prop('disabled', false);
+                                                               });
+                                                           </script>
+                    
+                    
+                                                            <script>
+                                                                $(document).ready(function () {
+                                                                    // Function to calculate generate_price
+                                                                    function calculateGeneratePrice() {
+                                                                        var companyKubmetr = $('#company_kubmetr').val();
+                                                                        var minimumWage = $('#minimum_wage').val();
+                                                                        var generatePrice = companyKubmetr * minimumWage;
+                                                                        $('#generate_price').val(generatePrice.toFixed(2));
+                                                                    }
+                    
+                                                                    // Event listener for input fields
+                                                                    $('#company_kubmetr, #minimum_wage').on('input', function () {
+                                                                        calculateGeneratePrice();
+                                                                    });
+                    
+                                                                    // Initialize generate_price on page load
+                                                                    calculateGeneratePrice();
+                                                                });
+                                                            </script>
+                       
+                                                    </div>
+                                                    <div class="row">
+                    
+                                                        <div class="col-lg-4">
+                                                            <div class="mb-3">
+                                                                <label>To'lash turlari</label>
+                                                                <select class="form-select">
+                                                                    <option selected>To'lash turini tanlang</option>
+                                                                    <option value="pay_full">To'liq xajimda to'lash </option>
+                                                                    <option value="pay_bolib">Bo'lib to'lash</option>
+                                                                    <option value="pay_kvartalniy">Kvartalniy</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                    
+                                                        <div class="col-lg-4">
+                                                            <div class="mb-3">
+                                                                <label for="basicpill-expiration-input">Bo'lib to'lash foizi oldindan </label>
+                                                                <input type="text" class="form-control" id="basicpill-expiration-input"
+                                                                    placeholder="20% ">
+                                                            </div>
+                                                        </div>
+                    
+                                                        <div class="col-lg-4">
+                                                            <div class="mb-3">
+                                                                <label for="basicpill-expiration-input">Bo'lib to'lash kvartalniy</label>
+                                                                <input type="text" class="form-control" id="basicpill-expiration-input"
+                                                                    placeholder="Bo'lib to'lash kvartalniy ">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </main>
+                                              
+                                            </div>
                                         </div>
                                     </div>
-
-                                       <!-- jQuery -->
-                                       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-                                       <!-- Repeater Plugin -->
-                                       <script src="https://cdn.jsdelivr.net/npm/jquery.repeater/jquery.repeater.min.js"></script>
-   
-                                       <script>
-                                           $(document).ready(function() {
-                                               $('.inner-repeater').repeater({
-                                               });
-   
-                                               $('[data-repeater-create]').prop('disabled', false);
-                                           });
-                                       </script>
-
-
-                                        <script>
-                                            $(document).ready(function () {
-                                                // Function to calculate generate_price
-                                                function calculateGeneratePrice() {
-                                                    var companyKubmetr = $('#company_kubmetr').val();
-                                                    var minimumWage = $('#minimum_wage').val();
-                                                    var generatePrice = companyKubmetr * minimumWage;
-                                                    $('#generate_price').val(generatePrice.toFixed(2));
-                                                }
-
-                                                // Event listener for input fields
-                                                $('#company_kubmetr, #minimum_wage').on('input', function () {
-                                                    calculateGeneratePrice();
-                                                });
-
-                                                // Initialize generate_price on page load
-                                                calculateGeneratePrice();
-                                            });
-                                        </script>
-   
-                                </div>
-                                <div class="row">
-
-                                    <div class="col-lg-4">
-                                        <div class="mb-3">
-                                            <label>To'lash turlari</label>
-                                            <select class="form-select">
-                                                <option selected>To'lash turini tanlang</option>
-                                                <option value="pay_full">To'liq xajimda to'lash </option>
-                                                <option value="pay_bolib">Bo'lib to'lash</option>
-                                                <option value="pay_kvartalniy">Kvartalniy</option>
-                                            </select>
+                                    <div class="accordion-item">
+                                        <h2 class="accordion-header" id="flush-headingThree">
+                                            <button class="accordion-button fw-medium" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="true" aria-controls="flush-collapseThree">
+                                            Accordion Item #3
+                                            </button>
+                                        </h2>
+                                        <div id="flush-collapseThree" class="accordion-collapse collapse show" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample" style="">
+                                            <div class="accordion-body text-muted">
+                                                <main class="main_of_objects">
+                                                    <div class="row">
+                                                        <div class="col-lg-6">
+                                                            <div class="mb-3">
+                                                                <label for="basicpill-firstname-input">APT Raqami</label>
+                                                                <input type="text" class="form-control" id="basicpill-firstname-input"
+                                                                    placeholder="APT" name="contract_apt">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-6">
+                                                            <div class="mb-3">
+                                                                <label for="basicpill-lastname-input">Sanasi</label>
+                    
+                                                                <input class="form-control" type="datetime-local"
+                                                                    id="example-datetime-local-input" name="contract_date">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row" data-repeater-item="">
+                                                        <div class="col-lg-4">
+                                                            <div class="mb-3">
+                                                                <label for="basicpill-namecard-input">Loyixa Turi</label>
+                                                                <input type="text" class="form-control" id="basicpill-namecard-input"
+                                                                    placeholder="Loyixa Turi" name="company_type">
+                                                            </div>
+                                                        </div>
+                    
+                                                        <div class="col-lg-4">
+                                                            <div class="mb-3">
+                                                                <label for="basicpill-namecard-input">Loyixa Manzili</label>
+                                                                <input type="text" class="form-control" id="basicpill-namecard-input"
+                                                                    placeholder="Loyixa Manzili" name="company_location">
+                                                            </div>
+                                                        </div>
+                    
+                                                        <div class="col-lg-4">
+                                                            <div class="mb-3">
+                                                                <label for="basicpill-namecard-input">Loyixa Nomi</label>
+                                                                <input type="text" class="form-control" id="basicpill-namecard-input"
+                                                                    placeholder="Loyixa Manzili" name="company_name">
+                                                            </div>
+                                                        </div>
+                    
+                    
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-lg-4">
+                                                            <div class="mb-3">
+                                                                <label for="company_kubmetr">Obyekt bo'yicha tolanadigan yeg'im
+                                                                    miqdori</label>
+                                                                <input type="text" class="form-control" id="company_kubmetr"
+                                                                    placeholder="Metr Kub" name="company_kubmetr">
+                                                            </div>
+                                                        </div>
+                                                        {{-- <div class="col-lg-4">
+                                                            <div class="inner-repeater mb-4">
+                                                                <div data-repeater-list="inner-group" class="inner mb-3">
+                                                                    <label for="company_kubmetr">Obyekt bo'yicha tolanadigan yeg'im miqdori</label>
+                                                                    <!-- Additional phone field -->
+                                                                    <div data-repeater-item="" class="inner mb-3 row">
+                                                                        <div class="col-8">
+                                                                            <input type="text" class="form-control" id="company_kubmetr" placeholder="Metr Kub"
+                                                                                name="company_kubmetr[]">
+                                                                        </div>
+                                                                        <div class="col-4">
+                                                                            <div class="d-grid">
+                                                                                <input data-repeater-delete="" type="button" class="btn btn-primary inner" value="Delete">
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <input data-repeater-create="" type="button" class="btn btn-success inner" value="Add Number">
+                                                            </div>
+                                                        </div> --}}
+                                                        
+                                                    
+                                                        <div class="col-lg-4">
+                                                            <div class="mb-3">
+                                                                <label for="minimum_wage">Bazaviy xisoblash miqdori</label>
+                                                                <input type="text" class="form-control" id="minimum_wage" placeholder="340 min" value="340"
+                                                                    name="minimum_wage">
+                                                            </div>
+                                                        </div>
+                                                    
+                                                        <div class="col-lg-4">
+                                                            <div class="mb-3">
+                                                                <label for="generate_price">Jami to'lanishi kerak bo'gan miqdor</label>
+                                                                <input type="text" class="form-control" id="generate_price" name="generate_price"
+                                                                    placeholder="------------" disabled>
+                                                            </div>
+                                                        </div>
+                    
+                                                           <!-- jQuery -->
+                                                           <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+                                                           <!-- Repeater Plugin -->
+                                                           <script src="https://cdn.jsdelivr.net/npm/jquery.repeater/jquery.repeater.min.js"></script>
+                       
+                                                           <script>
+                                                               $(document).ready(function() {
+                                                                   $('.inner-repeater').repeater({
+                                                                   });
+                       
+                                                                   $('[data-repeater-create]').prop('disabled', false);
+                                                               });
+                                                           </script>
+                    
+                    
+                                                            <script>
+                                                                $(document).ready(function () {
+                                                                    // Function to calculate generate_price
+                                                                    function calculateGeneratePrice() {
+                                                                        var companyKubmetr = $('#company_kubmetr').val();
+                                                                        var minimumWage = $('#minimum_wage').val();
+                                                                        var generatePrice = companyKubmetr * minimumWage;
+                                                                        $('#generate_price').val(generatePrice.toFixed(2));
+                                                                    }
+                    
+                                                                    // Event listener for input fields
+                                                                    $('#company_kubmetr, #minimum_wage').on('input', function () {
+                                                                        calculateGeneratePrice();
+                                                                    });
+                    
+                                                                    // Initialize generate_price on page load
+                                                                    calculateGeneratePrice();
+                                                                });
+                                                            </script>
+                       
+                                                    </div>
+                                                    <div class="row">
+                    
+                                                        <div class="col-lg-4">
+                                                            <div class="mb-3">
+                                                                <label>To'lash turlari</label>
+                                                                <select class="form-select">
+                                                                    <option selected>To'lash turini tanlang</option>
+                                                                    <option value="pay_full">To'liq xajimda to'lash </option>
+                                                                    <option value="pay_bolib">Bo'lib to'lash</option>
+                                                                    <option value="pay_kvartalniy">Kvartalniy</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                    
+                                                        <div class="col-lg-4">
+                                                            <div class="mb-3">
+                                                                <label for="basicpill-expiration-input">Bo'lib to'lash foizi oldindan </label>
+                                                                <input type="text" class="form-control" id="basicpill-expiration-input"
+                                                                    placeholder="20% ">
+                                                            </div>
+                                                        </div>
+                    
+                                                        <div class="col-lg-4">
+                                                            <div class="mb-3">
+                                                                <label for="basicpill-expiration-input">Bo'lib to'lash kvartalniy</label>
+                                                                <input type="text" class="form-control" id="basicpill-expiration-input"
+                                                                    placeholder="Bo'lib to'lash kvartalniy ">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </main>
+                                                  
+                                            </div>
                                         </div>
                                     </div>
+                                  </div>
 
-                                    <div class="col-lg-4">
-                                        <div class="mb-3">
-                                            <label for="basicpill-expiration-input">Bo'lib to'lash foizi oldindan </label>
-                                            <input type="text" class="form-control" id="basicpill-expiration-input"
-                                                placeholder="20% ">
-                                        </div>
-                                    </div>
+                              
+                                 
+                             
+                              
 
-                                    <div class="col-lg-4">
-                                        <div class="mb-3">
-                                            <label for="basicpill-expiration-input">Bo'lib to'lash kvartalniy</label>
-                                            <input type="text" class="form-control" id="basicpill-expiration-input"
-                                                placeholder="Bo'lib to'lash kvartalniy ">
-                                        </div>
-                                    </div>
-                                </div>
+
+
                             </section>
 
                             <!-- Confirm Details -->
