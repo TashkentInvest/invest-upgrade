@@ -39,7 +39,7 @@ class CompanyController extends Controller
             'name' => $request->get('name'),
             'raxbar' => $request->get('raxbar'),
             'company_location' => $request->get('company_location'),
-            'company_kubmetr' => $request->get('company_kubmetr'),
+            'branch_kubmetr' => $request->get('branch_kubmetr'),
         ]);
         
 
@@ -66,7 +66,7 @@ class CompanyController extends Controller
         $client->name = $request->get('name');
         $client->raxbar = $request->get('raxbar');
         $client->company_location = $request->get('company_location');
-        $client->company_kubmetr = $request->get('company_kubmetr');
+        $client->branch_kubmetr = $request->get('branch_kubmetr');
         $client->save();
 
         if (auth()->user()->can('client.edit'))

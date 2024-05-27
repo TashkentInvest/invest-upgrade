@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Blade;
 
 use App\Exports\ProductsExport;
 use App\Http\Controllers\Controller;
+use App\Models\Branch;
 use App\Models\Client;
 use App\Models\Company;
 use Illuminate\Http\Request;
@@ -63,11 +64,11 @@ class ProductController extends Controller
                 'contact' => $request->get('contact'),
                 'passport_serial' => $request->get('passport_serial'),
                 'passport_pinfl' => $request->get('passport_pinfl'),
-                'yuridik_address' => $request->get('yuridik_address'),
-                'yuridik_rekvizid' => $request->get('yuridik_rekvizid'),
                 'passport_date' => $request->get('passport_date'),
                 'passport_location' => $request->get('passport_location'),
                 'passport_type' => $request->get('passport_type', 0) ,
+                'yuridik_address' => $request->get('yuridik_address'),
+                'yuridik_rekvizid' => $request->get('yuridik_rekvizid'),
 
             ]);
 
@@ -80,24 +81,29 @@ class ProductController extends Controller
                 'client_id' => $client->id,
                 'company_location' => $accordion['company_location'] ?? null,
                 'company_type' => $accordion['company_type'] ?? null,
-                'company_kubmetr' => $accordion['company_kubmetr'] ?? null,
                 'company_name' => $accordion['company_name'] ?? null,
-                'contract_apt' => $accordion['contract_apt'] ?? null,
-                'contract_date' => $accordion['contract_date'] ?? null,
                 'raxbar' => $accordion['raxbar'] ?? null,
                 'bank_code' => $accordion['bank_code'] ?? null,
                 'bank_service' => $accordion['bank_service'] ?? null,
                 'stir' => $accordion['stir'] ?? null,
                 'oked' => $accordion['oked'] ?? null,
+            ]);
+
+
+            $branch = Branch::create([
+                'company_id' => $company->id,
+                'contract_apt' => $accordion['contract_apt'] ?? null,
+                'contract_date' => $accordion['contract_date'] ?? null,
+                'branch_kubmetr' => $accordion['branch_kubmetr'] ?? null,
                 'generate_price' => $accordion['generate_price'] ?? null,
                 'payment_type' => $accordion['payment_type'] ?? null,
                 'percentage_input' => $accordion['percentage_input'] ?? null,
                 'installment_quarterly' => $accordion['installment_quarterly'] ?? null,
-
             ]);
-        
+
+            
             Products::create([
-                'company_id' => $company->id,
+                'user_id'=> auth()->user()->id,
                 'client_id' => $client->id,
                 'minimum_wage' => $accordion['minimum_wage'],
                 'created_at' => Carbon::today(),
@@ -161,7 +167,7 @@ class ProductController extends Controller
             $company->update([
                 'company_location' => $request->company_location,
                 'company_type' => $request->company_type,
-                'company_kubmetr' => $request->company_kubmetr,
+                'branch_kubmetr' => $request->branch_kubmetr,
                 'company_name' => $request->company_name,
             ]);
     

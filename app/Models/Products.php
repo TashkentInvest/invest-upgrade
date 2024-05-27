@@ -11,9 +11,10 @@ class Products extends Model
     protected $table = 'products';
 
     protected $fillable = [
+        'user_id',
         'client_id',
-        'company_id',
-        'minimum_wage'
+        'minimum_wage',
+        'status'
     ];
     public function public_path():string
     {
@@ -49,7 +50,4 @@ class Products extends Model
         return $this->belongsTo(Company::class);
     }
 
-    public function category(){
-        return $this->belongsTo(Category::class);
-    }
 }

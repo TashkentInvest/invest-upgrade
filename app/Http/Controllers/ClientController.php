@@ -62,7 +62,7 @@ class ClientController extends Controller
         //     'client_id' => $client_id, 
         //     'company_location' => $request->get('company_location'),
         //     'company_type' => $request->get('company_type'),
-        //     'company_kubmetr' => $request->get('company_kubmetr'), 
+        //     'branch_kubmetr' => $request->get('branch_kubmetr'), 
         //     'company_name' => $request->get('company_name'), 
         // ]);
         

@@ -21,7 +21,7 @@
              
 
                 <!-- regions and districts start -->
-                <li class="{{ (Request::is('region*') || Request::is('district*') ) ? 'mm-active':''}}">
+                {{-- <li class="{{ (Request::is('region*') || Request::is('district*') ) ? 'mm-active':''}}">
                     <a href="javascript: void(0);" class="has-arrow waves-effect {{ (Request::is('region*') || Request::is('district*') ) ? 'mm-active':''}}">
                         <i class="fas fa-globe-asia"></i>
                         <span>@lang('cruds.regions_districts.title')</span>
@@ -41,7 +41,7 @@
                             </a>
                         </li>
                     </ul>
-                </li>
+                </li> --}}
                 <!-- regions and districts end -->
 
                 <!-- other menu -->

@@ -11,23 +11,15 @@ class Company extends Model
 
     protected $fillable = [
         'client_id',
-        'region_id',
         'company_name',
         'raxbar',
         'company_location',
         'company_type',
-        'company_kubmetr',
-        'contract_apt',
-        'contract_date',
+        'branch_kubmetr',
         'bank_code',
         'bank_service',
         'stir',
         'oked',
-        'generate_price',
-        'payment_type',
-        'percentage_input',
-        'installment_quarterly',
-
     ];
 
     public function user()
@@ -49,5 +41,10 @@ class Company extends Model
     public function products()
     {
         return $this->hasMany(Products::class);
+    }
+
+    public function branches()
+    {
+        return $this->hasMany(Branch::class);
     }
 }

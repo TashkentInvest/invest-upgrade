@@ -295,9 +295,9 @@
                                                                     <label for="basicpill-cardno-input">Obyekt bo'yicha
                                                                         tolanadigan yeg'im miqdori</label>
                                                                     <input type="number"
-                                                                        class="form-control company_kubmetr"
+                                                                        class="form-control branch_kubmetr"
                                                                         placeholder="Metr Kub"
-                                                                        name="accordions[0][company_kubmetr]">
+                                                                        name="accordions[0][branch_kubmetr]">
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -448,13 +448,13 @@
                                         accordion.find('.total-quarterly-payment').text('0.00');
                                     });
                             
-                                    $(document).on('input change', '.company_kubmetr, .minimum_wage, .percentage-input, .quarterly-input', function() {
+                                    $(document).on('input change', '.branch_kubmetr, .minimum_wage, .percentage-input, .quarterly-input', function() {
                                         let parentAccordion = $(this).closest('.accordion-body');
                                         calculateGeneratePrice(parentAccordion);
                                     });
                             
                                     function calculateGeneratePrice(parentAccordion) {
-                                        let companyKubmetr = parentAccordion.find('.company_kubmetr').val();
+                                        let companyKubmetr = parentAccordion.find('.branch_kubmetr').val();
                                         let minimumWage = parentAccordion.find('.minimum_wage').val();
                                         let generatePrice = companyKubmetr * minimumWage;
                                         parentAccordion.find('.generate_price').val(generatePrice.toFixed(2));

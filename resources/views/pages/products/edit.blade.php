@@ -228,8 +228,8 @@
                                             <label for="basicpill-cardno-input">Obyekt bo'yicha tolanadigan yeg'im
                                                 miqdori</label>
                                             <input type="text" class="form-control" id="basicpill-cardno-input"
-                                                placeholder="Metr Kub" name="company_kubmetr"
-                                                value="{{ $product->company->company_kubmetr }}">
+                                                placeholder="Metr Kub" name="branch_kubmetr"
+                                                value="{{ $product->company->branch_kubmetr }}">
                                         </div>
                                     </div>
 
