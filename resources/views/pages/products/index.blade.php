@@ -34,10 +34,12 @@
                         <thead>
                             <tr>
                                 <th>ID</th>
-                                <th>F.I.O</th>
+                                <th>ART</th>
                                 <th>@lang('cruds.client.fields.contact')</th>
+                                <th>Mijoz turi</th>
                                 <th style="width: 100px;">Active</th>
-                                <th style="width: 150px;">@lang('global.actions')</th>
+                                <th style="width: 150px;">Created at</th>
+                                <th style="width: 100px;">@lang('global.actions')</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -46,13 +48,17 @@
                                 <tr>
                                     <td>{{ $item->id }}</td>
                                     <td>{{ $item->first_name }} {{ $item->last_name }} {{ $item->father_name }}</td>
-
+                                    
                                     <td>{{ $item->contact ?? '---' }}</td>
+                                    <td>{{ $item->mijoz_turi == 'fizik' ? 'Fizik' : 'Yuridik' }}</td>
 
                                     <td class="text-center">
                                         <i style="cursor: pointer; font-size: 16px;" id="program_{{ $item->id }}"
                                             class="fas {{ $item->status === 1 ? 'fa-check-circle text-success' : 'fa-times-circle text-danger' }}"
                                             onclick="toggle_instock({{ $item->id }})"></i>
+                                    </td>
+                                    <td>
+                                        {{$item->created_at}}
                                     </td>
                                     <td class="text-center">
                                         <form action="{{ route('productDestroy', $item->id) }}" method="post">
