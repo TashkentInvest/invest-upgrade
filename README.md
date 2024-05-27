@@ -83,3 +83,11 @@ Bo'lib to'lash foizi oldindan
 Bo'lib to'lash kvartalniy
 
 shulani products/show ga chqazsh kere
+
+product edit fix qlish kere 
+
+backup yozish kere
+
+product showga table chqazsh kere kredit xoblab beradgan
+
+
