@@ -1,4 +1,5 @@
 let a = 340000
+console.log('a: ', a)
 let b = (a * 20) / 100;
 console.log('b: ',b)
 let c  = a - b
