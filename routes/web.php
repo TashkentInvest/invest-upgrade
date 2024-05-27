@@ -57,6 +57,7 @@ Route::group(['middleware' => 'auth'],function (){
     // Products
     Route::get('/products',[ProductController::class, 'index'])->name('productIndex');
     Route::get('/product/add',[ProductController::class, 'add'])->name('productAdd');
+    Route::get('/product/{id}',[ProductController::class, 'show'])->name('productShow');
     Route::post('/product/create',[ProductController::class, 'create'])->name('productCreate');
     Route::get('/product/edit/{id}',[ProductController::class, 'edit'])->name('productEdit');
     // Route::post('/product/update/{id}', [ProductController::class, 'update'])->name('productUpdate');

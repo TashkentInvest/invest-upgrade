@@ -36,6 +36,15 @@ class ProductController extends Controller
         return view('pages.products.index', compact('products','clients'));
     }
 
+    public function show($id)
+    {
+        $product = Products::where('id', $id)->with('company')->get()->first();
+        $client = Client::where('id', $id)->get()->first();
+
+        return view('pages.products.show', compact('product','client'));
+    }
+
+
     public function add()
     {
         $regions = Regions::get()->all();
