@@ -21,72 +21,75 @@
     <div class="row">
         <div class="col-12">
             <div class="card">
-                <div class="card-header">
-                    <h3 class="card-title">@lang('cruds.branches.title') - {{ $client->id }}</h3>
-                    <a href="{{ route('productAdd') }}" class="btn btn-sm btn-success waves-effect waves-light float-right">
-                        <span class="fas fa-plus-circle"></span>
-                        @lang('global.add')
-                    </a>
-                </div>
                 <div class="card-body">
-
+                    <div class="btn-toolbar">
+                        <div class="btn-group focus-btn-group">
+                            <button type="button" class="btn btn-default btn-primary">
+                                <span class="glyphicon glyphicon-screenshot"></span> Focus
+                            </button>
+                        </div>
+                        <div class="btn-group dropdown-btn-group pull-right">
+                            <button type="button" class="btn btn-default">Display all</button>
+                            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                Display <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu">
+                                @php
+                                    $columns = [
+                                        ['name' => 'ID', 'data-priority' => 1, 'default' => true],
+                                        ['name' => 'company name', 'data-priority' => 2, 'default' => true],
+                                        ['name' => 'F.I.O', 'data-priority' => 3, 'default' => true],
+                                        ['name' => 'Contact', 'data-priority' => 4, 'default' => true],
+                                        ['name' => 'Mijoz Turi', 'data-priority' => 5, 'default' => true],
+                                        ['name' => 'Name', 'data-priority' => 6, 'default' => true],
+                                        ['name' => 'Last Name', 'data-priority' => 7, 'default' => true],
+                                        ['name' => 'Father Name', 'data-priority' => 8, 'default' => true],
+                                        ['name' => 'Passport Serial', 'data-priority' => 9, 'default' => false],
+                                        ['name' => 'Passport Pinfl', 'data-priority' => 10, 'default' => false],
+                                        ['name' => 'Yuridik Address', 'data-priority' => 11, 'default' => false],
+                                        ['name' => 'Yuridik Rekvizid', 'data-priority' => 12, 'default' => false],
+                                        ['name' => 'Contact', 'data-priority' => 13, 'default' => true],
+                                        ['name' => 'Active', 'data-priority' => 14, 'default' => true],
+                                        ['name' => 'Actions', 'data-priority' => 15, 'default' => true]
+                                    ];
+                                @endphp
+                                @foreach ($columns as $index => $column)
+                                    <li class="checkbox-row">
+                                        <input type="checkbox" class="toggle-column" id="toggle-column-{{ $index }}" data-column="{{ $index }}" {{ $column['default'] ? 'checked' : '' }}>
+                                        <label for="toggle-column-{{ $index }}">{{ $column['name'] }}</label>
+                                    </li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    </div>
+        
                     <!-- Data table -->
-                    <table id="datatable" class="table table-bordered dt-responsive w-100">
+                    <table id="tech-companies-1" class="table table-striped focus-on">
                         <thead>
                             <tr>
-                                <th>ID</th>
-
-                                <th>company name</th>
-
-                                <th>F.I.O</th>
-
-                                <th>@lang('cruds.client.fields.contact')</th>
-
-                                <th>Mijoz Turi</th>
-                                <th>Name</th>
-                                <th>Last Name</th>
-                                <th>Father Name</th>
-                                <th>Passport Serial</th>
-
-                                <th>Passport Pinfl</th>
-                                <th>Yuridik Address</th>
-                                <th>Yuridik Rekvizid</th>
-                                <th>Contact</th>
-
-                                <th style="width: 100px;">Active</th>
-                                <th style="width: 150px;">@lang('global.actions')</th>
+                                @foreach ($columns as $index => $column)
+                                    <th data-priority="{{ $column['data-priority'] }}" class="{{ $column['default'] ? '' : 'd-none' }}">{{ $column['name'] }}</th>
+                                @endforeach
                             </tr>
                         </thead>
                         <tbody>
                             {{-- @dump($client->companies[0]->company_name ) --}}
-
+        
                             @if (isset($client))
                                 <tr>
                                     <td>{{ $client->id }}</td>
-
                                     <td>{{ $client->companies[0]->company_name }}</td>
-
-
                                     <td>{{ $client->first_name }} {{ $client->last_name }} {{ $client->father_name }}</td>
-
                                     <td>{{ $client->contact ?? '---' }}</td>
-
-
                                     <td>{{ $client->mijoz_turi }}</td>
                                     <td>{{ $client->first_name }}</td>
-
-
                                     <td>{{ $client->last_name }}</td>
                                     <td>{{ $client->father_name }}</td>
-
-                                    <td>{{ $client->passport_serial }}</td>
-                                    <td>{{ $client->passport_pinfl }}</td>
-
-                                    <td>{{ $client->yuridik_address }}</td>
-
-                                    <td>{{ $client->yuridik_rekvizid }}</td>
+                                    <td class="d-none">{{ $client->passport_serial }}</td>
+                                    <td class="d-none">{{ $client->passport_pinfl }}</td>
+                                    <td class="d-none">{{ $client->yuridik_address }}</td>
+                                    <td class="d-none">{{ $client->yuridik_rekvizid }}</td>
                                     <td>{{ $client->contact }}</td>
-
                                     <td class="text-center">
                                         <i style="cursor: pointer; font-size: 16px;" id="program_{{ $client->id }}"
                                             class="fas {{ $client->status === 1 ? 'fa-check-circle text-success' : 'fa-times-circle text-danger' }}"
@@ -96,42 +99,31 @@
                                         <form action="{{ route('productDestroy', $client->id) }}" method="post">
                                             @csrf
                                             <ul class="list-unstyled hstack gap-1 mb-0">
-
-                                                <li data-bs-toggle="tooltip" data-bs-placement="top"
-                                                    title="@lang('global.edit')">
+                                                <li data-bs-toggle="tooltip" data-bs-placement="top" title="@lang('global.edit')">
                                                     <a href="{{ route('productEdit', $client->id) }}" class="btn btn-info">
                                                         <i class="bx bxs-edit" style="font-size:16px;"></i>
                                                     </a>
                                                 </li>
                                                 <input name="_method" type="hidden" value="DELETE">
-                                                <li data-bs-toggle="tooltip" data-bs-placement="top"
-                                                    title="@lang('global.delete')">
-                                                    <button onclick="if (confirm('Вы уверены?')) { this.form.submit() }"
-                                                        type="button" data-bs-toggle="modal" class="btn btn-danger">
+                                                <li data-bs-toggle="tooltip" data-bs-placement="top" title="@lang('global.delete')">
+                                                    <button onclick="if (confirm('Вы уверены?')) { this.form.submit() }" type="button" data-bs-toggle="modal" class="btn btn-danger">
                                                         <i class="bx bxs-trash" style="font-size: 16px;"></i>
                                                     </button>
                                                 </li>
-
-                                                <li data-bs-toggle="tooltip" data-bs-placement="top"
-                                                    title="@lang('global.downloadFile')">
-                                                    <a href="{{ route('download.table.data', $client->id) }}"
-                                                        class="btn btn-warning">
+                                                <li data-bs-toggle="tooltip" data-bs-placement="top" title="@lang('global.downloadFile')">
+                                                    <a href="{{ route('download.table.data', $client->id) }}" class="btn btn-warning">
                                                         <i class="bx bxs-download" style="font-size: 16px;"></i>
                                                     </a>
                                                 </li>
                                             </ul>
                                         </form>
-
                                     </td>
                                 </tr>
                             @endif
                         </tbody>
                     </table>
                 </div>
-
-
             </div>
-
         </div>
 
 
@@ -213,6 +205,40 @@
 @endsection
 
 @section('scripts')
+
+
+@section('scripts')
+<script>
+    $(document).ready(function() {
+        $('.toggle-column').change(function() {
+            var column = $(this).data('column');
+            var isChecked = $(this).is(':checked');
+            var table = $('#tech-companies-1');
+
+            table.find('tr').each(function() {
+                if (isChecked) {
+                    $(this).find('th').eq(column).removeClass('d-none');
+                    $(this).find('td').eq(column).removeClass('d-none');
+                } else {
+                    $(this).find('th').eq(column).addClass('d-none');
+                    $(this).find('td').eq(column).addClass('d-none');
+                }
+            });
+        });
+
+        // Hide columns by default
+        $('.toggle-column').each(function() {
+            var column = $(this).data('column');
+            if (!$(this).is(':checked')) {
+                var table = $('#tech-companies-1');
+                table.find('tr').each(function() {
+                    $(this).find('th').eq(column).addClass('d-none');
+                    $(this).find('td').eq(column).addClass('d-none');
+                });
+            }
+        });
+    });
+</script>
     <script>
         function toggle_instock(id) {
             $.ajax({
