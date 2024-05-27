@@ -231,7 +231,6 @@
 
                             </section>
 
-                            <!-- Bank Details -->
                             <h3>Obyekt</h3>
     <section>
         <div class="accordion accordion-flush" id="accordionFlushExample">
@@ -373,6 +372,21 @@
                                     </table>
                                 </div>
                             </div>
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th>Chorak</th>
+                                                <th>To'lanadigan miqdor</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody class="quarterly-payment-schedule">
+                                            <!-- Quarterly payment rows will be added here -->
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
                         </main>
                     </div>
                 </div>
@@ -419,16 +433,17 @@
                 let generatePrice = companyKubmetr * minimumWage;
                 parentAccordion.find('.generate_price').val(generatePrice.toFixed(2));
 
-                let percentageInput = parentAccordion.find('.percentage-input').val();
-                let quarterlyInput = parentAccordion.find('.quarterly-input').val();
+                let percentageInput = parseFloat(parentAccordion.find('.percentage-input').val());
+                let quarterlyInput = parseInt(parentAccordion.find('.quarterly-input').val());
 
-                if (percentageInput && quarterlyInput && generatePrice) {
+                if (!isNaN(generatePrice) && !isNaN(percentageInput) && !isNaN(quarterlyInput) && quarterlyInput > 0) {
                     let z = (generatePrice * percentageInput) / 100;
                     let n = generatePrice - z;
                     let y = n / quarterlyInput;
                     parentAccordion.find('.calculated-quarterly-payment').val(y.toFixed(2));
 
                     updatePaymentSchedule(parentAccordion, generatePrice);
+                    updateQuarterlyPaymentSchedule(parentAccordion, y, quarterlyInput);
                 }
             }
 
@@ -451,6 +466,19 @@
                 });
             }
 
+            function updateQuarterlyPaymentSchedule(parentAccordion, quarterlyPayment, quarterlyCount) {
+                let quarterlyPaymentSchedule = parentAccordion.find('.quarterly-payment-schedule');
+                quarterlyPaymentSchedule.empty();
+                for (let i = 1; i <= quarterlyCount; i++) {
+                    quarterlyPaymentSchedule.append(
+                        `<tr>
+                            <td>Quarter ${i}</td>
+                            <td>${quarterlyPayment.toFixed(2)}</td>
+                        </tr>`
+                    );
+                }
+            }
+
             $(document).on('change', '.payment-type', function() {
                 let parentAccordion = $(this).closest('.accordion-body');
                 let paymentType = $(this).val();
@@ -462,6 +490,7 @@
                     quarterlyInput.val('').prop('disabled', true);
                     parentAccordion.find('.calculated-quarterly-payment').val('N/A');
                     parentAccordion.find('.payment-schedule').empty();
+                    parentAccordion.find('.quarterly-payment-schedule').empty();
                 } else {
                     percentageInput.prop('disabled', false);
                     quarterlyInput.prop('disabled', false);
@@ -473,6 +502,7 @@
             calculateGeneratePrice($('.accordion-item').first().find('.accordion-body'));
         });
     </script>
+                            
 
                             <!-- Confirm Details -->
                             <h3>Tasdiqlash</h3>
