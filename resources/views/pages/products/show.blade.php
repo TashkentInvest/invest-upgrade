@@ -59,14 +59,7 @@
                                         <form action="{{ route('productDestroy', $client->id) }}" method="post">
                                             @csrf
                                             <ul class="list-unstyled hstack gap-1 mb-0">
-                                                <li data-bs-toggle="tooltip" data-bs-placement="top"
-                                                    title="@lang('global.details')">
-                                                    <button type="button" data-bs-toggle="modal"
-                                                        data-bs-target="#exampleModal_{{ $client->id }}"
-                                                        class="btn btn-primary">
-                                                        <i class="bx bxs-show" style="font-size:16px;"></i>
-                                                    </button>
-                                                </li>
+                                               
                                                 <li data-bs-toggle="tooltip" data-bs-placement="top"
                                                     title="@lang('global.edit')">
                                                     <a href="{{ route('productEdit', $client->id) }}" class="btn btn-info">
