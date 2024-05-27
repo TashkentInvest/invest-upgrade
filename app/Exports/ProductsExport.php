@@ -70,9 +70,21 @@ class ProductsExport implements FromCollection, WithHeadings, WithColumnFormatti
             'H' => 20
         ];
     }
-
     public static function downloadTableData($id)
     {
-        return Excel::download(new ProductsExport($id), 'products_data.xls');
+        // Retrieve client details
+        $client = Client::find($id);
+
+        // Generate file name with current date, client's first name, and last name
+        $fileName = 'products_data_' . $client->first_name . '_' . $client->last_name . '_' . now()->format('Y-m-d') . '.xls';
+
+        // Download Excel file with dynamically generated file name
+        return Excel::download(new ProductsExport($id), $fileName);
     }
+
+
+    // public static function downloadTableData($id)
+    // {
+    //     return Excel::download(new ProductsExport($id), 'products_data.xls');
+    // }
 }

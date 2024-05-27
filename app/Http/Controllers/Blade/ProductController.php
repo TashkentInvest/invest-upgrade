@@ -18,12 +18,16 @@ use Maatwebsite\Excel\Facades\Excel;
 
 class ProductController extends Controller
 {
-    public function downloadTableData($id)
+     public function downloadTableData($id)
     {
-        // Export the data to Excel using the ProductsExport class
-        return Excel::download(new ProductsExport($id), 'products_data.xls');
-        // return Excel::download(new ProductsExport($id, $clientName), 'products_data_' . $clientName . '.xls');
-// 
+        // Retrieve client details
+        $client = Client::find($id);
+        
+        // Generate file name with current date, client's first name, and last name
+        $fileName = 'products_data_' . $client->first_name . '_' . $client->last_name . '_' . Carbon::now()->format('Y-m-d') . '.xls';
+
+        // Export the data to Excel using the ProductsExport class with dynamically generated file name
+        return Excel::download(new ProductsExport($id), $fileName);
     }
     public function index()
     {
