@@ -6,9 +6,12 @@ use App\Models\Client;
 use Illuminate\Support\Facades\DB;
 use Maatwebsite\Excel\Concerns\FromCollection;
 use Maatwebsite\Excel\Concerns\WithHeadings;
+use Maatwebsite\Excel\Concerns\WithColumnFormatting;
+use Maatwebsite\Excel\Concerns\ShouldAutoSize;
+use PhpOffice\PhpSpreadsheet\Worksheet\Worksheet;
 use Maatwebsite\Excel\Facades\Excel;
 
-class ProductsExport implements FromCollection, WithHeadings
+class ProductsExport implements FromCollection, WithHeadings, WithColumnFormatting, ShouldAutoSize
 {
     protected $id;
 
@@ -50,6 +53,21 @@ class ProductsExport implements FromCollection, WithHeadings
             'Company Name',
             'Company Location',
             'Company Raxbar'
+        ];
+    }
+
+    public function columnFormats(): array
+    {
+        // Define column widths
+        return [
+            'A' => 10,
+            'B' => 20,
+            'C' => 20,
+            'D' => 20,
+            'E' => 20,
+            'F' => 20,
+            'G' => 20,
+            'H' => 20
         ];
     }
 
