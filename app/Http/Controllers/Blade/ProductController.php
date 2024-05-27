@@ -147,7 +147,6 @@ class ProductController extends Controller
    
     public function update(Request $request, $client_id)
     {
-
         DB::beginTransaction();
     
         try {
@@ -161,14 +160,11 @@ class ProductController extends Controller
                 'contact' => $request->contact,
                 'passport_serial' => $request->passport_serial,
                 'passport_pinfl' => $request->passport_pinfl,
-                'passport_date' => $request->passport_pinfl,
-                'passport_location' => $request->passport_pinfl,
-                'passport_type' => $request->passport_pinfl,
-
-                'yuridik_address' => $request->yuridik_address,
-                'yuridik_rekvizid' => $request->yuridik_rekvizid,
-                'jamgarma_rekvizitlari' => $request->jamgarma_rekvizitlari,
-                
+                'passport_date' => $request->passport_date, // Corrected
+                'passport_location' => $request->passport_location, // Corrected
+                'passport_type' => $request->passport_type, // Corrected
+                'yuridik_address' => $request->yuridik_address, // Added
+                'yuridik_rekvizid' => $request->yuridik_rekvizid, // Added
             ]);
     
             // Update company information
@@ -181,14 +177,11 @@ class ProductController extends Controller
             ]);
     
             // Update product information
-            $product = Products::where('company_id', $company->id)
-                                ->where('client_id', $client_id)
-                                ->firstOrFail();
+            $product = Products::where('client_id', $client_id)->firstOrFail();
             $product->update([
                 'minimum_wage' => $request->minimum_wage,
-                'contract_apt' => $request->get('contract_apt'),
-                'contract_date' => $request->get('contract_date'),
-
+                'contract_apt' => $request->contract_apt,
+                'contract_date' => $request->contract_date,
                 'updated_at' => Carbon::today()
             ]);
     
