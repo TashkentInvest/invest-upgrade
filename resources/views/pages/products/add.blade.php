@@ -437,6 +437,15 @@
                             
                                         accordion.appendTo('#accordionFlushExample');
                                         accordionCount++;
+                                        
+                                        accordion.find('.generate_price').val('');
+                                        accordion.find('.payment-type').val('pay_full').trigger('change');
+                                        accordion.find('.percentage-input').val('0').prop('disabled', true);
+                                        accordion.find('.quarterly-input').val('').prop('disabled', true);
+                                        accordion.find('.calculated-quarterly-payment').val('');
+                                        accordion.find('.payment-schedule').empty();
+                                        accordion.find('.quarterly-payment-schedule').empty();
+                                        accordion.find('.total-quarterly-payment').text('0.00');
                                     });
                             
                                     $(document).on('input change', '.company_kubmetr, .minimum_wage, .percentage-input, .quarterly-input', function() {
