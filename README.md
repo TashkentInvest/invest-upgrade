@@ -77,14 +77,9 @@ yashash manzili
 
 Passport sanasi = type +++
 
-Jami to'lanishi kerak bo'gan miqdor	
-To'lash turlari	
-Bo'lib to'lash foizi oldindan	
-Bo'lib to'lash kvartalniy
+shulani products/show ga chqazsh kere +++
 
-shulani products/show ga chqazsh kere
-
-product edit fix qlish kere 
+product edit fix qlish kere +++
 
 backup yozish kere
 
