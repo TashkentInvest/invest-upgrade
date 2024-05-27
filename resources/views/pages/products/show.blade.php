@@ -23,13 +23,9 @@
             <div class="card">
                 <div class="card-body">
                     <div class="btn-toolbar">
-                        <div class="btn-group focus-btn-group">
-                            <button type="button" class="btn btn-default btn-primary">
-                                <span class="glyphicon glyphicon-screenshot"></span> Focus
-                            </button>
-                        </div>
+                       
                         <div class="btn-group dropdown-btn-group pull-right">
-                            <button type="button" class="btn btn-default">Display all</button>
+                            <button type="button" class="btn btn-default btn btn-primary">Display all</button>
                             <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
                                 Display <span class="caret"></span>
                             </button>
@@ -49,8 +45,8 @@
                                         ['name' => 'Yuridik Address', 'data-priority' => 11, 'default' => false],
                                         ['name' => 'Yuridik Rekvizid', 'data-priority' => 12, 'default' => false],
                                         ['name' => 'Contact', 'data-priority' => 13, 'default' => true],
-                                        ['name' => 'Active', 'data-priority' => 14, 'default' => true],
-                                        ['name' => 'Actions', 'data-priority' => 15, 'default' => true]
+                                        // ['name' => 'Active', 'data-priority' => 14, 'default' => true],
+                                        ['name' => 'Actions', 'data-priority' => 14, 'default' => true]
                                     ];
                                 @endphp
                                 @foreach ($columns as $index => $column)
@@ -64,7 +60,7 @@
                     </div>
         
                     <!-- Data table -->
-                    <table id="tech-companies-1" class="table table-striped focus-on">
+                    <table id="datatable" class="table table-striped focus-on">
                         <thead>
                             <tr>
                                 @foreach ($columns as $index => $column)
@@ -73,8 +69,6 @@
                             </tr>
                         </thead>
                         <tbody>
-                            {{-- @dump($client->companies[0]->company_name ) --}}
-        
                             @if (isset($client))
                                 <tr>
                                     <td>{{ $client->id }}</td>
@@ -90,11 +84,7 @@
                                     <td class="d-none">{{ $client->yuridik_address }}</td>
                                     <td class="d-none">{{ $client->yuridik_rekvizid }}</td>
                                     <td>{{ $client->contact }}</td>
-                                    <td class="text-center">
-                                        <i style="cursor: pointer; font-size: 16px;" id="program_{{ $client->id }}"
-                                            class="fas {{ $client->status === 1 ? 'fa-check-circle text-success' : 'fa-times-circle text-danger' }}"
-                                            onclick="toggle_instock({{ $client->id }})"></i>
-                                    </td>
+                                  
                                     <td class="text-center">
                                         <form action="{{ route('productDestroy', $client->id) }}" method="post">
                                             @csrf
@@ -126,7 +116,7 @@
             </div>
         </div>
 
-
+ 
         <div class="col-12">
             <div class="card">
                 <div class="card-header">
@@ -210,10 +200,11 @@
 @section('scripts')
 <script>
     $(document).ready(function() {
+        // Toggle column visibility
         $('.toggle-column').change(function() {
             var column = $(this).data('column');
             var isChecked = $(this).is(':checked');
-            var table = $('#tech-companies-1');
+            var table = $('#datatable');
 
             table.find('tr').each(function() {
                 if (isChecked) {
@@ -230,13 +221,15 @@
         $('.toggle-column').each(function() {
             var column = $(this).data('column');
             if (!$(this).is(':checked')) {
-                var table = $('#tech-companies-1');
+                var table = $('#datatable');
                 table.find('tr').each(function() {
                     $(this).find('th').eq(column).addClass('d-none');
                     $(this).find('td').eq(column).addClass('d-none');
                 });
             }
         });
+
+     
     });
 </script>
     <script>
