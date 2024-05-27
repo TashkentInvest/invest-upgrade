@@ -437,7 +437,7 @@
                             
                                         accordion.appendTo('#accordionFlushExample');
                                         accordionCount++;
-                                        
+
                                         accordion.find('.generate_price').val('');
                                         accordion.find('.payment-type').val('pay_full').trigger('change');
                                         accordion.find('.percentage-input').val('0').prop('disabled', true);
@@ -499,7 +499,7 @@
                                         for (let i = 1; i <= quarterlyCount; i++) {
                                             quarterlyPaymentSchedule.append(
                                                 `<tr>
-                                                    <td>Quarter ${i}</td>
+                                                    <td>Chorak ${i}</td>
                                                     <td>${quarterlyPayment.toFixed(2)}</td>
                                                 </tr>`
                                             );
