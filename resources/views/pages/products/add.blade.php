@@ -233,206 +233,246 @@
 
                             <!-- Bank Details -->
                             <h3>Obyekt</h3>
-                            <section>
-                                <div class="accordion accordion-flush" id="accordionFlushExample">
-                                    <div class="accordion-item">
-                                        <h2 class="accordion-header" id="flush-headingOne">
-                                            <button class="accordion-button fw-medium collapsed" type="button"
-                                                data-bs-toggle="collapse" data-bs-target="#flush-collapseOne"
-                                                aria-expanded="false" aria-controls="flush-collapseOne">
-                                                Accordion Item #0
-                                            </button>
-                                        </h2>
-                                        <div id="flush-collapseOne" class="accordion-collapse collapse show"
-                                            aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
-                                            <div class="accordion-body text-muted">
-                                                <main class="main_of_objects">
-                                                    <div class="row">
-                                                        <div class="col-lg-6">
-                                                            <div class="mb-3">
-                                                                <label for="contract_apt">Ruxsatnoma raqami</label>
-                                                                <input type="text" class="form-control"
-                                                                    name="accordions[0][contract_apt]" placeholder="Ruxsatnoma raqami">
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-lg-6">
-                                                            <div class="mb-3">
-                                                                <label for="contract_date">Sanasi</label>
-                                                                <input class="form-control" type="datetime-local"
-                                                                    name="accordions[0][contract_date]">
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="row">
-                                                        <div class="col-lg-4">
-                                                            <div class="mb-3">
-                                                                <label for="company_type">Loyiha Turi</label>
-                                                                <input type="text" class="form-control"
-                                                                    name="accordions[0][company_type]"
-                                                                    placeholder="Loyiha Turi">
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-lg-4">
-                                                            <div class="mb-3">
-                                                                <label for="company_location">Loyiha Manzili</label>
-                                                                <input type="text" class="form-control"
-                                                                    name="accordions[0][company_location]"
-                                                                    placeholder="Loyiha Manzili">
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-lg-4">
-                                                            <div class="mb-3">
-                                                                <label for="company_name">Loyiha Nomi</label>
-                                                                <input type="text" class="form-control"
-                                                                    name="accordions[0][company_name]"
-                                                                    placeholder="Loyiha Nomi">
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="row">
-                                                        <div class="col-4">
-                                                            <div class="inner-repeater mb-4">
-                                                                <div data-repeater-list="inner-group" class="inner mb-3">
-                                                                    <label for="basicpill-cardno-input">Obyekt bo'yicha
-                                                                        tolanadigan yeg'im miqdori</label>
-                                                                    <input type="number"
-                                                                        class="form-control company_kubmetr"
-                                                                        placeholder="Metr Kub"
-                                                                        name="accordions[0][company_kubmetr]">
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-lg-4">
-                                                            <div class="mb-3">
-                                                                <label for="basicpill-card-verification-input">Bazaviy
-                                                                    xisoblash miqdori</label>
-                                                                <input type="number" class="form-control minimum_wage"
-                                                                    placeholder="340 min" value="340000"
-                                                                    name="accordions[0][minimum_wage]">
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-lg-4">
-                                                            <div class="mb-3">
-                                                                <label for="basicpill-card-verification-input">Jami
-                                                                    to'lanishi kerak bo'gan miqdor</label>
-                                                                <input type="text" class="form-control generate_price"
-                                                                    name="accordions[0][generate_price]"
-                                                                    placeholder="------------" readonly>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="row">
-                                                        <div class="col-lg-4">
-                                                            <div class="mb-3">
-                                                                <label>To'lash turlari</label>
-                                                                <select class="form-select payment-type" name="accordions[0][payment_type]">
-                                                                    <option value="pay_full">To'liq xajimda to'lash</option>
-                                                                    <option value="pay_bolib">Bo'lib to'lash</option>
-                                                                </select>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-lg-4">
-                                                            <div class="mb-3">
-                                                                <label for="percentage-input">Bo'lib to'lash foizi oldindan</label>
-                                                                <input type="text" class="form-control percentage-input" name="accordions[0][percentage_input]" placeholder="100%" disabled>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-lg-4">
-                                                            <div class="mb-3">
-                                                                <label for="quarterly-input">Bo'lib to'lash har chorakda</label>
-                                                                <input type="text" class="form-control quarterly-input" name="accordions[0][quarterly_input]" placeholder="Bo'lib to'lash har chorakda" disabled>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-lg-4">
-                                                            <div class="mb-3">
-                                                                <label for="calculated-quarterly-payment">Quarterly Payment</label>
-                                                                <input type="text" class="form-control calculated-quarterly-payment" placeholder="------------" readonly>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </main>
-                                            </div>
+    <section>
+        <div class="accordion accordion-flush" id="accordionFlushExample">
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="flush-headingOne">
+                    <button class="accordion-button fw-medium collapsed" type="button"
+                        data-bs-toggle="collapse" data-bs-target="#flush-collapseOne"
+                        aria-expanded="false" aria-controls="flush-collapseOne">
+                        Accordion Item #0
+                    </button>
+                </h2>
+                <div id="flush-collapseOne" class="accordion-collapse collapse show"
+                    aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+                    <div class="accordion-body text-muted">
+                        <main class="main_of_objects">
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="mb-3">
+                                        <label for="contract_apt">Ruxsatnoma raqami</label>
+                                        <input type="text" class="form-control"
+                                            name="accordions[0][contract_apt]" placeholder="Ruxsatnoma raqami">
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="mb-3">
+                                        <label for="contract_date">Sanasi</label>
+                                        <input class="form-control" type="datetime-local"
+                                            name="accordions[0][contract_date]">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-4">
+                                    <div class="mb-3">
+                                        <label for="company_type">Loyiha Turi</label>
+                                        <input type="text" class="form-control"
+                                            name="accordions[0][company_type]"
+                                            placeholder="Loyiha Turi">
+                                    </div>
+                                </div>
+                                <div class="col-lg-4">
+                                    <div class="mb-3">
+                                        <label for="company_location">Loyiha Manzili</label>
+                                        <input type="text" class="form-control"
+                                            name="accordions[0][company_location]"
+                                            placeholder="Loyiha Manzili">
+                                    </div>
+                                </div>
+                                <div class="col-lg-4">
+                                    <div class="mb-3">
+                                        <label for="company_name">Loyiha Nomi</label>
+                                        <input type="text" class="form-control"
+                                            name="accordions[0][company_name]"
+                                            placeholder="Loyiha Nomi">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-4">
+                                    <div class="inner-repeater mb-4">
+                                        <div data-repeater-list="inner-group" class="inner mb-3">
+                                            <label for="basicpill-cardno-input">Obyekt bo'yicha
+                                                tolanadigan yeg'im miqdori</label>
+                                            <input type="number"
+                                                class="form-control company_kubmetr"
+                                                placeholder="Metr Kub"
+                                                name="accordions[0][company_kubmetr]">
                                         </div>
                                     </div>
                                 </div>
-                                <div id="addAccordion" class="btn btn-primary mt-3">Add Accordion</div>
-                            </section>
-                        {{-- foyiz kalkulyator calc --}}
-                            <script>
-                                $(document).ready(function() {
-                                    let accordionCount = 1;
-                        
-                                    $('#addAccordion').on('click', function() {
-                                        let accordion = $('.accordion-item').first().clone();
-                                        let newId = 'flush-collapse' + accordionCount;
-                                        accordion.find('.accordion-collapse').attr('id', newId);
-                                        accordion.find('.accordion-button').attr('data-bs-target', '#' + newId);
-                                        accordion.find('.accordion-header').attr('id', 'flush-heading' + accordionCount);
-                                        accordion.find('.accordion-button').attr('aria-controls', newId);
-                                        accordion.find('.accordion-button').text('Accordion Item #' + accordionCount);
-                        
-                                        accordion.find('input').each(function() {
-                                            let name = $(this).attr('name');
-                                            if (name) { // Ensure the name attribute exists before trying to replace
-                                                let newName = name.replace(/\[0\]/, '[' + accordionCount + ']');
-                                                $(this).attr('name', newName);
-                                            }
-                                            $(this).val('');
-                                            $(this).attr('id', name + '-' + accordionCount); // Adding unique ID for each input
-                                        });
-                        
-                                        accordion.appendTo('#accordionFlushExample');
-                                        accordionCount++;
-                                    });
-                        
-                                    $(document).on('input', '.company_kubmetr, .minimum_wage, .percentage-input, .quarterly-input', function() {
-                                        let parentAccordion = $(this).closest('.accordion-body');
-                                        calculateGeneratePrice(parentAccordion);
-                                    });
-                        
-                                    function calculateGeneratePrice(parentAccordion) {
-                                        let companyKubmetr = parentAccordion.find('.company_kubmetr').val();
-                                        let minimumWage = parentAccordion.find('.minimum_wage').val();
-                                        let generatePrice = companyKubmetr * minimumWage;
-                                        parentAccordion.find('.generate_price').val(generatePrice.toFixed(2));
-                        
-                                        let percentageInput = parentAccordion.find('.percentage-input').val();
-                                        let quarterlyInput = parentAccordion.find('.quarterly-input').val();
-                        
-                                        if (percentageInput) {
-                                            let z = (generatePrice * percentageInput) / 100;
-                                            let n = generatePrice - z;
-                        
-                                            if (quarterlyInput) {
-                                                let y = n / quarterlyInput;
-                                                parentAccordion.find('.calculated-quarterly-payment').val(y.toFixed(2));
-                                            }
-                                        }
-                                    }
-                        
-                                    $(document).on('change', '.payment-type', function() {
-                                        var selectedOption = $(this).val();
-                                        var parentAccordion = $(this).closest('.accordion-body');
-                                        var percentageInput = parentAccordion.find('.percentage-input');
-                                        var quarterlyInput = parentAccordion.find('.quarterly-input');
-                        
-                                        if (selectedOption === 'pay_full') {
-                                            percentageInput.prop('disabled', true);
-                                            quarterlyInput.prop('disabled', true);
-                                            percentageInput.val("100%");
-                                            quarterlyInput.val("");
-                                        } else {
-                                            percentageInput.prop('disabled', false);
-                                            quarterlyInput.prop('disabled', false);
-                                            percentageInput.val("");
-                                        }
-                        
-                                        calculateGeneratePrice(parentAccordion);
-                                    });
-                        
-                                    calculateGeneratePrice($('.accordion-item').first().find('.accordion-body'));
-                                });
-                            </script>
+                                <div class="col-lg-4">
+                                    <div class="mb-3">
+                                        <label for="basicpill-card-verification-input">Bazaviy
+                                            xisoblash miqdori</label>
+                                        <input type="number" class="form-control minimum_wage"
+                                            placeholder="340 min" value="340000"
+                                            name="accordions[0][minimum_wage]">
+                                    </div>
+                                </div>
+                                <div class="col-lg-4">
+                                    <div class="mb-3">
+                                        <label for="basicpill-card-verification-input">Jami
+                                            to'lanishi kerak bo'gan miqdor</label>
+                                        <input type="text" class="form-control generate_price"
+                                            name="accordions[0][generate_price]"
+                                            placeholder="------------" readonly>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-4">
+                                    <div class="mb-3">
+                                        <label>To'lash turlari</label>
+                                        <select class="form-select payment-type" name="accordions[0][payment_type]">
+                                            <option value="pay_full">To'liq xajimda to'lash</option>
+                                            <option value="pay_bolib">Bo'lib to'lash</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4">
+                                    <div class="mb-3">
+                                        <label for="percentage-input">Bo'lib to'lash foizi oldindan</label>
+                                        <select class="form-select percentage-input" name="accordions[0][percentage_input]" disabled>
+                                            <option value="0">0%</option>
+                                            <option value="10">10%</option>
+                                            <option value="20">20%</option>
+                                            <option value="30">30%</option>
+                                            <option value="40">40%</option>
+                                            <option value="50">50%</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4">
+                                    <div class="mb-3">
+                                        <label for="quarterly-input">Bo'lib to'lash har chorakda</label>
+                                        <input type="number" class="form-control quarterly-input" name="accordions[0][quarterly_input]" placeholder="Choraklar soni" disabled>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4">
+                                    <div class="mb-3">
+                                        <label for="calculated-quarterly-payment">Quarterly Payment</label>
+                                        <input type="text" class="form-control calculated-quarterly-payment" placeholder="------------" readonly>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th>Foiz</th>
+                                                <th>Oldindan to'lanadigan miqdor</th>
+                                                <th>Bo'lib to'lanadigan miqdor</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody class="payment-schedule">
+                                            <!-- Dynamic rows will be added here -->
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </main>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="addAccordion" class="btn btn-primary mt-3">Add Accordion</div>
+    </section>
+
+    <script>
+        $(document).ready(function() {
+            let accordionCount = 1;
+
+            $('#addAccordion').on('click', function() {
+                let accordion = $('.accordion-item').first().clone();
+                let newId = 'flush-collapse' + accordionCount;
+                accordion.find('.accordion-collapse').attr('id', newId);
+                accordion.find('.accordion-button').attr('data-bs-target', '#' + newId);
+                accordion.find('.accordion-header').attr('id', 'flush-heading' + accordionCount);
+                accordion.find('.accordion-button').attr('aria-controls', newId);
+                accordion.find('.accordion-button').text('Accordion Item #' + accordionCount);
+
+                accordion.find('input, select').each(function() {
+                    let name = $(this).attr('name');
+                    if (name) { // Ensure the name attribute exists before trying to replace
+                        let newName = name.replace(/\[0\]/, '[' + accordionCount + ']');
+                        $(this).attr('name', newName);
+                    }
+                    $(this).val('');
+                    $(this).attr('id', name + '-' + accordionCount); // Adding unique ID for each input
+                });
+
+                accordion.appendTo('#accordionFlushExample');
+                accordionCount++;
+            });
+
+            $(document).on('input change', '.company_kubmetr, .minimum_wage, .percentage-input, .quarterly-input', function() {
+                let parentAccordion = $(this).closest('.accordion-body');
+                calculateGeneratePrice(parentAccordion);
+            });
+
+            function calculateGeneratePrice(parentAccordion) {
+                let companyKubmetr = parentAccordion.find('.company_kubmetr').val();
+                let minimumWage = parentAccordion.find('.minimum_wage').val();
+                let generatePrice = companyKubmetr * minimumWage;
+                parentAccordion.find('.generate_price').val(generatePrice.toFixed(2));
+
+                let percentageInput = parentAccordion.find('.percentage-input').val();
+                let quarterlyInput = parentAccordion.find('.quarterly-input').val();
+
+                if (percentageInput && quarterlyInput && generatePrice) {
+                    let z = (generatePrice * percentageInput) / 100;
+                    let n = generatePrice - z;
+                    let y = n / quarterlyInput;
+                    parentAccordion.find('.calculated-quarterly-payment').val(y.toFixed(2));
+
+                    updatePaymentSchedule(parentAccordion, generatePrice);
+                }
+            }
+
+            function updatePaymentSchedule(parentAccordion, generatePrice) {
+                let paymentSchedule = parentAccordion.find('.payment-schedule');
+                paymentSchedule.empty();
+                let percentages = [0, 10, 20, 30, 40, 50];
+                percentages.forEach(percentage => {
+                    let z = (generatePrice * percentage) / 100;
+                    let n = generatePrice - z;
+                    let quarterlyInput = parentAccordion.find('.quarterly-input').val();
+                    let y = quarterlyInput ? (n / quarterlyInput).toFixed(2) : "N/A";
+                    paymentSchedule.append(
+                        `<tr>
+                            <td>${percentage}%</td>
+                            <td>${z.toFixed(2)}</td>
+                            <td>${y}</td>
+                        </tr>`
+                    );
+                });
+            }
+
+            $(document).on('change', '.payment-type', function() {
+                let parentAccordion = $(this).closest('.accordion-body');
+                let paymentType = $(this).val();
+                let percentageInput = parentAccordion.find('.percentage-input');
+                let quarterlyInput = parentAccordion.find('.quarterly-input');
+
+                if (paymentType === 'pay_full') {
+                    percentageInput.val(0).prop('disabled', true);
+                    quarterlyInput.val('').prop('disabled', true);
+                    parentAccordion.find('.calculated-quarterly-payment').val('N/A');
+                    parentAccordion.find('.payment-schedule').empty();
+                } else {
+                    percentageInput.prop('disabled', false);
+                    quarterlyInput.prop('disabled', false);
+                }
+
+                calculateGeneratePrice(parentAccordion);
+            });
+
+            calculateGeneratePrice($('.accordion-item').first().find('.accordion-body'));
+        });
+    </script>
 
                             <!-- Confirm Details -->
                             <h3>Tasdiqlash</h3>
