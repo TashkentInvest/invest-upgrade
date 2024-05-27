@@ -29,6 +29,7 @@
                     </a>
                 </div>
                 <div class="card-body">
+
                     <!-- Data table -->
                     <table id="datatable" class="table table-bordered dt-responsive w-100">
                         <thead>
@@ -120,32 +121,34 @@
                                                 </li>
                                             </ul>
                                         </form>
-                                      
+
                                     </td>
                                 </tr>
                             @endif
                         </tbody>
                     </table>
                 </div>
+
+
             </div>
 
         </div>
+
 
         <div class="col-12">
             <div class="card">
                 <div class="card-header">
                     <h3 class="card-title">Companya va Obyekt bo'yicha malumotlar</h3>
-                  
+
                 </div>
                 <div class="card-body">
                     <!-- Data table -->
                     <table id="datatable" class="table table-bordered dt-responsive w-100">
-                      
+
                         <tbody>
                             {{-- @dump($client->companies[0]->company_name ) --}}
                             @if (isset($client))
                                 @foreach ($client->companies as $index => $comp)
-                            
                                     <tr>
                                         <td>ID</td>
                                         <td colspan="2">{{ $index + 1 }}</td>
@@ -162,10 +165,11 @@
                                     </tr>
 
 
-                                    
+
                                     @foreach ($comp->branches as $b)
                                         <tr>
-                                            <td colspan="3" class="text-center"><strong>Shartnoma Rekvizitlari</strong></td>
+                                            <td colspan="3" class="text-center"><strong>Shartnoma
+                                                    Rekvizitlari</strong></td>
                                         </tr>
                                         <tr>
                                             <td>APT Raqami</td>
@@ -200,7 +204,7 @@
                             @endif
                         </tbody>
                     </table>
-                    
+
                 </div>
             </div>
 
@@ -230,4 +234,9 @@
             });
         }
     </script>
+
+    <script src="{{ asset('assets/libs/admin-resources/rwd-table/rwd-table.min.js') }}"></script>
+
+    <!-- Init js -->
+    <script src="{{ asset('assets/js/pages/table-responsive.init.js') }}"></script>
 @endsection

@@ -22,6 +22,9 @@
 	<link href="{{ asset('assets/css/app.min.css') }}" id="app-style" rel="stylesheet" type="text/css" />
 	{{-- <link href="{{ asset('css/myStyle.css') }}" rel="stylesheet" type="text/css" /> --}}
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+	<link href="{{asset('assets/libs/admin-resources/rwd-table/rwd-table.min.css')}}" rel="stylesheet" type="text/css" />
+
 	{{-- <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400&display=swap" rel="stylesheet">
 	<link rel="stylesheet" href="{{ asset('assets/libs/sweetalert2/sweetalert2.min.css') }}"> --}}
 	@yield('styles')
