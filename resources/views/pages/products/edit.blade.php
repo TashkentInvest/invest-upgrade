@@ -187,9 +187,7 @@
                                                             <option value="pay_bolib"
                                                                 {{ $b->payment_type == 'pay_bolib' ? 'selected' : '' }}>Bo'lib
                                                                 to'lash</option>
-                                                            <option value="pay_kvartalniy"
-                                                                {{ $b->payment_type == 'pay_kvartalniy' ? 'selected' : '' }}>
-                                                                Kvartalniy</option>
+                                                        
                                                         </select>
                                                     </div>
                                                 </div>

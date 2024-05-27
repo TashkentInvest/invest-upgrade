@@ -2,9 +2,11 @@
 
 namespace App\Exports;
 
-use App\Models\Products;
+use App\Models\Client;
+use Illuminate\Support\Facades\DB;
 use Maatwebsite\Excel\Concerns\FromCollection;
 use Maatwebsite\Excel\Concerns\WithHeadings;
+use Maatwebsite\Excel\Facades\Excel;
 
 class ProductsExport implements FromCollection, WithHeadings
 {
@@ -17,23 +19,23 @@ class ProductsExport implements FromCollection, WithHeadings
 
     public function collection()
     {
-        // Retrieve the data collection based on the product ID
-        $products = Products::with('client')->select('id', 'client_id','client:first_name', 'company_id', 'minimum_wage', 'contract_apt', 'contract_date', 'status')
-                             ->where('id', $this->id)
-                             ->get();
+        // Manual join to fetch data from clients and companies tables
+        $data = DB::table('clients')
+            ->join('companies', 'clients.id', '=', 'companies.client_id')
+            ->select(
+                'clients.id',
+                'clients.first_name',
+                'clients.last_name',
+                'clients.father_name',
+                'clients.first_name as client_name',
+                'companies.company_name',
+                'companies.company_location',
+                'companies.raxbar'
+            )
+            ->where('clients.id', $this->id)
+            ->get();
 
-        // $products = Products::with('client:id,first_name')
-        // ->select('id', 'client_id', 'company_id', 'minimum_wage', 'contract_apt', 'contract_date', 'status')
-        // ->where('id', $this->id)
-        // ->get();
-
-        // Modify the collection to include client's name
-        $products->transform(function ($product) {
-            $product->client_name = $product->client->name;
-            return $product;
-        });
-
-        return $products;
+        return $data;
     }
 
     public function headings(): array
@@ -41,15 +43,18 @@ class ProductsExport implements FromCollection, WithHeadings
         // Define the column headings
         return [
             'ID',
-            'Client ID',
-            'Company ID',
-            'Minimum Wage',
-            'Contract Apt',
-            'Contract Date',
-            'Status'
+            'First Name',
+            'Last Name',
+            'Father Name',
+            'Client Name',
+            'Company Name',
+            'Company Location',
+            'Company Raxbar'
         ];
     }
 
-//     $clientName = 'Client ABC'; // Replace this with the actual client's name
-// return $this->downloadTableData($productId, $clientName);
+    public static function downloadTableData($id)
+    {
+        return Excel::download(new ProductsExport($id), 'products_data.xls');
+    }
 }

@@ -15,7 +15,6 @@ class Company extends Model
         'raxbar',
         'company_location',
         'company_type',
-        'branch_kubmetr',
         'bank_code',
         'bank_service',
         'stir',
