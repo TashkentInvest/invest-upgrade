@@ -22,9 +22,10 @@ class ProductsExport implements FromCollection, WithHeadings, WithColumnFormatti
 
     public function collection()
     {
-        // Manual join to fetch data from clients and companies tables
+        // Manual join to fetch data from clients, companies, and branches tables
         $data = DB::table('clients')
             ->join('companies', 'clients.id', '=', 'companies.client_id')
+            ->join('branches', 'companies.id', '=', 'branches.company_id')
             ->select(
                 'clients.id',
                 'clients.first_name',
@@ -33,7 +34,14 @@ class ProductsExport implements FromCollection, WithHeadings, WithColumnFormatti
                 'clients.first_name as client_name',
                 'companies.company_name',
                 'companies.company_location',
-                'companies.raxbar'
+                'companies.raxbar',
+                'branches.contract_apt',
+                'branches.contract_date',
+                'branches.branch_kubmetr',
+                'branches.generate_price',
+                'branches.payment_type',
+                'branches.percentage_input',
+                'branches.installment_quarterly'
             )
             ->where('clients.id', $this->id)
             ->get();
@@ -52,7 +60,14 @@ class ProductsExport implements FromCollection, WithHeadings, WithColumnFormatti
             'Client Name',
             'Company Name',
             'Company Location',
-            'Company Raxbar'
+            'Company Raxbar',
+            'Contract Apt',
+            'Contract Date',
+            'Branch Kubmetr',
+            'Generate Price',
+            'Payment Type',
+            'Percentage Input',
+            'Installment Quarterly'
         ];
     }
 
@@ -67,9 +82,17 @@ class ProductsExport implements FromCollection, WithHeadings, WithColumnFormatti
             'E' => 20,
             'F' => 20,
             'G' => 20,
-            'H' => 20
+            'H' => 20,
+            'I' => 20,
+            'J' => 20,
+            'K' => 20,
+            'L' => 20,
+            'M' => 20,
+            'N' => 20,
+            'O' => 20,
         ];
     }
+
     public static function downloadTableData($id)
     {
         // Retrieve client details
@@ -81,10 +104,4 @@ class ProductsExport implements FromCollection, WithHeadings, WithColumnFormatti
         // Download Excel file with dynamically generated file name
         return Excel::download(new ProductsExport($id), $fileName);
     }
-
-
-    // public static function downloadTableData($id)
-    // {
-    //     return Excel::download(new ProductsExport($id), 'products_data.xls');
-    // }
 }

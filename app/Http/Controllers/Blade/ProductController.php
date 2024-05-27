@@ -31,7 +31,7 @@ class ProductController extends Controller
     }
     public function index()
     {
-        $products = Products::with('company')
+        $products = Products::with('company')->with(['company.branches'])
         ->get()->all();
 
         $clients = Client::with('products')->get()->all();
