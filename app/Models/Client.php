@@ -22,7 +22,6 @@ class Client extends Model
         'yuridik_rekvizid',
         'passport_serial',
         'passport_pinfl',
-        'jamgarma_rekvizitlari',
         'contact',
         'passport_serial',
         'passport_pinfl',
@@ -39,5 +38,9 @@ class Client extends Model
     
     public function companies(){
         return $this->hasMany(Company::class);
+    }
+
+    public function products(){
+        return $this->hasMany(Products::class);
     }
 }

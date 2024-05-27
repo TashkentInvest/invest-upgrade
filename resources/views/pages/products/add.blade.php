@@ -346,7 +346,7 @@
                                                         <div class="col-lg-4">
                                                             <div class="mb-3">
                                                                 <label for="quarterly-input">Bo'lib to'lash har chorakda</label>
-                                                                <input type="number" class="form-control quarterly-input" name="accordions[0][quarterly_input]" placeholder="Choraklar soni" disabled>
+                                                                <input type="number" class="form-control quarterly-input" name="accordions[0][installment_quarterly]" placeholder="Choraklar soni" disabled>
                                                             </div>
                                                         </div>
                                                         <div class="col-lg-4">

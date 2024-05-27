@@ -22,7 +22,6 @@ class CreateClientsTable extends Migration
             $table->string('contact')->nullable();
             $table->string('yuridik_address')->nullable();
             $table->string('yuridik_rekvizid')->nullable();
-            $table->string('jamgarma_rekvizitlari')->nullable();
             $table->string('passport_serial')->nullable();
             $table->string('passport_pinfl')->nullable();
             $table->dateTime('passport_date')->nullable();

@@ -29,7 +29,7 @@ class ProductController extends Controller
         $products = Products::with('company')
         ->get()->all();
 
-        $clients = Client::get()->all();
+        $clients = Client::with('products')->get()->all();
         // dd($products);
 
         return view('pages.products.index', compact('products','clients'));
@@ -46,7 +46,7 @@ class ProductController extends Controller
     public function create(Request $request)
     
 {
-    // dd($request);
+
     DB::beginTransaction();
 
     try {
@@ -65,7 +65,6 @@ class ProductController extends Controller
                 'passport_pinfl' => $request->get('passport_pinfl'),
                 'yuridik_address' => $request->get('yuridik_address'),
                 'yuridik_rekvizid' => $request->get('yuridik_rekvizid'),
-                'jamgarma_rekvizitlari' => $request->get('jamgarma_rekvizitlari'),
                 'passport_date' => $request->get('passport_date'),
                 'passport_location' => $request->get('passport_location'),
                 'passport_type' => $request->get('passport_type', 0) ,
@@ -76,6 +75,7 @@ class ProductController extends Controller
         }
 
         foreach ($request->accordions as $accordion) {
+
             $company = Company::create([
                 'client_id' => $client->id,
                 'company_location' => $accordion['company_location'] ?? null,
@@ -89,15 +89,24 @@ class ProductController extends Controller
                 'bank_service' => $accordion['bank_service'] ?? null,
                 'stir' => $accordion['stir'] ?? null,
                 'oked' => $accordion['oked'] ?? null,
+                'generate_price' => $accordion['generate_price'] ?? null,
+                'payment_type' => $accordion['payment_type'] ?? null,
+                'percentage_input' => $accordion['percentage_input'] ?? null,
+                'installment_quarterly' => $accordion['installment_quarterly'] ?? null,
+
             ]);
         
             Products::create([
                 'company_id' => $company->id,
                 'client_id' => $client->id,
-                'minimum_wage' => $accordion['minimum_wage'] ?? null,
+                'minimum_wage' => $accordion['minimum_wage'],
                 'created_at' => Carbon::today(),
                 'updated_at' => Carbon::today()
             ]);
+
+            // $products = Products::get()->all();
+            // dd($products);
+
         }
                 
 

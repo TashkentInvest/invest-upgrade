@@ -20,10 +20,14 @@ class CreateCompaniesTable extends Migration
             $table->unsignedBigInteger('client_id');
             $table->foreign('client_id')->references('id')->on('clients')->onDelete('cascade');
             $table->string('company_location');
-            $table->string('company_kubmetr');
-            $table->string('company_type');
-            $table->string('company_name');
-            $table->text('contract_apt');
+            $table->string('generate_price');
+            $table->string('payment_type');
+            $table->string('percentage_input');
+            $table->string('installment_quarterly')->nullable();
+            $table->string('company_kubmetr')->nullable();
+            $table->string('company_type')->nullable();
+            $table->string('company_name')->nullable();
+            $table->text('contract_apt')->nullable();
             $table->dateTime('contract_date');
             $table->string('raxbar')->nullable();
             $table->string('bank_code')->nullable();

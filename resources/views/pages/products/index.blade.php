@@ -96,6 +96,7 @@
                                                           
                                                             <tr>
                                                                 <td><strong>Shaxsiy Malumotlar</strong></td>
+                                                                <td></td>
                                                             </tr>
                                                             <tr>
                                                                 <td>Mijoz Turi</td>
@@ -122,6 +123,7 @@
                                                                 <td>{{ $item->passport_pinfl }}</td>
                                                             </tr>
                                                             <tr>
+                                                                {{-- @dd($item) --}}
                                                                 <td>Yuridik Address</td>
                                                                 <td>{{ $item->yuridik_address }}</td>
                                                             </tr>
@@ -133,20 +135,16 @@
                                                                 <td>Contact</td>
                                                                 <td>{{ $item->contact }}</td>
                                                             </tr>
-                                                            <tr>
-                                                                <td>Jarima Rekvizitlari</td>
-                                                                <td>{{ $item->jamgarma_rekvizitlari }}</td>
-                                                            </tr>
-
+                                                    
 
                                                             
                                     
 
-                                                          
-                                    
                                                             @foreach ($item->companies as $comp)
+                                                            
                                                             <tr>
                                                                 <td class="text-center"><strong>Shartnoma Rekvizitlari</strong></td>
+                                                                <td></td>
                                                             </tr>   
                                                             <tr>
                                                                 <td>APT Raqami</td>
@@ -174,10 +172,7 @@
                                                                 <td>Obyekt bo'yicha tolanadigan yeg'im miqdori</td>
                                                                 <td>{{ $comp->company_kubmetr }}</td>
                                                             </tr>
-                                                            <tr>
-                                                                <td>Bazaviy xisoblash miqdori</td>
-                                                                <td>{{ $comp->minimum_wage }}</td>
-                                                            </tr>
+                                                          
                                                             <tr>
                                                                 <td>Jami to'lanishi kerak bo'gan miqdor</td>
                                                                 <td>{{ $comp->generate_price }}</td>
@@ -188,12 +183,24 @@
                                                             </tr>
                                                             <tr>
                                                                 <td>Bo'lib to'lash foizi oldindan</td>
-                                                                <td>{{ $comp->installment_percentage }}</td>
+                                                                <td>{{ $comp->percentage_input }}</td>
                                                             </tr>
                                                             <tr>
                                                                 <td>Bo'lib to'lash kvartalniy</td>
                                                                 <td>{{ $comp->installment_quarterly }}</td>
                                                             </tr>
+                                                            @endforeach
+
+                                                            @foreach ($item->products as $p)
+                                                            <tr>
+                                                                <td><strong>Product Details</strong></td>
+                                                                <td></td>
+                                                            </tr>
+                                                            <tr>
+                                                                {{-- @dd($comp->products) --}}
+                                                                <td>Bazaviy xisoblash miqdori</td>
+                                                                <td>{{ $p->minimum_wage }}</td>
+                                                            </tr> 
                                                             @endforeach
 
                                                         </tbody>

@@ -22,7 +22,11 @@ class Company extends Model
         'bank_code',
         'bank_service',
         'stir',
-        'oked'
+        'oked',
+        'generate_price',
+        'payment_type',
+        'percentage_input',
+        'installment_quarterly',
 
     ];
 

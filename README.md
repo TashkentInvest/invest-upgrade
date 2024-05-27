@@ -75,4 +75,11 @@ naxt va rasrochka option qoysh kere naxt boganda foiz kratdgan input disable bol
 yashash manzili 
 
 
-Passport sanasi = type 
+Passport sanasi = type +++
+
+Jami to'lanishi kerak bo'gan miqdor	
+To'lash turlari	
+Bo'lib to'lash foizi oldindan	
+Bo'lib to'lash kvartalniy
+
+shulani products/show ga chqazsh kere
