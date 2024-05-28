@@ -106,11 +106,20 @@ class ProductController extends Controller
             //     }
             // }
 
+            // if ($request->hasFile('document')) {
+            //     foreach ($request->file('document') as $file) {
+            //         $path = $file->store('client_documents');
+            //             $client->files()->create(['path' => $path]);
+            //     }
+            // }
+
             if ($request->hasFile('document')) {
-                foreach ($request->file('document') as $file) {
-                    $path = $file->store('client_documents');
-                        $client->files()->create(['path' => $path]);
-                }
+                $file = $request->file('document');
+                $extension = $file->getClientOriginalExtension();
+                $name = time() . '.' . $extension;
+                $client->document = $name;
+                $client->save();
+                $file->move($client->public_path(), $name);
             }
     
     
