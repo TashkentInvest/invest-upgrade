@@ -85,7 +85,7 @@ daily backup qilish kere schedule blan
 
 blade digi textlani jsondan chqab qilish kere
 
-request history qlish kere
+request history qlish kere +++
 
 product showga table chqazsh kere kredit xoblab beradgan
 

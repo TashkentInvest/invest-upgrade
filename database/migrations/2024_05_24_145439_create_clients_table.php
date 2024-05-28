@@ -27,6 +27,7 @@ class CreateClientsTable extends Migration
             $table->dateTime('passport_date')->nullable();
             $table->string('passport_location')->nullable();
             $table->boolean('passport_type')->nullable()->default(0);
+            $table->boolean('is_deleted')->nullable()->default(0);
             
             $table->timestamps();
         });

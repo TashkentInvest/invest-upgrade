@@ -18,9 +18,11 @@ class CreateProductsTable extends Migration
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
             $table->unsignedBigInteger('client_id');
-            $table->foreign('client_id')->references('id')->on('clients'); 
+            $table->foreign('client_id')->references('id')->on('clients')->onDelete('cascade');
+       
             $table->text('minimum_wage');
             $table->integer('status')->default(1);
+
             $table->timestamps();
         });
     }

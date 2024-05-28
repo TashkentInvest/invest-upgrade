@@ -27,7 +27,9 @@ class Client extends Model
         'passport_pinfl',
         'passport_date',
         'passport_location',
-        'passport_type'
+        'passport_type',
+        'is_deleted'
+        
 
     ];
 
@@ -44,6 +46,7 @@ class Client extends Model
         return $this->hasMany(Products::class);
     }
 
+   
     public static function boot()
     {
         parent::boot();
@@ -60,12 +63,21 @@ class Client extends Model
             $original = $client->getOriginal();
             $changes = $client->getChanges();
 
-            AuditLog::create([
-                'client_id' => $client->id,
-                'event' => 'updated',
-                'old_values' => json_encode($original),
-                'new_values' => json_encode($changes),
-            ]);
+            if($client->is_deleted == 0){
+                AuditLog::create([
+                    'client_id' => $client->id,
+                    'event' => 'updated',
+                    'old_values' => json_encode($original),
+                    'new_values' => json_encode($changes),
+                ]);
+            }
+            else{
+                AuditLog::create([
+                    'client_id' => $client->id,
+                    'event' => 'deleted',
+                    'old_values' => $client->toJson(),
+                ]);
+            }
         });
 
         static::deleted(function ($client) {

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Blade;
 
 use App\Exports\ProductsExport;
 use App\Http\Controllers\Controller;
+use App\Models\AuditLog;
 use App\Models\Branch;
 use App\Models\Client;
 use App\Models\Company;
@@ -34,7 +35,7 @@ class ProductController extends Controller
         $products = Products::with('company')->with(['company.branches'])
         ->get()->all();
 
-        $clients = Client::with('products')->get()->all();
+        $clients = Client::with('products')->where('is_deleted', '!=', 1)->get()->all();
         // dd($products);
 
         return view('pages.products.index', compact('products','clients'));
@@ -43,7 +44,7 @@ class ProductController extends Controller
     public function show($id)
     {
         $product = Products::where('id', $id)->with('company')->get()->first();
-        $client = Client::where('id', $id)->get()->first();
+        $client = Client::where('id', $id)->where('is_deleted', '!=', 1)->get()->first();
 
         return view('pages.products.show', compact('product','client'));
     }
@@ -198,36 +199,21 @@ class ProductController extends Controller
             return redirect()->back()->with('error', 'An error occurred while updating the product: ' . $e->getMessage());
         }
     }
-    
-
     public function delete($client_id)
     {
-        DB::beginTransaction();
-
         try {
             $client = Client::findOrFail($client_id);
+    
+            $client->update([
+                'is_deleted' => 1,
+            ]);
 
-            $company = Company::where('client_id', $client_id)->firstOrFail();
-
-            $product = Products::where('company_id', $company->id)
-                                ->where('client_id', $client_id)
-                                ->firstOrFail();
-
-            $product->delete();
-
-            $company->delete();
-
-            $client->delete();
-
-            DB::commit();
-
-            return redirect()->route('productIndex')->with('success', 'Product deleted successfully');
+            return redirect()->route('productIndex')->with('success', 'Client marked as deleted successfully');
         } catch (\Exception $e) {
-            DB::rollback();
-
-            return redirect()->back()->with('error', 'An error occurred while deleting the product: ' . $e->getMessage());
+            return redirect()->back()->with('error', 'An error occurred while marking the client as deleted: ' . $e->getMessage());
         }
     }
+    
 
     public function toggleProductActivation($id)
     {
