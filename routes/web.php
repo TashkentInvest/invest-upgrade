@@ -67,7 +67,10 @@ Route::group(['middleware' => 'auth'],function (){
     Route::delete('/product/delete/{id}',[ProductController::class,'delete'])->name('productDestroy');
     Route::post('/product/toggle-status/{id}',[ProductController::class,'toggleProductActivation'])->name('productActivation');
     Route::get('/download-table-data/{id}', [ProductController::class, 'downloadTableData'])->name('download.table.data');
+    Route::get('/file/{filename}', [ProductController::class, 'file'])->name('file.show');
+
     Route::get('audit-logs', [AuditLogController::class, 'index'])->name('audit-logs.index');
+
 
 
 

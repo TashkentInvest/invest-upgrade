@@ -197,24 +197,27 @@
                                     @endforeach
                                 @endforeach
 
-                                @if (isset($files))
-                                    <h2>Uploaded Files</h2>
-                                    <ul>
-                                        @foreach ($files as $file)
-                                            <li><a href="{{ asset('storage/' . $file->path) }}">{{ $file->path }}</a>
-                                            </li>
-                                        @endforeach
-                                    </ul>
+                                @if ($files->isNotEmpty())
+                                <h4>Files</h4>
+                                <ul>
+                                    @foreach ($files as $file)
+                                    {{-- @dd($file) --}}
+                                        <li>
+
+                                            <a href="{{asset($file->path)}}">Link</a>
 
 
-                                    @foreach ($client->files as $f)
-                                        <a target="_blank"
-                                            href="{{ url('/') }}/images/{{ $f->path }}">{{ $f->path }}</a>
+                                            {{-- <a href="{{ route('file.show', ['filename' => $file->path]) }}">{{ $file->path }}</a> --}}
+                                        </li>
                                     @endforeach
+                                </ul>
+                            @else
+                                <p>No files uploaded for this product.</p>
+                            @endif
 
-                                @endif
+                            {{-- <a href="{{asset('assets/'. $files[0]->name)}}">Link</a> --}}
 
-
+                            {{-- <a href="{{asset('client_documents/' . $file->name)}}">Link</a> --}}
 
                             @endif
                         </tbody>

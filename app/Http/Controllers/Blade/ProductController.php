@@ -8,12 +8,15 @@ use App\Models\AuditLog;
 use App\Models\Branch;
 use App\Models\Client;
 use App\Models\Company;
+use App\Models\File;
 use Illuminate\Http\Request;
 use App\Models\Products;
 use App\Models\Regions;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 use Maatwebsite\Excel\Facades\Excel;
+use Illuminate\Support\Facades\Storage;
+
 
 
 
@@ -44,19 +47,11 @@ class ProductController extends Controller
     public function show($id)
     {
         $product = Products::findOrFail($id);
-    
         $client = Client::where('id', $product->client_id)->where('is_deleted', '!=', 1)->first();
-    
-        $files = [];
-    
-        if($client && $client->files) {
-            $files = $client->files;
-        }
+        $files = $client ? $client->files : collect();
     
         return view('pages.products.show', compact('product', 'client', 'files'));
     }
-    
-
 
     public function add()
     {
@@ -66,8 +61,8 @@ class ProductController extends Controller
     }
 
 
- 
-   
+
+
     public function create(Request $request)
     {
         DB::beginTransaction();
@@ -98,31 +93,25 @@ class ProductController extends Controller
                 ]);
             }
 
-            // // Handle file uploads if files are present
-            // if ($request->hasFile('document')) {
-            //     foreach ($request->file('document') as $file) {
-            //         $path = $file->store('client_documents');
-            //         $client->files()->create(['path' => $path]);
-            //     }
-            // }
+          
 
-            // if ($request->hasFile('document')) {
-            //     foreach ($request->file('document') as $file) {
-            //         $path = $file->store('client_documents');
-            //             $client->files()->create(['path' => $path]);
-            //     }
-            // }
-
+            
             if ($request->hasFile('document')) {
-                $file = $request->file('document');
-                $extension = $file->getClientOriginalExtension();
-                $name = time() . '.' . $extension;
-                $client->document = $name;
-                $client->save();
-                $file->move($client->public_path(), $name);
+                foreach ($request->file('document') as $file) {
+                    $extension = $file->getClientOriginalExtension();
+                    $fileName = time() . '.' . $extension;
+                    $file->move(public_path('assets'), $fileName);
+                    
+                    // Save file path to the "files" table
+                    $fileModel = new File();
+                    $fileModel->client_id = $client->id;
+                    $fileModel->path = 'assets/' . $fileName;
+                    $fileModel->save();
+                }
             }
     
-    
+            DB::commit();
+
 
             foreach ($request->accordions as $accordion) {
                 $company = Company::create([

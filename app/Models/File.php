@@ -9,6 +9,7 @@ class File extends Model
 {
     use HasFactory;
     
+    protected $table = 'files'; // Specify the table name if different from the default
     protected $fillable = ['client_id', 'path'];
 
     public function client()
