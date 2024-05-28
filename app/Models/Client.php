@@ -46,6 +46,10 @@ class Client extends Model
         return $this->hasMany(Products::class);
     }
 
+    public function files()
+    {
+        return $this->hasMany(File::class);
+    }
    
     public static function boot()
     {

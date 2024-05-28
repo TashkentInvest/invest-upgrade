@@ -82,6 +82,7 @@
                                         @endif
                                     </div>
 
+                             
                                     
 
                                     <div class="col-12 col-lg-3 mb-2">
@@ -115,7 +116,8 @@
                                             <span class="error invalid-feedback">{{ $errors->first('yuridik_rekvizid') }}</span>
                                         @endif
                                     </div>
-                                
+
+                                  
 
                                 </div>
                                 
@@ -186,6 +188,15 @@
                                             <span class="error invalid-feedback">{{ $errors->first('passport_location') }}</span>
                                         @endif
                                     </div>
+
+                                    <div class="col-12 col-lg-3 mb-2">
+                                        <label for="file" class="col-md-4 col-form-label">File document</label>
+                                        <input type="file" name="document[]" multiple>
+                                        @if ($errors->has('document'))
+                                            <span class="error invalid-feedback">{{ $errors->first('document') }}</span>
+                                        @endif
+                                    </div>
+
 
                                 </div>
                                 <label for="is_passport_id">Is passport ID?</label>
