@@ -177,7 +177,7 @@
                                         </tr>
                                         <tr>
                                             <td>Bo'lib to'lash foizi oldindan</td>
-                                            <td colspan="2">{{ $b->percentage_input }}</td>
+                                            <td colspan="2">{{ $b->percentage_input }} %</td>
                                         </tr>
                                         <tr>
                                             <td>Bo'lib to'lash kvartalniy</td>

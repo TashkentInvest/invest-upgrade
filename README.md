@@ -91,3 +91,5 @@ product showga table chqazsh kere kredit xoblab beradgan
 
 role permissionlani korvorsh kere
 
+fule upload qilish kere
+

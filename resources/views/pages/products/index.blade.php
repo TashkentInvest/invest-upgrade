@@ -212,7 +212,7 @@
                                                                         </tr>
                                                                         <tr>
                                                                             <td>Bo'lib to'lash foizi oldindan</td>
-                                                                            <td>{{ $b->percentage_input }}</td>
+                                                                            <td>{{ $b->percentage_input }} %</td>
                                                                         </tr>
                                                                         <tr>
                                                                             <td>Bo'lib to'lash kvartalniy</td>

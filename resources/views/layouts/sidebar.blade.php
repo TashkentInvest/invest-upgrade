@@ -99,7 +99,7 @@
                             </li>
                         @endcan
 
-                        @can('user.show')
+                        {{-- @can('user.show')
                             <li>
                                 <a href="{{ route('clientIndex') }}" class="{{ Request::is('client*') ? 'mm-active':'' }}">
                                     <!-- <i class="fas fa-user-friends"></i> -->
@@ -107,7 +107,7 @@
                                     @lang('cruds.client.title')
                                 </a>
                             </li>
-                        @endcan
+                        @endcan --}}
                     </ul>
                 </li>
                 {{-- @endcan --}}
