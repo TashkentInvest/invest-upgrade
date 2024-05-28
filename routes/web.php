@@ -38,6 +38,8 @@ Route::group(['middleware' => 'auth'],function (){
 
     // there should be graphics, diagrams about total conditions
     Route::get('/home', [HomeController::class,'index'])->name('home');
+    Route::get('generate-docx', [HomeController::class,'generateDocx'])->name('generateDocx');
+
 
     // Regions  
     Route::get('/regions',[RegionController::class, 'index'])->name('regionIndex');
