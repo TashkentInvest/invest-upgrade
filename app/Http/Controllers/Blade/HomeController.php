@@ -8,14 +8,28 @@ use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
+    // public function index()
+    // {
+    //     $is_role_exists = DB::select("SELECT COUNT(*) as cnt FROM `model_has_roles` WHERE model_id = ".auth()->id());
+
+    //     if ($is_role_exists[0]->cnt)
+    //         return view('pages.dashboard');
+    //     else
+    //         return view('welcome');
+    // }
+
     public function index()
     {
-        $is_role_exists = DB::select("SELECT COUNT(*) as cnt FROM `model_has_roles` WHERE model_id = ".auth()->id());
+        $userId = auth()->id();
 
-        if ($is_role_exists[0]->cnt)
+        $hasRoles = DB::table('model_has_roles')
+            ->where('model_id', $userId)
+            ->exists();
+
+        if ($hasRoles) {
             return view('pages.dashboard');
-        else
+        } else {
             return view('welcome');
-	}
-
+        }
+    }
 }
