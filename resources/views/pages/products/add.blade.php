@@ -489,19 +489,20 @@
                                         paymentSchedule.empty();
                                         let percentages = [0, 10, 20, 30, 40, 50];
                                         percentages.forEach(percentage => {
-                                            let z = (generatePrice * percentage) / 100;
+                                            let z = Math.round((generatePrice * percentage) / 100); // Rounding z
                                             let n = generatePrice - z;
                                             let quarterlyInput = parentAccordion.find('.quarterly-input').val();
                                             let y = quarterlyInput ? (n / quarterlyInput).toFixed(2) : "N/A";
                                             paymentSchedule.append(
                                                 `<tr>
                                                     <td>${percentage}%</td>
-                                                    <td>${z.toFixed(2)}</td>
+                                                    <td>${Math.round(z)}</td>
                                                     <td>${y}</td>
                                                 </tr>`
                                             );
                                         });
                                     }
+
                             
                                     function updateQuarterlyPaymentSchedule(parentAccordion, quarterlyPayment, quarterlyCount) {
                                         let quarterlyPaymentSchedule = parentAccordion.find('.quarterly-payment-schedule');
