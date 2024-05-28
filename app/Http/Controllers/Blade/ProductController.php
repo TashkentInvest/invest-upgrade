@@ -45,8 +45,9 @@ class ProductController extends Controller
     {
         $product = Products::where('id', $id)->with('company')->get()->first();
         $client = Client::where('id', $id)->where('is_deleted', '!=', 1)->get()->first();
+        $files = $client->files;
 
-        return view('pages.products.show', compact('product', 'client'));
+        return view('pages.products.show', compact('product', 'client','files'));
     }
 
 
@@ -66,10 +67,9 @@ class ProductController extends Controller
 
         try {
             // Validate the request data
-            $request->validate([
-                'document.*' => 'nullable', 
-            ]);
-
+            // $request->validate([
+            //     'document.*' => 'required|max:10240', // Allow any type of file up to 10MB
+            // ]);
             // Check if the client already exists
             $client = Client::where('passport_serial', $request->get('passport_serial'))->first();
 

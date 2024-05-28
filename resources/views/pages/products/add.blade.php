@@ -25,7 +25,7 @@
 
             <div class="card">
                 <div class="card-body">
-                    <form id='myForm' action="{{ route('productCreate') }}" method="post">
+                    <form id='myForm' action="{{ route('productCreate') }}" method="post" enctype="multipart/form-data">
                         @csrf
 
                         <div id="basic-example">

@@ -185,6 +185,13 @@
                                         </tr>
                                     @endforeach
                                 @endforeach
+
+                                <h2>Uploaded Files</h2>
+                                <ul>
+                                    @foreach($files as $file)
+                                        <li><a href="{{ asset('storage/' . $file->path) }}">{{ $file->path }}</a></li>
+                                    @endforeach
+                                </ul>
                             @endif
                         </tbody>
                     </table>
