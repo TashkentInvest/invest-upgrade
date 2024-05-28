@@ -34,7 +34,7 @@
                         <thead>
                             <tr>
                                 <th>ID</th>
-                                <th>ART</th>
+                                <th>F.I.O</th>
                                 <th>@lang('cruds.client.fields.contact')</th>
                                 <th>Mijoz turi</th>
                                 <th style="width: 100px;">Active</th>

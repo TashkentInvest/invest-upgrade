@@ -42,11 +42,12 @@
                                         ['name' => 'Father Name', 'data-priority' => 8, 'default' => true],
                                         ['name' => 'Passport Serial', 'data-priority' => 9, 'default' => false],
                                         ['name' => 'Passport Pinfl', 'data-priority' => 10, 'default' => false],
-                                        ['name' => 'Yuridik Address', 'data-priority' => 11, 'default' => false],
-                                        ['name' => 'Yuridik Rekvizid', 'data-priority' => 12, 'default' => false],
-                                        ['name' => 'Contact', 'data-priority' => 13, 'default' => true],
+                                        ['name' => 'Passport Pinfl', 'data-priority' => 11, 'default' => false],
+                                        ['name' => 'Yuridik Address', 'data-priority' => 12, 'default' => false],
+                                        ['name' => 'Yuridik Rekvizid', 'data-priority' => 13, 'default' => false],
+                                        ['name' => 'Contact', 'data-priority' => 14, 'default' => true],
                                         // ['name' => 'Active', 'data-priority' => 14, 'default' => true],
-                                        ['name' => 'Actions', 'data-priority' => 14, 'default' => true]
+                                        ['name' => 'Actions', 'data-priority' => 15, 'default' => true]
                                     ];
                                 @endphp
                                 @foreach ($columns as $index => $column)
@@ -81,6 +82,7 @@
                                     <td>{{ $client->father_name }}</td>
                                     <td class="d-none">{{ $client->passport_serial }}</td>
                                     <td class="d-none">{{ $client->passport_pinfl }}</td>
+                                    <td class="d-none">{{ $client->passport_type ? $client->passport_type == 'Id' : $client->passport_type = 'Passport' }}</td>
                                     <td class="d-none">{{ $client->yuridik_address }}</td>
                                     <td class="d-none">{{ $client->yuridik_rekvizid }}</td>
                                     <td>{{ $client->contact }}</td>
