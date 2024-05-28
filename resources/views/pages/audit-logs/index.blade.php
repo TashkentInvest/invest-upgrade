@@ -1,6 +1,5 @@
 @extends('layouts.admin')
 
-
 @section('content')
 
 <div class="row">
@@ -24,54 +23,61 @@
         <div class="card">
             <div class="card-header">
                 <h3 class="card-title">Audit Logs</h3>
-               
             </div>
-            <!-- /.card-header -->
             <div class="card-body">
-             
-                <h1>Audit Logs</h1>
-            <table id="datatable" class="table table-bordered  w-100">>
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Company</th>
-                        <th>Event</th>
-                        <th>Old Values</th>
-                        <th>New Values</th>
-                        <th>Timestamp</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach ($auditLogs as $log)
+                <table id="datatable" class="table table-bordered table-striped w-100">
+                    <thead>
                         <tr>
-                            <td>{{ $log->id }}</td>
-                            <td>{{ $log->company->company_name ?? 'N/A' }}</td>
-                            <td>{{ $log->event }}</td>
-                            <td>
-                                @if($log->old_values)
-                                    <pre>{{ json_encode($log->old_values, JSON_PRETTY_PRINT) }}</pre>
-                                @else
-                                    N/A
-                                @endif
-                            </td>
-                            <td>
-                                @if($log->new_values)
-                                    <pre>{{ json_encode($log->new_values, JSON_PRETTY_PRINT) }}</pre>
-                                @else
-                                    N/A
-                                @endif
-                            </td>
-                            <td>{{ $log->created_at }}</td>
+                            <th>ID</th>
+                            <th>Company</th>
+                            <th>Event</th>
+                            <th>Old Values</th>
+                            <th>New Values</th>
+                            <th>Timestamp</th>
                         </tr>
-                    @endforeach
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                        @foreach ($auditLogs as $log)
+                            <tr>
+                                <td>{{ $log->id }}</td>
+                                <td>{{ $log->company->company_name ?? 'N/A' }}</td>
+                                <td>{{ $log->event }}</td>
+                                <td>
+                                    @if($log->old_values)
+                                        <pre>{{ pretty_json($log->old_values) }}</pre>
+                                    @else
+                                        N/A
+                                    @endif
+                                </td>
+                                <td>
+                                    @if($log->new_values)
+                                        <pre>{{ pretty_json($log->new_values) }}</pre>
+                                    @else
+                                        N/A
+                                    @endif
+                                </td>
+                                <td>{{ $log->created_at }}</td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
             </div>
-            <!-- /.card-body -->
         </div>
-        <!-- /.card -->
     </div>
-    <!-- /.col -->
 </div>
-    
+
 @endsection
+
+@push('scripts')
+<link rel="stylesheet" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css">
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $('#datatable').DataTable({
+            "order": [[ 5, "desc" ]], // Order by the Timestamp column by default
+            "pageLength": 10, // Show 10 entries per page by default
+        });
+    });
+</script>
+@endpush

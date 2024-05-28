@@ -34,6 +34,14 @@ if (!function_exists('abort_if_forbidden')) {
     }
 }
 
+if (!function_exists('pretty_json')) {
+    function pretty_json($json)
+    {
+        return json_encode(json_decode($json, true), JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
+    }
+}
+
+
 if (!function_exists('setUserTheme')) {
     function setUserTheme($theme)
     {

@@ -12,4 +12,5 @@ class AuditLogController extends Controller
         $auditLogs = AuditLog::with('company')->get();
         return view('pages.audit-logs.index', compact('auditLogs'));
     }
+    
 }

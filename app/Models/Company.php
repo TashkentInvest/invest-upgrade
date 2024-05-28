@@ -21,6 +21,33 @@ class Company extends Model
         'oked',
     ];
 
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function client()
+    {
+        return $this->belongsTo(Client::class);
+    }
+
+
+    public function region()
+    {
+        return $this->hasOne(Regions::class,'id', 'region_id');
+    }
+    
+    public function products()
+    {
+        return $this->hasMany(Products::class);
+    }
+
+    public function branches()
+    {
+        return $this->hasMany(Branch::class);
+    }
+
     public static function boot()
     {
         parent::boot();
@@ -52,31 +79,5 @@ class Company extends Model
                 'old_values' => $company->toJson(),
             ]);
         });
-    }
-
-    public function user()
-    {
-        return $this->belongsTo(User::class);
-    }
-
-    public function client()
-    {
-        return $this->belongsTo(Client::class);
-    }
-
-
-    public function region()
-    {
-        return $this->hasOne(Regions::class,'id', 'region_id');
-    }
-    
-    public function products()
-    {
-        return $this->hasMany(Products::class);
-    }
-
-    public function branches()
-    {
-        return $this->hasMany(Branch::class);
     }
 }

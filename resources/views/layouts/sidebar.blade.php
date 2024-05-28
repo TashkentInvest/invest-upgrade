@@ -13,6 +13,15 @@
                         <span>@lang('cruds.branches.title')</span>
                     </a>
                 </li>
+
+                {{-- Audit logs --}}
+
+                <li class="{{ Request::is('audit-logs*') ? 'mm-active':'' }}">
+                    <a href="{{ route('audit-logs.index') }}" class=" waves-effect {{ Request::is('audit-logs*') ? 'mm-active':'' }}">
+                        <i class="bx bx-info-circle"></i>
+                        <span>Audit Logs</span>
+                    </a>
+                </li>
          
 
                 <!-- Category -->
