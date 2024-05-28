@@ -43,12 +43,19 @@ class ProductController extends Controller
 
     public function show($id)
     {
-        $product = Products::where('id', $id)->with('company')->get()->first();
-        $client = Client::where('id', $id)->where('is_deleted', '!=', 1)->get()->first();
-        $files = $client->files;
-
-        return view('pages.products.show', compact('product', 'client','files'));
+        $product = Products::findOrFail($id);
+    
+        $client = Client::where('id', $product->client_id)->where('is_deleted', '!=', 1)->first();
+    
+        $files = [];
+    
+        if($client && $client->files) {
+            $files = $client->files;
+        }
+    
+        return view('pages.products.show', compact('product', 'client', 'files'));
     }
+    
 
 
     public function add()
@@ -91,13 +98,22 @@ class ProductController extends Controller
                 ]);
             }
 
-            // Handle file uploads if files are present
+            // // Handle file uploads if files are present
+            // if ($request->hasFile('document')) {
+            //     foreach ($request->file('document') as $file) {
+            //         $path = $file->store('client_documents');
+            //         $client->files()->create(['path' => $path]);
+            //     }
+            // }
+
             if ($request->hasFile('document')) {
                 foreach ($request->file('document') as $file) {
                     $path = $file->store('client_documents');
-                    $client->files()->create(['path' => $path]);
+                        $client->files()->create(['path' => $path]);
                 }
             }
+    
+    
 
             foreach ($request->accordions as $accordion) {
                 $company = Company::create([
