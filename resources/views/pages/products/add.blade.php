@@ -492,7 +492,7 @@
                                             let z = Math.round((generatePrice * percentage) / 100); // Rounding z
                                             let n = generatePrice - z;
                                             let quarterlyInput = parentAccordion.find('.quarterly-input').val();
-                                            let y = quarterlyInput ? (n / quarterlyInput).toFixed(2) : "N/A";
+                                            let y = quarterlyInput ? Math.round((n / quarterlyInput)) : "N/A";
                                             paymentSchedule.append(
                                                 `<tr>
                                                     <td>${percentage}%</td>
@@ -512,12 +512,12 @@
                                             quarterlyPaymentSchedule.append(
                                                 `<tr>
                                                     <td>Chorak ${i}</td>
-                                                    <td>${quarterlyPayment.toFixed(2)}</td>
+                                                    <td>${Math.round(quarterlyPayment)}</td>
                                                 </tr>`
                                             );
                                             totalQuarterlyPayment += quarterlyPayment;
                                         }
-                                        parentAccordion.find('.total-quarterly-payment').text(totalQuarterlyPayment.toFixed(2));
+                                        parentAccordion.find('.total-quarterly-payment').text(Math.round(totalQuarterlyPayment));
                                     }
                             
                                     $(document).on('change', '.payment-type', function() {
