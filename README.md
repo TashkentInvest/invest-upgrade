@@ -81,8 +81,13 @@ shulani products/show ga chqazsh kere +++
 
 product edit fix qlish kere +++
 
-backup yozish kere
+daily backup qilish kere schedule blan
+
+blade digi textlani jsondan chqab qilish kere
+
+request history qlish kere
 
 product showga table chqazsh kere kredit xoblab beradgan
 
+role permissionlani korvorsh kere
 

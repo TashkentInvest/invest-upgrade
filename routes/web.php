@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AuditLogController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Blade\UserController;
 use App\Http\Controllers\Blade\RoleController;
@@ -66,6 +67,8 @@ Route::group(['middleware' => 'auth'],function (){
     Route::delete('/product/delete/{id}',[ProductController::class,'delete'])->name('productDestroy');
     Route::post('/product/toggle-status/{id}',[ProductController::class,'toggleProductActivation'])->name('productActivation');
     Route::get('/download-table-data/{id}', [ProductController::class, 'downloadTableData'])->name('download.table.data');
+    Route::get('audit-logs', [AuditLogController::class, 'index'])->name('audit-logs.index');
+
 
 
     // Users
