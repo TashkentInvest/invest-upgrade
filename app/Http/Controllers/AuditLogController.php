@@ -9,7 +9,7 @@ class AuditLogController extends Controller
 {
     public function index()
     {
-        $auditLogs = AuditLog::with('company')->get();
+        $auditLogs = AuditLog::with(['client', 'company'])->get();
         return view('pages.audit-logs.index', compact('auditLogs'));
     }
     

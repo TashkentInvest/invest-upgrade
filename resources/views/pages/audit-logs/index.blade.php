@@ -29,6 +29,7 @@
                     <thead>
                         <tr>
                             <th>ID</th>
+                            <th>Client</th>
                             <th>Company</th>
                             <th>Event</th>
                             <th>Old Values</th>
@@ -40,6 +41,7 @@
                         @foreach ($auditLogs as $log)
                             <tr>
                                 <td>{{ $log->id }}</td>
+                                <td>{{ $log->client->first_name ?? 'N/A' }} {{ $log->client->last_name ?? '' }}</td>
                                 <td>{{ $log->company->company_name ?? 'N/A' }}</td>
                                 <td>{{ $log->event }}</td>
                                 <td>
@@ -75,7 +77,7 @@
 <script>
     $(document).ready(function() {
         $('#datatable').DataTable({
-            "order": [[ 5, "desc" ]], // Order by the Timestamp column by default
+            "order": [[ 6, "desc" ]], // Order by the Timestamp column by default
             "pageLength": 10, // Show 10 entries per page by default
         });
     });

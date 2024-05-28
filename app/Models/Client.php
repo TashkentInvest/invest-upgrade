@@ -43,4 +43,37 @@ class Client extends Model
     public function products(){
         return $this->hasMany(Products::class);
     }
+
+    public static function boot()
+    {
+        parent::boot();
+
+        static::created(function ($client) {
+            AuditLog::create([
+                'client_id' => $client->id,
+                'event' => 'created',
+                'new_values' => $client->toJson(),
+            ]);
+        });
+
+        static::updating(function ($client) {
+            $original = $client->getOriginal();
+            $changes = $client->getChanges();
+
+            AuditLog::create([
+                'client_id' => $client->id,
+                'event' => 'updated',
+                'old_values' => json_encode($original),
+                'new_values' => json_encode($changes),
+            ]);
+        });
+
+        static::deleted(function ($client) {
+            AuditLog::create([
+                'client_id' => $client->id,
+                'event' => 'deleted',
+                'old_values' => $client->toJson(),
+            ]);
+        });
+    }
 }
