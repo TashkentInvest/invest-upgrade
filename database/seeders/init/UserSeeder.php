@@ -44,7 +44,7 @@ class UserSeeder extends Seeder
         $adminuser->syncPermissions($permissions);
 
         $manager = User::create([
-            "name" => "Manager",
+            "name" => "jakhongir",
             "email" => "jakhongir.uljabaev@gmail.com",
             "password" => bcrypt("1100511#")
         ]);
