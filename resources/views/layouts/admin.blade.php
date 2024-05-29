@@ -42,22 +42,24 @@
 					<div class="navbar-brand-box">
 						<a href="{{ route('home') }}" class="logo logo-dark">
 							<span class="logo-sm">
-								{{-- <img src="{{ asset('assets/images/favicon_techwiz.ico') }}" alt="" height="22"> --}}
+								<img src="{{ asset('assets/images/logo.png') }}" alt="" height="22">
 							</span>
 							<span class="logo-lg">
-								{{-- <img src="{{ asset('assets/images/logo_red.png') }}" alt="" height="50"> --}}
+								<img src="{{ asset('assets/images/logo.png') }}" alt="" height="50">
+								<b>Tashkent Invest</b>
 							</span>
-							<b>Tashkent Invest</b>
 						</a>
 
+
 						<a href="{{ route('home') }}" class="logo logo-light">
-							{{-- <span class="logo-sm">
-								<img src="{{ asset('assets/images/favicon_techwiz.ico') }}" alt="" height="22">
+							<span class="logo-sm">
+								<img src="{{ asset('assets/images/logo.png') }}" alt="" height="22">
 							</span>
 							<span class="logo-lg">
-								<img src="{{ asset('assets/images/logo_red.png') }}" alt="" height="50">
-							</span> --}}
+								<img src="{{ asset('assets/images/logo.png') }}" alt="" height="50">
 							<b>Tashkent Invest</b>
+								
+							</span>
 
 						</a>
 					</div>
