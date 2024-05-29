@@ -7,10 +7,27 @@ use Illuminate\Http\Request;
 
 class AuditLogController extends Controller
 {
+    // public function index()
+    // {
+    //     try {
+    //         $auditLogs = AuditLog::with(['user', 'client', 'company'])
+    //                              ->orderBy('created_at', 'desc')
+    //                              ->get();
+    //     } catch (\Exception $e) {
+    //         return back()->withError($e->getMessage())->withInput();
+    //     }
+    
+    //     return view('pages.audit-logs.index', compact('auditLogs'));
+    // }
+    
     public function index()
-    {
-        $auditLogs = AuditLog::with(['user','client', 'company'])->get();
-        return view('pages.audit-logs.index', compact('auditLogs'));
-    }
+{
+    $query = AuditLog::with(['user', 'client', 'company'])->orderBy('created_at', 'desc');
+    // dd($query->toSql()); // Debug the generated SQL query/
+
+    $auditLogs = $query->get();
+    return view('pages.audit-logs.index', compact('auditLogs'));
+}
+
     
 }

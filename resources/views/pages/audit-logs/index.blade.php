@@ -41,7 +41,7 @@
                     <tbody>
                         @foreach ($auditLogs as $log)
                             <tr>
-                                <td>{{ $log->id }}</td>
+                                <td>{{ $loop->iteration }}</td>
                                 <td>{{ $log->user->name }} | {{ $log->user->email }}</td>
                                 <td>{{ $log->client->first_name ?? 'N/A' }} {{ $log->client->last_name ?? '' }}</td>
                                 <td>{{ $log->company->company_name ?? 'N/A' }}</td>
