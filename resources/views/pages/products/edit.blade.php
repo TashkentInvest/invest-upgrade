@@ -215,12 +215,12 @@
                                         @endif
                                     </div>
                                     <!-- Display existing files -->
-                                    <ul>
+                                    <ul >
                                         @foreach ($files as $file)
-                                            <li>
+                                            <div class="py-1">
                                                 <a target="_blank" class="py-2 my-2" href="{{ asset($file->path) }}">Link</a>
                                                 <input type="checkbox" name="delete_files[]" value="{{ $file->id }}"> Delete
-                                            </li>
+                                            </div>
                                         @endforeach
                                     </ul>
                                 @else
