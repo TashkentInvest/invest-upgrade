@@ -94,3 +94,7 @@ role permissionlani korvorsh kere
 fule upload qilish kere
 
 familya imya otchestva
+
+<a href="https://wordtohtml.net/">https://wordtohtml.net/</a>
+
+shu sayt blan word ni html qvolamzeb

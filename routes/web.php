@@ -12,6 +12,7 @@ use App\Http\Controllers\Blade\DistrictController;
 use App\Http\Controllers\Blade\CategoryController;
 use App\Http\Controllers\Blade\ProductController;
 use App\Http\Controllers\ClientController;
+use App\Http\Controllers\FileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -72,8 +73,12 @@ Route::group(['middleware' => 'auth'],function (){
     Route::post('/product/toggle-status/{id}',[ProductController::class,'toggleProductActivation'])->name('productActivation');
     Route::get('/download-table-data/{id}', [ProductController::class, 'downloadTableData'])->name('download.table.data');
     Route::get('/file/{filename}', [ProductController::class, 'file'])->name('file.show');
-
     Route::get('audit-logs', [AuditLogController::class, 'index'])->name('audit-logs.index');
+
+    // Fiel 
+    
+    Route::get('/doc', [FileController::class,'index'])->name('doc');
+    
 
 
 
