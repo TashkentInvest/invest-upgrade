@@ -29,7 +29,7 @@
                         @csrf
 
                         <div id="basic-example">
-                            <h3>Shaxsiy Malumotlar</h3>
+                            <h3>@lang('global.personal_informations')</h3>
                             <section>
 
                                 <div class="row">
@@ -102,7 +102,7 @@
                                     </div>
                              
                                     <div class="col-12 col-lg-3 mb-2">
-                                        <label for="yuridik_address" class="col-md-4 col-form-label">@lang('cruds.client.fields.yuridik_address')</label>
+                                        <label for="yuridik_address" class="col-md-6 col-form-label">@lang('cruds.client.fields.yuridik_address')</label>
                                         <input class="form-control {{ $errors->has('yuridik_address') ? 'is-invalid' : '' }}" type="text" name="yuridik_address" id="yuridik_address" placeholder="@lang('cruds.client.fields.yuridik_address')" value="{{ old('yuridik_address') }}">
                                         @if ($errors->has('yuridik_address'))
                                             <span class="error invalid-feedback">{{ $errors->first('yuridik_address') }}</span>
@@ -110,7 +110,7 @@
                                     </div>
                                 
                                     <div class="col-12 col-lg-3 mb-2">
-                                        <label for="yuridik_rekvizid" class="col-md-4 col-form-label">@lang('cruds.client.fields.yuridik_rekvizid')</label>
+                                        <label for="yuridik_rekvizid" class="col-md-6 col-form-label">@lang('cruds.client.fields.yuridik_rekvizid')</label>
                                         <input class="form-control {{ $errors->has('yuridik_rekvizid') ? 'is-invalid' : '' }}" type="text" name="yuridik_rekvizid" id="yuridik_rekvizid" placeholder="@lang('cruds.client.fields.yuridik_rekvizid')" value="{{ old('yuridik_rekvizid') }}">
                                         @if ($errors->has('yuridik_rekvizid'))
                                             <span class="error invalid-feedback">{{ $errors->first('yuridik_rekvizid') }}</span>
@@ -123,18 +123,18 @@
                                 
                                 <div class="row">
                                     <div class="col-12 col-lg-3 mb-2">
-                                        <label for="name" class="col-md-4 col-form-label">@lang('cruds.client.fields.name')</label>
-                                        <input class="form-control {{ $errors->has('first_name') ? 'is-invalid' : '' }}" type="text" name="first_name" id="first_name" placeholder="@lang('cruds.client.fields.first_name')" value="{{ old('first_name') }}">
-                                        @if ($errors->has('first_name'))
-                                            <span class="error invalid-feedback">{{ $errors->first('first_name') }}</span>
-                                        @endif
-                                    </div>
-                                
-                                    <div class="col-12 col-lg-3 mb-2">
                                         <label for="last_name" class="col-md-4 col-form-label">@lang('cruds.client.fields.last_name')</label>
                                         <input class="form-control {{ $errors->has('last_name') ? 'is-invalid' : '' }}" type="text" name="last_name" id="last_name" placeholder="@lang('cruds.client.fields.last_name')" value="{{ old('last_name') }}">
                                         @if ($errors->has('last_name'))
                                             <span class="error invalid-feedback">{{ $errors->first('last_name') }}</span>
+                                        @endif
+                                    </div>
+                                
+                                    <div class="col-12 col-lg-3 mb-2">
+                                        <label for="name" class="col-md-4 col-form-label">@lang('cruds.client.fields.name')</label>
+                                        <input class="form-control {{ $errors->has('first_name') ? 'is-invalid' : '' }}" type="text" name="first_name" id="first_name" placeholder="@lang('cruds.client.fields.first_name')" value="{{ old('first_name') }}">
+                                        @if ($errors->has('first_name'))
+                                            <span class="error invalid-feedback">{{ $errors->first('first_name') }}</span>
                                         @endif
                                     </div>
                                 
@@ -158,15 +158,16 @@
                                 <div class="row" id="passport">
                                     
                                     <div class="col-12 col-lg-3 mb-2">
-                                        <label for="passport_serial" class="col-md-4 col-form-label">@lang('cruds.client.fields.passport_serial')</label>
+                                        <label for="passport_serial" class="col-md-6 col-form-label">@lang('cruds.client.fields.passport_serial')</label>
                                         <input class="form-control {{ $errors->has('passport_serial') ? 'is-invalid' : '' }}" type="text" name="passport_serial" id="passport_serial" placeholder="@lang('cruds.client.fields.passport_serial')" value="{{ old('passport_serial') }}">
                                         @if ($errors->has('passport_serial'))
                                             <span class="error invalid-feedback">{{ $errors->first('passport_serial') }}</span>
                                         @endif
                                     </div>
-                                
+                                 
+                                   
                                     <div class="col-12 col-lg-3 mb-2">
-                                        <label for="passport_pinfl" class="col-md-4 col-form-label">@lang('cruds.client.fields.passport_pinfl')</label>
+                                        <label for="passport_pinfl" class="col-md-6 col-form-label">@lang('cruds.client.fields.passport_pinfl')</label>
                                         <input class="form-control {{ $errors->has('passport_pinfl') ? 'is-invalid' : '' }}" type="text" name="passport_pinfl" id="passport_pinfl" placeholder="@lang('cruds.client.fields.passport_pinfl')" value="{{ old('passport_pinfl') }}">
                                         @if ($errors->has('passport_pinfl'))
                                             <span class="error invalid-feedback">{{ $errors->first('passport_pinfl') }}</span>
@@ -199,10 +200,10 @@
 
 
                                 </div>
+                               
                                 <label for="is_passport_id">Is passport ID?</label>
                                 <input type="checkbox" name="passport_type" id="is_passport_id" value="1">
 
-                                
 
                 
                                 
@@ -241,8 +242,7 @@
                                 
 
                             </section>
-
-                            <h3>Obyekt</h3>
+                            <h3>@lang('global.object')</h3>
                             <section>
                                 <div class="accordion accordion-flush" id="accordionFlushExample">
                                     <div class="accordion-item">
@@ -545,7 +545,8 @@
                             
 
                             <!-- Confirm Details -->
-                            <h3>Tasdiqlash</h3>
+                            <h3>@lang('global.confirmation')</h3>
+
                             <section>
                                 <div class="row justify-content-center">
                                     <div class="col-lg-6">
@@ -554,7 +555,7 @@
                                                 <i class="mdi mdi-check-circle-outline text-success display-4"></i>
                                             </div>
                                             <div>
-                                                <h5>Tasdiqlash</h5>
+                                                <h5>@lang('global.confirmation')</h5>
                                                 <p class="text-muted">Barcha kiritgan malumotlaringiz to'grimi ? </p>
 
                                                 <button type="submit" class="btn btn-primary">Send</button>

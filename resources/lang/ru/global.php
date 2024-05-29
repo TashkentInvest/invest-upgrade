@@ -1,6 +1,9 @@
 <?php
 
 return [
+    'personal_informations'                 => "Личные сведения",
+    'confirmation'                          => "Подтверждение",
+    'object'                                => "Объект",
     'name_as'                               => "Название на",
     'description_as'                        => 'Описание на',
     'theme'                                 => 'Тема',

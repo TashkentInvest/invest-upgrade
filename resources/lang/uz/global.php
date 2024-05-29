@@ -1,6 +1,10 @@
 <?php
 
 return [
+
+    'personal_informations'                 => "Shaxsiy Malumotlar",
+    'confirmation'                          => "Tasdiqlash",
+    'object'                                => "Obyekt",
     'theme'                                 => 'Tema',
     'days'                                  => 'Kunlar',
     'refund_id'                             => 'Qaytarilgan TR_ID',

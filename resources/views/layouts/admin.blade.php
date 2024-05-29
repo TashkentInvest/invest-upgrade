@@ -58,7 +58,6 @@
 							<span class="logo-lg">
 								<img src="{{ asset('assets/images/logo.png') }}" alt="" height="50">
 							<b>Tashkent Invest</b>
-								
 							</span>
 
 						</a>
