@@ -24,13 +24,10 @@ class ProductController extends Controller
 {
     public function downloadTableData($id)
     {
-        // Retrieve client details
         $client = Client::find($id);
 
-        // Generate file name with current date, client's first name, and last name
         $fileName = 'products_data_' . $client->first_name . '_' . $client->last_name . '_' . Carbon::now()->format('Y-m-d') . '.xls';
 
-        // Export the data to Excel using the ProductsExport class with dynamically generated file name
         return Excel::download(new ProductsExport($id), $fileName);
     }
     public function index()
@@ -39,7 +36,6 @@ class ProductController extends Controller
             ->get()->all();
 
         $clients = Client::with('products')->where('is_deleted', '!=', 1)->get()->all();
-        // dd($products);
 
         return view('pages.products.index', compact('products', 'clients'));
     }
@@ -56,12 +52,8 @@ class ProductController extends Controller
     public function add()
     {
         $regions = Regions::get()->all();
-
         return view('pages.products.add', compact('regions'));
     }
-
-
-
 
     public function create(Request $request)
     {
@@ -71,7 +63,6 @@ class ProductController extends Controller
             $client = Client::where('passport_serial', $request->get('passport_serial'))->first();
 
             if (!$client) {
-                // Create the client if it doesn't exist
                 $client = Client::create([
                     'first_name' => $request->get('first_name'),
                     'last_name' => $request->get('last_name'),
@@ -94,7 +85,6 @@ class ProductController extends Controller
                     $fileName = time() . '.' . $extension;
                     $file->move(public_path('assets'), $fileName);
                     
-                    // Save file path to the "files" table
                     $fileModel = new File();
                     $fileModel->client_id = $client->id;
                     $fileModel->path = 'assets/' . $fileName;
@@ -193,17 +183,14 @@ class ProductController extends Controller
             }
         }
         
-        // Handle file deletions
         if ($request->has('delete_files')) {
             foreach ($request->delete_files as $fileId) {
                 $file = File::findOrFail($fileId);
                 
-                // Delete the file from storage
                 if (Storage::exists($file->path)) {
                     Storage::delete($file->path);
                 }
                 
-                // Delete the file record from the database
                 $file->delete();
             }
         }
@@ -230,11 +217,11 @@ class ProductController extends Controller
             'contact' => $request->contact,
             'passport_serial' => $request->passport_serial,
             'passport_pinfl' => $request->passport_pinfl,
-            'passport_date' => $request->passport_date, // Corrected
-            'passport_location' => $request->passport_location, // Corrected
-            'passport_type' => $request->passport_type, // Corrected
-            'yuridik_address' => $request->yuridik_address, // Added
-            'yuridik_rekvizid' => $request->yuridik_rekvizid, // Added
+            'passport_date' => $request->passport_date, 
+            'passport_location' => $request->passport_location, 
+            'passport_type' => $request->passport_type, 
+            'yuridik_address' => $request->yuridik_address, 
+            'yuridik_rekvizid' => $request->yuridik_rekvizid, 
         ];
     
         $company = [
