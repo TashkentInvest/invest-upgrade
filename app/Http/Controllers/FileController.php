@@ -20,7 +20,7 @@ class FileController extends Controller
     
         $clients = Client::with('products')->with('companies')->where('is_deleted', '!=', 1)->get()->all();
         
-        return Response::make(view('pages.docs.full_hajim', compact('clients')), 200, $headers);
+        return Response::make(view('pages.docs.full2', compact('clients')), 200, $headers);
     }
     
 }
