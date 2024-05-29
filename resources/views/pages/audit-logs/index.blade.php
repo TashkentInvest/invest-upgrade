@@ -29,6 +29,7 @@
                     <thead>
                         <tr>
                             <th>ID</th>
+                            <th>User</th>
                             <th>Client</th>
                             <th>Company</th>
                             <th>Event</th>
@@ -41,6 +42,7 @@
                         @foreach ($auditLogs as $log)
                             <tr>
                                 <td>{{ $log->id }}</td>
+                                <td>{{ $log->user->name }} | {{ $log->user->email }}</td>
                                 <td>{{ $log->client->first_name ?? 'N/A' }} {{ $log->client->last_name ?? '' }}</td>
                                 <td>{{ $log->company->company_name ?? 'N/A' }}</td>
                                 <td>{{ $log->event }}</td>

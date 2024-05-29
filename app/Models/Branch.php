@@ -35,6 +35,7 @@ class Branch extends Model
 
         static::created(function ($branch) {
             AuditLog::create([
+                'user_id' => auth()->user()->id,
                 'company_id' => $branch->company_id,
                 'event' => 'branch_created',
                 'new_values' => $branch->toJson(),
@@ -46,6 +47,7 @@ class Branch extends Model
             $changes = $branch->getChanges();
 
             AuditLog::create([
+                'user_id' => auth()->user()->id,
                 'company_id' => $branch->company_id,
                 'event' => 'branch_updated',
                 'old_values' => json_encode($original),
@@ -55,6 +57,7 @@ class Branch extends Model
 
         static::deleted(function ($branch) {
             AuditLog::create([
+                'user_id' => auth()->user()->id,
                 'company_id' => $branch->company_id,
                 'event' => 'branch_deleted',
                 'old_values' => $branch->toJson(),

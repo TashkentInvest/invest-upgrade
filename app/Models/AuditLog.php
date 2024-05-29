@@ -9,7 +9,7 @@ class AuditLog extends Model
     use HasFactory;
 
     protected $fillable = [
-        'client_id', 'company_id', 'event', 'old_values', 'new_values'
+        'user_id','client_id', 'company_id', 'event', 'old_values', 'new_values'
     ];
 
     protected $casts = [
@@ -20,6 +20,11 @@ class AuditLog extends Model
     public function client()
     {
         return $this->belongsTo(Client::class);
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
     }
 
     public function company()
