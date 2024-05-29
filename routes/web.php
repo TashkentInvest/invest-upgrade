@@ -78,10 +78,6 @@ Route::group(['middleware' => 'auth'],function (){
     // File
     Route::get('/doc', [FileController::class,'index']);
     
-
-
-
-
     // Users
     Route::get('/users',[UserController::class,'index'])->name('userIndex');
     Route::get('/user/add',[UserController::class,'add'])->name('userAdd');

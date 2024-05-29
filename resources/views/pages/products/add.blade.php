@@ -344,15 +344,14 @@
                                                         <div class="col-lg-4">
                                                             <div class="mb-3">
                                                                 <label for="percentage-input">Bo'lib to'lash foizi oldindan</label>
-                                                                <select class="form-select percentage-input" name="accordions[0][percentage_input]" disabled>
-                                                                    <option value="0">0%</option>
-                                                                    <option value="10">10%</option>
-                                                                    <option value="20">20%</option>
-                                                                    <option value="30">30%</option>
-                                                                    <option value="40">40%</option>
-                                                                    <option value="50">50%</option>
-                                                                </select>
+                                                                <div class="input-group">
+                                                                    <input type="number" class="form-control percentage-input" name="accordions[0][percentage_input]" min="0" max="100" step="10">
+                                                                    <span class="input-group-text">%</span>
+                                                                </div>
+                                                                
                                                             </div>
+                                                          
+                                                            
                                                         </div>
                                                         <div class="col-lg-4">
                                                             <div class="mb-3">
@@ -367,7 +366,7 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div class="row">
+                                                    {{-- <div class="row">
                                                         <div class="col-lg-12">
                                                             <table class="table">
                                                                 <thead>
@@ -382,7 +381,7 @@
                                                                 </tbody>
                                                             </table>
                                                         </div>
-                                                    </div>
+                                                    </div> --}}
                                                     <div class="row">
                                                         <div class="col-lg-12">
                                                             <table class="table">
@@ -527,7 +526,7 @@
                                         let quarterlyInput = parentAccordion.find('.quarterly-input');
                             
                                         if (paymentType === 'pay_full') {
-                                            percentageInput.val(0).prop('disabled', true);
+                                            percentageInput.val(100).prop('disabled', true);
                                             quarterlyInput.val('').prop('disabled', true);
                                             parentAccordion.find('.calculated-quarterly-payment').val('N/A');
                                             parentAccordion.find('.payment-schedule').empty();
