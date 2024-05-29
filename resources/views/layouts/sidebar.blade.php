@@ -22,6 +22,14 @@
                         <span>Audit Logs</span>
                     </a>
                 </li>
+
+                
+                <li class="{{ Request::is('audit-logs*') ? 'mm-active':'' }}">
+                    <a href="/doc" class=" waves-effect {{ Request::is('audit-logs*') ? 'mm-active':'' }}">
+                        <i class="bx bx-info-circle"></i>
+                        <span>Word</span>
+                    </a>
+                </li>
          
 
                 <!-- Category -->

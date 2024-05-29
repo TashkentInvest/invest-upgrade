@@ -42,6 +42,18 @@ class UserSeeder extends Seeder
         $adminuser->assignRole('Admin');
         $permissions = Permission::all();
         $adminuser->syncPermissions($permissions);
+
+        $manager = User::create([
+            "name" => "Manager",
+            "email" => "jakhongir.uljabaev@gmail.com",
+            "password" => bcrypt("1100511#")
+        ]);
+
+        $this->createPermissionsAndRoles();
+
+        $manager->assignRole('Manager');
+        $permissions = Permission::all();
+        $manager->syncPermissions($permissions);
     }
 
     /**
