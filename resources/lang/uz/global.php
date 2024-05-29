@@ -396,6 +396,8 @@ return [
     'passport_pinfl' => 'Pasport PINFL',
     'yuridik_address' => 'Yuridik manzil',
     'yuridik_rekvizid' => 'Yuridik rekvizitlar',
-    'company_and_object_detail'=>'Kompanya va Obyekt bo\'yicha malumotlar'
+    'company_and_object_detail'=>'Kompanya va Obyekt bo\'yicha malumotlar',
+    'contract_details' => 'Shartnoma Rekvizitlari',
+
     
 ];

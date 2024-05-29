@@ -143,81 +143,78 @@
                         <tbody>
                             {{-- @dump($client->companies[0]->company_name ) --}}
                             @if (isset($client))
-                                @foreach ($client->companies as $index => $comp)
+                            @foreach ($client->companies as $index => $comp)
+                                <tr>
+                                    <td>@lang('global.id')</td>
+                                    <td colspan="2">{{ $index + 1 }}</td>
+                                </tr>
+                        
+                                <tr>
+                                    <td>@lang('cruds.company.fields.company_location')</td>
+                                    <td colspan="2">{{ $comp->company_location }}</td>
+                                </tr>
+                        
+                                <tr>
+                                    <td>@lang('cruds.company.fields.company_name')</td>
+                                    <td colspan="2">{{ $comp->company_name }}</td>
+                                </tr>
+                        
+                                @foreach ($comp->branches as $b)
                                     <tr>
-                                        <td>ID</td>
-                                        <td colspan="2">{{ $index + 1 }}</td>
+                                        <td colspan="3" class="text-center"><strong>@lang('global.contract_details')</strong></td>
                                     </tr>
-
                                     <tr>
-                                        <td>Loyixa Manzili</td>
-                                        <td colspan="2">{{ $comp->company_location }}</td>
+                                        <td>@lang('global.ruxsatnoma_raqami')</td>
+                                        <td colspan="2">{{ $b->contract_apt }}</td>
                                     </tr>
-
                                     <tr>
-                                        <td>Loyixa Nomi</td>
-                                        <td colspan="2">{{ $comp->company_name }}</td>
+                                        <td>@lang('global.created_at')</td>
+                                        <td colspan="2">{{ $b->contract_date }}</td>
                                     </tr>
-
-
-
-                                    @foreach ($comp->branches as $b)
-                                        <tr>
-                                            <td colspan="3" class="text-center"><strong>Shartnoma
-                                                    Rekvizitlari</strong></td>
-                                        </tr>
-                                        <tr>
-                                            <td>APT Raqami</td>
-                                            <td colspan="2">{{ $b->contract_apt }}</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Sanasi</td>
-                                            <td colspan="2">{{ $b->contract_date }}</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Obyekt bo'yicha to'lanadigan yeg'im miqdori</td>
-                                            <td colspan="2">{{ $b->branch_kubmetr }}</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Jami to'lanishi kerak bo'lgan miqdor</td>
-                                            <td colspan="2">{{ $b->generate_price }}</td>
-                                        </tr>
-                                        <tr>
-                                            <td>To'lash turlari</td>
-                                            <td colspan="2">{{ $b->payment_type }}</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Bo'lib to'lash foizi oldindan</td>
-                                            <td colspan="2">{{ $b->percentage_input }}%</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Bo'lib to'lash kvartalniy</td>
-                                            <td colspan="2">{{ $b->installment_quarterly }}</td>
-                                        </tr>
-                                    @endforeach
+                                    <tr>
+                                        <td>@lang('global.obyekt_boyicha_tolanishi_lozim')</td>
+                                        <td colspan="2">{{ $b->branch_kubmetr }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>@lang('global.jami_tolanishi_kerak')</td>
+                                        <td colspan="2">{{ $b->generate_price }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>@lang('global.bolib_tolash')</td>
+                                        <td colspan="2">
+                                            @if ($b->payment_type == 'pay_bolib')
+                                             @lang('global.pay_bolib')
+                                            @else
+                                                @lang('global.pay_full')
+                                            @endif
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>@lang('global.bolib_tolash_foizi_oldindan')</td>
+                                        <td colspan="2">{{ $b->percentage_input }}%</td>
+                                    </tr>
+                                    <tr>
+                                        <td>@lang('global.quarterly_payment')</td>
+                                        <td colspan="2">{{ $b->installment_quarterly }}</td>
+                                    </tr>
                                 @endforeach
-
-                                @if ($files->isNotEmpty())
+                            @endforeach
+                        
+                            @if ($files->isNotEmpty())
                                 <h4>@lang('global.downloadFile')</h4>
                                 <ul>
                                     @foreach ($files as $file)
-                                    {{-- @dd($file) --}}
                                         <li>
-
-                                            <a target="_blank" href="{{asset($file->path)}}">Link</a>
-
-
-                                            {{-- <a href="{{ route('file.show', ['filename' => $file->path]) }}">{{ $file->path }}</a> --}}
+                                            <a target="_blank" href="{{ asset($file->path) }}">Link</a>
                                         </li>
                                     @endforeach
                                 </ul>
                             @else
                                 <p>No files uploaded for this product.</p>
                             @endif
+                       
+                        
 
-                            {{-- <a href="{{asset('assets/'. $files[0]->name)}}">Link</a> --}}
-
-                            {{-- <a href="{{asset('client_documents/' . $file->name)}}">Link</a> --}}
 
                             @endif
                         </tbody>
