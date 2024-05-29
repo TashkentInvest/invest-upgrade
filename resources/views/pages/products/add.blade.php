@@ -260,42 +260,34 @@
                                                     <div class="row">
                                                         <div class="col-lg-6">
                                                             <div class="mb-3">
-                                                                <label for="contract_apt">Ruxsatnoma raqami</label>
-                                                                <input type="text" class="form-control"
-                                                                    name="accordions[0][contract_apt]" placeholder="Ruxsatnoma raqami">
+                                                                <label for="contract_apt">@lang('global.ruxsatnoma_raqami')</label>
+                                                                <input type="text" class="form-control" name="accordions[0][contract_apt]" placeholder="@lang('global.ruxsatnoma_raqami')">
                                                             </div>
                                                         </div>
                                                         <div class="col-lg-6">
                                                             <div class="mb-3">
-                                                                <label for="contract_date">Sanasi</label>
-                                                                <input class="form-control" type="datetime-local"
-                                                                    name="accordions[0][contract_date]">
+                                                                <label for="contract_date">@lang('global.sanasi')</label>
+                                                                <input class="form-control" type="datetime-local" name="accordions[0][contract_date]">
                                                             </div>
                                                         </div>
                                                     </div>
                                                     <div class="row">
                                                         <div class="col-lg-4">
                                                             <div class="mb-3">
-                                                                <label for="company_type">Loyiha Turi</label>
-                                                                <input type="text" class="form-control"
-                                                                    name="accordions[0][company_type]"
-                                                                    placeholder="Loyiha Turi">
+                                                                <label for="company_type">@lang('global.loyiha_turi')</label>
+                                                                <input type="text" class="form-control" name="accordions[0][company_type]" placeholder="@lang('global.loyiha_turi')">
                                                             </div>
                                                         </div>
                                                         <div class="col-lg-4">
                                                             <div class="mb-3">
-                                                                <label for="company_location">Loyiha Manzili</label>
-                                                                <input type="text" class="form-control"
-                                                                    name="accordions[0][company_location]"
-                                                                    placeholder="Loyiha Manzili">
+                                                                <label for="company_location">@lang('global.loyiha_manzili')</label>
+                                                                <input type="text" class="form-control" name="accordions[0][company_location]" placeholder="@lang('global.loyiha_manzili')">
                                                             </div>
                                                         </div>
                                                         <div class="col-lg-4">
                                                             <div class="mb-3">
-                                                                <label for="company_name">Loyiha Nomi</label>
-                                                                <input type="text" class="form-control"
-                                                                    name="accordions[0][company_name]"
-                                                                    placeholder="Loyiha Nomi">
+                                                                <label for="company_name">@lang('global.loyiha_nomi')</label>
+                                                                <input type="text" class="form-control" name="accordions[0][company_name]" placeholder="@lang('global.loyiha_nomi')">
                                                             </div>
                                                         </div>
                                                     </div>
@@ -303,66 +295,53 @@
                                                         <div class="col-4">
                                                             <div class="inner-repeater mb-4">
                                                                 <div data-repeater-list="inner-group" class="inner mb-3">
-                                                                    <label for="basicpill-cardno-input">Obyekt bo'yicha
-                                                                        tolanadigan yeg'im miqdori</label>
-                                                                    <input type="number"
-                                                                        class="form-control branch_kubmetr"
-                                                                        placeholder="Metr Kub"
-                                                                        name="accordions[0][branch_kubmetr]">
+                                                                    <label for="basicpill-cardno-input">@lang('global.obyekt_boyicha_tolanishi_lozim')</label>
+                                                                    <input type="number" class="form-control branch_kubmetr" placeholder="@lang('global.obyekt_boyicha_tolanishi_lozim')" name="accordions[0][branch_kubmetr]">
                                                                 </div>
                                                             </div>
                                                         </div>
                                                         <div class="col-lg-4">
-                                                            <div class="mb-3">
-                                                                <label for="basicpill-card-verification-input">Bazaviy
-                                                                    xisoblash miqdori</label>
-                                                                <input type="number" class="form-control minimum_wage"
-                                                                    placeholder="340 min" value="340000"
-                                                                    name="accordions[0][minimum_wage]">
+                                                        <div class="mb-3">
+                                                                <label for="basicpill-card-verification-input">@lang('global.bazaviy_xisoblash_miqdori')</label>
+                                                                <input type="number" class="form-control minimum_wage" placeholder="@lang('global.bazaviy_xisoblash_miqdori')" value="340000" name="accordions[0][minimum_wage]">
                                                             </div>
                                                         </div>
                                                         <div class="col-lg-4">
                                                             <div class="mb-3">
-                                                                <label for="basicpill-card-verification-input">Jami
-                                                                    to'lanishi kerak bo'gan miqdor</label>
-                                                                <input type="text" class="form-control generate_price"
-                                                                    name="accordions[0][generate_price]"
-                                                                    placeholder="------------" readonly>
+                                                                <label for="basicpill-card-verification-input">@lang('global.jami_tolanishi_kerak')</label>
+                                                                <input type="text" class="form-control generate_price" name="accordions[0][generate_price]" placeholder="@lang('global.jami_tolanishi_kerak')" readonly>
                                                             </div>
                                                         </div>
                                                     </div>
                                                     <div class="row">
                                                         <div class="col-lg-4">
                                                             <div class="mb-3">
-                                                                <label>To'lash turlari</label>
+                                                                <label>@lang('global.tolash_turlari')</label>
                                                                 <select class="form-select payment-type" name="accordions[0][payment_type]">
-                                                                    <option value="pay_full">To'liq xajimda to'lash</option>
-                                                                    <option value="pay_bolib">Bo'lib to'lash</option>
+                                                                    <option value="pay_full">@lang('global.toliq_xajimda_tolash')</option>
+                                                                    <option value="pay_bolib">@lang('global.bolib_tolash')</option>
                                                                 </select>
                                                             </div>
                                                         </div>
                                                         <div class="col-lg-4">
                                                             <div class="mb-3">
-                                                                <label for="percentage-input">Bo'lib to'lash foizi oldindan</label>
+                                                                <label for="percentage-input">@lang('global.bolib_tolash_foizi_oldindan')</label>
                                                                 <div class="input-group">
                                                                     <input type="number" class="form-control percentage-input" name="accordions[0][percentage_input]" min="0" max="100" step="10">
                                                                     <span class="input-group-text">%</span>
                                                                 </div>
-                                                                
-                                                            </div>
-                                                          
-                                                            
-                                                        </div>
-                                                        <div class="col-lg-4">
-                                                            <div class="mb-3">
-                                                                <label for="quarterly-input">Bo'lib to'lash har chorakda</label>
-                                                                <input type="number" class="form-control quarterly-input" name="accordions[0][installment_quarterly]" placeholder="Choraklar soni" disabled>
                                                             </div>
                                                         </div>
                                                         <div class="col-lg-4">
                                                             <div class="mb-3">
-                                                                <label for="calculated-quarterly-payment">Quarterly Payment</label>
-                                                                <input type="text" class="form-control calculated-quarterly-payment" placeholder="------------" readonly>
+                                                                <label for="quarterly-input">@lang('global.bolib_tolash_har_chorakda')</label>
+                                                                <input type="number" class="form-control quarterly-input" name="accordions[0][installment_quarterly]" placeholder="@lang('global.bolib_tolash_har_chorakda')" disabled>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-4">
+                                                            <div class="mb-3">
+                                                                <label for="calculated-quarterly-payment">@lang('global.quarterly_payment')</label>
+                                                                <input type="text" class="form-control calculated-quarterly-payment" placeholder="@lang('global.quarterly_payment')" readonly>
                                                             </div>
                                                         </div>
                                                     </div>
