@@ -77,7 +77,7 @@ return [
     'clientId'                             => 'Mijoz_ID',
     'client_id'                            => 'Mijoz ID',
     'client_name'                          => 'FIO',
-    'loan_id'                              => 'Shartnoma ID',
+    'loan_id'                              => 'Номер разрешения ID',
     'settings'                             => 'Sozlamalar',
     'actions'                              => 'Amallar',
     'add'                                  => 'Qo\'shish',
@@ -383,4 +383,10 @@ return [
     "bolib_tolash_foizi_oldindan" => "Bo'lib tolash foizi oldindan",
     "bolib_tolash_har_chorakda" => "Bo'lib to'lash har chorakda",
     'quarterly_payment' => 'Har chorakda to\'lov',
+    'Yuridik' => 'Yuridik shaxs',
+    'fizik' => 'Jismoniy shaxs',
+    'pay_bolib' => 'Bo\'lib to\'lash',
+    'pay_full' => 'To\'liq to\'lash'
+    
+    
 ];

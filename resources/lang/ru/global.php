@@ -396,4 +396,8 @@ return [
     "bolib_tolash_foizi_oldindan" => 'Процент предоплаты при рассрочке',
     "bolib_tolash_har_chorakda" => 'Рассрочка ежеквартально',
     'quarterly_payment' => 'Ежеквартальный платеж',
+    'yuridik' => 'Юридический',
+    'fizik' => 'Физический',
+    'pay_bolib' => 'Оплата в рассрочку',
+    'pay_full' => 'Оплатить полностью'
 ];
