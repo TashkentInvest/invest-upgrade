@@ -386,7 +386,16 @@ return [
     'Yuridik' => 'Yuridik shaxs',
     'fizik' => 'Jismoniy shaxs',
     'pay_bolib' => 'Bo\'lib to\'lash',
-    'pay_full' => 'To\'liq to\'lash'
-    
+    'pay_full' => 'To\'liq to\'lash',
+    'id' => 'ID',
+    'fio' => 'F.I.O',
+    'contact' => 'Kontakt',
+    'mijoz_turi' => 'Mijoz Turi',
+    'father_name' => 'Otasining ismi',
+    'passport_serial' => 'Pasport seriyasi',
+    'passport_pinfl' => 'Pasport PINFL',
+    'yuridik_address' => 'Yuridik manzil',
+    'yuridik_rekvizid' => 'Yuridik rekvizitlar',
+    'company_and_object_detail'=>'Kompanya va Obyekt bo\'yicha malumotlar'
     
 ];

@@ -399,5 +399,15 @@ return [
     'yuridik' => 'Юридический',
     'fizik' => 'Физический',
     'pay_bolib' => 'Оплата в рассрочку',
-    'pay_full' => 'Оплатить полностью'
+    'pay_full' => 'Оплатить полностью',
+    'id' => 'ID',
+    'fio' => 'Ф.И.О.',
+    'contact' => 'Контакт',
+    'mijoz_turi' => 'Тип клиента',
+    'father_name' => 'Отчество',
+    'passport_serial' => 'Серия паспорта',
+    'passport_pinfl' => 'ПИНФЛ паспорта',
+    'yuridik_address' => 'Юридический адрес',
+    'yuridik_rekvizid' => 'Юридические реквизиты',
+    'company_and_object_detail'=>'Информация о компании и объекте'
 ];

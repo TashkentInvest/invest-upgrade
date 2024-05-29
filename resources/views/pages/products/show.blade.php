@@ -33,22 +33,21 @@
                             <ul class="dropdown-menu">
                                 @php
                                     $columns = [
-                                        ['name' => 'ID', 'data-priority' => 1, 'default' => true],
-                                        ['name' => 'company name', 'data-priority' => 2, 'default' => true],
-                                        ['name' => 'F.I.O', 'data-priority' => 3, 'default' => true],
-                                        ['name' => 'Contact', 'data-priority' => 4, 'default' => true],
-                                        ['name' => 'Mijoz Turi', 'data-priority' => 5, 'default' => true],
-                                        ['name' => 'Name', 'data-priority' => 6, 'default' => true],
-                                        ['name' => 'Last Name', 'data-priority' => 7, 'default' => true],
-                                        ['name' => 'Father Name', 'data-priority' => 8, 'default' => true],
-                                        ['name' => 'Passport Serial', 'data-priority' => 9, 'default' => false],
-                                        ['name' => 'Passport Pinfl', 'data-priority' => 10, 'default' => false],
-                                        ['name' => 'Passport Pinfl', 'data-priority' => 11, 'default' => false],
-                                        ['name' => 'Yuridik Address', 'data-priority' => 12, 'default' => false],
-                                        ['name' => 'Yuridik Rekvizid', 'data-priority' => 13, 'default' => false],
-                                        ['name' => 'Contact', 'data-priority' => 14, 'default' => true],
-                                        // ['name' => 'Active', 'data-priority' => 14, 'default' => true],
-                                        ['name' => 'Actions', 'data-priority' => 15, 'default' => true],
+                                        ['name' => __('global.id'), 'data-priority' => 1, 'default' => true],
+                                        ['name' => __('global.company_name'), 'data-priority' => 2, 'default' => true],
+                                        ['name' => __('global.fio'), 'data-priority' => 3, 'default' => true],
+                                        ['name' => __('global.contact'), 'data-priority' => 4, 'default' => true],
+                                        ['name' => __('global.mijoz_turi'), 'data-priority' => 5, 'default' => true],
+                                        ['name' => __('global.name'), 'data-priority' => 6, 'default' => true],
+                                        ['name' => __('global.last_name'), 'data-priority' => 7, 'default' => true],
+                                        ['name' => __('global.father_name'), 'data-priority' => 8, 'default' => true],
+                                        ['name' => __('global.passport_serial'), 'data-priority' => 9, 'default' => false],
+                                        ['name' => __('global.passport_pinfl'), 'data-priority' => 10, 'default' => false],
+                                        ['name' => __('global.passport_pinfl'), 'data-priority' => 11, 'default' => false],
+                                        ['name' => __('global.yuridik_address'), 'data-priority' => 12, 'default' => false],
+                                        ['name' => __('global.yuridik_rekvizid'), 'data-priority' => 13, 'default' => false],
+                                        ['name' => __('global.contact'), 'data-priority' => 14, 'default' => true],
+                                        ['name' => __('global.actions'), 'data-priority' => 15, 'default' => true],
                                     ];
                                 @endphp
                                 @foreach ($columns as $index => $column)
@@ -59,6 +58,7 @@
                                     </li>
                                 @endforeach
                             </ul>
+                            
                         </div>
                     </div>
 
@@ -133,7 +133,7 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-header">
-                    <h3 class="card-title">Companya va Obyekt bo'yicha malumotlar</h3>
+                    <h3 class="card-title">@lang('global.company_and_object_detail')</h3>
 
                 </div>
                 <div class="card-body">
@@ -188,7 +188,7 @@
                                         </tr>
                                         <tr>
                                             <td>Bo'lib to'lash foizi oldindan</td>
-                                            <td colspan="2">{{ $b->percentage_input }} %</td>
+                                            <td colspan="2">{{ $b->percentage_input }}%</td>
                                         </tr>
                                         <tr>
                                             <td>Bo'lib to'lash kvartalniy</td>
@@ -198,7 +198,7 @@
                                 @endforeach
 
                                 @if ($files->isNotEmpty())
-                                <h4>Files</h4>
+                                <h4>@lang('global.downloadFile')</h4>
                                 <ul>
                                     @foreach ($files as $file)
                                     {{-- @dd($file) --}}
