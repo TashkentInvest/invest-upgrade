@@ -206,25 +206,28 @@
 
 
                                 @if ($files->isNotEmpty())
-                                <h4>@lang('global.downloadFile')</h4>
-                                <div class="col-12 col-lg-3 mb-2">
-                                    <!-- Allow users to upload additional files -->
-                                    <input type="file" name="document[]" multiple>
-                                    @if ($errors->has('document'))
-                                        <span class="error invalid-feedback">{{ $errors->first('document') }}</span>
-                                    @endif
-                                </div>
-                                <!-- Display existing files -->
-                                <div class="my-2">
-                                    @foreach ($files as $file)
-                                        <div class="my-2">
-                                            <a target="_blank" class="py-2 my-2" href="{{ asset($file->path) }}">Link</a>
-                                        </div>
-                                    @endforeach
-                                </div>
-                            @else
-                                <p>No files uploaded for this product.</p>
-                            @endif
+                                    <h4>@lang('global.downloadFile')</h4>
+                                    <div class="col-12 col-lg-3 mb-2">
+                                        <!-- Allow users to upload additional files -->
+                                        <input type="file" name="document[]" multiple>
+                                        @if ($errors->has('document'))
+                                            <span class="error invalid-feedback">{{ $errors->first('document') }}</span>
+                                        @endif
+                                    </div>
+                                    <!-- Display existing files -->
+                                    <ul>
+                                        @foreach ($files as $file)
+                                            <li>
+                                                <a target="_blank" class="py-2 my-2" href="{{ asset($file->path) }}">Link</a>
+                                                <input type="checkbox" name="delete_files[]" value="{{ $file->id }}"> Delete
+                                            </li>
+                                        @endforeach
+                                    </ul>
+                                @else
+                                    <p>No files uploaded for this product.</p>
+                                @endif
+
+                            </section>
 
                             </div>
                         </section>

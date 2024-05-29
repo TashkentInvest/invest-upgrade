@@ -160,49 +160,64 @@ class ProductController extends Controller
 
 
     public function update(Request $request, $client_id)
-    {
-        DB::beginTransaction();
+{
+    DB::beginTransaction();
     
-        try {
-            $requestData = $this->getRequestData($request);
+    try {
+        $requestData = $this->getRequestData($request);
     
-            // Update client information
-            $client = Client::findOrFail($client_id);
-            $client->update($requestData['client']);
+        // Update client information
+        $client = Client::findOrFail($client_id);
+        $client->update($requestData['client']);
     
-            // Update company information
-            $company = Company::where('client_id', $client_id)->firstOrFail();
-            $company->update($requestData['company']);
+        // Update company information
+        $company = Company::where('client_id', $client_id)->firstOrFail();
+        $company->update($requestData['company']);
     
-            // Update product information
-            $product = Products::where('client_id', $client_id)->firstOrFail();
-            $product->update($requestData['product']);
+        // Update product information
+        $product = Products::where('client_id', $client_id)->firstOrFail();
+        $product->update($requestData['product']);
     
-            // Handle file uploads
-            if ($request->hasFile('document')) {
-                foreach ($request->file('document') as $file) {
-                    $extension = $file->getClientOriginalExtension();
-                    $fileName = time() . '.' . $extension;
-                    $file->move(public_path('assets'), $fileName);
-                    
-                    // Save file path to the "files" table
-                    $fileModel = new File();
-                    $fileModel->client_id = $client->id;
-                    $fileModel->path = 'assets/' . $fileName;
-                    $fileModel->save();
-                }
+        // Handle file uploads
+        if ($request->hasFile('document')) {
+            foreach ($request->file('document') as $file) {
+                $extension = $file->getClientOriginalExtension();
+                $fileName = time() . '.' . $extension;
+                $file->move(public_path('assets'), $fileName);
+                
+                // Save file path to the "files" table
+                $fileModel = new File();
+                $fileModel->client_id = $client->id;
+                $fileModel->path = 'assets/' . $fileName;
+                $fileModel->save();
             }
-    
-            DB::commit();
-    
-            return redirect()->route('productIndex')->with('success', 'Product updated successfully');
-        } catch (\Exception $e) {
-            DB::rollback();
-    
-            return redirect()->back()->with('error', 'An error occurred while updating the product: ' . $e->getMessage());
         }
-    }
+        
+        // Handle file deletions
+        if ($request->has('delete_files')) {
+            foreach ($request->delete_files as $fileId) {
+                $file = File::findOrFail($fileId);
+                
+                // Delete the file from storage
+                if (Storage::exists($file->path)) {
+                    Storage::delete($file->path);
+                }
+                
+                // Delete the file record from the database
+                $file->delete();
+            }
+        }
     
+        DB::commit();
+    
+        return redirect()->route('productIndex')->with('success', 'Product updated successfully');
+    } catch (\Exception $e) {
+        DB::rollback();
+    
+        return redirect()->back()->with('error', 'An error occurred while updating the product: ' . $e->getMessage());
+    }
+}
+
     
     private function getRequestData(Request $request)
     {
