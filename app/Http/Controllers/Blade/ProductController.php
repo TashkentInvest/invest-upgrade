@@ -68,11 +68,6 @@ class ProductController extends Controller
         DB::beginTransaction();
 
         try {
-            // Validate the request data
-            // $request->validate([
-            //     'document.*' => 'required|max:10240', // Allow any type of file up to 10MB
-            // ]);
-            // Check if the client already exists
             $client = Client::where('passport_serial', $request->get('passport_serial'))->first();
 
             if (!$client) {
@@ -93,9 +88,6 @@ class ProductController extends Controller
                 ]);
             }
 
-          
-
-            
             if ($request->hasFile('document')) {
                 foreach ($request->file('document') as $file) {
                     $extension = $file->getClientOriginalExtension();
@@ -111,7 +103,6 @@ class ProductController extends Controller
             }
     
             DB::commit();
-
 
             foreach ($request->accordions as $accordion) {
                 $company = Company::create([
@@ -161,59 +152,93 @@ class ProductController extends Controller
     {
         $product = Products::where('id', $id)->get()->first();
         $regions = Regions::get()->all();
-        return view('pages.products.edit', compact('product', 'regions'));
+        $client = Client::where('id', $product->client_id)->where('is_deleted', '!=', 1)->first();
+        $files = $client ? $client->files : collect();
+
+        return view('pages.products.edit', compact('product', 'regions','client','files'));
     }
 
 
     public function update(Request $request, $client_id)
     {
         DB::beginTransaction();
-
+    
         try {
+            $requestData = $this->getRequestData($request);
+    
             // Update client information
             $client = Client::findOrFail($client_id);
-            $client->update([
-                'first_name' => $request->first_name,
-                'last_name' => $request->last_name,
-                'father_name' => $request->father_name,
-                'mijoz_turi' => $request->mijoz_turi,
-                'contact' => $request->contact,
-                'passport_serial' => $request->passport_serial,
-                'passport_pinfl' => $request->passport_pinfl,
-                'passport_date' => $request->passport_date, // Corrected
-                'passport_location' => $request->passport_location, // Corrected
-                'passport_type' => $request->passport_type, // Corrected
-                'yuridik_address' => $request->yuridik_address, // Added
-                'yuridik_rekvizid' => $request->yuridik_rekvizid, // Added
-            ]);
-
+            $client->update($requestData['client']);
+    
             // Update company information
             $company = Company::where('client_id', $client_id)->firstOrFail();
-            $company->update([
-                'company_location' => $request->company_location,
-                'company_type' => $request->company_type,
-                'branch_kubmetr' => $request->branch_kubmetr,
-                'company_name' => $request->company_name,
-            ]);
-
+            $company->update($requestData['company']);
+    
             // Update product information
             $product = Products::where('client_id', $client_id)->firstOrFail();
-            $product->update([
-                'minimum_wage' => $request->minimum_wage,
-                'contract_apt' => $request->contract_apt,
-                'contract_date' => $request->contract_date,
-                'updated_at' => Carbon::today()
-            ]);
-
+            $product->update($requestData['product']);
+    
+            // Handle file uploads
+            if ($request->hasFile('document')) {
+                foreach ($request->file('document') as $file) {
+                    $extension = $file->getClientOriginalExtension();
+                    $fileName = time() . '.' . $extension;
+                    $file->move(public_path('assets'), $fileName);
+                    
+                    // Save file path to the "files" table
+                    $fileModel = new File();
+                    $fileModel->client_id = $client->id;
+                    $fileModel->path = 'assets/' . $fileName;
+                    $fileModel->save();
+                }
+            }
+    
             DB::commit();
-
+    
             return redirect()->route('productIndex')->with('success', 'Product updated successfully');
         } catch (\Exception $e) {
             DB::rollback();
-
+    
             return redirect()->back()->with('error', 'An error occurred while updating the product: ' . $e->getMessage());
         }
     }
+    
+    
+    private function getRequestData(Request $request)
+    {
+        // Get data from the create function
+        $client = [
+            'first_name' => $request->first_name,
+            'last_name' => $request->last_name,
+            'father_name' => $request->father_name,
+            'mijoz_turi' => $request->mijoz_turi,
+            'contact' => $request->contact,
+            'passport_serial' => $request->passport_serial,
+            'passport_pinfl' => $request->passport_pinfl,
+            'passport_date' => $request->passport_date, // Corrected
+            'passport_location' => $request->passport_location, // Corrected
+            'passport_type' => $request->passport_type, // Corrected
+            'yuridik_address' => $request->yuridik_address, // Added
+            'yuridik_rekvizid' => $request->yuridik_rekvizid, // Added
+        ];
+    
+        $company = [
+            'company_location' => $request->company_location,
+            'company_type' => $request->company_type,
+            'branch_kubmetr' => $request->branch_kubmetr,
+            'company_name' => $request->company_name,
+        ];
+    
+        $product = [
+            'minimum_wage' => $request->minimum_wage,
+            'contract_apt' => $request->contract_apt,
+            'contract_date' => $request->contract_date,
+            'updated_at' => Carbon::today()
+        ];
+    
+        return compact('client', 'company', 'product');
+    }
+    
     public function delete($client_id)
     {
         try {
