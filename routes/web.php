@@ -75,9 +75,8 @@ Route::group(['middleware' => 'auth'],function (){
     Route::get('/file/{filename}', [ProductController::class, 'file'])->name('file.show');
     Route::get('audit-logs', [AuditLogController::class, 'index'])->name('audit-logs.index');
 
-    // Fiel 
-    
-    Route::get('/doc', [FileController::class,'index'])->name('doc');
+    // File
+    Route::get('/doc', [FileController::class,'index']);
     
 
 
