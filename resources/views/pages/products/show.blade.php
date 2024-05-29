@@ -204,7 +204,7 @@
                                     {{-- @dd($file) --}}
                                         <li>
 
-                                            <a href="{{asset($file->path)}}">Link</a>
+                                            <a target="_blank" href="{{asset($file->path)}}">Link</a>
 
 
                                             {{-- <a href="{{ route('file.show', ['filename' => $file->path]) }}">{{ $file->path }}</a> --}}

@@ -93,3 +93,4 @@ role permissionlani korvorsh kere
 
 fule upload qilish kere
 
+familya imya otchestva
