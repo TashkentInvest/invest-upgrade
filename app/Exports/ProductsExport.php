@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Exports;
 
 use Illuminate\Support\Facades\DB;
@@ -10,33 +9,60 @@ use Maatwebsite\Excel\Concerns\ShouldAutoSize;
 
 class ProductsExport implements FromCollection, WithHeadings, WithColumnFormatting, ShouldAutoSize
 {
+    protected $id;
+
+    public function __construct($id)
+    {
+        $this->id = $id;
+    }
+
     public function collection()
     {
-        // Manual join to fetch data from your tables
-        $data = collect([
-            [
-                '№' => 1,
-                'Номер заявления' => '117688604',
-                'Наименование организации' => '"BUILDING CONNECTION" МЧЖ',
-                'Контакты' => 'Шохруз +998901979696',
-                'Район' => 'Алмазарский',
-                'Расчетный объем здания' => '33 818,40',
-                'Инфраструктурный платеж (сўм) по договору' => '11 498 256 000',
-                'Первый платеж (сум) 20% от стоимости' => '2 299 651 200',
-                'оплаченная сумма (сўм)' => '2,299,651,200.00',
-                'Дата оплаты' => '5/16/2024',
-                '№ договора' => 'АРТ-1/24',
-                'Дата договора' => '4/8/2024',
-                '№ уведомления' => '',
-                'Дата увед' => '',
-                'Страховой полис' => '',
-                'Банковская гарантия' => '',
-                'Примечание' => 'получил договор, оплатил 20% в полном объеме 16.05.2024'
-            ],
-            // Add the rest of your data here...
-        ]);
+        // Fetch data from the database
+        $data = DB::table('clients')
+            ->join('companies', 'clients.id', '=', 'companies.client_id')
+            ->join('branches', 'companies.id', '=', 'branches.company_id')
+            ->select(
+                'clients.id',
+                'clients.first_name',
+                'clients.last_name',
+                'companies.company_name',
+                'companies.company_location',
+                'branches.contract_apt',
+                'branches.contract_date',
+                'branches.branch_kubmetr',
+                'branches.generate_price',
+                'branches.payment_type',
+                'branches.percentage_input',
+                'branches.installment_quarterly'
+            )
+            ->where('clients.id', $this->id)
+            ->get();
 
-        return $data;
+        // Map the data to the desired structure
+        $formattedData = $data->map(function ($item, $key) {
+            return [
+                '№' => $key + 1,
+                'Номер заявления' => $item->id,
+                'Наименование организации' => $item->company_name,
+                'Контакты' => $item->first_name . ' ' . $item->last_name,
+                'Район' => $item->company_location,
+                'Расчетный объем здания' => $item->branch_kubmetr,
+                'Инфраструктурный платеж (сўм) по договору' => $item->generate_price,
+                'Первый платеж (сум) 20% от стоимости' => $item->percentage_input,
+                'оплаченная сумма (сўм)' => $item->installment_quarterly,
+                'Дата оплаты' => $item->contract_date,
+                '№ договора' => $item->contract_apt,
+                'Дата договора' => $item->contract_date,
+                '№ уведомления' => '', // Adjust as needed
+                'Дата увед' => '', // Adjust as needed
+                'Страховой полис' => '', // Adjust as needed
+                'Банковская гарантия' => '', // Adjust as needed
+                'Примечание' => '' // Adjust as needed
+            ];
+        });
+
+        return collect($formattedData);
     }
 
     public function headings(): array
