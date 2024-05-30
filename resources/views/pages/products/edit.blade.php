@@ -208,7 +208,6 @@
                                 @endforeach
 
 
-                                @if ($files->isNotEmpty())
                                     <h4>@lang('global.downloadFile')</h4>
                                     <div class="col-12 col-lg-3 mb-2">
                                         <!-- Allow users to upload additional files -->
@@ -226,9 +225,7 @@
                                             </div>
                                         @endforeach
                                     </ul>
-                                @else
-                                    <p>No files uploaded for this product.</p>
-                                @endif
+                            
 
                             </section>
 

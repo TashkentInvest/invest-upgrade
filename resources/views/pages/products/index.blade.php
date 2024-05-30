@@ -34,9 +34,10 @@
                         <thead>
                             <tr>
                                 <th>ID</th>
-                                <th>@lang('global.client_name')</th>
+                                <th>@lang('global.client_name') || Yurik</th>
                                 <th>@lang('cruds.client.fields.contact')</th>
-                                <th>@lang('cruds.client.fields.mijoz_turi')</th>
+                                {{-- <th>@lang('cruds.client.fields.mijoz_turi')</th> --}}
+                                <th>@lang('cruds.company.fields.address')</th>
                                 <th>@lang('global.active')</th>
                                 <th style="width: 150px;">@lang('global.created_at')</th>
                                 <th style="width: 100px;">@lang('global.actions')</th>
@@ -47,16 +48,26 @@
                                 {{-- @dump($item->companies[0]->company_name ) --}}
                                 <tr>
                                     <td>{{ $item->id }}</td>
+                                    @if($item->mijoz_turi == 'fizik')
                                     <td>{{ $item->first_name }} {{ $item->last_name }} {{ $item->father_name }}</td>
+                                    @else
+                                    @foreach ($item->companies as $f)
+                                    <td>{{ $f->company_name }} </td>
+                                        
+                                    @endforeach
+
+
+                                    @endif
                                     
                                     <td>{{ $item->contact ?? '---' }}</td>
-                                    <td>
+                                    <td>{{ $item->address ?? '---' }}</td>
+                                    {{-- <td>
                                         @if($item->mijoz_turi == 'fizik')
                                             @lang('global.fizik')
                                         @else
                                             @lang('global.yuridik')
                                         @endif
-                                    </td>
+                                    </td> --}}
 
 
                                     <td class="text-center">
@@ -79,12 +90,12 @@
                                                         <i class="bx bxs-show" style="font-size:16px;"></i>
                                                     </button>
                                                 </li>
-                                                <li data-bs-toggle="tooltip" data-bs-placement="top"
+                                                {{-- <li data-bs-toggle="tooltip" data-bs-placement="top"
                                                     title="@lang('global.edit')">
                                                     <a href="{{ route('productEdit', $item->id) }}" class="btn btn-info">
                                                         <i class="bx bxs-edit" style="font-size:16px;"></i>
                                                     </a>
-                                                </li>
+                                                </li> --}}
                                                 <input name="_method" type="hidden" value="DELETE">
                                                 <li data-bs-toggle="tooltip" data-bs-placement="top"
                                                     title="@lang('global.delete')">
@@ -94,13 +105,13 @@
                                                     </button>
                                                 </li>
 
-                                                <li data-bs-toggle="tooltip" data-bs-placement="top"
+                                                {{-- <li data-bs-toggle="tooltip" data-bs-placement="top"
                                                     title="@lang('global.downloadFile')">
                                                     <a href="{{ route('download.table.data', $item->id) }}"
                                                         class="btn btn-warning">
                                                         <i class="bx bxs-download" style="font-size: 16px;"></i>
                                                     </a>
-                                                </li>
+                                                </li> --}}
 
                                                 <li data-bs-toggle="tooltip" data-bs-placement="top"
                                                 title="@lang('global.downloadFile')">
