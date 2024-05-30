@@ -17,15 +17,36 @@ class FileController extends Controller
 
     // download word
     public function show($id){
-        $headers = array(
-            'Content-type' => 'text/html',
-            'Content-Disposition'=>'attachement; Filename=mydoc.doc'
-        );
-
     
         $client = Client::with('products')->with('companies')->where('is_deleted', '!=', 1)->find($id);
-        return Response::make(view('pages.docs.full2', compact('client')), 200, $headers);
+        $client->yuridik_rekvizid;
+        $client->contact;
+        foreach ($client->companies as $company) {
+            $company->company_type;
+            $company->company_location;
+            $company->bank_code;
+            $company->stir;
+            $company->oked;
+            $company->company_location;
+            
+            foreach ($company->branches as $branch) {
+                $branch->generate_price;
+                $branch->payment_type;
+                $branch->branch_kubmetr;
+    
+                $headers = array(
+                    'Content-type' => 'text/html',
+                    'Content-Disposition'=>'attachment; Filename='.$company->company_name.'_branch_'.$branch->id.'.doc'
+                );
+    
+                $branchDocument = view('pages.docs.full2', compact('client', 'company', 'branch'))->render();
+    
+                Response::make($branchDocument, 200, $headers)->send();
+            }
+        }
     }
+    
+    
     
 
     // donwnload exel
