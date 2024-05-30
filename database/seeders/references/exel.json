@@ -1,22 +1,28 @@
 [
         {
             "id": "№",
-            "application_number": "Номер заявления",
             "company_name": "Наименование организации",
             "contact": "Контакты",
             "branch_location": "Район",
             "branch_kubmetr": "Расчетный объем здания",
             "minimum_wage": "Расчетная величина (сўм)",
             "generate_price": "Инфраструктурный платеж\r\n(сўм) по договору",
-            "first_payment_percent": "Первый платеж (сум) 20% от стоимости",
-            "payed_sum ": "оплаченная сумма\r\n(сўм)",
-            "payed_date": "Дата оплаты",
+           
             "contract_apt": "№ договора",
             "contract_date": "Дата договора",
+
+            
+
             "notification_num": "№ уведомления",
             "notification_date": "Дата увед",
             "Insurance_policy": "Страховой полис",
             "bank_guarantee": "Банковская гарантия",
+            "application_number": "Номер заявления",
+            "payed_sum ": "оплаченная сумма\r\n(сўм)",
+            "payed_date": "Дата оплаты",
+            "first_payment_percent": "Первый платеж (сум) 20% от стоимости",
+
+
             "client_description": "Примечание"
         },
         {

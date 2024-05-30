@@ -15,7 +15,7 @@ class CreateClientsTable extends Migration
     {
         Schema::create('clients', function (Blueprint $table) {
             $table->id();
-            $table->enum('mijoz_turi', ['yuridik', 'fizik']);
+            $table->enum('mijoz_turi', ['yuridik', 'fizik'])->nullable();
             $table->string('first_name')->nullable();
             $table->string('last_name')->nullable();
             $table->string('father_name')->nullable();
@@ -28,6 +28,10 @@ class CreateClientsTable extends Migration
             $table->string('passport_location')->nullable();
             $table->boolean('passport_type')->nullable()->default(0);
             $table->boolean('is_deleted')->nullable()->default(0);
+            $table->string('client_description')->nullable();
+            $table->string('application_number')->nullable();
+
+            
             
             $table->timestamps();
         });

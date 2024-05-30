@@ -54,7 +54,7 @@ class Company extends Model
 
         static::created(function ($company) {
             AuditLog::create([
-                'user_id' => auth()->user()->id,
+                'user_id' => auth()->user()->id ?? 1,
                 'company_id' => $company->id,
                 'event' => 'created',
                 'new_values' => $company->toJson(),
@@ -66,7 +66,7 @@ class Company extends Model
             $changes = $company->getChanges();
 
             AuditLog::create([
-                'user_id' => auth()->user()->id,
+                'user_id' => auth()->user()->id ?? 1,
                 'company_id' => $company->id,
                 'event' => 'updated',
                 'old_values' => json_encode($original),
@@ -76,7 +76,7 @@ class Company extends Model
 
         static::deleted(function ($company) {
             AuditLog::create([
-                'user_id' => auth()->user()->id,
+                'user_id' => auth()->user()->id ?? 1,
                 'company_id' => $company->id,
                 'event' => 'deleted',
                 'old_values' => $company->toJson(),

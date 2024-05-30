@@ -17,7 +17,7 @@ class CreateCompaniesTable extends Migration
             $table->id();
             $table->unsignedBigInteger('client_id');
             $table->foreign('client_id')->references('id')->on('clients')->onDelete('cascade');
-            $table->string('company_location');
+            $table->string('company_location')->nullable();
             $table->string('company_name')->nullable();
             $table->string('company_type')->nullable();
             $table->string('raxbar')->nullable();

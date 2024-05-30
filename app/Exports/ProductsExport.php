@@ -51,7 +51,8 @@ class ProductsExport implements FromCollection, WithHeadings, WithColumnFormatti
                 'Район' => $item->company_location,
                 'Расчетный объем здания' => $item->branch_kubmetr,
                 'Инфраструктурный платеж (сўм) по договору' => $item->generate_price,
-                'Первый платеж (сум) 20% от стоимости' => ($item->generate_price * $item->percentage_input) / 100,
+                'Первый платеж (сум) 20% от стоимости' => isset($item->generate_price, $item->percentage_input) && is_numeric($item->generate_price) && is_numeric($item->percentage_input) ? ($item->generate_price * $item->percentage_input) / 100 : '',
+
                 'оплаченная сумма (сўм)' => '',
                 'Дата оплаты' => '',
                 '№ договора' => $item->contract_apt,

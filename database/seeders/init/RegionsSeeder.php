@@ -19,11 +19,11 @@ class RegionsSeeder extends Seeder
         echo "Regions::inserting".PHP_EOL;
 		foreach($regionsArray as $regionObject)
 		{
-            $region = new Regions();
-            $region->name_uz = $regionObject->name_uz;
-            $region->name_ru = $regionObject->name_ru;
-            $region->static_id = $regionObject->id;
-            $region->save();
+            // $region = new Regions();
+            // $region->name_uz = $regionObject->name_uz;
+            // $region->name_ru = $regionObject->name_ru;
+            // $region->static_id = $regionObject->id;
+            // $region->save();
 		}
     }
 }

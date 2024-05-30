@@ -18,17 +18,24 @@ class CreateBranchesTable extends Migration
             $table->unsignedBigInteger('company_id');
             $table->foreign('company_id')->references('id')->on('companies')->onDelete('cascade');
             $table->text('contract_apt')->nullable();
-            $table->dateTime('contract_date');
-
-            $table->string('generate_price');
-            $table->string('payment_type');
-            $table->string('percentage_input');
+            $table->dateTime('contract_date')->nullable();
+            $table->string('generate_price')->nullable();
+            $table->string('payment_type')->nullable();
+            $table->string('percentage_input')->nullable();
             $table->string('installment_quarterly')->nullable();
-          
+            $table->string('notification_num')->nullable();
+            $table->dateTime('notification_date')->nullable();
+            $table->string('Insurance_policy')->nullable();
+            $table->string('bank_guarantee')->nullable();
+            $table->string('application_number')->nullable();
+            $table->string('payed_sum')->nullable();
+            $table->dateTime('payed_date')->nullable();
+            $table->string('first_payment_percent')->nullable();
             $table->string('branch_kubmetr')->nullable();
             $table->timestamps();
         });
     }
+    
 
     /**
      * Reverse the migrations.
