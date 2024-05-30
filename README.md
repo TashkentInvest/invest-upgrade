@@ -75,6 +75,8 @@ file upload ui chiroyli qlish kere +++
 
 blade digi textlani jsondan chqab qilish kere +++
 
+product edit textlani fix qlish kere +++
+
 multiple doc download qilish kere branch xar xil qilib exelgayam shu
 
 role permissionlani korvorsh kere
@@ -87,6 +89,9 @@ edit blade ga xamma value lani chqash kere
 
 product add / edit qvotganda validatsalani check qb chiqish kere
 
+pratsentdan chqgan datani baza ga save qilish kere 
+
+
 
 
 ```
@@ -95,3 +100,7 @@ product add / edit qvotganda validatsalani check qb chiqish kere
 <a href="https://wordtohtml.net/">https://wordtohtml.net/</a>
 
 shu sayt blan word ni html qvolamzeb
+
+```
+composer require maatwebsite/excel
+```

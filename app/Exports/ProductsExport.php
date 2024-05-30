@@ -26,6 +26,9 @@ class ProductsExport implements FromCollection, WithHeadings, WithColumnFormatti
                 'clients.id',
                 'clients.first_name',
                 'clients.last_name',
+                'clients.father_name',
+                'clients.mijoz_turi',
+                'clients.contact',
                 'companies.company_name',
                 'companies.company_location',
                 'branches.contract_apt',
@@ -43,9 +46,9 @@ class ProductsExport implements FromCollection, WithHeadings, WithColumnFormatti
         $formattedData = $data->map(function ($item, $key) {
             return [
                 '№' => $key + 1,
-                'Номер заявления' => $item->id,
-                'Наименование организации' => $item->company_name,
-                'Контакты' => $item->first_name . ' ' . $item->last_name,
+                'Номер заявления' => '',
+                'Наименование организации' => $item->mijoz_turi == 'yuridik' ? $item->company_name : $item->last_name . ' ' . $item->first_name . ' ' . $item->father_name,
+                'Контакты' => $item->contact,
                 'Район' => $item->company_location,
                 'Расчетный объем здания' => $item->branch_kubmetr,
                 'Инфраструктурный платеж (сўм) по договору' => $item->generate_price,
@@ -54,17 +57,16 @@ class ProductsExport implements FromCollection, WithHeadings, WithColumnFormatti
                 'Дата оплаты' => $item->contract_date,
                 '№ договора' => $item->contract_apt,
                 'Дата договора' => $item->contract_date,
-                '№ уведомления' => '', // Adjust as needed
-                'Дата увед' => '', // Adjust as needed
-                'Страховой полис' => '', // Adjust as needed
-                'Банковская гарантия' => '', // Adjust as needed
-                'Примечание' => '' // Adjust as needed
+                '№ уведомления' => '',
+                'Дата увед' => '', 
+                'Страховой полис' => '', 
+                'Банковская гарантия' => '', 
+                'Примечание' => '' 
             ];
         });
 
         return collect($formattedData);
     }
-
     public function headings(): array
     {
         return [

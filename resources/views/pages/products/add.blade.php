@@ -327,7 +327,7 @@
                                                             <div class="mb-3">
                                                                 <label for="percentage-input">@lang('global.bolib_tolash_foizi_oldindan')</label>
                                                                 <div class="input-group">
-                                                                    <input type="number" class="form-control percentage-input" name="accordions[0][percentage_input]" min="0" max="100" step="10">
+                                                                    <input type="number" class="form-control percentage-input" name="accordions[0][percentage_input]" min="0" max="100">
                                                                     <span class="input-group-text">%</span>
                                                                 </div>
                                                             </div>

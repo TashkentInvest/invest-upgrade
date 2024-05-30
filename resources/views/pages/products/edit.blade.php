@@ -141,7 +141,7 @@
                                                 </div>
                                                 <div class="col-lg-6">
                                                     <div class="mb-3">
-                                                        <label for="contract_date">@lang('global.contract_date')</label>
+                                                        <label for="contract_date">@lang('global.sanasi')</label>
                                                         <input class="form-control" type="datetime-local"
                                                             id="contract_date" name="contract_date"
                                                             value="{{ $b->contract_date }}">
@@ -150,14 +150,14 @@
 
                                                 <div class="col-lg-4">
                                                     <div class="mb-3">
-                                                        <label for="branch_kubmetr">@lang('global.object_amount')</label>
+                                                        <label for="branch_kubmetr">@lang('global.obyekt_boyicha_tolanishi_lozim')</label>
                                                         <input type="text" class="form-control" id="branch_kubmetr"
                                                             name="branch_kubmetr" value="{{ $b->branch_kubmetr }}">
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-4">
                                                     <div class="mb-3">
-                                                        <label for="minimum_wage">@lang('global.basic_calculation_amount')</label>
+                                                        <label for="minimum_wage">@lang('global.bazaviy_xisoblash_miqdori')</label>
                                                         <input type="text" class="form-control" id="minimum_wage"
                                                             name="minimum_wage"
                                                             value="{{ $b->company->client->products[0]->minimum_wage }}">
@@ -172,28 +172,31 @@
                                                 </div>
                                                 <div class="col-lg-4">
                                                     <div class="mb-3">
-                                                        <label for="payment_type">@lang('global.payment_methods')</label>
+                                                        <label for="payment_type">@lang('global.tolash_turlari')</label>
                                                         <select class="form-select" id="payment_type"
                                                             name="payment_type">
                                                             <option value="pay_full"
                                                                 {{ $b->payment_type == 'pay_full' ? 'selected' : '' }}>
-                                                                @lang('global.full_payment')</option>
+                                                                @lang('global.toliq_xajimda_tolash')</option>
                                                             <option value="pay_bolib"
                                                                 {{ $b->payment_type == 'pay_bolib' ? 'selected' : '' }}>
-                                                                @lang('global.installment_payment')</option>
+                                                                @lang('global.bolib_tolash')</option>
+
+                                                                {{-- <option value="pay_full">@lang('global.toliq_xajimda_tolash')</option>
+                                                                <option value="pay_bolib">@lang('global.bolib_tolash')</option> --}}
                                                         </select>
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-4">
                                                     <div class="mb-3">
-                                                        <label for="percentage_input">@lang('global.installment_percentage')</label>
+                                                        <label for="percentage_input">@lang('global.bolib_tolash_foizi_oldindan')</label>
                                                         <input type="text" class="form-control" id="percentage_input"
                                                             name="percentage_input" value="{{ $b->percentage_input }}">
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-4">
                                                     <div class="mb-3">
-                                                        <label for="installment_quarterly">@lang('global.installment_quarterly')</label>
+                                                        <label for="installment_quarterly">@lang('global.bolib_tolash_har_chorakda')</label>
                                                         <input type="text" class="form-control"
                                                             id="installment_quarterly" name="installment_quarterly"
                                                             value="{{ $b->installment_quarterly }}">
