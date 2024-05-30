@@ -103,6 +103,14 @@
                                                 </li>
 
                                                 <li data-bs-toggle="tooltip" data-bs-placement="top"
+                                                title="@lang('global.downloadFile')">
+                                                <a href="{{ route('word', $item->id) }}"
+                                                    class="btn btn-secondary">
+                                                    <i class="bx bxs-download" style="font-size: 16px;"></i>
+                                                </a>
+                                            </li>
+
+                                                <li data-bs-toggle="tooltip" data-bs-placement="top"
                                                 title="@lang('global.view')">
                                                 <a href="{{ route('productShow', $item->id) }}"
                                                     class="btn btn-success">

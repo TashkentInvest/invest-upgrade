@@ -71,13 +71,15 @@ product showga table chqazsh kere kredit xoblab beradgan +++
 
 familya imya otchestva +++
 
+file upload ui chiroyli qlish kere +++
+
+blade digi textlani jsondan chqab qilish kere +++
+
 multiple doc download qilish kere branch xar xil qilib exelgayam shu
 
 role permissionlani korvorsh kere
 
 daily backup qilish kere schedule blan
-
-blade digi textlani jsondan chqab qilish kere
 
 audit logs user friendly qilish kere
 
@@ -85,7 +87,6 @@ edit blade ga xamma value lani chqash kere
 
 product add / edit qvotganda validatsalani check qb chiqish kere
 
-file upload ui chiroyli qlish kere
 
 
 ```

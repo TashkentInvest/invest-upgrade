@@ -10,21 +10,16 @@ use Illuminate\Support\Facades\Response;
 class FileController extends Controller
 {
 
-    public function index(){
+    public function show($id){
         $headers = array(
             'Content-type' => 'text/html',
             'Content-Disposition'=>'attachement; Filename=mydoc.doc'
         );
 
-       
     
-        $clients = Client::with('products')->with('companies')->where('is_deleted', '!=', 1)->get()->all();
-        if(count($clients) >=0)
-            return Response::make(view('pages.docs.full2', compact('clients')), 200, $headers);
-        else{
-            return redirect()->back();
-            
-        }
+        $client = Client::with('products')->with('companies')->where('is_deleted', '!=', 1)->find($id);
+        return Response::make(view('pages.docs.full2', compact('client')), 200, $headers);
+      
     }
     
 }
