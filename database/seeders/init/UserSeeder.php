@@ -49,11 +49,25 @@ class UserSeeder extends Seeder
             "password" => bcrypt("1100511#")
         ]);
 
+
         $this->createPermissionsAndRoles();
 
         $manager->assignRole('Manager');
         $permissions = Permission::all();
         $manager->syncPermissions($permissions);
+
+        $employeer1 = User::create([
+            "name" => "Sirojiddin",
+            "email" => "s.qobulov@tashkentinvest.com",
+            "password" => bcrypt("87654321aA")
+        ]);
+
+
+        $this->createPermissionsAndRoles();
+
+        $employeer1->assignRole('Employee');
+        $permissions = Permission::all();
+        $employeer1->syncPermissions($permissions);
     }
 
     /**

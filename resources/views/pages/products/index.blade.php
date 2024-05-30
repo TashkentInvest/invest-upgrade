@@ -90,12 +90,7 @@
                                                         <i class="bx bxs-show" style="font-size:16px;"></i>
                                                     </button>
                                                 </li>
-                                                {{-- <li data-bs-toggle="tooltip" data-bs-placement="top"
-                                                    title="@lang('global.edit')">
-                                                    <a href="{{ route('productEdit', $item->id) }}" class="btn btn-info">
-                                                        <i class="bx bxs-edit" style="font-size:16px;"></i>
-                                                    </a>
-                                                </li> --}}
+                                              
                                                 <input name="_method" type="hidden" value="DELETE">
                                                 <li data-bs-toggle="tooltip" data-bs-placement="top"
                                                     title="@lang('global.delete')">
@@ -105,21 +100,16 @@
                                                     </button>
                                                 </li>
 
-                                                {{-- <li data-bs-toggle="tooltip" data-bs-placement="top"
-                                                    title="@lang('global.downloadFile')">
-                                                    <a href="{{ route('download.table.data', $item->id) }}"
-                                                        class="btn btn-warning">
-                                                        <i class="bx bxs-download" style="font-size: 16px;"></i>
-                                                    </a>
-                                                </li> --}}
+                                               
 
-                                                <li data-bs-toggle="tooltip" data-bs-placement="top"
-                                                title="@lang('global.downloadFile')">
-                                                <a href="{{ route('word', $item->id) }}"
-                                                    class="btn btn-secondary">
-                                                    <i class="bx bxs-download" style="font-size: 16px;"></i>
-                                                </a>
-                                            </li>
+                                            
+
+                                            <li data-bs-toggle="tooltip" data-bs-placement="top"
+                                            title="@lang('global.edit')">
+                                            <a href="{{ route('productEdit', $item->id) }}" class="btn btn-info">
+                                                <i class="bx bxs-edit" style="font-size:16px;"></i>
+                                            </a>
+                                        </li> 
 
                                                 <li data-bs-toggle="tooltip" data-bs-placement="top"
                                                 title="@lang('global.view')">
