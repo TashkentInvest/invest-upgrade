@@ -15,6 +15,7 @@ use Carbon\Carbon;
 class FileController extends Controller
 {
 
+    // download word
     public function show($id){
         $headers = array(
             'Content-type' => 'text/html',
@@ -24,7 +25,6 @@ class FileController extends Controller
     
         $client = Client::with('products')->with('companies')->where('is_deleted', '!=', 1)->find($id);
         return Response::make(view('pages.docs.full2', compact('client')), 200, $headers);
-      
     }
     
 
@@ -36,7 +36,6 @@ class FileController extends Controller
         // $fileName = 'products_data_' . $client->first_name . '_' . $client->last_name . '_' . Carbon::now()->format('Y-m-d') . '.xls';
 
         $fileName = 'АПЗ_РАҚАМ' . '_' . Carbon::now()->format('Y-m-d') . '.xls';
-        
 
         return Excel::download(new ProductsExport($id), $fileName);
     }
