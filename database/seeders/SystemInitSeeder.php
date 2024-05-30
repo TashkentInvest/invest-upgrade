@@ -2,11 +2,14 @@
 
 namespace Database\Seeders;
 
+use Database\Seeders\DataSeeder;
 use Illuminate\Database\Seeder;
 use Database\Seeders\Init\RoleSeeder;
 use Database\Seeders\Init\UserSeeder;
 use Database\Seeders\Init\RegionsSeeder;
 use Database\Seeders\Init\DistrictsSeeder;
+use Database\Seeders\init\ExelSeeder;
+
 
 class SystemInitSeeder extends Seeder
 {
@@ -23,6 +26,7 @@ class SystemInitSeeder extends Seeder
                 UserSeeder::class,
                 RegionsSeeder::class,
                 DistrictsSeeder::class,
+                ExelSeeder::class,
             ]
         );
     }
