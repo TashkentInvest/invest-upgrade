@@ -42,7 +42,6 @@ class ProductsExport implements FromCollection, WithHeadings, WithColumnFormatti
             ->where('clients.id', $this->id)
             ->get();
 
-        // Map the data to the desired structure
         $formattedData = $data->map(function ($item, $key) {
             return [
                 '№' => $key + 1,

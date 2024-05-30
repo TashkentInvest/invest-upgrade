@@ -6,6 +6,11 @@ use App\Models\Client;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Response;
+use Maatwebsite\Excel\Facades\Excel;
+use Illuminate\Support\Facades\Storage;
+use App\Exports\ProductsExport;
+use Carbon\Carbon;
+
 
 class FileController extends Controller
 {
@@ -22,4 +27,17 @@ class FileController extends Controller
       
     }
     
+
+    // donwnload exel
+    public function downloadTableData($id)
+    {
+        $client = Client::find($id);
+
+        // $fileName = 'products_data_' . $client->first_name . '_' . $client->last_name . '_' . Carbon::now()->format('Y-m-d') . '.xls';
+
+        $fileName = 'АПЗ_РАҚАМ' . '_' . Carbon::now()->format('Y-m-d') . '.xls';
+        
+
+        return Excel::download(new ProductsExport($id), $fileName);
+    }
 }

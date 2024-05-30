@@ -22,14 +22,7 @@ use Illuminate\Support\Facades\Storage;
 
 class ProductController extends Controller
 {
-    public function downloadTableData($id)
-    {
-        $client = Client::find($id);
-
-        $fileName = 'products_data_' . $client->first_name . '_' . $client->last_name . '_' . Carbon::now()->format('Y-m-d') . '.xls';
-
-        return Excel::download(new ProductsExport($id), $fileName);
-    }
+  
     public function index()
     {
         $products = Products::with('company')->with(['company.branches'])

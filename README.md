@@ -89,11 +89,6 @@ edit blade ga xamma value lani chqash kere
 
 product add / edit qvotganda validatsalani check qb chiqish kere
 
-pratsentdan chqgan datani baza ga save qilish kere 
-
-
-
-
 ```
 
 
