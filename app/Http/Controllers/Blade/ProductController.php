@@ -22,7 +22,7 @@ class ProductController extends Controller
         $products = Products::with('company')->with(['company.branches'])
             ->get()->all();
 
-        $clients = Client::deepFilters()->with('products')->where('is_deleted', '!=', 1)->orderBy('created_at', 'desc')->get()->all();
+        $clients = Client::deepFilters()->with('products')->where('is_deleted', '!=', 1)->orderBy('updated_at', 'desc')->get()->all();
 
         return view('pages.products.index', compact('products', 'clients'));
     }
@@ -169,42 +169,91 @@ class ProductController extends Controller
                 'client_description' => $request->client_description,
             ]);
     
+            // Get existing companies for the client
+            $existingCompanies = Company::where('client_id', $client_id)->get();
+    
             // Update company and branch information
             foreach ($request->accordions as $index => $accordion) {
-                $company = Company::where('client_id', $client_id)->skip($index)->firstOrFail();
-                $company->update([
-                    'client_id' => $client->id,
-                    'company_location' => $accordion['company_location'] ?? null,
-                    'company_type' => $accordion['company_type'] ?? null,
-                    'company_name' => $accordion['company_name'] ?? null,
-                    'raxbar' => $accordion['raxbar'] ?? null,
-                    'bank_code' => $accordion['bank_code'] ?? null,
-                    'bank_service' => $accordion['bank_service'] ?? null,
-                    'stir' => $accordion['stir'] ?? null,
-                    'oked' => $accordion['oked'] ?? null,
-                ]);
+                // Check if the company exists
+                $company = $existingCompanies->skip($index)->first();
+    
+                if (!$company) {
+                    // Create a new company if it doesn't exist
+                    $company = Company::create([
+                        'client_id' => $client_id,
+                        'company_location' => $accordion['company_location'] ?? null,
+                        'company_type' => $accordion['company_type'] ?? null,
+                        'company_name' => $accordion['company_name'] ?? null,
+                        'raxbar' => $accordion['raxbar'] ?? null,
+                        'bank_code' => $accordion['bank_code'] ?? null,
+                        'bank_service' => $accordion['bank_service'] ?? null,
+                        'stir' => $accordion['stir'] ?? null,
+                        'oked' => $accordion['oked'] ?? null,
+                    ]);
+                } else {
+                    // Update the existing company
+                    $company->update([
+                        'client_id' => $client->id,
+                        'company_location' => $accordion['company_location'] ?? null,
+                        'company_type' => $accordion['company_type'] ?? null,
+                        'company_name' => $accordion['company_name'] ?? null,
+                        'raxbar' => $accordion['raxbar'] ?? null,
+                        'bank_code' => $accordion['bank_code'] ?? null,
+                        'bank_service' => $accordion['bank_service'] ?? null,
+                        'stir' => $accordion['stir'] ?? null,
+                        'oked' => $accordion['oked'] ?? null,
+                    ]);
+                }
+    
+                // Get existing branches for the company
+                $existingBranches = Branch::where('company_id', $company->id)->get();
     
                 if (isset($accordion['branches'])) {
                     foreach ($accordion['branches'] as $branchIndex => $branchData) {
-                        $branch = Branch::where('company_id', $company->id)->skip($branchIndex)->firstOrFail();
-                        $branch->update([
-                            'company_id' => $company->id,
-                            'contract_apt' => $branchData['contract_apt'] ?? null,
-                            'contract_date' => $branchData['contract_date'] ?? null,
-                            'branch_kubmetr' => $branchData['branch_kubmetr'] ?? null,
-                            'generate_price' => $branchData['generate_price'] ?? null,
-                            'payment_type' => $branchData['payment_type'] ?? null,
-                            'percentage_input' => $branchData['percentage_input'] ?? null,
-                            'installment_quarterly' => $branchData['installment_quarterly'] ?? null,
-                            'notification_num' => $branchData['notification_num'] ?? null,
-                            'notification_date' => $branchData['notification_date'] ?? null,
-                            'insurance_policy' => $branchData['insurance_policy'] ?? null,
-                            'bank_guarantee' => $branchData['bank_guarantee'] ?? null,
-                            'application_number' => $branchData['application_number'] ?? null,
-                            'payed_sum' => $branchData['payed_sum'] ?? null,
-                            'payed_date' => $branchData['payed_date'] ?? null,
-                            'first_payment_percent' => $branchData['first_payment_percent'] ?? null,
-                        ]);
+                        // Check if the branch exists
+                        $branch = $existingBranches->skip($branchIndex)->first();
+    
+                        if (!$branch) {
+                            // Create a new branch if it doesn't exist
+                            $branch = Branch::create([
+                                'company_id' => $company->id,
+                                'contract_apt' => $branchData['contract_apt'] ?? null,
+                                'contract_date' => $branchData['contract_date'] ?? null,
+                                'branch_kubmetr' => $branchData['branch_kubmetr'] ?? null,
+                                'generate_price' => $branchData['generate_price'] ?? null,
+                                'payment_type' => $branchData['payment_type'] ?? null,
+                                'percentage_input' => $branchData['percentage_input'] ?? null,
+                                'installment_quarterly' => $branchData['installment_quarterly'] ?? null,
+                                'notification_num' => $branchData['notification_num'] ?? null,
+                                'notification_date' => $branchData['notification_date'] ?? null,
+                                'insurance_policy' => $branchData['insurance_policy'] ?? null,
+                                'bank_guarantee' => $branchData['bank_guarantee'] ?? null,
+                                'application_number' => $branchData['application_number'] ?? null,
+                                'payed_sum' => $branchData['payed_sum'] ?? null,
+                                'payed_date' => $branchData['payed_date'] ?? null,
+                                'first_payment_percent' => $branchData['first_payment_percent'] ?? null,
+                            ]);
+                        } else {
+                            // Update the existing branch
+                            $branch->update([
+                                'company_id' => $company->id,
+                                'contract_apt' => $branchData['contract_apt'] ?? null,
+                                'contract_date' => $branchData['contract_date'] ?? null,
+                                'branch_kubmetr' => $branchData['branch_kubmetr'] ?? null,
+                                'generate_price' => $branchData['generate_price'] ?? null,
+                                'payment_type' => $branchData['payment_type'] ?? null,
+                                'percentage_input' => $branchData['percentage_input'] ?? null,
+                                'installment_quarterly' => $branchData['installment_quarterly'] ?? null,
+                                'notification_num' => $branchData['notification_num'] ?? null,
+                                'notification_date' => $branchData['notification_date'] ?? null,
+                                'insurance_policy' => $branchData['insurance_policy'] ?? null,
+                                'bank_guarantee' => $branchData['bank_guarantee'] ?? null,
+                                'application_number' => $branchData['application_number'] ?? null,
+                                'payed_sum' => $branchData['payed_sum'] ?? null,
+                                'payed_date' => $branchData['payed_date'] ?? null,
+                                'first_payment_percent' => $branchData['first_payment_percent'] ?? null,
+                            ]);
+                        }
                     }
                 }
             }
@@ -256,6 +305,8 @@ class ProductController extends Controller
             return redirect()->back()->with('error', 'An error occurred while updating the product: ' . $e->getMessage());
         }
     }
+    
+    
     
     public function delete($client_id)
     {
