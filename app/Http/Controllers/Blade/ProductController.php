@@ -22,13 +22,13 @@ use Illuminate\Support\Facades\Storage;
 
 class ProductController extends Controller
 {
-  
+
     public function index()
     {
         $products = Products::with('company')->with(['company.branches'])
             ->get()->all();
 
-        $clients = Client::with('products')->where('is_deleted', '!=', 1)->orderBy('created_at','desc')->get()->all();
+        $clients = Client::with('products')->where('is_deleted', '!=', 1)->orderBy('created_at', 'desc')->get()->all();
 
         return view('pages.products.index', compact('products', 'clients'));
     }
@@ -38,7 +38,7 @@ class ProductController extends Controller
         $product = Products::findOrFail($id);
         $client = Client::where('id', $product->client_id)->where('is_deleted', '!=', 1)->first();
         $files = $client ? $client->files : collect();
-    
+
         return view('pages.products.show', compact('product', 'client', 'files'));
     }
 
@@ -79,14 +79,14 @@ class ProductController extends Controller
                     $extension = $file->getClientOriginalExtension();
                     $fileName = time() . '.' . $extension;
                     $file->move(public_path('assets'), $fileName);
-                    
+
                     $fileModel = new File();
                     $fileModel->client_id = $client->id;
                     $fileModel->path = 'assets/' . $fileName;
                     $fileModel->save();
                 }
             }
-    
+
             DB::commit();
 
             foreach ($request->accordions as $accordion) {
@@ -150,75 +150,77 @@ class ProductController extends Controller
         $client = Client::where('id', $product->client_id)->where('is_deleted', '!=', 1)->first();
         $files = $client ? $client->files : collect();
 
-        return view('pages.products.edit', compact('product', 'regions','client','files'));
+        return view('pages.products.edit', compact('product', 'regions', 'client', 'files'));
     }
 
 
-   public function update(Request $request, $client_id)
-{
-    DB::beginTransaction();
+    public function update(Request $request, $client_id)
+    {
+        DB::beginTransaction();
 
-    try {
-        $requestData = $this->getRequestData($request);
+        try {
+            $requestData = $this->getRequestData($request);
 
-        // Update client information
-        $client = Client::findOrFail($client_id);
-        $client->update($requestData['client']);
+            // Update client information
+            $client = Client::findOrFail($client_id);
+            $client->update($requestData['client']);
 
-        // Update company information
-        $company = Company::where('client_id', $client_id)->firstOrFail();
-        $companyData = $requestData['company'][0]; // Assuming only one company to update
-        $company->update($companyData);
+            // Update company information
+            $company = Company::where('client_id', $client_id)->firstOrFail();
+            $company->update($requestData['company']);
 
-        // Update branch information
-        $branch = Branch::where('company_id', $company->id)->firstOrFail();
-        $branchData = $requestData['branch'][0]; // Assuming only one branch to update
-        $branch->update($branchData);
+            $branch = Branch::where('company_id', $company->id)->firstOrFail();
+            $branch->update($requestData['branch']);
 
-        // Update product information
-        $product = Products::where('client_id', $client_id)->firstOrFail();
-        $productData = $requestData['product'][0]; // Assuming only one product to update
-        $product->update($productData);
+            // Update product information
+            $product = Products::where('client_id', $client_id)->firstOrFail();
+            $product->update([
+                'minimum_wage' => $request->get('minimum_wage'),
+                'contract_apt' => $request->get('contract_apt'),
+                'contract_date' => $request->get('contract_date'),
+                'created_at' => Carbon::today(),
+                'updated_at' => Carbon::today(),
+            ]);
+            $product->save();
 
-        // Handle file uploads
-        if ($request->hasFile('document')) {
-            foreach ($request->file('document') as $file) {
-                $extension = $file->getClientOriginalExtension();
-                $fileName = time() . '.' . $extension;
-                $file->move(public_path('assets'), $fileName);
+            // Handle file uploads
+            if ($request->hasFile('document')) {
+                foreach ($request->file('document') as $file) {
+                    $extension = $file->getClientOriginalExtension();
+                    $fileName = time() . '.' . $extension;
+                    $file->move(public_path('assets'), $fileName);
 
-                // Save file path to the "files" table
-                $fileModel = new File();
-                $fileModel->client_id = $client->id;
-                $fileModel->path = 'assets/' . $fileName;
-                $fileModel->save();
-            }
-        }
-
-        // Handle file deletions
-        if ($request->has('delete_files')) {
-            foreach ($request->delete_files as $fileId) {
-                $file = File::findOrFail($fileId);
-
-                if (Storage::exists($file->path)) {
-                    Storage::delete($file->path);
+                    // Save file path to the "files" table
+                    $fileModel = new File();
+                    $fileModel->client_id = $client->id;
+                    $fileModel->path = 'assets/' . $fileName;
+                    $fileModel->save();
                 }
-
-                $file->delete();
             }
+
+            if ($request->has('delete_files')) {
+                foreach ($request->delete_files as $fileId) {
+                    $file = File::findOrFail($fileId);
+
+                    if (Storage::exists($file->path)) {
+                        Storage::delete($file->path);
+                    }
+
+                    $file->delete();
+                }
+            }
+
+            DB::commit();
+
+            return redirect()->route('productIndex')->with('success', 'Product updated successfully');
+        } catch (\Exception $e) {
+            DB::rollback();
+
+            return redirect()->back()->with('error', 'An error occurred while updating the product: ' . $e->getMessage());
         }
-
-        DB::commit();
-
-        return redirect()->route('productIndex')->with('success', 'Product updated successfully');
-    } catch (\Exception $e) {
-        DB::rollback();
-
-        return redirect()->back()->with('error', 'An error occurred while updating the product: ' . $e->getMessage());
     }
-}
 
-    
+
     private function getRequestData(Request $request)
     {
         // Get client data
@@ -278,24 +280,12 @@ class ProductController extends Controller
             }
         }
 
-        // Get product data
-        $product = [];
-        if ($request->has('accordions')) {
-            foreach ($request->accordions as $accordion) {
-                $product[] = [
-                    'minimum_wage' => $accordion['minimum_wage'],
-                    'contract_apt' => $accordion['contract_apt'],
-                    'contract_date' => $accordion['contract_date'],
-                    'created_at' => Carbon::today(),
-                    'updated_at' => Carbon::today(),
-                ];
-            }
-        }
+    
 
-        return compact('client', 'company', 'branch', 'product');
+        return compact('client', 'company', 'branch');
     }
 
-    
+
     public function delete($client_id)
     {
         try {
