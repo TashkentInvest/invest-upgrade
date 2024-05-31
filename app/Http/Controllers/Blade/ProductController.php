@@ -2,9 +2,7 @@
 
 namespace App\Http\Controllers\Blade;
 
-use App\Exports\ProductsExport;
 use App\Http\Controllers\Controller;
-use App\Models\AuditLog;
 use App\Models\Branch;
 use App\Models\Client;
 use App\Models\Company;
@@ -14,11 +12,7 @@ use App\Models\Products;
 use App\Models\Regions;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
-use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Support\Facades\Storage;
-
-
-
 
 class ProductController extends Controller
 {
@@ -142,7 +136,6 @@ class ProductController extends Controller
         }
     }
 
-
     public function edit($id)
     {
         $product = Products::where('id', $id)->get()->first();
@@ -153,8 +146,6 @@ class ProductController extends Controller
         return view('pages.products.edit', compact('product', 'regions', 'client', 'files'));
     }
 
-
-  
     public function update(Request $request, $client_id)
     {
         DB::beginTransaction();
@@ -266,51 +257,6 @@ class ProductController extends Controller
         }
     }
     
-    
-
-    private function getRequestData(Request $request)
-    {
-        // Get client data
-        $client = [
-            'first_name' => $request->first_name,
-            'last_name' => $request->last_name,
-            'father_name' => $request->father_name,
-            'mijoz_turi' => $request->mijoz_turi,
-            'contact' => $request->contact,
-            'passport_serial' => $request->passport_serial,
-            'passport_pinfl' => $request->passport_pinfl,
-            'passport_date' => $request->passport_date,
-            'passport_location' => $request->passport_location,
-            'passport_type' => $request->passport_type,
-            'yuridik_address' => $request->yuridik_address,
-            'yuridik_rekvizid' => $request->yuridik_rekvizid,
-            'client_description' => $request->client_description,
-        ];
-
-        // Get company data
-        $company = [];
-        if ($request->has('accordions')) {
-            foreach ($request->accordions as $accordion) {
-                $company[] = [
-                    'company_location' => $accordion['company_location'] ?? null,
-                    'company_type' => $accordion['company_type'] ?? null,
-                    'company_name' => $accordion['company_name'] ?? null,
-                    'raxbar' => $accordion['raxbar'] ?? null,
-                    'bank_code' => $accordion['bank_code'] ?? null,
-                    'bank_service' => $accordion['bank_service'] ?? null,
-                    'stir' => $accordion['stir'] ?? null,
-                    'oked' => $accordion['oked'] ?? null,
-                ];
-            }
-        }
-
-        
-    
-
-        return compact('client');
-    }
-
-
     public function delete($client_id)
     {
         try {
@@ -325,8 +271,6 @@ class ProductController extends Controller
             return redirect()->back()->with('error', 'An error occurred while marking the client as deleted: ' . $e->getMessage());
         }
     }
-
-
     public function toggleProductActivation($id)
     {
         $product = Products::where('id', $id)->first();
