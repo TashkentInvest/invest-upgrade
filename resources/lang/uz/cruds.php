@@ -85,6 +85,8 @@ return [
             'last_name'                => 'Familiya',
             'father_name'              => 'Otasining ismi',
             'contact'                  => 'Kontakt',
+
+            'client_description'       => 'Mijoz Tafsilotlari',
           
             'yuridik_address'          => 'Yuridik manzil',
             'yuridik_rekvizid'         => 'Xisob raqam',
@@ -158,7 +160,16 @@ return [
             'latitude' => 'Kenglik',
             'region_id' => 'Joylashgan viloyati',
             'address' => "Manzil",
-            'open_with_google_maps' => 'Google Xarita orqali oching'
+            'open_with_google_maps' => 'Google Xarita orqali oching',
+
+            'notification_num' => 'Bildirishnoma raqami',
+            'notification_date' => 'Bildirishnoma sanasi',
+            'insurance_policy' => 'Sugʻurta polisi',
+            'bank_guarantee' => 'Bank kafolati',
+            'application_number' => 'Ariza raqami',
+            'payed_sum' => 'Toʻlangan summa',
+            'payed_date' => 'Toʻlov sanasi',
+            'first_payment_percent' => 'Birinchi toʻlov foizi'
         ]
     ],
 

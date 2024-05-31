@@ -95,6 +95,8 @@ return [
             'passport_date'                     => 'Дата выдачи',
             'passport_location'                     => 'Местоположение выдачи',
             'mijoz_turi'                     => 'Тип',
+            'client_description'       => 'Описание клиента',
+
             'name_helper'              => ' ',
             'email'                    => 'Email',
             'email_helper'             => ' ',
@@ -159,7 +161,16 @@ return [
             'latitude' => 'Широта',
             'region_id' => 'Регион, в котором находится',
             'address' => "Адрес",
-            'open_with_google_maps' => 'Открыть в Google Картах'
+            'open_with_google_maps' => 'Открыть в Google Картах',
+
+            'notification_num' => 'Номер уведомления',
+            'notification_date' => 'Дата уведомления',
+            'insurance_policy' => 'Страховой полис',
+            'bank_guarantee' => 'Банковская гарантия',
+            'application_number' => 'Номер заявки',
+            'payed_sum' => 'Оплаченная сумма',
+            'payed_date' => 'Дата оплаты',
+            'first_payment_percent' => 'Процент первого платежа'
         ]
     ],
 
