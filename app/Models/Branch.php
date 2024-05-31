@@ -19,7 +19,7 @@ class Branch extends Model
         'installment_quarterly',
         'notification_num',
         'notification_date',
-        'Insurance_policy',
+        'insurance_policy',
         'bank_guarantee',
         'application_number',
         'payed_sum',

@@ -23,15 +23,17 @@ class CreateBranchesTable extends Migration
             $table->string('payment_type')->nullable();
             $table->string('percentage_input')->nullable();
             $table->string('installment_quarterly')->nullable();
+            $table->string('branch_kubmetr')->nullable();
+
             $table->string('notification_num')->nullable();
             $table->dateTime('notification_date')->nullable();
-            $table->string('Insurance_policy')->nullable();
+            $table->string('insurance_policy')->nullable();
             $table->string('bank_guarantee')->nullable();
             $table->string('application_number')->nullable();
             $table->string('payed_sum')->nullable();
             $table->dateTime('payed_date')->nullable();
             $table->string('first_payment_percent')->nullable();
-            $table->string('branch_kubmetr')->nullable();
+            
             $table->timestamps();
         });
     }
