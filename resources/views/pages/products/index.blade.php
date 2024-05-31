@@ -60,7 +60,7 @@
                                                     </div>
                                                 </div>
 
-                                                <div class="form-group row align-items-center my-2">
+                                                {{-- <div class="form-group row align-items-center my-2">
                                                     <div class="col-3">
                                                         <h6>@lang('cruds.company.fields.company_name') INN</h6>
                                                     </div>
@@ -74,7 +74,7 @@
                                                         <input type="hidden" name="companystir_operator" value="like">
                                                         <input class="form-control form-control-sm" type="text" name="stir" value="{{ old('stir', request()->stir ?? '') }}">
                                                     </div>
-                                                </div>
+                                                </div> --}}
         
                                                 
                                                 <!-- Company Search End-->

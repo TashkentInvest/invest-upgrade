@@ -81,14 +81,14 @@ class Client extends Model
                 });
             }
 
-            if ($request->filled('companystir_operator')) {
-                $operator = $request->input('companystir_operator', 'like');
-                $value = '%' . $request->input('stir') . '%';
+            // if ($request->filled('companystir_operator')) {
+            //     $operator = $request->input('companystir_operator', 'like');
+            //     $value = '%' . $request->input('stir') . '%';
             
-                $query->whereHas('companies', function ($query) use ($operator, $value) {
-                    $query->where('stir', $operator, $value);
-                });
-            }
+            //     $query->whereHas('companies', function ($query) use ($operator, $value) {
+            //         $query->where('stir', $operator, $value);
+            //     });
+            // }
 
             
             
