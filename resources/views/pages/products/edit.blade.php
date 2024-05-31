@@ -306,7 +306,7 @@
                                                 <label for="company_name">@lang('global.loyiha_nomi')</label>
                                                 <input type="text" class="form-control" id="company_name"
                                                     name="company_name"
-                                                    value="{{ old('company_type', $comp->company_name) }}">
+                                                    value="{{ old('company_name', $comp->company_name) }}">7
                                             </div>
                                         </div>
 

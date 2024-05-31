@@ -28,7 +28,7 @@ class ProductController extends Controller
         $products = Products::with('company')->with(['company.branches'])
             ->get()->all();
 
-        $clients = Client::with('products')->where('is_deleted', '!=', 1)->orderBy('created_at', 'desc')->get()->all();
+        $clients = Client::deepFilters()->with('products')->where('is_deleted', '!=', 1)->orderBy('created_at', 'desc')->get()->all();
 
         return view('pages.products.index', compact('products', 'clients'));
     }
@@ -154,6 +154,7 @@ class ProductController extends Controller
     }
 
 
+  
     public function update(Request $request, $client_id)
     {
         DB::beginTransaction();
@@ -180,8 +181,9 @@ class ProductController extends Controller
             // Update company and branch information
             if ($request->has('accordions')) {
                 foreach ($request->accordions as $accordion) {
-                    if (is_array($accordion) || is_object($accordion)) {
-                        $company = Company::where('client_id', $client_id)->firstOrFail();
+                    // Update company information
+                    $company = Company::where('client_id', $client_id)->first();
+                    if ($company) {
                         $company->update([
                             'company_location' => $accordion['company_location'] ?? null,
                             'company_type' => $accordion['company_type'] ?? null,
@@ -194,10 +196,10 @@ class ProductController extends Controller
                         ]);
     
                         // Update branch information
-                        if (isset($accordion['branches'])) {
-                            foreach ($accordion['branches'] as $branchData) {
-                                if (is_array($branchData) || is_object($branchData)) {
-                                    $branch = Branch::where('company_id', $company->id)->firstOrFail();
+                        foreach ($accordion['branches'] ?? [] as $branchData) {
+                            if (is_array($branchData)) {
+                                $branch = Branch::where('company_id', $company->id)->first();
+                                if ($branch) {
                                     $branch->update([
                                         'contract_apt' => $branchData['contract_apt'] ?? null,
                                         'contract_date' => $branchData['contract_date'] ?? null,
@@ -248,15 +250,15 @@ class ProductController extends Controller
             }
     
             // Handle file deletions
-            if ($request->has('delete_files')) {
+            if ($request->has('delete_files') && is_array($request->delete_files)) {
                 foreach ($request->delete_files as $fileId) {
-                    $file = File::findOrFail($fileId);
-    
-                    if (Storage::exists($file->path)) {
-                        Storage::delete($file->path);
+                    $file = File::find($fileId);
+                    if ($file) {
+                        if (Storage::exists($file->path)) {
+                            Storage::delete($file->path);
+                        }
+                        $file->delete();
                     }
-    
-                    $file->delete();
                 }
             }
     
@@ -270,7 +272,6 @@ class ProductController extends Controller
         }
     }
     
-
 
     private function getRequestData(Request $request)
     {
