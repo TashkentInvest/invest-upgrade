@@ -309,8 +309,9 @@
                                             @endif
                                         </div>
 
-
                                         @foreach ($comp->branches as $branchIndex => $b)
+                                        <h4>{{$b->contract_apt}}</h4>
+
                                             <div class="row">
                                                 <div class="col-lg-3">
                                                     <div class="mb-3">
