@@ -69,6 +69,7 @@ class ProductController extends Controller
                     'passport_type' => $request->get('passport_type', 0),
                     'yuridik_address' => $request->get('yuridik_address'),
                     'yuridik_rekvizid' => $request->get('yuridik_rekvizid'),
+                    'client_description' => $request->get('client_description'),
                 ]);
             }
 
@@ -109,6 +110,16 @@ class ProductController extends Controller
                     'payment_type' => $accordion['payment_type'] ?? null,
                     'percentage_input' => $accordion['percentage_input'] ?? null,
                     'installment_quarterly' => $accordion['installment_quarterly'] ?? null,
+
+                    'notification_num' => $accordion['notification_num'] ?? null,
+                    'notification_date' => $accordion['notification_date'] ?? null,
+                    'insurance_policy' => $accordion['insurance_policy'] ?? null,
+                    'bank_guarantee' => $accordion['bank_guarantee'] ?? null,
+                    'application_number' => $accordion['application_number'] ?? null,
+                    'payed_sum' => $accordion['payed_sum'] ?? null,
+                    'payed_date' => $accordion['payed_date'] ?? null,
+                    'first_payment_percent' => $accordion['first_payment_percent'] ?? null,
+
                 ]);
 
                 Products::create([
@@ -156,6 +167,9 @@ class ProductController extends Controller
         // Update company information
         $company = Company::where('client_id', $client_id)->firstOrFail();
         $company->update($requestData['company']);
+
+        // $branch = Branch::where('client_id', $client_id)->firstOrFail();
+        // $branch->update($requestData['branch']);
     
         // Update product information
         $product = Products::where('client_id', $client_id)->firstOrFail();

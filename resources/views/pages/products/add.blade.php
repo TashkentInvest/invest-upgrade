@@ -49,45 +49,57 @@
 
                                     <div class="col-12 col-lg-3 mb-2">
                                         <label for="company_name" class="col-md-6 col-form-label">@lang('cruds.company.fields.company_name')</label>
-                                        <input class="form-control {{ $errors->has('company_name') ? 'is-invalid' : '' }}" type="text" name="company_name" id="company_name" placeholder="@lang('cruds.company.fields.company_name')" value="{{ old('company_name') }}">
+                                        <input class="form-control {{ $errors->has('company_name') ? 'is-invalid' : '' }}"
+                                            type="text" name="company_name" id="company_name"
+                                            placeholder="@lang('cruds.company.fields.company_name')" value="{{ old('company_name') }}">
                                         @if ($errors->has('company_name'))
                                             <span class="error invalid-feedback">{{ $errors->first('company_name') }}</span>
                                         @endif
                                     </div>
-                                
+
                                     <div class="col-12 col-lg-3 mb-2">
                                         <label for="raxbar" class="col-md-6 col-form-label">@lang('cruds.company.fields.raxbar')</label>
-                                        <input class="form-control {{ $errors->has('raxbar') ? 'is-invalid' : '' }}" type="text" name="raxbar" id="raxbar" placeholder="@lang('cruds.company.fields.raxbar')" value="{{ old('raxbar') }}">
+                                        <input class="form-control {{ $errors->has('raxbar') ? 'is-invalid' : '' }}"
+                                            type="text" name="raxbar" id="raxbar" placeholder="@lang('cruds.company.fields.raxbar')"
+                                            value="{{ old('raxbar') }}">
                                         @if ($errors->has('raxbar'))
                                             <span class="error invalid-feedback">{{ $errors->first('raxbar') }}</span>
                                         @endif
                                     </div>
 
-                            
+
 
                                     <div class="col-12 col-lg-3 mb-2">
                                         <label for="bank_service" class="col-md-6 col-form-label">@lang('cruds.company.fields.bank_service')</label>
-                                        <input class="form-control {{ $errors->has('bank_service') ? 'is-invalid' : '' }}" type="text" name="bank_service" id="bank_service" placeholder="@lang('cruds.company.fields.bank_service')" value="{{ old('bank_service') }}">
+                                        <input class="form-control {{ $errors->has('bank_service') ? 'is-invalid' : '' }}"
+                                            type="text" name="bank_service" id="bank_service"
+                                            placeholder="@lang('cruds.company.fields.bank_service')" value="{{ old('bank_service') }}">
                                         @if ($errors->has('bank_service'))
-                                            <span class="error invalid-feedback">{{ $errors->first('bank_service') }}</span>
+                                            <span
+                                                class="error invalid-feedback">{{ $errors->first('bank_service') }}</span>
                                         @endif
                                     </div>
 
                                     <div class="col-12 col-lg-3 mb-2">
                                         <label for="bank_code" class="col-md-6 col-form-label">@lang('cruds.company.fields.bank_code')</label>
-                                        <input class="form-control {{ $errors->has('bank_code') ? 'is-invalid' : '' }}" type="text" name="bank_code" max="5" id="bank_code" placeholder="@lang('cruds.company.fields.bank_code')" value="{{ old('bank_code') }}" maxlength="5" name="alloptions" id="alloptions">
+                                        <input class="form-control {{ $errors->has('bank_code') ? 'is-invalid' : '' }}"
+                                            type="text" name="bank_code" max="5" id="bank_code"
+                                            placeholder="@lang('cruds.company.fields.bank_code')" value="{{ old('bank_code') }}" maxlength="5"
+                                            name="alloptions" id="alloptions">
 
                                         @if ($errors->has('bank_code'))
                                             <span class="error invalid-feedback">{{ $errors->first('bank_code') }}</span>
                                         @endif
                                     </div>
 
-                             
-                                    
+
+
 
                                     <div class="col-12 col-lg-3 mb-2">
                                         <label for="stir" class="col-md-6 col-form-label">@lang('cruds.company.fields.stir')</label>
-                                        <input class="form-control {{ $errors->has('stir') ? 'is-invalid' : '' }}" type="text" name="stir" id="stir" placeholder="@lang('cruds.company.fields.stir')" value="{{ old('stir') }}">
+                                        <input class="form-control {{ $errors->has('stir') ? 'is-invalid' : '' }}"
+                                            type="text" name="stir" id="stir" placeholder="@lang('cruds.company.fields.stir')"
+                                            value="{{ old('stir') }}">
                                         @if ($errors->has('stir'))
                                             <span class="error invalid-feedback">{{ $errors->first('stir') }}</span>
                                         @endif
@@ -95,60 +107,82 @@
 
                                     <div class="col-12 col-lg-3 mb-2">
                                         <label for="oked" class="col-md-6 col-form-label">@lang('cruds.company.fields.oked')</label>
-                                        <input class="form-control {{ $errors->has('oked') ? 'is-invalid' : '' }}" type="text" name="oked" id="oked" placeholder="@lang('cruds.company.fields.oked')" value="{{ old('oked') }}">
+                                        <input class="form-control {{ $errors->has('oked') ? 'is-invalid' : '' }}"
+                                            type="text" name="oked" id="oked" placeholder="@lang('cruds.company.fields.oked')"
+                                            value="{{ old('oked') }}">
                                         @if ($errors->has('oked'))
                                             <span class="error invalid-feedback">{{ $errors->first('oked') }}</span>
                                         @endif
                                     </div>
-                             
+
                                     <div class="col-12 col-lg-3 mb-2">
-                                        <label for="yuridik_address" class="col-md-6 col-form-label">@lang('cruds.client.fields.yuridik_address')</label>
-                                        <input class="form-control {{ $errors->has('yuridik_address') ? 'is-invalid' : '' }}" type="text" name="yuridik_address" id="yuridik_address" placeholder="@lang('cruds.client.fields.yuridik_address')" value="{{ old('yuridik_address') }}">
+                                        <label for="yuridik_address"
+                                            class="col-md-6 col-form-label">@lang('cruds.client.fields.yuridik_address')</label>
+                                        <input
+                                            class="form-control {{ $errors->has('yuridik_address') ? 'is-invalid' : '' }}"
+                                            type="text" name="yuridik_address" id="yuridik_address"
+                                            placeholder="@lang('cruds.client.fields.yuridik_address')" value="{{ old('yuridik_address') }}">
                                         @if ($errors->has('yuridik_address'))
-                                            <span class="error invalid-feedback">{{ $errors->first('yuridik_address') }}</span>
-                                        @endif
-                                    </div>
-                                
-                                    <div class="col-12 col-lg-3 mb-2">
-                                        <label for="yuridik_rekvizid" class="col-md-6 col-form-label">@lang('cruds.client.fields.yuridik_rekvizid')</label>
-                                        <input class="form-control {{ $errors->has('yuridik_rekvizid') ? 'is-invalid' : '' }}" type="text" name="yuridik_rekvizid" id="yuridik_rekvizid" placeholder="@lang('cruds.client.fields.yuridik_rekvizid')" value="{{ old('yuridik_rekvizid') }}">
-                                        @if ($errors->has('yuridik_rekvizid'))
-                                            <span class="error invalid-feedback">{{ $errors->first('yuridik_rekvizid') }}</span>
+                                            <span
+                                                class="error invalid-feedback">{{ $errors->first('yuridik_address') }}</span>
                                         @endif
                                     </div>
 
-                                  
+                                    <div class="col-12 col-lg-3 mb-2">
+                                        <label for="yuridik_rekvizid"
+                                            class="col-md-6 col-form-label">@lang('cruds.client.fields.yuridik_rekvizid')</label>
+                                        <input
+                                            class="form-control {{ $errors->has('yuridik_rekvizid') ? 'is-invalid' : '' }}"
+                                            type="text" name="yuridik_rekvizid" id="yuridik_rekvizid"
+                                            placeholder="@lang('cruds.client.fields.yuridik_rekvizid')" value="{{ old('yuridik_rekvizid') }}">
+                                        @if ($errors->has('yuridik_rekvizid'))
+                                            <span
+                                                class="error invalid-feedback">{{ $errors->first('yuridik_rekvizid') }}</span>
+                                        @endif
+                                    </div>
+
+
 
                                 </div>
-                                
+
                                 <div class="row">
                                     <div class="col-12 col-lg-3 mb-2">
                                         <label for="last_name" class="col-md-4 col-form-label">@lang('cruds.client.fields.last_name')</label>
-                                        <input class="form-control {{ $errors->has('last_name') ? 'is-invalid' : '' }}" type="text" name="last_name" id="last_name" placeholder="@lang('cruds.client.fields.last_name')" value="{{ old('last_name') }}">
+                                        <input class="form-control {{ $errors->has('last_name') ? 'is-invalid' : '' }}"
+                                            type="text" name="last_name" id="last_name"
+                                            placeholder="@lang('cruds.client.fields.last_name')" value="{{ old('last_name') }}">
                                         @if ($errors->has('last_name'))
                                             <span class="error invalid-feedback">{{ $errors->first('last_name') }}</span>
                                         @endif
                                     </div>
-                                
+
                                     <div class="col-12 col-lg-3 mb-2">
                                         <label for="name" class="col-md-4 col-form-label">@lang('cruds.client.fields.name')</label>
-                                        <input class="form-control {{ $errors->has('first_name') ? 'is-invalid' : '' }}" type="text" name="first_name" id="first_name" placeholder="@lang('cruds.client.fields.first_name')" value="{{ old('first_name') }}">
+                                        <input class="form-control {{ $errors->has('first_name') ? 'is-invalid' : '' }}"
+                                            type="text" name="first_name" id="first_name"
+                                            placeholder="@lang('cruds.client.fields.first_name')" value="{{ old('first_name') }}">
                                         @if ($errors->has('first_name'))
                                             <span class="error invalid-feedback">{{ $errors->first('first_name') }}</span>
                                         @endif
                                     </div>
-                                
+
                                     <div class="col-12 col-lg-3 mb-2">
-                                        <label for="father_name" class="col-md-4 col-form-label">@lang('cruds.client.fields.father_name')</label>
-                                        <input class="form-control {{ $errors->has('father_name') ? 'is-invalid' : '' }}" type="text" name="father_name" id="father_name" placeholder="@lang('cruds.client.fields.father_name')" value="{{ old('father_name') }}">
+                                        <label for="father_name"
+                                            class="col-md-4 col-form-label">@lang('cruds.client.fields.father_name')</label>
+                                        <input class="form-control {{ $errors->has('father_name') ? 'is-invalid' : '' }}"
+                                            type="text" name="father_name" id="father_name"
+                                            placeholder="@lang('cruds.client.fields.father_name')" value="{{ old('father_name') }}">
                                         @if ($errors->has('father_name'))
-                                            <span class="error invalid-feedback">{{ $errors->first('father_name') }}</span>
+                                            <span
+                                                class="error invalid-feedback">{{ $errors->first('father_name') }}</span>
                                         @endif
                                     </div>
 
                                     <div class="col-12 col-lg-3 mb-2">
                                         <label for="contact" class="col-md-4 col-form-label">@lang('cruds.client.fields.contact')</label>
-                                        <input class="form-control {{ $errors->has('contact') ? 'is-invalid' : '' }}" type="text" name="contact" id="contact" placeholder="@lang('cruds.client.fields.contact')" value="{{ old('contact') }}">
+                                        <input class="form-control {{ $errors->has('contact') ? 'is-invalid' : '' }}"
+                                            type="text" name="contact" id="contact"
+                                            placeholder="@lang('cruds.client.fields.contact')" value="{{ old('contact') }}">
                                         @if ($errors->has('contact'))
                                             <span class="error invalid-feedback">{{ $errors->first('contact') }}</span>
                                         @endif
@@ -156,48 +190,70 @@
                                 </div>
 
                                 <div class="row" id="passport" style="align-items: center ">
-                                    
+
                                     <div class="col-12 col-lg-3 mb-2">
-                                        <label for="passport_serial" class="col-md-6 col-form-label">@lang('cruds.client.fields.passport_serial')</label>
-                                        <input class="form-control {{ $errors->has('passport_serial') ? 'is-invalid' : '' }}" type="text" name="passport_serial" id="passport_serial" placeholder="@lang('cruds.client.fields.passport_serial')" value="{{ old('passport_serial') }}">
+                                        <label for="passport_serial"
+                                            class="col-md-6 col-form-label">@lang('cruds.client.fields.passport_serial')</label>
+                                        <input
+                                            class="form-control {{ $errors->has('passport_serial') ? 'is-invalid' : '' }}"
+                                            type="text" name="passport_serial" id="passport_serial"
+                                            placeholder="@lang('cruds.client.fields.passport_serial')" value="{{ old('passport_serial') }}">
                                         @if ($errors->has('passport_serial'))
-                                            <span class="error invalid-feedback">{{ $errors->first('passport_serial') }}</span>
+                                            <span
+                                                class="error invalid-feedback">{{ $errors->first('passport_serial') }}</span>
                                         @endif
                                     </div>
-                                 
-                                   
+
+
                                     <div class="col-12 col-lg-3 mb-2">
-                                        <label for="passport_pinfl" class="col-md-6 col-form-label">@lang('cruds.client.fields.passport_pinfl')</label>
-                                        <input class="form-control {{ $errors->has('passport_pinfl') ? 'is-invalid' : '' }}" type="text" name="passport_pinfl" id="passport_pinfl" placeholder="@lang('cruds.client.fields.passport_pinfl')" value="{{ old('passport_pinfl') }}">
+                                        <label for="passport_pinfl"
+                                            class="col-md-6 col-form-label">@lang('cruds.client.fields.passport_pinfl')</label>
+                                        <input
+                                            class="form-control {{ $errors->has('passport_pinfl') ? 'is-invalid' : '' }}"
+                                            type="text" name="passport_pinfl" id="passport_pinfl"
+                                            placeholder="@lang('cruds.client.fields.passport_pinfl')" value="{{ old('passport_pinfl') }}">
                                         @if ($errors->has('passport_pinfl'))
-                                            <span class="error invalid-feedback">{{ $errors->first('passport_pinfl') }}</span>
+                                            <span
+                                                class="error invalid-feedback">{{ $errors->first('passport_pinfl') }}</span>
                                         @endif
                                     </div>
 
                                     <div class="col-12 col-lg-3 mb-2">
-                                        <label for="passport_date" class="col-md-4 col-form-label">@lang('cruds.client.fields.passport_date')</label>
-                                        <input class="form-control {{ $errors->has('passport_date') ? 'is-invalid' : '' }}" type="date" name="passport_date" id="passport_date" placeholder="@lang('cruds.client.fields.passport_date')" value="{{ old('passport_date') }}">
+                                        <label for="passport_date"
+                                            class="col-md-4 col-form-label">@lang('cruds.client.fields.passport_date')</label>
+                                        <input
+                                            class="form-control {{ $errors->has('passport_date') ? 'is-invalid' : '' }}"
+                                            type="date" name="passport_date" id="passport_date"
+                                            placeholder="@lang('cruds.client.fields.passport_date')" value="{{ old('passport_date') }}">
                                         @if ($errors->has('passport_date'))
-                                            <span class="error invalid-feedback">{{ $errors->first('passport_date') }}</span>
+                                            <span
+                                                class="error invalid-feedback">{{ $errors->first('passport_date') }}</span>
                                         @endif
                                     </div>
 
                                     <div class="col-12 col-lg-3 mb-2">
-                                        <label for="passport_location" class="col-md-6 col-form-label">@lang('cruds.client.fields.passport_location')</label>
-                                        <input class="form-control {{ $errors->has('passport_location') ? 'is-invalid' : '' }}" type="text" name="passport_location" id="passport_location" placeholder="@lang('cruds.client.fields.passport_location')" value="{{ old('passport_location') }}">
+                                        <label for="passport_location"
+                                            class="col-md-6 col-form-label">@lang('cruds.client.fields.passport_location')</label>
+                                        <input
+                                            class="form-control {{ $errors->has('passport_location') ? 'is-invalid' : '' }}"
+                                            type="text" name="passport_location" id="passport_location"
+                                            placeholder="@lang('cruds.client.fields.passport_location')" value="{{ old('passport_location') }}">
                                         @if ($errors->has('passport_location'))
-                                            <span class="error invalid-feedback">{{ $errors->first('passport_location') }}</span>
+                                            <span
+                                                class="error invalid-feedback">{{ $errors->first('passport_location') }}</span>
                                         @endif
                                     </div>
 
 
                                     <div class="col-12 col-lg-6 mb-2">
-                                        <label for="client_description" class="col-md-6 col-form-label">@lang('cruds.client.fields.client_description')</label>
-                                        <textarea id="textarea" class="form-control {{ $errors->has('client_description') ? 'is-invalid' : '' }}" maxlength="225" rows="3" placeholder="This textarea has a limit of 225 chars.">{{ old('client_description') }}</textarea>
-                                        @if ($errors->has('passport_location'))
-                                            <span class="error invalid-feedback">{{ $errors->first('passport_location') }}</span>
+                                        <label for="client_description"
+                                            class="col-md-6 col-form-label">@lang('cruds.client.fields.client_description')</label>
+                                        <textarea id="textarea" class="form-control {{ $errors->has('client_description') ? 'is-invalid' : '' }}"
+                                            maxlength="225" rows="3" placeholder="This textarea has a limit of 225 chars.">{{ old('client_description') }}</textarea>
+                                        @if ($errors->has('client_description'))
+                                            <span
+                                                class="error invalid-feedback">{{ $errors->first('client_description') }}</span>
                                         @endif
-
                                     </div>
 
 
@@ -210,42 +266,33 @@
                                     </div>
 
                                     <div class="col-12 col-lg-3 mb-2">
-                                       
+
                                         <label for="is_passport_id">Is passport ID?</label>
                                         <input type="checkbox" name="passport_type" id="is_passport_id" value="1">
 
                                     </div>
-
-
-                              
-
                                 </div>
-                               
 
-                
-                                
+
+
+
                                 <div class="row" id="make_hide">
-                             
-                                    
-                                </div>
-                                
-                            
 
-                                
-                            <script>
-                                $(document).ready(function(){
-                                    $('#myForm').on('keypress', function(e) {
-                                        if(e.which === 13) {
-                                            e.preventDefault(); 
-                                            // alert('Iltimos Enter ni bosamgan xolda mishka bilan bosing!.');
-                                        }
-                                    });
-                                });
-                            </script>
-                                
+                                </div>
+
                                 <script>
-                                    $(document).ready(function () {
-                                        $('#mijoz_turi').on('change', function () {
+                                    $(document).ready(function() {
+                                        $('#myForm').on('keypress', function(e) {
+                                            if (e.which === 13) {
+                                                e.preventDefault();
+                                            }
+                                        });
+                                    });
+                                </script>
+
+                                <script>
+                                    $(document).ready(function() {
+                                        $('#mijoz_turi').on('change', function() {
                                             if (this.value === 'fizik') {
                                                 $('#make_hide').show();
                                                 $('#make_show').hide();
@@ -253,10 +300,9 @@
                                                 $('#make_hide').hide();
                                                 $('#make_show').show();
                                             }
-                                        }).trigger('change'); // Trigger the change event on page load to set the correct state
+                                        }).trigger('change'); 
                                     });
                                 </script>
-                                
 
                             </section>
                             <h3>@lang('global.object')</h3>
@@ -278,13 +324,16 @@
                                                         <div class="col-lg-6">
                                                             <div class="mb-3">
                                                                 <label for="contract_apt">@lang('global.ruxsatnoma_raqami')</label>
-                                                                <input type="text" class="form-control" name="accordions[0][contract_apt]" placeholder="@lang('global.ruxsatnoma_raqami')">
+                                                                <input type="text" class="form-control"
+                                                                    name="accordions[0][contract_apt]"
+                                                                    placeholder="@lang('global.ruxsatnoma_raqami')">
                                                             </div>
                                                         </div>
                                                         <div class="col-lg-6">
                                                             <div class="mb-3">
                                                                 <label for="contract_date">@lang('global.sanasi')</label>
-                                                                <input class="form-control" type="datetime-local" name="accordions[0][contract_date]">
+                                                                <input class="form-control" type="datetime-local"
+                                                                    name="accordions[0][contract_date]">
                                                             </div>
                                                         </div>
                                                     </div>
@@ -292,19 +341,25 @@
                                                         <div class="col-lg-4">
                                                             <div class="mb-3">
                                                                 <label for="company_type">@lang('global.loyiha_turi')</label>
-                                                                <input type="text" class="form-control" name="accordions[0][company_type]" placeholder="@lang('global.loyiha_turi')">
+                                                                <input type="text" class="form-control"
+                                                                    name="accordions[0][company_type]"
+                                                                    placeholder="@lang('global.loyiha_turi')">
                                                             </div>
                                                         </div>
                                                         <div class="col-lg-4">
                                                             <div class="mb-3">
                                                                 <label for="company_location">@lang('global.loyiha_manzili')</label>
-                                                                <input type="text" class="form-control" name="accordions[0][company_location]" placeholder="@lang('global.loyiha_manzili')">
+                                                                <input type="text" class="form-control"
+                                                                    name="accordions[0][company_location]"
+                                                                    placeholder="@lang('global.loyiha_manzili')">
                                                             </div>
                                                         </div>
                                                         <div class="col-lg-4">
                                                             <div class="mb-3">
                                                                 <label for="company_name">@lang('global.loyiha_nomi')</label>
-                                                                <input type="text" class="form-control" name="accordions[0][company_name]" placeholder="@lang('global.loyiha_nomi')">
+                                                                <input type="text" class="form-control"
+                                                                    name="accordions[0][company_name]"
+                                                                    placeholder="@lang('global.loyiha_nomi')">
                                                             </div>
                                                         </div>
                                                     </div>
@@ -315,27 +370,35 @@
                                                         <div class="col-lg-3">
                                                             <div class="mb-3">
                                                                 <label for="notification_num">@lang('cruds.branches.fields.notification_num')</label>
-                                                                <input type="text" class="form-control" name="accordions[0][notification_num]" placeholder="@lang('cruds.branches.fields.notification_num')">
+                                                                <input type="text" class="form-control"
+                                                                    name="accordions[0][notification_num]"
+                                                                    placeholder="@lang('cruds.branches.fields.notification_num')">
                                                             </div>
                                                         </div>
                                                         <div class="col-lg-3">
                                                             <div class="mb-3">
                                                                 <label for="notification_date">@lang('cruds.branches.fields.notification_date')</label>
-                                                                <input type="text" class="form-control" name="accordions[0][notification_date]" placeholder="@lang('cruds.branches.fields.notification_date')">
+                                                                <input type="text" class="form-control"
+                                                                    name="accordions[0][notification_date]"
+                                                                    placeholder="@lang('cruds.branches.fields.notification_date')">
                                                             </div>
                                                         </div>
 
                                                         <div class="col-lg-3">
                                                             <div class="mb-3">
                                                                 <label for="insurance_policy">@lang('cruds.branches.fields.insurance_policy')</label>
-                                                                <input type="text" class="form-control" name="accordions[0][insurance_policy]" placeholder="@lang('cruds.branches.fields.insurance_policy')">
+                                                                <input type="text" class="form-control"
+                                                                    name="accordions[0][insurance_policy]"
+                                                                    placeholder="@lang('cruds.branches.fields.insurance_policy')">
                                                             </div>
                                                         </div>
 
                                                         <div class="col-lg-3">
                                                             <div class="mb-3">
                                                                 <label for="bank_guarantee">@lang('cruds.branches.fields.bank_guarantee')</label>
-                                                                <input type="text" class="form-control" name="accordions[0][bank_guarantee]" placeholder="@lang('cruds.branches.fields.bank_guarantee')">
+                                                                <input type="text" class="form-control"
+                                                                    name="accordions[0][bank_guarantee]"
+                                                                    placeholder="@lang('cruds.branches.fields.bank_guarantee')">
                                                             </div>
                                                         </div>
 
@@ -344,31 +407,38 @@
                                                         <div class="col-lg-3">
                                                             <div class="mb-3">
                                                                 <label for="application_number">@lang('cruds.branches.fields.application_number')</label>
-                                                                <input type="text" class="form-control" name="accordions[0][application_number]" placeholder="@lang('cruds.branches.fields.application_number')">
+                                                                <input type="text" class="form-control"
+                                                                    name="accordions[0][application_number]"
+                                                                    placeholder="@lang('cruds.branches.fields.application_number')">
                                                             </div>
                                                         </div>
                                                         <div class="col-lg-3">
                                                             <div class="mb-3">
                                                                 <label for="payed_sum">@lang('cruds.branches.fields.payed_sum')</label>
-                                                                <input type="text" class="form-control" name="accordions[0][payed_sum]" placeholder="@lang('cruds.branches.fields.payed_sum')">
+                                                                <input type="text" class="form-control"
+                                                                    name="accordions[0][payed_sum]"
+                                                                    placeholder="@lang('cruds.branches.fields.payed_sum')">
                                                             </div>
                                                         </div>
 
                                                         <div class="col-lg-3">
                                                             <div class="mb-3">
                                                                 <label for="payed_sum">@lang('cruds.branches.fields.payed_sum')</label>
-                                                                <input type="text" class="form-control" name="accordions[0][payed_sum]" placeholder="@lang('cruds.branches.fields.payed_sum')">
+                                                                <input type="text" class="form-control"
+                                                                    name="accordions[0][payed_sum]"
+                                                                    placeholder="@lang('cruds.branches.fields.payed_sum')">
                                                             </div>
                                                         </div>
 
                                                         <div class="col-lg-3">
                                                             <div class="mb-3">
                                                                 <label for="payed_date">@lang('cruds.branches.fields.payed_date')</label>
-                                                                <input type="text" class="form-control" name="accordions[0][payed_date]" placeholder="@lang('cruds.branches.fields.payed_date')">
+                                                                <input type="text" class="form-control"
+                                                                    name="accordions[0][payed_date]"
+                                                                    placeholder="@lang('cruds.branches.fields.payed_date')">
                                                             </div>
                                                         </div>
                                                     </div>
-
 
                                                     {{-- Starting to add new rows end --}}
 
@@ -376,21 +446,31 @@
                                                         <div class="col-lg-3">
                                                             <div class="inner-repeater mb-4">
                                                                 <div data-repeater-list="inner-group" class="inner mb-3">
-                                                                    <label for="basicpill-cardno-input">@lang('global.obyekt_boyicha_tolanishi_lozim')</label>
-                                                                    <input type="number" class="form-control branch_kubmetr" placeholder="@lang('global.obyekt_boyicha_tolanishi_lozim')" name="accordions[0][branch_kubmetr]">
+                                                                    <label
+                                                                        for="basicpill-cardno-input">@lang('global.obyekt_boyicha_tolanishi_lozim')</label>
+                                                                    <input type="number"
+                                                                        class="form-control branch_kubmetr"
+                                                                        placeholder="@lang('global.obyekt_boyicha_tolanishi_lozim')"
+                                                                        name="accordions[0][branch_kubmetr]">
                                                                 </div>
                                                             </div>
                                                         </div>
                                                         <div class="col-lg-3">
-                                                        <div class="mb-3">
-                                                                <label for="basicpill-card-verification-input">@lang('global.bazaviy_xisoblash_miqdori')</label>
-                                                                <input type="number" class="form-control minimum_wage" placeholder="@lang('global.bazaviy_xisoblash_miqdori')" value="340000" name="accordions[0][minimum_wage]">
+                                                            <div class="mb-3">
+                                                                <label
+                                                                    for="basicpill-card-verification-input">@lang('global.bazaviy_xisoblash_miqdori')</label>
+                                                                <input type="number" class="form-control minimum_wage"
+                                                                    placeholder="@lang('global.bazaviy_xisoblash_miqdori')" value="340000"
+                                                                    name="accordions[0][minimum_wage]">
                                                             </div>
                                                         </div>
                                                         <div class="col-lg-3">
                                                             <div class="mb-3">
-                                                                <label for="basicpill-card-verification-input">@lang('global.jami_tolanishi_kerak')</label>
-                                                                <input type="text" class="form-control generate_price" name="accordions[0][generate_price]" placeholder="@lang('global.jami_tolanishi_kerak')" readonly>
+                                                                <label
+                                                                    for="basicpill-card-verification-input">@lang('global.jami_tolanishi_kerak')</label>
+                                                                <input type="text" class="form-control generate_price"
+                                                                    name="accordions[0][generate_price]"
+                                                                    placeholder="@lang('global.jami_tolanishi_kerak')" readonly>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -398,7 +478,8 @@
                                                         <div class="col-lg-3">
                                                             <div class="mb-3">
                                                                 <label>@lang('global.tolash_turlari')</label>
-                                                                <select class="form-select payment-type" name="accordions[0][payment_type]">
+                                                                <select class="form-select payment-type"
+                                                                    name="accordions[0][payment_type]">
                                                                     <option value="pay_full">@lang('global.toliq_xajimda_tolash')</option>
                                                                     <option value="pay_bolib">@lang('global.bolib_tolash')</option>
                                                                 </select>
@@ -408,7 +489,10 @@
                                                             <div class="mb-3">
                                                                 <label for="percentage-input">@lang('global.bolib_tolash_foizi_oldindan')</label>
                                                                 <div class="input-group">
-                                                                    <input type="number" class="form-control percentage-input" name="accordions[0][percentage_input]" min="0" max="100">
+                                                                    <input type="number"
+                                                                        class="form-control percentage-input"
+                                                                        name="accordions[0][percentage_input]"
+                                                                        min="0" max="100">
                                                                     <span class="input-group-text">%</span>
                                                                 </div>
                                                             </div>
@@ -416,32 +500,22 @@
                                                         <div class="col-lg-3">
                                                             <div class="mb-3">
                                                                 <label for="quarterly-input">@lang('global.bolib_tolash_har_chorakda')</label>
-                                                                <input type="number" class="form-control quarterly-input" name="accordions[0][installment_quarterly]" placeholder="@lang('global.bolib_tolash_har_chorakda')" disabled>
+                                                                <input type="number" class="form-control quarterly-input"
+                                                                    name="accordions[0][installment_quarterly]"
+                                                                    placeholder="@lang('global.bolib_tolash_har_chorakda')" disabled>
                                                             </div>
                                                         </div>
                                                         <div class="col-lg-3">
                                                             <div class="mb-3">
-                                                                <label for="calculated-quarterly-payment">@lang('global.quarterly_payment')</label>
-                                                                <input type="text" class="form-control calculated-quarterly-payment" placeholder="@lang('global.quarterly_payment')" readonly>
+                                                                <label
+                                                                    for="calculated-quarterly-payment">@lang('global.quarterly_payment')</label>
+                                                                <input type="text"
+                                                                    class="form-control calculated-quarterly-payment"
+                                                                    placeholder="@lang('global.quarterly_payment')" readonly>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    {{-- <div class="row">
-                                                        <div class="col-lg-12">
-                                                            <table class="table">
-                                                                <thead>
-                                                                    <tr>
-                                                                        <th>Foiz</th>
-                                                                        <th>Oldindan to'lanadigan miqdor</th>
-                                                                        <th>Bo'lib to'lanadigan miqdor</th>
-                                                                    </tr>
-                                                                </thead>
-                                                                <tbody class="payment-schedule">
-                                                                    <!-- Dynamic rows will be added here -->
-                                                                </tbody>
-                                                            </table>
-                                                        </div>
-                                                    </div> --}}
+                                                    
                                                     <div class="row">
                                                         <div class="col-lg-12">
                                                             <table class="table">
@@ -452,7 +526,6 @@
                                                                     </tr>
                                                                 </thead>
                                                                 <tbody class="quarterly-payment-schedule">
-                                                                    <!-- Quarterly payment rows will be added here -->
                                                                 </tbody>
                                                                 <tfoot>
                                                                     <tr>
@@ -470,11 +543,11 @@
                                 </div>
                                 <div id="addAccordion" class="btn btn-primary mt-3">Add Accordion</div>
                             </section>
-                        
+
                             <script>
                                 $(document).ready(function() {
                                     let accordionCount = 1;
-                            
+
                                     $('#addAccordion').on('click', function() {
                                         let accordion = $('.accordion-item').first().clone();
                                         let newId = 'flush-collapse' + accordionCount;
@@ -483,28 +556,28 @@
                                         accordion.find('.accordion-header').attr('id', 'flush-heading' + accordionCount);
                                         accordion.find('.accordion-button').attr('aria-controls', newId);
                                         accordion.find('.accordion-button').text('Accordion Item #' + accordionCount);
-                            
+
                                         accordion.find('input, select').each(function() {
                                             let name = $(this).attr('name');
-                                            if (name) { // Ensure the name attribute exists before trying to replace
+                                            if (name) {
                                                 let newName = name.replace(/\[0\]/, '[' + accordionCount + ']');
                                                 $(this).attr('name', newName);
                                             }
                                             $(this).val('');
-                                            $(this).attr('id', name + '-' + accordionCount); // Adding unique ID for each input
+                                            $(this).attr('id', name + '-' +
+                                            accordionCount); 
                                         });
-                            
-                                        // Generate unique IDs for tables and their rows
+
                                         let tableId = 'payment-table-' + accordionCount;
                                         let scheduleId = 'payment-schedule-' + accordionCount;
                                         let quarterlyTableId = 'quarterly-table-' + accordionCount;
                                         let quarterlyScheduleId = 'quarterly-schedule-' + accordionCount;
-                            
+
                                         accordion.find('.payment-table').attr('id', tableId);
                                         accordion.find('.payment-schedule').attr('id', scheduleId);
                                         accordion.find('.quarterly-table').attr('id', quarterlyTableId);
                                         accordion.find('.quarterly-payment-schedule').attr('id', quarterlyScheduleId);
-                            
+
                                         accordion.appendTo('#accordionFlushExample');
                                         accordionCount++;
 
@@ -517,32 +590,34 @@
                                         accordion.find('.quarterly-payment-schedule').empty();
                                         accordion.find('.total-quarterly-payment').text('0.00');
                                     });
-                            
-                                    $(document).on('input change', '.branch_kubmetr, .minimum_wage, .percentage-input, .quarterly-input', function() {
-                                        let parentAccordion = $(this).closest('.accordion-body');
-                                        calculateGeneratePrice(parentAccordion);
-                                    });
-                            
+
+                                    $(document).on('input change', '.branch_kubmetr, .minimum_wage, .percentage-input, .quarterly-input',
+                                        function() {
+                                            let parentAccordion = $(this).closest('.accordion-body');
+                                            calculateGeneratePrice(parentAccordion);
+                                        });
+
                                     function calculateGeneratePrice(parentAccordion) {
                                         let companyKubmetr = parentAccordion.find('.branch_kubmetr').val();
                                         let minimumWage = parentAccordion.find('.minimum_wage').val();
                                         let generatePrice = companyKubmetr * minimumWage;
                                         parentAccordion.find('.generate_price').val(generatePrice.toFixed(2));
-                            
+
                                         let percentageInput = parseFloat(parentAccordion.find('.percentage-input').val());
                                         let quarterlyInput = parseInt(parentAccordion.find('.quarterly-input').val());
-                            
-                                        if (!isNaN(generatePrice) && !isNaN(percentageInput) && !isNaN(quarterlyInput) && quarterlyInput > 0) {
+
+                                        if (!isNaN(generatePrice) && !isNaN(percentageInput) && !isNaN(quarterlyInput) && quarterlyInput >
+                                            0) {
                                             let z = (generatePrice * percentageInput) / 100;
                                             let n = generatePrice - z;
                                             let y = n / quarterlyInput;
                                             parentAccordion.find('.calculated-quarterly-payment').val(y.toFixed(2));
-                            
+
                                             updatePaymentSchedule(parentAccordion, generatePrice);
                                             updateQuarterlyPaymentSchedule(parentAccordion, y, quarterlyInput);
                                         }
                                     }
-                            
+
                                     function updatePaymentSchedule(parentAccordion, generatePrice) {
                                         let paymentSchedule = parentAccordion.find('.payment-schedule');
                                         paymentSchedule.empty();
@@ -562,7 +637,7 @@
                                         });
                                     }
 
-                            
+
                                     function updateQuarterlyPaymentSchedule(parentAccordion, quarterlyPayment, quarterlyCount) {
                                         let quarterlyPaymentSchedule = parentAccordion.find('.quarterly-payment-schedule');
                                         quarterlyPaymentSchedule.empty();
@@ -578,13 +653,13 @@
                                         }
                                         parentAccordion.find('.total-quarterly-payment').text(Math.round(totalQuarterlyPayment));
                                     }
-                            
+
                                     $(document).on('change', '.payment-type', function() {
                                         let parentAccordion = $(this).closest('.accordion-body');
                                         let paymentType = $(this).val();
                                         let percentageInput = parentAccordion.find('.percentage-input');
                                         let quarterlyInput = parentAccordion.find('.quarterly-input');
-                            
+
                                         if (paymentType === 'pay_full') {
                                             percentageInput.val(100).prop('disabled', true);
                                             quarterlyInput.val('').prop('disabled', true);
@@ -595,14 +670,14 @@
                                             percentageInput.prop('disabled', false);
                                             quarterlyInput.prop('disabled', false);
                                         }
-                            
+
                                         calculateGeneratePrice(parentAccordion);
                                     });
-                            
+
                                     calculateGeneratePrice($('.accordion-item').first().find('.accordion-body'));
                                 });
                             </script>
-                            
+
 
                             <!-- Confirm Details -->
                             <h3>@lang('global.confirmation')</h3>
