@@ -53,13 +53,14 @@
                                 </div>
                             </div>
 
-                            <div class="row" >
+                            <div class="row">
 
                                 <div class="col-12 col-lg-3 mb-2">
                                     <label for="company_name" class="col-md-6 col-form-label">@lang('cruds.company.fields.company_name')</label>
                                     <input class="form-control {{ $errors->has('company_name') ? 'is-invalid' : '' }}"
                                         type="text" name="company_name" id="company_name"
-                                        placeholder="@lang('cruds.company.fields.company_name')" value="{{ old('company_name') }}">
+                                        placeholder="@lang('cruds.company.fields.company_name')"
+                                        value="{{ old('company_name', $client->company_name) }}">
                                     @if ($errors->has('company_name'))
                                         <span class="error invalid-feedback">{{ $errors->first('company_name') }}</span>
                                     @endif
@@ -69,7 +70,7 @@
                                     <label for="raxbar" class="col-md-6 col-form-label">@lang('cruds.company.fields.raxbar')</label>
                                     <input class="form-control {{ $errors->has('raxbar') ? 'is-invalid' : '' }}"
                                         type="text" name="raxbar" id="raxbar" placeholder="@lang('cruds.company.fields.raxbar')"
-                                        value="{{ old('raxbar') }}">
+                                        value="{{ old('raxbar', $client->raxbar) }}">
                                     @if ($errors->has('raxbar'))
                                         <span class="error invalid-feedback">{{ $errors->first('raxbar') }}</span>
                                     @endif
@@ -81,7 +82,8 @@
                                     <label for="bank_service" class="col-md-6 col-form-label">@lang('cruds.company.fields.bank_service')</label>
                                     <input class="form-control {{ $errors->has('bank_service') ? 'is-invalid' : '' }}"
                                         type="text" name="bank_service" id="bank_service"
-                                        placeholder="@lang('cruds.company.fields.bank_service')" value="{{ old('bank_service') }}">
+                                        placeholder="@lang('cruds.company.fields.bank_service')"
+                                        value="{{ old('bank_service', $client->bank_service) }}">
                                     @if ($errors->has('bank_service'))
                                         <span class="error invalid-feedback">{{ $errors->first('bank_service') }}</span>
                                     @endif
@@ -91,8 +93,8 @@
                                     <label for="bank_code" class="col-md-6 col-form-label">@lang('cruds.company.fields.bank_code')</label>
                                     <input class="form-control {{ $errors->has('bank_code') ? 'is-invalid' : '' }}"
                                         type="text" name="bank_code" max="5" id="bank_code"
-                                        placeholder="@lang('cruds.company.fields.bank_code')" value="{{ old('bank_code') }}" maxlength="5"
-                                        name="alloptions" id="alloptions">
+                                        placeholder="@lang('cruds.company.fields.bank_code')" value="{{ old('bank_code', $client->bank_code) }}"
+                                        maxlength="5" name="alloptions" id="alloptions">
 
                                     @if ($errors->has('bank_code'))
                                         <span class="error invalid-feedback">{{ $errors->first('bank_code') }}</span>
@@ -106,7 +108,7 @@
                                     <label for="stir" class="col-md-6 col-form-label">@lang('cruds.company.fields.stir')</label>
                                     <input class="form-control {{ $errors->has('stir') ? 'is-invalid' : '' }}"
                                         type="text" name="stir" id="stir" placeholder="@lang('cruds.company.fields.stir')"
-                                        value="{{ old('stir') }}">
+                                        value="{{ old('stir', $client->stir) }}">
                                     @if ($errors->has('stir'))
                                         <span class="error invalid-feedback">{{ $errors->first('stir') }}</span>
                                     @endif
@@ -116,18 +118,18 @@
                                     <label for="oked" class="col-md-6 col-form-label">@lang('cruds.company.fields.oked')</label>
                                     <input class="form-control {{ $errors->has('oked') ? 'is-invalid' : '' }}"
                                         type="text" name="oked" id="oked" placeholder="@lang('cruds.company.fields.oked')"
-                                        value="{{ old('oked') }}">
+                                        value="{{ old('oked', $client->oked) }}">
                                     @if ($errors->has('oked'))
                                         <span class="error invalid-feedback">{{ $errors->first('oked') }}</span>
                                     @endif
                                 </div>
 
                                 <div class="col-12 col-lg-3 mb-2">
-                                    <label for="yuridik_address"
-                                        class="col-md-6 col-form-label">@lang('cruds.client.fields.yuridik_address')</label>
+                                    <label for="yuridik_address" class="col-md-6 col-form-label">@lang('cruds.client.fields.yuridik_address')</label>
                                     <input class="form-control {{ $errors->has('yuridik_address') ? 'is-invalid' : '' }}"
                                         type="text" name="yuridik_address" id="yuridik_address"
-                                        placeholder="@lang('cruds.client.fields.yuridik_address')" value="{{ old('yuridik_address') }}">
+                                        placeholder="@lang('cruds.client.fields.yuridik_address')"
+                                        value="{{ old('yuridik_address', $client->yuridik_address) }}">
                                     @if ($errors->has('yuridik_address'))
                                         <span
                                             class="error invalid-feedback">{{ $errors->first('yuridik_address') }}</span>
@@ -139,7 +141,8 @@
                                         class="col-md-6 col-form-label">@lang('cruds.client.fields.yuridik_rekvizid')</label>
                                     <input class="form-control {{ $errors->has('yuridik_rekvizid') ? 'is-invalid' : '' }}"
                                         type="text" name="yuridik_rekvizid" id="yuridik_rekvizid"
-                                        placeholder="@lang('cruds.client.fields.yuridik_rekvizid')" value="{{ old('yuridik_rekvizid') }}">
+                                        placeholder="@lang('cruds.client.fields.yuridik_rekvizid')"
+                                        value="{{ old('yuridik_rekvizid', $client->yuridik_rekvizid) }}">
                                     @if ($errors->has('yuridik_rekvizid'))
                                         <span
                                             class="error invalid-feedback">{{ $errors->first('yuridik_rekvizid') }}</span>
@@ -155,7 +158,7 @@
                                     <label for="last_name" class="col-md-6 col-form-label">@lang('cruds.client.fields.last_name')</label>
                                     <input class="form-control {{ $errors->has('last_name') ? 'is-invalid' : '' }}"
                                         type="text" name="last_name" id="last_name" placeholder="@lang('cruds.client.fields.last_name')"
-                                        value="{{ old('last_name') }}">
+                                        value="{{ old('last_name', $client->last_name) }}">
                                     @if ($errors->has('last_name'))
                                         <span class="error invalid-feedback">{{ $errors->first('last_name') }}</span>
                                     @endif
@@ -165,7 +168,8 @@
                                     <label for="name" class="col-md-6 col-form-label">@lang('cruds.client.fields.name')</label>
                                     <input class="form-control {{ $errors->has('first_name') ? 'is-invalid' : '' }}"
                                         type="text" name="first_name" id="first_name"
-                                        placeholder="@lang('cruds.client.fields.first_name')" value="{{ old('first_name') }}">
+                                        placeholder="@lang('cruds.client.fields.first_name')"
+                                        value="{{ old('first_name', $client->first_name) }}">
                                     @if ($errors->has('first_name'))
                                         <span class="error invalid-feedback">{{ $errors->first('first_name') }}</span>
                                     @endif
@@ -175,7 +179,8 @@
                                     <label for="father_name" class="col-md-6 col-form-label">@lang('cruds.client.fields.father_name')</label>
                                     <input class="form-control {{ $errors->has('father_name') ? 'is-invalid' : '' }}"
                                         type="text" name="father_name" id="father_name"
-                                        placeholder="@lang('cruds.client.fields.father_name')" value="{{ old('father_name') }}">
+                                        placeholder="@lang('cruds.client.fields.father_name')"
+                                        value="{{ old('father_name', $client->father_name) }}">
                                     @if ($errors->has('father_name'))
                                         <span class="error invalid-feedback">{{ $errors->first('father_name') }}</span>
                                     @endif
@@ -185,7 +190,7 @@
                                     <label for="contact" class="col-md-6 col-form-label">@lang('cruds.client.fields.contact')</label>
                                     <input class="form-control {{ $errors->has('contact') ? 'is-invalid' : '' }}"
                                         type="text" name="contact" id="contact" placeholder="@lang('cruds.client.fields.contact')"
-                                        value="{{ old('contact') }}">
+                                        value="{{ old('contact', $client->contact) }}">
                                     @if ($errors->has('contact'))
                                         <span class="error invalid-feedback">{{ $errors->first('contact') }}</span>
                                     @endif
@@ -199,7 +204,8 @@
                                         class="col-md-6 col-form-label">@lang('cruds.client.fields.passport_serial')</label>
                                     <input class="form-control {{ $errors->has('passport_serial') ? 'is-invalid' : '' }}"
                                         type="text" name="passport_serial" id="passport_serial"
-                                        placeholder="@lang('cruds.client.fields.passport_serial')" value="{{ old('passport_serial') }}">
+                                        placeholder="@lang('cruds.client.fields.passport_serial')"
+                                        value="{{ old('passport_serial', $client->passport_serial) }}">
                                     @if ($errors->has('passport_serial'))
                                         <span
                                             class="error invalid-feedback">{{ $errors->first('passport_serial') }}</span>
@@ -211,7 +217,8 @@
                                     <label for="passport_pinfl" class="col-md-6 col-form-label">@lang('cruds.client.fields.passport_pinfl')</label>
                                     <input class="form-control {{ $errors->has('passport_pinfl') ? 'is-invalid' : '' }}"
                                         type="text" name="passport_pinfl" id="passport_pinfl"
-                                        placeholder="@lang('cruds.client.fields.passport_pinfl')" value="{{ old('passport_pinfl') }}">
+                                        placeholder="@lang('cruds.client.fields.passport_pinfl')"
+                                        value="{{ old('passport_pinfl', $client->passport_pinfl) }}">
                                     @if ($errors->has('passport_pinfl'))
                                         <span class="error invalid-feedback">{{ $errors->first('passport_pinfl') }}</span>
                                     @endif
@@ -221,7 +228,8 @@
                                     <label for="passport_date" class="col-md-6 col-form-label">@lang('cruds.client.fields.passport_date')</label>
                                     <input class="form-control {{ $errors->has('passport_date') ? 'is-invalid' : '' }}"
                                         type="date" name="passport_date" id="passport_date"
-                                        placeholder="@lang('cruds.client.fields.passport_date')" value="{{ old('passport_date') }}">
+                                        placeholder="@lang('cruds.client.fields.passport_date')"
+                                        value="{{ old('passport_date', $client->passport_date) }}">
                                     @if ($errors->has('passport_date'))
                                         <span class="error invalid-feedback">{{ $errors->first('passport_date') }}</span>
                                     @endif
@@ -233,7 +241,8 @@
                                     <input
                                         class="form-control {{ $errors->has('passport_location') ? 'is-invalid' : '' }}"
                                         type="text" name="passport_location" id="passport_location"
-                                        placeholder="@lang('cruds.client.fields.passport_location')" value="{{ old('passport_location') }}">
+                                        placeholder="@lang('cruds.client.fields.passport_location')"
+                                        value="{{ old('passport_location', $client->passport_location) }}">
                                     @if ($errors->has('passport_location'))
                                         <span
                                             class="error invalid-feedback">{{ $errors->first('passport_location') }}</span>
@@ -241,11 +250,11 @@
                                 </div>
 
 
-                            
+
 
                                 <div class="col-12 col-lg-3 mb-2">
 
-                                    <label for="is_passport_id"  class="col-md-6 col-form-label">Is passport ID?</label>
+                                    <label for="is_passport_id" class="col-md-6 col-form-label">Is passport ID?</label>
                                     <input type="checkbox" name="passport_type" id="is_passport_id" value="1">
 
                                 </div>
@@ -269,7 +278,6 @@
                             </script>
 
                         </section>
-
                         <!-- Object -->
                         {{-- <h3>@lang('global.object')</h3> --}}
                         <section>
@@ -281,21 +289,24 @@
                                             <div class="mb-3">
                                                 <label for="company_type">@lang('global.loyiha_turi')</label>
                                                 <input type="text" class="form-control" id="company_type"
-                                                    name="company_type" value="{{ $comp->company_type }}">
+                                                    name="company_type"
+                                                    value="{{ old('company_type', $comp->company_type) }}">
                                             </div>
                                         </div>
                                         <div class="col-lg-4">
                                             <div class="mb-3">
                                                 <label for="company_location">@lang('cruds.company.fields.company_location')</label>
                                                 <input type="text" class="form-control" id="company_location"
-                                                    name="company_location" value="{{ $comp->company_location }}">
+                                                    name="company_location"
+                                                    value="{{ old('company_type', $comp->company_location) }}">
                                             </div>
                                         </div>
                                         <div class="col-lg-4">
                                             <div class="mb-3">
                                                 <label for="company_name">@lang('global.loyiha_nomi')</label>
                                                 <input type="text" class="form-control" id="company_name"
-                                                    name="company_name" value="{{ $comp->company_name }}">
+                                                    name="company_name"
+                                                    value="{{ old('company_type', $comp->company_name) }}">
                                             </div>
                                         </div>
 
@@ -305,16 +316,16 @@
                                         <!-- Contract Details -->
                                         {{-- <h3>@lang('global.contract_details')</h3> --}}
 
-                                         {{-- Starting to add new rows --}}
+                                        {{-- Starting to add new rows --}}
 
-                                         <div class="row">
+                                        <div class="row">
                                             <div class="col-lg-3">
                                                 <div class="mb-3">
                                                     <label for="notification_num">@lang('cruds.branches.fields.notification_num')</label>
                                                     <input type="text" class="form-control"
                                                         name="accordions[0][notification_num]"
                                                         placeholder="@lang('cruds.branches.fields.notification_num')"
-                                                        value="{{ old('accordions.0.notification_num', $b->notification_num) }}">
+                                                        value="{{ $b->notification_num }}">
                                                 </div>
                                             </div>
                                             <div class="col-lg-3">
@@ -323,7 +334,7 @@
                                                     <input type="text" class="form-control"
                                                         name="accordions[0][notification_date]"
                                                         placeholder="@lang('cruds.branches.fields.notification_date')"
-                                                        value="{{ old('accordions.0.notification_date') }}">
+                                                        value="{{ $b->notification_date }}">
                                                 </div>
                                             </div>
                                             <div class="col-lg-3">
@@ -332,7 +343,7 @@
                                                     <input type="text" class="form-control"
                                                         name="accordions[0][insurance_policy]"
                                                         placeholder="@lang('cruds.branches.fields.insurance_policy')"
-                                                        value="{{ old('accordions.0.insurance_policy') }}">
+                                                        value="{{ $b->insurance_policy }}">
                                                 </div>
                                             </div>
                                             <div class="col-lg-3">
@@ -341,7 +352,7 @@
                                                     <input type="text" class="form-control"
                                                         name="accordions[0][bank_guarantee]"
                                                         placeholder="@lang('cruds.branches.fields.bank_guarantee')"
-                                                        value="{{ old('accordions.0.bank_guarantee') }}">
+                                                        value="{{ $b->bank_guarantee }}">
                                                 </div>
                                             </div>
                                         </div>
@@ -352,29 +363,27 @@
                                                     <input type="text" class="form-control"
                                                         name="accordions[0][application_number]"
                                                         placeholder="@lang('cruds.branches.fields.application_number')"
-                                                        value="{{ old('accordions.0.application_number') }}">
+                                                        value="{{ $b->application_number }}">
                                                 </div>
                                             </div>
                                             <div class="col-lg-4">
                                                 <div class="mb-3">
                                                     <label for="payed_sum">@lang('cruds.branches.fields.payed_sum')</label>
                                                     <input type="text" class="form-control"
-                                                        name="accordions[0][payed_sum]"
-                                                        placeholder="@lang('cruds.branches.fields.payed_sum')"
-                                                        value="{{ old('accordions.0.payed_sum') }}">
+                                                        name="accordions[0][payed_sum]" placeholder="@lang('cruds.branches.fields.payed_sum')"
+                                                        value="{{ $b->payed_sum }}">
                                                 </div>
                                             </div>
                                             <div class="col-lg-4">
                                                 <div class="mb-3">
                                                     <label for="payed_date">@lang('cruds.branches.fields.payed_date')</label>
                                                     <input type="text" class="form-control"
-                                                        name="accordions[0][payed_date]"
-                                                        placeholder="@lang('cruds.branches.fields.payed_date')"
-                                                        value="{{ old('accordions.0.payed_date') }}">
+                                                        name="accordions[0][payed_date]" placeholder="@lang('cruds.branches.fields.payed_date')"
+                                                        value="{{ $b->payed_date }}">
                                                 </div>
                                             </div>
                                         </div>
-                                        
+
                                         {{-- Starting to add new rows end --}}
 
 
@@ -384,14 +393,15 @@
                                                     <div class="mb-3">
                                                         <label for="contract_apt">@lang('global.ruxsatnoma_raqami') </label>
                                                         <input type="text" class="form-control" id="contract_apt"
-                                                            name="contract_apt" value="{{ $b->contract_apt }}">
+                                                            name="accordions[0]contract_apt"
+                                                            value="{{ $b->contract_apt }}">
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-3">
                                                     <div class="mb-3">
                                                         <label for="contract_date">@lang('global.sanasi')</label>
                                                         <input class="form-control" type="datetime-local"
-                                                            id="contract_date" name="contract_date"
+                                                            id="contract_date" name="accordions[0]contract_date"
                                                             value="{{ $b->contract_date }}">
                                                     </div>
                                                 </div>
@@ -400,7 +410,10 @@
                                                     <div class="mb-3">
                                                         <label for="branch_kubmetr">@lang('global.obyekt_boyicha_tolanishi_lozim')</label>
                                                         <input type="text" class="form-control" id="branch_kubmetr"
-                                                            name="branch_kubmetr" value="{{ $b->branch_kubmetr }}">
+                                                            name="accordions[0]branch_kubmetr"
+                                                            value="{{ $b->branch_kubmetr }}">
+
+
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-3">
@@ -415,14 +428,15 @@
                                                     <div class="mb-3">
                                                         <label for="generate_price">@lang('global.total_amount')</label>
                                                         <input type="text" class="form-control" id="generate_price"
-                                                            name="generate_price" value="{{ $b->generate_price }}">
+                                                            name="accordions[0]generate_price"
+                                                            value="{{ $b->generate_price }}">
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-3">
                                                     <div class="mb-3">
                                                         <label for="payment_type">@lang('global.tolash_turlari')</label>
                                                         <select class="form-select" id="payment_type"
-                                                            name="payment_type">
+                                                            name="accordions[0]payment_type">
                                                             <option value="pay_full"
                                                                 {{ $b->payment_type == 'pay_full' ? 'selected' : '' }}>
                                                                 @lang('global.toliq_xajimda_tolash')</option>
@@ -436,14 +450,16 @@
                                                     <div class="mb-3">
                                                         <label for="percentage_input">@lang('global.bolib_tolash_foizi_oldindan')</label>
                                                         <input type="text" class="form-control" id="percentage_input"
-                                                            name="percentage_input" value="{{ $b->percentage_input }}">
+                                                            name="accordions[0]percentage_input"
+                                                            value="{{ $b->percentage_input }}">
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-3">
                                                     <div class="mb-3">
                                                         <label for="installment_quarterly">@lang('global.bolib_tolash_har_chorakda')</label>
                                                         <input type="text" class="form-control"
-                                                            id="installment_quarterly" name="installment_quarterly"
+                                                            id="installment_quarterly"
+                                                            name="accordions[0]installment_quarterly"
                                                             value="{{ $b->installment_quarterly }}">
                                                     </div>
                                                 </div>
@@ -457,7 +473,7 @@
                                         class="col-md-6 col-form-label">@lang('cruds.client.fields.client_description')</label>
                                     <textarea id="textarea" name="client_description"
                                         class="form-control {{ $errors->has('client_description') ? 'is-invalid' : '' }}" maxlength="225" rows="3"
-                                        placeholder="This textarea has a limit of 225 chars.">{{ old('client_description') }}</textarea>
+                                        placeholder="This textarea has a limit of 225 chars.">{{ old('client_description', $client->description) }}</textarea>
                                     @if ($errors->has('client_description'))
                                         <span
                                             class="error invalid-feedback">{{ $errors->first('client_description') }}</span>
@@ -485,17 +501,15 @@
                                     @endforeach
                                 </ul>
 
-                                
+
 
 
                         </section>
 
+                        <!-- Submit Button -->
+                        <button type="submit" class="btn btn-primary">@lang('global.update')</button>
+                    </form>
                 </div>
-                </section>
-
-                <!-- Submit Button -->
-                <button type="submit" class="btn btn-primary">@lang('global.update')</button>
-                </form>
 
 
             </div>

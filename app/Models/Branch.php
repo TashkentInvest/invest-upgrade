@@ -17,6 +17,7 @@ class Branch extends Model
         'payment_type',
         'percentage_input',
         'installment_quarterly',
+        'branch_kubmetr',
         'notification_num',
         'notification_date',
         'insurance_policy',
@@ -25,7 +26,6 @@ class Branch extends Model
         'payed_sum',
         'payed_date',
         'first_payment_percent',
-        'branch_kubmetr',
     ];
 
 
