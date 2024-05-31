@@ -62,16 +62,27 @@ class FileController extends Controller
     }
     
     
-    
+    public function downloadExcel(Request $request)
+    {
+        $id = $request->input('id'); // Get the client ID from the request
 
-    // donwnload exel
+        if ($id) {
+            return $this->downloadTableData($id);
+        } else {
+            return $this->downloadFullTableData();
+        }
+    }
+
+    public function downloadFullTableData()
+    {
+        $fileName = 'АПЗ_РАҚАМ' . '_' . now()->format('Y-m-d') . '.xls';
+
+        return Excel::download(new ProductsExport(), $fileName);
+    }
+
     public function downloadTableData($id)
     {
-        $client = Client::find($id);
-
-        // $fileName = 'products_data_' . $client->first_name . '_' . $client->last_name . '_' . Carbon::now()->format('Y-m-d') . '.xls';
-
-        $fileName = 'АПЗ_РАҚАМ' . '_' . Carbon::now()->format('Y-m-d') . '.xls';
+        $fileName = 'АПЗ_РАҚАМ' . '_' . now()->format('Y-m-d') . '.xls';
 
         return Excel::download(new ProductsExport($id), $fileName);
     }

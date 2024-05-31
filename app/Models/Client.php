@@ -80,6 +80,17 @@ class Client extends Model
                     $query->where('company_name', $operator, $value);
                 });
             }
+
+            if ($request->filled('companystir_operator')) {
+                $operator = $request->input('companystir_operator', 'like');
+                $value = '%' . $request->input('stir') . '%';
+            
+                $query->whereHas('companies', function ($query) use ($operator, $value) {
+                    $query->where('stir', $operator, $value);
+                });
+            }
+
+            
             
             
             // END Search relationed company ***********************************************

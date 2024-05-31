@@ -78,7 +78,9 @@ Route::group(['middleware' => 'auth'],function (){
 
     // File
     Route::get('/doc/{id}', [FileController::class,'show'])->name('word');
-    Route::get('/download-table-data/{id}', [FileController::class, 'downloadTableData'])->name('download.table.data');
+    Route::get('/downloading-exel/{id}', [FileController::class, 'downloadTableData'])->name('download.table.data');
+    Route::get('/downloading-exel', [FileController::class, 'downloadExcel'])->name('download.excel');
+
 
     
     // Users

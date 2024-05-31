@@ -46,7 +46,7 @@
                                                 <!-- Company Search -->
                                                 <div class="form-group row align-items-center my-2">
                                                     <div class="col-3">
-                                                        <h6>Company Name</h6>
+                                                        <h6>@lang('cruds.company.fields.company_name')</h6>
                                                     </div>
                                                     <div class="col-2">
                                                         <select class="form-control form-control-sm" name="company_operator">
@@ -59,7 +59,24 @@
                                                         <input class="form-control form-control-sm" type="text" name="company_name" value="{{ old('company_name', request()->company_name ?? '') }}">
                                                     </div>
                                                 </div>
+
+                                                <div class="form-group row align-items-center my-2">
+                                                    <div class="col-3">
+                                                        <h6>@lang('cruds.company.fields.company_name') INN</h6>
+                                                    </div>
+                                                    <div class="col-2">
+                                                        <select class="form-control form-control-sm" name="companystir_operator">
+                                                            <option value="like" {{ request()->companystir_operator == 'like' ? 'selected' : '' }}>Like</option>
+                                                            <!-- Add other comparison operators if needed -->
+                                                        </select>
+                                                    </div>
+                                                    <div class="col-3">
+                                                        <input type="hidden" name="companystir_operator" value="like">
+                                                        <input class="form-control form-control-sm" type="text" name="stir" value="{{ old('stir', request()->stir ?? '') }}">
+                                                    </div>
+                                                </div>
         
+                                                
                                                 <!-- Company Search End-->
         
                                                 
@@ -121,7 +138,7 @@
                                             {{-- Task status end --}}
                                             <div class="form-group row align-items-center">
                                                 <div class="col-lg-3 col-md-4 col-sm-3 col-12">
-                                                    <h6>Дата создания</h6>
+                                                    <h6>@lang('global.created_at')</h6>
                                                 </div>
                                                 <div class="col-lg-2 col-md-2 col-sm-3 col-4">
                                                     <select class="form-control form-control-sm" name="created_at_operator"
@@ -147,6 +164,9 @@
                                                 </div>
                                             </div>
                                         </div>
+                                        <div class="box container">
+                                            <a href="{{route('download.excel')}}">Download all of Exel</a>
+                                        </div>
                                         <div class="modal-footer">
                                             <button type="submit" name="filter" class="btn btn-primary">@lang('global.filtering')</button>
                                             <button type="button" class="btn btn-outline-warning float-left pull-left" id="reset_form">@lang('global.clear')</button>
@@ -169,6 +189,7 @@
                             <tr>
                                 <th>ID</th>
                                 <th>@lang('global.client_name') || Yurik</th>
+                                <th>@lang('cruds.company.fields.stir')</th>
                                 <th>@lang('cruds.client.fields.contact')</th>
                                 {{-- <th>@lang('cruds.client.fields.mijoz_turi')</th> --}}
                                 <th>@lang('cruds.company.fields.address')</th>
@@ -185,13 +206,12 @@
                                     @if($item->mijoz_turi == 'fizik')
                                     <td>{{ $item->first_name }} {{ $item->last_name }} {{ $item->father_name }}</td>
                                     @else
-                                    @foreach ($item->companies as $f)
-                                    <td>{{ $f->company_name }} </td>
                                         
-                                    @endforeach
-
+                                    <td>{{ $item->companies[0]->company_name}} </td>
 
                                     @endif
+                                    <td>{{ $item->companies[0]->stir }} </td>
+
                                     
                                     <td>{{ $item->contact ?? '---' }}</td>
                                     <td>{{ $item->address ?? '---' }}</td>

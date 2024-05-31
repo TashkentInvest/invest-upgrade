@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Exports;
 
 use Illuminate\Support\Facades\DB;
@@ -11,15 +12,14 @@ class ProductsExport implements FromCollection, WithHeadings, WithColumnFormatti
 {
     protected $id;
 
-    public function __construct($id)
+    public function __construct($id = null)
     {
         $this->id = $id;
     }
 
     public function collection()
     {
-        // Fetch data from the database
-        $data = DB::table('clients')
+        $query = DB::table('clients')
             ->join('companies', 'clients.id', '=', 'companies.client_id')
             ->join('branches', 'companies.id', '=', 'branches.company_id')
             ->select(
@@ -38,35 +38,15 @@ class ProductsExport implements FromCollection, WithHeadings, WithColumnFormatti
                 'branches.payment_type',
                 'branches.percentage_input',
                 'branches.installment_quarterly'
-            )
-            ->where('clients.id', $this->id)
-            ->get();
+            );
 
-        $formattedData = $data->map(function ($item, $key) {
-            return [
-                '№' => $key + 1,
-                'Номер заявления' => '',
-                'Наименование организации' => $item->mijoz_turi == 'yuridik' ? $item->company_name : $item->last_name . ' ' . $item->first_name . ' ' . $item->father_name,
-                'Контакты' => $item->contact,
-                'Район' => $item->company_location,
-                'Расчетный объем здания' => $item->branch_kubmetr,
-                'Инфраструктурный платеж (сўм) по договору' => $item->generate_price,
-                'Первый платеж (сум) 20% от стоимости' => isset($item->generate_price, $item->percentage_input) && is_numeric($item->generate_price) && is_numeric($item->percentage_input) ? ($item->generate_price * $item->percentage_input) / 100 : '',
+        if ($this->id !== null) {
+            $query->where('clients.id', $this->id);
+        }
 
-                'оплаченная сумма (сўм)' => '',
-                'Дата оплаты' => '',
-                '№ договора' => $item->contract_apt,
-                'Дата договора' => $item->contract_date,
-                '№ уведомления' => '',
-                'Дата увед' => '', 
-                'Страховой полис' => '', 
-                'Банковская гарантия' => '', 
-                'Примечание' => '' 
-            ];
-        });
-
-        return collect($formattedData);
+        return $query->get();
     }
+
     public function headings(): array
     {
         return [
