@@ -248,7 +248,7 @@
                                     <div class="col-12 col-lg-6 mb-2">
                                         <label for="client_description"
                                             class="col-md-6 col-form-label">@lang('cruds.client.fields.client_description')</label>
-                                        <textarea id="textarea" class="form-control {{ $errors->has('client_description') ? 'is-invalid' : '' }}"
+                                        <textarea id="textarea" name="client_description" class="form-control {{ $errors->has('client_description') ? 'is-invalid' : '' }}"
                                             maxlength="225" rows="3" placeholder="This textarea has a limit of 225 chars.">{{ old('client_description') }}</textarea>
                                         @if ($errors->has('client_description'))
                                             <span

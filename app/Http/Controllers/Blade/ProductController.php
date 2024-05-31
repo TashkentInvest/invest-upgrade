@@ -28,7 +28,7 @@ class ProductController extends Controller
         $products = Products::with('company')->with(['company.branches'])
             ->get()->all();
 
-        $clients = Client::with('products')->where('is_deleted', '!=', 1)->get()->all();
+        $clients = Client::with('products')->where('is_deleted', '!=', 1)->orderBy('created_at','desc')->get()->all();
 
         return view('pages.products.index', compact('products', 'clients'));
     }
@@ -50,6 +50,7 @@ class ProductController extends Controller
 
     public function create(Request $request)
     {
+        // dd($request);
         DB::beginTransaction();
 
         try {

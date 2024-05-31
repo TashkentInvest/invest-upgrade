@@ -47,7 +47,7 @@
                             @foreach ($clients as $item)
                                 {{-- @dump($item->companies[0]->company_name ) --}}
                                 <tr>
-                                    <td>{{ $item->id }}</td>
+                                    <td>{{ $loop->iteration }}</td>
                                     @if($item->mijoz_turi == 'fizik')
                                     <td>{{ $item->first_name }} {{ $item->last_name }} {{ $item->father_name }}</td>
                                     @else
