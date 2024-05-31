@@ -31,7 +31,8 @@
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body">
-                    <form action="{{ route('productUpdate', ['id' => $product->id]) }}" method="post" enctype="multipart/form-data">
+                    <form action="{{ route('productUpdate', ['id' => $product->id]) }}" method="post"
+                        enctype="multipart/form-data">
                         @csrf
                         @method('PUT')
 
@@ -40,64 +41,237 @@
                         <section>
                             <!-- Client Details -->
                             <div class="row">
-                                <!-- Client Type -->
                                 <div class="col-12 col-lg-12 mb-2">
-                                    <label for="mijoz_turi">@lang('cruds.client.fields.mijoz_turi')</label>
+                                    <label for="mijoz_turi" class="col-md-6 col-form-label">@lang('cruds.client.fields.mijoz_turi')</label>
                                     <select class="form-control" name="mijoz_turi" id="mijoz_turi">
-                                        <option value="fizik"
-                                            {{ $product->client->mijoz_turi == 'fizik' ? 'selected' : '' }}>
-                                            @lang('global.fizik')</option>
-                                        <option value="yuridik"
-                                            {{ $product->client->mijoz_turi == 'yuridik' ? 'selected' : '' }}>
-                                            @lang('global.yuridik')</option>
+                                        <option value="fizik">@lang('cruds.client.fields.mijoz_turi_fizik')</option>
+                                        <option value="yuridik">@lang('cruds.client.fields.mijoz_turi_yuridik')</option>
                                     </select>
-                                </div>
-                                <!-- Other Client Details -->
-                                <div class="col-12 col-lg-4 mb-2">
-                                    <label for="first_name">@lang('cruds.client.fields.first_name')</label>
-                                    <input class="form-control" type="text" id="first_name" name="first_name"
-                                        value="{{ $product->client->first_name }}">
-                                </div>
-                                <div class="col-12 col-lg-4 mb-2">
-                                    <label for="last_name">@lang('cruds.client.fields.last_name')</label>
-                                    <input class="form-control" type="text" id="last_name" name="last_name"
-                                        value="{{ $product->client->last_name }}">
-                                </div>
-                                <div class="col-12 col-lg-4 mb-2">
-                                    <label for="father_name">@lang('cruds.client.fields.father_name')</label>
-                                    <input class="form-control" type="text" id="father_name" name="father_name"
-                                        value="{{ $product->client->father_name }}">
-                                </div>
-                                <div class="col-12 col-lg-6 mb-2">
-                                    <label for="passport_serial">@lang('cruds.client.fields.passport_serial')</label>
-                                    <input class="form-control" type="text" id="passport_serial" name="passport_serial"
-                                        value="{{ $product->client->passport_serial }}">
-                                </div>
-                                <div class="col-12 col-lg-6 mb-2">
-                                    <label for="passport_pinfl">@lang('cruds.client.fields.passport_pinfl')</label>
-                                    <input class="form-control" type="text" id="passport_pinfl" name="passport_pinfl"
-                                        value="{{ $product->client->passport_pinfl }}">
-                                </div>
-                                <div class="col-12 col-lg-4 mb-2">
-                                    <label for="yuridik_address">@lang('cruds.client.fields.yuridik_address')</label>
-                                    <input class="form-control" type="text" id="yuridik_address" name="yuridik_address"
-                                        value="{{ $product->client->yuridik_address }}">
-                                </div>
-                                <div class="col-12 col-lg-4 mb-2">
-                                    <label for="yuridik_rekvizid">@lang('cruds.client.fields.yuridik_rekvizid')</label>
-                                    <input class="form-control" type="text" id="yuridik_rekvizid" name="yuridik_rekvizid"
-                                        value="{{ $product->client->yuridik_rekvizid }}">
-                                </div>
-                                <div class="col-12 col-lg-4 mb-2">
-                                    <label for="contact">@lang('cruds.client.fields.contact')</label>
-                                    <input class="form-control" type="text" id="contact" name="contact"
-                                        value="{{ $product->client->contact }}">
+                                    @if ($errors->has('mijoz_turi'))
+                                        <span class="error invalid-feedback">{{ $errors->first('mijoz_turi') }}</span>
+                                    @endif
                                 </div>
                             </div>
+
+                            <div class="row" >
+
+                                <div class="col-12 col-lg-3 mb-2">
+                                    <label for="company_name" class="col-md-6 col-form-label">@lang('cruds.company.fields.company_name')</label>
+                                    <input class="form-control {{ $errors->has('company_name') ? 'is-invalid' : '' }}"
+                                        type="text" name="company_name" id="company_name"
+                                        placeholder="@lang('cruds.company.fields.company_name')" value="{{ old('company_name') }}">
+                                    @if ($errors->has('company_name'))
+                                        <span class="error invalid-feedback">{{ $errors->first('company_name') }}</span>
+                                    @endif
+                                </div>
+
+                                <div class="col-12 col-lg-3 mb-2">
+                                    <label for="raxbar" class="col-md-6 col-form-label">@lang('cruds.company.fields.raxbar')</label>
+                                    <input class="form-control {{ $errors->has('raxbar') ? 'is-invalid' : '' }}"
+                                        type="text" name="raxbar" id="raxbar" placeholder="@lang('cruds.company.fields.raxbar')"
+                                        value="{{ old('raxbar') }}">
+                                    @if ($errors->has('raxbar'))
+                                        <span class="error invalid-feedback">{{ $errors->first('raxbar') }}</span>
+                                    @endif
+                                </div>
+
+
+
+                                <div class="col-12 col-lg-3 mb-2">
+                                    <label for="bank_service" class="col-md-6 col-form-label">@lang('cruds.company.fields.bank_service')</label>
+                                    <input class="form-control {{ $errors->has('bank_service') ? 'is-invalid' : '' }}"
+                                        type="text" name="bank_service" id="bank_service"
+                                        placeholder="@lang('cruds.company.fields.bank_service')" value="{{ old('bank_service') }}">
+                                    @if ($errors->has('bank_service'))
+                                        <span class="error invalid-feedback">{{ $errors->first('bank_service') }}</span>
+                                    @endif
+                                </div>
+
+                                <div class="col-12 col-lg-3 mb-2">
+                                    <label for="bank_code" class="col-md-6 col-form-label">@lang('cruds.company.fields.bank_code')</label>
+                                    <input class="form-control {{ $errors->has('bank_code') ? 'is-invalid' : '' }}"
+                                        type="text" name="bank_code" max="5" id="bank_code"
+                                        placeholder="@lang('cruds.company.fields.bank_code')" value="{{ old('bank_code') }}" maxlength="5"
+                                        name="alloptions" id="alloptions">
+
+                                    @if ($errors->has('bank_code'))
+                                        <span class="error invalid-feedback">{{ $errors->first('bank_code') }}</span>
+                                    @endif
+                                </div>
+
+
+
+
+                                <div class="col-12 col-lg-3 mb-2">
+                                    <label for="stir" class="col-md-6 col-form-label">@lang('cruds.company.fields.stir')</label>
+                                    <input class="form-control {{ $errors->has('stir') ? 'is-invalid' : '' }}"
+                                        type="text" name="stir" id="stir" placeholder="@lang('cruds.company.fields.stir')"
+                                        value="{{ old('stir') }}">
+                                    @if ($errors->has('stir'))
+                                        <span class="error invalid-feedback">{{ $errors->first('stir') }}</span>
+                                    @endif
+                                </div>
+
+                                <div class="col-12 col-lg-3 mb-2">
+                                    <label for="oked" class="col-md-6 col-form-label">@lang('cruds.company.fields.oked')</label>
+                                    <input class="form-control {{ $errors->has('oked') ? 'is-invalid' : '' }}"
+                                        type="text" name="oked" id="oked" placeholder="@lang('cruds.company.fields.oked')"
+                                        value="{{ old('oked') }}">
+                                    @if ($errors->has('oked'))
+                                        <span class="error invalid-feedback">{{ $errors->first('oked') }}</span>
+                                    @endif
+                                </div>
+
+                                <div class="col-12 col-lg-3 mb-2">
+                                    <label for="yuridik_address"
+                                        class="col-md-6 col-form-label">@lang('cruds.client.fields.yuridik_address')</label>
+                                    <input class="form-control {{ $errors->has('yuridik_address') ? 'is-invalid' : '' }}"
+                                        type="text" name="yuridik_address" id="yuridik_address"
+                                        placeholder="@lang('cruds.client.fields.yuridik_address')" value="{{ old('yuridik_address') }}">
+                                    @if ($errors->has('yuridik_address'))
+                                        <span
+                                            class="error invalid-feedback">{{ $errors->first('yuridik_address') }}</span>
+                                    @endif
+                                </div>
+
+                                <div class="col-12 col-lg-3 mb-2">
+                                    <label for="yuridik_rekvizid"
+                                        class="col-md-6 col-form-label">@lang('cruds.client.fields.yuridik_rekvizid')</label>
+                                    <input class="form-control {{ $errors->has('yuridik_rekvizid') ? 'is-invalid' : '' }}"
+                                        type="text" name="yuridik_rekvizid" id="yuridik_rekvizid"
+                                        placeholder="@lang('cruds.client.fields.yuridik_rekvizid')" value="{{ old('yuridik_rekvizid') }}">
+                                    @if ($errors->has('yuridik_rekvizid'))
+                                        <span
+                                            class="error invalid-feedback">{{ $errors->first('yuridik_rekvizid') }}</span>
+                                    @endif
+                                </div>
+
+
+
+                            </div>
+
+                            <div class="row">
+                                <div class="col-12 col-lg-3 mb-2">
+                                    <label for="last_name" class="col-md-6 col-form-label">@lang('cruds.client.fields.last_name')</label>
+                                    <input class="form-control {{ $errors->has('last_name') ? 'is-invalid' : '' }}"
+                                        type="text" name="last_name" id="last_name" placeholder="@lang('cruds.client.fields.last_name')"
+                                        value="{{ old('last_name') }}">
+                                    @if ($errors->has('last_name'))
+                                        <span class="error invalid-feedback">{{ $errors->first('last_name') }}</span>
+                                    @endif
+                                </div>
+
+                                <div class="col-12 col-lg-3 mb-2">
+                                    <label for="name" class="col-md-6 col-form-label">@lang('cruds.client.fields.name')</label>
+                                    <input class="form-control {{ $errors->has('first_name') ? 'is-invalid' : '' }}"
+                                        type="text" name="first_name" id="first_name"
+                                        placeholder="@lang('cruds.client.fields.first_name')" value="{{ old('first_name') }}">
+                                    @if ($errors->has('first_name'))
+                                        <span class="error invalid-feedback">{{ $errors->first('first_name') }}</span>
+                                    @endif
+                                </div>
+
+                                <div class="col-12 col-lg-3 mb-2">
+                                    <label for="father_name" class="col-md-6 col-form-label">@lang('cruds.client.fields.father_name')</label>
+                                    <input class="form-control {{ $errors->has('father_name') ? 'is-invalid' : '' }}"
+                                        type="text" name="father_name" id="father_name"
+                                        placeholder="@lang('cruds.client.fields.father_name')" value="{{ old('father_name') }}">
+                                    @if ($errors->has('father_name'))
+                                        <span class="error invalid-feedback">{{ $errors->first('father_name') }}</span>
+                                    @endif
+                                </div>
+
+                                <div class="col-12 col-lg-3 mb-2">
+                                    <label for="contact" class="col-md-6 col-form-label">@lang('cruds.client.fields.contact')</label>
+                                    <input class="form-control {{ $errors->has('contact') ? 'is-invalid' : '' }}"
+                                        type="text" name="contact" id="contact" placeholder="@lang('cruds.client.fields.contact')"
+                                        value="{{ old('contact') }}">
+                                    @if ($errors->has('contact'))
+                                        <span class="error invalid-feedback">{{ $errors->first('contact') }}</span>
+                                    @endif
+                                </div>
+                            </div>
+
+                            <div class="row" id="passport" style="align-items: center ">
+
+                                <div class="col-12 col-lg-3 mb-2">
+                                    <label for="passport_serial"
+                                        class="col-md-6 col-form-label">@lang('cruds.client.fields.passport_serial')</label>
+                                    <input class="form-control {{ $errors->has('passport_serial') ? 'is-invalid' : '' }}"
+                                        type="text" name="passport_serial" id="passport_serial"
+                                        placeholder="@lang('cruds.client.fields.passport_serial')" value="{{ old('passport_serial') }}">
+                                    @if ($errors->has('passport_serial'))
+                                        <span
+                                            class="error invalid-feedback">{{ $errors->first('passport_serial') }}</span>
+                                    @endif
+                                </div>
+
+
+                                <div class="col-12 col-lg-3 mb-2">
+                                    <label for="passport_pinfl" class="col-md-6 col-form-label">@lang('cruds.client.fields.passport_pinfl')</label>
+                                    <input class="form-control {{ $errors->has('passport_pinfl') ? 'is-invalid' : '' }}"
+                                        type="text" name="passport_pinfl" id="passport_pinfl"
+                                        placeholder="@lang('cruds.client.fields.passport_pinfl')" value="{{ old('passport_pinfl') }}">
+                                    @if ($errors->has('passport_pinfl'))
+                                        <span class="error invalid-feedback">{{ $errors->first('passport_pinfl') }}</span>
+                                    @endif
+                                </div>
+
+                                <div class="col-12 col-lg-3 mb-2">
+                                    <label for="passport_date" class="col-md-6 col-form-label">@lang('cruds.client.fields.passport_date')</label>
+                                    <input class="form-control {{ $errors->has('passport_date') ? 'is-invalid' : '' }}"
+                                        type="date" name="passport_date" id="passport_date"
+                                        placeholder="@lang('cruds.client.fields.passport_date')" value="{{ old('passport_date') }}">
+                                    @if ($errors->has('passport_date'))
+                                        <span class="error invalid-feedback">{{ $errors->first('passport_date') }}</span>
+                                    @endif
+                                </div>
+
+                                <div class="col-12 col-lg-3 mb-2">
+                                    <label for="passport_location"
+                                        class="col-md-6 col-form-label">@lang('cruds.client.fields.passport_location')</label>
+                                    <input
+                                        class="form-control {{ $errors->has('passport_location') ? 'is-invalid' : '' }}"
+                                        type="text" name="passport_location" id="passport_location"
+                                        placeholder="@lang('cruds.client.fields.passport_location')" value="{{ old('passport_location') }}">
+                                    @if ($errors->has('passport_location'))
+                                        <span
+                                            class="error invalid-feedback">{{ $errors->first('passport_location') }}</span>
+                                    @endif
+                                </div>
+
+
+                            
+
+                                <div class="col-12 col-lg-3 mb-2">
+
+                                    <label for="is_passport_id"  class="col-md-6 col-form-label">Is passport ID?</label>
+                                    <input type="checkbox" name="passport_type" id="is_passport_id" value="1">
+
+                                </div>
+                            </div>
+
+
+
+
+                            <div class="row" id="make_hide">
+
+                            </div>
+
+                            <script>
+                                $(document).ready(function() {
+                                    $('#myForm').on('keypress', function(e) {
+                                        if (e.which === 13) {
+                                            e.preventDefault();
+                                        }
+                                    });
+                                });
+                            </script>
+
                         </section>
 
                         <!-- Object -->
-                        <h3>@lang('global.object')</h3>
+                        {{-- <h3>@lang('global.object')</h3> --}}
                         <section>
                             <!-- Company Details -->
                             <div class="row">
@@ -119,7 +293,7 @@
                                         </div>
                                         <div class="col-lg-4">
                                             <div class="mb-3">
-                                                <label for="company_name">@lang('global.project_name')</label>
+                                                <label for="company_name">@lang('global.loyiha_nomi')</label>
                                                 <input type="text" class="form-control" id="company_name"
                                                     name="company_name" value="{{ $comp->company_name }}">
                                             </div>
@@ -129,17 +303,91 @@
 
                                     @foreach ($comp->branches as $b)
                                         <!-- Contract Details -->
-                                        <h3>@lang('global.contract_details')</h3>
+                                        {{-- <h3>@lang('global.contract_details')</h3> --}}
+
+                                         {{-- Starting to add new rows --}}
+
+                                         <div class="row">
+                                            <div class="col-lg-3">
+                                                <div class="mb-3">
+                                                    <label for="notification_num">@lang('cruds.branches.fields.notification_num')</label>
+                                                    <input type="text" class="form-control"
+                                                        name="accordions[0][notification_num]"
+                                                        placeholder="@lang('cruds.branches.fields.notification_num')"
+                                                        value="{{ old('accordions.0.notification_num', $b->notification_num) }}">
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-3">
+                                                <div class="mb-3">
+                                                    <label for="notification_date">@lang('cruds.branches.fields.notification_date')</label>
+                                                    <input type="text" class="form-control"
+                                                        name="accordions[0][notification_date]"
+                                                        placeholder="@lang('cruds.branches.fields.notification_date')"
+                                                        value="{{ old('accordions.0.notification_date') }}">
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-3">
+                                                <div class="mb-3">
+                                                    <label for="insurance_policy">@lang('cruds.branches.fields.insurance_policy')</label>
+                                                    <input type="text" class="form-control"
+                                                        name="accordions[0][insurance_policy]"
+                                                        placeholder="@lang('cruds.branches.fields.insurance_policy')"
+                                                        value="{{ old('accordions.0.insurance_policy') }}">
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-3">
+                                                <div class="mb-3">
+                                                    <label for="bank_guarantee">@lang('cruds.branches.fields.bank_guarantee')</label>
+                                                    <input type="text" class="form-control"
+                                                        name="accordions[0][bank_guarantee]"
+                                                        placeholder="@lang('cruds.branches.fields.bank_guarantee')"
+                                                        value="{{ old('accordions.0.bank_guarantee') }}">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-lg-4">
+                                                <div class="mb-3">
+                                                    <label for="application_number">@lang('cruds.branches.fields.application_number')</label>
+                                                    <input type="text" class="form-control"
+                                                        name="accordions[0][application_number]"
+                                                        placeholder="@lang('cruds.branches.fields.application_number')"
+                                                        value="{{ old('accordions.0.application_number') }}">
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-4">
+                                                <div class="mb-3">
+                                                    <label for="payed_sum">@lang('cruds.branches.fields.payed_sum')</label>
+                                                    <input type="text" class="form-control"
+                                                        name="accordions[0][payed_sum]"
+                                                        placeholder="@lang('cruds.branches.fields.payed_sum')"
+                                                        value="{{ old('accordions.0.payed_sum') }}">
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-4">
+                                                <div class="mb-3">
+                                                    <label for="payed_date">@lang('cruds.branches.fields.payed_date')</label>
+                                                    <input type="text" class="form-control"
+                                                        name="accordions[0][payed_date]"
+                                                        placeholder="@lang('cruds.branches.fields.payed_date')"
+                                                        value="{{ old('accordions.0.payed_date') }}">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        {{-- Starting to add new rows end --}}
+
+
                                         <section>
                                             <div class="row">
-                                                <div class="col-lg-6">
+                                                <div class="col-lg-3">
                                                     <div class="mb-3">
-                                                        <label for="contract_apt">@lang('global.contract_number')</label>
+                                                        <label for="contract_apt">@lang('global.ruxsatnoma_raqami') </label>
                                                         <input type="text" class="form-control" id="contract_apt"
                                                             name="contract_apt" value="{{ $b->contract_apt }}">
                                                     </div>
                                                 </div>
-                                                <div class="col-lg-6">
+                                                <div class="col-lg-3">
                                                     <div class="mb-3">
                                                         <label for="contract_date">@lang('global.sanasi')</label>
                                                         <input class="form-control" type="datetime-local"
@@ -148,14 +396,14 @@
                                                     </div>
                                                 </div>
 
-                                                <div class="col-lg-4">
+                                                <div class="col-lg-3">
                                                     <div class="mb-3">
                                                         <label for="branch_kubmetr">@lang('global.obyekt_boyicha_tolanishi_lozim')</label>
                                                         <input type="text" class="form-control" id="branch_kubmetr"
                                                             name="branch_kubmetr" value="{{ $b->branch_kubmetr }}">
                                                     </div>
                                                 </div>
-                                                <div class="col-lg-4">
+                                                <div class="col-lg-3">
                                                     <div class="mb-3">
                                                         <label for="minimum_wage">@lang('global.bazaviy_xisoblash_miqdori')</label>
                                                         <input type="text" class="form-control" id="minimum_wage"
@@ -163,14 +411,14 @@
                                                             value="{{ $b->company->client->products[0]->minimum_wage }}">
                                                     </div>
                                                 </div>
-                                                <div class="col-lg-4">
+                                                <div class="col-lg-3">
                                                     <div class="mb-3">
                                                         <label for="generate_price">@lang('global.total_amount')</label>
                                                         <input type="text" class="form-control" id="generate_price"
                                                             name="generate_price" value="{{ $b->generate_price }}">
                                                     </div>
                                                 </div>
-                                                <div class="col-lg-4">
+                                                <div class="col-lg-3">
                                                     <div class="mb-3">
                                                         <label for="payment_type">@lang('global.tolash_turlari')</label>
                                                         <select class="form-select" id="payment_type"
@@ -181,20 +429,17 @@
                                                             <option value="pay_bolib"
                                                                 {{ $b->payment_type == 'pay_bolib' ? 'selected' : '' }}>
                                                                 @lang('global.bolib_tolash')</option>
-
-                                                                {{-- <option value="pay_full">@lang('global.toliq_xajimda_tolash')</option>
-                                                                <option value="pay_bolib">@lang('global.bolib_tolash')</option> --}}
                                                         </select>
                                                     </div>
                                                 </div>
-                                                <div class="col-lg-4">
+                                                <div class="col-lg-3">
                                                     <div class="mb-3">
                                                         <label for="percentage_input">@lang('global.bolib_tolash_foizi_oldindan')</label>
                                                         <input type="text" class="form-control" id="percentage_input"
                                                             name="percentage_input" value="{{ $b->percentage_input }}">
                                                     </div>
                                                 </div>
-                                                <div class="col-lg-4">
+                                                <div class="col-lg-3">
                                                     <div class="mb-3">
                                                         <label for="installment_quarterly">@lang('global.bolib_tolash_har_chorakda')</label>
                                                         <input type="text" class="form-control"
@@ -207,38 +452,54 @@
                                     @endforeach
                                 @endforeach
 
+                                <div class="col-12 col-lg-12 mb-2">
+                                    <label for="client_description"
+                                        class="col-md-6 col-form-label">@lang('cruds.client.fields.client_description')</label>
+                                    <textarea id="textarea" name="client_description"
+                                        class="form-control {{ $errors->has('client_description') ? 'is-invalid' : '' }}" maxlength="225" rows="3"
+                                        placeholder="This textarea has a limit of 225 chars.">{{ old('client_description') }}</textarea>
+                                    @if ($errors->has('client_description'))
+                                        <span
+                                            class="error invalid-feedback">{{ $errors->first('client_description') }}</span>
+                                    @endif
+                                </div>
 
-                                    <h4>@lang('global.downloadFile')</h4>
-                                    <div class="col-12 col-lg-3 mb-2">
-                                        <!-- Allow users to upload additional files -->
-                                        <input type="file" name="document[]" multiple>
-                                        @if ($errors->has('document'))
-                                            <span class="error invalid-feedback">{{ $errors->first('document') }}</span>
-                                        @endif
-                                    </div>
-                                    <!-- Display existing files -->
-                                    <ul >
-                                        @foreach ($files as $file)
-                                            <div class="py-1">
-                                                <a target="_blank" class="py-2 my-2" href="{{ asset($file->path) }}">Link</a>
-                                                <input type="checkbox" name="delete_files[]" value="{{ $file->id }}"> Delete
-                                            </div>
-                                        @endforeach
-                                    </ul>
-                            
 
-                            </section>
+                                <h4>@lang('global.downloadFile')</h4>
+                                <div class="col-12 col-lg-3 mb-2">
+                                    <!-- Allow users to upload additional files -->
+                                    <input type="file" name="document[]" multiple>
+                                    @if ($errors->has('document'))
+                                        <span class="error invalid-feedback">{{ $errors->first('document') }}</span>
+                                    @endif
+                                </div>
+                                <!-- Display existing files -->
+                                <ul>
+                                    @foreach ($files as $file)
+                                        <div class="py-1">
+                                            <a target="_blank" class="py-2 my-2"
+                                                href="{{ asset($file->path) }}">Link</a>
+                                            <input type="checkbox" name="delete_files[]" value="{{ $file->id }}">
+                                            Delete
+                                        </div>
+                                    @endforeach
+                                </ul>
 
-                            </div>
+                                
+
+
                         </section>
 
-                        <!-- Submit Button -->
-                        <button type="submit" class="btn btn-primary">@lang('global.update')</button>
-                    </form>
-
-
                 </div>
+                </section>
+
+                <!-- Submit Button -->
+                <button type="submit" class="btn btn-primary">@lang('global.update')</button>
+                </form>
+
+
             </div>
         </div>
+    </div>
     </div>
 @endsection
