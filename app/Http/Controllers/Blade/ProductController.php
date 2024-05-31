@@ -153,35 +153,39 @@ class ProductController extends Controller
     }
 
 
-    public function update(Request $request, $client_id)
+   public function update(Request $request, $client_id)
 {
     DB::beginTransaction();
-    
+
     try {
         $requestData = $this->getRequestData($request);
-    
+
         // Update client information
         $client = Client::findOrFail($client_id);
         $client->update($requestData['client']);
-    
+
         // Update company information
         $company = Company::where('client_id', $client_id)->firstOrFail();
-        $company->update($requestData['company']);
+        $companyData = $requestData['company'][0]; // Assuming only one company to update
+        $company->update($companyData);
 
+        // Update branch information
         $branch = Branch::where('company_id', $company->id)->firstOrFail();
-        $branch->update($requestData['branch']);
-    
+        $branchData = $requestData['branch'][0]; // Assuming only one branch to update
+        $branch->update($branchData);
+
         // Update product information
         $product = Products::where('client_id', $client_id)->firstOrFail();
-        $product->update($requestData['product']);
-    
+        $productData = $requestData['product'][0]; // Assuming only one product to update
+        $product->update($productData);
+
         // Handle file uploads
         if ($request->hasFile('document')) {
             foreach ($request->file('document') as $file) {
                 $extension = $file->getClientOriginalExtension();
                 $fileName = time() . '.' . $extension;
                 $file->move(public_path('assets'), $fileName);
-                
+
                 // Save file path to the "files" table
                 $fileModel = new File();
                 $fileModel->client_id = $client->id;
@@ -189,28 +193,29 @@ class ProductController extends Controller
                 $fileModel->save();
             }
         }
-        
+
+        // Handle file deletions
         if ($request->has('delete_files')) {
             foreach ($request->delete_files as $fileId) {
                 $file = File::findOrFail($fileId);
-                
+
                 if (Storage::exists($file->path)) {
                     Storage::delete($file->path);
                 }
-                
+
                 $file->delete();
             }
         }
-    
+
         DB::commit();
-    
+
         return redirect()->route('productIndex')->with('success', 'Product updated successfully');
     } catch (\Exception $e) {
         DB::rollback();
-    
+
         return redirect()->back()->with('error', 'An error occurred while updating the product: ' . $e->getMessage());
     }
-    }
+}
 
     
     private function getRequestData(Request $request)
