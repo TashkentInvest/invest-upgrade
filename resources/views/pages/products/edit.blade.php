@@ -310,7 +310,7 @@
                                         </div>
 
                                         @foreach ($comp->branches as $branchIndex => $b)
-                                        <h4 class="bg-dark text-light text-center py-2">{{$b->contract_apt}}</h4>
+                                        <h4 class="text-center py-2">--- {{$b->contract_apt}} ---</h4>
 
                                             <div class="row">
                                                 <div class="col-lg-3">
