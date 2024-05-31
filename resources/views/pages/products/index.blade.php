@@ -43,8 +43,8 @@
                                         </div>
                                         <div class="modal-body">
     
-                                                   <!-- Company Search -->
-                                                   <div class="form-group row align-items-center my-2">
+                                                <!-- Company Search -->
+                                                <div class="form-group row align-items-center my-2">
                                                     <div class="col-3">
                                                         <h6>Company Name</h6>
                                                     </div>
@@ -63,7 +63,7 @@
                                                 <!-- Company Search End-->
         
                                                 
-                                            <!-- Category Search -->
+                                            {{-- <!-- Category Search -->
                                             <div class="form-group row align-items-center my-2">
                                                 <div class="col-3">
                                                     <h6>Category Name</h6>
@@ -78,12 +78,12 @@
                                                     <input type="hidden" name="category_name_operator" value="like">
                                                     <input class="form-control form-control-sm" type="text" name="category_name" value="{{ old('category_name', request()->category_name ?? '') }}">
                                                 </div>
-                                            </div>
+                                            </div> --}}
         
                                             <!-- Category Search End-->
         
                                               <!-- driver Search -->
-                                              <div class="form-group row align-items-center my-2">
+                                              {{-- <div class="form-group row align-items-center my-2">
                                                 <div class="col-3">
                                                     <h6>Driver Name</h6>
                                                 </div>
@@ -97,13 +97,13 @@
                                                     <input type="hidden" name="driver_full_name_operator" value="like">
                                                     <input class="form-control form-control-sm" type="text" name="driver_full_name" value="{{ old('driver_full_name', request()->driver_full_name ?? '') }}">
                                                 </div>
-                                            </div>
+                                            </div> --}}
         
                                             <!-- driver Search End-->
         
         
                                             {{-- Task status --}}
-                                            <div class="form-group row align-items-center my-2">
+                                            {{-- <div class="form-group row align-items-center my-2">
                                                 <div class="col-3">
                                                     <h6>User Name</h6>
                                                 </div>
@@ -117,7 +117,7 @@
                                                     <input type="hidden" name="user_name_operator" value="like">
                                                     <input class="form-control form-control-sm" type="text" name="user_name" value="{{ old('user_name', request()->user_name ?? '') }}">
                                                 </div>
-                                            </div>
+                                            </div> --}}
                                             {{-- Task status end --}}
                                             <div class="form-group row align-items-center">
                                                 <div class="col-lg-3 col-md-4 col-sm-3 col-12">

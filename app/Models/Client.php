@@ -76,12 +76,11 @@ class Client extends Model
                 $operator = $request->input('company_operator', 'like');
                 $value = '%' . $request->input('company_name') . '%';
             
-                $query->whereHas('task.company', function ($query) use ($operator, $value) {
-                    $query->where('name', $operator, $value);
+                $query->whereHas('companies', function ($query) use ($operator, $value) {
+                    $query->where('company_name', $operator, $value);
                 });
-            
-                // Continue with other filters...
             }
+            
             
             // END Search relationed company ***********************************************
 
