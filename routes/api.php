@@ -15,31 +15,24 @@ use App\Http\Controllers\Blade\ApiUserController;
 
 
 # Api Clients
-Route::post('/login',[ApiAuthController::class,'login']);
+Route::post('/login', [ApiAuthController::class, 'login']);
 
-Route::group(['middleware' => 'api-auth'],function (){
-    Route::post('/me',[ApiAuthController::class,'me']);
-    Route::post('/tokens',[ApiAuthController::class,'getAllTokens']);
-    Route::post('/logout',[ApiAuthController::class,'logout']);
+Route::group(['middleware' => 'api-auth'], function () {
+    Route::post('/me', [ApiAuthController::class, 'me']);
+    Route::post('/tokens', [ApiAuthController::class, 'getAllTokens']);
+    Route::post('/logout', [ApiAuthController::class, 'logout']);
 });
 
-Route::group(['middleware' => 'ajax.check'],function (){
-    Route::post('/api-user/toggle-status/{user_id}',[ApiUserController::class,'toggleUserActivation']);
-    Route::post('/api-token/toggle-status/{token_id}',[ApiUserController::class,'toggleTokenActivation']);
+Route::group(['middleware' => 'ajax.check'], function () {
+    Route::post('/api-user/toggle-status/{user_id}', [ApiUserController::class, 'toggleUserActivation']);
+    Route::post('/api-token/toggle-status/{token_id}', [ApiUserController::class, 'toggleTokenActivation']);
 });
 
 # Api Products
-Route::get('/get/products',[ProductController::class, 'allProduct'])->name('productAll');
-Route::get('/get/product/{id}',[ProductController::class, 'showProduct'])->name('productShow');
-Route::post('/product/update/{id}',[ProductController::class, 'updateProduct'])->name('productUpdate');
-Route::delete('/product/delete/{id}',[ProductController::class, 'deleteProduct'])->name('productDelete');
-
-# Api Category
-Route::get('/get/categories',[CategoryController::class, 'allCategory'])->name('categoryAll');
-Route::get('/get/category/{id}',[CategoryController::class, 'showCategory'])->name('categoryShow');
-Route::post('/category/update/{id}',[CategoryController::class, 'updateCategory'])->name('categoryUpdate');
-Route::delete('/category/delete/{id}',[CategoryController::class, 'deleteCategory'])->name('categoryDelete');
-
+Route::get('/get/products', [ProductController::class, 'allProduct'])->name('productAll');
+Route::get('/get/product/{id}', [ProductController::class, 'showProduct'])->name('productShow');
+Route::post('/product/update/{id}', [ProductController::class, 'updateProduct'])->name('productUpdate');
+Route::delete('/product/delete/{id}', [ProductController::class, 'deleteProduct'])->name('productDelete');
 
 // Route::post('/get/orders',[OrderController::class, 'getOrders'])->name('orderAll');
 // Route::delete('/order/delete/{id}',[OrderController::class, 'deleteOrder'])->name('orderDelete');

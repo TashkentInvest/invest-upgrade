@@ -32,52 +32,46 @@
                     <div class="form-group">
                         <div class="row">
                             @foreach(config('constants.locales') as $locale)
-                                <div class="col-12 col-lg-6 mb-2">
-                                    <label>@lang('global.name_as')  {{ $locale['title'] }}</label>
-                                    <input type="text" name="name_{{ $locale['short_name'] }}" class="form-control" 
-                                    value="{{ old('name_' . $locale['short_name']) }}" placeholder="Название" required>
-                                </div>
+                            <div class="col-12 col-lg-6 mb-2">
+                                <label>@lang('global.name_as') {{ $locale['title'] }}</label>
+                                <input type="text" name="name_{{ $locale['short_name'] }}" class="form-control" value="{{ old('name_' . $locale['short_name']) }}" placeholder="Название" required>
+                            </div>
                             @endforeach
 
                             @foreach(config('constants.locales') as $locale)
-                                <div class="col-12 mb-2">
-                                    <label>@lang('global.description_as')  {{ $locale['title'] }}</label>
-                                    <textarea id="textarea_{{$locale['short_name']}}" class="form-control" name="text_{{$locale['short_name']}}" 
-                                    maxlength="225" rows="3" placeholder="Описание ... " required></textarea>
-                                </div>
+                            <div class="col-12 mb-2">
+                                <label>@lang('global.description_as') {{ $locale['title'] }}</label>
+                                <textarea id="textarea_{{$locale['short_name']}}" class="form-control" name="text_{{$locale['short_name']}}" maxlength="225" rows="3" placeholder="Описание ... " required></textarea>
+                            </div>
                             @endforeach
-                        
+
 
                             <div class="col-12 col-lg-6 mb-2">
                                 <label>@lang('cruds.branches.fields.longitude')</label>
-                                <input type="text" name="longitude" class="form-control" 
-                                value="{{ old('longitude') }}" placeholder="@lang('cruds.branches.fields.longitude')">
+                                <input type="text" name="longitude" class="form-control" value="{{ old('longitude') }}" placeholder="@lang('cruds.branches.fields.longitude')">
                             </div>
 
                             <div class="col-12 col-lg-6 mb-2">
                                 <label>@lang('cruds.branches.fields.latitude')</label>
-                                <input type="text" name="latitude" class="form-control" 
-                                value="{{ old('latitude') }}" placeholder="@lang('cruds.branches.fields.latitude')">
+                                <input type="text" name="latitude" class="form-control" value="{{ old('latitude') }}" placeholder="@lang('cruds.branches.fields.latitude')">
                             </div>
 
                             <div class="col-12 col-lg-6 mb-2">
                                 <label>@lang('cruds.branches.fields.region_id')</label>
-                                <select class="form-control select2" style="width: 100%;" name="region_id"
-                                    value="{{ old('region_id') }}" required>
+                                <select class="form-control select2" style="width: 100%;" name="region_id" value="{{ old('region_id') }}" required>
                                     <option value="" disabled selected>@lang('cruds.regions_districts.districts.select_region')</option>
                                     @foreach($regions as $region)
-                                        <option value="{{ $region->id }}">{{ $region->name_uz }}</option>
+                                    <option value="{{ $region->id }}">{{ $region->name_uz }}</option>
                                     @endforeach
                                 </select>
                             </div>
 
                             <div class="col-12 col-lg-6 mb-2">
                                 <label>@lang('cruds.category.title')</label>
-                                <select class="form-control select2" style="width: 100%;" name="category_id"
-                                    value="{{ old('category_id') }}" required>
+                                <select class="form-control select2" style="width: 100%;" name="category_id" value="{{ old('category_id') }}" required>
                                     <option value="" disabled selected>@lang('cruds.category.title')</option>
                                     @foreach($categories as $category)
-                                        <option value="{{ $category->id }}">{{ $category->name_uz }}</option>
+                                    <option value="{{ $category->id }}">{{ $category->name_uz }}</option>
                                     @endforeach
                                 </select>
                             </div>

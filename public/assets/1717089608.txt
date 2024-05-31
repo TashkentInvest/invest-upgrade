@@ -1,3 +1,0 @@
-Yurik: Kompanya nomi,Raxbar FIO, Passport datas(nullable), ID-CARD,  Manzili, Xisobvaraq, Bank kodi, CTIR, OKED, TEL, Xizmat korstavchi bank
-
-Fizik: FIO, Manzili, Passport datas, Tel,ID-CARD,

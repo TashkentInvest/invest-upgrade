@@ -77,24 +77,30 @@ blade digi textlani jsondan chqab qilish kere +++
 
 product edit textlani fix qlish kere +++
 
-multiple doc download qilish kere branch xar xil qilib exelgayam shu
+multiple doc download qilish kere branch xar xil qilib exelgayam shu +++
 
-role permissionlani korvorsh kere
+role permissionlani korvorsh kere +++
+
+edit blade ga xamma value lani chqash kere +++
 
 daily backup qilish kere schedule blan
 
 audit logs user friendly qilish kere
 
-edit blade ga xamma value lani chqash kere
-
 product add / edit qvotganda validatsalani check qb chiqish kere
+
+textlani fix qilish kere
+
+period fix qilish kere
+
+blade clean qilish kere 
 
 ```
 
 
 <a href="https://wordtohtml.net/">https://wordtohtml.net/</a>
 
-shu sayt blan word ni html qvolamzeb
+shu sayt blan word ni html qvolamza
 
 ```
 composer require maatwebsite/excel

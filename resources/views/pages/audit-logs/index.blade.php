@@ -49,7 +49,7 @@
                                 <td>
                                     @if($log->old_values)
                                         <pre>{{ pretty_json($log->old_values) }}</pre>
-                                    @else
+                                    @elsex
                                         N/A
                                     @endif
                                 </td>

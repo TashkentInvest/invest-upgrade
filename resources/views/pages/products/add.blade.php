@@ -248,8 +248,9 @@
                                     <div class="col-12 col-lg-6 mb-2">
                                         <label for="client_description"
                                             class="col-md-6 col-form-label">@lang('cruds.client.fields.client_description')</label>
-                                        <textarea id="textarea" name="client_description" class="form-control {{ $errors->has('client_description') ? 'is-invalid' : '' }}"
-                                            maxlength="225" rows="3" placeholder="This textarea has a limit of 225 chars.">{{ old('client_description') }}</textarea>
+                                        <textarea id="textarea" name="client_description"
+                                            class="form-control {{ $errors->has('client_description') ? 'is-invalid' : '' }}" maxlength="225" rows="3"
+                                            placeholder="This textarea has a limit of 225 chars.">{{ old('client_description') }}</textarea>
                                         @if ($errors->has('client_description'))
                                             <span
                                                 class="error invalid-feedback">{{ $errors->first('client_description') }}</span>
@@ -300,7 +301,7 @@
                                                 $('#make_hide').hide();
                                                 $('#make_show').show();
                                             }
-                                        }).trigger('change'); 
+                                        }).trigger('change');
                                     });
                                 </script>
 
@@ -421,7 +422,7 @@
                                                             </div>
                                                         </div>
 
-                                                
+
                                                         <div class="col-lg-3">
                                                             <div class="mb-3">
                                                                 <label for="payed_date">@lang('cruds.branches.fields.payed_date')</label>
@@ -507,7 +508,7 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    
+
                                                     <div class="row">
                                                         <div class="col-lg-12">
                                                             <table class="table">
@@ -557,7 +558,7 @@
                                             }
                                             $(this).val('');
                                             $(this).attr('id', name + '-' +
-                                            accordionCount); 
+                                                accordionCount);
                                         });
 
                                         let tableId = 'payment-table-' + accordionCount;

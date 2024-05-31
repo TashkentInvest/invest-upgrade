@@ -41,11 +41,31 @@
                                         ['name' => __('global.name'), 'data-priority' => 6, 'default' => true],
                                         ['name' => __('global.last_name'), 'data-priority' => 7, 'default' => true],
                                         ['name' => __('global.father_name'), 'data-priority' => 8, 'default' => true],
-                                        ['name' => __('global.passport_serial'), 'data-priority' => 9, 'default' => false],
-                                        ['name' => __('global.passport_pinfl'), 'data-priority' => 10, 'default' => false],
-                                        ['name' => __('global.passport_pinfl'), 'data-priority' => 11, 'default' => false],
-                                        ['name' => __('global.yuridik_address'), 'data-priority' => 12, 'default' => false],
-                                        ['name' => __('global.yuridik_rekvizid'), 'data-priority' => 13, 'default' => false],
+                                        [
+                                            'name' => __('global.passport_serial'),
+                                            'data-priority' => 9,
+                                            'default' => false,
+                                        ],
+                                        [
+                                            'name' => __('global.passport_pinfl'),
+                                            'data-priority' => 10,
+                                            'default' => false,
+                                        ],
+                                        [
+                                            'name' => __('global.passport_pinfl'),
+                                            'data-priority' => 11,
+                                            'default' => false,
+                                        ],
+                                        [
+                                            'name' => __('global.yuridik_address'),
+                                            'data-priority' => 12,
+                                            'default' => false,
+                                        ],
+                                        [
+                                            'name' => __('global.yuridik_rekvizid'),
+                                            'data-priority' => 13,
+                                            'default' => false,
+                                        ],
                                         ['name' => __('global.contact'), 'data-priority' => 14, 'default' => true],
                                         ['name' => __('global.actions'), 'data-priority' => 15, 'default' => true],
                                     ];
@@ -58,7 +78,7 @@
                                     </li>
                                 @endforeach
                             </ul>
-                            
+
                         </div>
                     </div>
 
@@ -120,13 +140,12 @@
                                                 </li>
 
                                                 <li data-bs-toggle="tooltip" data-bs-placement="top"
-                                                title="@lang('global.downloadFile')">
-                                                <a href="{{ route('word', $client->id) }}"
-                                                    class="btn btn-secondary">
-                                                    <i class="bx bxs-download" style="font-size: 16px;"></i>
-                                                </a>
-                                            </li>
-{{--                                                 
+                                                    title="@lang('global.downloadFile')">
+                                                    <a href="{{ route('word', $client->id) }}" class="btn btn-secondary">
+                                                        <i class="bx bxs-download" style="font-size: 16px;"></i>
+                                                    </a>
+                                                </li>
+                                                {{--                                                 
                                                <li data-bs-toggle="tooltip" data-bs-placement="top"
                                                     title="@lang('global.downloadFile')">
                                                     <a href="{{ route('download.table.data', $client->id) }}"
@@ -159,78 +178,78 @@
                         <tbody>
                             {{-- @dump($client->companies[0]->company_name ) --}}
                             @if (isset($client))
-                            {{-- @dd($client->companies) --}}
-                            @foreach ($client->companies as $index => $comp)
-                                <tr>
-                                    <td>@lang('global.id')</td>
-                                    <td colspan="2">{{ $index + 1 }}</td>
-                                </tr>
-                        
-                                <tr>
-                                    <td>@lang('cruds.company.fields.company_location')</td>
-                                    <td colspan="2">{{ $comp->company_location }}</td>
-                                </tr>
-                        
-                                <tr>
-                                    <td>@lang('cruds.company.fields.company_name')</td>
-                                    <td colspan="2">{{ $comp->company_name }}</td>
-                                </tr>
-                        
-                                @foreach ($comp->branches as $b)
+                                {{-- @dd($client->companies) --}}
+                                @foreach ($client->companies as $index => $comp)
                                     <tr>
-                                        <td colspan="3" class="text-center"><strong>@lang('global.contract_details')</strong></td>
+                                        <td>@lang('global.id')</td>
+                                        <td colspan="2">{{ $index + 1 }}</td>
                                     </tr>
+
                                     <tr>
-                                        <td>@lang('global.ruxsatnoma_raqami')</td>
-                                        <td colspan="2">{{ $b->contract_apt }}</td>
+                                        <td>@lang('cruds.company.fields.company_location')</td>
+                                        <td colspan="2">{{ $comp->company_location }}</td>
                                     </tr>
+
                                     <tr>
-                                        <td>@lang('global.created_at')</td>
-                                        <td colspan="2">{{ $b->contract_date }}</td>
+                                        <td>@lang('cruds.company.fields.company_name')</td>
+                                        <td colspan="2">{{ $comp->company_name }}</td>
                                     </tr>
-                                    <tr>
-                                        <td>@lang('global.obyekt_boyicha_tolanishi_lozim')</td>
-                                        <td colspan="2">{{ $b->branch_kubmetr }}</td>
-                                    </tr>
-                                    <tr>
-                                        <td>@lang('global.jami_tolanishi_kerak')</td>
-                                        <td colspan="2">{{ $b->generate_price }}</td>
-                                    </tr>
-                                    <tr>
-                                        <td>@lang('global.bolib_tolash')</td>
-                                        <td colspan="2">
-                                            @if ($b->payment_type == 'pay_bolib')
-                                             @lang('global.pay_bolib')
-                                            @else
-                                                @lang('global.pay_full')
-                                            @endif
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>@lang('global.bolib_tolash_foizi_oldindan')</td>
-                                        <td colspan="2">{{ $b->percentage_input }}%</td>
-                                    </tr>
-                                    <tr>
-                                        <td>@lang('global.quarterly_payment')</td>
-                                        <td colspan="2">{{ $b->installment_quarterly }}</td>
-                                    </tr>
-                                @endforeach
-                            @endforeach
-                        
-                            @if ($files->isNotEmpty())
-                                <h4>@lang('global.downloadFile')</h4>
-                                <ul>
-                                    @foreach ($files as $file)
-                                        <li>
-                                            <a target="_blank" href="{{ asset($file->path) }}">Link</a>
-                                        </li>
+
+                                    @foreach ($comp->branches as $b)
+                                        <tr>
+                                            <td colspan="3" class="text-center"><strong>@lang('global.contract_details')</strong></td>
+                                        </tr>
+                                        <tr>
+                                            <td>@lang('global.ruxsatnoma_raqami')</td>
+                                            <td colspan="2">{{ $b->contract_apt }}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>@lang('global.created_at')</td>
+                                            <td colspan="2">{{ $b->contract_date }}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>@lang('global.obyekt_boyicha_tolanishi_lozim')</td>
+                                            <td colspan="2">{{ $b->branch_kubmetr }}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>@lang('global.jami_tolanishi_kerak')</td>
+                                            <td colspan="2">{{ $b->generate_price }}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>@lang('global.bolib_tolash')</td>
+                                            <td colspan="2">
+                                                @if ($b->payment_type == 'pay_bolib')
+                                                    @lang('global.pay_bolib')
+                                                @else
+                                                    @lang('global.pay_full')
+                                                @endif
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>@lang('global.bolib_tolash_foizi_oldindan')</td>
+                                            <td colspan="2">{{ $b->percentage_input }}%</td>
+                                        </tr>
+                                        <tr>
+                                            <td>@lang('global.quarterly_payment')</td>
+                                            <td colspan="2">{{ $b->installment_quarterly }}</td>
+                                        </tr>
                                     @endforeach
-                                </ul>
-                            @else
-                                <p>No files uploaded for this product.</p>
-                            @endif
-                       
-                        
+                                @endforeach
+
+                                @if ($files->isNotEmpty())
+                                    <h4>@lang('global.downloadFile')</h4>
+                                    <ul>
+                                        @foreach ($files as $file)
+                                            <li>
+                                                <a target="_blank" href="{{ asset($file->path) }}">Link</a>
+                                            </li>
+                                        @endforeach
+                                    </ul>
+                                @else
+                                    <p>No files uploaded for this product.</p>
+                                @endif
+
+
 
 
                             @endif

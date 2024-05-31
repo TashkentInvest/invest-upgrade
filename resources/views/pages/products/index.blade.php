@@ -30,112 +30,42 @@
 
                     <div class="btn-group float-right" role="group" aria-label="Basic example">
                         <button type="button" class="btn btn-sm btn-success waves-effect waves-light"
-                        data-bs-toggle="modal" data-bs-target="#exampleModal_filter">
+                            data-bs-toggle="modal" data-bs-target="#exampleModal_filter">
                             <i class="fas fa-filter"></i> @lang('global.filter')
                         </button>
                         <form action="" method="get">
-                            <div class="modal fade" id="exampleModal_filter" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal fade" id="exampleModal_filter" tabindex="-1"
+                                aria-labelledby="exampleModalLabel" aria-hidden="true">
                                 <div class="modal-dialog modal-lg">
                                     <div class="modal-content">
                                         <div class="modal-header">
                                             <h5 class="modal-title" id="exampleModalLabel">@lang('global.filter')</h5>
-                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                aria-label="Close"></button>
                                         </div>
                                         <div class="modal-body">
-    
-                                                <!-- Company Search -->
-                                                <div class="form-group row align-items-center my-2">
-                                                    <div class="col-3">
-                                                        <h6>@lang('cruds.company.fields.company_name')</h6>
-                                                    </div>
-                                                    <div class="col-2">
-                                                        <select class="form-control form-control-sm" name="company_operator">
-                                                            <option value="like" {{ request()->company_operator == 'like' ? 'selected' : '' }}>Like</option>
-                                                            <!-- Add other comparison operators if needed -->
-                                                        </select>
-                                                    </div>
-                                                    <div class="col-3">
-                                                        <input type="hidden" name="company_name_operator" value="like">
-                                                        <input class="form-control form-control-sm" type="text" name="company_name" value="{{ old('company_name', request()->company_name ?? '') }}">
-                                                    </div>
-                                                </div>
 
-                                                {{-- <div class="form-group row align-items-center my-2">
-                                                    <div class="col-3">
-                                                        <h6>@lang('cruds.company.fields.company_name') INN</h6>
-                                                    </div>
-                                                    <div class="col-2">
-                                                        <select class="form-control form-control-sm" name="companystir_operator">
-                                                            <option value="like" {{ request()->companystir_operator == 'like' ? 'selected' : '' }}>Like</option>
-                                                            <!-- Add other comparison operators if needed -->
-                                                        </select>
-                                                    </div>
-                                                    <div class="col-3">
-                                                        <input type="hidden" name="companystir_operator" value="like">
-                                                        <input class="form-control form-control-sm" type="text" name="stir" value="{{ old('stir', request()->stir ?? '') }}">
-                                                    </div>
-                                                </div> --}}
-        
-                                                
-                                                <!-- Company Search End-->
-        
-                                                
-                                            {{-- <!-- Category Search -->
+                                            <!-- Company Search -->
                                             <div class="form-group row align-items-center my-2">
                                                 <div class="col-3">
-                                                    <h6>Category Name</h6>
+                                                    <h6>@lang('cruds.company.fields.company_name')</h6>
                                                 </div>
                                                 <div class="col-2">
-                                                    <select class="form-control form-control-sm" name="category_operator">
-                                                        <option value="like" {{ request()->category_operator == 'like' ? 'selected' : '' }}>Like</option>
+                                                    <select class="form-control form-control-sm" name="company_operator">
+                                                        <option value="like"
+                                                            {{ request()->company_operator == 'like' ? 'selected' : '' }}>
+                                                            Like</option>
                                                         <!-- Add other comparison operators if needed -->
                                                     </select>
                                                 </div>
                                                 <div class="col-3">
-                                                    <input type="hidden" name="category_name_operator" value="like">
-                                                    <input class="form-control form-control-sm" type="text" name="category_name" value="{{ old('category_name', request()->category_name ?? '') }}">
+                                                    <input type="hidden" name="company_name_operator" value="like">
+                                                    <input class="form-control form-control-sm" type="text"
+                                                        name="company_name"
+                                                        value="{{ old('company_name', request()->company_name ?? '') }}">
                                                 </div>
-                                            </div> --}}
-        
-                                            <!-- Category Search End-->
-        
-                                              <!-- driver Search -->
-                                              {{-- <div class="form-group row align-items-center my-2">
-                                                <div class="col-3">
-                                                    <h6>Driver Name</h6>
-                                                </div>
-                                                <div class="col-2">
-                                                    <select class="form-control form-control-sm" name="driver_operator">
-                                                        <option value="like" {{ request()->driver_operator == 'like' ? 'selected' : '' }}>Like</option>
-                                                        <!-- Add other comparison operators if needed -->
-                                                    </select>
-                                                </div>
-                                                <div class="col-3">
-                                                    <input type="hidden" name="driver_full_name_operator" value="like">
-                                                    <input class="form-control form-control-sm" type="text" name="driver_full_name" value="{{ old('driver_full_name', request()->driver_full_name ?? '') }}">
-                                                </div>
-                                            </div> --}}
-        
-                                            <!-- driver Search End-->
-        
-        
-                                            {{-- Task status --}}
-                                            {{-- <div class="form-group row align-items-center my-2">
-                                                <div class="col-3">
-                                                    <h6>User Name</h6>
-                                                </div>
-                                                <div class="col-2">
-                                                    <select class="form-control form-control-sm" name="status_operator">
-                                                        <option value="like" {{ request()->status_operator == 'like' ? 'selected' : '' }}>Like</option>
-                                                        <!-- Add other comparison operators if needed -->
-                                                    </select>
-                                                </div>
-                                                <div class="col-3">
-                                                    <input type="hidden" name="user_name_operator" value="like">
-                                                    <input class="form-control form-control-sm" type="text" name="user_name" value="{{ old('user_name', request()->user_name ?? '') }}">
-                                                </div>
-                                            </div> --}}
-                                            {{-- Task status end --}}
+                                            </div>
+
                                             <div class="form-group row align-items-center">
                                                 <div class="col-lg-3 col-md-4 col-sm-3 col-12">
                                                     <h6>@lang('global.created_at')</h6>
@@ -149,28 +79,43 @@
                                                                 document.getElementById('created_at_pair').style.display = 'none';
                                                                 }
                                                                 ">
-                                                        <option value="like" {{ request()->created_at_operator == '=' ? 'selected':'' }}> = </option>
-                                                        <option value=">" {{ request()->created_at_operator == '>' ? 'selected':'' }}> > </option>
-                                                        <option value="<" {{ request()->created_at_operator == '<' ? 'selected':'' }}> < </option>
-                                                        <option value="between" {{ request()->created_at_operator == 'between' ? 'selected':'' }}> От .. до .. </option>
+                                                        <option value="like"
+                                                            {{ request()->created_at_operator == '=' ? 'selected' : '' }}> =
+                                                        </option>
+                                                        <option value=">"
+                                                            {{ request()->created_at_operator == '>' ? 'selected' : '' }}> >
+                                                        </option>
+                                                        <option value="<"
+                                                            {{ request()->created_at_operator == '<' ? 'selected' : '' }}>
+                                                            < </option>
+                                                        <option value="between"
+                                                            {{ request()->created_at_operator == 'between' ? 'selected' : '' }}>
+                                                            От .. до .. </option>
                                                     </select>
                                                 </div>
                                                 <div class="col-lg-3 col-md-3 col-sm-3 col-4">
-                                                    <input class="form-control form-control-sm" type="date" name="created_at" 
-                                                    value="{{ old('created_at',request()->created_at??'') }}">
+                                                    <input class="form-control form-control-sm" type="date"
+                                                        name="created_at"
+                                                        value="{{ old('created_at', request()->created_at ?? '') }}">
                                                 </div>
-                                                <div class="col-lg-3 col-md-3 col-sm-3 col-4" id="created_at_pair" style="display: {{ request()->created_at_operator == 'between' ? 'block':'none'}}">
-                                                    <input class="form-control form-control-sm" type="date" name="created_at_pair" value="{{ old('created_at_pair',request()->created_at_pair??'') }}">
+                                                <div class="col-lg-3 col-md-3 col-sm-3 col-4" id="created_at_pair"
+                                                    style="display: {{ request()->created_at_operator == 'between' ? 'block' : 'none' }}">
+                                                    <input class="form-control form-control-sm" type="date"
+                                                        name="created_at_pair"
+                                                        value="{{ old('created_at_pair', request()->created_at_pair ?? '') }}">
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="box container">
-                                            <a href="{{route('download.excel')}}">Download all of Exel</a>
+                                            <a href="{{ route('download.excel') }}">Download all of Exel</a>
                                         </div>
                                         <div class="modal-footer">
-                                            <button type="submit" name="filter" class="btn btn-primary">@lang('global.filtering')</button>
-                                            <button type="button" class="btn btn-outline-warning float-left pull-left" id="reset_form">@lang('global.clear')</button>
-                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">@lang('global.closed')</button>
+                                            <button type="submit" name="filter"
+                                                class="btn btn-primary">@lang('global.filtering')</button>
+                                            <button type="button" class="btn btn-outline-warning float-left pull-left"
+                                                id="reset_form">@lang('global.clear')</button>
+                                            <button type="button" class="btn btn-secondary"
+                                                data-bs-dismiss="modal">@lang('global.closed')</button>
                                         </div>
                                     </div>
                                 </div>
@@ -203,20 +148,18 @@
                                 {{-- @dump($item->companies[0]->company_name ) --}}
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
-                                    @if($item->mijoz_turi == 'fizik')
-                                    <td>{{ $item->first_name }} {{ $item->last_name }} {{ $item->father_name }}</td>
+                                    @if ($item->mijoz_turi == 'fizik')
+                                        <td>{{ $item->first_name }} {{ $item->last_name }} {{ $item->father_name }}</td>
                                     @else
-                                        
-                                    <td>{{ $item->companies[0]->company_name}} </td>
-
+                                        <td>{{ $item->companies[0]->company_name }} </td>
                                     @endif
                                     <td>{{ $item->companies[0]->stir }} </td>
 
-                                    
+
                                     <td>{{ $item->contact ?? '---' }}</td>
                                     <td>{{ $item->address ?? '---' }}</td>
                                     {{-- <td>
-                                        @if($item->mijoz_turi == 'fizik')
+                                        @if ($item->mijoz_turi == 'fizik')
                                             @lang('global.fizik')
                                         @else
                                             @lang('global.yuridik')
@@ -230,7 +173,7 @@
                                             onclick="toggle_instock({{ $item->id }})"></i>
                                     </td>
                                     <td>
-                                        {{$item->created_at}}
+                                        {{ $item->created_at }}
                                     </td>
                                     <td class="text-center">
                                         <form action="{{ route('productDestroy', $item->id) }}" method="post">
@@ -244,35 +187,34 @@
                                                         <i class="bx bxs-show" style="font-size:16px;"></i>
                                                     </button>
                                                 </li>
-                                              
+
                                                 @can('client.delete')
-                                                    
-                                                <input name="_method" type="hidden" value="DELETE">
-                                                <li data-bs-toggle="tooltip" data-bs-placement="top"
-                                                    title="@lang('global.delete')">
-                                                    <button onclick="if (confirm('Вы уверены?')) { this.form.submit() }"
-                                                        type="button" data-bs-toggle="modal" class="btn btn-danger">
-                                                        <i class="bx bxs-trash" style="font-size: 16px;"></i>
-                                                    </button>
-                                                </li>
+                                                    <input name="_method" type="hidden" value="DELETE">
+                                                    <li data-bs-toggle="tooltip" data-bs-placement="top"
+                                                        title="@lang('global.delete')">
+                                                        <button onclick="if (confirm('Вы уверены?')) { this.form.submit() }"
+                                                            type="button" data-bs-toggle="modal" class="btn btn-danger">
+                                                            <i class="bx bxs-trash" style="font-size: 16px;"></i>
+                                                        </button>
+                                                    </li>
                                                 @endcan
 
 
-                                            <li data-bs-toggle="tooltip" data-bs-placement="top"
-                                            title="@lang('global.edit')">
-                                            <a href="{{ route('productEdit', $item->id) }}" class="btn btn-info">
-                                                <i class="bx bxs-edit" style="font-size:16px;"></i>
-                                            </a>
-                                        </li> 
+                                                <li data-bs-toggle="tooltip" data-bs-placement="top"
+                                                    title="@lang('global.edit')">
+                                                    <a href="{{ route('productEdit', $item->id) }}" class="btn btn-info">
+                                                        <i class="bx bxs-edit" style="font-size:16px;"></i>
+                                                    </a>
+                                                </li>
 
                                                 <li data-bs-toggle="tooltip" data-bs-placement="top"
-                                                title="@lang('global.view')">
-                                                <a href="{{ route('productShow', $item->id) }}"
-                                                    class="btn btn-success">
-                                                    <i class="bx bxs-right-arrow-circle" style="font-size: 16px;"></i>
+                                                    title="@lang('global.view')">
+                                                    <a href="{{ route('productShow', $item->id) }}"
+                                                        class="btn btn-success">
+                                                        <i class="bx bxs-right-arrow-circle" style="font-size: 16px;"></i>
 
-                                                </a>
-                                            </li>
+                                                    </a>
+                                                </li>
                                             </ul>
                                         </form>
                                         <!-- Modal -->
@@ -335,7 +277,8 @@
 
                                                                 @foreach ($item->companies as $comp)
                                                                     <tr>
-                                                                        <td class="text-center"><strong>Obyekt</strong></td>
+                                                                        <td class="text-center"><strong>Obyekt</strong>
+                                                                        </td>
                                                                         <td></td>
 
 
@@ -377,7 +320,7 @@
                                                                             <td>@lang('global.bolib_tolash')</td>
                                                                             <td>
                                                                                 @if ($b->payment_type == 'pay_bolib')
-                                                                                 @lang('global.pay_bolib')
+                                                                                    @lang('global.pay_bolib')
                                                                                 @else
                                                                                     @lang('global.pay_full')
                                                                                 @endif
