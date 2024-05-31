@@ -258,10 +258,6 @@
                                                 @endcan
 
 
-                                               
-
-                                            
-
                                             <li data-bs-toggle="tooltip" data-bs-placement="top"
                                             title="@lang('global.edit')">
                                             <a href="{{ route('productEdit', $item->id) }}" class="btn btn-info">

@@ -495,8 +495,11 @@
                                         <div class="py-1">
                                             <a target="_blank" class="py-2 my-2"
                                                 href="{{ asset($file->path) }}">Link</a>
-                                            <input type="checkbox" name="delete_files[]" value="{{ $file->id }}">
-                                            Delete
+                                                @can('client.delete')
+                                                Delete
+                                                <input type="checkbox" name="delete_files[]" value="{{ $file->id }}">
+                                                    
+                                                @endcan
                                         </div>
                                     @endforeach
                                 </ul>

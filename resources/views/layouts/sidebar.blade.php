@@ -73,7 +73,7 @@
                 </li>
                 @endcan --}}
 
-                {{-- @can('api-user.view') --}}
+                @can('user.show')
                 <li class="{{ (Request::is('permission*') || Request::is('role*') || Request::is('user*') || Request::is('client*')) ? 'mm-active':''}}">
                     <a href="javascript: void(0);" class="has-arrow waves-effect {{ (Request::is('permission*') || Request::is('role*') || Request::is('user*') || Request::is('client*')) ? 'mm-active':''}}">
                         <i class="fas fa-users-cog"></i>
@@ -118,7 +118,7 @@
                         @endcan --}}
                     </ul>
                 </li>
-                {{-- @endcan --}}
+                @endcan
 
                 <li class="menu-title">@lang('global.theme')</li>
                 <li class="">
