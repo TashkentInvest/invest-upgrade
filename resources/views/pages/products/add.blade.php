@@ -421,15 +421,7 @@
                                                             </div>
                                                         </div>
 
-                                                        <div class="col-lg-3">
-                                                            <div class="mb-3">
-                                                                <label for="payed_sum">@lang('cruds.branches.fields.payed_sum')</label>
-                                                                <input type="text" class="form-control"
-                                                                    name="accordions[0][payed_sum]"
-                                                                    placeholder="@lang('cruds.branches.fields.payed_sum')">
-                                                            </div>
-                                                        </div>
-
+                                                
                                                         <div class="col-lg-3">
                                                             <div class="mb-3">
                                                                 <label for="payed_date">@lang('cruds.branches.fields.payed_date')</label>

@@ -179,47 +179,41 @@ class ProductController extends Controller
             ]);
     
             // Update company and branch information
-            if ($request->has('accordions')) {
-                foreach ($request->accordions as $accordion) {
-                    // Update company information
-                    $company = Company::where('client_id', $client_id)->first();
-                    if ($company) {
-                        $company->update([
-                            'company_location' => $accordion['company_location'] ?? null,
-                            'company_type' => $accordion['company_type'] ?? null,
-                            'company_name' => $accordion['company_name'] ?? null,
-                            'raxbar' => $accordion['raxbar'] ?? null,
-                            'bank_code' => $accordion['bank_code'] ?? null,
-                            'bank_service' => $accordion['bank_service'] ?? null,
-                            'stir' => $accordion['stir'] ?? null,
-                            'oked' => $accordion['oked'] ?? null,
-                        ]);
+            foreach ($request->accordions as $index => $accordion) {
+                $company = Company::where('client_id', $client_id)->skip($index)->firstOrFail();
+                $company->update([
+                    'client_id' => $client->id,
+                    'company_location' => $accordion['company_location'] ?? null,
+                    'company_type' => $accordion['company_type'] ?? null,
+                    'company_name' => $accordion['company_name'] ?? null,
+                    'raxbar' => $accordion['raxbar'] ?? null,
+                    'bank_code' => $accordion['bank_code'] ?? null,
+                    'bank_service' => $accordion['bank_service'] ?? null,
+                    'stir' => $accordion['stir'] ?? null,
+                    'oked' => $accordion['oked'] ?? null,
+                ]);
     
-                        // Update branch information
-                        foreach ($accordion['branches'] ?? [] as $branchData) {
-                            if (is_array($branchData)) {
-                                $branch = Branch::where('company_id', $company->id)->first();
-                                if ($branch) {
-                                    $branch->update([
-                                        'contract_apt' => $branchData['contract_apt'] ?? null,
-                                        'contract_date' => $branchData['contract_date'] ?? null,
-                                        'branch_kubmetr' => $branchData['branch_kubmetr'] ?? null,
-                                        'generate_price' => $branchData['generate_price'] ?? null,
-                                        'payment_type' => $branchData['payment_type'] ?? null,
-                                        'percentage_input' => $branchData['percentage_input'] ?? null,
-                                        'installment_quarterly' => $branchData['installment_quarterly'] ?? null,
-                                        'notification_num' => $branchData['notification_num'] ?? null,
-                                        'notification_date' => $branchData['notification_date'] ?? null,
-                                        'insurance_policy' => $branchData['insurance_policy'] ?? null,
-                                        'bank_guarantee' => $branchData['bank_guarantee'] ?? null,
-                                        'application_number' => $branchData['application_number'] ?? null,
-                                        'payed_sum' => $branchData['payed_sum'] ?? null,
-                                        'payed_date' => $branchData['payed_date'] ?? null,
-                                        'first_payment_percent' => $branchData['first_payment_percent'] ?? null,
-                                    ]);
-                                }
-                            }
-                        }
+                if (isset($accordion['branches'])) {
+                    foreach ($accordion['branches'] as $branchIndex => $branchData) {
+                        $branch = Branch::where('company_id', $company->id)->skip($branchIndex)->firstOrFail();
+                        $branch->update([
+                            'company_id' => $company->id,
+                            'contract_apt' => $branchData['contract_apt'] ?? null,
+                            'contract_date' => $branchData['contract_date'] ?? null,
+                            'branch_kubmetr' => $branchData['branch_kubmetr'] ?? null,
+                            'generate_price' => $branchData['generate_price'] ?? null,
+                            'payment_type' => $branchData['payment_type'] ?? null,
+                            'percentage_input' => $branchData['percentage_input'] ?? null,
+                            'installment_quarterly' => $branchData['installment_quarterly'] ?? null,
+                            'notification_num' => $branchData['notification_num'] ?? null,
+                            'notification_date' => $branchData['notification_date'] ?? null,
+                            'insurance_policy' => $branchData['insurance_policy'] ?? null,
+                            'bank_guarantee' => $branchData['bank_guarantee'] ?? null,
+                            'application_number' => $branchData['application_number'] ?? null,
+                            'payed_sum' => $branchData['payed_sum'] ?? null,
+                            'payed_date' => $branchData['payed_date'] ?? null,
+                            'first_payment_percent' => $branchData['first_payment_percent'] ?? null,
+                        ]);
                     }
                 }
             }
@@ -271,6 +265,7 @@ class ProductController extends Controller
             return redirect()->back()->with('error', 'An error occurred while updating the product: ' . $e->getMessage());
         }
     }
+    
     
 
     private function getRequestData(Request $request)
