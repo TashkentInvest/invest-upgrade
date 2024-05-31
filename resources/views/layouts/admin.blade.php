@@ -217,7 +217,13 @@
 	<script src="{{ asset('assets/js/app.js') }}"></script>
 	{{-- <script src="{{ asset('assets/libs/sweetalert2/sweetalert2.min.js') }}"></script>  --}}
 
-	
+	<script>
+		$("#reset_form").on('click',function () {
+			$('form :input').val('');
+			$("form :input[class*='like-operator']").val('like');
+			$( "div[id*='_pair']" ).hide();
+		});	
+    </script>
 	
 	<script>
 		function togglePassword(inputId, toggleIconId) {

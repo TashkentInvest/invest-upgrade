@@ -484,6 +484,7 @@
                                 <h4>@lang('global.downloadFile')</h4>
                                 <div class="col-12 col-lg-3 mb-2">
                                     <!-- Allow users to upload additional files -->
+                                    <h6>Ruxsatnoma | Shartnoma</h6>
                                     <input type="file" name="document[]" multiple>
                                     @if ($errors->has('document'))
                                         <span class="error invalid-feedback">{{ $errors->first('document') }}</span>
@@ -494,18 +495,14 @@
                                     @foreach ($files as $file)
                                         <div class="py-1">
                                             <a target="_blank" class="py-2 my-2"
-                                                href="{{ asset($file->path) }}">Link</a>
-                                                @can('client.delete')
+                                                href="{{ asset($file->path) }}">{{$file->path}}</a>
+                                            @can('client.delete')
                                                 Delete
                                                 <input type="checkbox" name="delete_files[]" value="{{ $file->id }}">
-                                                    
-                                                @endcan
+                                            @endcan
                                         </div>
                                     @endforeach
                                 </ul>
-
-
-
 
                         </section>
 

@@ -126,14 +126,14 @@
                                                     <i class="bx bxs-download" style="font-size: 16px;"></i>
                                                 </a>
                                             </li>
-                                                
+{{--                                                 
                                                <li data-bs-toggle="tooltip" data-bs-placement="top"
                                                     title="@lang('global.downloadFile')">
                                                     <a href="{{ route('download.table.data', $client->id) }}"
                                                         class="btn btn-warning">
                                                         <i class="bx bxs-download" style="font-size: 16px;"></i>
                                                     </a>
-                                                </li>
+                                                </li> --}}
                                             </ul>
                                         </form>
                                     </td>
@@ -159,6 +159,7 @@
                         <tbody>
                             {{-- @dump($client->companies[0]->company_name ) --}}
                             @if (isset($client))
+                            {{-- @dd($client->companies) --}}
                             @foreach ($client->companies as $index => $comp)
                                 <tr>
                                     <td>@lang('global.id')</td>
