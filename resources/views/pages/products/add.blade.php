@@ -155,7 +155,7 @@
                                     </div>
                                 </div>
 
-                                <div class="row" id="passport">
+                                <div class="row" id="passport" style="align-items: center ">
                                     
                                     <div class="col-12 col-lg-3 mb-2">
                                         <label for="passport_serial" class="col-md-6 col-form-label">@lang('cruds.client.fields.passport_serial')</label>
@@ -190,6 +190,17 @@
                                         @endif
                                     </div>
 
+
+                                    <div class="col-12 col-lg-6 mb-2">
+                                        <label for="client_description" class="col-md-6 col-form-label">@lang('cruds.client.fields.client_description')</label>
+                                        <textarea id="textarea" class="form-control {{ $errors->has('client_description') ? 'is-invalid' : '' }}" maxlength="225" rows="3" placeholder="This textarea has a limit of 225 chars.">{{ old('client_description') }}</textarea>
+                                        @if ($errors->has('passport_location'))
+                                            <span class="error invalid-feedback">{{ $errors->first('passport_location') }}</span>
+                                        @endif
+
+                                    </div>
+
+
                                     <div class="col-12 col-lg-3 mb-2">
                                         <label for="file" class="col-md-4 col-form-label">File document</label>
                                         <input type="file" name="document[]" multiple>
@@ -198,12 +209,18 @@
                                         @endif
                                     </div>
 
+                                    <div class="col-12 col-lg-3 mb-2">
+                                       
+                                        <label for="is_passport_id">Is passport ID?</label>
+                                        <input type="checkbox" name="passport_type" id="is_passport_id" value="1">
+
+                                    </div>
+
+
+                              
 
                                 </div>
                                
-                                <label for="is_passport_id">Is passport ID?</label>
-                                <input type="checkbox" name="passport_type" id="is_passport_id" value="1">
-
 
                 
                                 
