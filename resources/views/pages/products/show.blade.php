@@ -145,14 +145,7 @@
                                                         <i class="bx bxs-download" style="font-size: 16px;"></i>
                                                     </a>
                                                 </li>
-                                                {{--                                                 
-                                               <li data-bs-toggle="tooltip" data-bs-placement="top"
-                                                    title="@lang('global.downloadFile')">
-                                                    <a href="{{ route('download.table.data', $client->id) }}"
-                                                        class="btn btn-warning">
-                                                        <i class="bx bxs-download" style="font-size: 16px;"></i>
-                                                    </a>
-                                                </li> --}}
+                                           
                                             </ul>
                                         </form>
                                     </td>
@@ -180,6 +173,7 @@
                             @if (isset($client))
                                 {{-- @dd($client->companies) --}}
                                 @foreach ($client->companies as $index => $comp)
+                                {{-- @dump($comp) --}}
                                     <tr>
                                         <td>@lang('global.id')</td>
                                         <td colspan="2">{{ $index + 1 }}</td>
@@ -194,10 +188,38 @@
                                         <td>@lang('cruds.company.fields.company_name')</td>
                                         <td colspan="2">{{ $comp->company_name }}</td>
                                     </tr>
+                                    <tr>
+                                        <td>@lang('global.loyiha_turi')</td>
+                                        <td colspan="2">{{ $comp->company_type }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>@lang('cruds.company.fields.raxbar')</td>
+                                        <td colspan="2">{{ $comp->raxbar }}</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>@lang('cruds.company.fields.bank_code')</td>
+                                        <td colspan="2">{{ $comp->bank_code }}</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>@lang('cruds.company.fields.bank_service')</td>
+                                        <td colspan="2">{{ $comp->bank_service }}</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>@lang('cruds.company.fields.stir')</td>
+                                        <td colspan="2">{{ $comp->stir }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>@lang('cruds.company.fields.oked')</td>
+                                        <td colspan="2">{{ $comp->oked }}</td>
+                                    </tr>
+
 
                                     @foreach ($comp->branches as $b)
                                         <tr>
-                                            <td colspan="3" class="text-center"><strong>@lang('global.contract_details')</strong></td>
+                                            <td colspan="3" class="text-center"><strong>@lang('global.contract_details') - {{$b->contract_apt}}</strong></td>
                                         </tr>
                                         <tr>
                                             <td>@lang('global.ruxsatnoma_raqami')</td>
@@ -241,7 +263,7 @@
                                     <ul>
                                         @foreach ($files as $file)
                                             <li>
-                                                <a target="_blank" href="{{ asset($file->path) }}">Link</a>
+                                                <a target="_blank" href="{{ asset($file->path) }}">{{$file->path}}</a>
                                             </li>
                                         @endforeach
                                     </ul>
