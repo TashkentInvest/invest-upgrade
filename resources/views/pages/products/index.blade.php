@@ -106,8 +106,8 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="box container">
-                                            <a href="{{ route('download.excel') }}">Download all of Exel</a>
+                                        <div class="box container text-center ">
+                                            <a class="border rounded " href="{{ route('download.excel') }}">Download all of Exel</a>
                                         </div>
                                         <div class="modal-footer">
                                             <button type="submit" name="filter"
@@ -134,10 +134,10 @@
                             <tr>
                                 <th>ID</th>
                                 <th>@lang('global.client_name') || Yurik</th>
-                                <th>@lang('cruds.company.fields.stir')</th>
                                 <th>@lang('cruds.client.fields.contact')</th>
                                 {{-- <th>@lang('cruds.client.fields.mijoz_turi')</th> --}}
                                 <th>@lang('cruds.company.fields.address')</th>
+                                <th>@lang('cruds.company.fields.stir')</th>
                                 <th>@lang('global.active')</th>
                                 <th style="width: 150px;">@lang('global.created_at')</th>
                                 <th style="width: 100px;">@lang('global.actions')</th>
@@ -153,11 +153,12 @@
                                     @else
                                         <td>{{ $item->companies[0]->company_name }} </td>
                                     @endif
-                                    <td>{{ $item->companies[0]->stir }} </td>
-
-
+                                    
+                                    
                                     <td>{{ $item->contact ?? '---' }}</td>
-                                    <td>{{ $item->address ?? '---' }}</td>
+                                    <td>{{ $item->companies[0]->company_location }} </td>
+
+                                    <td>{{ $item->companies[0]->stir }} </td>
                                     {{-- <td>
                                         @if ($item->mijoz_turi == 'fizik')
                                             @lang('global.fizik')
