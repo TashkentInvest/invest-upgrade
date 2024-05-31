@@ -168,8 +168,8 @@ class ProductController extends Controller
         $company = Company::where('client_id', $client_id)->firstOrFail();
         $company->update($requestData['company']);
 
-        // $branch = Branch::where('client_id', $client_id)->firstOrFail();
-        // $branch->update($requestData['branch']);
+        $branch = Branch::where('company_id', $company->id)->firstOrFail();
+        $branch->update($requestData['branch']);
     
         // Update product information
         $product = Products::where('client_id', $client_id)->firstOrFail();
@@ -210,12 +210,12 @@ class ProductController extends Controller
     
         return redirect()->back()->with('error', 'An error occurred while updating the product: ' . $e->getMessage());
     }
-}
+    }
 
     
     private function getRequestData(Request $request)
     {
-        // Get data from the create function
+        // Get client data
         $client = [
             'first_name' => $request->first_name,
             'last_name' => $request->last_name,
@@ -224,29 +224,71 @@ class ProductController extends Controller
             'contact' => $request->contact,
             'passport_serial' => $request->passport_serial,
             'passport_pinfl' => $request->passport_pinfl,
-            'passport_date' => $request->passport_date, 
-            'passport_location' => $request->passport_location, 
-            'passport_type' => $request->passport_type, 
-            'yuridik_address' => $request->yuridik_address, 
-            'yuridik_rekvizid' => $request->yuridik_rekvizid, 
+            'passport_date' => $request->passport_date,
+            'passport_location' => $request->passport_location,
+            'passport_type' => $request->passport_type,
+            'yuridik_address' => $request->yuridik_address,
+            'yuridik_rekvizid' => $request->yuridik_rekvizid,
+            'client_description' => $request->client_description,
         ];
-    
-        $company = [
-            'company_location' => $request->company_location,
-            'company_type' => $request->company_type,
-            'branch_kubmetr' => $request->branch_kubmetr,
-            'company_name' => $request->company_name,
-        ];
-    
-        $product = [
-            'minimum_wage' => $request->minimum_wage,
-            'contract_apt' => $request->contract_apt,
-            'contract_date' => $request->contract_date,
-            'updated_at' => Carbon::today()
-        ];
-    
-        return compact('client', 'company', 'product');
+
+        // Get company data
+        $company = [];
+        if ($request->has('accordions')) {
+            foreach ($request->accordions as $accordion) {
+                $company[] = [
+                    'company_location' => $accordion['company_location'] ?? null,
+                    'company_type' => $accordion['company_type'] ?? null,
+                    'company_name' => $accordion['company_name'] ?? null,
+                    'raxbar' => $accordion['raxbar'] ?? null,
+                    'bank_code' => $accordion['bank_code'] ?? null,
+                    'bank_service' => $accordion['bank_service'] ?? null,
+                    'stir' => $accordion['stir'] ?? null,
+                    'oked' => $accordion['oked'] ?? null,
+                ];
+            }
+        }
+
+        $branch = [];
+        if ($request->has('accordions')) {
+            foreach ($request->accordions as $accordion) {
+                $branch[] = [
+                    'contract_apt' => $accordion['contract_apt'] ?? null,
+                    'contract_date' => $accordion['contract_date'] ?? null,
+                    'branch_kubmetr' => $accordion['branch_kubmetr'] ?? null,
+                    'generate_price' => $accordion['generate_price'] ?? null,
+                    'payment_type' => $accordion['payment_type'] ?? null,
+                    'percentage_input' => $accordion['percentage_input'] ?? null,
+                    'installment_quarterly' => $accordion['installment_quarterly'] ?? null,
+                    'notification_num' => $accordion['notification_num'] ?? null,
+                    'notification_date' => $accordion['notification_date'] ?? null,
+                    'insurance_policy' => $accordion['insurance_policy'] ?? null,
+                    'bank_guarantee' => $accordion['bank_guarantee'] ?? null,
+                    'application_number' => $accordion['application_number'] ?? null,
+                    'payed_sum' => $accordion['payed_sum'] ?? null,
+                    'payed_date' => $accordion['payed_date'] ?? null,
+                    'first_payment_percent' => $accordion['first_payment_percent'] ?? null,
+                ];
+            }
+        }
+
+        // Get product data
+        $product = [];
+        if ($request->has('accordions')) {
+            foreach ($request->accordions as $accordion) {
+                $product[] = [
+                    'minimum_wage' => $accordion['minimum_wage'],
+                    'contract_apt' => $accordion['contract_apt'],
+                    'contract_date' => $accordion['contract_date'],
+                    'created_at' => Carbon::today(),
+                    'updated_at' => Carbon::today(),
+                ];
+            }
+        }
+
+        return compact('client', 'company', 'branch', 'product');
     }
+
     
     public function delete($client_id)
     {
