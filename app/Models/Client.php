@@ -31,7 +31,6 @@ class Client extends Model
         'is_deleted',
         'client_description',
         'application_number'
-        
 
     ];
 
@@ -66,8 +65,6 @@ class Client extends Model
         foreach ($obj->fillable as $item) {
 
             // dump($item);
-          
-
             $operator = $item.'_operator';
 
             // Search relationed company ***********************************************
@@ -90,8 +87,6 @@ class Client extends Model
             //     });
             // }
 
-            
-            
             
             // END Search relationed company ***********************************************
 
