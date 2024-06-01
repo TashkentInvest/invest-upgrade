@@ -31,8 +31,6 @@ class CreateClientsTable extends Migration
             $table->string('client_description')->nullable();
             $table->string('application_number')->nullable();
 
-            
-            
             $table->timestamps();
         });
     }

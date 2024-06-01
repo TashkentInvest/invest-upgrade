@@ -23,30 +23,34 @@ class ProductsExport implements FromCollection, WithHeadings, WithColumnFormatti
             ->join('companies', 'clients.id', '=', 'companies.client_id')
             ->join('branches', 'companies.id', '=', 'branches.company_id')
             ->select(
-                'clients.id',
-                'clients.first_name',
-                'companies.company_name',
-                'clients.contact',
-                'companies.company_location',
-                'branches.branch_kubmetr',
-                'branches.generate_price',
-                'branches.payed_date',
-                'branches.payed_sum',
-                'branches.contract_date',
-                'branches.notification_num',
-                'branches.notification_date',
-                'branches.insurance_policy',
-                'branches.bank_guarantee',
-                'clients.client_description'
+                'clients.id AS number',
+                'clients.application_number AS application_number',
+                'companies.company_name AS company_name',
+                'clients.contact AS contact',
+                'companies.company_location AS district',
+                'branches.branch_kubmetr AS calculated_volume',
+                'branches.generate_price AS infrastructure_payment',
+                'branches.payed_sum AS paid_amount',
+                'branches.payed_date AS payment_date',
+                'branches.notification_num AS notification_number',
+                'branches.contract_apt AS contract_number',
+                'branches.contract_date AS contract_date',
+                'branches.notification_date AS notification_date',
+                'branches.insurance_policy AS insurance_policy',
+                'clients.client_description AS note',
+                'branches.bank_guarantee AS bank_guarantee',
             );
-
-            
 
         if ($this->id !== null) {
             $query->where('clients.id', $this->id);
         }
 
-        return $query->get();
+        return $query->get()->map(function ($item, $key) {
+            // Calculate first_payment as 20% of infrastructure_payment
+            $item->first_payment = (float) $item->infrastructure_payment * 0.20;
+            $item->number = $key + 1; // Row number starts at 1
+            return (array) $item;
+        });
     }
 
     public function headings(): array
@@ -60,15 +64,15 @@ class ProductsExport implements FromCollection, WithHeadings, WithColumnFormatti
             'Расчетный объем здания',
             'Инфраструктурный платеж (сўм) по договору',
             'Первый платеж (сум) 20% от стоимости',
-            'оплаченная сумма (сўм)',
+            'Оплаченная сумма (сўм)',
             'Дата оплаты',
             '№ договора',
             'Дата договора',
             '№ уведомления',
-            'Дата увед',
+            'Дата уведомления',
+            'Примечание',
             'Страховой полис',
             'Банковская гарантия',
-            'Примечание'
         ];
     }
 
