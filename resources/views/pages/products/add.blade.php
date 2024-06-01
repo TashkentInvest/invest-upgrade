@@ -218,7 +218,7 @@
                                             class="col-md-4 col-form-label">@lang('cruds.client.fields.passport_date')</label>
                                         <input
                                             class="form-control {{ $errors->has('passport_date') ? 'is-invalid' : '' }}"
-                                            type="date" name="passport_date" id="passport_date"
+                                            type="datetime-local" name="passport_date" id="passport_date"
                                             placeholder="@lang('cruds.client.fields.passport_date')" value="{{ old('passport_date') }}">
                                         @if ($errors->has('passport_date'))
                                             <span
@@ -368,7 +368,7 @@
                                                         <div class="col-lg-3">
                                                             <div class="mb-3">
                                                                 <label for="notification_date">@lang('cruds.branches.fields.notification_date')</label>
-                                                                <input type="text" class="form-control"
+                                                                <input type="datetime-local" class="form-control"
                                                                     name="accordions[0][notification_date]"
                                                                     placeholder="@lang('cruds.branches.fields.notification_date')">
                                                             </div>
@@ -412,7 +412,7 @@
                                                         <div class="col-lg-3">
                                                             <div class="mb-3">
                                                                 <label for="payed_date">@lang('cruds.branches.fields.payed_date')</label>
-                                                                <input type="text" class="form-control"
+                                                                <input type="datetime-local" class="form-control"
                                                                     name="accordions[0][payed_date]"
                                                                     placeholder="@lang('cruds.branches.fields.payed_date')">
                                                             </div>
