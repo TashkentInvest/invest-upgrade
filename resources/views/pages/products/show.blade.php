@@ -251,6 +251,8 @@
                                     <tr>
                                         <td>@lang('global.quarterly_payment')</td>
                                         <td colspan="2">{{ $b->installment_quarterly }}</td>
+                            {{-- @dd($b) --}}
+
                                     </tr>
                                 @endforeach
                             @endforeach
