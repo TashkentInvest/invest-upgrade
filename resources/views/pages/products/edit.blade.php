@@ -23,7 +23,8 @@
     </div>
 
     <div class="row">
-        <div class="col-8 offset-2">
+        {{-- offset-1 --}}
+        <div class="col-12 ">
 
             <div class="card">
                 <div class="card-header">
