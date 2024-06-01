@@ -27,18 +27,20 @@ class ProductsExport implements FromCollection, WithHeadings, WithColumnFormatti
                 'clients.first_name',
                 'companies.company_name',
                 'clients.contact',
-                'clients.last_name',
+                'companies.company_location',
                 'branches.branch_kubmetr',
                 'branches.generate_price',
-                'clients.father_name',
-                'clients.mijoz_turi',
-                'companies.company_location',
-                'branches.contract_apt',
+                'branches.payed_date',
+                'branches.payed_sum',
                 'branches.contract_date',
-                'branches.payment_type',
-                'branches.percentage_input',
-                'branches.installment_quarterly'
+                'branches.notification_num',
+                'branches.notification_date',
+                'branches.insurance_policy',
+                'branches.bank_guarantee',
+                'clients.client_description'
             );
+
+            
 
         if ($this->id !== null) {
             $query->where('clients.id', $this->id);
