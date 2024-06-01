@@ -45,6 +45,8 @@ class ProductsExport implements FromCollection, WithHeadings, WithColumnFormatti
         if ($this->id !== null) {
             $query->where('clients.id', $this->id);
         }
+        
+        $query->orderBy('clients.updated_at', 'desc');
 
         return $query->get()->map(function ($item, $key) {
             $item->number = $key + 1; // Row number starts at 1
