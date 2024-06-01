@@ -30,15 +30,16 @@ class ProductsExport implements FromCollection, WithHeadings, WithColumnFormatti
                 'companies.company_location AS district',
                 'branches.branch_kubmetr AS calculated_volume',
                 'branches.generate_price AS infrastructure_payment',
+                DB::raw('CAST(branches.generate_price AS NUMERIC) * 0.20 AS first_payment'),
                 'branches.payed_sum AS paid_amount',
                 'branches.payed_date AS payment_date',
-                'branches.notification_num AS notification_number',
                 'branches.contract_apt AS contract_number',
                 'branches.contract_date AS contract_date',
+                'branches.notification_num AS notification_number',
                 'branches.notification_date AS notification_date',
                 'branches.insurance_policy AS insurance_policy',
-                'clients.client_description AS note',
                 'branches.bank_guarantee AS bank_guarantee',
+                'clients.client_description AS note'
             );
 
         if ($this->id !== null) {
@@ -46,8 +47,6 @@ class ProductsExport implements FromCollection, WithHeadings, WithColumnFormatti
         }
 
         return $query->get()->map(function ($item, $key) {
-            // Calculate first_payment as 20% of infrastructure_payment
-            $item->first_payment = (float) $item->infrastructure_payment * 0.20;
             $item->number = $key + 1; // Row number starts at 1
             return (array) $item;
         });
@@ -72,7 +71,7 @@ class ProductsExport implements FromCollection, WithHeadings, WithColumnFormatti
             'Дата уведомления',
             'Примечание',
             'Страховой полис',
-            'Банковская гарантия',
+            'Банковская гарантия'
         ];
     }
 
