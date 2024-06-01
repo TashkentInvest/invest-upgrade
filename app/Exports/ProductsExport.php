@@ -16,7 +16,6 @@ class ProductsExport implements FromCollection, WithHeadings, WithColumnFormatti
     {
         $this->id = $id;
     }
-
     public function collection()
     {
         try {
@@ -31,7 +30,7 @@ class ProductsExport implements FromCollection, WithHeadings, WithColumnFormatti
                     'companies.company_location AS district',
                     'branches.branch_kubmetr AS calculated_volume',
                     'branches.generate_price AS infrastructure_payment',
-                    DB::raw("CAST(NULLIF(REGEXP_REPLACE(branches.generate_price, '[^0-9.]', '', 'g'), '') AS NUMERIC) * CAST(branches.percentage_input AS NUMERIC) / 100 AS calculated_amount"),
+                    DB::raw("CAST(NULLIF(REGEXP_REPLACE(branches.generate_price, '[^0-9.]', ''), '') AS DECIMAL(10,2)) * CAST(branches.percentage_input AS DECIMAL(10,2)) / 100 AS calculated_amount"),
                     'branches.payed_sum AS paid_amount',
                     'branches.payed_date AS payment_date',
                     'branches.contract_apt AS contract_number',
@@ -42,13 +41,13 @@ class ProductsExport implements FromCollection, WithHeadings, WithColumnFormatti
                     'branches.bank_guarantee AS bank_guarantee',
                     'clients.client_description AS note'
                 );
-
+    
             if ($this->id !== null) {
                 $query->where('clients.id', $this->id);
             }
-
+    
             $query->orderBy('clients.updated_at', 'desc');
-
+    
             return $query->get()->map(function ($item, $key) {
                 $item->number = $key + 1; // Row number starts at 1
                 return (array) $item;
@@ -59,6 +58,7 @@ class ProductsExport implements FromCollection, WithHeadings, WithColumnFormatti
             return collect([]);
         }
     }
+    
 
     public function headings(): array
     {
