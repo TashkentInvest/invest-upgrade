@@ -39,7 +39,7 @@ class ProductsExport implements FromCollection, WithHeadings, WithColumnFormatti
                 'branches.notification_date AS notification_date',
                 'branches.insurance_policy AS insurance_policy',
                 'branches.bank_guarantee AS bank_guarantee',
-                'clients.client_description AS note'
+                'clients.client_description AS note'    
             );
 
         if ($this->id !== null) {
@@ -69,9 +69,10 @@ class ProductsExport implements FromCollection, WithHeadings, WithColumnFormatti
             'Дата договора',
             '№ уведомления',
             'Дата уведомления',
-            'Примечание',
             'Страховой полис',
-            'Банковская гарантия'
+            'Банковская гарантия',
+            'Примечание',
+
         ];
     }
 
