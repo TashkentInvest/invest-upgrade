@@ -45,14 +45,15 @@
                                 <div class="col-12 col-lg-12 mb-2">
                                     <label for="mijoz_turi" class="col-md-6 col-form-label">@lang('cruds.client.fields.mijoz_turi')</label>
                                     <select class="form-control" name="mijoz_turi" id="mijoz_turi">
-                                        <option value="fizik">@lang('cruds.client.fields.mijoz_turi_fizik')</option>
-                                        <option value="yuridik">@lang('cruds.client.fields.mijoz_turi_yuridik')</option>
+                                        <option value="fizik" {{ old('mijoz_turi', $client->mijoz_turi) == 'fizik' ? 'selected' : '' }}>@lang('cruds.client.fields.mijoz_turi_fizik')</option>
+                                        <option value="yuridik" {{ old('mijoz_turi', $client->mijoz_turi) == 'yuridik' ? 'selected' : '' }}>@lang('cruds.client.fields.mijoz_turi_yuridik')</option>
                                     </select>
                                     @if ($errors->has('mijoz_turi'))
                                         <span class="error invalid-feedback">{{ $errors->first('mijoz_turi') }}</span>
                                     @endif
                                 </div>
                             </div>
+                            
 
                             <div class="row" id="yuridik_section">
                                 <div class="col-12 col-lg-3 mb-2">
@@ -168,7 +169,7 @@
                                 <div class="col-12 col-lg-3 mb-2">
                                     <label for="passport_date" class="col-md-6 col-form-label">@lang('cruds.client.fields.passport_date')</label>
                                     <input class="form-control {{ $errors->has('passport_date') ? 'is-invalid' : '' }}"
-                                        type="date" name="passport_date" id="passport_date"
+                                        type="datetime-local" name="passport_date" id="passport_date"
                                         placeholder="@lang('cruds.client.fields.passport_date')"
                                         value="{{ old('passport_date', $client->passport_date) }}">
                                     @if ($errors->has('passport_date'))
@@ -329,7 +330,7 @@
                                                 <div class="col-lg-3">
                                                     <div class="mb-3">
                                                         <label for="notification_date">@lang('cruds.branches.fields.notification_date')</label>
-                                                        <input type="text" class="form-control"
+                                                        <input type="datetime-local" class="form-control"
                                                             name="accordions[{{ $companyIndex }}][branches][{{ $branchIndex }}][notification_date]"
                                                             value="{{ old('accordions.' . $companyIndex . '.branches.' . $branchIndex . '.notification_date', $b->notification_date) }}">
                                                     </div>
@@ -371,7 +372,7 @@
                                                 <div class="col-lg-4">
                                                     <div class="mb-3">
                                                         <label for="payed_date">@lang('cruds.branches.fields.payed_date')</label>
-                                                        <input type="text" class="form-control"
+                                                        <input type="datetime-local" class="form-control"
                                                             name="accordions[{{ $companyIndex }}][branches][{{ $branchIndex }}][payed_date]"
                                                             value="{{ old('accordions.' . $companyIndex . '.branches.' . $branchIndex . '.payed_date', $b->payed_date) }}">
                                                     </div>
