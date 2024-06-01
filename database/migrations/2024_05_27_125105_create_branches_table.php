@@ -24,6 +24,7 @@ class CreateBranchesTable extends Migration
             $table->string('percentage_input')->nullable();
             $table->string('installment_quarterly')->nullable();
             $table->string('branch_kubmetr')->nullable();
+            
 
             $table->string('notification_num')->nullable();
             $table->dateTime('notification_date')->nullable();
