@@ -92,9 +92,6 @@
                                         @endif
                                     </div>
 
-
-
-
                                     <div class="col-12 col-lg-3 mb-2">
                                         <label for="stir" class="col-md-6 col-form-label">@lang('cruds.company.fields.stir')</label>
                                         <input class="form-control {{ $errors->has('stir') ? 'is-invalid' : '' }}"
@@ -140,8 +137,6 @@
                                                 class="error invalid-feedback">{{ $errors->first('yuridik_rekvizid') }}</span>
                                         @endif
                                     </div>
-
-
 
                                 </div>
 
@@ -244,7 +239,6 @@
                                         @endif
                                     </div>
 
-
                                     <div class="col-12 col-lg-6 mb-2">
                                         <label for="client_description"
                                             class="col-md-6 col-form-label">@lang('cruds.client.fields.client_description')</label>
@@ -256,7 +250,6 @@
                                                 class="error invalid-feedback">{{ $errors->first('client_description') }}</span>
                                         @endif
                                     </div>
-
 
                                     <div class="col-12 col-lg-3 mb-2">
                                         <label for="file" class="col-md-4 col-form-label">File document</label>
@@ -273,9 +266,6 @@
 
                                     </div>
                                 </div>
-
-
-
 
                                 <div class="row" id="make_hide">
 
@@ -364,7 +354,6 @@
                                                             </div>
                                                         </div>
                                                     </div>
-
                                                     {{-- Starting to add new rows --}}
 
                                                     <div class="row">
@@ -402,9 +391,7 @@
                                                                     placeholder="@lang('cruds.branches.fields.bank_guarantee')">
                                                             </div>
                                                         </div>
-
                                                         {{-- second --}}
-
                                                         <div class="col-lg-3">
                                                             <div class="mb-3">
                                                                 <label for="application_number">@lang('cruds.branches.fields.application_number')</label>
@@ -422,7 +409,6 @@
                                                             </div>
                                                         </div>
 
-
                                                         <div class="col-lg-3">
                                                             <div class="mb-3">
                                                                 <label for="payed_date">@lang('cruds.branches.fields.payed_date')</label>
@@ -432,9 +418,7 @@
                                                             </div>
                                                         </div>
                                                     </div>
-
                                                     {{-- Starting to add new rows end --}}
-
                                                     <div class="row">
                                                         <div class="col-lg-3">
                                                             <div class="inner-repeater mb-4">
@@ -508,7 +492,7 @@
                                                             </div>
                                                         </div>
                                                     </div>
-
+                                                    
                                                     <div class="row">
                                                         <div class="col-lg-12">
                                                             <table class="table">
@@ -670,8 +654,6 @@
                                     calculateGeneratePrice($('.accordion-item').first().find('.accordion-body'));
                                 });
                             </script>
-
-
                             <!-- Confirm Details -->
                             <h3>@lang('global.confirmation')</h3>
 
@@ -694,8 +676,6 @@
                             </section>
 
                         </div>
-
-
                     </form>
 
                 </div>

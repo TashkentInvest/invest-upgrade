@@ -53,8 +53,7 @@
                                 </div>
                             </div>
 
-                            <div class="row">
-
+                            <div class="row" id="yuridik_section">
                                 <div class="col-12 col-lg-3 mb-2">
                                     <label for="company_name" class="col-md-6 col-form-label">@lang('cruds.company.fields.company_name')</label>
                                     <input class="form-control {{ $errors->has('company_name') ? 'is-invalid' : '' }}"
@@ -94,14 +93,12 @@
                                         placeholder="@lang('cruds.client.fields.yuridik_rekvizid')"
                                         value="{{ old('yuridik_rekvizid', $client->yuridik_rekvizid) }}">
                                     @if ($errors->has('yuridik_rekvizid'))
-                                        <span
-                                            class="error invalid-feedback">{{ $errors->first('yuridik_rekvizid') }}</span>
+                                        <span class="error invalid-feedback">{{ $errors->first('yuridik_rekvizid') }}</span>
                                     @endif
                                 </div>
-
                             </div>
 
-                            <div class="row">
+                            <div class="row" id="fizik_section">
                                 <div class="col-12 col-lg-3 mb-2">
                                     <label for="last_name" class="col-md-6 col-form-label">@lang('cruds.client.fields.last_name')</label>
                                     <input class="form-control {{ $errors->has('last_name') ? 'is-invalid' : '' }}"
@@ -113,7 +110,7 @@
                                 </div>
 
                                 <div class="col-12 col-lg-3 mb-2">
-                                    <label for="name" class="col-md-6 col-form-label">@lang('cruds.client.fields.name')</label>
+                                    <label for="first_name" class="col-md-6 col-form-label">@lang('cruds.client.fields.name')</label>
                                     <input class="form-control {{ $errors->has('first_name') ? 'is-invalid' : '' }}"
                                         type="text" name="first_name" id="first_name" placeholder="@lang('cruds.client.fields.first_name')"
                                         value="{{ old('first_name', $client->first_name) }}">
@@ -144,21 +141,17 @@
                                 </div>
                             </div>
 
-                            <div class="row" id="passport" style="align-items: center ">
-
+                            <div class="row" id="fizik_section_2">
                                 <div class="col-12 col-lg-3 mb-2">
-                                    <label for="passport_serial"
-                                        class="col-md-6 col-form-label">@lang('cruds.client.fields.passport_serial')</label>
+                                    <label for="passport_serial" class="col-md-6 col-form-label">@lang('cruds.client.fields.passport_serial')</label>
                                     <input class="form-control {{ $errors->has('passport_serial') ? 'is-invalid' : '' }}"
                                         type="text" name="passport_serial" id="passport_serial"
                                         placeholder="@lang('cruds.client.fields.passport_serial')"
                                         value="{{ old('passport_serial', $client->passport_serial) }}">
                                     @if ($errors->has('passport_serial'))
-                                        <span
-                                            class="error invalid-feedback">{{ $errors->first('passport_serial') }}</span>
+                                        <span class="error invalid-feedback">{{ $errors->first('passport_serial') }}</span>
                                     @endif
                                 </div>
-
 
                                 <div class="col-12 col-lg-3 mb-2">
                                     <label for="passport_pinfl" class="col-md-6 col-form-label">@lang('cruds.client.fields.passport_pinfl')</label>
@@ -183,45 +176,56 @@
                                 </div>
 
                                 <div class="col-12 col-lg-3 mb-2">
-                                    <label for="passport_location"
-                                        class="col-md-6 col-form-label">@lang('cruds.client.fields.passport_location')</label>
-                                    <input
-                                        class="form-control {{ $errors->has('passport_location') ? 'is-invalid' : '' }}"
+                                    <label for="passport_location" class="col-md-6 col-form-label">@lang('cruds.client.fields.passport_location')</label>
+                                    <input class="form-control {{ $errors->has('passport_location') ? 'is-invalid' : '' }}"
                                         type="text" name="passport_location" id="passport_location"
                                         placeholder="@lang('cruds.client.fields.passport_location')"
                                         value="{{ old('passport_location', $client->passport_location) }}">
                                     @if ($errors->has('passport_location'))
-                                        <span
-                                            class="error invalid-feedback">{{ $errors->first('passport_location') }}</span>
+                                        <span class="error invalid-feedback">{{ $errors->first('passport_location') }}</span>
                                     @endif
                                 </div>
 
-
                                 <div class="col-12 col-lg-3 mb-2">
-
                                     <label for="is_passport_id" class="col-md-6 col-form-label">Is passport ID?</label>
                                     <input type="checkbox" name="passport_type" id="is_passport_id" value="1">
-
                                 </div>
                             </div>
 
-
-
-
-                            <div class="row" id="make_hide">
-
-                            </div>
-
                             <script>
-                                $(document).ready(function() {
-                                    $('#myForm').on('keypress', function(e) {
+                                document.addEventListener('DOMContentLoaded', function() {
+                                    var mijozTuri = document.getElementById('mijoz_turi');
+                                    var yuridikSection = document.getElementById('yuridik_section');
+                                    var fizikSection = document.getElementById('fizik_section');
+                                    var fizikSection2 = document.getElementById('fizik_section_2');
+
+                                    function toggleSections() {
+                                        if (mijozTuri.value === 'fizik') {
+                                            yuridikSection.style.display = 'none';
+                                            fizikSection.style.display = 'flex';
+                                            fizikSection2.style.display = 'flex';
+                                        } else if (mijozTuri.value === 'yuridik') {
+                                            yuridikSection.style.display = 'flex';
+                                            fizikSection.style.display = 'none';
+                                            fizikSection2.style.display = 'none';
+                                        }
+                                    }
+
+                                    mijozTuri.addEventListener('change', toggleSections);
+
+                                    // Trigger the change event on page load
+                                    toggleSections();
+                                });
+
+                                document.addEventListener('DOMContentLoaded', function() {
+                                    var form = document.getElementById('myForm');
+                                    form.addEventListener('keypress', function(e) {
                                         if (e.which === 13) {
                                             e.preventDefault();
                                         }
                                     });
                                 });
                             </script>
-
                         </section>
                         <!-- Object -->
                         {{-- <h3>@lang('global.object')</h3> --}}
