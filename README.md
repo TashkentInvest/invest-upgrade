@@ -95,6 +95,10 @@ period fix qilish kere
 
 blade clean qilish kere 
 
+edit input laga date qoshish kere
+
+edit mijoz_turi eski datani olishi kere
+
 ```
 
 
