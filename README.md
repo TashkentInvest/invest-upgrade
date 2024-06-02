@@ -97,7 +97,8 @@ blade clean qilish kere
 
 edit input laga date qoshish kere +++
 
-edit mijoz_turi eski datani olishi kere
+edit mijoz_turi eski datani olishi 
+
 
 ```
 
@@ -109,3 +110,7 @@ shu sayt blan word ni html qvolamza
 ```
 composer require maatwebsite/excel
 ```
+
+composer require barryvdh/laravel-debugbar
+
+php artisan vendor:publish --provider="Barryvdh\Debugbar\ServiceProvider"--tag="config"
