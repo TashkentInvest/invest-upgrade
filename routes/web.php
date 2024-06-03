@@ -58,6 +58,7 @@ Route::group(['middleware' => 'auth'], function () {
 
     // Products
     Route::get('/products', [ProductController::class, 'index'])->name('productIndex');
+
     Route::get('/products/data', [ProductController::class, 'getClientsData'])->name('clients.data');
 
     Route::get('/product/add', [ProductController::class, 'add'])->name('productAdd');
@@ -70,6 +71,7 @@ Route::group(['middleware' => 'auth'], function () {
 
     // Audit-Log
     Route::get('audit-logs', [AuditLogController::class, 'index'])->name('audit-logs.index');
+
 
     // File
     Route::get('/doc/{id}', [FileController::class, 'show'])->name('word');

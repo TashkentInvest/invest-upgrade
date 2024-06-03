@@ -471,4 +471,23 @@
             });
         }
     </script>
+
+<script>
+    function updateData() {
+        $.ajax({
+            url: '{{ route("productIndex") }}',
+            method: 'GET',
+            success: function(response) {
+                $('#layout-wrapper').html(response);
+                // console.log(response)
+            },
+            error: function(xhr, status, error) {
+                console.error(xhr.responseText);
+            }
+        });
+    }
+
+    setInterval(updateData, 10000);
+</script>
+
 @endsection

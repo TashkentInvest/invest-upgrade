@@ -18,7 +18,7 @@ use Illuminate\Support\Facades\Cache;
 
 class ProductController extends Controller
 {
-
+    
     public function index()
     {
         // Cache the query result for 60 minutes
@@ -43,7 +43,7 @@ class ProductController extends Controller
     }
     
     
-    public function show($id)
+    public function show($id)   
     {
         // Find the product by ID
         $product = Products::findOrFail($id);
