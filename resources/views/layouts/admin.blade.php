@@ -35,10 +35,13 @@
 	<div id="layout-wrapper">
 
 		<style>
-			.card-body {
-				overflow: scroll !important;
+			@media(max-width: 757px){
+				.card-body {
+					overflow: scroll !important;
+				}
 			}
 		</style>
+		
 
 		<header id="page-topbar">
 			<div class="navbar-header">

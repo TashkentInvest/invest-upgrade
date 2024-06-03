@@ -476,8 +476,8 @@
             });
         }
     </script>
-{{-- 
-<script>
+
+{{-- <script>
     function updateData() {
         $.ajax({
             url: '{{ route("productIndex") }}',
