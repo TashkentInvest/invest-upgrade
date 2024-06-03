@@ -30,16 +30,24 @@ class Client extends Model
         'passport_type',
         'is_deleted',
         'client_description',
-        'application_number'
+        'application_number',
+
+        'company_name',
+        'raxbar',
+        'company_location',
+        'company_type',
+        'bank_code',
+        'bank_service',
+        'stir',
+        'oked',
 
     ];
 
 
     
-    public function companies(){
-        return $this->hasMany(Company::class);
+    public function branches(){
+        return $this->hasMany(Branch::class);
     }
-    
 
     public function products(){
         return $this->hasMany(Products::class);

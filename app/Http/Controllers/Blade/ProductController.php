@@ -25,8 +25,7 @@ class ProductController extends Controller
         $clients = Cache::remember('clients_with_products', 60, function() {
             return Client::with([
                     'products',
-                    'companies',
-                    'companies.branches' 
+                    'branches' 
                 ])
                 ->where('is_deleted', '!=', 1)
                 ->orderBy('updated_at', 'desc')
@@ -44,8 +43,7 @@ class ProductController extends Controller
     
         // Find the client associated with the product, eager loading companies, branches, and files
         $client = Client::where('id', $product->client_id)
-                        ->with('companies')
-                        ->with(['companies.branches', 'files'])
+                        ->with(['branches', 'files'])
                         ->where('is_deleted', '!=', 1)
                         ->firstOrFail();
     
@@ -85,6 +83,15 @@ class ProductController extends Controller
                     'yuridik_address' => $request->get('yuridik_address'),
                     'yuridik_rekvizid' => $request->get('yuridik_rekvizid'),
                     'client_description' => $request->get('client_description'),
+
+                    'company_location' => $request->get('company_location') ?? null,
+                    'company_type' => $request->get('company_type') ?? null,
+                    'company_name' => $request->get('company_name') ?? null,
+                    'raxbar' => $request->get('raxbar') ?? null,
+                    'bank_code' => $request->get('bank_code') ?? null,
+                    'bank_service' => $request->get('bank_service') ?? null,
+                    'stir' => $request->get('stir') ?? null,
+                    'oked' => $request->get('oked') ?? null,
                 ]);
             }
 
@@ -104,20 +111,10 @@ class ProductController extends Controller
             DB::commit();
 
             foreach ($request->accordions as $accordion) {
-                $company = Company::create([
-                    'client_id' => $client->id,
-                    'company_location' => $accordion['company_location'] ?? null,
-                    'company_type' => $accordion['company_type'] ?? null,
-                    'company_name' => $accordion['company_name'] ?? null,
-                    'raxbar' => $accordion['raxbar'] ?? null,
-                    'bank_code' => $accordion['bank_code'] ?? null,
-                    'bank_service' => $accordion['bank_service'] ?? null,
-                    'stir' => $accordion['stir'] ?? null,
-                    'oked' => $accordion['oked'] ?? null,
-                ]);
+                // dd($request);
 
                 $branch = Branch::create([
-                    'company_id' => $company->id,
+                    'client_id' => $client->id, // Assuming client_id is the correct foreign key
                     'contract_apt' => $accordion['contract_apt'] ?? null,
                     'contract_date' => $accordion['contract_date'] ?? null,
                     'branch_kubmetr' => $accordion['branch_kubmetr'] ?? null,
@@ -125,7 +122,6 @@ class ProductController extends Controller
                     'payment_type' => $accordion['payment_type'] ?? null,
                     'percentage_input' => $accordion['percentage_input'] ?? null,
                     'installment_quarterly' => $accordion['installment_quarterly'] ?? null,
-
                     'notification_num' => $accordion['notification_num'] ?? null,
                     'notification_date' => $accordion['notification_date'] ?? null,
                     'insurance_policy' => $accordion['insurance_policy'] ?? null,
@@ -134,17 +130,18 @@ class ProductController extends Controller
                     'payed_sum' => $accordion['payed_sum'] ?? null,
                     'payed_date' => $accordion['payed_date'] ?? null,
                     'first_payment_percent' => $accordion['first_payment_percent'] ?? null,
-
                 ]);
-
+                // dd($branch);
+            
                 Products::create([
                     'user_id' => auth()->user()->id,
                     'client_id' => $client->id,
                     'minimum_wage' => $accordion['minimum_wage'],
                     'created_at' => Carbon::today(),
-                    'updated_at' => Carbon::today()
+                    'updated_at' => Carbon::today(),
                 ]);
             }
+            
 
             DB::commit();
 
@@ -187,6 +184,15 @@ class ProductController extends Controller
                 'yuridik_address' => $request->yuridik_address,
                 'yuridik_rekvizid' => $request->yuridik_rekvizid,
                 'client_description' => $request->client_description,
+
+                'company_location' => $request->get('company_location') ?? null,
+                'company_type' => $request->get('company_type') ?? null,
+                'company_name' => $request->get('company_name') ?? null,
+                'raxbar' => $request->get('raxbar') ?? null,
+                'bank_code' => $request->get('bank_code') ?? null,
+                'bank_service' => $request->get('bank_service') ?? null,
+                'stir' => $request->get('stir') ?? null,
+                'oked' => $request->get('oked') ?? null,
             ]);
     
             // Get existing companies for the client
@@ -195,48 +201,18 @@ class ProductController extends Controller
             // Update company and branch information
             foreach ($request->accordions as $index => $accordion) {
                 // Check if the company exists
-                $company = $existingCompanies->skip($index)->first();
-    
-                if (!$company) {
-                    // Create a new company if it doesn't exist
-                    $company = Company::create([
-                        'client_id' => $client_id,
-                        'company_location' => $accordion['company_location'] ?? null,
-                        'company_type' => $accordion['company_type'] ?? null,
-                        'company_name' => $accordion['company_name'] ?? null,
-                        'raxbar' => $accordion['raxbar'] ?? null,
-                        'bank_code' => $accordion['bank_code'] ?? null,
-                        'bank_service' => $accordion['bank_service'] ?? null,
-                        'stir' => $accordion['stir'] ?? null,
-                        'oked' => $accordion['oked'] ?? null,
-                    ]);
-                } else {
-                    // Update the existing company
-                    $company->update([
-                        'client_id' => $client->id,
-                        'company_location' => $accordion['company_location'] ?? null,
-                        'company_type' => $accordion['company_type'] ?? null,
-                        'company_name' => $accordion['company_name'] ?? null,
-                        'raxbar' => $accordion['raxbar'] ?? null,
-                        'bank_code' => $accordion['bank_code'] ?? null,
-                        'bank_service' => $accordion['bank_service'] ?? null,
-                        'stir' => $accordion['stir'] ?? null,
-                        'oked' => $accordion['oked'] ?? null,
-                    ]);
-                }
+            
     
                 // Get existing branches for the company
-                $existingBranches = Branch::where('company_id', $company->id)->get();
+                $existingBranches = Branch::where('client_id', $client->id)->get();
     
                 if (isset($accordion['branches'])) {
                     foreach ($accordion['branches'] as $branchIndex => $branchData) {
-                        // Check if the branch exists
                         $branch = $existingBranches->skip($branchIndex)->first();
     
                         if (!$branch) {
-                            // Create a new branch if it doesn't exist
                             $branch = Branch::create([
-                                'company_id' => $company->id,
+                                'client_id' => $client->id,
                                 'contract_apt' => $branchData['contract_apt'] ?? null,
                                 'contract_date' => $branchData['contract_date'] ?? null,
                                 'branch_kubmetr' => $branchData['branch_kubmetr'] ?? null,
@@ -256,7 +232,7 @@ class ProductController extends Controller
                         } else {
                             // Update the existing branch
                             $branch->update([
-                                'company_id' => $company->id,
+                                'client_id' => $client->id,
                                 'contract_apt' => $branchData['contract_apt'] ?? null,
                                 'contract_date' => $branchData['contract_date'] ?? null,
                                 'branch_kubmetr' => $branchData['branch_kubmetr'] ?? null,

@@ -107,7 +107,8 @@
                                             </div>
                                         </div>
                                         <div class="box container text-center ">
-                                            <a class="border rounded " href="{{ route('download.excel') }}">Download all of Exel</a>
+                                            <a class="border rounded " href="{{ route('download.excel') }}">Download all of
+                                                Exel</a>
                                         </div>
                                         <div class="modal-footer">
                                             <button type="submit" name="filter"
@@ -145,20 +146,20 @@
                         </thead>
                         <tbody>
                             @foreach ($clients as $item)
-                                {{-- @dump($item->companies[0]->company_name ) --}}
+                                {{-- @dump($item->company_name ) --}}
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
                                     @if ($item->mijoz_turi == 'fizik')
                                         <td>{{ $item->first_name }} {{ $item->last_name }} {{ $item->father_name }}</td>
                                     @else
-                                        <td>{{ $item->companies[0]->company_name }} </td>
+                                        <td>{{ $item->company_name }} </td>
                                     @endif
-                                    
-                                    
-                                    <td>{{ $item->contact ?? '---' }}</td>
-                                    <td>{{ $item->companies[0]->company_location }} </td>
 
-                                    <td>{{ $item->companies[0]->stir }} </td>
+
+                                    <td>{{ $item->contact ?? '---' }}</td>
+                                    <td>{{ $item->company_location }} </td>
+
+                                    <td>{{ $item->stir }} </td>
                                     {{-- <td>
                                         @if ($item->mijoz_turi == 'fizik')
                                             @lang('global.fizik')
@@ -276,10 +277,10 @@
                                                                 </tr>
                                                                 <tr>
                                                                     <td>Is Id ?</td>
-                                                                    @if($item->passport_type == 0)
-                                                                    <td>Passport</td>
+                                                                    @if ($item->passport_type == 0)
+                                                                        <td>Passport</td>
                                                                     @else
-                                                                    <td>Id Card</td>
+                                                                        <td>Id Card</td>
                                                                     @endif
 
                                                                 </tr>
@@ -292,91 +293,95 @@
                                                                     <td>@lang('cruds.client.fields.yuridik_rekvizid')</td>
                                                                     <td>{{ $item->yuridik_rekvizid }}</td>
                                                                 </tr>
-                                        
-                                                                @foreach ($item->companies as $comp)
+
+                                                                {{--  --}}
+                                                                <tr>
+                                                                    <td class="text-center"><strong>Company</strong>
+                                                                    </td>
+                                                                    <td></td>
+
+
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>@lang('cruds.company.fields.company_location')</td>
+                                                                    <td>{{ $item->company_location }}</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>@lang('cruds.company.fields.company_name')</td>
+                                                                    <td>{{ $item->company_name }}</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>@lang('cruds.company.fields.company_type')</td>
+                                                                    <td>{{ $item->company_type }}</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>@lang('cruds.company.fields.raxbar')</td>
+                                                                    <td>{{ $item->raxbar }}</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>@lang('cruds.company.fields.bank_code')</td>
+                                                                    <td>{{ $item->bank_code }}</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>@lang('cruds.company.fields.bank_service')</td>
+                                                                    <td>{{ $item->bank_service }}</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>@lang('cruds.company.fields.stir')</td>
+                                                                    <td>{{ $item->stir }}</td>
+                                                                </tr>
+
+                                                                <tr>
+                                                                    <td>@lang('cruds.company.fields.oked')</td>
+                                                                    <td>{{ $item->oked }}</td>
+                                                                </tr>
+
+                                                                {{--  --}}
+
+
+                                                                @foreach ($item->branches as $b)
                                                                     <tr>
-                                                                        <td class="text-center"><strong>Company</strong>
+                                                                        <td class="text-center"><strong>Obyekt</strong>
                                                                         </td>
                                                                         <td></td>
-
-
                                                                     </tr>
                                                                     <tr>
-                                                                        <td>@lang('cruds.company.fields.company_location')</td>
-                                                                        <td>{{ $comp->company_location }}</td>
+                                                                        <td>@lang('global.ruxsatnoma_raqami')</td>
+                                                                        <td>{{ $b->contract_apt }}</td>
                                                                     </tr>
                                                                     <tr>
-                                                                        <td>@lang('cruds.company.fields.company_name')</td>
-                                                                        <td>{{ $comp->company_name }}</td>
+                                                                        <td>@lang('global.sanasi')</td>
+                                                                        <td>{{ $b->contract_date }}</td>
                                                                     </tr>
                                                                     <tr>
-                                                                        <td>@lang('cruds.company.fields.company_type')</td>
-                                                                        <td>{{ $comp->company_type }}</td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td>@lang('cruds.company.fields.raxbar')</td>
-                                                                        <td>{{ $comp->raxbar }}</td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td>@lang('cruds.company.fields.bank_code')</td>
-                                                                        <td>{{ $comp->bank_code }}</td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td>@lang('cruds.company.fields.bank_service')</td>
-                                                                        <td>{{ $comp->bank_service }}</td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td>@lang('cruds.company.fields.stir')</td>
-                                                                        <td>{{ $comp->stir }}</td>
+                                                                        <td>@lang('global.obyekt_boyicha_tolanishi_lozim')
+                                                                        </td>
+                                                                        <td>{{ $b->branch_kubmetr }}</td>
                                                                     </tr>
 
                                                                     <tr>
-                                                                        <td>@lang('cruds.company.fields.oked')</td>
-                                                                        <td>{{ $comp->oked }}</td>
+                                                                        <td>@lang('global.jami_tolanishi_kerak')</td>
+                                                                        <td>{{ $b->generate_price }}</td>
                                                                     </tr>
-                                                                    @foreach ($comp->branches as $b)
-                                                                        <tr>
-                                                                            <td class="text-center"><strong>Obyekt</strong></td>
-                                                                            <td></td>
-                                                                        </tr>
-                                                                        <tr>
-                                                                            <td>@lang('global.ruxsatnoma_raqami')</td>
-                                                                            <td>{{ $b->contract_apt }}</td>
-                                                                        </tr>
-                                                                        <tr>
-                                                                            <td>@lang('global.sanasi')</td>
-                                                                            <td>{{ $b->contract_date }}</td>
-                                                                        </tr>
-                                                                        <tr>
-                                                                            <td>@lang('global.obyekt_boyicha_tolanishi_lozim')
-                                                                            </td>
-                                                                            <td>{{ $b->branch_kubmetr }}</td>
-                                                                        </tr>
+                                                                    <tr>
+                                                                        <td>@lang('global.bolib_tolash')</td>
+                                                                        <td>
+                                                                            @if ($b->payment_type == 'pay_bolib')
+                                                                                @lang('global.pay_bolib')
+                                                                            @else
+                                                                                @lang('global.pay_full')
+                                                                            @endif
 
-                                                                        <tr>
-                                                                            <td>@lang('global.jami_tolanishi_kerak')</td>
-                                                                            <td>{{ $b->generate_price }}</td>
-                                                                        </tr>
-                                                                        <tr>
-                                                                            <td>@lang('global.bolib_tolash')</td>
-                                                                            <td>
-                                                                                @if ($b->payment_type == 'pay_bolib')
-                                                                                    @lang('global.pay_bolib')
-                                                                                @else
-                                                                                    @lang('global.pay_full')
-                                                                                @endif
-
-                                                                            </td>
-                                                                        </tr>
-                                                                        <tr>
-                                                                            <td>@lang('global.bolib_tolash_foizi_oldindan')</td>
-                                                                            <td>{{ $b->percentage_input }} %</td>
-                                                                        </tr>
-                                                                        <tr>
-                                                                            <td>@lang('global.quarterly_payment')</td>
-                                                                            <td>{{ $b->installment_quarterly }}</td>
-                                                                        </tr>
-                                                                    @endforeach
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>@lang('global.bolib_tolash_foizi_oldindan')</td>
+                                                                        <td>{{ $b->percentage_input }} %</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>@lang('global.quarterly_payment')</td>
+                                                                        <td>{{ $b->installment_quarterly }}</td>
+                                                                    </tr>
                                                                 @endforeach
 
                                                                 @foreach ($item->products as $p)

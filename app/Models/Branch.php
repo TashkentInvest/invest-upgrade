@@ -10,7 +10,7 @@ class Branch extends Model
     use HasFactory;
 
     protected $fillable = [
-        'company_id',
+        'client_id',
         'contract_apt',
         'contract_date',
         'generate_price',
@@ -29,9 +29,9 @@ class Branch extends Model
     ];
 
 
-    public function company()
+    public function client()
     {
-        return $this->belongsTo(Company::class);
+        return $this->belongsTo(Client::class);
     }
 
     public static function boot()
@@ -41,7 +41,7 @@ class Branch extends Model
         static::created(function ($branch) {
             AuditLog::create([
                 'user_id' => auth()->user()->id ?? 1,
-                'company_id' => $branch->company_id,
+                'client_id' => $branch->client_id,
                 'event' => 'branch_created',
                 'new_values' => $branch->toJson(),
             ]);
@@ -53,7 +53,7 @@ class Branch extends Model
 
             AuditLog::create([
                 'user_id' => auth()->user()->id ?? 1,
-                'company_id' => $branch->company_id,
+                'client_id' => $branch->client_id,
                 'event' => 'branch_updated',
                 'old_values' => json_encode($original),
                 'new_values' => json_encode($changes),
@@ -63,7 +63,7 @@ class Branch extends Model
         static::deleted(function ($branch) {
             AuditLog::create([
                 'user_id' => auth()->user()->id ?? 1,
-                'company_id' => $branch->company_id,
+                'client_id' => $branch->client_id,
                 'event' => 'branch_deleted',
                 'old_values' => $branch->toJson(),
             ]);

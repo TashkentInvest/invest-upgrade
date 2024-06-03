@@ -96,7 +96,7 @@
                             @if (isset($client))
                                 <tr>
                                     <td>{{ $client->id }}</td>
-                                    <td>{{ $client->companies[0]->company_name }}</td>
+                                    <td>{{ $client->company_name }}</td>
                                     <td>{{ $client->first_name }} {{ $client->last_name }} {{ $client->father_name }}
                                     </td>
                                     <td>{{ $client->contact ?? '---' }}</td>
@@ -145,7 +145,7 @@
                                                         <i class="bx bxs-download" style="font-size: 16px;"></i>
                                                     </a>
                                                 </li>
-                                           
+
                                             </ul>
                                         </form>
                                     </td>
@@ -168,45 +168,44 @@
                     <!-- Data table -->
                     <table id="datatable" class="table table-bordered dt-responsive w-100">
                         <tbody>
-                            @foreach ($client->companies as $company)
-                                <tr>
-                                    <td>@lang('cruds.company.fields.company_location')</td>
-                                    <td colspan="2">{{ $company->company_location }}</td>
-                                </tr>
-                                <tr>
-                                    <td>@lang('cruds.company.fields.company_name')</td>
-                                    <td colspan="2">{{ $company->company_name }}</td>
-                                </tr>
-                                <tr>
-                                    <td>@lang('global.loyiha_turi')</td>
-                                    <td colspan="2">{{ $company->company_type }}</td>
-                                </tr>
-                                <tr>
-                                    <td>@lang('cruds.company.fields.raxbar')</td>
-                                    <td colspan="2">{{ $company->raxbar }}</td>
-                                </tr>
-                                <tr>
-                                    <td>@lang('cruds.company.fields.bank_code')</td>
-                                    <td colspan="2">{{ $company->bank_code }}</td>
-                                </tr>
-                                <tr>
-                                    <td>@lang('cruds.company.fields.bank_service')</td>
-                                    <td colspan="2">{{ $company->bank_service }}</td>
-                                </tr>
-                                <tr>
-                                    <td>@lang('cruds.company.fields.stir')</td>
-                                    <td colspan="2">{{ $company->stir }}</td>
-                                </tr>
-                                <tr>
-                                    <td>@lang('cruds.company.fields.oked')</td>
-                                    <td colspan="2">{{ $company->oked }}</td>
-                                </tr>
 
-                                {{--  --}}
+                            <tr>
+                                <td>@lang('cruds.company.fields.company_location')</td>
+                                <td colspan="2">{{ $client->company_location }}</td>
+                            </tr>
+                            <tr>
+                                <td>@lang('cruds.company.fields.company_name')</td>
+                                <td colspan="2">{{ $client->company_name }}</td>
+                            </tr>
+                            <tr>
+                                <td>@lang('global.loyiha_turi')</td>
+                                <td colspan="2">{{ $client->company_type }}</td>
+                            </tr>
+                            <tr>
+                                <td>@lang('cruds.company.fields.raxbar')</td>
+                                <td colspan="2">{{ $client->raxbar }}</td>
+                            </tr>
+                            <tr>
+                                <td>@lang('cruds.company.fields.bank_code')</td>
+                                <td colspan="2">{{ $client->bank_code }}</td>
+                            </tr>
+                            <tr>
+                                <td>@lang('cruds.company.fields.bank_service')</td>
+                                <td colspan="2">{{ $client->bank_service }}</td>
+                            </tr>
+                            <tr>
+                                <td>@lang('cruds.company.fields.stir')</td>
+                                <td colspan="2">{{ $client->stir }}</td>
+                            </tr>
+                            <tr>
+                                <td>@lang('cruds.company.fields.oked')</td>
+                                <td colspan="2">{{ $client->oked }}</td>
+                            </tr>
 
-                                @foreach($company->branches as $b)
+                            @foreach ($client->branches as $b)
                                 <tr>
-                                    <td colspan="3" class="text-center"><strong>@lang('global.contract_details') - {{ $b->contract_apt }}</strong></td>
+                                    <td colspan="3" class="text-center"><strong>@lang('global.contract_details') -
+                                            {{ $b->contract_apt }}</strong></td>
                                 </tr>
                                 <tr>
                                     <td>@lang('global.ruxsatnoma_raqami')</td>
@@ -242,10 +241,9 @@
                                     <td>@lang('global.quarterly_payment')</td>
                                     <td colspan="2">{{ $b->installment_quarterly }}</td>
                                 </tr>
-                                @endforeach
-                             
                             @endforeach
-                    
+
+
                             @if (isset($files) && $files->isNotEmpty())
                                 <tr>
                                     <td colspan="3">
@@ -253,7 +251,8 @@
                                         <ul>
                                             @foreach ($files as $file)
                                                 <li>
-                                                    <a target="_blank" href="{{ asset($file->path) }}">{{ $file->path }}</a>
+                                                    <a target="_blank"
+                                                        href="{{ asset($file->path) }}">{{ $file->path }}</a>
                                                 </li>
                                             @endforeach
                                         </ul>
@@ -261,13 +260,13 @@
                                 </tr>
                             @else
                                 <tr>
-                                    <td colspan="3"><p>@lang('global.no_files_uploaded')</p></td>
+                                    <td colspan="3">
+                                        <p>@lang('global.no_files_uploaded')</p>
+                                    </td>
                                 </tr>
                             @endif
                         </tbody>
                     </table>
-                    
-                    
 
                 </div>
             </div>

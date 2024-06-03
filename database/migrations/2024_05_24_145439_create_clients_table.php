@@ -31,6 +31,15 @@ class CreateClientsTable extends Migration
             $table->string('client_description')->nullable();
             $table->string('application_number')->nullable();
 
+            $table->string('company_location')->nullable();
+            $table->string('company_name')->nullable();
+            $table->string('company_type')->nullable();
+            $table->string('raxbar')->nullable();
+            $table->string('bank_code')->nullable();
+            $table->string('bank_service')->nullable();
+            $table->string('stir')->nullable();
+            $table->string('oked')->nullable();
+
             $table->timestamps();
         });
     }

@@ -333,7 +333,7 @@
                                                             <div class="mb-3">
                                                                 <label for="company_type">@lang('global.loyiha_turi')</label>
                                                                 <input type="text" class="form-control"
-                                                                    name="accordions[0][company_type]"
+                                                                    name="company_type"
                                                                     placeholder="@lang('global.loyiha_turi')">
                                                             </div>
                                                         </div>
@@ -341,7 +341,7 @@
                                                             <div class="mb-3">
                                                                 <label for="company_location">@lang('global.loyiha_manzili')</label>
                                                                 <input type="text" class="form-control"
-                                                                    name="accordions[0][company_location]"
+                                                                    name="company_location"
                                                                     placeholder="@lang('global.loyiha_manzili')">
                                                             </div>
                                                         </div>
@@ -349,7 +349,7 @@
                                                             <div class="mb-3">
                                                                 <label for="company_name">@lang('global.loyiha_nomi')</label>
                                                                 <input type="text" class="form-control"
-                                                                    name="accordions[0][company_name]"
+                                                                    name="company_name"
                                                                     placeholder="@lang('global.loyiha_nomi')">
                                                             </div>
                                                         </div>

@@ -234,30 +234,29 @@
                         <section>
                             <!-- Company Details -->
                             <div class="row">
-                                @foreach ($product->client->companies as $companyIndex => $comp)
                                     <div class="row">
                                         <div class="col-lg-4">
                                             <div class="mb-3">
                                                 <label for="company_type">@lang('global.loyiha_turi')</label>
                                                 <input type="text" class="form-control" id="company_type"
-                                                    name="accordions[{{ $companyIndex }}][company_type]"
-                                                    value="{{ old('accordions.' . $companyIndex . '.company_type', $comp->company_type) }}">
+                                                    name="company_type"
+                                                    value="{{ old('company_type', $client->company_type) }}">
                                             </div>
                                         </div>
                                         <div class="col-lg-4">
                                             <div class="mb-3">
                                                 <label for="company_location">@lang('cruds.company.fields.company_location')</label>
                                                 <input type="text" class="form-control" id="company_location"
-                                                    name="accordions[{{ $companyIndex }}][company_location]"
-                                                    value="{{ old('accordions.' . $companyIndex . '.company_location', $comp->company_location) }}">
+                                                    name="company_location"
+                                                    value="{{ old('company_location', $client->company_location) }}">
                                             </div>
                                         </div>
                                         <div class="col-lg-4">
                                             <div class="mb-3">
                                                 <label for="company_name">@lang('global.loyiha_nomi')</label>
                                                 <input type="text" class="form-control" id="company_name"
-                                                    name="accordions[{{ $companyIndex }}][company_name]"
-                                                    value="{{ old('accordions.' . $companyIndex . '.company_name', $comp->company_name) }}">
+                                                    name="company_name"
+                                                    value="{{ old('company_name', $client->company_name) }}">
                                             </div>
                                         </div>
 
@@ -266,12 +265,12 @@
                                                 class="col-md-6 col-form-label">@lang('cruds.company.fields.bank_service')</label>
                                             <input
                                                 class="form-control {{ $errors->has('bank_service') ? 'is-invalid' : '' }}"
-                                                type="text" name="accordions[{{ $companyIndex }}][bank_service]"
+                                                type="text" name="bank_service"
                                                 id="bank_service" placeholder="@lang('cruds.company.fields.bank_service')"
-                                                value="{{ old('accordions.' . $companyIndex . '.bank_service', $comp->bank_service) }}">
-                                            @if ($errors->has('accordions.' . $companyIndex . '.bank_service'))
+                                                value="{{ old('bank_service', $client->bank_service) }}">
+                                            @if ($errors->has('bank_service'))
                                                 <span
-                                                    class="error invalid-feedback">{{ $errors->first('accordions.' . $companyIndex . '.bank_service') }}</span>
+                                                    class="error invalid-feedback">{{ $errors->first('bank_service') }}</span>
                                             @endif
                                         </div>
 
@@ -280,12 +279,12 @@
                                                 class="col-md-6 col-form-label">@lang('cruds.company.fields.bank_code')</label>
                                             <input
                                                 class="form-control {{ $errors->has('bank_code') ? 'is-invalid' : '' }}"
-                                                type="text" name="accordions[{{ $companyIndex }}][bank_code]"
+                                                type="text" name="bank_code"
                                                 id="bank_code" placeholder="@lang('cruds.company.fields.bank_code')" maxlength="5"
-                                                value="{{ old('accordions.' . $companyIndex . '.bank_code', $comp->bank_code) }}">
-                                            @if ($errors->has('accordions.' . $companyIndex . '.bank_code'))
+                                                value="{{ old('bank_code', $client->bank_code) }}">
+                                            @if ($errors->has('bank_code'))
                                                 <span
-                                                    class="error invalid-feedback">{{ $errors->first('accordions.' . $companyIndex . '.bank_code') }}</span>
+                                                    class="error invalid-feedback">{{ $errors->first('bank_code') }}</span>
                                             @endif
                                         </div>
 
@@ -293,12 +292,12 @@
                                             <label for="stir"
                                                 class="col-md-6 col-form-label">@lang('cruds.company.fields.stir')</label>
                                             <input class="form-control {{ $errors->has('stir') ? 'is-invalid' : '' }}"
-                                                type="text" name="accordions[{{ $companyIndex }}][stir]"
+                                                type="text" name="stir"
                                                 id="stir" placeholder="@lang('cruds.company.fields.stir')"
-                                                value="{{ old('accordions.' . $companyIndex . '.stir', $comp->stir) }}">
-                                            @if ($errors->has('accordions.' . $companyIndex . '.stir'))
+                                                value="{{ old('stir', $client->stir) }}">
+                                            @if ($errors->has('stir'))
                                                 <span
-                                                    class="error invalid-feedback">{{ $errors->first('accordions.' . $companyIndex . '.stir') }}</span>
+                                                    class="error invalid-feedback">{{ $errors->first('stir') }}</span>
                                             @endif
                                         </div>
 
@@ -306,49 +305,49 @@
                                             <label for="oked"
                                                 class="col-md-6 col-form-label">@lang('cruds.company.fields.oked')</label>
                                             <input class="form-control {{ $errors->has('oked') ? 'is-invalid' : '' }}"
-                                                type="text" name="accordions[{{ $companyIndex }}][oked]"
+                                                type="text" name="oked"
                                                 id="oked" placeholder="@lang('cruds.company.fields.oked')"
-                                                value="{{ old('accordions.' . $companyIndex . '.oked', $comp->oked) }}">
-                                            @if ($errors->has('accordions.' . $companyIndex . '.oked'))
+                                                value="{{ old('oked', $client->oked) }}">
+                                            @if ($errors->has('oked'))
                                                 <span
-                                                    class="error invalid-feedback">{{ $errors->first('accordions.' . $companyIndex . '.oked') }}</span>
+                                                    class="error invalid-feedback">{{ $errors->first('oked') }}</span>
                                             @endif
                                         </div>
 
-                                        @foreach ($comp->branches as $branchIndex => $b)
-                                        <h4 class="text-center py-2">--- {{$b->contract_apt}} ---</h4>
+                                        {{-- branch start --}}
+                                        @foreach ($client->branches as $branchIndex => $b)
 
                                             <div class="row">
                                                 <div class="col-lg-3">
                                                     <div class="mb-3">
                                                         <label for="notification_num">@lang('cruds.branches.fields.notification_num')</label>
                                                         <input type="text" class="form-control"
-                                                            name="accordions[{{ $companyIndex }}][branches][{{ $branchIndex }}][notification_num]"
-                                                            value="{{ old('accordions.' . $companyIndex . '.branches.' . $branchIndex . '.notification_num', $b->notification_num) }}">
+                                                            name="accordions[{{ $branchIndex }}][notification_num]"
+                                                            value="{{ old('accordions.' . $branchIndex . '.notification_num', $b->notification_num) }}">
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-3">
                                                     <div class="mb-3">
                                                         <label for="notification_date">@lang('cruds.branches.fields.notification_date')</label>
                                                         <input type="datetime-local" class="form-control"
-                                                            name="accordions[{{ $companyIndex }}][branches][{{ $branchIndex }}][notification_date]"
-                                                            value="{{ old('accordions.' . $companyIndex . '.branches.' . $branchIndex . '.notification_date', $b->notification_date) }}">
+                                                            name="accordions[{{ $branchIndex }}][notification_date]"
+                                                            value="{{ old('accordions.' . $branchIndex . '.notification_date', $b->notification_date) }}">
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-3">
                                                     <div class="mb-3">
                                                         <label for="insurance_policy">@lang('cruds.branches.fields.insurance_policy')</label>
                                                         <input type="text" class="form-control"
-                                                            name="accordions[{{ $companyIndex }}][branches][{{ $branchIndex }}][insurance_policy]"
-                                                            value="{{ old('accordions.' . $companyIndex . '.branches.' . $branchIndex . '.insurance_policy', $b->insurance_policy) }}">
+                                                            name="accordions[{{ $branchIndex }}][insurance_policy]"
+                                                            value="{{ old('accordions.' . $branchIndex . '.insurance_policy', $b->insurance_policy) }}">
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-3">
                                                     <div class="mb-3">
                                                         <label for="bank_guarantee">@lang('cruds.branches.fields.bank_guarantee')</label>
                                                         <input type="text" class="form-control"
-                                                            name="accordions[{{ $companyIndex }}][branches][{{ $branchIndex }}][bank_guarantee]"
-                                                            value="{{ old('accordions.' . $companyIndex . '.branches.' . $branchIndex . '.bank_guarantee', $b->bank_guarantee) }}">
+                                                            name="accordions[{{ $branchIndex }}][bank_guarantee]"
+                                                            value="{{ old('accordions.' . $branchIndex . '.bank_guarantee', $b->bank_guarantee) }}">
                                                     </div>
                                                 </div>
                                             </div>
@@ -357,24 +356,24 @@
                                                     <div class="mb-3">
                                                         <label for="application_number">@lang('cruds.branches.fields.application_number')</label>
                                                         <input type="text" class="form-control"
-                                                            name="accordions[{{ $companyIndex }}][branches][{{ $branchIndex }}][application_number]"
-                                                            value="{{ old('accordions.' . $companyIndex . '.branches.' . $branchIndex . '.application_number', $b->application_number) }}">
+                                                            name="accordions[{{ $branchIndex }}][application_number]"
+                                                            value="{{ old('accordions.' . $branchIndex . '.application_number', $b->application_number) }}">
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-4">
                                                     <div class="mb-3">
                                                         <label for="payed_sum">@lang('cruds.branches.fields.payed_sum')</label>
                                                         <input type="text" class="form-control"
-                                                            name="accordions[{{ $companyIndex }}][branches][{{ $branchIndex }}][payed_sum]"
-                                                            value="{{ old('accordions.' . $companyIndex . '.branches.' . $branchIndex . '.payed_sum', $b->payed_sum) }}">
+                                                            name="accordions[{{ $branchIndex }}][payed_sum]"
+                                                            value="{{ old('accordions.' . $branchIndex . '.payed_sum', $b->payed_sum) }}">
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-4">
                                                     <div class="mb-3">
                                                         <label for="payed_date">@lang('cruds.branches.fields.payed_date')</label>
                                                         <input type="datetime-local" class="form-control"
-                                                            name="accordions[{{ $companyIndex }}][branches][{{ $branchIndex }}][payed_date]"
-                                                            value="{{ old('accordions.' . $companyIndex . '.branches.' . $branchIndex . '.payed_date', $b->payed_date) }}">
+                                                            name="accordions[{{ $branchIndex }}][payed_date]"
+                                                            value="{{ old('accordions.' . $branchIndex . '.payed_date', $b->payed_date) }}">
                                                     </div>
                                                 </div>
                                             </div>
@@ -384,8 +383,8 @@
                                                     <div class="mb-3">
                                                         <label for="contract_apt">@lang('global.ruxsatnoma_raqami')</label>
                                                         <input type="text" class="form-control" id="contract_apt"
-                                                            name="accordions[{{ $companyIndex }}][branches][{{ $branchIndex }}][contract_apt]"
-                                                            value="{{ old('accordions.' . $companyIndex . '.branches.' . $branchIndex . '.contract_apt', $b->contract_apt) }}">
+                                                            name="accordions[{{ $branchIndex }}][contract_apt]"
+                                                            value="{{ old('accordions.' . $branchIndex . '.contract_apt', $b->contract_apt) }}">
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-3">
@@ -393,39 +392,39 @@
                                                         <label for="contract_date">@lang('global.sanasi')</label>
                                                         <input class="form-control" type="datetime-local"
                                                             id="contract_date"
-                                                            name="accordions[{{ $companyIndex }}][branches][{{ $branchIndex }}][contract_date]"
-                                                            value="{{ old('accordions.' . $companyIndex . '.branches.' . $branchIndex . '.contract_date', $b->contract_date) }}">
+                                                            name="accordions[{{ $branchIndex }}][contract_date]"
+                                                            value="{{ old('accordions.' . $branchIndex . '.contract_date', $b->contract_date) }}">
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-3">
                                                     <div class="mb-3">
                                                         <label for="branch_kubmetr">@lang('global.obyekt_boyicha_tolanishi_lozim')</label>
                                                         <input type="text" class="form-control" id="branch_kubmetr"
-                                                            name="accordions[{{ $companyIndex }}][branches][{{ $branchIndex }}][branch_kubmetr]"
-                                                            value="{{ old('accordions.' . $companyIndex . '.branches.' . $branchIndex . '.branch_kubmetr', $b->branch_kubmetr) }}">
+                                                            name="accordions[{{ $branchIndex }}][branch_kubmetr]"
+                                                            value="{{ old('accordions.' . $branchIndex . '.branch_kubmetr', $b->branch_kubmetr) }}">
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-3">
                                                     <div class="mb-3">
                                                         <label for="minimum_wage">@lang('global.bazaviy_xisoblash_miqdori')</label>
                                                         <input type="text" class="form-control" id="minimum_wage"
-                                                            name="accordions[{{ $companyIndex }}][branches][{{ $branchIndex }}][minimum_wage]"
-                                                            value="{{ old('accordions.' . $companyIndex . '.branches.' . $branchIndex . '.minimum_wage', $b->minimum_wage) }}">
+                                                            name="accordions[{{ $branchIndex }}][minimum_wage]"
+                                                            value="{{ old('accordions.' . $branchIndex . '.minimum_wage', $b->minimum_wage) }}">
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-3">
                                                     <div class="mb-3">
                                                         <label for="generate_price">@lang('global.total_amount')</label>
                                                         <input type="text" class="form-control" id="generate_price"
-                                                            name="accordions[{{ $companyIndex }}][branches][{{ $branchIndex }}][generate_price]"
-                                                            value="{{ old('accordions.' . $companyIndex . '.branches.' . $branchIndex . '.generate_price', $b->generate_price) }}">
+                                                            name="accordions[{{ $branchIndex }}][generate_price]"
+                                                            value="{{ old('accordions.' . $branchIndex . '.generate_price', $b->generate_price) }}">
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-3">
                                                     <div class="mb-3">
                                                         <label for="payment_type">@lang('global.tolash_turlari')</label>
                                                         <select class="form-select" id="payment_type"
-                                                            name="accordions[{{ $companyIndex }}][branches][{{ $branchIndex }}][payment_type]">
+                                                            name="accordions[{{ $branchIndex }}][payment_type]">
                                                             <option value="pay_full"
                                                                 {{ $b->payment_type == 'pay_full' ? 'selected' : '' }}>
                                                                 @lang('global.toliq_xajimda_tolash')
@@ -441,8 +440,8 @@
                                                     <div class="mb-3">
                                                         <label for="percentage_input">@lang('global.bolib_tolash_foizi_oldindan')</label>
                                                         <input type="text" class="form-control" id="percentage_input"
-                                                            name="accordions[{{ $companyIndex }}][branches][{{ $branchIndex }}][percentage_input]"
-                                                            value="{{ old('accordions.' . $companyIndex . '.branches.' . $branchIndex . '.percentage_input', $b->percentage_input) }}">
+                                                            name="accordions[{{ $branchIndex }}][percentage_input]"
+                                                            value="{{ old('accordions.' . $branchIndex . '.percentage_input', $b->percentage_input) }}">
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-3">
@@ -450,13 +449,13 @@
                                                         <label for="installment_quarterly">@lang('global.bolib_tolash_har_chorakda')</label>
                                                         <input type="text" class="form-control"
                                                             id="installment_quarterly"
-                                                            name="accordions[{{ $companyIndex }}][branches][{{ $branchIndex }}][installment_quarterly]"
-                                                            value="{{ old('accordions.' . $companyIndex . '.branches.' . $branchIndex . '.installment_quarterly', $b->installment_quarterly) }}">
+                                                            name="accordions[{{ $branchIndex }}][installment_quarterly]"
+                                                            value="{{ old('accordions.' . $branchIndex . '.installment_quarterly', $b->installment_quarterly) }}">
                                                     </div>
                                                 </div>
                                             </div>
                                         @endforeach
-                                @endforeach
+                                
 
                                 <div class="col-12 col-lg-12 mb-2">
                                     <label for="client_description"

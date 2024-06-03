@@ -25,16 +25,19 @@ class ExelSeeder extends Seeder
                 'application_number' => $item->application_number ?? null,
                 'contact' => $item->contact ?? null,
                 'client_description' => isset($item->client_description) ? $item->client_description : null,
+
+                'company_name' => $item->company_name ?? null,
+
             ];
 
             $client = Client::create($clientData);
 
-            $companyData = [
-                'client_id' => $client->id,
-                'company_name' => $item->company_name ?? null,
-            ];
+            // $companyData = [
+            //     'client_id' => $client->id,
+            //     'company_name' => $item->company_name ?? null,
+            // ];
 
-            $company = Company::create($companyData);
+            // $company = Company::create($companyData);
 
             // Check if payed_date is a valid date
             $payed_date = null;
@@ -48,7 +51,7 @@ class ExelSeeder extends Seeder
             }
 
             $branchData = [
-                'company_id' => $company->id ?? null,
+                'client_id' => $client->id ?? null,
                 'branch_kubmetr' => $item->branch_kubmetr ?? null,
                 'generate_price' => $item->generate_price ?? null,
                 'first_payment_percent' => $item->first_payment_percent ?? null,
