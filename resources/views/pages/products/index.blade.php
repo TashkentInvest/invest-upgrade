@@ -124,13 +124,13 @@
                                                     </select>
                                                 </div>
                                                 <div class="col-lg-3 col-md-3 col-sm-3 col-4">
-                                                    <input class="form-control form-control-sm" type="date"
+                                                    <input class="form-control form-control-sm" type="datetime-local"
                                                         name="created_at"
                                                         value="{{ old('created_at', request()->created_at ?? '') }}">
                                                 </div>
                                                 <div class="col-lg-3 col-md-3 col-sm-3 col-4" id="created_at_pair"
                                                     style="display: {{ request()->created_at_operator == 'between' ? 'block' : 'none' }}">
-                                                    <input class="form-control form-control-sm" type="date"
+                                                    <input class="form-control form-control-sm" type="datetime-local"
                                                         name="created_at_pair"
                                                         value="{{ old('created_at_pair', request()->created_at_pair ?? '') }}">
                                                 </div>

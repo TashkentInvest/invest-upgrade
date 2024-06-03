@@ -40,6 +40,8 @@ class Client extends Model
         'bank_service',
         'stir',
         'oked',
+        'created_at',
+        'updated_at',
 
     ];
 
