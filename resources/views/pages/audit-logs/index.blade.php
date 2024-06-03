@@ -65,22 +65,21 @@
                                         <div class="modal-dialog modal-dialog-scrollable modal-lg">
                                             <div class="modal-content">
                                                 <div class="modal-header">
-                                                    <h5 class="modal-title" id="exampleModalLabel">
-                                                        {{ $log->{'name_' . app()->getLocale()} }}</h5>
+                                                    <h5 class="modal-title" id="exampleModalLabel">Audit Log Details</h5>
                                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                 </div>
                                                 <div class="modal-body">
                                                     <table class="table table-striped">
                                                         <tbody>
                                                             <tr>
-                                                                <td colspan="3" class="table-active"><strong>@lang('global.personal_informations')</strong></td>
+                                                                <td colspan="2" class="table-active"><strong>Personal Information</strong></td>
                                                             </tr>
                                                             <tr>
                                                                 <td>Changed by</td>
                                                                 <td colspan="2">
                                                                     {{ $log->user->name }} <br>
                                                                     {{ $log->user->email }} <br>
-                                                                    {{ $log->user->roles[0]->name }} <br>
+                                                                    {{ optional($log->user->roles->first())->name }} <br>
                                                                 </td>
                                                             </tr>
                                                             <tr>
@@ -88,23 +87,32 @@
                                                                 <td class="font-weight-bold text-primary">Old Values</td>
                                                                 <td class="font-weight-bold text-success">New Values</td>
                                                             </tr>
-                                                            @foreach(array_keys(array_merge((array)json_decode($log->old_values), (array)json_decode($log->new_values))) as $key)
+                                                            @php
+                                                                $oldValues = $log->old_values ? json_decode($log->old_values, true) : [];
+                                                                $newValues = $log->new_values ? json_decode($log->new_values, true) : [];
+                                                            @endphp
+                                                            
+                                                            @foreach(array_keys(array_merge($oldValues, $newValues)) as $key)
                                                                 @php
-                                                                    $oldValue = $log->old_values[$key] ?? 'N/A';
-                                                                    $newValue = $log->new_values[$key] ?? 'N/A';
-                                                                    $highlight = $oldValue != $newValue ? 'highlight-diff' : '';
+                                                                    $oldValue = $oldValues[$key] ?? 'N/A';
+                                                                    $newValue = $newValues[$key] ?? 'N/A';
+                                                                    $highlight = $oldValue !== $newValue ? 'highlight-diff' : '';
                                                                 @endphp
                                                                 <tr>
                                                                     <td><strong>{{ ucfirst(str_replace('_', ' ', $key)) }}:</strong></td>
-                                                                    <td class="{{ $highlight }}">{{ is_null($oldValue) ? 'N/A' : $oldValue }}</td>
-                                                                    <td class="{{ $highlight }}">{{ is_null($newValue) ? 'N/A' : $newValue }}</td>
+                                                                    <td class="{{ $highlight }}">{{ $oldValue }}</td>
+                                                                    <td class="{{ $highlight }}">{{ $newValue }}</td>
                                                                 </tr>
                                                             @endforeach
+                                                        
+                                                                
+                                                            
+
                                                         </tbody>
                                                     </table>
                                                 </div>
                                                 <div class="modal-footer">
-                                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">@lang('global.closed')</button>
+                                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                                                 </div>
                                             </div>
                                         </div>

@@ -17,10 +17,10 @@ class CreateAuditLogsTable extends Migration
             $table->id();
             $table->unsignedBigInteger('user_id')->nullable();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            
+
             $table->unsignedBigInteger('client_id')->nullable();
             $table->foreign('client_id')->references('id')->on('clients')->onDelete('cascade');
-            
+
             $table->string('event');
             $table->json('old_values')->nullable();
             $table->json('new_values')->nullable();
