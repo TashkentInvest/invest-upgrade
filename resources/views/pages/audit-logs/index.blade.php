@@ -86,6 +86,15 @@
                                                                 <td colspan="2" class="table-active"><strong>@lang('global.personal_informations')</strong></td>
                                                             </tr>
                                                             <tr>
+                                                                <td>Changed persion</td>
+                                                            
+                                                                    <td>
+                                                                        {{ $log->user->name }} <br>
+                                                                        {{ $log->user->email }} <br>
+                                                                        {{ $log->user->roles[0]->name }} <br>
+                                                                    </td>
+                                                            </tr>
+                                                            <tr>
                                                                 <td class="font-weight-bold text-primary">Old values</td>
                                                                 <td>
                                                                     @if($log->old_values)
