@@ -398,6 +398,9 @@ return [
     'yuridik_rekvizid' => 'Yuridik rekvizitlar',
     'company_and_object_detail'=>'Kompanya va Obyekt bo\'yicha malumotlar',
     'contract_details' => 'Shartnoma Rekvizitlari',
+    'old_values' => 'Oldingi qiymatlar',
+    'new_values' => 'Yangi qiymatlar'
+
 
     
 ];

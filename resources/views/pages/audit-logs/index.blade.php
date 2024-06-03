@@ -36,12 +36,12 @@
                 <table id="datatable" class="table table-bordered table-striped w-100">
                     <thead>
                         <tr>
-                            <th>ID</th>
-                            <th>User</th>
-                            <th>Client</th>
-                            <th>Event</th>
-                            <th>Timestamp</th>
-                            <th>Actions</th>
+                            <th>@lang('global.id')</th>
+                            <th>@lang('cruds.user.title_singular')</th>
+                            <th>@lang('cruds.client.title_singular')</th>
+                            <th>@lang('global.subject')</th>
+                            <th>@lang('global.created_at')</th>
+                            <th>@lang('global.action')</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -72,7 +72,7 @@
                                                     <table class="table table-striped">
                                                         <tbody>
                                                             <tr>
-                                                                <td colspan="2" class="table-active"><strong>Personal Information</strong></td>
+                                                                <td colspan="2" class="table-active"><strong>@lang('global.personal_informations')</strong></td>
                                                             </tr>
                                                             <tr>
                                                                 <td>Changed by</td>
@@ -83,9 +83,9 @@
                                                                 </td>
                                                             </tr>
                                                             <tr>
-                                                                <td style="width: 150px;" class="font-weight-bold text-primary">Field</td>
-                                                                <td style="width: 150px;" class="font-weight-bold text-primary">Old Values</td>
-                                                                <td style="width: 150px;" class="font-weight-bold text-success">New Values</td>
+                                                                <td style="width: 150px;" class="font-weight-bold text-primary">@lang('global.label_field')</td>
+                                                                <td style="width: 150px;" class="font-weight-bold text-primary">@lang('global.old_values')</td>
+                                                                <td style="width: 150px;" class="font-weight-bold text-success">@lang('global.new_values')</td>
                                                             </tr>
                                                             @php
                                                                 $oldValues = json_decode($log->old_values, true) ?? [];

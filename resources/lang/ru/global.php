@@ -411,5 +411,8 @@ return [
     'yuridik_rekvizid' => 'Юридические реквизиты',
     'company_and_object_detail'=>'Информация о компании и объекте',
     'contract_details' => 'Детали договора',
+    'old_values' => 'Предыдущие значения',
+    'new_values' => 'Новые значения'
+
 
 ];
