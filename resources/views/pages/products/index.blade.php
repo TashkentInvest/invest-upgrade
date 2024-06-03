@@ -48,7 +48,7 @@
                                             <!-- Company Search -->
                                             <div class="form-group row align-items-center my-2">
                                                 <div class="col-3">
-                                                    <h6>company Name</h6>
+                                                    <h6>@lang('global.loyiha_nomi')</h6>
                                                 </div>
                                                 <div class="col-2">
                                                     <select class="form-control form-control-sm" name="company_operator">
@@ -65,7 +65,7 @@
                                             {{-- Inn search --}}
                                             <div class="form-group row align-items-center my-2">
                                                 <div class="col-3">
-                                                    <h6>INN Name</h6>
+                                                    <h6>@lang('cruds.company.fields.stir')</h6>
                                                 </div>
                                                 <div class="col-2">
                                                     <select class="form-control form-control-sm" name="inn_operator">
@@ -82,7 +82,7 @@
                                             {{-- contact search --}}
                                             <div class="form-group row align-items-center my-2">
                                                 <div class="col-3">
-                                                    <h6>contact</h6>
+                                                    <h6>@lang('cruds.client.fields.contact')</h6>
                                                 </div>
                                                 <div class="col-2">
                                                     <select class="form-control form-control-sm" name="contact_operator">
@@ -136,6 +136,7 @@
                                                 </div>
                                             </div>
                                         </div>
+                                     
                                         <div class="box container text-center ">
                                             <a class="border rounded " href="{{ route('download.excel') }}">Download all of
                                                 Exel</a>

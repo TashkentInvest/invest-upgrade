@@ -62,28 +62,31 @@ class FileController extends Controller
     }
     
     
+
     public function downloadExcel(Request $request)
     {
-        $id = $request->input('id'); // Get the client ID from the request
+        $id = $request->input('id');
+        $startDate = $request->input('created_at');
+        $endDate = $request->input('created_at_pair');
 
         if ($id) {
-            return $this->downloadTableData($id);
+            return $this->downloadTableData($id, $startDate, $endDate);
         } else {
-            return $this->downloadFullTableData();
+            return $this->downloadFullTableData($startDate, $endDate);
         }
     }
 
-    public function downloadFullTableData()
+    public function downloadFullTableData($startDate = null, $endDate = null)
     {
         $fileName = 'АПЗ_РАҚАМ' . '_' . now()->format('Y-m-d') . '.xls';
 
-        return Excel::download(new ProductsExport(), $fileName);
+        return Excel::download(new ProductsExport(null, $startDate, $endDate), $fileName);
     }
 
-    public function downloadTableData($id)
+    public function downloadTableData($id, $startDate = null, $endDate = null)
     {
         $fileName = 'АПЗ_РАҚАМ' . '_' . now()->format('Y-m-d') . '.xls';
 
-        return Excel::download(new ProductsExport($id), $fileName);
+        return Excel::download(new ProductsExport($id, $startDate, $endDate), $fileName);
     }
 }

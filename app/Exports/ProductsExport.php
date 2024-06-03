@@ -11,11 +11,16 @@ use Maatwebsite\Excel\Concerns\ShouldAutoSize;
 class ProductsExport implements FromCollection, WithHeadings, WithColumnFormatting, ShouldAutoSize
 {
     protected $id;
+    protected $startDate;
+    protected $endDate;
 
-    public function __construct($id = null)
+    public function __construct($id = null, $startDate = null, $endDate = null)
     {
         $this->id = $id;
+        $this->startDate = $startDate;
+        $this->endDate = $endDate;
     }
+
     public function collection()
     {
         try {
@@ -40,13 +45,16 @@ class ProductsExport implements FromCollection, WithHeadings, WithColumnFormatti
                     'branches.bank_guarantee AS bank_guarantee',
                     'clients.client_description AS note'
                 );
-    
+
             if ($this->id !== null) {
                 $query->where('clients.id', $this->id);
             }
-    
-            $query->orderBy('clients.updated_at', 'desc');
-    
+
+            // Apply date filters if provided
+            if ($this->startDate !== null && $this->endDate !== null) {
+                $query->whereBetween('clients.updated_at', [$this->startDate, $this->endDate]);
+            }
+
             return $query->get()->map(function ($item, $key) {
                 $item->number = $key + 1; // Row number starts at 1
                 return (array) $item;
@@ -57,7 +65,6 @@ class ProductsExport implements FromCollection, WithHeadings, WithColumnFormatti
             return collect([]);
         }
     }
-    
 
     public function headings(): array
     {
