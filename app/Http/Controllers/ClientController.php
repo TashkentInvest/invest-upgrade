@@ -15,10 +15,10 @@ class ClientController extends Controller
     public function index()
     {
         // abort_if_forbidden('client.show');
-        $clients = Client::where('id','!=',auth()->user()->id)->get();
+        $clients = Client::where('id', '!=', auth()->user()->id)->get();
         // dd($clients);
 
-        return view('pages.client.index',compact('clients'));
+        return view('pages.client.index', compact('clients'));
     }
 
     public function add()
@@ -27,8 +27,8 @@ class ClientController extends Controller
         if (auth()->user()->hasRole('Super Admin'))
             $roles = Role::all();
         else
-            $roles = Role::where('name','!=','Super Admin')->get();
-        return view('pages.client.add',compact('roles'));
+            $roles = Role::where('name', '!=', 'Super Admin')->get();
+        return view('pages.client.add', compact('roles'));
     }
 
     // user create
@@ -36,7 +36,7 @@ class ClientController extends Controller
     {
         // dd($request);
         abort_if_forbidden('client.add');
-        $this->validate($request,[
+        $this->validate($request, [
             'first_name' => ['required', 'string', 'max:255'],
             'last_name' => ['required', 'string', 'max:255'],
         ]);
@@ -53,38 +53,24 @@ class ClientController extends Controller
             'yuridik_rekvizid' => $request->get('yuridik_rekvizid'),
         ]);
 
-        // $client_id = $client->id;
 
-
-
-      
-        // $company = Company::create([
-        //     'client_id' => $client_id, 
-        //     'company_location' => $request->get('company_location'),
-        //     'company_type' => $request->get('company_type'),
-        //     'branch_kubmetr' => $request->get('branch_kubmetr'), 
-        //     'company_name' => $request->get('company_name'), 
-        // ]);
-        
-
-        
         return redirect()->route('clientIndex');
     }
 
     // user edit page
     public function edit($id)
     {
-        abort_if((!auth()->user()->can('client.edit') && auth()->id() != $id),403);
+        abort_if((!auth()->user()->can('client.edit') && auth()->id() != $id), 403);
 
         $client = Client::find($id);
 
-        return view('pages.client.edit',compact('client'));
+        return view('pages.client.edit', compact('client'));
     }
 
     // update user dates
     public function update(Request $request, $id)
     {
-        abort_if((!auth()->user()->can('client.edit') && auth()->id() != $id),403);
+        abort_if((!auth()->user()->can('client.edit') && auth()->id() != $id), 403);
 
         $client = Client::find($id);
 
@@ -112,18 +98,16 @@ class ClientController extends Controller
         abort_if_forbidden('client.delete');
 
         $client = Client::destroy($id);
-        if ($client->hasRole('Super Admin') && !auth()->user()->hasRole('Super Admin'))
-        {
-            message_set("У вас нет разрешения на редактирование администратора",'error',5);
+        if ($client->hasRole('Super Admin') && !auth()->user()->hasRole('Super Admin')) {
+            message_set("У вас нет разрешения на редактирование администратора", 'error', 5);
             return redirect()->back();
         }
-        DB::table('model_has_roles')->where('model_id',$id)->delete();
-        DB::table('model_has_permissions')->where('model_id',$id)->delete();
+        DB::table('model_has_roles')->where('model_id', $id)->delete();
+        DB::table('model_has_permissions')->where('model_id', $id)->delete();
         $deleted_by = logObj(auth()->user());
         $client_log = logObj(Client::find($id));
         $message = "\nDeleted By: $deleted_by\nDeleted Client: $client_log";
-        LogWriter::user_activity($message,'DeletingUsers');
+        LogWriter::user_activity($message, 'DeletingUsers');
         return redirect()->route('clientIndex');
     }
-
 }

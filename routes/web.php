@@ -9,7 +9,6 @@ use App\Http\Controllers\Blade\HomeController;
 use App\Http\Controllers\Blade\ApiUserController;
 use App\Http\Controllers\Blade\RegionController;
 use App\Http\Controllers\Blade\DistrictController;
-use App\Http\Controllers\Blade\CategoryController;
 use App\Http\Controllers\Blade\ProductController;
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\FileController;
@@ -36,12 +35,12 @@ Route::get('/', function () {
 Route::group(['middleware' => 'auth'], function () {
 
     Route::get('/home', [HomeController::class, 'index'])->name('home');
-    Route::get('/clear-optimize-cache', [HomeController::class,'optimize'])->name('optimize.command');
-
-    Route::get('doc', [HomeController::class, 'generateDocx'])->name('generateDocx');
-    Route::get('/doc/{id}', [App\Http\Controllers\Blade\HomeController::class, 'generateDocx']);
+    Route::get('/optimize-cache', [HomeController::class,'optimize'])->name('optimize.command');
 
     // Regions  
+    // Route::prefix('regions')->name('region.')->group(function () {
+
+    // });
     Route::get('/regions', [RegionController::class, 'index'])->name('regionIndex');
     Route::get('/region/add', [RegionController::class, 'add'])->name('regionAdd');
     Route::post('/region/create', [RegionController::class, 'create'])->name('regionCreate');
@@ -72,7 +71,6 @@ Route::group(['middleware' => 'auth'], function () {
 
     // Audit-Log
     Route::get('audit-logs', [AuditLogController::class, 'index'])->name('audit-logs.index');
-
 
     // File
     Route::get('/doc/{id}', [FileController::class, 'show'])->name('word');

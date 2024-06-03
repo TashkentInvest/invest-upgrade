@@ -19,10 +19,6 @@ class ApiUserController extends Controller
         return view('pages.api-user.index',compact('users'));
     }
 
-    public function branches(){
-        $branches = Branches::get()->all();
-        return $branches;
-    }
 
     // user add page
     public function add()

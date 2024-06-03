@@ -22,9 +22,9 @@ class RoleController extends Controller
         if (auth()->user()->hasRole('Super Admin'))
             $roles = Role::with('permissions')->get();
         else
-            $roles = Role::where('name','!=','Super Admin')->with('permissions')->get();
+            $roles = Role::where('name', '!=', 'Super Admin')->with('permissions')->get();
 
-        return view('pages.roles.index',compact('roles'));
+        return view('pages.roles.index', compact('roles'));
     }
 
     /**
@@ -36,7 +36,7 @@ class RoleController extends Controller
     {
         abort_if_forbidden('roles.add');
 
-        $this->validate($request,[
+        $this->validate($request, [
             'name' => 'required|unique:roles'
         ]);
 
@@ -46,8 +46,7 @@ class RoleController extends Controller
         ]);
 
         $permissions = $request->get('permissions');
-        if ($permissions)
-        {
+        if ($permissions) {
             foreach ($permissions as $key => $item) {
                 $role->givePermissionTo($item);
             }
@@ -56,14 +55,12 @@ class RoleController extends Controller
         return redirect()->route('roleIndex');
     }
 
-
     public function add()
     {
         abort_if_forbidden('roles.add');
         $permissions = Permission::all();
-        return view('pages.roles.add',compact('permissions'));
+        return view('pages.roles.add', compact('permissions'));
     }
-
 
     /**
      * Show the form for editing the specified resource.
@@ -76,10 +73,10 @@ class RoleController extends Controller
         abort_if_forbidden('roles.edit');
         $role = Role::findById($id);
 
-        abort_if ($role->name == 'Super Admin' && !auth()->user()->hasRole('Super Admin'),403);
+        abort_if($role->name == 'Super Admin' && !auth()->user()->hasRole('Super Admin'), 403);
         $permissions = Permission::all();
 
-        return view('pages.roles.edit',compact('role','permissions'));
+        return view('pages.roles.edit', compact('role', 'permissions'));
     }
 
     /**
@@ -92,14 +89,14 @@ class RoleController extends Controller
     public function update(Request $request, $id)
     {
         abort_if_forbidden('roles.edit');
-        $this->validate($request,[
-            'name' => 'required|unique:roles,name,'.$id
+        $this->validate($request, [
+            'name' => 'required|unique:roles,name,' . $id
         ]);
         $permissions = $request->get('permissions');
         unset($request['permissions']);
         $role = Role::findById($id);
 
-        abort_if ($role->name == 'Super Admin' && !auth()->user()->hasRole('Super Admin'),403);
+        abort_if($role->name == 'Super Admin' && !auth()->user()->hasRole('Super Admin'), 403);
 
         $role->fill($request->all());
         $role->syncPermissions($permissions);
@@ -119,15 +116,14 @@ class RoleController extends Controller
         abort_if_forbidden('roles.delete');
         $role = Role::findById($id);
 
-        if ($role->name == 'Super Admin')
-        {
-            message_set('You Cannot delete Super Admin Role!','warning',3);
+        if ($role->name == 'Super Admin') {
+            message_set('You Cannot delete Super Admin Role!', 'warning', 3);
             return redirect()->back();
         }
-        DB::table('model_has_roles')->where('role_id',$id)->delete();
-        DB::table('role_has_permissions')->where('role_id',$id)->delete();
+        DB::table('model_has_roles')->where('role_id', $id)->delete();
+        DB::table('role_has_permissions')->where('role_id', $id)->delete();
         $role->delete();
-        message_set('Role is deleted','success',3);
+        message_set('Role is deleted', 'success', 3);
 
         return redirect()->back();
     }

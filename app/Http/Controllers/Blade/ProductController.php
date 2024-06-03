@@ -18,7 +18,7 @@ use Illuminate\Support\Facades\Cache;
 
 class ProductController extends Controller
 {
-    
+
     public function index()
     {
         // Cache the query result for 60 minutes
@@ -32,32 +32,31 @@ class ProductController extends Controller
         //         ->get(); 
         // });
         $clients = Client::deepFilters()->with([
-                    'products',
-                    'branches' 
-                ])
-                ->where('is_deleted', '!=', 1)
-                ->orderBy('id', 'asc')
-                ->latest()->paginate(10);
-    
+            'products',
+            'branches'
+        ])
+            ->where('is_deleted', '!=', 1)
+            ->orderBy('id', 'asc')
+            ->latest()->paginate(10);
+
         return view('pages.products.index', compact('clients'));
     }
-    
-    
-    public function show($id)   
+
+    public function show($id)
     {
         // Find the product by ID
         $product = Products::findOrFail($id);
-    
+
         $client = Client::where('id', $product->client_id)
-                        ->with(['branches', 'files'])
-                        ->where('is_deleted', '!=', 1)
-                        ->firstOrFail();
-    
+            ->with(['branches', 'files'])
+            ->where('is_deleted', '!=', 1)
+            ->firstOrFail();
+
         $files = $client ? $client->files : collect();
-    
+
         return view('pages.products.show', compact('product', 'client', 'files'));
     }
-    
+
     public function add()
     {
         $regions = Regions::get()->all();
@@ -136,7 +135,7 @@ class ProductController extends Controller
                     'first_payment_percent' => $accordion['first_payment_percent'] ?? null,
                 ]);
                 // dd($branch);
-            
+
                 Products::create([
                     'user_id' => auth()->user()->id,
                     'client_id' => $client->id,
@@ -145,7 +144,7 @@ class ProductController extends Controller
                     'updated_at' => Carbon::today(),
                 ]);
             }
-            
+
 
             DB::commit();
 
@@ -170,7 +169,7 @@ class ProductController extends Controller
     public function update(Request $request, $client_id)
     {
         DB::beginTransaction();
-    
+
         try {
             // Update client information
             $client = Client::findOrFail($client_id);
@@ -198,20 +197,20 @@ class ProductController extends Controller
                 'stir' => $request->stir,
                 'oked' => $request->oked,
             ]);
-    
+
             // Get existing companies for the client
             $existingCompanies = Company::where('client_id', $client_id)->get();
-    
+
             // Update company and branch information
             foreach ($request->accordions as $index => $accordion) {
                 // Check if the company exists
-            
+
                 $existingBranches = Branch::where('client_id', $client->id)->get();
-    
+
                 if (isset($accordion['branches'])) {
                     foreach ($accordion['branches'] as $branchIndex => $branchData) {
                         $branch = $existingBranches->skip($branchIndex)->first();
-    
+
                         if (!$branch) {
                             $branch = Branch::create([
                                 'client_id' => $client->id,
@@ -254,7 +253,7 @@ class ProductController extends Controller
                     }
                 }
             }
-    
+
             // Update product information
             $product = Products::where('client_id', $client_id)->firstOrFail();
             $product->update([
@@ -264,21 +263,21 @@ class ProductController extends Controller
                 'created_at' => Carbon::today(),
                 'updated_at' => Carbon::today(),
             ]);
-    
+
             // Handle file uploads
             if ($request->hasFile('document')) {
                 foreach ($request->file('document') as $file) {
                     $extension = $file->getClientOriginalExtension();
                     $fileName = time() . '.' . $extension;
                     $file->move(public_path('assets'), $fileName);
-    
+
                     $fileModel = new File();
                     $fileModel->client_id = $client->id;
                     $fileModel->path = 'assets/' . $fileName;
                     $fileModel->save();
                 }
             }
-    
+
             // Handle file deletions
             if ($request->has('delete_files') && is_array($request->delete_files)) {
                 foreach ($request->delete_files as $fileId) {
@@ -291,20 +290,20 @@ class ProductController extends Controller
                     }
                 }
             }
-    
+
             DB::commit();
 
             $currentPage = $request->input('page', 1);
-    
+
             return redirect()->route('productIndex', ['page' => $currentPage])->with('success', 'Product updated successfully');
         } catch (\Exception $e) {
-            DB::rollback(); 
+            DB::rollback();
 
-    
+
             return redirect()->back()->with('error', 'An error occurred while updating the product: ' . $e->getMessage());
         }
     }
-    
+
     public function delete($client_id)
     {
         try {

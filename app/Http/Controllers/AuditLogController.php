@@ -11,7 +11,6 @@ class AuditLogController extends Controller
 {
     public function index()
     {
-
         $auditLogs = Cache::remember('auditLogs', 30 * 60, function () {
             return AuditLog::with(['user', 'client'])->orderBy('created_at', 'desc')->get();
         });

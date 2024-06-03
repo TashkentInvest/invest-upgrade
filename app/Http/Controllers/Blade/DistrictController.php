@@ -16,7 +16,7 @@ class DistrictController extends Controller
     }
 
     public function add()
-    { 
+    {
         $regions = Regions::get()->all();
         return view('pages.districts.add', compact('regions'));
     }
@@ -52,7 +52,7 @@ class DistrictController extends Controller
     {
         $district = Districts::find($id);
         $district->delete();
-        message_set("District deleted !",'success',1);
+        message_set("District deleted !", 'success', 1);
         return redirect()->back();
     }
 }
