@@ -30,19 +30,12 @@ class ProductController extends Controller
         $clients = Cache::remember('clients_with_products', 60, function() {
             return Client::deepFilters()
                 ->with('products')
+                ->with('companies')
+                ->with('companies.branches')
                 ->where('is_deleted', '!=', 1)
                 ->orderBy('updated_at', 'desc')
                 ->get();
         });
-
-        // $clients = Cache::remember('clients_with_products', 60 * 60, function() {
-        //     return Client::deepFilters()
-        //         ->with('products')
-        //         ->where('is_deleted', '!=', 1)
-        //         ->orderBy('updated_at', 'desc')
-        //         ->take(10)
-        //         ->get();
-        // });
 
         return view('pages.products.index', compact('clients'));
     }

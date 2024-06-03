@@ -114,3 +114,6 @@ composer require maatwebsite/excel
 composer require barryvdh/laravel-debugbar
 
 php artisan vendor:publish --provider="Barryvdh\Debugbar\ServiceProvider"--tag="config"
+
+composer require yajra/laravel-datatables-oracle
+
