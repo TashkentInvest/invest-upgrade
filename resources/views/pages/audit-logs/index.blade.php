@@ -18,6 +18,14 @@
     </div>
 </div>
 
+<style>
+    .card-body {
+        overflow-x: scroll !important;
+    }
+</style>
+
+
+
 <div class="row">
     <div class="col-12">
         <div class="card">

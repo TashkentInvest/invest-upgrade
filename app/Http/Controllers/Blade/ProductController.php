@@ -48,16 +48,13 @@ class ProductController extends Controller
         // Find the product by ID
         $product = Products::findOrFail($id);
     
-        // Find the client associated with the product, eager loading companies, branches, and files
         $client = Client::where('id', $product->client_id)
                         ->with(['branches', 'files'])
                         ->where('is_deleted', '!=', 1)
                         ->firstOrFail();
     
-        // Check if client files exist, otherwise set to an empty collection
         $files = $client ? $client->files : collect();
     
-        // Pass product, client, and files data to the view
         return view('pages.products.show', compact('product', 'client', 'files'));
     }
     
@@ -307,8 +304,6 @@ class ProductController extends Controller
             return redirect()->back()->with('error', 'An error occurred while updating the product: ' . $e->getMessage());
         }
     }
-    
-    
     
     public function delete($client_id)
     {
