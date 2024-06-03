@@ -34,6 +34,12 @@ class HomeController extends Controller
             return view('welcome');
         }
     }
+
+    public function optimize(){
+        \Artisan::call('cache:clear-optimize');
+        return redirect()->route('productIndex')->with('success', 'Optimized cache cleared successfully');
+    }
+
     public function getClientData($id)
     {
         return DB::table('clients')

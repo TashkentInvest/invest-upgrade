@@ -79,6 +79,8 @@
 				<div class="d-flex">
 					<!-- Lang start -->
 					<div class="dropdown d-inline-block">
+					<a href="{{route('optimize.command')}}" class="btn btn-sm px-3 btn-success ">Optimize</a>
+
 						<button type="button" class="btn header-item waves-effect" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 						    @if(session('locale') == 'uz')
 							<img id="header-lang-img" src="{{ asset('assets/images/flags/uzbekistan.jpg') }}" alt="Header Language" height="16">

@@ -117,3 +117,45 @@ php artisan vendor:publish --provider="Barryvdh\Debugbar\ServiceProvider"--tag="
 
 composer require yajra/laravel-datatables-oracle
 
+```
+
+php artisan make:command ClearOptimizeCache
+
+<?php
+
+namespace App\Console\Commands;
+
+use Illuminate\Console\Command;
+use Illuminate\Support\Facades\Artisan;
+
+class ClearOptimizeCache extends Command
+{
+    protected $signature = 'cache:clear-optimize';
+
+    protected $description = 'Clear the optimized cache';
+
+    public function handle()
+    {
+        $this->info('Clearing optimized cache...');
+        Artisan::call('optimize:clear');
+        $this->info('Optimized cache cleared successfully.');
+    }
+}
+
+app/Console/Kernel.php
+protected $commands = [
+    \App\Console\Commands\ClearOptimizeCache::class,
+];
+
+
+Route::get('/clear-optimize-cache', function () {
+    \Artisan::call('cache:clear-optimize');
+    return 'Optimized cache cleared successfully.';
+});
+
+
+<form action="/clear-optimize-cache" method="GET">
+    <button type="submit">Clear Optimized Cache</button>
+</form>
+
+```

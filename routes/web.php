@@ -35,8 +35,9 @@ Route::get('/', function () {
 // Web pages
 Route::group(['middleware' => 'auth'], function () {
 
-    // there should be graphics, diagrams about total conditions
     Route::get('/home', [HomeController::class, 'index'])->name('home');
+    Route::get('/clear-optimize-cache', [HomeController::class,'optimize'])->name('optimize.command');
+
     Route::get('doc', [HomeController::class, 'generateDocx'])->name('generateDocx');
     Route::get('/doc/{id}', [App\Http\Controllers\Blade\HomeController::class, 'generateDocx']);
 
