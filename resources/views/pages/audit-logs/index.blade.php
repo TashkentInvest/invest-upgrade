@@ -88,14 +88,14 @@
                                                                 <td style="width: 150px;" class="font-weight-bold text-success">New Values</td>
                                                             </tr>
                                                             @php
-                                                                $oldValues = $log->old_values ? json_decode($log->old_values, true) : [];
-                                                                $newValues = $log->new_values ? json_decode($log->new_values, true) : [];
+                                                                $oldValues = json_decode($log->old_values, true) ?? [];
+                                                                $newValues = json_decode($log->new_values, true) ?? [];
                                                             @endphp
                                                             
                                                             @foreach(array_keys(array_merge($oldValues, $newValues)) as $key)
                                                                 @php
-                                                                    $oldValue = $oldValues[$key] ?? 'N/A';
-                                                                    $newValue = $newValues[$key] ?? 'N/A';
+                                                                    $oldValue = isset($oldValues[$key]) ? $oldValues[$key] : 'N/A';
+                                                                    $newValue = isset($newValues[$key]) ? $newValues[$key] : 'N/A';
                                                                     $highlight = $oldValue !== $newValue ? 'highlight-diff' : '';
                                                                 @endphp
                                                                 <tr>
@@ -104,10 +104,7 @@
                                                                     <td class="{{ $highlight }}">{{ $newValue }}</td>
                                                                 </tr>
                                                             @endforeach
-                                                        
-                                                                
                                                             
-
                                                         </tbody>
                                                     </table>
                                                 </div>
