@@ -83,9 +83,9 @@
                                                                 </td>
                                                             </tr>
                                                             <tr>
-                                                                <td class="font-weight-bold text-primary">Field</td>
-                                                                <td class="font-weight-bold text-primary">Old Values</td>
-                                                                <td class="font-weight-bold text-success">New Values</td>
+                                                                <td style="width: 150px;" class="font-weight-bold text-primary">Field</td>
+                                                                <td style="width: 150px;" class="font-weight-bold text-primary">Old Values</td>
+                                                                <td style="width: 150px;" class="font-weight-bold text-success">New Values</td>
                                                             </tr>
                                                             @php
                                                                 $oldValues = $log->old_values ? json_decode($log->old_values, true) : [];
@@ -100,7 +100,7 @@
                                                                 @endphp
                                                                 <tr>
                                                                     <td><strong>{{ ucfirst(str_replace('_', ' ', $key)) }}:</strong></td>
-                                                                    <td class="{{ $highlight }}">{{ $oldValue }}</td>
+                                                                    <td  class="{{ $highlight }}">{{ $oldValue }}</td>
                                                                     <td class="{{ $highlight }}">{{ $newValue }}</td>
                                                                 </tr>
                                                             @endforeach
