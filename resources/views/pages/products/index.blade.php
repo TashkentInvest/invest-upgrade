@@ -21,8 +21,8 @@
     <div class="row">
         <div class="col-12">
             <div class="card">
-                <div class="card-header">
-                    <h3 class="card-title">@lang('cruds.branches.title')</h3>
+                <div class="card-header d-flex justify-content-between">
+                    {{-- <h3 class="card-title">@lang('cruds.branches.title')</h3> --}}
                     <a href="{{ route('productAdd') }}" class="btn btn-sm btn-success waves-effect waves-light float-right">
                         <span class="fas fa-plus-circle"></span>
                         @lang('global.add')
@@ -48,21 +48,51 @@
                                             <!-- Company Search -->
                                             <div class="form-group row align-items-center my-2">
                                                 <div class="col-3">
-                                                    <h6>@lang('cruds.company.fields.company_name')</h6>
+                                                    <h6>company Name</h6>
                                                 </div>
                                                 <div class="col-2">
                                                     <select class="form-control form-control-sm" name="company_operator">
-                                                        <option value="like"
-                                                            {{ request()->company_operator == 'like' ? 'selected' : '' }}>
-                                                            Like</option>
+                                                        <option value="like" {{ request()->company_operator == 'like' ? 'selected' : '' }}>Like</option>
                                                         <!-- Add other comparison operators if needed -->
                                                     </select>
                                                 </div>
                                                 <div class="col-3">
                                                     <input type="hidden" name="company_name_operator" value="like">
-                                                    <input class="form-control form-control-sm" type="text"
-                                                        name="company_name"
-                                                        value="{{ old('company_name', request()->company_name ?? '') }}">
+                                                    <input class="form-control form-control-sm" type="text" name="company_name" value="{{ old('company_name', request()->company_name ?? '') }}">
+                                                </div>
+                                            </div>
+
+                                            {{-- Inn search --}}
+                                            <div class="form-group row align-items-center my-2">
+                                                <div class="col-3">
+                                                    <h6>INN Name</h6>
+                                                </div>
+                                                <div class="col-2">
+                                                    <select class="form-control form-control-sm" name="inn_operator">
+                                                        <option value="like" {{ request()->inn_operator == 'like' ? 'selected' : '' }}>Like</option>
+                                                        <!-- Add other comparison operators if needed -->
+                                                    </select>
+                                                </div>
+                                                <div class="col-3">
+                                                    <input type="hidden" name="stir_operator" value="like">
+                                                    <input class="form-control form-control-sm" type="text" name="stir" value="{{ old('stir', request()->stir ?? '') }}">
+                                                </div>
+                                            </div>
+                                            
+                                            {{-- contact search --}}
+                                            <div class="form-group row align-items-center my-2">
+                                                <div class="col-3">
+                                                    <h6>contact</h6>
+                                                </div>
+                                                <div class="col-2">
+                                                    <select class="form-control form-control-sm" name="contact_operator">
+                                                        <option value="like" {{ request()->contact_operator == 'like' ? 'selected' : '' }}>Like</option>
+                                                        <!-- Add other comparison operators if needed -->
+                                                    </select>
+                                                </div>
+                                                <div class="col-3">
+                                                    <input type="hidden" name="contact_operator" value="like">
+                                                    <input class="form-control form-control-sm" type="text" name="contact" value="{{ old('contact', request()->contact ?? '') }}">
                                                 </div>
                                             </div>
 

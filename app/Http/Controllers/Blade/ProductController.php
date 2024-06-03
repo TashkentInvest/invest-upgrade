@@ -22,15 +22,22 @@ class ProductController extends Controller
     public function index()
     {
         // Cache the query result for 60 minutes
-        $clients = Cache::remember('clients_with_products', 60, function() {
-            return Client::with([
+        // $clients = Cache::remember('clients_with_products', 60, function() {
+        //     return Client::deepFilters()->with([
+        //             'products',
+        //             'branches' 
+        //         ])
+        //         ->where('is_deleted', '!=', 1)
+        //         ->orderBy('updated_at', 'desc')
+        //         ->get(); 
+        // });
+        $clients = Client::deepFilters()->with([
                     'products',
                     'branches' 
                 ])
                 ->where('is_deleted', '!=', 1)
                 ->orderBy('updated_at', 'desc')
                 ->get(); 
-        });
     
         return view('pages.products.index', compact('clients'));
     }

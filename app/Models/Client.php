@@ -69,81 +69,11 @@ class Client extends Model
         $query = self::where('id','!=','0');
 
         foreach ($obj->fillable as $item) {
-
-            // dump($item);
+            //request operator key
             $operator = $item.'_operator';
-
-            // Search relationed company ***********************************************
-      
-            if ($request->filled('company_name')) {
-                $operator = $request->input('company_operator', 'like');
-                $value = '%' . $request->input('company_name') . '%';
-            
-                $query->whereHas('companies', function ($query) use ($operator, $value) {
-                    $query->where('company_name', $operator, $value);
-                });
-            }
-
-            // if ($request->filled('companystir_operator')) {
-            //     $operator = $request->input('companystir_operator', 'like');
-            //     $value = '%' . $request->input('stir') . '%';
-            
-            //     $query->whereHas('companies', function ($query) use ($operator, $value) {
-            //         $query->where('stir', $operator, $value);
-            //     });
-            // }
-
-            
-            // END Search relationed company ***********************************************
-
-            // Search relationed category ***********************************************
-            if ($request->filled('category_name')) {
-                $operator = $request->input('category_name_operator', 'like');
-                $value = '%' . $request->input('category_name') . '%';
-        
-                $query->whereHas('task.category', function ($q) use ($operator, $value) {
-                    $q->where('name', $operator, $value);
-                });
-        
-                continue; 
-            }
-            // END Search relationed category ***********************************************
-
-            // Search relationed driver ***********************************************
-            if ($request->filled('driver_full_name')) {
-                // Determine the operator
-                $operator = $request->input('driver_full_name_operator', 'like');
-                $value = '%' . $request->input('driver_full_name') . '%';
-        
-                // Apply the filter
-                $query->whereHas('task.driver', function ($q) use ($operator, $value) {
-                    $q->where('full_name', $operator, $value);
-                });
-        
-                continue; 
-            }
-            // END Search relationed driver ***********************************************
-
-            // Search relationed status ***********************************************
-            if ($item == 'user_id' && $request->has('user_name')) {
-                // Determine the operator
-                $operator = $request->input('user_name_operator', 'like');
-                $value = '%' . $request->input('user_name') . '%';
-        
-                // Apply the filter
-                $query->whereHas('user', function ($q) use ($operator, $value) {
-                    $q->where('name', $operator, $value);
-                });
-        
-                continue; 
-            }
-            // END Search relationed status ***********************************************
-
 
             if ($request->has($item) && $request->$item != '')
             {
-
-               
                 if (isset($tiyin[$item])){
                     $select = $request->$item * 100;
                     $select_pair = $request->{$item.'_pair'} * 100;
