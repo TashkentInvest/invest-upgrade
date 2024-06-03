@@ -161,7 +161,7 @@
             </div>
             <span class="panel_footer">
                 <strong>&copy; {{ date('Y') }} 
-                    <a href="#">Tashkent Invest </a>.</strong>
+                    <a href="#">Tashkent Invest Company</a>.</strong>
             </span>
         </div>
     </div>
