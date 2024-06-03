@@ -84,14 +84,14 @@ class ProductController extends Controller
                     'yuridik_rekvizid' => $request->get('yuridik_rekvizid'),
                     'client_description' => $request->get('client_description'),
 
-                    'company_location' => $request->get('company_location') ?? null,
-                    'company_type' => $request->get('company_type') ?? null,
-                    'company_name' => $request->get('company_name') ?? null,
-                    'raxbar' => $request->get('raxbar') ?? null,
-                    'bank_code' => $request->get('bank_code') ?? null,
-                    'bank_service' => $request->get('bank_service') ?? null,
-                    'stir' => $request->get('stir') ?? null,
-                    'oked' => $request->get('oked') ?? null,
+                    'company_location' => $request->get('company_location'),
+                    'company_type' => $request->get('company_type'),
+                    'company_name' => $request->get('company_name'),
+                    'raxbar' => $request->get('raxbar'),
+                    'bank_code' => $request->get('bank_code'),
+                    'bank_service' => $request->get('bank_service'),
+                    'stir' => $request->get('stir'),
+                    'oked' => $request->get('oked'),
                 ]);
             }
 
@@ -185,14 +185,14 @@ class ProductController extends Controller
                 'yuridik_rekvizid' => $request->yuridik_rekvizid,
                 'client_description' => $request->client_description,
 
-                'company_location' => $request->get('company_location') ?? null,
-                'company_type' => $request->get('company_type') ?? null,
-                'company_name' => $request->get('company_name') ?? null,
-                'raxbar' => $request->get('raxbar') ?? null,
-                'bank_code' => $request->get('bank_code') ?? null,
-                'bank_service' => $request->get('bank_service') ?? null,
-                'stir' => $request->get('stir') ?? null,
-                'oked' => $request->get('oked') ?? null,
+                'company_location' => $request->company_location,
+                'company_type' => $request->company_type,
+                'company_name' => $request->company_name,
+                'raxbar' => $request->raxbar,
+                'bank_code' => $request->bank_code,
+                'bank_service' => $request->bank_service,
+                'stir' => $request->stir,
+                'oked' => $request->oked,
             ]);
     
             // Get existing companies for the client
@@ -202,8 +202,6 @@ class ProductController extends Controller
             foreach ($request->accordions as $index => $accordion) {
                 // Check if the company exists
             
-    
-                // Get existing branches for the company
                 $existingBranches = Branch::where('client_id', $client->id)->get();
     
                 if (isset($accordion['branches'])) {
@@ -230,7 +228,6 @@ class ProductController extends Controller
                                 'first_payment_percent' => $branchData['first_payment_percent'] ?? null,
                             ]);
                         } else {
-                            // Update the existing branch
                             $branch->update([
                                 'client_id' => $client->id,
                                 'contract_apt' => $branchData['contract_apt'] ?? null,
@@ -271,7 +268,6 @@ class ProductController extends Controller
                     $fileName = time() . '.' . $extension;
                     $file->move(public_path('assets'), $fileName);
     
-                    // Save file path to the "files" table
                     $fileModel = new File();
                     $fileModel->client_id = $client->id;
                     $fileModel->path = 'assets/' . $fileName;
