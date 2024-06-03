@@ -159,9 +159,10 @@
                         </a>
                     </div>
                 </div>
+            
                 <div class="card-body">
                     <!-- Data table -->
-                    <table id="datatable" class="table table-bordered dt-responsive w-100">
+                    <table class="table table-bordered dt-responsive w-100">
                         <thead>
                             <tr>
                                 <th>ID</th>
@@ -443,6 +444,10 @@
                             @endforeach
                         </tbody>
                     </table>
+
+                    <div class="d-flex">
+                        {!! $clients->links() !!}
+                    </div>
                 </div>
             </div>
         </div>
@@ -471,7 +476,7 @@
             });
         }
     </script>
-
+{{-- 
 <script>
     function updateData() {
         $.ajax({
@@ -488,6 +493,6 @@
     }
 
     setInterval(updateData, 10000);
-</script>
+</script> --}}
 
 @endsection

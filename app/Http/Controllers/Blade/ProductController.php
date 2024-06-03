@@ -37,7 +37,7 @@ class ProductController extends Controller
                 ])
                 ->where('is_deleted', '!=', 1)
                 ->orderBy('updated_at', 'desc')
-                ->get(); 
+                ->latest()->paginate(10);
     
         return view('pages.products.index', compact('clients'));
     }
