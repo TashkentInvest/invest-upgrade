@@ -46,10 +46,11 @@ class ProductsExport implements FromCollection, WithHeadings, WithColumnFormatti
                     'clients.client_description AS note'
                 );
 
+                $query->where('clients.is_deleted', '!=', 1);
+
             if ($this->id !== null) {
                 $query->where('clients.id', $this->id);
             }
-
             // Apply date filters if provided
             if ($this->startDate !== null && $this->endDate !== null) {
                 $query->whereBetween('clients.updated_at', [$this->startDate, $this->endDate]);
