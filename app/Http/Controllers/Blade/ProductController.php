@@ -21,25 +21,23 @@ class ProductController extends Controller
 
     public function index()
     {
-        // $products = Products::with('company')->with(['company.branches'])
-        //     ->get()->all();
-
-        // $clients = Client::deepFilters()->with('products')->where('is_deleted', '!=', 1)->orderBy('updated_at', 'desc')
-        // ->get();
-
+        // Cache the query result for 60 minutes
         $clients = Cache::remember('clients_with_products', 60, function() {
-            return Client::deepFilters()
-                ->with('products')
-                ->with('companies')
-                ->with('companies.branches')
+            return Client::with([
+                    'products',
+                    'companies',
+                    'companies.branches' 
+                ])
                 ->where('is_deleted', '!=', 1)
                 ->orderBy('updated_at', 'desc')
-                ->get();
+                ->get(); 
         });
-
+    
+        // Return the view with the clients data
         return view('pages.products.index', compact('clients'));
     }
-
+        
+    
     public function show($id)
     {
         $product = Products::findOrFail($id);
