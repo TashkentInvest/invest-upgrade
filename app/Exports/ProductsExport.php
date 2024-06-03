@@ -20,14 +20,13 @@ class ProductsExport implements FromCollection, WithHeadings, WithColumnFormatti
     {
         try {
             $query = DB::table('clients')
-                ->join('companies', 'clients.id', '=', 'companies.client_id')
-                ->join('branches', 'companies.id', '=', 'branches.company_id')
+                ->join('branches', 'clients.id', '=', 'branches.client_id')
                 ->select(
                     'clients.id AS number',
                     'clients.application_number AS application_number',
-                    'companies.company_name AS company_name',
+                    'clients.company_name AS company_name',
                     'clients.contact AS contact',
-                    'companies.company_location AS district',
+                    'clients.company_location AS district',
                     'branches.branch_kubmetr AS calculated_volume',
                     'branches.generate_price AS infrastructure_payment',
                     DB::raw("CAST(NULLIF(REPLACE(branches.generate_price, ',', ''), '') AS DECIMAL(10,2)) * CAST(branches.percentage_input AS DECIMAL(10,2)) / 100 AS calculated_amount"),
