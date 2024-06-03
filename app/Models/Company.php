@@ -48,39 +48,4 @@ class Company extends Model
         return $this->hasMany(Branch::class);
     }
 
-    public static function boot()
-    {
-        parent::boot();
-
-        static::created(function ($company) {
-            AuditLog::create([
-                'user_id' => auth()->user()->id ?? 1,
-                'company_id' => $company->id,
-                'event' => 'created',
-                'new_values' => $company->toJson(),
-            ]);
-        });
-
-        static::updating(function ($company) {
-            $original = $company->getOriginal();
-            $changes = $company->getChanges();
-
-            AuditLog::create([
-                'user_id' => auth()->user()->id ?? 1,
-                'company_id' => $company->id,
-                'event' => 'updated',
-                'old_values' => json_encode($original),
-                'new_values' => json_encode($changes),
-            ]);
-        });
-
-        static::deleted(function ($company) {
-            AuditLog::create([
-                'user_id' => auth()->user()->id ?? 1,
-                'company_id' => $company->id,
-                'event' => 'deleted',
-                'old_values' => $company->toJson(),
-            ]);
-        });
-    }
 }

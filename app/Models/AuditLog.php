@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -9,7 +10,7 @@ class AuditLog extends Model
     use HasFactory;
 
     protected $fillable = [
-        'user_id','client_id', 'company_id', 'event', 'old_values', 'new_values'
+        'user_id', 'client_id', 'event', 'old_values', 'new_values'
     ];
 
     protected $casts = [
@@ -26,10 +27,4 @@ class AuditLog extends Model
     {
         return $this->belongsTo(User::class);
     }
-
-    public function company()
-    {
-        return $this->belongsTo(Company::class);
-    }
 }
-

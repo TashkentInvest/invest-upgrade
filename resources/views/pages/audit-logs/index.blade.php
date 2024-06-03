@@ -13,7 +13,6 @@
                     <li class="breadcrumb-item active">Audit Logs</li>
                 </ol>
             </div>
-
         </div>
     </div>
 </div>
@@ -22,9 +21,10 @@
     .card-body {
         overflow-x: scroll !important;
     }
+    .highlight-diff {
+        background-color: #ffdddd;
+    }
 </style>
-
-
 
 <div class="row">
     <div class="col-12">
@@ -39,9 +39,7 @@
                             <th>ID</th>
                             <th>User</th>
                             <th>Client</th>
-                            <th>Company</th>
                             <th>Event</th>
-                        
                             <th>Timestamp</th>
                             <th>Actions</th>
                         </tr>
@@ -52,100 +50,65 @@
                                 <td>{{ $loop->iteration }}</td>
                                 <td>{{ $log->user->name }} | {{ $log->user->email }}</td>
                                 <td>{{ $log->client->first_name ?? 'N/A' }} {{ $log->client->last_name ?? '' }}</td>
-                                <td>{{ $log->company->company_name ?? 'N/A' }}</td>
                                 <td>{{ $log->event }}</td>
-                            
                                 <td>{{ $log->created_at }}</td>
                                 <td class="text-center">
                                     <ul class="list-unstyled hstack gap-1 mb-0">
-                                        <li data-bs-toggle="tooltip" data-bs-placement="top"
-                                            title="@lang('global.details')">
-                                            <button type="button" data-bs-toggle="modal"
-                                                data-bs-target="#exampleModal_{{ $log->id }}"
-                                                class="btn btn-primary">
+                                        <li data-bs-toggle="tooltip" data-bs-placement="top" title="@lang('global.details')">
+                                            <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal_{{ $log->id }}" class="btn btn-primary">
                                                 <i class="bx bxs-show" style="font-size:16px;"></i>
                                             </button>
                                         </li>
-
                                     </ul>
                                     <!-- Modal -->
-                                    <div class="modal fade" id="exampleModal_{{ $log->id }}" tabindex="-1"
-                                        aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal fade" id="exampleModal_{{ $log->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                         <div class="modal-dialog modal-dialog-scrollable modal-lg">
                                             <div class="modal-content">
                                                 <div class="modal-header">
                                                     <h5 class="modal-title" id="exampleModalLabel">
                                                         {{ $log->{'name_' . app()->getLocale()} }}</h5>
-                                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                        aria-label="Close"></button>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                 </div>
                                                 <div class="modal-body">
                                                     <table class="table table-striped">
                                                         <tbody>
                                                             <tr>
-                                                                <td colspan="2" class="table-active"><strong>@lang('global.personal_informations')</strong></td>
+                                                                <td colspan="3" class="table-active"><strong>@lang('global.personal_informations')</strong></td>
                                                             </tr>
                                                             <tr>
-                                                                <td>Changed persion</td>
-                                                            
-                                                                    <td>
-                                                                        {{ $log->user->name }} <br>
-                                                                        {{ $log->user->email }} <br>
-                                                                        {{ $log->user->roles[0]->name }} <br>
-                                                                    </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td class="font-weight-bold text-primary">Old values</td>
-                                                                <td>
-                                                                    @if($log->old_values)
-                                                                        @php
-                                                                            $oldValues = json_decode($log->old_values, true);
-                                                                        @endphp
-                                                                        <table class="table table-bordered table-sm">
-                                                                            @foreach($oldValues as $key => $value)
-                                                                                <tr>
-                                                                                    <td><strong>{{ ucfirst(str_replace('_', ' ', $key)) }}:</strong></td>
-                                                                                    <td>{{ is_null($value) ? 'N/A' : $value }}</td>
-                                                                                </tr>
-                                                                            @endforeach
-                                                                        </table>
-                                                                    @else
-                                                                        N/A
-                                                                    @endif
+                                                                <td>Changed by</td>
+                                                                <td colspan="2">
+                                                                    {{ $log->user->name }} <br>
+                                                                    {{ $log->user->email }} <br>
+                                                                    {{ $log->user->roles[0]->name }} <br>
                                                                 </td>
                                                             </tr>
                                                             <tr>
-                                                                <td class="font-weight-bold text-success">New values</td>
-                                                                <td>
-                                                                    @if($log->new_values)
-                                                                        @php
-                                                                            $newValues = json_decode($log->new_values, true);
-                                                                        @endphp
-                                                                        <table class="table table-bordered table-sm">
-                                                                            @foreach($newValues as $key => $value)
-                                                                                <tr>
-                                                                                    <td><strong>{{ ucfirst(str_replace('_', ' ', $key)) }}:</strong></td>
-                                                                                    <td>{{ is_null($value) ? 'N/A' : $value }}</td>
-                                                                                </tr>
-                                                                            @endforeach
-                                                                        </table>
-                                                                    @else
-                                                                        N/A
-                                                                    @endif
-                                                                </td>
+                                                                <td class="font-weight-bold text-primary">Field</td>
+                                                                <td class="font-weight-bold text-primary">Old Values</td>
+                                                                <td class="font-weight-bold text-success">New Values</td>
                                                             </tr>
+                                                            @foreach(array_keys(array_merge((array)json_decode($log->old_values), (array)json_decode($log->new_values))) as $key)
+                                                                @php
+                                                                    $oldValue = $log->old_values[$key] ?? 'N/A';
+                                                                    $newValue = $log->new_values[$key] ?? 'N/A';
+                                                                    $highlight = $oldValue != $newValue ? 'highlight-diff' : '';
+                                                                @endphp
+                                                                <tr>
+                                                                    <td><strong>{{ ucfirst(str_replace('_', ' ', $key)) }}:</strong></td>
+                                                                    <td class="{{ $highlight }}">{{ is_null($oldValue) ? 'N/A' : $oldValue }}</td>
+                                                                    <td class="{{ $highlight }}">{{ is_null($newValue) ? 'N/A' : $newValue }}</td>
+                                                                </tr>
+                                                            @endforeach
                                                         </tbody>
                                                     </table>
                                                 </div>
-                                                
                                                 <div class="modal-footer">
-                                                    <button type="button" class="btn btn-secondary"
-                                                        data-bs-dismiss="modal">@lang('global.closed')</button>
+                                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">@lang('global.closed')</button>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-
                                 </td>
                             </tr>
                         @endforeach
@@ -165,7 +128,7 @@
 <script>
     $(document).ready(function() {
         $('#datatable').DataTable({
-            "order": [[ 6, "desc" ]], // Order by the Timestamp column by default
+            "order": [[ 4, "desc" ]], // Order by the Timestamp column by default
             "pageLength": 10, // Show 10 entries per page by default
         });
     });
