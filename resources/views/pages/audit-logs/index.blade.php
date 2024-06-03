@@ -44,6 +44,7 @@
                             <th>Old Values</th>
                             <th>New Values</th>
                             <th>Timestamp</th>
+                            <th>Actions</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -69,6 +70,73 @@
                                     @endif
                                 </td>
                                 <td>{{ $log->created_at }}</td>
+                                <td class="text-center">
+                                    <ul class="list-unstyled hstack gap-1 mb-0">
+                                        <li data-bs-toggle="tooltip" data-bs-placement="top"
+                                            title="@lang('global.details')">
+                                            <button type="button" data-bs-toggle="modal"
+                                                data-bs-target="#exampleModal_{{ $log->id }}"
+                                                class="btn btn-primary">
+                                                <i class="bx bxs-show" style="font-size:16px;"></i>
+                                            </button>
+                                        </li>
+
+                                    </ul>
+                                    <!-- Modal -->
+                                    <div class="modal fade" id="exampleModal_{{ $log->id }}" tabindex="-1"
+                                        aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog modal-dialog-scrollable modal-lg">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="exampleModalLabel">
+                                                        {{ $log->{'name_' . app()->getLocale()} }}</h5>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                        aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <table class="table table-striped">
+                                                        <tbody>
+
+                                                            <tr>
+                                                                <td><strong>@lang('global.personal_informations')</strong></td>
+                                                                <td></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>@lang('cruds.client.fields.mijoz_turi')</td>
+                                                                <td>{{ $log->mijoz_turi ?? ''}}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>@lang('cruds.client.fields.first_name')</td>
+                                                                <td>{{ $log->first_name ?? ''}}</td>
+                                                            </tr>
+                                                         
+
+                                                            {{--  --}}
+
+                                                            {{-- 
+                                                            @foreach ($item->products as $p)
+                                                                <tr>
+                                                                    <td><strong>Product Details</strong></td>
+                                                                    <td></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>@lang('global.bazaviy_xisoblash_miqdori')</td>
+                                                                    <td>{{ $p->minimum_wage }}</td>
+                                                                </tr>
+                                                            @endforeach --}}
+
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary"
+                                                        data-bs-dismiss="modal">@lang('global.closed')</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </td>
                             </tr>
                         @endforeach
                     </tbody>
