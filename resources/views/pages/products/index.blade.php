@@ -180,7 +180,7 @@
                             @foreach ($clients as $item)
                                 {{-- @dump($item->company_name ) --}}
                                 <tr>
-                                    <td>{{ $loop->iteration }}</td>
+                                    <td>{{ $item->id }}</td>
                                     @if ($item->mijoz_turi == 'fizik')
                                         <td>{{ $item->first_name }} {{ $item->last_name }} {{ $item->father_name }}</td>
                                     @else

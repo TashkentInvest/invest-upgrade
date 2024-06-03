@@ -36,7 +36,7 @@ class ProductController extends Controller
                     'branches' 
                 ])
                 ->where('is_deleted', '!=', 1)
-                ->orderBy('updated_at', 'desc')
+                ->orderBy('id', 'asc')
                 ->latest()->paginate(10);
     
         return view('pages.products.index', compact('clients'));
@@ -296,10 +296,13 @@ class ProductController extends Controller
             }
     
             DB::commit();
+
+            $currentPage = $request->input('page', 1);
     
-            return redirect()->route('productIndex')->with('success', 'Product updated successfully');
+            return redirect()->route('productIndex', ['page' => $currentPage])->with('success', 'Product updated successfully');
         } catch (\Exception $e) {
-            DB::rollback();
+            DB::rollback(); 
+
     
             return redirect()->back()->with('error', 'An error occurred while updating the product: ' . $e->getMessage());
         }
