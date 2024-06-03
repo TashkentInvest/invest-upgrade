@@ -33,9 +33,9 @@ class ProductController extends Controller
                 ->get(); 
         });
     
-        // Return the view with the clients data
         return view('pages.products.index', compact('clients'));
     }
+    
         
     
     public function show($id)
