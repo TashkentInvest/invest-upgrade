@@ -101,7 +101,7 @@
                             </div>
 
                             <div class="row" id="fizik_section">
-                                <div class="col-12 col-lg-3 mb-2">
+                                <div class="col-12 col-lg-4 mb-2">
                                     <label for="last_name" class="col-md-6 col-form-label">@lang('cruds.client.fields.last_name')</label>
                                     <input class="form-control {{ $errors->has('last_name') ? 'is-invalid' : '' }}"
                                         type="text" name="last_name" id="last_name" placeholder="@lang('cruds.client.fields.last_name')"
@@ -111,7 +111,7 @@
                                     @endif
                                 </div>
 
-                                <div class="col-12 col-lg-3 mb-2">
+                                <div class="col-12 col-lg-4 mb-2">
                                     <label for="first_name" class="col-md-6 col-form-label">@lang('cruds.client.fields.name')</label>
                                     <input class="form-control {{ $errors->has('first_name') ? 'is-invalid' : '' }}"
                                         type="text" name="first_name" id="first_name" placeholder="@lang('cruds.client.fields.first_name')"
@@ -121,7 +121,7 @@
                                     @endif
                                 </div>
 
-                                <div class="col-12 col-lg-3 mb-2">
+                                <div class="col-12 col-lg-4 mb-2">
                                     <label for="father_name" class="col-md-6 col-form-label">@lang('cruds.client.fields.father_name')</label>
                                     <input class="form-control {{ $errors->has('father_name') ? 'is-invalid' : '' }}"
                                         type="text" name="father_name" id="father_name"
@@ -132,15 +132,7 @@
                                     @endif
                                 </div>
 
-                                <div class="col-12 col-lg-3 mb-2">
-                                    <label for="contact" class="col-md-6 col-form-label">@lang('cruds.client.fields.contact')</label>
-                                    <input class="form-control {{ $errors->has('contact') ? 'is-invalid' : '' }}"
-                                        type="text" name="contact" id="contact" placeholder="@lang('cruds.client.fields.contact')"
-                                        value="{{ old('contact', $client->contact) }}">
-                                    @if ($errors->has('contact'))
-                                        <span class="error invalid-feedback">{{ $errors->first('contact') }}</span>
-                                    @endif
-                                </div>
+                              
                             </div>
 
                             <div class="row" id="fizik_section_2">
@@ -235,24 +227,24 @@
                             <!-- Company Details -->
                             <div class="row">
                                     <div class="row">
-                                        <div class="col-lg-4">
-                                            <div class="mb-3">
+                                        <div class="col-lg-3 col-12">
+                                            <div class="mb-2">
                                                 <label for="company_type">@lang('global.loyiha_turi')</label>
                                                 <input type="text" class="form-control" id="company_type"
                                                     name="company_type"
                                                     value="{{ old('company_type', $client->company_type) }}">
                                             </div>
                                         </div>
-                                        <div class="col-lg-4">
-                                            <div class="mb-3">
+                                        <div class="col-lg-3 col-12">
+                                            <div class="mb-2">
                                                 <label for="company_location">@lang('cruds.company.fields.company_location')</label>
                                                 <input type="text" class="form-control" id="company_location"
                                                     name="company_location"
                                                     value="{{ old('company_location', $client->company_location) }}">
                                             </div>
                                         </div>
-                                        <div class="col-lg-4">
-                                            <div class="mb-3">
+                                        <div class="col-lg-3 col-12">
+                                            <div class="mb-2">
                                                 <label for="company_name">@lang('global.loyiha_nomi')</label>
                                                 <input type="text" class="form-control" id="company_name"
                                                     name="company_name"
@@ -260,7 +252,17 @@
                                             </div>
                                         </div>
 
-                                        <div class="col-12 col-lg-3 mb-2">
+                                        <div class="col-lg-3 col-12">
+                                            <div class="mb-2">
+                                                <label for="contact">@lang('cruds.client.fields.contact')</label>
+                                                <input class="form-control {{ $errors->has('contact') ? 'is-invalid' : '' }}"
+                                                type="text" name="contact" id="contact" placeholder="@lang('cruds.client.fields.contact')"
+                                                value="{{ old('contact', $client->contact) }}">
+                                            </div>
+                                        </div>
+
+
+                                        <div class="col-12 col-lg-3 col-12">
                                             <label for="bank_service"
                                                 class="col-md-6 col-form-label">@lang('cruds.company.fields.bank_service')</label>
                                             <input
@@ -274,7 +276,7 @@
                                             @endif
                                         </div>
 
-                                        <div class="col-12 col-lg-3 mb-2">
+                                        <div class="col-12 col-lg-3 col-12">
                                             <label for="bank_code"
                                                 class="col-md-6 col-form-label">@lang('cruds.company.fields.bank_code')</label>
                                             <input
@@ -288,7 +290,7 @@
                                             @endif
                                         </div>
 
-                                        <div class="col-12 col-lg-3 mb-2">
+                                        <div class="col-12 col-lg-3 col-12">
                                             <label for="stir"
                                                 class="col-md-6 col-form-label">@lang('cruds.company.fields.stir')</label>
                                             <input class="form-control {{ $errors->has('stir') ? 'is-invalid' : '' }}"
@@ -301,7 +303,7 @@
                                             @endif
                                         </div>
 
-                                        <div class="col-12 col-lg-3 mb-2">
+                                        <div class="col-12 col-lg-3 col-12">
                                             <label for="oked"
                                                 class="col-md-6 col-form-label">@lang('cruds.company.fields.oked')</label>
                                             <input class="form-control {{ $errors->has('oked') ? 'is-invalid' : '' }}"
@@ -317,8 +319,8 @@
                                         {{-- branch start --}}
                                         @foreach ($client->branches as $branchIndex => $b)
 
-                                            <div class="row">
-                                                <div class="col-lg-3">
+                                            <div class="row mt-3">
+                                                <div class="col-lg-3 col-12">
                                                     <div class="mb-3">
                                                         <label for="notification_num">@lang('cruds.branches.fields.notification_num')</label>
                                                         <input type="text" class="form-control"
@@ -326,7 +328,7 @@
                                                             value="{{ old('accordions.' . $branchIndex . '.notification_num', $b->notification_num) }}">
                                                     </div>
                                                 </div>
-                                                <div class="col-lg-3">
+                                                <div class="col-lg-3 col-12">
                                                     <div class="mb-3">
                                                         <label for="notification_date">@lang('cruds.branches.fields.notification_date')</label>
                                                         <input type="datetime-local" class="form-control"
@@ -334,7 +336,7 @@
                                                             value="{{ old('accordions.' . $branchIndex . '.notification_date', $b->notification_date) }}">
                                                     </div>
                                                 </div>
-                                                <div class="col-lg-3">
+                                                <div class="col-lg-3 col-12">
                                                     <div class="mb-3">
                                                         <label for="insurance_policy">@lang('cruds.branches.fields.insurance_policy')</label>
                                                         <input type="text" class="form-control"
@@ -342,7 +344,7 @@
                                                             value="{{ old('accordions.' . $branchIndex . '.insurance_policy', $b->insurance_policy) }}">
                                                     </div>
                                                 </div>
-                                                <div class="col-lg-3">
+                                                <div class="col-lg-3 col-12">
                                                     <div class="mb-3">
                                                         <label for="bank_guarantee">@lang('cruds.branches.fields.bank_guarantee')</label>
                                                         <input type="text" class="form-control"
@@ -379,7 +381,7 @@
                                             </div>
 
                                             <div class="row">
-                                                <div class="col-lg-3">
+                                                <div class="col-lg-3 col-12">
                                                     <div class="mb-3">
                                                         <label for="contract_apt">@lang('global.ruxsatnoma_raqami')</label>
                                                         <input type="text" class="form-control" id="contract_apt"
@@ -387,7 +389,7 @@
                                                             value="{{ old('accordions.' . $branchIndex . '.contract_apt', $b->contract_apt) }}">
                                                     </div>
                                                 </div>
-                                                <div class="col-lg-3">
+                                                <div class="col-lg-3 col-12">
                                                     <div class="mb-3">
                                                         <label for="contract_date">@lang('global.sanasi')</label>
                                                         <input class="form-control" type="datetime-local"
@@ -396,7 +398,7 @@
                                                             value="{{ old('accordions.' . $branchIndex . '.contract_date', $b->contract_date) }}">
                                                     </div>
                                                 </div>
-                                                <div class="col-lg-3">
+                                                <div class="col-lg-3 col-12">
                                                     <div class="mb-3">
                                                         <label for="branch_kubmetr">@lang('global.obyekt_boyicha_tolanishi_lozim')</label>
                                                         <input type="text" class="form-control" id="branch_kubmetr"
@@ -404,7 +406,7 @@
                                                             value="{{ old('accordions.' . $branchIndex . '.branch_kubmetr', $b->branch_kubmetr) }}">
                                                     </div>
                                                 </div>
-                                                <div class="col-lg-3">
+                                                <div class="col-lg-3 col-12">
                                                     <div class="mb-3">
                                                         <label for="minimum_wage">@lang('global.bazaviy_xisoblash_miqdori')</label>
                                                         <input type="text" class="form-control" id="minimum_wage"
@@ -412,7 +414,7 @@
                                                             value="{{ old('accordions.' . $branchIndex . '.minimum_wage', $b->minimum_wage) }}">
                                                     </div>
                                                 </div>
-                                                <div class="col-lg-3">
+                                                <div class="col-lg-3 col-12">
                                                     <div class="mb-3">
                                                         <label for="generate_price">@lang('global.total_amount')</label>
                                                         <input type="text" class="form-control" id="generate_price"
@@ -420,7 +422,7 @@
                                                             value="{{ old('accordions.' . $branchIndex . '.generate_price', $b->generate_price) }}">
                                                     </div>
                                                 </div>
-                                                <div class="col-lg-3">
+                                                <div class="col-lg-3 col-12">
                                                     <div class="mb-3">
                                                         <label for="payment_type">@lang('global.tolash_turlari')</label>
                                                         <select class="form-select" id="payment_type"
@@ -436,7 +438,7 @@
                                                         </select>
                                                     </div>
                                                 </div>
-                                                <div class="col-lg-3">
+                                                <div class="col-lg-3 col-12">
                                                     <div class="mb-3">
                                                         <label for="percentage_input">@lang('global.bolib_tolash_foizi_oldindan')</label>
                                                         <input type="text" class="form-control" id="percentage_input"
@@ -444,7 +446,7 @@
                                                             value="{{ old('accordions.' . $branchIndex . '.percentage_input', $b->percentage_input) }}">
                                                     </div>
                                                 </div>
-                                                <div class="col-lg-3">
+                                                <div class="col-lg-3 col-12">
                                                     <div class="mb-3">
                                                         <label for="installment_quarterly">@lang('global.bolib_tolash_har_chorakda')</label>
                                                         <input type="text" class="form-control"
@@ -470,10 +472,10 @@
                                 </div>
 
 
-                                <h4>@lang('global.downloadFile')</h4>
-                                <div class="col-12 col-lg-3 mb-2">
+                                {{-- <h4>@lang('global.downloadFile')</h4> --}}
+                                <div class="col-12 col-lg-3 mt-2 ">
                                     <!-- Allow users to upload additional files -->
-                                    <h6>Ruxsatnoma | Shartnoma</h6>
+                                    <h4>Ruxsatnoma | Shartnoma</h4>
                                     <input type="file" name="document[]" multiple>
                                     @if ($errors->has('document'))
                                         <span class="error invalid-feedback">{{ $errors->first('document') }}</span>

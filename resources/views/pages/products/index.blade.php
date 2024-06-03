@@ -137,9 +137,9 @@
                                             </div>
                                         </div>
                                      
-                                        <div class="box container text-center ">
-                                            <a class="border rounded " href="{{ route('download.excel') }}">Download all of
-                                                Exel</a>
+                                        <div class="box container text-center">
+                                            <i class="bx bx-file " style="font-size: 20px"></i>
+                                            <a class="border rounded " href="{{ route('download.excel') }}">Download Exel</a>
                                         </div>
                                         <div class="modal-footer">
                                             <button type="submit" name="filter"
