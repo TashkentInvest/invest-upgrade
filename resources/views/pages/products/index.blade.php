@@ -253,6 +253,11 @@
                                                                     <td>@lang('cruds.client.fields.father_name')</td>
                                                                     <td>{{ $item->father_name }}</td>
                                                                 </tr>
+
+                                                                <tr>
+                                                                    <td>@lang('cruds.client.fields.contact')</td>
+                                                                    <td>{{ $item->contact }}</td>
+                                                                </tr>
                                                                 <tr>
                                                                     <td>@lang('cruds.client.fields.passport_serial')</td>
                                                                     <td>{{ $item->passport_serial }}</td>
@@ -260,6 +265,23 @@
                                                                 <tr>
                                                                     <td>@lang('cruds.client.fields.passport_pinfl')</td>
                                                                     <td>{{ $item->passport_pinfl }}</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>@lang('cruds.client.fields.passport_date')</td>
+                                                                    <td>{{ $item->passport_date }}</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>@lang('cruds.client.fields.passport_location')</td>
+                                                                    <td>{{ $item->passport_location }}</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>Is Id ?</td>
+                                                                    @if($item->passport_type == 0)
+                                                                    <td>Passport</td>
+                                                                    @else
+                                                                    <td>Id Card</td>
+                                                                    @endif
+
                                                                 </tr>
                                                                 <tr>
                                                                     {{-- @dd($item) --}}
@@ -270,15 +292,10 @@
                                                                     <td>@lang('cruds.client.fields.yuridik_rekvizid')</td>
                                                                     <td>{{ $item->yuridik_rekvizid }}</td>
                                                                 </tr>
-                                                                <tr>
-                                                                    <td>@lang('cruds.client.fields.contact')</td>
-                                                                    <td>{{ $item->contact }}</td>
-                                                                </tr>
-
-
+                                        
                                                                 @foreach ($item->companies as $comp)
                                                                     <tr>
-                                                                        <td class="text-center"><strong>Obyekt</strong>
+                                                                        <td class="text-center"><strong>Company</strong>
                                                                         </td>
                                                                         <td></td>
 
@@ -292,11 +309,34 @@
                                                                         <td>@lang('cruds.company.fields.company_name')</td>
                                                                         <td>{{ $comp->company_name }}</td>
                                                                     </tr>
+                                                                    <tr>
+                                                                        <td>@lang('cruds.company.fields.company_type')</td>
+                                                                        <td>{{ $comp->company_type }}</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>@lang('cruds.company.fields.raxbar')</td>
+                                                                        <td>{{ $comp->raxbar }}</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>@lang('cruds.company.fields.bank_code')</td>
+                                                                        <td>{{ $comp->bank_code }}</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>@lang('cruds.company.fields.bank_service')</td>
+                                                                        <td>{{ $comp->bank_service }}</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>@lang('cruds.company.fields.stir')</td>
+                                                                        <td>{{ $comp->stir }}</td>
+                                                                    </tr>
 
+                                                                    <tr>
+                                                                        <td>@lang('cruds.company.fields.oked')</td>
+                                                                        <td>{{ $comp->oked }}</td>
+                                                                    </tr>
                                                                     @foreach ($comp->branches as $b)
                                                                         <tr>
-                                                                            <td class="text-center"><strong>Shartnoma
-                                                                                    Rekvizitlari</strong></td>
+                                                                            <td class="text-center"><strong>Obyekt</strong></td>
                                                                             <td></td>
                                                                         </tr>
                                                                         <tr>

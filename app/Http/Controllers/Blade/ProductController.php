@@ -36,7 +36,6 @@ class ProductController extends Controller
         return view('pages.products.index', compact('clients'));
     }
     
-        
     
     public function show($id)
     {

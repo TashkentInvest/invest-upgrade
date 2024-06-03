@@ -204,6 +204,7 @@ return [
                 'company_name' => 'Название компании',
                 'raxbar' => 'Должность',
                 'company_location' => 'Местоположение компании',
+                'company_type' => 'Тип компании',
                 'bank_service' => 'Название банка',
                 'bank_code' => 'Код банка',
                 'stir' => 'ИНН',

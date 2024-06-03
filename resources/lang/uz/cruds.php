@@ -202,6 +202,8 @@ return [
                 'company_name' => 'Kompaniya nomi',
                 'raxbar' => 'Lavozim',
                 'company_location' => 'Kompaniya joylashuvi',
+                'company_type' => 'Kampanya turi',
+
                 'bank_service' => 'Bank nomi',
                 'bank_code' => 'Bank ko\'di',
                 'stir' => 'INN',
