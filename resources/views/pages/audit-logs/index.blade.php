@@ -41,8 +41,7 @@
                             <th>Client</th>
                             <th>Company</th>
                             <th>Event</th>
-                            <th>Old Values</th>
-                            <th>New Values</th>
+                        
                             <th>Timestamp</th>
                             <th>Actions</th>
                         </tr>
@@ -55,20 +54,7 @@
                                 <td>{{ $log->client->first_name ?? 'N/A' }} {{ $log->client->last_name ?? '' }}</td>
                                 <td>{{ $log->company->company_name ?? 'N/A' }}</td>
                                 <td>{{ $log->event }}</td>
-                                <td>
-                                    @if($log->old_values)
-                                        <pre>{{ pretty_json($log->old_values) }}</pre>
-                                    @elsex
-                                        N/A
-                                    @endif
-                                </td>
-                                <td>
-                                    @if($log->new_values)
-                                        <pre>{{ pretty_json($log->new_values) }}</pre>
-                                    @else
-                                        N/A
-                                    @endif
-                                </td>
+                            
                                 <td>{{ $log->created_at }}</td>
                                 <td class="text-center">
                                     <ul class="list-unstyled hstack gap-1 mb-0">
@@ -96,38 +82,53 @@
                                                 <div class="modal-body">
                                                     <table class="table table-striped">
                                                         <tbody>
-
                                                             <tr>
-                                                                <td><strong>@lang('global.personal_informations')</strong></td>
-                                                                <td></td>
+                                                                <td colspan="2" class="table-active"><strong>@lang('global.personal_informations')</strong></td>
                                                             </tr>
                                                             <tr>
-                                                                <td>@lang('cruds.client.fields.mijoz_turi')</td>
-                                                                <td>{{ $log->mijoz_turi ?? ''}}</td>
+                                                                <td class="font-weight-bold text-primary">Old values</td>
+                                                                <td>
+                                                                    @if($log->old_values)
+                                                                        @php
+                                                                            $oldValues = json_decode($log->old_values, true);
+                                                                        @endphp
+                                                                        <table class="table table-bordered table-sm">
+                                                                            @foreach($oldValues as $key => $value)
+                                                                                <tr>
+                                                                                    <td><strong>{{ ucfirst(str_replace('_', ' ', $key)) }}:</strong></td>
+                                                                                    <td>{{ is_null($value) ? 'N/A' : $value }}</td>
+                                                                                </tr>
+                                                                            @endforeach
+                                                                        </table>
+                                                                    @else
+                                                                        N/A
+                                                                    @endif
+                                                                </td>
                                                             </tr>
                                                             <tr>
-                                                                <td>@lang('cruds.client.fields.first_name')</td>
-                                                                <td>{{ $log->first_name ?? ''}}</td>
+                                                                <td class="font-weight-bold text-success">New values</td>
+                                                                <td>
+                                                                    @if($log->new_values)
+                                                                        @php
+                                                                            $newValues = json_decode($log->new_values, true);
+                                                                        @endphp
+                                                                        <table class="table table-bordered table-sm">
+                                                                            @foreach($newValues as $key => $value)
+                                                                                <tr>
+                                                                                    <td><strong>{{ ucfirst(str_replace('_', ' ', $key)) }}:</strong></td>
+                                                                                    <td>{{ is_null($value) ? 'N/A' : $value }}</td>
+                                                                                </tr>
+                                                                            @endforeach
+                                                                        </table>
+                                                                    @else
+                                                                        N/A
+                                                                    @endif
+                                                                </td>
                                                             </tr>
-                                                         
-
-                                                            {{--  --}}
-
-                                                            {{-- 
-                                                            @foreach ($item->products as $p)
-                                                                <tr>
-                                                                    <td><strong>Product Details</strong></td>
-                                                                    <td></td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td>@lang('global.bazaviy_xisoblash_miqdori')</td>
-                                                                    <td>{{ $p->minimum_wage }}</td>
-                                                                </tr>
-                                                            @endforeach --}}
-
                                                         </tbody>
                                                     </table>
                                                 </div>
+                                                
                                                 <div class="modal-footer">
                                                     <button type="button" class="btn btn-secondary"
                                                         data-bs-dismiss="modal">@lang('global.closed')</button>
