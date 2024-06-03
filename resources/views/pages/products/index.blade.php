@@ -344,7 +344,7 @@
                                                                             <td>{{ $b->contract_apt }}</td>
                                                                         </tr>
                                                                         <tr>
-                                                                            <td>@lang('global.created_at')</td>
+                                                                            <td>@lang('global.sanasi')</td>
                                                                             <td>{{ $b->contract_date }}</td>
                                                                         </tr>
                                                                         <tr>

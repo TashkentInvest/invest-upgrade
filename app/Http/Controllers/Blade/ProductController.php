@@ -39,13 +39,23 @@ class ProductController extends Controller
     
     public function show($id)
     {
+        // Find the product by ID
         $product = Products::findOrFail($id);
-        $client = Client::where('id', $product->client_id)->where('is_deleted', '!=', 1)->first();
+    
+        // Find the client associated with the product, eager loading companies, branches, and files
+        $client = Client::where('id', $product->client_id)
+                        ->with('companies')
+                        ->with(['companies.branches', 'files'])
+                        ->where('is_deleted', '!=', 1)
+                        ->firstOrFail();
+    
+        // Check if client files exist, otherwise set to an empty collection
         $files = $client ? $client->files : collect();
-
+    
+        // Pass product, client, and files data to the view
         return view('pages.products.show', compact('product', 'client', 'files'));
     }
-
+    
     public function add()
     {
         $regions = Regions::get()->all();
