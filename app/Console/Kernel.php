@@ -26,8 +26,10 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        
-        // $schedule->command('inspire')->hourly();
+        $schedule->command('db:backup')
+        ->sendOutputTo(storage_path('logs/db-backup.log'))
+        ->emailOutputTo('office@teamdevs.uz') 
+        ->runInBackground();
     }
 
     /**
