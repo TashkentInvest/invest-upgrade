@@ -20,7 +20,12 @@ class BackupDatabase extends Command
     {
         parent::__construct();
 
-        $this->backupPath = storage_path('app/backups/backup-' . date('Y-m-d_H-i-s') . '.sql');
+        $backupDirectory = storage_path('app/backups');
+        if (!file_exists($backupDirectory)) {
+            mkdir($backupDirectory, 0755, true); // Create the directory if it doesn't exist
+        }
+
+        $this->backupPath = $backupDirectory . '/backup-' . date('Y-m-d_H-i-s') . '.sql';
 
         // Specify the path to mysqldump based on the operating system
         $mysqldumpPath = (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') ? 'C:\\xampp\\mysql\\bin\\mysqldump.exe' : '/usr/bin/mysqldump';
@@ -71,8 +76,8 @@ class BackupDatabase extends Command
 
     protected function getCodeLength()
     {
-        $filePath = __FILE__; 
-        $codeLength = count(file($filePath)); 
+        $filePath = __FILE__;
+        $codeLength = count(file($filePath));
 
         return $codeLength;
     }
