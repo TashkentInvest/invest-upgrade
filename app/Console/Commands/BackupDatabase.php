@@ -11,10 +11,9 @@ use Symfony\Component\Process\Exception\ProcessFailedException;
 class BackupDatabase extends Command
 {
     protected $signature = 'db:backup';
-
     protected $description = 'Backup the database';
 
-    protected $process;
+    protected $backupPath;
 
     public function __construct()
     {
@@ -23,21 +22,15 @@ class BackupDatabase extends Command
         $username = config('database.connections.mysql.username');
         $password = config('database.connections.mysql.password');
         $database = config('database.connections.mysql.database');
-        $backupPath = storage_path('app/backups/backup-' . time() . '.sql');
+        $this->backupPath = storage_path('app/backups/backup-' . time() . '.sql');
 
         // Specify the path to mysqldump based on the operating system
-        if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') {
-            // Windows path
-            $mysqldumpPath = 'C:\\xampp\\mysql\\bin\\mysqldump.exe';
-        } else {
-            // Linux path
-            $mysqldumpPath = '/usr/bin/mysqldump';
-        }
+        $mysqldumpPath = (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') ? 'C:\\xampp\\mysql\\bin\\mysqldump.exe' : '/usr/bin/mysqldump';
 
         if ($password) {
-            $command = sprintf('%s -u%s -p%s %s > %s', $mysqldumpPath, $username, $password, $database, $backupPath);
+            $command = sprintf('%s -u%s -p%s %s > %s', $mysqldumpPath, $username, $password, $database, $this->backupPath);
         } else {
-            $command = sprintf('%s -u%s %s > %s', $mysqldumpPath, $username, $database, $backupPath);
+            $command = sprintf('%s -u%s %s > %s', $mysqldumpPath, $username, $database, $this->backupPath);
         }
 
         $this->process = Process::fromShellCommandline($command);
@@ -47,24 +40,30 @@ class BackupDatabase extends Command
     {
         try {
             $this->process->mustRun();
-
             $this->info('The backup has been completed successfully.');
 
             // Send the backup file to Telegram
             $this->sendBackupToTelegram();
         } catch (ProcessFailedException $exception) {
             $this->error('The backup process has failed: ' . $exception->getMessage());
+        } catch (\Exception $exception) {
+            $this->error('An error occurred: ' . $exception->getMessage());
         }
     }
 
     protected function sendBackupToTelegram()
     {
-        $backupPath = storage_path('app/backups/backup-' . time() . '.sql');
+        if (!file_exists($this->backupPath)) {
+            $this->error('Backup file does not exist.');
+            return;
+        }
 
         Telegram::sendDocument([
             'chat_id' => '5676930441',
-            'document' => fopen($backupPath, 'r'),
+            'document' => fopen($this->backupPath, 'r'),
             'caption' => 'Backup file'
         ]);
+
+        $this->info('Backup file sent to Telegram successfully.');
     }
 }
