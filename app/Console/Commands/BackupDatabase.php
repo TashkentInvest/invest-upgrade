@@ -23,6 +23,12 @@ class BackupDatabase extends Command
         $database = config('database.connections.mysql.database');
         $backupPath = storage_path('app/backups/backup-' . time() . '.sql');
 
+        // Ensure backup directory exists, if not, create it
+        $backupDirectory = dirname($backupPath);
+        if (!file_exists($backupDirectory)) {
+            mkdir($backupDirectory, 0755, true);
+        }
+
         // Specify the full path to mysqldump
         $mysqldumpPath = 'C:\\xampp\\mysql\\bin\\mysqldump.exe'; // Adjust this path if necessary
 
