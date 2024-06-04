@@ -163,4 +163,7 @@ Route::get('/clear-optimize-cache', function () {
 ```
 C:\xampp\mysql\bin\mysqldump.exe -u root -p invest > C:\Users\user\Desktop\invest\invest-update\storage\app\backups\backup-test.sql
 
+composer require irazasyed/telegram-bot-sdk
+
+
 ```

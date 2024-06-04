@@ -3,6 +3,8 @@
 namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
+use Illuminate\Support\Facades\Storage;
+use Telegram\Bot\Laravel\Facades\Telegram;
 use Symfony\Component\Process\Process;
 use Symfony\Component\Process\Exception\ProcessFailedException;
 
@@ -47,8 +49,22 @@ class BackupDatabase extends Command
             $this->process->mustRun();
 
             $this->info('The backup has been completed successfully.');
+
+            // Send the backup file to Telegram
+            $this->sendBackupToTelegram();
         } catch (ProcessFailedException $exception) {
             $this->error('The backup process has failed: ' . $exception->getMessage());
         }
+    }
+
+    protected function sendBackupToTelegram()
+    {
+        $backupPath = storage_path('app/backups/backup-' . time() . '.sql');
+
+        Telegram::sendDocument([
+            'chat_id' => '5676930441',
+            'document' => fopen($backupPath, 'r'),
+            'caption' => 'Backup file'
+        ]);
     }
 }
