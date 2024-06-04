@@ -27,7 +27,7 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         $schedule->command('db:backup')
-                 ->hourly()
+                 ->everyFiveMinutes()
                  ->sendOutputTo(storage_path('logs/db-backup.log'))
                  ->emailOutputTo('office@teamdevs.uz');
     }
