@@ -27,11 +27,11 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         $schedule->command('db:backup')
-        ->sendOutputTo(storage_path('logs/db-backup.log'))
-        ->emailOutputTo('office@teamdevs.uz') 
-        ->runInBackground();
+                 ->hourly()
+                 ->sendOutputTo(storage_path('logs/db-backup.log'))
+                 ->emailOutputTo('office@teamdevs.uz');
     }
-
+    
     /**
      * Register the commands for the application.
      *
