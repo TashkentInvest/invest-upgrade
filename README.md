@@ -159,3 +159,8 @@ Route::get('/clear-optimize-cache', function () {
 </form>
 
 ```
+
+```
+C:\xampp\mysql\bin\mysqldump.exe -u root -p invest > C:\Users\user\Desktop\invest\invest-update\storage\app\backups\backup-test.sql
+
+```
