@@ -15,24 +15,28 @@ use Carbon\Carbon;
 class FileController extends Controller
 {
 
+    public function test($id){
+        $client = Client::with('products')->with('branches')->where('is_deleted', '!=', 1)->find($id);
+        return view('pages.docs.fizik_litso', compact('client'));
+    }
     // download word
     public function show($id)
     {
         $client = Client::with('products')->with('companies')->where('is_deleted', '!=', 1)->find($id);
         $client->yuridik_rekvizid;
         $client->contact;
+        $client->company_type;
+        $client->company_location;
+        $client->bank_code;
+        $client->stir;
+        $client->oked;
+        $client->company_location;
 
-        $branchDocuments = []; // Array to store generated documents
 
-        foreach ($client->companies as $company) {
-            $company->company_type;
-            $company->company_location;
-            $company->bank_code;
-            $company->stir;
-            $company->oked;
-            $company->company_location;
+        $branchDocuments = []; 
 
-            foreach ($company->branches as $branch) {
+          
+            foreach ($client->branches as $branch) {
                 $branch->generate_price;
                 $branch->payment_type;
                 $branch->branch_kubmetr;
@@ -40,13 +44,13 @@ class FileController extends Controller
                 // Generate document for each branch and store it in the array
                 $headers = [
                     'Content-type' => 'text/html',
-                    'Content-Disposition' => 'attachment; Filename=' . $company->company_name . '_branch_' . $branch->id . '.doc'
+                    'Content-Disposition' => 'attachment; Filename=' . $client->company_name . '_branch_' . $branch->id . '.doc'
                 ];
 
                 $branchDocument = view('pages.docs.full2', compact('client', 'company', 'branch'))->render();
                 $branchDocuments[] = ['document' => $branchDocument, 'headers' => $headers];
             }
-        }
+        
 
         // Zip the documents
         $zip = new \ZipArchive();

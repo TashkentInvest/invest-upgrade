@@ -99,6 +99,7 @@ edit input laga date qoshish kere +++
 
 edit mijoz_turi eski datani olishi 
 
+passport_date -> datetime-local x : datetime true
 
 ```
 
