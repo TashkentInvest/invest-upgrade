@@ -23,19 +23,19 @@ class BackupDatabase extends Command
         $database = config('database.connections.mysql.database');
         $backupPath = storage_path('app/backups/backup-' . time() . '.sql');
 
-        // Ensure backup directory exists, if not, create it
-        $backupDirectory = dirname($backupPath);
-        if (!file_exists($backupDirectory)) {
-            mkdir($backupDirectory, 0755, true);
+        // Specify the path to mysqldump based on the operating system
+        if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') {
+            // Windows path
+            $mysqldumpPath = 'C:\\xampp\\mysql\\bin\\mysqldump.exe';
+        } else {
+            // Linux path
+            $mysqldumpPath = '/usr/bin/mysqldump';
         }
-
-        // Specify the full path to mysqldump
-        $mysqldumpPath = 'C:\\xampp\\mysql\\bin\\mysqldump.exe'; // Adjust this path if necessary
 
         if ($password) {
             $command = sprintf('%s -u%s -p%s %s > %s', $mysqldumpPath, $username, $password, $database, $backupPath);
         } else {
-            $command = sprintf('%s -u%s -p %s > %s', $mysqldumpPath, $username, $database, $backupPath);
+            $command = sprintf('%s -u%s %s > %s', $mysqldumpPath, $username, $database, $backupPath);
         }
 
         $this->process = Process::fromShellCommandline($command);
