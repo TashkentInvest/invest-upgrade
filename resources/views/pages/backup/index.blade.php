@@ -45,24 +45,7 @@
                             </ul>
                         </div>
 
-                        <div class="mt-auto">
-                            <div class="alert alert-success alert-dismissible fade show px-3 mb-0" role="alert">
-                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                                <div class="mb-3">
-                                    <i class="bx bxs-folder-open h1 text-success"></i>
-                                </div>
-
-                                <div>
-                                    <h5 class="text-success">Upgrade Features</h5>
-                                    <p>Cum sociis natoque penatibus et</p>
-                                    <div class="text-center">
-                                        <button type="button" class="btn btn-link text-decoration-none text-success">Upgrade <i class="mdi mdi-arrow-right"></i></button>
-                                    </div>
-                                </div>
-                            </div>
-
-                            
-                        </div>
+                     
                     </div>
 
                 </div>
@@ -75,11 +58,9 @@
 
                         <div class="mt-4">
                             <div class="d-flex flex-wrap">
-                                <h5 class="font-size-16 me-3">Recent Files</h5>
+                                <h5 class="font-size-16 me-3">Backup Files</h5>
 
-                                <div class="ms-auto">
-                                    <a href="javascript: void(0);" class="fw-medium text-reset">View All</a>
-                                </div>
+                            
                             </div>
                             <hr class="mt-2">
 
@@ -93,186 +74,36 @@
                                         </tr>
                                       </thead>
                                     <tbody>
-                                        <tr>
-                                            <td><a href="javascript: void(0);" class="text-dark fw-medium"><i class="mdi mdi-file-document font-size-16 align-middle text-primary me-2"></i> index.html</a></td>
-                                            <td>12-10-2020, 09:45</td>
-                                            <td>09 KB</td>
-                                            <td>
-                                                <div class="dropdown">
-                                                    <a class="font-size-16 text-muted" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                        <i class="mdi mdi-dots-horizontal"></i>
-                                                    </a>
+                                        @foreach ($backupDetails as $backup)
+                                   
+                                            <tr>
+                                                <td><a href="javascript: void(0);" class="text-dark fw-medium"><i class="mdi mdi-text-box font-size-16 align-middle text-muted me-2"></i> {{ basename($backup['file']) }}</a></td>
+                                                {{-- <td>09-10-2020, 17:05</td> --}}
+
+                                                <td>{{ date('Y-m-d H:i:s', $backup['creation_date']) }}</td>
+
+                                                <td>{{round($backup['size'] / 1024, 2) }} KB</td>
+                                                <td>
+                                                    <div class="dropdown">
+                                                        <a class="font-size-16 text-muted" role="button" data-bs-toggle="dropdown" aria-haspopup="true">
+                                                            <i class="mdi mdi-dots-horizontal"></i>
+                                                        </a>
+                                                        
+                                                        <div class="dropdown-menu dropdown-menu-end">
                                                     
-                                                    <div class="dropdown-menu dropdown-menu-end" style="">
-                                                        <a class="dropdown-item" href="#">Open</a>
-                                                        <a class="dropdown-item" href="#">Edit</a>
-                                                        <a class="dropdown-item" href="#">Rename</a>
-                                                        <div class="dropdown-divider"></div>
-                                                        <a class="dropdown-item" href="#">Remove</a>
+                                                            <a class="dropdown-item" href="{{ route('backup.download', basename($backup['file'])) }}">Downlaod</a>
+                                                            <div class="dropdown-divider"></div>
+                                                            <form action="{{ route('backup.delete', basename($backup['file'])) }}" method="POST" style="display: inline;">
+                                                                @csrf
+                                                                @method('DELETE')
+                                                                <button type="submit" class="dropdown-item" >Remove</button>
+                                                            </form>
+                                                        </div>
                                                     </div>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td><a href="javascript: void(0);" class="text-dark fw-medium"><i class="mdi mdi-folder-zip font-size-16 align-middle text-warning me-2"></i> Project-A.zip</a></td>
-                                            <td>11-10-2020, 17:05</td>
-                                            <td>115 KB</td>
-                                            <td>
-                                                <div class="dropdown">
-                                                    <a class="font-size-16 text-muted" role="button" data-bs-toggle="dropdown" aria-haspopup="true">
-                                                        <i class="mdi mdi-dots-horizontal"></i>
-                                                    </a>
-                                                    
-                                                    <div class="dropdown-menu dropdown-menu-end">
-                                                        <a class="dropdown-item" href="#">Open</a>
-                                                        <a class="dropdown-item" href="#">Edit</a>
-                                                        <a class="dropdown-item" href="#">Rename</a>
-                                                        <div class="dropdown-divider"></div>
-                                                        <a class="dropdown-item" href="#">Remove</a>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td><a href="javascript: void(0);" class="text-dark fw-medium"><i class="mdi mdi-image font-size-16 align-middle text-muted me-2"></i> Img-1.jpeg</a></td>
-                                            <td>11-10-2020, 13:26</td>
-                                            <td>86 KB</td>
-                                            <td>
-                                                <div class="dropdown">
-                                                    <a class="font-size-16 text-muted" role="button" data-bs-toggle="dropdown" aria-haspopup="true">
-                                                        <i class="mdi mdi-dots-horizontal"></i>
-                                                    </a>
-                                                    
-                                                    <div class="dropdown-menu dropdown-menu-end">
-                                                        <a class="dropdown-item" href="#">Open</a>
-                                                        <a class="dropdown-item" href="#">Edit</a>
-                                                        <a class="dropdown-item" href="#">Rename</a>
-                                                        <div class="dropdown-divider"></div>
-                                                        <a class="dropdown-item" href="#">Remove</a>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td><a href="javascript: void(0);" class="text-dark fw-medium"><i class="mdi mdi-text-box font-size-16 align-middle text-muted me-2"></i> update list.txt</a></td>
-                                            <td>10-10-2020, 11:32</td>
-                                            <td>08 KB</td>
-                                            <td>
-                                                <div class="dropdown">
-                                                    <a class="font-size-16 text-muted" role="button" data-bs-toggle="dropdown" aria-haspopup="true">
-                                                        <i class="mdi mdi-dots-horizontal"></i>
-                                                    </a>
-                                                    
-                                                    <div class="dropdown-menu dropdown-menu-end">
-                                                        <a class="dropdown-item" href="#">Open</a>
-                                                        <a class="dropdown-item" href="#">Edit</a>
-                                                        <a class="dropdown-item" href="#">Rename</a>
-                                                        <div class="dropdown-divider"></div>
-                                                        <a class="dropdown-item" href="#">Remove</a>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td><a href="javascript: void(0);" class="text-dark fw-medium"><i class="mdi mdi-folder font-size-16 align-middle text-warning me-2"></i> Project B</a></td>
-                                            <td>10-10-2020, 10:51</td>
-                                            <td>72 KB</td>
-                                            <td>
-                                                <div class="dropdown">
-                                                    <a class="font-size-16 text-muted" role="button" data-bs-toggle="dropdown" aria-haspopup="true">
-                                                        <i class="mdi mdi-dots-horizontal"></i>
-                                                    </a>
-                                                    
-                                                    <div class="dropdown-menu dropdown-menu-end">
-                                                        <a class="dropdown-item" href="#">Open</a>
-                                                        <a class="dropdown-item" href="#">Edit</a>
-                                                        <a class="dropdown-item" href="#">Rename</a>
-                                                        <div class="dropdown-divider"></div>
-                                                        <a class="dropdown-item" href="#">Remove</a>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td><a href="javascript: void(0);" class="text-dark fw-medium"><i class="mdi mdi-text-box font-size-16 align-middle text-muted me-2"></i> Changes list.txt</a></td>
-                                            <td>09-10-2020, 17:05</td>
-                                            <td>07 KB</td>
-                                            <td>
-                                                <div class="dropdown">
-                                                    <a class="font-size-16 text-muted" role="button" data-bs-toggle="dropdown" aria-haspopup="true">
-                                                        <i class="mdi mdi-dots-horizontal"></i>
-                                                    </a>
-                                                    
-                                                    <div class="dropdown-menu dropdown-menu-end">
-                                                        <a class="dropdown-item" href="#">Open</a>
-                                                        <a class="dropdown-item" href="#">Edit</a>
-                                                        <a class="dropdown-item" href="#">Rename</a>
-                                                        <div class="dropdown-divider"></div>
-                                                        <a class="dropdown-item" href="#">Remove</a>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td><a href="javascript: void(0);" class="text-dark fw-medium"><i class="mdi mdi-image font-size-16 align-middle text-success me-2"></i> Img-2.png</a></td>
-                                            <td>09-10-2020, 15:12</td>
-                                            <td>31 KB</td>
-                                            <td>
-                                                <div class="dropdown">
-                                                    <a class="font-size-16 text-muted" role="button" data-bs-toggle="dropdown" aria-haspopup="true">
-                                                        <i class="mdi mdi-dots-horizontal"></i>
-                                                    </a>
-                                                    
-                                                    <div class="dropdown-menu dropdown-menu-end">
-                                                        <a class="dropdown-item" href="#">Open</a>
-                                                        <a class="dropdown-item" href="#">Edit</a>
-                                                        <a class="dropdown-item" href="#">Rename</a>
-                                                        <div class="dropdown-divider"></div>
-                                                        <a class="dropdown-item" href="#">Remove</a>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td><a href="javascript: void(0);" class="text-dark fw-medium"><i class="mdi mdi-folder font-size-16 align-middle text-warning me-2"></i> Project C</a></td>
-                                            <td>09-10-2020, 10:11</td>
-                                            <td>20 KB</td>
-                                            <td>
-                                                <div class="dropdown">
-                                                    <a class="font-size-16 text-muted" role="button" data-bs-toggle="dropdown" aria-haspopup="true">
-                                                        <i class="mdi mdi-dots-horizontal"></i>
-                                                    </a>
-                                                    
-                                                    <div class="dropdown-menu dropdown-menu-end">
-                                                        <a class="dropdown-item" href="#">Open</a>
-                                                        <a class="dropdown-item" href="#">Edit</a>
-                                                        <a class="dropdown-item" href="#">Rename</a>
-                                                        <div class="dropdown-divider"></div>
-                                                        <a class="dropdown-item" href="#">Remove</a>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td><a href="javascript: void(0);" class="text-dark fw-medium"><i class="bx bxs-file font-size-16 align-middle text-primary me-2"></i> starter-page.html</a></td>
-                                            <td>08-10-2020, 03:22</td>
-                                            <td>11 KB</td>
-                                            <td>
-                                                <div class="dropdown">
-                                                    <a class="font-size-16 text-muted" role="button" data-bs-toggle="dropdown" aria-haspopup="true">
-                                                        <i class="mdi mdi-dots-horizontal"></i>
-                                                    </a>
-                                                    
-                                                    <div class="dropdown-menu dropdown-menu-end">
-                                                        <a class="dropdown-item" href="#">Open</a>
-                                                        <a class="dropdown-item" href="#">Edit</a>
-                                                        <a class="dropdown-item" href="#">Rename</a>
-                                                        <div class="dropdown-divider"></div>
-                                                        <a class="dropdown-item" href="#">Remove</a>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                        </tr>
+                                                </td>
+                                            </tr>
+                                      
+                                        @endforeach
                                     </tbody>
                                 </table>
                             </div>
@@ -289,51 +120,6 @@
 </div>
 
 
-<div class="row">
-    <div class="col-12">
-        <div class="card">
-            <div class="card-header">
-                <h3 class="card-title">Backups</h3>
-            </div>
-            <div class="card-body">
-              
-                {{-- <table class="table">
-                    <thead>
-                        <tr>
-                            <th>File Name</th>
-                            <th>Size (KB)</th>
-                            <th>Creation Date</th>
-                            <th>Line Count</th>
-                            <th>Download</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach ($backupDetails as $backup)
-                        <tr>
-                            <td>{{ basename($backup['file']) }}</td>
-                            <td>{{ round($backup['size'] / 1024, 2) }}</td>
-                            <td>{{ date('Y-m-d H:i:s', $backup['creation_date']) }}</td>
-                            <td>{{ $backup['line_count'] }}</td>
-                            <td class="d-flex">
-                                <form action="{{ route('backup.download', basename($backup['file'])) }}" method="POST">
-                                    @csrf
-                                    <button type="submit" class="btn btn-primary">Download</button>
-                                </form>
-                                <form action="{{ route('backup.delete', basename($backup['file'])) }}" method="POST" style="display: inline;">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="submit" class="btn btn-danger mx-2">Delete</button>
-                                </form>
-                            </td>
-                        </tr>
-                    @endforeach
-                    
-                    </tbody>
-                </table> --}}
-            </div>
-        </div>
-    </div>
-</div>
 
 @endsection
 
