@@ -23,6 +23,14 @@
                     </a>
                 </li>
 
+                <li class="{{ Request::is('backup*') ? 'mm-active':'' }}">
+                    <a href="{{ route('backup.index') }}" class=" waves-effect {{ Request::is('backup*') ? 'mm-active':'' }}">
+                        <i class="bx bx-info-circle"></i>
+                        <span>Backup</span>
+                    </a>
+                </li>
+
+
 {{--                 
                 <li class="{{ Request::is('audit-logs*') ? 'mm-active':'' }}">
                     <a href="/doc" class=" waves-effect {{ Request::is('audit-logs*') ? 'mm-active':'' }}">

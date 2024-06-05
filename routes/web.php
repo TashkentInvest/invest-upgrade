@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuditLogController;
+use App\Http\Controllers\BackupController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Blade\UserController;
 use App\Http\Controllers\Blade\RoleController;
@@ -58,17 +59,17 @@ Route::group(['middleware' => 'auth'], function () {
     });
 
     // Products
-
-    Route::get('products/', [ProductController::class, 'index'])->name('productIndex');
-    Route::get('product/data', [ProductController::class, 'getClientsData'])->name('clients.data');
-    Route::get('product/add', [ProductController::class, 'add'])->name('productAdd');
-    Route::get('product/{id}', [ProductController::class, 'show'])->name('productDetails');
-    Route::post('product/create', [ProductController::class, 'create'])->name('productCreate');
-    Route::get('product/edit/{id}', [ProductController::class, 'edit'])->name('productEdit');
-    Route::delete('product/delete/{id}', [ProductController::class, 'delete'])->name('productDestroy');
-    Route::match(['put', 'post'], 'product/update/{id}', [ProductController::class, 'update'])->name('productUpdate');
-    Route::post('product/toggle-status/{id}', [ProductController::class, 'toggleProductActivation'])->name('productActivation');
-
+    Route::prefix('products')->group(function () {
+        Route::get('/', [ProductController::class, 'index'])->name('productIndex');
+        Route::get('/data', [ProductController::class, 'getClientsData'])->name('clients.data');
+        Route::get('/add', [ProductController::class, 'add'])->name('productAdd');
+        Route::get('/{id}', [ProductController::class, 'show'])->name('productDetails');
+        Route::post('/create', [ProductController::class, 'create'])->name('productCreate');
+        Route::get('/edit/{id}', [ProductController::class, 'edit'])->name('productEdit');
+        Route::delete('/delete/{id}', [ProductController::class, 'delete'])->name('productDestroy');
+        Route::match(['put', 'post'], 'product/{id}', [ProductController::class, 'update'])->name('productUpdate');
+        Route::post('/toggle-status/{id}', [ProductController::class, 'toggleProductActivation'])->name('productActivation');
+    });
     // Users
     Route::prefix('users')->group(function () {
         Route::get('/', [UserController::class, 'index'])->name('userIndex');
@@ -130,6 +131,12 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/test/{id}', [FileController::class, 'test'])->name('test.word');
     Route::get('/downloading-exel/{id}', [FileController::class, 'downloadTableData'])->name('download.table.data');
     Route::get('/downloading-exel', [FileController::class, 'downloadExcel'])->name('download.excel');
+
+    // Backup 
+    Route::get('/backups', [BackupController::class, 'index'])->name('backup.index');
+    Route::get('/backup/{id}', [BackupController::class, 'show'])->name('backup.show');
+    Route::post('/backup/download/{filename}', 'BackupController@download')->name('backup.download');
+    Route::delete('/backup/{filename}', 'BackupController@delete')->name('backup.delete');
     
 
 });
