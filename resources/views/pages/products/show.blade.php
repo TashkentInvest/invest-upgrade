@@ -97,7 +97,7 @@
                                 <tr>
                                     <td>{{ $client->id }}</td>
                                     <td>{{ $client->company_name }}</td>
-                                    <td>{{ $client->first_name }} {{ $client->last_name }} {{ $client->father_name }}
+                                    <td>{{ $client->last_name }} {{ $client->first_name }} {{ $client->father_name }}
                                     </td>
                                     <td>{{ $client->contact ?? '---' }}</td>
                                     <td>{{ $client->mijoz_turi }}</td>

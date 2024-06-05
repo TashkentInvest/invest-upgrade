@@ -17,6 +17,8 @@ class CreateBranchesTable extends Migration
             $table->id();
             $table->unsignedBigInteger('client_id')->nullable();
             $table->foreign('client_id')->references('id')->on('clients')->onDelete('cascade');
+            $table->index('client_id');
+
             $table->text('contract_apt')->nullable();
             $table->dateTime('contract_date')->nullable();
             $table->string('generate_price')->nullable();

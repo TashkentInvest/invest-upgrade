@@ -45,7 +45,9 @@ class ProductController extends Controller
                 'bank_code',
                 'bank_service',
                 'stir',
-                'oked'
+                'oked',
+                'created_at',
+                'updated_at'
             ])
             ->with([
                 'products:id,client_id,user_id,minimum_wage,status',
@@ -175,12 +177,16 @@ class ProductController extends Controller
 
     public function edit($id)
     {
-        $product = Products::where('id', $id)->get()->first();
-        $regions = Regions::get()->all();
-        $client = Client::where('id', $product->client_id)->where('is_deleted', '!=', 1)->first();
+        $product = Products::findOrFail($id);
+
+        $client = Client::where('id', $product->client_id)
+            ->with(['branches', 'files'])
+            ->where('is_deleted', '!=', 1)
+            ->firstOrFail();
+
         $files = $client ? $client->files : collect();
 
-        return view('pages.products.edit', compact('product', 'regions', 'client', 'files'));
+        return view('pages.products.edit', compact('product', 'client', 'files'));
     }
 
     public function update(Request $request, $client_id)

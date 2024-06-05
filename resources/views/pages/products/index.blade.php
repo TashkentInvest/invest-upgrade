@@ -52,13 +52,17 @@
                                                 </div>
                                                 <div class="col-2">
                                                     <select class="form-control form-control-sm" name="company_operator">
-                                                        <option value="like" {{ request()->company_operator == 'like' ? 'selected' : '' }}>Like</option>
+                                                        <option value="like"
+                                                            {{ request()->company_operator == 'like' ? 'selected' : '' }}>
+                                                            Like</option>
                                                         <!-- Add other comparison operators if needed -->
                                                     </select>
                                                 </div>
                                                 <div class="col-3">
                                                     <input type="hidden" name="company_name_operator" value="like">
-                                                    <input class="form-control form-control-sm" type="text" name="company_name" value="{{ old('company_name', request()->company_name ?? '') }}">
+                                                    <input class="form-control form-control-sm" type="text"
+                                                        name="company_name"
+                                                        value="{{ old('company_name', request()->company_name ?? '') }}">
                                                 </div>
                                             </div>
 
@@ -69,16 +73,19 @@
                                                 </div>
                                                 <div class="col-2">
                                                     <select class="form-control form-control-sm" name="inn_operator">
-                                                        <option value="like" {{ request()->inn_operator == 'like' ? 'selected' : '' }}>Like</option>
+                                                        <option value="like"
+                                                            {{ request()->inn_operator == 'like' ? 'selected' : '' }}>Like
+                                                        </option>
                                                         <!-- Add other comparison operators if needed -->
                                                     </select>
                                                 </div>
                                                 <div class="col-3">
                                                     <input type="hidden" name="stir_operator" value="like">
-                                                    <input class="form-control form-control-sm" type="text" name="stir" value="{{ old('stir', request()->stir ?? '') }}">
+                                                    <input class="form-control form-control-sm" type="text"
+                                                        name="stir" value="{{ old('stir', request()->stir ?? '') }}">
                                                 </div>
                                             </div>
-                                            
+
                                             {{-- contact search --}}
                                             <div class="form-group row align-items-center my-2">
                                                 <div class="col-3">
@@ -86,13 +93,17 @@
                                                 </div>
                                                 <div class="col-2">
                                                     <select class="form-control form-control-sm" name="contact_operator">
-                                                        <option value="like" {{ request()->contact_operator == 'like' ? 'selected' : '' }}>Like</option>
+                                                        <option value="like"
+                                                            {{ request()->contact_operator == 'like' ? 'selected' : '' }}>
+                                                            Like</option>
                                                         <!-- Add other comparison operators if needed -->
                                                     </select>
                                                 </div>
                                                 <div class="col-3">
                                                     <input type="hidden" name="contact_operator" value="like">
-                                                    <input class="form-control form-control-sm" type="text" name="contact" value="{{ old('contact', request()->contact ?? '') }}">
+                                                    <input class="form-control form-control-sm" type="text"
+                                                        name="contact"
+                                                        value="{{ old('contact', request()->contact ?? '') }}">
                                                 </div>
                                             </div>
 
@@ -136,10 +147,11 @@
                                                 </div>
                                             </div>
                                         </div>
-                                     
+
                                         <div class="box container text-center">
                                             <i class="bx bx-file " style="font-size: 20px"></i>
-                                            <a class="border rounded " href="{{ route('download.excel') }}">Download Exel</a>
+                                            <a class="border rounded " href="{{ route('download.excel') }}">Download
+                                                Exel</a>
                                         </div>
                                         <div class="modal-footer">
                                             <button type="submit" name="filter"
@@ -159,7 +171,7 @@
                         </a>
                     </div>
                 </div>
-            
+
                 <div class="card-body">
                     <!-- Data table -->
                     <table class="table table-bordered dt-responsive w-100">
@@ -168,7 +180,6 @@
                                 <th>ID</th>
                                 <th>@lang('global.client_name') || Yurik</th>
                                 <th>@lang('cruds.client.fields.contact')</th>
-                                {{-- <th>@lang('cruds.client.fields.mijoz_turi')</th> --}}
                                 <th>@lang('cruds.company.fields.address')</th>
                                 <th>@lang('cruds.company.fields.stir')</th>
                                 <th>@lang('global.active')</th>
@@ -178,37 +189,25 @@
                         </thead>
                         <tbody>
                             @foreach ($clients as $item)
-                                {{-- @dump($item->company_name ) --}}
                                 <tr>
                                     <td>{{ $item->id }}</td>
                                     @if ($item->mijoz_turi == 'fizik')
-                                        <td>{{ $item->first_name }} {{ $item->last_name }} {{ $item->father_name }}</td>
+                                        <td>{{ $item->last_name }} {{ $item->first_name }} {{ $item->father_name }}</td>
                                     @else
                                         <td>{{ $item->company_name }} </td>
                                     @endif
-
 
                                     <td>{{ $item->contact ?? '---' }}</td>
                                     <td>{{ $item->company_location }} </td>
 
                                     <td>{{ $item->stir }} </td>
-                                    {{-- <td>
-                                        @if ($item->mijoz_turi == 'fizik')
-                                            @lang('global.fizik')
-                                        @else
-                                            @lang('global.yuridik')
-                                        @endif
-                                    </td> --}}
-
 
                                     <td class="text-center">
                                         <i style="cursor: pointer; font-size: 16px;" id="program_{{ $item->id }}"
                                             class="fas {{ $item->status === 1 ? 'fa-check-circle text-success' : 'fa-times-circle text-danger' }}"
                                             onclick="toggle_instock({{ $item->id }})"></i>
                                     </td>
-                                    <td>
-                                        {{ $item->created_at }}
-                                    </td>
+                                    <td> {{ $item->created_at }} </td>
                                     <td class="text-center">
                                         <form action="{{ route('productDestroy', $item->id) }}" method="post">
                                             @csrf
@@ -233,7 +232,6 @@
                                                     </li>
                                                 @endcan
 
-
                                                 <li data-bs-toggle="tooltip" data-bs-placement="top"
                                                     title="@lang('global.edit')">
                                                     <a href="{{ route('productEdit', $item->id) }}" class="btn btn-info">
@@ -246,7 +244,6 @@
                                                     <a href="{{ route('productShow', $item->id) }}"
                                                         class="btn btn-success">
                                                         <i class="bx bxs-right-arrow-circle" style="font-size: 16px;"></i>
-
                                                     </a>
                                                 </li>
                                             </ul>
@@ -275,13 +272,15 @@
                                                                     <td>{{ $item->mijoz_turi }}</td>
                                                                 </tr>
                                                                 <tr>
-                                                                    <td>@lang('cruds.client.fields.first_name')</td>
-                                                                    <td>{{ $item->first_name }}</td>
-                                                                </tr>
-                                                                <tr>
                                                                     <td>@lang('cruds.client.fields.last_name')</td>
                                                                     <td>{{ $item->last_name }}</td>
                                                                 </tr>
+
+                                                                <tr>
+                                                                    <td>@lang('cruds.client.fields.first_name')</td>
+                                                                    <td>{{ $item->first_name }}</td>
+                                                                </tr>
+                                                            
                                                                 <tr>
                                                                     <td>@lang('cruds.client.fields.father_name')</td>
                                                                     <td>{{ $item->father_name }}</td>
@@ -317,7 +316,6 @@
 
                                                                 </tr>
                                                                 <tr>
-                                                                    {{-- @dd($item) --}}
                                                                     <td>@lang('cruds.client.fields.yuridik_address')</td>
                                                                     <td>{{ $item->yuridik_address }}</td>
                                                                 </tr>
@@ -326,13 +324,10 @@
                                                                     <td>{{ $item->yuridik_rekvizid }}</td>
                                                                 </tr>
 
-                                                                {{--  --}}
                                                                 <tr>
                                                                     <td class="text-center"><strong>Company</strong>
                                                                     </td>
                                                                     <td></td>
-
-
                                                                 </tr>
                                                                 <tr>
                                                                     <td>@lang('cruds.company.fields.company_location')</td>
@@ -367,10 +362,6 @@
                                                                     <td>@lang('cruds.company.fields.oked')</td>
                                                                     <td>{{ $item->oked }}</td>
                                                                 </tr>
-
-                                                                {{--  --}}
-
-
                                                                 @foreach ($item->branches as $b)
                                                                     <tr>
                                                                         <td class="text-center"><strong>Obyekt</strong>
@@ -422,12 +413,10 @@
                                                                         <td></td>
                                                                     </tr>
                                                                     <tr>
-                                                                        {{-- @dd($comp->products) --}}
                                                                         <td>@lang('global.bazaviy_xisoblash_miqdori')</td>
                                                                         <td>{{ $p->minimum_wage }}</td>
                                                                     </tr>
                                                                 @endforeach
-
                                                             </tbody>
                                                         </table>
                                                     </div>
@@ -438,13 +427,11 @@
                                                 </div>
                                             </div>
                                         </div>
-
                                     </td>
                                 </tr>
                             @endforeach
                         </tbody>
                     </table>
-
                     <div class="d-flex">
                         {!! $clients->links() !!}
                     </div>
@@ -477,7 +464,7 @@
         }
     </script>
 
-{{-- <script>
+    {{-- <script>
     function updateData() {
         $.ajax({
             url: '{{ route("productIndex") }}',
@@ -494,5 +481,4 @@
 
     setInterval(updateData, 10000);
 </script> --}}
-
 @endsection
