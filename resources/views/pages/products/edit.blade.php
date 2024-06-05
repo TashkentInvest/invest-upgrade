@@ -35,7 +35,6 @@
                     <form action="{{ route('productUpdate', ['id' => $product->id]) }}" method="post"
                         enctype="multipart/form-data">
                         @csrf
-                        @dump($client)
                         @method('PUT')
 
                         <!-- Personal Information -->

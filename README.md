@@ -101,6 +101,10 @@ edit mijoz_turi eski datani olishi
 
 passport_date -> datetime-local x : datetime true
 
+product show id fix qlish kere 
+
+debugbar json unsave qlsh kere
+
 ```
 
 

@@ -12,7 +12,6 @@ class BackupDatabase extends Command
 {
     protected $signature = 'db:backup';
     protected $description = 'Backup the database';
-
     protected $backupPath;
     protected $process;
 

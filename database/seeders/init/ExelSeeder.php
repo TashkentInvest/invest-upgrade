@@ -31,15 +31,7 @@ class ExelSeeder extends Seeder
             ];
 
             $client = Client::create($clientData);
-
-            // $companyData = [
-            //     'client_id' => $client->id,
-            //     'company_name' => $item->company_name ?? null,
-            // ];
-
-            // $company = Company::create($companyData);
-
-            // Check if payed_date is a valid date
+            
             $payed_date = null;
             if (isset($item->payed_date)) {
                 try {

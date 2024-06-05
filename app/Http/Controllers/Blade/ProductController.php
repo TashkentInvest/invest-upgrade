@@ -20,8 +20,7 @@ class ProductController extends Controller
 {
     public function index()
     {
-        $clients = Cache::remember('clients_page_' . request('page', 1), 60, function () {
-            return Client::select([
+        $clients = Client::select([
                 'id',
                 'first_name',
                 'last_name',
@@ -56,7 +55,6 @@ class ProductController extends Controller
             ->where('is_deleted', '!=', 1)
             ->orderBy('id', 'asc')
             ->paginate(10);
-        });
 
         return view('pages.products.index', compact('clients'));
     }
