@@ -55,7 +55,7 @@ class BackupDatabase extends Command
             $codeLength = $this->getCodeLength();
 
             // Send the backup file to Telegram
-            $this->sendBackupToTelegram($backupDetails, $codeLength);
+            // $this->sendBackupToTelegram($backupDetails, $codeLength);
         } catch (ProcessFailedException $exception) {
             $this->error('The backup process has failed: ' . $exception->getMessage());
         } catch (\Exception $exception) {
@@ -81,14 +81,14 @@ class BackupDatabase extends Command
         return $codeLength;
     }
 
-    protected function sendBackupToTelegram($backupDetails, $codeLength)
-    {
-        Telegram::sendDocument([
-            'chat_id' => '-1002240460596',
-            'document' => fopen($this->backupPath, 'r'),
-            'caption' => "📁 Backup file\n\n📆 Date: {$backupDetails['fileCreationDate']}\n\n⚖️ Size: {$backupDetails['fileSizeKB']} KB\n\n🧾 Code length: $codeLength lines"
-        ]);
+    // protected function sendBackupToTelegram($backupDetails, $codeLength)
+    // {
+    //     Telegram::sendDocument([
+    //         'chat_id' => '-1002240460596',
+    //         'document' => fopen($this->backupPath, 'r'),
+    //         'caption' => "📁 Backup file\n\n📆 Date: {$backupDetails['fileCreationDate']}\n\n⚖️ Size: {$backupDetails['fileSizeKB']} KB\n\n🧾 Code length: $codeLength lines"
+    //     ]);
 
-        $this->info('Backup file sent to Telegram successfully.');
-    }
+    //     $this->info('Backup file sent to Telegram successfully.');
+    // }
 }
