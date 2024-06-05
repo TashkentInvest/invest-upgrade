@@ -35,22 +35,18 @@
                                             <div id="apexchartss7urv6zhh" class="apexcharts-canvas apexchartss7urv6zhh apexcharts-theme-light" style="width: 190px; height: 66px;"></div>
                                         </div>
                                 
-                                        {{-- <p class="text-muted mt-4">48.02 GB (76%) of 64 GB used</p> --}}
                                         <p class="text-muted mt-4">Total Storage Size: {{ $totalSizeFormatted }} bytes</p>
 
                                         
                                         <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
 
                                         <script>
-                                            // Assign total size from PHP to JavaScript variable
                                             var totalSize = "{{ $totalSizeFormatted }}";
                                         
-                                            // Remove any non-numeric characters and convert to a number
                                             totalSize = parseFloat(totalSize.replace(/[^0-9.]/g, ''));
                                         
-                                            // Sample ApexCharts options
                                             var options = {
-                                                series: [totalSize], // Use the totalSize variable here
+                                                series: [totalSize], 
                                                 chart: {
                                                     type: 'radialBar',
                                                     height: 200,
@@ -84,7 +80,6 @@
                                                 labels: ['Storage'],
                                             };
                                         
-                                            // Initialize ApexCharts
                                             var chart = new ApexCharts(document.querySelector("#apexchartss7urv6zhh"), options);
                                             chart.render();
                                         </script>
