@@ -18,46 +18,46 @@ use Illuminate\Support\Facades\Cache;
 
 class ProductController extends Controller
 {
-
     public function index()
     {
-        $clients = Client::select([
-            'id',
-            'first_name',
-            'last_name',
-            'mijoz_turi',
-            'father_name',
-            'contact',
-            'yuridik_address',
-            'yuridik_rekvizid',
-            'passport_serial',
-            'passport_pinfl',
-            'passport_date',
-            'passport_location',
-            'passport_type',
-            'is_deleted',
-            'client_description',
-            'application_number',
-            'company_location',
-            'company_name',
-            'company_type',
-            'raxbar',
-            'bank_code',
-            'bank_service',
-            'stir',
-            'oked'
-        ])
-        ->with([
-            'products:id,client_id,user_id,minimum_wage,status',
-            'branches:id,client_id,contract_apt,contract_date,generate_price,payment_type,percentage_input,installment_quarterly,branch_kubmetr,notification_num,notification_date,insurance_policy,bank_guarantee,application_number,payed_sum,payed_date,first_payment_percent'
-        ])
-        ->where('is_deleted', '!=', 1)
-        ->orderBy('id', 'asc')
-        ->paginate(10);
-        
+        $clients = Cache::remember('clients_page_' . request('page', 1), 60, function () {
+            return Client::select([
+                'id',
+                'first_name',
+                'last_name',
+                'mijoz_turi',
+                'father_name',
+                'contact',
+                'yuridik_address',
+                'yuridik_rekvizid',
+                'passport_serial',
+                'passport_pinfl',
+                'passport_date',
+                'passport_location',
+                'passport_type',
+                'is_deleted',
+                'client_description',
+                'application_number',
+                'company_location',
+                'company_name',
+                'company_type',
+                'raxbar',
+                'bank_code',
+                'bank_service',
+                'stir',
+                'oked'
+            ])
+            ->with([
+                'products:id,client_id,user_id,minimum_wage,status',
+                'branches:id,client_id,contract_apt,contract_date,generate_price,payment_type,percentage_input,installment_quarterly,branch_kubmetr,notification_num,notification_date,insurance_policy,bank_guarantee,application_number,payed_sum,payed_date,first_payment_percent'
+            ])
+            ->where('is_deleted', '!=', 1)
+            ->orderBy('id', 'asc')
+            ->paginate(10);
+        });
+
         return view('pages.products.index', compact('clients'));
     }
-    
     
     public function show($id)
     {
