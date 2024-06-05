@@ -241,7 +241,7 @@
 
                                                 <li data-bs-toggle="tooltip" data-bs-placement="top"
                                                     title="@lang('global.view')">
-                                                    <a href="{{ route('productShow', $item->id) }}"
+                                                    <a href="{{ route('productDetails', $item->id) }}"
                                                         class="btn btn-success">
                                                         <i class="bx bxs-right-arrow-circle" style="font-size: 16px;"></i>
                                                     </a>

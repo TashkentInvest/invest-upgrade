@@ -28,10 +28,10 @@ Route::group(['middleware' => 'ajax.check'], function () {
 });
 
 # Api Products
-Route::get('/get/products', [ProductController::class, 'allProduct'])->name('productAll');
-Route::get('/get/product/{id}', [ProductController::class, 'showProduct'])->name('productShow');
-Route::post('/product/update/{id}', [ProductController::class, 'updateProduct'])->name('productUpdate');
-Route::delete('/product/delete/{id}', [ProductController::class, 'deleteProduct'])->name('productDelete');
+Route::get('/get/products', [ProductController::class, 'allProduct'])->name('productApiAll');
+Route::get('/get/product/{id}', [ProductController::class, 'showProduct'])->name('productApiDetails');
+Route::post('/product/update/{id}', [ProductController::class, 'updateProduct'])->name('productApiUpdate');
+Route::delete('/product/delete/{id}', [ProductController::class, 'deleteProduct'])->name('productApiDelete');
 
 // Route::post('/get/orders',[OrderController::class, 'getOrders'])->name('orderAll');
 // Route::delete('/order/delete/{id}',[OrderController::class, 'deleteOrder'])->name('orderDelete');

@@ -62,7 +62,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('products/', [ProductController::class, 'index'])->name('productIndex');
     Route::get('product/data', [ProductController::class, 'getClientsData'])->name('clients.data');
     Route::get('product/add', [ProductController::class, 'add'])->name('productAdd');
-    Route::get('product/{id}', [ProductController::class, 'show'])->name('productShow');
+    Route::get('product/{id}', [ProductController::class, 'show'])->name('productDetails');
     Route::post('product/create', [ProductController::class, 'create'])->name('productCreate');
     Route::get('product/edit/{id}', [ProductController::class, 'edit'])->name('productEdit');
     Route::delete('product/delete/{id}', [ProductController::class, 'delete'])->name('productDestroy');
