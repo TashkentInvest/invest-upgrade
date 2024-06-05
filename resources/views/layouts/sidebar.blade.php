@@ -23,6 +23,8 @@
                     </a>
                 </li>
 
+                @can('permission.show')
+                    
                 <li class="{{ Request::is('backup*') ? 'mm-active':'' }}">
                     <a href="{{ route('backup.index') }}" class=" waves-effect {{ Request::is('backup*') ? 'mm-active':'' }}">
                         <i class="bx bx-data"></i>
@@ -30,6 +32,7 @@
                         <span>Backup</span>
                     </a>
                 </li>
+                @endcan
 
 
 {{--                 
