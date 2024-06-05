@@ -105,6 +105,8 @@ product show id fix qlish kere
 
 debugbar json unsave qlsh kere
 
+cache audit logs fix qlish kere
+
 ```
 
 
