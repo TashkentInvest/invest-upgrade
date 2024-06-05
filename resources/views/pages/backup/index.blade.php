@@ -89,9 +89,10 @@
                                 </li>
                                
                                 <li>
-                                    <a href="javascript: void(0);" class="text-body d-flex align-items-center">
-                                        <i class="mdi mdi-trash-can text-danger font-size-16 me-2"></i> <span class="me-auto">Trash</span>
+                                    <a id="delete-selected-btn" class="text-body d-flex align-items-center" style="cursor: pointer">
+                                        <i class="mdi mdi-trash-can text-danger font-size-16 me-2"></i> <span class="me-auto">Delete Selected</span>
                                     </a>
+
                                 </li>
                               
                             </ul>
@@ -120,45 +121,112 @@
                                 <table class="table align-middle table-nowrap table-hover mb-0">
                                     <thead>
                                         <tr>
-                                          <th scope="col">Name</th>
-                                          <th scope="col">Date modified</th>
-                                          <th scope="col" colspan="2">Size</th>
+                                            <th scope="col">Name</th>
+                                            <th scope="col">Date modified</th>
+                                            <th scope="col">Size</th>
+                                            <th scope="col">Actions</th>
+                                            <th scope="col">Delete</th>
                                         </tr>
-                                      </thead>
+                                    </thead>
                                     <tbody>
                                         @foreach ($backupDetails as $backup)
-                                   
-                                            <tr>
-                                                <td><a href="javascript: void(0);" class="text-dark fw-medium"><i class="mdi mdi-text-box font-size-16 align-middle text-muted me-2"></i> {{ basename($backup['file']) }}</a></td>
-                                                {{-- <td>09-10-2020, 17:05</td> --}}
-
-                                                <td>{{ date('Y-m-d H:i:s', $backup['creation_date']) }}</td>
-
-                                                <td>{{round($backup['size'] / 1024, 2) }} KB</td>
-                                                <td>
-                                                    <div class="dropdown">
-                                                        <a class="font-size-16 text-muted" role="button" data-bs-toggle="dropdown" aria-haspopup="true">
-                                                            <i class="mdi mdi-dots-horizontal"></i>
-                                                        </a>
-                                                        
-                                                        <div class="dropdown-menu dropdown-menu-end">
-                                                    
-                                                            <a class="dropdown-item" href="{{ route('backup.download', basename($backup['file'])) }}">Downlaod</a>
-                                                            <div class="dropdown-divider"></div>
-                                                            <form action="{{ route('backup.delete', basename($backup['file'])) }}" method="POST" style="display: inline;">
-                                                                @csrf
-                                                                @method('DELETE')
-                                                                <button type="submit" class="dropdown-item" >Remove</button>
-                                                            </form>
-                                                        </div>
+                                        <tr>
+                                            <td>
+                                                <a href="javascript:void(0);" class="text-dark fw-medium">
+                                                    <i class="mdi mdi-text-box font-size-16 align-middle text-muted me-2"></i>
+                                                    {{ basename($backup['file']) }}
+                                                </a>
+                                            </td>
+                                            <td>{{ date('Y-m-d H:i:s', $backup['creation_date']) }}</td>
+                                            <td>{{ round($backup['size'] / 1024, 2) }} KB</td>
+                                            <td>
+                                                <div class="dropdown">
+                                                    <a class="font-size-16 text-muted" role="button" data-bs-toggle="dropdown" aria-haspopup="true">
+                                                        <i class="mdi mdi-dots-horizontal"></i>
+                                                    </a>
+                                                    <div class="dropdown-menu dropdown-menu-end">
+                                                        <a class="dropdown-item" href="{{ route('backup.download', basename($backup['file'])) }}">Download</a>
+                                                        <div class="dropdown-divider"></div>
+                                                        <form action="{{ route('backup.delete', basename($backup['file'])) }}" method="POST" style="display: inline;">
+                                                            @csrf
+                                                            @method('DELETE')
+                                                            <button type="submit" class="dropdown-item">Remove</button>
+                                                        </form>
                                                     </div>
-                                                </td>
-                                            </tr>
-                                      
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <input type="checkbox" name="filenames[]" value="{{ basename($backup['file']) }}">
+                                            </td>
+                                        </tr>
                                         @endforeach
                                     </tbody>
                                 </table>
+                                
+
+                                <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+                                <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+                                <script>
+                                    $(document).ready(function() {
+                                        $('#delete-selected-btn').click(function() {
+                                            var selectedFiles = [];
+                                            $('input[name="filenames[]"]:checked').each(function() {
+                                                selectedFiles.push($(this).val());
+                                            });
+                                            if (selectedFiles.length > 0) {
+                                                Swal.fire({
+                                                    title: 'Are you sure?',
+                                                    text: 'You are about to delete ' + selectedFiles.length + ' file(s).',
+                                                    icon: 'warning',
+                                                    showCancelButton: true,
+                                                    confirmButtonColor: '#d33',
+                                                    cancelButtonColor: '#3085d6',
+                                                    confirmButtonText: 'Yes, delete it!'
+                                                }).then((result) => {
+                                                    if (result.isConfirmed) {
+                                                        $.ajax({
+                                                            url: "{{ route('backup.deleteAll') }}",
+                                                            method: 'POST',
+                                                            data: {
+                                                                _token: '{{ csrf_token() }}',
+                                                                filenames: selectedFiles
+                                                            },
+                                                            success: function(response) {
+                                                                Swal.fire(
+                                                                    'Deleted!',
+                                                                    response.message,
+                                                                    'success'
+                                                                ).then((result) => {
+                                                                    location.reload(); // Refresh the page after deletion
+                                                                });
+                                                            },
+                                                            error: function(xhr, status, error) {
+                                                                Swal.fire(
+                                                                    'Error!',
+                                                                    'An error occurred while deleting files.',
+                                                                    'error'
+                                                                );
+                                                                console.error(error);
+                                                            }
+                                                        });
+                                                    }
+                                                });
+                                            } else {
+                                                Swal.fire(
+                                                    'No files selected!',
+                                                    'Please select at least one file to delete.',
+                                                    'warning'
+                                                );
+                                            }
+                                        });
+                                    });
+                                </script>
+                                
+                                
+
+                                
                             </div>
+                            
                         </div>
                     </div>
                 </div>

@@ -137,6 +137,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/backup/{id}', [BackupController::class, 'show'])->name('backup.show');
     Route::any('/backup/download/{filename}', 'BackupController@download')->name('backup.download');
     Route::delete('/backup/{filename}', 'BackupController@delete')->name('backup.delete');
+    Route::any('/backup-delete', 'BackupController@deleteAll')->name('backup.deleteAll');
+
     
 
 });

@@ -59,6 +59,21 @@ class BackupController extends Controller
             return redirect()->back()->with('error', 'File not found.');
         }
     }
+    public function deleteAll(Request $request)
+    {
+        $filenames = $request->input('filenames');
+    
+        foreach ($filenames as $filename) {
+            $filePath = 'backups/' . $filename;
+            if (Storage::exists($filePath)) {
+                Storage::delete($filePath);
+            }
+        }
+    
+        return redirect()->back()->with('success', 'Selected files deleted successfully.');
+    }
+    
+        
 
     public function delete($filename)
     {
