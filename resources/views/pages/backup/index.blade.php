@@ -30,9 +30,66 @@
                                 <li>
                                     <div class="text-center" style="position: relative;">
                                         <h5 class="font-size-15 mb-4">Storage</h5>
-                                        <div class="apex-charts" id="radial-chart" data-colors="[&quot;--bs-primary&quot;]" style="min-height: 66px;"><div id="apexchartss7urv6zhh" class="apexcharts-canvas apexchartss7urv6zhh apexcharts-theme-light" style="width: 190px; height: 66px;"><svg id="SvgjsSvg1025" width="190" height="66" xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.com/svgjs" class="apexcharts-svg" xmlns:data="ApexChartsNS" transform="translate(0, 0)" style="background: transparent;"><g id="SvgjsG1027" class="apexcharts-inner apexcharts-graphical" transform="translate(20, -10)"><defs id="SvgjsDefs1026"><clipPath id="gridRectMasks7urv6zhh"><rect id="SvgjsRect1029" width="156" height="162" x="-3" y="-1" rx="0" ry="0" opacity="1" stroke-width="0" stroke="none" stroke-dasharray="0" fill="#fff"></rect></clipPath><clipPath id="gridRectMarkerMasks7urv6zhh"><rect id="SvgjsRect1030" width="154" height="164" x="-2" y="-2" rx="0" ry="0" opacity="1" stroke-width="0" stroke="none" stroke-dasharray="0" fill="#fff"></rect></clipPath></defs><g id="SvgjsG1031" class="apexcharts-radialbar"><g id="SvgjsG1032"><g id="SvgjsG1033" class="apexcharts-tracks"><g id="SvgjsG1034" class="apexcharts-radialbar-track apexcharts-track" rel="1"><path id="apexcharts-radialbarTrack-0" d="M 21.280487804878042 75 A 53.71951219512196 53.71951219512196 0 0 1 128.71951219512195 75" fill="none" fill-opacity="1" stroke="rgba(231,231,231,0.85)" stroke-opacity="1" stroke-linecap="butt" stroke-width="9.345121951219513" stroke-dasharray="0" class="apexcharts-radialbar-area" data:pathorig="M 21.280487804878042 75 A 53.71951219512196 53.71951219512196 0 0 1 128.71951219512195 75"></path></g></g><g id="SvgjsG1036"><g id="SvgjsG1040" class="apexcharts-series apexcharts-radial-series" seriesname="Storage" rel="1" data:realindex="0"><path id="SvgjsPath1041" d="M 21.280487804878042 75 A 53.71951219512196 53.71951219512196 0 0 1 114.28796409307861 38.36338077956944" fill="none" fill-opacity="0.85" stroke="rgba(85,110,230,0.85)" stroke-opacity="1" stroke-linecap="butt" stroke-width="9.634146341463415" stroke-dasharray="3" class="apexcharts-radialbar-area apexcharts-radialbar-slice-0" data:angle="137" data:value="76" index="0" j="0" data:pathorig="M 21.280487804878042 75 A 53.71951219512196 53.71951219512196 0 0 1 114.28796409307861 38.36338077956944"></path></g><circle id="SvgjsCircle1037" r="44.0469512195122" cx="75" cy="75" class="apexcharts-radialbar-hollow" fill="transparent"></circle><g id="SvgjsG1038" class="apexcharts-datalabels-group" transform="translate(0, 0) scale(1)" style="opacity: 1;"><text id="SvgjsText1039" font-family="Helvetica, Arial, sans-serif" x="75" y="73" text-anchor="middle" dominant-baseline="auto" font-size="16px" font-weight="400" fill="#373d3f" class="apexcharts-text apexcharts-datalabel-value" style="font-family: Helvetica, Arial, sans-serif;">76%</text></g></g></g></g><line id="SvgjsLine1042" x1="0" y1="0" x2="150" y2="0" stroke="#b6b6b6" stroke-dasharray="0" stroke-width="1" class="apexcharts-ycrosshairs"></line><line id="SvgjsLine1043" x1="0" y1="0" x2="150" y2="0" stroke-dasharray="0" stroke-width="0" class="apexcharts-ycrosshairs-hidden"></line></g><g id="SvgjsG1028" class="apexcharts-annotations"></g></svg><div class="apexcharts-legend"></div></div></div>
-                        
-                                        <p class="text-muted mt-4">48.02 GB (76%) of 64 GB used</p>
+
+                                        <div class="apex-charts" id="radial-chart" data-colors="[&quot;--bs-primary&quot;]" style="min-height: 66px;">
+                                            <div id="apexchartss7urv6zhh" class="apexcharts-canvas apexchartss7urv6zhh apexcharts-theme-light" style="width: 190px; height: 66px;"></div>
+                                        </div>
+                                
+                                        {{-- <p class="text-muted mt-4">48.02 GB (76%) of 64 GB used</p> --}}
+                                        <p class="text-muted mt-4">Total Storage Size: {{ $totalSizeFormatted }} bytes</p>
+
+                                        
+                                        <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+
+                                        <script>
+                                            // Assign total size from PHP to JavaScript variable
+                                            var totalSize = "{{ $totalSizeFormatted }}";
+                                        
+                                            // Remove any non-numeric characters and convert to a number
+                                            totalSize = parseFloat(totalSize.replace(/[^0-9.]/g, ''));
+                                        
+                                            // Sample ApexCharts options
+                                            var options = {
+                                                series: [totalSize], // Use the totalSize variable here
+                                                chart: {
+                                                    type: 'radialBar',
+                                                    height: 200,
+                                                },
+                                                plotOptions: {
+                                                    radialBar: {
+                                                        hollow: {
+                                                            size: '50%',
+                                                        },
+                                                        dataLabels: {
+                                                            showOn: 'always',
+                                                            name: {
+                                                                offsetY: -10,
+                                                                show: true,
+                                                                color: '#888',
+                                                                fontSize: '13px',
+                                                            },
+                                                            value: {
+                                                                color: '#111',
+                                                                fontSize: '16px',
+                                                                formatter: function (val) {
+                                                                    return val + '%';
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                },
+                                                fill: {
+                                                    colors: ['#2196F3'],
+                                                },
+                                                labels: ['Storage'],
+                                            };
+                                        
+                                            // Initialize ApexCharts
+                                            var chart = new ApexCharts(document.querySelector("#apexchartss7urv6zhh"), options);
+                                            chart.render();
+                                        </script>
+                                        
+                                        
                                     <div class="resize-triggers"><div class="expand-trigger"><div style="width: 191px; height: 53px;"></div></div><div class="contract-trigger"></div></div></div>
                                 </li>
                                
