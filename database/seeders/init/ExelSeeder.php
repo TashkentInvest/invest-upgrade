@@ -22,7 +22,6 @@ class ExelSeeder extends Seeder
         
         foreach ($exelData as $item) {
             $clientData = [
-                'application_number' => $item->application_number ?? null,
                 'contact' => $item->contact ?? null,
                 'client_description' => isset($item->client_description) ? $item->client_description : null,
 
@@ -44,6 +43,7 @@ class ExelSeeder extends Seeder
 
             $branchData = [
                 'client_id' => $client->id ?? null,
+                'application_number' => $item->application_number ?? null,
                 'branch_kubmetr' => $item->branch_kubmetr ?? null,
                 'generate_price' => $item->generate_price ?? null,
                 'first_payment_percent' => $item->first_payment_percent ?? null,
