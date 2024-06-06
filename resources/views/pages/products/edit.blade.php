@@ -207,7 +207,6 @@
 
                                     mijozTuri.addEventListener('change', toggleSections);
 
-                                    // Trigger the change event on page load
                                     toggleSections();
                                 });
 

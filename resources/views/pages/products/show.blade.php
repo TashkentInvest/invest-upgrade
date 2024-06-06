@@ -61,13 +61,13 @@
                                             'data-priority' => 12,
                                             'default' => false,
                                         ],
-                                        [
-                                            'name' => __('global.yuridik_rekvizid'),
-                                            'data-priority' => 13,
-                                            'default' => false,
-                                        ],
-                                        ['name' => __('global.contact'), 'data-priority' => 14, 'default' => true],
-                                        ['name' => __('global.actions'), 'data-priority' => 15, 'default' => true],
+                                        // [
+                                        //     'name' => __('global.yuridik_rekvizid'),
+                                        //     'data-priority' => 13,
+                                        //     'default' => false,
+                                        // ],
+                                        // ['name' => __('global.contact'), 'data-priority' => 14, 'default' => true],
+                                        // ['name' => __('global.actions'), 'data-priority' => 15, 'default' => true],
                                     ];
                                 @endphp
                                 @foreach ($columns as $index => $column)
@@ -109,7 +109,7 @@
                                         {{ $client->passport_type ? $client->passport_type == 'Id' : ($client->passport_type = 'Passport') }}
                                     </td>
                                     <td class="d-none">{{ $client->yuridik_address }}</td>
-                                    <td class="d-none">{{ $client->yuridik_rekvizid }}</td>
+                                    {{-- <td class="d-none">{{ $client->yuridik_rekvizid }}</td> --}}
                                     <td>{{ $client->contact }}</td>
 
                                     <td class="text-center">

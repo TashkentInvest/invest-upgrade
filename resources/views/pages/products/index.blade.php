@@ -203,7 +203,6 @@
                                     @else
                                         <td>{{ $item->yuridik_address }} </td>
                                     @endif
-                                  
 
                                     <td>{{ $item->stir }} </td>
 
@@ -324,10 +323,10 @@
                                                                     <td>@lang('cruds.client.fields.yuridik_address')</td>
                                                                     <td>{{ $item->yuridik_address }}</td>
                                                                 </tr>
-                                                                <tr>
+                                                                {{-- <tr>
                                                                     <td>@lang('cruds.client.fields.yuridik_rekvizid')</td>
                                                                     <td>{{ $item->yuridik_rekvizid }}</td>
-                                                                </tr>
+                                                                </tr> --}}
 
                                                                 <tr>
                                                                     <td class="text-center"><strong>Company</strong>

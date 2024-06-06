@@ -29,7 +29,6 @@ class CreateClientsTable extends Migration
             $table->boolean('passport_type')->nullable()->default(0);
             $table->boolean('is_deleted')->nullable()->default(0);
             $table->string('client_description')->nullable();
-            $table->string('application_number')->nullable();
             $table->string('company_location')->nullable();
             $table->string('company_name')->nullable();
             $table->string('company_type')->nullable();

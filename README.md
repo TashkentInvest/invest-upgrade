@@ -23,7 +23,6 @@ table ga exel qoshish kere +++
 multi company create qlsh kere +++
 database skeletini korb chqsh kere 
 
-
 composer require maatwebsite/excel +++
 
 php artisan make:export ProductsExport --model=Products
@@ -121,6 +120,7 @@ debugbar json unsave qlsh kere
 
 edit blade ga add accardion qlish kere 
 
+applicatoin_num qatta bolshi kere ? Branch +++
 ```
 
 

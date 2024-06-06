@@ -28,7 +28,6 @@ class ProductController extends Controller
                 'father_name',
                 'contact',
                 'yuridik_address',
-                'yuridik_rekvizid',
                 'passport_serial',
                 'passport_pinfl',
                 'passport_date',
@@ -36,7 +35,6 @@ class ProductController extends Controller
                 'passport_type',
                 'is_deleted',
                 'client_description',
-                'application_number',
                 'company_location',
                 'company_name',
                 'company_type',
@@ -102,7 +100,6 @@ class ProductController extends Controller
                     'passport_location' => $request->get('passport_location'),
                     'passport_type' => $request->get('passport_type', 0),
                     'yuridik_address' => $request->get('yuridik_address'),
-                    'yuridik_rekvizid' => $request->get('yuridik_rekvizid'),
                     'client_description' => $request->get('client_description'),
 
                     'company_location' => $request->get('company_location'),
@@ -208,7 +205,6 @@ class ProductController extends Controller
                 'passport_location' => $request->passport_location,
                 'passport_type' => $request->passport_type,
                 'yuridik_address' => $request->yuridik_address,
-                'yuridik_rekvizid' => $request->yuridik_rekvizid,
                 'client_description' => $request->client_description,
 
                 'company_location' => $request->company_location,
@@ -282,8 +278,6 @@ class ProductController extends Controller
             $product = Products::where('client_id', $client_id)->firstOrFail();
             $product->update([
                 'minimum_wage' => $request->minimum_wage,
-                'contract_apt' => $request->contract_apt,
-                'contract_date' => $request->contract_date,
                 'created_at' => Carbon::today(),
                 'updated_at' => Carbon::today(),
             ]);
