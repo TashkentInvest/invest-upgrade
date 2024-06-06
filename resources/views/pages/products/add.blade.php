@@ -229,7 +229,7 @@
                                             class="col-md-4 col-form-label">@lang('cruds.client.fields.passport_date')</label>
                                         <input
                                             class="form-control {{ $errors->has('passport_date') ? 'is-invalid' : '' }}"
-                                            type="datetime" name="passport_date" id="passport_date"
+                                            type="date" name="passport_date" id="passport_date"
                                             placeholder="@lang('cruds.client.fields.passport_date')" value="{{ old('passport_date') }}">
                                         @if ($errors->has('passport_date'))
                                             <span
@@ -274,10 +274,8 @@
                                     </div>
 
                                     <div class="col-12 col-lg-3 mb-2">
-
                                         <label for="is_passport_id">Is passport ID?</label>
                                         <input type="checkbox" name="passport_type" id="is_passport_id" value="1">
-
                                     </div>
                                 </div>
 
@@ -335,7 +333,7 @@
                                                         <div class="col-lg-6">
                                                             <div class="mb-3">
                                                                 <label for="contract_date">@lang('global.sanasi')</label>
-                                                                <input class="form-control" type="datetime"
+                                                                <input class="form-control" type="date"
                                                                     name="accordions[0][contract_date]">
                                                             </div>
                                                         </div>
@@ -380,7 +378,7 @@
                                                         <div class="col-lg-3">
                                                             <div class="mb-3">
                                                                 <label for="notification_date">@lang('cruds.branches.fields.notification_date')</label>
-                                                                <input type="datetime" class="form-control"
+                                                                <input type="date" class="form-control"
                                                                     name="accordions[0][notification_date]"
                                                                     placeholder="@lang('cruds.branches.fields.notification_date')">
                                                             </div>
@@ -424,7 +422,7 @@
                                                         <div class="col-lg-3">
                                                             <div class="mb-3">
                                                                 <label for="payed_date">@lang('cruds.branches.fields.payed_date')</label>
-                                                                <input type="datetime" class="form-control"
+                                                                <input type="date" class="form-control"
                                                                     name="accordions[0][payed_date]"
                                                                     placeholder="@lang('cruds.branches.fields.payed_date')">
                                                             </div>

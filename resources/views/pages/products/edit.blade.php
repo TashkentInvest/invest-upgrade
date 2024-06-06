@@ -161,7 +161,7 @@
                                 <div class="col-12 col-lg-3 mb-2">
                                     <label for="passport_date" class="col-md-6 col-form-label">@lang('cruds.client.fields.passport_date')</label>
                                     <input class="form-control {{ $errors->has('passport_date') ? 'is-invalid' : '' }}"
-                                        type="datetime" name="passport_date" id="passport_date"
+                                        type="date" name="passport_date" id="passport_date"
                                         placeholder="@lang('cruds.client.fields.passport_date')"
                                         value="{{ old('passport_date', $client->passport_date) }}">
                                     @if ($errors->has('passport_date'))
@@ -342,7 +342,7 @@
                                                 <div class="col-lg-3 col-12">
                                                     <div class="mb-3">
                                                         <label for="notification_date">@lang('cruds.branches.fields.notification_date')</label>
-                                                        <input type="datetime" class="form-control"
+                                                        <input type="date" class="form-control"
                                                             name="accordions[{{ $branchIndex }}][notification_date]"
                                                             value="{{ old('accordions.' . $branchIndex . '.notification_date', $b->notification_date) }}">
                                                     </div>
@@ -384,7 +384,7 @@
                                                 <div class="col-lg-4">
                                                     <div class="mb-3">
                                                         <label for="payed_date">@lang('cruds.branches.fields.payed_date')</label>
-                                                        <input type="datetime" class="form-control"
+                                                        <input type="date" class="form-control"
                                                             name="accordions[{{ $branchIndex }}][payed_date]"
                                                             value="{{ old('accordions.' . $branchIndex . '.payed_date', $b->payed_date) }}">
                                                     </div>
@@ -403,7 +403,7 @@
                                                 <div class="col-lg-3 col-12">
                                                     <div class="mb-3">
                                                         <label for="contract_date">@lang('global.sanasi')</label>
-                                                        <input class="form-control" type="datetime"
+                                                        <input class="form-control" type="date"
                                                             id="contract_date"
                                                             name="accordions[{{ $branchIndex }}][contract_date]"
                                                             value="{{ old('accordions.' . $branchIndex . '.contract_date', $b->contract_date) }}">
