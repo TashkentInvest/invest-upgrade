@@ -211,7 +211,7 @@
                                             class="fas {{ $item->status === 1 ? 'fa-check-circle text-success' : 'fa-times-circle text-danger' }}"
                                             onclick="toggle_instock({{ $item->id }})"></i>
                                     </td>
-                                    <td> {{ $item->created_at }} </td>
+                                    <td> {{ $item->updated_at }} </td>
                                     <td class="text-center">
                                         <form action="{{ route('productDestroy', $item->id) }}" method="post">
                                             @csrf
@@ -284,7 +284,7 @@
                                                                     <td>@lang('cruds.client.fields.first_name')</td>
                                                                     <td>{{ $item->first_name }}</td>
                                                                 </tr>
-                                                            
+
                                                                 <tr>
                                                                     <td>@lang('cruds.client.fields.father_name')</td>
                                                                     <td>{{ $item->father_name }}</td>

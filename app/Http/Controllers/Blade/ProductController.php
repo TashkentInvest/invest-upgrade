@@ -189,10 +189,11 @@ class ProductController extends Controller
     public function update(Request $request, $client_id)
     {
         DB::beginTransaction();
-    
+        
         try {
             // Update client information
             $client = Client::findOrFail($client_id);
+    
             $client->update([
                 'first_name' => $request->first_name,
                 'last_name' => $request->last_name,
@@ -218,33 +219,26 @@ class ProductController extends Controller
                 'oked' => $request->oked,
             ]);
     
-            // Update company and branch information
+            // Update branches information
             foreach ($request->accordions as $index => $accordion) {
-                if (isset($accordion['branches'])) {
-                    foreach ($accordion['branches'] as $branchData) {
-                        $branch = Branch::find($branchData['id']); // Assuming there's an 'id' field in your branch data
-                        if (!$branch) {
-                            // Create a new branch
-                            $branch = new Branch();
-                            $branch->client_id = $client_id;
-                        }
-                        
-                        // Update branch fields
-                        $branch->fill($branchData);
-                        $branch->save();
-                    }
+                $branch = Branch::find($accordion['id']); // Assuming there's an 'id' field in your branch data
+                if (!$branch) {
+                    // Create a new branch
+                    $branch = new Branch();
+                    $branch->client_id = $client_id;
                 }
+                
+                // Update branch fields
+                $branch->fill($accordion);
+                $branch->save();
             }
     
             // Update product information
             $product = Products::where('client_id', $client_id)->firstOrFail();
             $product->update([
                 'minimum_wage' => $request->minimum_wage,
-                'created_at' => Carbon::today(),
-                'updated_at' => Carbon::today(),
+                // Add other fields here as needed
             ]);
-    
-            // Handle file uploads and deletions
     
             DB::commit();
     
@@ -258,7 +252,7 @@ class ProductController extends Controller
         }
     }
     
-
+    
     public function delete($client_id)
     {
         try {
