@@ -555,12 +555,14 @@
                                 </div>
                             </div>
                         </main>
+                        <button type="button" class="removeAccordion btn btn-danger mt-3">Remove</button>
+
                     </div>
                 </div>
             </div>
         @endforeach
     </div>
-    <button id="addAccordion" type="button">Add Accordion</button>
+    <button id="addAccordion" type="button" class="btn btn-primary text-light">Add Accordion</button>
 </section>
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -601,6 +603,11 @@
             $('#accordionFlushExample').append(newAccordion);
             console.log('Accordion item added with count:', accordionCount);
             accordionCount++;
+        });
+
+        $(document).on('click', '.removeAccordion', function() {
+            console.log('Remove Accordion button clicked');
+            $(this).closest('.accordion-item').remove();
         });
     });
 </script>
