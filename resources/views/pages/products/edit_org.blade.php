@@ -65,7 +65,8 @@
                                     <input class="form-control {{ $errors->has('company_name') ? 'is-invalid' : '' }}"
                                         type="text" name="company_name" id="company_name"
                                         placeholder="@lang('cruds.company.fields.company_name')"
-                                        value="{{ old('company_name', $client->company_name) }}">
+                                        value="{{ old('company_name', $client->company_name) }}"
+                                        >
                                     @if ($errors->has('company_name'))
                                         <span class="error invalid-feedback">{{ $errors->first('company_name') }}</span>
                                     @endif
