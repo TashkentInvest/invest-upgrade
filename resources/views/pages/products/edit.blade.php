@@ -347,60 +347,42 @@
                             {{-- company start --}}
                             <h3>@lang('global.company')</h3>
                             <section>
-                                <div class="accordion accordion-flush" id="accordionFlushExample">
-                                    <div class="accordion-item">
-                                        <h2 class="accordion-header" id="flush-headingOne">
-                                            <button class="accordion-button fw-medium collapsed" type="button"
-                                                data-bs-toggle="collapse" data-bs-target="#flush-collapseOne"
-                                                aria-expanded="false" aria-controls="flush-collapseOne">
-                                                Accordion Item #0
-                                            </button>
-                                        </h2>
-                                        <div id="flush-collapseOne" class="accordion-collapse collapse show"
-                                            aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
-                                            <div class="accordion-body text-muted">
-                                                <main class="main_of_objects">
+                             
+                                <div class="row">
+                                    <div class="col-lg-4">
+                                        <div class="mb-3">
+                                            <label for="company_type">@lang('global.loyiha_turi')</label>
+                                            <input type="text" class="form-control"
+                                                name="company_type"
+                                        value="{{ old('company_type', $client->company_type) }}"
+                                                
+                                                placeholder="@lang('global.loyiha_turi')">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <div class="mb-3">
+                                            <label
+                                                for="company_location">@lang('global.loyiha_manzili')</label>
+                                            <input type="text" class="form-control"
+                                                name="company_location"
+                                                value="{{ old('company_location', $client->company_location) }}"
 
-                                                    <div class="row">
-                                                        <div class="col-lg-4">
-                                                            <div class="mb-3">
-                                                                <label for="company_type">@lang('global.loyiha_turi')</label>
-                                                                <input type="text" class="form-control"
-                                                                    name="company_type"
-                                                            value="{{ old('company_type', $client->company_type) }}"
-                                                                    
-                                                                    placeholder="@lang('global.loyiha_turi')">
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-lg-4">
-                                                            <div class="mb-3">
-                                                                <label
-                                                                    for="company_location">@lang('global.loyiha_manzili')</label>
-                                                                <input type="text" class="form-control"
-                                                                    name="company_location"
-                                                                    value="{{ old('company_location', $client->company_location) }}"
+                                                placeholder="@lang('global.loyiha_manzili')">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <div class="mb-3">
+                                            <label for="company_name">@lang('global.loyiha_nomi')</label>
+                                            <input type="text" class="form-control"
+                                                name="company_name"
+                                                value="{{ old('company_name', $client->company_name) }}"
 
-                                                                    placeholder="@lang('global.loyiha_manzili')">
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-lg-4">
-                                                            <div class="mb-3">
-                                                                <label for="company_name">@lang('global.loyiha_nomi')</label>
-                                                                <input type="text" class="form-control"
-                                                                    name="company_name"
-                                                                    value="{{ old('company_name', $client->company_name) }}"
-
-                                                                    placeholder="@lang('global.loyiha_nomi')">
-                                                            </div>
-                                                        </div>
-                                                    </div>
-
-
-                                                </main>
-                                            </div>
+                                                placeholder="@lang('global.loyiha_nomi')">
                                         </div>
                                     </div>
                                 </div>
+
+
                             </section>
 
                             <h3>@lang('global.object')</h3>
