@@ -186,6 +186,7 @@ class ProductController extends Controller
         return view('pages.products.edit', compact('product', 'client', 'files'));
     }
 
+   
     public function update(Request $request, $client_id)
     {
         DB::beginTransaction();
@@ -193,7 +194,7 @@ class ProductController extends Controller
         try {
             // Update client information
             $client = Client::findOrFail($client_id);
-    
+
             $client->update([
                 'first_name' => $request->first_name,
                 'last_name' => $request->last_name,
@@ -207,7 +208,7 @@ class ProductController extends Controller
                 'passport_type' => $request->passport_type,
                 'yuridik_address' => $request->yuridik_address,
                 'client_description' => $request->client_description,
-    
+        
                 'company_location' => $request->company_location,
                 'company_type' => $request->company_type,
                 'company_name' => $request->company_name,
@@ -218,36 +219,35 @@ class ProductController extends Controller
                 'stir' => $request->stir,
                 'oked' => $request->oked,
             ]);
-    
+
             // Update branches information
-            foreach ($request->accordions as $index => $accordion) {
-                $branch = Branch::find($accordion['id']); // Assuming there's an 'id' field in your branch data
-                if (!$branch) {
-                    // Create a new branch
-                    $branch = new Branch();
+            foreach ($request->accordions as $accordionData) {
+                $branch = Branch::find($accordionData['id']); // Assuming there's an 'id' field in your branch data
+
+                if ($branch) {
+                    $branch->update($accordionData);
+                } else {
+                    $branch = new Branch($accordionData);
                     $branch->client_id = $client_id;
+                    $branch->save();
                 }
-                
-                // Update branch fields
-                $branch->fill($accordion);
-                $branch->save();
             }
-    
+
             // Update product information
             $product = Products::where('client_id', $client_id)->firstOrFail();
             $product->update([
                 'minimum_wage' => $request->minimum_wage,
                 // Add other fields here as needed
             ]);
-    
+
             DB::commit();
-    
+
             $currentPage = $request->input('page', 1);
-    
+
             return redirect()->route('productIndex', ['page' => $currentPage])->with('success', 'Product updated successfully');
         } catch (\Exception $e) {
             DB::rollback();
-    
+
             return redirect()->back()->with('error', 'An error occurred while updating the product: ' . $e->getMessage());
         }
     }

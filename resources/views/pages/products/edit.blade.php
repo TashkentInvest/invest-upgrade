@@ -406,7 +406,8 @@
                                                                     <label for="contract_apt">@lang('global.ruxsatnoma_raqami')</label>
                                                                     <input type="text" class="form-control"
                                                                         name="accordions[{{ $branchIndex }}][contract_apt]"
-                                                                        value="{{ old($b->contract_apt) }}"
+                                                                        value="{{ old('accordions.' . $branchIndex . '.contract_apt', $b->contract_apt) }}"
+
                                                                         placeholder="@lang('global.ruxsatnoma_raqami')">
                                                                 </div>
                                                             </div>
@@ -416,6 +417,7 @@
                                                                     <input class="form-control" type="date"
                                                                         name="accordions[{{ $branchIndex }}][contract_date]"
                                                                         value="{{ old('accordions.' . $branchIndex . '.contract_date', $b->contract_date) }}">
+
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -427,6 +429,7 @@
                                                                     <input type="text" class="form-control"
                                                                         name="accordions[{{ $branchIndex }}][notification_num]"
                                                                         value="{{ old('accordions.' . $branchIndex . '.notification_num', $b->notification_num) }}"
+                                                                        
                                                                         placeholder="@lang('cruds.branches.fields.notification_num')">
                                                                 </div>
                                                             </div>
@@ -437,6 +440,7 @@
                                                                     <input type="date" class="form-control"
                                                                         name="accordions[{{ $branchIndex }}][notification_date]"
                                                                         value="{{ old('accordions.' . $branchIndex . '.notification_date', $b->notification_date) }}"
+                                                                        
                                                                         placeholder="@lang('cruds.branches.fields.notification_date')">
                                                                 </div>
                                                             </div>
@@ -447,6 +451,7 @@
                                                                     <input type="text" class="form-control"
                                                                         name="accordions[{{ $branchIndex }}][insurance_policy]"
                                                                         value="{{ old('accordions.' . $branchIndex . '.insurance_policy', $b->insurance_policy) }}"
+                                                                        
                                                                         placeholder="@lang('cruds.branches.fields.insurance_policy')">
                                                                 </div>
                                                             </div>
@@ -456,6 +461,7 @@
                                                                     <input type="text" class="form-control"
                                                                         name="accordions[{{ $branchIndex }}][bank_guarantee]"
                                                                         value="{{ old('accordions.' . $branchIndex . '.bank_guarantee', $b->bank_guarantee) }}"
+                                                                        
                                                                         placeholder="@lang('cruds.branches.fields.bank_guarantee')">
                                                                 </div>
                                                             </div>
@@ -466,6 +472,7 @@
                                                                     <input type="text" class="form-control"
                                                                         name="accordions[{{ $branchIndex }}][application_number]"
                                                                         value="{{ old('accordions.' . $branchIndex . '.application_number', $b->application_number) }}"
+                                                                        
                                                                         placeholder="@lang('cruds.branches.fields.application_number')">
                                                                 </div>
                                                             </div>
