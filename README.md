@@ -83,27 +83,13 @@ role permissionlani korvorsh kere +++
 
 edit blade ga xamma value lani chqash kere +++
 
-daily backup qilish kere schedule blan
-
 audit logs user friendly qilish kere +++
-
-product add / edit qvotganda validatsalani check qb chiqish kere
-
-textlani fix qilish kere
-
-period fix qilish kere
-
-blade clean qilish kere 
 
 edit input laga date qoshish kere +++
 
 edit mijoz_turi eski datani olishi +++
 
-passport_date -> datetime-local x : datetime true
-
-product show id fix qlish kere 
-
-debugbar json unsave qlsh kere
+passport_date -> datetime-local x : datetime true +++
 
 cache audit logs fix qlish kere +++
 
@@ -111,9 +97,23 @@ INN = 9 required +++
 
 OKED = 5 required +++
 
-Bank Shot = 20 required
-
 doljnest || F.I.O +++
+
+product add / edit qvotganda validatsalani check qb chiqish kere
+
+daily backup qilish kere schedule blan 
+
+textlani fix qilish kere
+
+period fix qilish kere
+
+blade clean qilish kere 
+
+product show id fix qlish kere 
+
+debugbar json unsave qlsh kere
+
+Bank Shot = 20 required
 
 yuridik rekvizit -> bank shot
 
