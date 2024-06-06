@@ -107,6 +107,20 @@ debugbar json unsave qlsh kere
 
 cache audit logs fix qlish kere +++
 
+INN = 9 required
+
+OKED = 5 required
+
+Bank Shot = 20 required
+
+doljnest || F.I.O
+
+yuridik rekvizit -> bank shot
+
+product->address -> yuridik address chqash kere
+
+edit blade ga add accardion qlish kere 
+
 ```
 
 
