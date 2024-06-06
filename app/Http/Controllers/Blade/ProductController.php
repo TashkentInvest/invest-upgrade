@@ -21,35 +21,14 @@ class ProductController extends Controller
     public function index()
     {
         $clients = Client::select([
-                'id',
-                'first_name',
-                'last_name',
-                'mijoz_turi',
-                'father_name',
-                'contact',
-                'yuridik_address',
-                'passport_serial',
-                'passport_pinfl',
-                'passport_date',
-                'passport_location',
-                'passport_type',
-                'is_deleted',
-                'client_description',
-                'company_location',
-                'company_name',
-                'company_type',
-                'raxbar',
-                'bank_code',
-                'bank_service',
-                'bank_account',
-                'stir',
-                'oked',
-                'created_at',
-                'updated_at'
-            ])
+            'id','first_name','last_name','mijoz_turi','father_name','contact','yuridik_address','passport_serial','passport_pinfl','passport_date',
+            'passport_location','passport_type','is_deleted','client_description','company_location','company_name','company_type','raxbar', 'bank_code',
+            'bank_service', 'bank_account','stir','oked', 'created_at','updated_at'
+        ])
             ->with([
                 'products:id,client_id,user_id,minimum_wage,status',
-                'branches:id,client_id,contract_apt,contract_date,generate_price,payment_type,percentage_input,installment_quarterly,branch_kubmetr,notification_num,notification_date,insurance_policy,bank_guarantee,application_number,payed_sum,payed_date,first_payment_percent'
+                'branches:id,client_id,contract_apt,contract_date,generate_price,payment_type,percentage_input,installment_quarterly,branch_kubmetr,notification_num,
+                 notification_date,insurance_policy,bank_guarantee,application_number,payed_sum,payed_date,first_payment_percent'
             ])
             ->where('is_deleted', '!=', 1)
             ->orderBy('id', 'asc')
@@ -57,7 +36,7 @@ class ProductController extends Controller
 
         return view('pages.products.index', compact('clients'));
     }
-    
+
     public function show($id)
     {
         // Find the product by ID
@@ -186,11 +165,11 @@ class ProductController extends Controller
         return view('pages.products.edit', compact('product', 'client', 'files'));
     }
 
-   
+
     public function update(Request $request, $client_id)
     {
         DB::beginTransaction();
-        
+
         try {
             $client = Client::findOrFail($client_id);
 
@@ -207,7 +186,7 @@ class ProductController extends Controller
                 'passport_type' => $request->passport_type,
                 'yuridik_address' => $request->yuridik_address,
                 'client_description' => $request->client_description,
-        
+
                 'company_location' => $request->company_location,
                 'company_type' => $request->company_type,
                 'company_name' => $request->company_name,
@@ -221,7 +200,7 @@ class ProductController extends Controller
 
             // dd($request->accordions);
             foreach ($request->accordions as $accordionData) {
-                $branch = Branch::find($accordionData['id']); 
+                $branch = Branch::find($accordionData['id']);
 
                 if ($branch) {
                     $branch->update($accordionData);
@@ -248,8 +227,8 @@ class ProductController extends Controller
             return redirect()->back()->with('error', 'An error occurred while updating the product: ' . $e->getMessage());
         }
     }
-    
-    
+
+
     public function delete($client_id)
     {
         try {
