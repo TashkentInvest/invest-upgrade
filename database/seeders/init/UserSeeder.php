@@ -78,18 +78,7 @@ class UserSeeder extends Seeder
         // Permissions
         $permissions = [
         "permission.show", "permission.edit", "permission.add", "permission.delete",
-        "roles.show", "roles.edit", "roles.add", "roles.delete",
-        "user.show", "user.edit", "user.add", "user.delete",
-        "client.show", "client.edit", "client.add", "client.delete",
-        "dashboard.show", "monitoring.show",
-        "left-request.add", "left-request.edit", "left-request.delete",
-        "category.show", "category.add", "category.edit", "category.delete", 
-        "company.show", "company.add", "company.edit", "company.delete", 
-        "driver.show", "driver.add", "driver.edit", "driver.delete", 
-        "long-text.show", "long-text.add", "long-text.edit", "long-text.delete", 
-        "employee.show", "employee.add", "employee.edit", "employee.delete", 
-        "cheque.show", "control-report.show", "shift.show", "fines.show", 
-        "bonuses.show", "request-history.show", "order-history.show"
+        "roles.show", "roles.edit", "roles.add", "roles.delete"
     ];
 
         foreach ($permissions as $permission) {

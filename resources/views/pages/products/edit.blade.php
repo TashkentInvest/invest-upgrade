@@ -490,7 +490,7 @@
                                             @can('client.delete')
                                                 Delete
                                                 <input type="checkbox" name="delete_files[]" value="{{ $file->id }}">
-                                            @endcan
+                                            @endcan 
                                         </div>
                                     @endforeach
                                 </ul>

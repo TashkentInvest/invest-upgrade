@@ -34,21 +34,6 @@
                 </li>
                 @endcan
 
-
-{{--                 
-                <li class="{{ Request::is('audit-logs*') ? 'mm-active':'' }}">
-                    <a href="/doc" class=" waves-effect {{ Request::is('audit-logs*') ? 'mm-active':'' }}">
-                        <i class="bx bx-info-circle"></i>
-                        <span>Word</span>
-                    </a>
-                </li>
-          --}}
-
-                <!-- Category -->
-             
-                <!-- Category -->
-             
-
                 <!-- regions and districts start -->
                 {{-- <li class="{{ (Request::is('region*') || Request::is('district*') ) ? 'mm-active':''}}">
                     <a href="javascript: void(0);" class="has-arrow waves-effect {{ (Request::is('region*') || Request::is('district*') ) ? 'mm-active':''}}">
@@ -73,17 +58,6 @@
                 </li> --}}
                 <!-- regions and districts end -->
 
-                <!-- other menu -->
-                {{-- @can('api-user.view')
-                <li class="menu-title">@lang('cruds.menu_top.api_users')</li>
-                <li class="{{ Request::is('api-user*') ? 'mm-active':'' }}">
-                    <a href="{{ route('api-userIndex') }}" class=" waves-effect {{ Request::is('api-users*') ? 'mm-active':'' }}">
-                        <i class="fas fa-cog"></i>
-                        <!-- <sub><i class="fas fa-child"></i></sub> -->
-                        <span>@lang('cruds.menu_top.api_users')</span>
-                    </a>
-                </li>
-                @endcan --}}
 
                 @can('user.show')
                 <li class="{{ (Request::is('permission*') || Request::is('role*') || Request::is('user*') || Request::is('client*')) ? 'mm-active':''}}">

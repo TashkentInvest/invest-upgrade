@@ -85,7 +85,7 @@ edit blade ga xamma value lani chqash kere +++
 
 daily backup qilish kere schedule blan
 
-audit logs user friendly qilish kere
+audit logs user friendly qilish kere +++
 
 product add / edit qvotganda validatsalani check qb chiqish kere
 
@@ -97,7 +97,7 @@ blade clean qilish kere
 
 edit input laga date qoshish kere +++
 
-edit mijoz_turi eski datani olishi 
+edit mijoz_turi eski datani olishi +++
 
 passport_date -> datetime-local x : datetime true
 
@@ -105,7 +105,7 @@ product show id fix qlish kere
 
 debugbar json unsave qlsh kere
 
-cache audit logs fix qlish kere
+cache audit logs fix qlish kere +++
 
 ```
 
@@ -173,4 +173,10 @@ C:\xampp\mysql\bin\mysqldump.exe -u root -p invest > C:\Users\user\Desktop\inves
 composer require irazasyed/telegram-bot-sdk
 
 
+```
+
+
+## Permission
+```
+        "spatie/laravel-permission": "5.0"
 ```

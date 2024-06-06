@@ -24,6 +24,11 @@ class UserController extends Controller
             $users = User::where('id', '!=', auth()->user()->id)
                 ->where('id', '!=', 1)->get();
 
+        // if (auth()->user()->hasRole('Super Admin'))
+        //     $roles = Role::with('permissions')->get();
+        // else
+        //     $roles = Role::where('name', '!=', 'Super Admin')->with('permissions')->get();
+
         return view('pages.user.index', compact('users'));
     }
     // user add page

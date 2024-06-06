@@ -68,7 +68,7 @@
                     <div class="mb-3">
                         <label for="password" class="form-label">@lang('cruds.user.fields.password')</label>
                         <div class="input-group auth-pass-inputgroup">
-                            <input id="password" type="password" class="form-control {{ $errors->has('password') ? 'is-invalid': '' }}" name="password" required placeholder="@lang('cruds.user.fields.password')" aria-label="Password" aria-describedby="password-addon">
+                            <input id="password" type="password" class="form-control {{ $errors->has('password') ? 'is-invalid': '' }}" name="password" placeholder="@lang('cruds.user.fields.password')" aria-label="Password" aria-describedby="password-addon">
                             <button class="btn btn-light " type="button" onclick="togglePassword('password', 'toggle-icon-1')">
                                 <i id="toggle-icon-1" class="mdi mdi-eye-outline"></i>
                             </button>
@@ -81,7 +81,7 @@
                     <div class="mb-3">
                         <label for="password_confirmation" class="form-label">@lang('global.login_password_confirmation')</label>
                         <div class="input-group auth-pass-inputgroup">
-                            <input id="password_confirmation" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password" placeholder="@lang('global.login_password_confirmation')" aria-label="Password" aria-describedby="password-addon">
+                            <input id="password_confirmation" type="password" class="form-control" name="password_confirmation" autocomplete="new-password" placeholder="@lang('global.login_password_confirmation')" aria-label="Password" aria-describedby="password-addon">
                             <button class="btn btn-light " type="button" onclick="togglePassword('password_confirmation', 'toggle-icon-2')">
                                 <i id="toggle-icon-2" class="mdi mdi-eye-outline"></i>
                             </button>

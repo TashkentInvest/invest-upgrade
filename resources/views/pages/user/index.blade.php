@@ -52,12 +52,14 @@
                             <td>{{ $user->name }}</td>
                             <td>{{ $user->email }}</td>
                             <td>
+                            
                                 @foreach($user->roles()->pluck('name') as $role)
                                 <span class="badge badge-soft-primary">{{ $role }} </span>
                                 @endforeach
                             </td>
                             <td>
                                 @foreach($user->getAllPermissions()->pluck('name') as $permission)
+
                                 <span class="badge badge-soft-secondary">{{ $permission }} </span>
                                 @endforeach
                             </td>
