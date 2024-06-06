@@ -1,31 +1,5 @@
 [
         {
-            "id": "№",
-            "company_name": "Наименование организации",
-            "contact": "Контакты",
-            "branch_location": "Район",
-            "branch_kubmetr": "Расчетный объем здания",
-            "minimum_wage": "Расчетная величина (сўм)",
-            "generate_price": "Инфраструктурный платеж\r\n(сўм) по договору",
-           
-            "contract_apt": "№ договора",
-            "contract_date": "Дата договора",
-
-            
-
-            "notification_num": "№ уведомления",
-            "notification_date": "Дата увед",
-            "insurance_policy": "Страховой полис",
-            "bank_guarantee": "-Банковская гарантия",
-            "application_number": "Номер заявления",
-            "payed_sum ": "оплаченная сумма\r\n(сўм)",
-            "payed_date": "Дата оплаты",
-            "first_payment_percent": "Первый платеж (сум) 20% от стоимости",
-
-
-            "client_description": "Примечание"
-        },
-        {
             "id": 1,
             "application_number": 117688604,
             "company_name": "\"BUILDING CONNECTION\" МЧЖ",
@@ -1605,44 +1579,6 @@
             "company_name": "BESTIN ONE МЧЖ",
             "contact": "936568808 Хасан ака, 946132729 Андрей",
             "client_description": "30/05 складское помещение"
-        },
-        {
-            "id": 172
-        },
-        {
-            "id": 173
-        },
-        {
-            "id": 174
-        },
-        {
-            "id": 172
-        },
-        {
-            "company_name": "ВСЕГО",
-            "first_payment_percent": 36180977940,
-            "payed_sum ": 30330830452
-        },
-        {
-            "company_name": "Примечание:"
-        },
-        {
-            "application_number": 1,
-            "company_name": "Получили договора"
-        },
-        {
-            "application_number": 2,
-            "company_name": "должен оплатит первый взнос"
-        },
-        {
-            "application_number": 3,
-            "company_name": "оплачен по договору"
-        },
-        {
-            "application_number": 4,
-            "company_name": "Оповещен, придут для договора"
-        },
-        {
-            "company_name": "Всего"
         }
+       
     ]  
