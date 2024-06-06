@@ -28,7 +28,7 @@
                     <form id='myForm' action="{{ route('productCreate') }}" method="post" enctype="multipart/form-data">
                         @csrf
 
-                        <div id="basic-example">
+                        <div id="vertical-example" class="vertical-wizard wizard clearfix vertical">
                             <h3>@lang('global.personal_informations')</h3>
                             <section>
 
