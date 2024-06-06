@@ -529,7 +529,7 @@
                                                                         class="form-control generate_price"
                                                                         name="accordions[{{ $branchIndex }}][generate_price]"
                                                                         value="{{ old('accordions.' . $branchIndex . '.generate_price', $b->generate_price) }}"
-                                                                        placeholder="@lang('global.jami_tolanishi_kerak')" readonly>
+                                                                        placeholder="@lang('global.jami_tolanishi_kerak')">
                                                                 </div>
                                                             </div>
                                                         </div>

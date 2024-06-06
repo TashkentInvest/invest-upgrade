@@ -181,6 +181,9 @@ Route::get('/clear-optimize-cache', function () {
     <button type="submit">Clear Optimized Cache</button>
 </form>
 
+generate_price not changeble bop qogan fix qlsh kere
+
+fizik uchun address
 ```
 
 ```
@@ -196,3 +199,7 @@ composer require irazasyed/telegram-bot-sdk
 ```
         "spatie/laravel-permission": "5.0"
 ```
+
+```
+ /usr/local/bin/php /home/t123379/public_html/invest.teamdevs.uz/artisan db:backup>/dev/null 2>&1
+ ```
