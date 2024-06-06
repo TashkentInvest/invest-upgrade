@@ -58,7 +58,7 @@
                                     </div>
 
                                     <div class="col-12 col-lg-3 mb-2">
-                                        <label for="raxbar" class="col-md-6 col-form-label">@lang('cruds.company.fields.raxbar')</label>
+                                        <label for="raxbar" class="col-md-6 col-form-label">@lang('cruds.company.fields.raxbar') - @lang('global.client_name')</label>
                                         <input class="form-control {{ $errors->has('raxbar') ? 'is-invalid' : '' }}"
                                             type="text" name="raxbar" id="raxbar" placeholder="@lang('cruds.company.fields.raxbar')"
                                             value="{{ old('raxbar') }}">
@@ -96,7 +96,7 @@
                                         <label for="stir" class="col-md-6 col-form-label">@lang('cruds.company.fields.stir')</label>
                                         <input class="form-control {{ $errors->has('stir') ? 'is-invalid' : '' }}"
                                             type="text" name="stir" id="stir" placeholder="@lang('cruds.company.fields.stir')"
-                                            value="{{ old('stir') }}">
+                                            value="{{ old('stir') }}" required pattern="\d{9}"  maxlength="9">
                                         @if ($errors->has('stir'))
                                             <span class="error invalid-feedback">{{ $errors->first('stir') }}</span>
                                         @endif
@@ -105,12 +105,13 @@
                                     <div class="col-12 col-lg-3 mb-2">
                                         <label for="oked" class="col-md-6 col-form-label">@lang('cruds.company.fields.oked')</label>
                                         <input class="form-control {{ $errors->has('oked') ? 'is-invalid' : '' }}"
-                                            type="text" name="oked" id="oked" placeholder="@lang('cruds.company.fields.oked')"
-                                            value="{{ old('oked') }}">
+                                               type="text" name="oked" id="oked" placeholder="@lang('cruds.company.fields.oked')"
+                                               value="{{ old('oked') }}" required pattern="\d{5}"  maxlength="5">
                                         @if ($errors->has('oked'))
                                             <span class="error invalid-feedback">{{ $errors->first('oked') }}</span>
                                         @endif
                                     </div>
+                                    
 
                                     <div class="col-12 col-lg-3 mb-2">
                                         <label for="yuridik_address"

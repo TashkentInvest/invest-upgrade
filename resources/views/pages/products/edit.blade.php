@@ -68,7 +68,7 @@
                                 </div>
 
                                 <div class="col-12 col-lg-3 mb-2">
-                                    <label for="raxbar" class="col-md-6 col-form-label">@lang('cruds.company.fields.raxbar')</label>
+                                    <label for="raxbar" class="col-md-6 col-form-label">@lang('cruds.company.fields.raxbar') - @lang('global.client_name')</label>
                                     <input class="form-control {{ $errors->has('raxbar') ? 'is-invalid' : '' }}"
                                         type="text" name="raxbar" id="raxbar" placeholder="@lang('cruds.company.fields.raxbar')"
                                         value="{{ old('raxbar', $client->raxbar) }}">
@@ -161,7 +161,7 @@
                                 <div class="col-12 col-lg-3 mb-2">
                                     <label for="passport_date" class="col-md-6 col-form-label">@lang('cruds.client.fields.passport_date')</label>
                                     <input class="form-control {{ $errors->has('passport_date') ? 'is-invalid' : '' }}"
-                                        type="datetime-local" name="passport_date" id="passport_date"
+                                        type="datetime" name="passport_date" id="passport_date"
                                         placeholder="@lang('cruds.client.fields.passport_date')"
                                         value="{{ old('passport_date', $client->passport_date) }}">
                                     @if ($errors->has('passport_date'))
@@ -290,18 +290,16 @@
                                             @endif
                                         </div>
 
-                                        <div class="col-12 col-lg-3 col-12">
-                                            <label for="stir"
-                                                class="col-md-6 col-form-label">@lang('cruds.company.fields.stir')</label>
+                                        <div class="col-12 col-lg-3 mb-2">
+                                            <label for="stir" class="col-md-6 col-form-label">@lang('cruds.company.fields.stir')</label>
                                             <input class="form-control {{ $errors->has('stir') ? 'is-invalid' : '' }}"
-                                                type="text" name="stir"
-                                                id="stir" placeholder="@lang('cruds.company.fields.stir')"
-                                                value="{{ old('stir', $client->stir) }}">
+                                                   type="text" name="stir" id="stir" placeholder="@lang('cruds.company.fields.stir')"
+                                                   value="{{ old('stir', $client->stir) }}" required pattern="\d{9}" maxlength="9">
                                             @if ($errors->has('stir'))
-                                                <span
-                                                    class="error invalid-feedback">{{ $errors->first('stir') }}</span>
+                                                <span class="error invalid-feedback">{{ $errors->first('stir') }}</span>
                                             @endif
                                         </div>
+                                        
 
                                         <div class="col-12 col-lg-3 col-12">
                                             <label for="oked"
@@ -309,7 +307,7 @@
                                             <input class="form-control {{ $errors->has('oked') ? 'is-invalid' : '' }}"
                                                 type="text" name="oked"
                                                 id="oked" placeholder="@lang('cruds.company.fields.oked')"
-                                                value="{{ old('oked', $client->oked) }}">
+                                                value="{{ old('oked', $client->oked) }}" required pattern="\d{5}"  maxlength="5">
                                             @if ($errors->has('oked'))
                                                 <span
                                                     class="error invalid-feedback">{{ $errors->first('oked') }}</span>
@@ -331,7 +329,7 @@
                                                 <div class="col-lg-3 col-12">
                                                     <div class="mb-3">
                                                         <label for="notification_date">@lang('cruds.branches.fields.notification_date')</label>
-                                                        <input type="datetime-local" class="form-control"
+                                                        <input type="datetime" class="form-control"
                                                             name="accordions[{{ $branchIndex }}][notification_date]"
                                                             value="{{ old('accordions.' . $branchIndex . '.notification_date', $b->notification_date) }}">
                                                     </div>
@@ -373,7 +371,7 @@
                                                 <div class="col-lg-4">
                                                     <div class="mb-3">
                                                         <label for="payed_date">@lang('cruds.branches.fields.payed_date')</label>
-                                                        <input type="datetime-local" class="form-control"
+                                                        <input type="datetime" class="form-control"
                                                             name="accordions[{{ $branchIndex }}][payed_date]"
                                                             value="{{ old('accordions.' . $branchIndex . '.payed_date', $b->payed_date) }}">
                                                     </div>
@@ -392,7 +390,7 @@
                                                 <div class="col-lg-3 col-12">
                                                     <div class="mb-3">
                                                         <label for="contract_date">@lang('global.sanasi')</label>
-                                                        <input class="form-control" type="datetime-local"
+                                                        <input class="form-control" type="datetime"
                                                             id="contract_date"
                                                             name="accordions[{{ $branchIndex }}][contract_date]"
                                                             value="{{ old('accordions.' . $branchIndex . '.contract_date', $b->contract_date) }}">

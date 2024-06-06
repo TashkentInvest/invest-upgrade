@@ -107,13 +107,13 @@ debugbar json unsave qlsh kere
 
 cache audit logs fix qlish kere +++
 
-INN = 9 required
+INN = 9 required +++
 
-OKED = 5 required
+OKED = 5 required +++
 
 Bank Shot = 20 required
 
-doljnest || F.I.O
+doljnest || F.I.O +++
 
 yuridik rekvizit -> bank shot
 
