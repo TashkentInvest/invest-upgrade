@@ -68,10 +68,6 @@
                                     </div>
 
 
-
-                                 
-
-
                                     <div class="col-12 col-lg-3 mb-2">
                                         <label for="stir" class="col-md-6 col-form-label">@lang('cruds.company.fields.stir')</label>
                                         <input class="form-control {{ $errors->has('stir') ? 'is-invalid' : '' }}"
@@ -200,7 +196,7 @@
                                     </div>
                                 </div>
 
-                                <div class="row" id="passport" style="align-items: center ">
+                                <div class="row" id="make_hide">
 
                                     <div class="col-12 col-lg-3 mb-2">
                                         <label for="passport_serial"
@@ -214,7 +210,6 @@
                                                 class="error invalid-feedback">{{ $errors->first('passport_serial') }}</span>
                                         @endif
                                     </div>
-
 
                                     <div class="col-12 col-lg-3 mb-2">
                                         <label for="passport_pinfl"
@@ -255,6 +250,9 @@
                                         @endif
                                     </div>
 
+                                </div>
+
+                                <div class="row"  style="align-items: center ">
                                     <div class="col-12 col-lg-6 mb-2">
                                         <label for="client_description"
                                             class="col-md-6 col-form-label">@lang('cruds.client.fields.client_description')</label>
@@ -283,9 +281,7 @@
                                     </div>
                                 </div>
 
-                                <div class="row" id="make_hide">
-
-                                </div>
+                           
 
                                 <script>
                                     $(document).ready(function() {

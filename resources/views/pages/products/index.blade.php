@@ -357,6 +357,11 @@
                                                                     <td>@lang('cruds.company.fields.bank_service')</td>
                                                                     <td>{{ $item->bank_service }}</td>
                                                                 </tr>
+
+                                                                <tr>
+                                                                    <td>@lang('cruds.company.fields.bank_account')</td>
+                                                                    <td>{{ $item->bank_account }}</td>
+                                                                </tr>
                                                                 <tr>
                                                                     <td>@lang('cruds.company.fields.stir')</td>
                                                                     <td>{{ $item->stir }}</td>

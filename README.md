@@ -108,6 +108,8 @@ product->address -> yuridik address chqash kere +++
 
 Bank Shot = 20 required +++
 
+applicatoin_num qatta bolshi kere ? Branch +++
+
 product add / edit qvotganda validatsalani check qb chiqish kere
 
 daily backup qilish kere schedule blan 
@@ -120,7 +122,6 @@ debugbar json unsave qlsh kere
 
 edit blade ga add accardion qlish kere 
 
-applicatoin_num qatta bolshi kere ? Branch +++
 ```
 
 
