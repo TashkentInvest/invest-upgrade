@@ -385,386 +385,226 @@
 
                             </section>
 
+                            
                             <h3>@lang('global.object')</h3>
-                            <section>
-                                <div class="accordion accordion-flush" id="accordionFlushExample">
-                                    <div class="accordion-item">
-                                        <h2 class="accordion-header" id="flush-headingOne">
-                                            <button class="accordion-button fw-medium collapsed" type="button"
-                                                data-bs-toggle="collapse" data-bs-target="#flush-collapseOne"
-                                                aria-expanded="false" aria-controls="flush-collapseOne">
-                                                Accordion Item #0
-                                            </button>
-                                        </h2>
-                                        <div id="flush-collapseOne" class="accordion-collapse collapse show"
-                                            aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
-                                            <div class="accordion-body text-muted">
-                                                <main class="main_of_objects">
-
-                                                    {{-- branch start --}}
-                                                    @foreach ($client->branches as $branchIndex => $b)
-                                                    {{-- @dump($b) --}}
-                                                        <div class="row">
-                                                            <div class="col-lg-6">
-                                                                <div class="mb-3">
-                                                                    <label for="contract_apt">@lang('global.ruxsatnoma_raqami')</label>
-                                                                    <input type="text" class="form-control"
-                                                                        name="accordions[0][contract_apt]"
-                                                                        value="{{ old('accordions.' . $branchIndex . '.contract_apt', $b->contract_apt) }}"
-                                                                        placeholder="@lang('global.ruxsatnoma_raqami')">
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-lg-6">
-                                                                {{-- @dd($b->contract_date) --}}
-                                                                <div class="mb-3">
-                                                                    <label for="contract_date">@lang('global.sanasi')</label>
-                                                                    <input class="form-control" type="date"
-                                                                    name="accordions[0][contract_date]"
-                                                                    value="{{ old('accordions.' . $branchIndex . '.contract_date', $b->contract_date) }}"
-                                                                        >
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                      
-
-                                                        <div class="row">
-                                                            <div class="col-lg-3">
-                                                                <div class="mb-3">
-                                                                    <label
-                                                                        for="notification_num">@lang('cruds.branches.fields.notification_num')</label>
-                                                                    <input type="text" class="form-control"
-                                                                        name="accordions[0][notification_num]"
-                                                                        value="{{ old('accordions.' . $branchIndex . '.notification_num', $b->notification_num) }}"
-
-                                                                        placeholder="@lang('cruds.branches.fields.notification_num')">
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-lg-3">
-                                                                <div class="mb-3">
-                                                                    <label
-                                                                        for="notification_date">@lang('cruds.branches.fields.notification_date')</label>
-                                                                    <input type="date" class="form-control"
-                                                                        name="accordions[0][notification_date]"
-                                                                        value="{{ old('accordions.' . $branchIndex . '.notification_date', $b->notification_date) }}"
-
-                                                                        placeholder="@lang('cruds.branches.fields.notification_date')">
-                                                                </div>
-                                                            </div>
-
-                                                            <div class="col-lg-3">
-                                                                <div class="mb-3">
-                                                                    <label
-                                                                        for="insurance_policy">@lang('cruds.branches.fields.insurance_policy')</label>
-                                                                    <input type="text" class="form-control"
-                                                                        name="accordions[0][insurance_policy]"
-                                                                        value="{{ old('accordions.' . $branchIndex . '.insurance_policy', $b->insurance_policy) }}"
-
-                                                                        placeholder="@lang('cruds.branches.fields.insurance_policy')">
-                                                                </div>
-                                                            </div>
-
-                                                            <div class="col-lg-3">
-                                                                <div class="mb-3">
-                                                                    <label for="bank_guarantee">@lang('cruds.branches.fields.bank_guarantee')</label>
-                                                                    <input type="text" class="form-control"
-                                                                        name="accordions[0][bank_guarantee]"
-                                                                        value="{{ old('accordions.' . $branchIndex . '.bank_guarantee', $b->bank_guarantee) }}"
-
-                                                                        placeholder="@lang('cruds.branches.fields.bank_guarantee')">
-                                                                </div>
-                                                            </div>
-                                                            {{-- second --}}
-                                                            <div class="col-lg-3">
-                                                                <div class="mb-3">
-                                                                    <label
-                                                                        for="application_number">@lang('cruds.branches.fields.application_number')</label>
-                                                                    <input type="text" class="form-control"
-                                                                        name="accordions[0][application_number]"
-                                                                        value="{{ old('accordions.' . $branchIndex . '.application_number', $b->application_number) }}"
-
-                                                                        placeholder="@lang('cruds.branches.fields.application_number')">
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-lg-3">
-                                                                <div class="mb-3">
-                                                                    <label for="payed_sum">@lang('cruds.branches.fields.payed_sum')</label>
-                                                                    <input type="text" class="form-control"
-                                                                        name="accordions[0][payed_sum]"
-                                                                        value="{{ old('accordions.' . $branchIndex . '.payed_sum', $b->payed_sum) }}"
-
-                                                                        placeholder="@lang('cruds.branches.fields.payed_sum')">
-                                                                </div>
-                                                            </div>
-
-                                                            <div class="col-lg-3">
-                                                                <div class="mb-3">
-                                                                    <label for="payed_date">@lang('cruds.branches.fields.payed_date')</label>
-                                                                    <input type="date" class="form-control"
-                                                                        name="accordions[0][payed_date]"
-                                                                        value="{{ old('accordions.' . $branchIndex . '.payed_date', $b->payed_date) }}"
-
-                                                                        placeholder="@lang('cruds.branches.fields.payed_date')">
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        {{-- Starting to add new rows end --}}
-                                                        <div class="row">
-                                                            <div class="col-lg-3">
-                                                                <div class="inner-repeater mb-4">
-                                                                    <div data-repeater-list="inner-group"
-                                                                        class="inner mb-3">
-                                                                        <label
-                                                                            for="basicpill-cardno-input">@lang('global.obyekt_boyicha_tolanishi_lozim')</label>
-                                                                        <input type="number"
-                                                                            class="form-control branch_kubmetr"
-                                                                            placeholder="@lang('global.obyekt_boyicha_tolanishi_lozim')"
-                                                                            value="{{ old('accordions.' . $branchIndex . '.branch_kubmetr', $b->branch_kubmetr) }}"
-
-                                                                            name="accordions[0][branch_kubmetr]">
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-lg-3">
-                                                                <div class="mb-3">
-                                                                    <label
-                                                                        for="basicpill-card-verification-input">@lang('global.bazaviy_xisoblash_miqdori')</label>
-                                                                    <input type="number"
-                                                                        class="form-control minimum_wage"
-                                                                        placeholder="@lang('global.bazaviy_xisoblash_miqdori')" value="340000"
-                                                                        name="accordions[0][minimum_wage]">
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-lg-3">
-                                                                <div class="mb-3">
-                                                                    <label
-                                                                        for="basicpill-card-verification-input">@lang('global.jami_tolanishi_kerak')</label>
-                                                                    <input type="text"
-                                                                        class="form-control generate_price"
-                                                                        name="accordions[0][generate_price]"
-                                                                        value="{{ old('accordions.' . $branchIndex . '.generate_price', $b->generate_price) }}"
-
-                                                                        placeholder="@lang('global.jami_tolanishi_kerak')" readonly>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="row">
-                                                            <div class="col-lg-3">
-                                                                <div class="mb-3">
-                                                                    <label>@lang('global.tolash_turlari')</label>
-                                                                    <select class="form-select payment-type"
-                                                                        id="payment_type"
-                                                                        name="accordions[{{ $branchIndex }}][payment_type]">
-                                                                        <option value="pay_full"
-                                                                            {{ $b->payment_type == 'pay_full' ? 'selected' : '' }}>
-                                                                            @lang('global.toliq_xajimda_tolash')</option>
-                                                                        <option value="pay_bolib"
-                                                                            {{ $b->payment_type == 'pay_bolib' ? 'selected' : '' }}>
-                                                                            @lang('global.bolib_tolash')</option>
-                                                                    </select>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-lg-3">
-                                                                <div class="mb-3">
-                                                                    <label
-                                                                        for="percentage-input">@lang('global.bolib_tolash_foizi_oldindan')</label>
-                                                                    <div class="input-group">
-                                                                        <input type="number"
-                                                                            class="form-control percentage-input"
-                                                                            name="accordions[0][percentage_input]"
-                                                                            value="{{ old('accordions.' . $branchIndex . '.percentage_input', $b->percentage_input) }}"
-
-                                                                            min="0" max="100">
-                                                                        <span class="input-group-text">%</span>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-lg-3">
-                                                                <div class="mb-3">
-                                                                    <label for="quarterly-input">@lang('global.bolib_tolash_har_chorakda')</label>
-                                                                    <input type="number"
-                                                                        class="form-control quarterly-input"
-                                                                        name="accordions[0][installment_quarterly]"
-                                                                        value="{{ old('accordions.' . $branchIndex . '.installment_quarterly', $b->installment_quarterly) }}"
-
-                                                                        placeholder="@lang('global.bolib_tolash_har_chorakda')" disabled>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-lg-3">
-                                                                <div class="mb-3">
-                                                                    <label
-                                                                        for="calculated-quarterly-payment">@lang('global.quarterly_payment')</label>
-                                                                    <input type="text"
-                                                                        class="form-control calculated-quarterly-payment"
-                                                                        placeholder="@lang('global.quarterly_payment')" readonly>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="row">
-                                                            <div class="col-lg-12">
-                                                                <table class="table">
-                                                                    <thead>
-                                                                        <tr>
-                                                                            <th>Chorak</th>
-                                                                            <th>To'lanadigan miqdor</th>
-                                                                        </tr>
-                                                                    </thead>
-                                                                    <tbody class="quarterly-payment-schedule">
-                                                                    </tbody>
-                                                                    <tfoot>
-                                                                        <tr>
-                                                                            <th>Jami</th>
-                                                                            <th class="total-quarterly-payment">0.00</th>
-                                                                        </tr>
-                                                                    </tfoot>
-                                                                </table>
-                                                            </div>
-                                                        </div>
-                                                    @endforeach
-
-                                                    {{-- branch end --}}
-
-                                                </main>
-                                            </div>
+<section>
+    <div class="accordion accordion-flush" id="accordionFlushExample">
+        @foreach ($client->branches as $branchIndex => $b)
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="flush-heading{{ $branchIndex }}">
+                    <button class="accordion-button fw-medium collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#flush-collapse{{ $branchIndex }}" aria-expanded="false"
+                            aria-controls="flush-collapse{{ $branchIndex }}">
+                        Accordion Item #{{ $branchIndex }}
+                    </button>
+                </h2>
+                <div id="flush-collapse{{ $branchIndex }}" class="accordion-collapse collapse show"
+                     aria-labelledby="flush-heading{{ $branchIndex }}" data-bs-parent="#accordionFlushExample">
+                    <div class="accordion-body text-muted">
+                        <main class="main_of_objects">
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="mb-3">
+                                        <label for="contract_apt">@lang('global.ruxsatnoma_raqami')</label>
+                                        <input type="text" class="form-control"
+                                               name="accordions[{{ $branchIndex }}][contract_apt]"
+                                               value="{{ old('accordions.' . $branchIndex . '.contract_apt', $b->contract_apt) }}"
+                                               placeholder="@lang('global.ruxsatnoma_raqami')">
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="mb-3">
+                                        <label for="contract_date">@lang('global.sanasi')</label>
+                                        <input class="form-control" type="date"
+                                               name="accordions[{{ $branchIndex }}][contract_date]"
+                                               value="{{ old('accordions.' . $branchIndex . '.contract_date', $b->contract_date) }}">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-3">
+                                    <div class="mb-3">
+                                        <label for="notification_num">@lang('cruds.branches.fields.notification_num')</label>
+                                        <input type="text" class="form-control"
+                                               name="accordions[{{ $branchIndex }}][notification_num]"
+                                               value="{{ old('accordions.' . $branchIndex . '.notification_num', $b->notification_num) }}"
+                                               placeholder="@lang('cruds.branches.fields.notification_num')">
+                                    </div>
+                                </div>
+                                <div class="col-lg-3">
+                                    <div class="mb-3">
+                                        <label for="notification_date">@lang('cruds.branches.fields.notification_date')</label>
+                                        <input type="date" class="form-control"
+                                               name="accordions[{{ $branchIndex }}][notification_date]"
+                                               value="{{ old('accordions.' . $branchIndex . '.notification_date', $b->notification_date) }}"
+                                               placeholder="@lang('cruds.branches.fields.notification_date')">
+                                    </div>
+                                </div>
+                                <div class="col-lg-3">
+                                    <div class="mb-3">
+                                        <label for="insurance_policy">@lang('cruds.branches.fields.insurance_policy')</label>
+                                        <input type="text" class="form-control"
+                                               name="accordions[{{ $branchIndex }}][insurance_policy]"
+                                               value="{{ old('accordions.' . $branchIndex . '.insurance_policy', $b->insurance_policy) }}"
+                                               placeholder="@lang('cruds.branches.fields.insurance_policy')">
+                                    </div>
+                                </div>
+                                <div class="col-lg-3">
+                                    <div class="mb-3">
+                                        <label for="bank_guarantee">@lang('cruds.branches.fields.bank_guarantee')</label>
+                                        <input type="text" class="form-control"
+                                               name="accordions[{{ $branchIndex }}][bank_guarantee]"
+                                               value="{{ old('accordions.' . $branchIndex . '.bank_guarantee', $b->bank_guarantee) }}"
+                                               placeholder="@lang('cruds.branches.fields.bank_guarantee')">
+                                    </div>
+                                </div>
+                                <div class="col-lg-3">
+                                    <div class="mb-3">
+                                        <label for="application_number">@lang('cruds.branches.fields.application_number')</label>
+                                        <input type="text" class="form-control"
+                                               name="accordions[{{ $branchIndex }}][application_number]"
+                                               value="{{ old('accordions.' . $branchIndex . '.application_number', $b->application_number) }}"
+                                               placeholder="@lang('cruds.branches.fields.application_number')">
+                                    </div>
+                                </div>
+                                <div class="col-lg-3">
+                                    <div class="mb-3">
+                                        <label for="payed_sum">@lang('cruds.branches.fields.payed_sum')</label>
+                                        <input type="text" class="form-control"
+                                               name="accordions[{{ $branchIndex }}][payed_sum]"
+                                               value="{{ old('accordions.' . $branchIndex . '.payed_sum', $b->payed_sum) }}"
+                                               placeholder="@lang('cruds.branches.fields.payed_sum')">
+                                    </div>
+                                </div>
+                                <div class="col-lg-3">
+                                    <div class="mb-3">
+                                        <label for="payed_date">@lang('cruds.branches.fields.payed_date')</label>
+                                        <input type="date" class="form-control"
+                                               name="accordions[{{ $branchIndex }}][payed_date]"
+                                               value="{{ old('accordions.' . $branchIndex . '.payed_date', $b->payed_date) }}"
+                                               placeholder="@lang('cruds.branches.fields.payed_date')">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-3">
+                                    <div class="inner-repeater mb-4">
+                                        <div data-repeater-list="inner-group" class="inner mb-3">
+                                            <label for="basicpill-cardno-input">@lang('global.obyekt_boyicha_tolanishi_lozim')</label>
+                                            <input type="number" class="form-control branch_kubmetr"
+                                                   placeholder="@lang('global.obyekt_boyicha_tolanishi_lozim')"
+                                                   value="{{ old('accordions.' . $branchIndex . '.branch_kubmetr', $b->branch_kubmetr) }}"
+                                                   name="accordions[{{ $branchIndex }}][branch_kubmetr]">
                                         </div>
                                     </div>
                                 </div>
-                                <div id="addAccordion" class="btn btn-primary mt-3">Add Accordion</div>
-                            </section>
+                                <div class="col-lg-3">
+                                    <div class="mb-3">
+                                        <label for="basicpill-card-verification-input">@lang('global.bazaviy_xisoblash_miqdori')</label>
+                                        <input type="number" class="form-control minimum_wage"
+                                               placeholder="@lang('global.bazaviy_xisoblash_miqdori')" value="340000"
+                                               name="accordions[{{ $branchIndex }}][minimum_wage]">
+                                    </div>
+                                </div>
+                                <div class="col-lg-3">
+                                    <div class="mb-3">
+                                        <label for="basicpill-card-verification-input">@lang('global.jami_tolanishi_kerak')</label>
+                                        <input type="text" class="form-control generate_price"
+                                               name="accordions[{{ $branchIndex }}][generate_price]"
+                                               value="{{ old('accordions.' . $branchIndex . '.generate_price', $b->generate_price) }}"
+                                               placeholder="@lang('global.jami_tolanishi_kerak')" readonly>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-3">
+                                    <div class="mb-3">
+                                        <label>@lang('global.tolash_turlari')</label>
+                                        <select class="form-select payment-type" id="payment_type"
+                                                name="accordions[{{ $branchIndex }}][payment_type]">
+                                            <option value="pay_full" {{ $b->payment_type == 'pay_full' ? 'selected' : '' }}>
+                                                @lang('global.toliq_xajimda_tolash')</option>
+                                            <option value="pay_bolib" {{ $b->payment_type == 'pay_bolib' ? 'selected' : '' }}>
+                                                @lang('global.bolib_tolash')</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3">
+                                    <div class="mb-3">
+                                        <label for="percentage-input">@lang('global.bolib_tolash_foizi_oldindan')</label>
+                                        <div class="input-group">
+                                            <input type="number" class="form-control percentage-input"
+                                                   name="accordions[{{ $branchIndex }}][percentage_input]"
+                                                   value="{{ old('accordions.' . $branchIndex . '.percentage_input', $b->percentage_input) }}"
+                                                   min="0" max="100">
+                                            <span class="input-group-text">%</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3">
+                                    <div class="mb-3">
+                                        <label for="quarterly-input">@lang('global.bolib_tolash_harchorak')</label>
+                                        <div class="input-group">
+                                            <input type="number" class="form-control quarterly-input"
+                                                   name="accordions[{{ $branchIndex }}][quarterly_input]"
+                                                   value="{{ old('accordions.' . $branchIndex . '.quarterly_input', $b->quarterly_input) }}"
+                                                   min="0">
+                                            <span class="input-group-text">@lang('global.so_m')</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </main>
+                    </div>
+                </div>
+            </div>
+        @endforeach
+    </div>
+    <button id="addAccordion" type="button">Add Accordion</button>
+</section>
 
-                            <script>
-                                $(document).ready(function() {
-                                    let accordionCount = 1;
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function() {
+        let accordionCount = {{ count($client->branches) }};
+        const addAccordionButton = $('#addAccordion');
 
-                                    $('#addAccordion').on('click', function() {
-                                        let accordion = $('.accordion-item').first().clone();
-                                        let newId = 'flush-collapse' + accordionCount;
-                                        accordion.find('.accordion-collapse').attr('id', newId);
-                                        accordion.find('.accordion-button').attr('data-bs-target', '#' + newId);
-                                        accordion.find('.accordion-header').attr('id', 'flush-heading' + accordionCount);
-                                        accordion.find('.accordion-button').attr('aria-controls', newId);
-                                        accordion.find('.accordion-button').text('Accordion Item #' + accordionCount);
+        addAccordionButton.on('click', function() {
+            console.log('Add Accordion button clicked');
+            const accordionItem = $('.accordion-item').last(); // Select the last accordion item
+            if (!accordionItem.length) {
+                console.error('Accordion item template not found');
+                return;
+            }
+            console.log('Found accordion item template');
 
-                                        accordion.find('input, select').each(function() {
-                                            let name = $(this).attr('name');
-                                            if (name) {
-                                                let newName = name.replace(/\[0\]/, '[' + accordionCount + ']');
-                                                $(this).attr('name', newName);
-                                            }
-                                            $(this).val('');
-                                            $(this).attr('id', name + '-' +
-                                                accordionCount);
-                                        });
+            const newAccordion = accordionItem.clone();
+            const newId = 'flush-collapse' + accordionCount;
+            const newButtonId = 'flush-heading' + accordionCount;
 
-                                        let tableId = 'payment-table-' + accordionCount;
-                                        let scheduleId = 'payment-schedule-' + accordionCount;
-                                        let quarterlyTableId = 'quarterly-table-' + accordionCount;
-                                        let quarterlyScheduleId = 'quarterly-schedule-' + accordionCount;
+            newAccordion.find('.accordion-collapse').attr('id', newId);
+            newAccordion.find('.accordion-button').attr('data-bs-target', '#' + newId);
+            newAccordion.find('.accordion-header').attr('id', newButtonId);
+            newAccordion.find('.accordion-button').attr('aria-controls', newId);
+            newAccordion.find('.accordion-button').text('Accordion Item #' + accordionCount);
 
-                                        accordion.find('.payment-table').attr('id', tableId);
-                                        accordion.find('.payment-schedule').attr('id', scheduleId);
-                                        accordion.find('.quarterly-table').attr('id', quarterlyTableId);
-                                        accordion.find('.quarterly-payment-schedule').attr('id', quarterlyScheduleId);
+            newAccordion.find('input, select').each(function() {
+                let name = $(this).attr('name');
+                if (name) {
+                    let newName = name.replace(/\[\d+\]/, '[' + accordionCount + ']');
+                    $(this).attr('name', newName);
+                    $(this).attr('id', newName + '-' + accordionCount);
+                }
+                $(this).val('');
+            });
 
-                                        accordion.appendTo('#accordionFlushExample');
-                                        accordionCount++;
-
-                                        accordion.find('.generate_price').val('');
-                                        accordion.find('.payment-type').val('pay_full').trigger('change');
-                                        accordion.find('.percentage-input').val('0').prop('disabled', true);
-                                        accordion.find('.quarterly-input').val('').prop('disabled', true);
-                                        accordion.find('.calculated-quarterly-payment').val('');
-                                        accordion.find('.payment-schedule').empty();
-                                        accordion.find('.quarterly-payment-schedule').empty();
-                                        accordion.find('.total-quarterly-payment').text('0.00');
-                                    });
-
-                                    $(document).on('input change', '.branch_kubmetr, .minimum_wage, .percentage-input, .quarterly-input',
-                                        function() {
-                                            let parentAccordion = $(this).closest('.accordion-body');
-                                            calculateGeneratePrice(parentAccordion);
-                                        });
-
-                                    function calculateGeneratePrice(parentAccordion) {
-                                        let companyKubmetr = parentAccordion.find('.branch_kubmetr').val();
-                                        let minimumWage = parentAccordion.find('.minimum_wage').val();
-                                        let generatePrice = companyKubmetr * minimumWage;
-                                        parentAccordion.find('.generate_price').val(generatePrice.toFixed(2));
-
-                                        let percentageInput = parseFloat(parentAccordion.find('.percentage-input').val());
-                                        let quarterlyInput = parseInt(parentAccordion.find('.quarterly-input').val());
-
-                                        if (!isNaN(generatePrice) && !isNaN(percentageInput) && !isNaN(quarterlyInput) && quarterlyInput >
-                                            0) {
-                                            let z = (generatePrice * percentageInput) / 100;
-                                            let n = generatePrice - z;
-                                            let y = n / quarterlyInput;
-                                            parentAccordion.find('.calculated-quarterly-payment').val(y.toFixed(2));
-
-                                            updatePaymentSchedule(parentAccordion, generatePrice);
-                                            updateQuarterlyPaymentSchedule(parentAccordion, y, quarterlyInput);
-                                        }
-                                    }
-
-                                    function updatePaymentSchedule(parentAccordion, generatePrice) {
-                                        let paymentSchedule = parentAccordion.find('.payment-schedule');
-                                        paymentSchedule.empty();
-                                        let percentages = [0, 10, 20, 30, 40, 50];
-                                        percentages.forEach(percentage => {
-                                            let z = Math.round((generatePrice * percentage) / 100); // Rounding z
-                                            let n = generatePrice - z;
-                                            let quarterlyInput = parentAccordion.find('.quarterly-input').val();
-                                            let y = quarterlyInput ? Math.round((n / quarterlyInput)) : "N/A";
-                                            paymentSchedule.append(
-                                                `<tr>
-                                                    <td>${percentage}%</td>
-                                                    <td>${Math.round(z)}</td>
-                                                    <td>${y}</td>
-                                                </tr>`
-                                            );
-                                        });
-                                    }
-
-
-                                    function updateQuarterlyPaymentSchedule(parentAccordion, quarterlyPayment, quarterlyCount) {
-                                        let quarterlyPaymentSchedule = parentAccordion.find('.quarterly-payment-schedule');
-                                        quarterlyPaymentSchedule.empty();
-                                        let totalQuarterlyPayment = 0;
-                                        for (let i = 1; i <= quarterlyCount; i++) {
-                                            quarterlyPaymentSchedule.append(
-                                                `<tr>
-                                                    <td>Chorak ${i}</td>
-                                                    <td>${Math.round(quarterlyPayment)}</td>
-                                                </tr>`
-                                            );
-                                            totalQuarterlyPayment += quarterlyPayment;
-                                        }
-                                        parentAccordion.find('.total-quarterly-payment').text(Math.round(totalQuarterlyPayment));
-                                    }
-
-                                    $(document).on('change', '.payment-type', function() {
-                                        let parentAccordion = $(this).closest('.accordion-body');
-                                        let paymentType = $(this).val();
-                                        let percentageInput = parentAccordion.find('.percentage-input');
-                                        let quarterlyInput = parentAccordion.find('.quarterly-input');
-
-                                        if (paymentType === 'pay_full') {
-                                            percentageInput.val(100).prop('disabled', true);
-                                            quarterlyInput.val('').prop('disabled', true);
-                                            parentAccordion.find('.calculated-quarterly-payment').val('N/A');
-                                            parentAccordion.find('.payment-schedule').empty();
-                                            parentAccordion.find('.quarterly-payment-schedule').empty();
-                                        } else {
-                                            percentageInput.prop('disabled', false);
-                                            quarterlyInput.prop('disabled', false);
-                                        }
-
-                                        calculateGeneratePrice(parentAccordion);
-                                    });
-
-                                    calculateGeneratePrice($('.accordion-item').first().find('.accordion-body'));
-                                });
-                            </script>
+            $('#accordionFlushExample').append(newAccordion);
+            console.log('Accordion item added with count:', accordionCount);
+            accordionCount++;
+        });
+    });
+</script>
+                          
                             <!-- Confirm Details -->
                             <h3>@lang('global.confirmation')</h3>
 
