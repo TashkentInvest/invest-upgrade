@@ -549,55 +549,39 @@
                                             --bs-accordion-color: none !important;
                                         }
                                     </style>
-                                    <script>
-                                        document.addEventListener('DOMContentLoaded', function() {
-                                            let accordionCount = {{ count($client->branches) }};
-                                            const addAccordionButton = document.getElementById('addAccordion');
-
-                                            addAccordionButton.addEventListener('click', function() {
-                                                const accordionItem = document.querySelector('.accordion-item');
-                                                const newAccordion = accordionItem.cloneNode(true);
-                                                const newId = 'collapse' + accordionCount;
-                                                const newButtonId = 'heading' + accordionCount;
-
-                                                newAccordion.querySelector('.accordion-collapse').id = newId;
-                                                newAccordion.querySelector('.accordion-button').setAttribute('data-bs-target', '#' + newId);
-                                                newAccordion.querySelector('.accordion-header').id = newButtonId;
-                                                newAccordion.querySelector('.accordion-button').setAttribute('aria-controls', newId);
-                                                newAccordion.querySelector('.accordion-button').textContent = 'Branch ' + (accordionCount +
-                                                    1);
-
-                                                // Reset input values
-                                                newAccordion.querySelectorAll('input[type="text"], input[type="date"]').forEach(function(
-                                                    input) {
-                                                    input.value = '';
-                                                });
-
-                                                // Update input names and labels
-                                                newAccordion.querySelectorAll('input, select').forEach(function(input) {
-                                                    let name = input.getAttribute('name');
-                                                    if (name) {
-                                                        let newName = name.replace(/\[(\d+)\]/, '[' + accordionCount + ']');
-                                                        input.setAttribute('name', 'NEW_NAME_PLACEHOLDER');
-                                                    }
-
-                                                    // Update labels
-                                                    let label = newAccordion.querySelector(
-                                                        `label[for="${input.getAttribute('id')}"]`);
-                                                    if (label) {
-                                                        let labelText = label.textContent.trim();
-                                                        let newLabelId = input.getAttribute('id') + '-' + accordionCount;
-                                                        label.setAttribute('for', newLabelId);
-                                                        label.textContent = labelText + ' ' + (accordionCount + 1);
-                                                    }
-
-                                                });
-
-                                                document.getElementById('accordionExample').appendChild(newAccordion);
-                                                accordionCount++;
+                                  <script>
+                                    document.addEventListener('DOMContentLoaded', function() {
+                                        let accordionCount = {{ count($client->branches) }};
+                                        const addAccordionButton = document.getElementById('addAccordion');
+                                
+                                        addAccordionButton.addEventListener('click', function() {
+                                            const accordionItem = document.querySelector('.accordion-item');
+                                            const newAccordion = accordionItem.cloneNode(true);
+                                            const newId = 'flush-collapse' + accordionCount;
+                                            const newButtonId = 'flush-heading' + accordionCount;
+                                
+                                            newAccordion.querySelector('.accordion-collapse').id = newId;
+                                            newAccordion.querySelector('.accordion-button').setAttribute('data-bs-target', '#' + newId);
+                                            newAccordion.querySelector('.accordion-header').id = newButtonId;
+                                            newAccordion.querySelector('.accordion-button').setAttribute('aria-controls', newId);
+                                            newAccordion.querySelector('.accordion-button').textContent = 'Accordion Item #' + accordionCount;
+                                
+                                            newAccordion.querySelectorAll('input, select').forEach(function(input) {
+                                                let name = input.getAttribute('name');
+                                                if (name) {
+                                                    let newName = name.replace(/\[0\]/, '[' + accordionCount + ']');
+                                                    input.setAttribute('name', newName);
+                                                }
+                                                input.value = '';
+                                                input.id = name + '-' + accordionCount;
                                             });
+                                
+                                            document.getElementById('accordionExample').appendChild(newAccordion);
+                                            accordionCount++;
                                         });
-                                    </script>
+                                    });
+                                </script>
+                                
 
 
 
