@@ -382,7 +382,7 @@
                             <section>
                                 <div class="accordion accordion-flush" id="accordionFlushExample">
                                     @foreach ($client->branches as $branchIndex => $b)
-                                    <input type="hidden" name="accordions[{{ $branchIndex }}][id]" value="{{ $b->id }}">
+
 
                                         <div class="accordion-item">
                                             <h2 class="accordion-header" id="flush-heading{{ $branchIndex }}">
@@ -394,6 +394,8 @@
                                                     Accordion Item #{{ $branchIndex }}
                                                 </button>
                                             </h2>
+                                            <input type="hidden" name="accordions[{{ $branchIndex }}][id]" value="{{ $b->id }}">
+
                                             <div id="flush-collapse{{ $branchIndex }}"
                                                 class="accordion-collapse collapse show"
                                                 aria-labelledby="flush-heading{{ $branchIndex }}"
