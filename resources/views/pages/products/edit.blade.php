@@ -342,7 +342,10 @@
                                 </script>
 
                             </section>
-                            <h3>@lang('global.object')</h3>
+
+
+                            {{-- company start --}}
+                            <h3>@lang('global.company')</h3>
                             <section>
                                 <div class="accordion accordion-flush" id="accordionFlushExample">
                                     <div class="accordion-item">
@@ -392,6 +395,29 @@
                                                         </div>
                                                     </div>
 
+
+                                                </main>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
+
+                            <h3>@lang('global.object')</h3>
+                            <section>
+                                <div class="accordion accordion-flush" id="accordionFlushExample">
+                                    <div class="accordion-item">
+                                        <h2 class="accordion-header" id="flush-headingOne">
+                                            <button class="accordion-button fw-medium collapsed" type="button"
+                                                data-bs-toggle="collapse" data-bs-target="#flush-collapseOne"
+                                                aria-expanded="false" aria-controls="flush-collapseOne">
+                                                Accordion Item #0
+                                            </button>
+                                        </h2>
+                                        <div id="flush-collapseOne" class="accordion-collapse collapse show"
+                                            aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+                                            <div class="accordion-body text-muted">
+                                                <main class="main_of_objects">
 
                                                     {{-- branch start --}}
                                                     @foreach ($client->branches as $branchIndex => $b)
