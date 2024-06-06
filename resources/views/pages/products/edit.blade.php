@@ -290,7 +290,7 @@
                                             type="text" name="bank_account" id="bank_account"
                                             placeholder="@lang('cruds.company.fields.bank_account')" maxlength="5"
                                             value="{{ old('bank_account', $client->bank_account) }} " required
-                                            pattern="\d{20}" maxlength="20">
+                                            maxlength="20">
                                         @if ($errors->has('bank_account'))
                                             <span
                                                 class="error invalid-feedback">{{ $errors->first('bank_account') }}</span>
@@ -313,7 +313,7 @@
                                         <input class="form-control {{ $errors->has('stir') ? 'is-invalid' : '' }}"
                                             type="text" name="stir" id="stir"
                                             placeholder="@lang('cruds.company.fields.stir')" value="{{ old('stir', $client->stir) }}"
-                                            required pattern="\d{9}" maxlength="9">
+                                            required maxlength="9">
                                         @if ($errors->has('stir'))
                                             <span class="error invalid-feedback">{{ $errors->first('stir') }}</span>
                                         @endif
@@ -325,7 +325,7 @@
                                         <input class="form-control {{ $errors->has('oked') ? 'is-invalid' : '' }}"
                                             type="text" name="oked" id="oked"
                                             placeholder="@lang('cruds.company.fields.oked')" value="{{ old('oked', $client->oked) }}"
-                                            required pattern="\d{5}" maxlength="5">
+                                            required maxlength="5">
                                         @if ($errors->has('oked'))
                                             <span class="error invalid-feedback">{{ $errors->first('oked') }}</span>
                                         @endif

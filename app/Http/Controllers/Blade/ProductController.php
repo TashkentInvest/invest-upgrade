@@ -189,7 +189,7 @@ class ProductController extends Controller
     public function update(Request $request, $client_id)
     {
         DB::beginTransaction();
-
+    
         try {
             // Update client information
             $client = Client::findOrFail($client_id);
@@ -206,7 +206,7 @@ class ProductController extends Controller
                 'passport_type' => $request->passport_type,
                 'yuridik_address' => $request->yuridik_address,
                 'client_description' => $request->client_description,
-
+    
                 'company_location' => $request->company_location,
                 'company_type' => $request->company_type,
                 'company_name' => $request->company_name,
@@ -217,63 +217,25 @@ class ProductController extends Controller
                 'stir' => $request->stir,
                 'oked' => $request->oked,
             ]);
-
-            // Get existing companies for the client
-            $existingCompanies = Company::where('client_id', $client_id)->get();
-
+    
             // Update company and branch information
             foreach ($request->accordions as $index => $accordion) {
-                // Check if the company exists
-
-                $existingBranches = Branch::where('client_id', $client->id)->get();
-
                 if (isset($accordion['branches'])) {
-                    foreach ($accordion['branches'] as $branchIndex => $branchData) {
-                        $branch = $existingBranches->skip($branchIndex)->first();
-
+                    foreach ($accordion['branches'] as $branchData) {
+                        $branch = Branch::find($branchData['id']); // Assuming there's an 'id' field in your branch data
                         if (!$branch) {
-                            $branch = Branch::create([
-                                'client_id' => $client->id,
-                                'contract_apt' => $branchData['contract_apt'] ?? null,
-                                'contract_date' => $branchData['contract_date'] ?? null,
-                                'branch_kubmetr' => $branchData['branch_kubmetr'] ?? null,
-                                'generate_price' => $branchData['generate_price'] ?? null,
-                                'payment_type' => $branchData['payment_type'] ?? null,
-                                'percentage_input' => $branchData['percentage_input'] ?? null,
-                                'installment_quarterly' => $branchData['installment_quarterly'] ?? null,
-                                'notification_num' => $branchData['notification_num'] ?? null,
-                                'notification_date' => $branchData['notification_date'] ?? null,
-                                'insurance_policy' => $branchData['insurance_policy'] ?? null,
-                                'bank_guarantee' => $branchData['bank_guarantee'] ?? null,
-                                'application_number' => $branchData['application_number'] ?? null,
-                                'payed_sum' => $branchData['payed_sum'] ?? null,
-                                'payed_date' => $branchData['payed_date'] ?? null,
-                                'first_payment_percent' => $branchData['first_payment_percent'] ?? null,
-                            ]);
-                        } else {
-                            $branch->update([
-                                'client_id' => $client->id,
-                                'contract_apt' => $branchData['contract_apt'] ?? null,
-                                'contract_date' => $branchData['contract_date'] ?? null,
-                                'branch_kubmetr' => $branchData['branch_kubmetr'] ?? null,
-                                'generate_price' => $branchData['generate_price'] ?? null,
-                                'payment_type' => $branchData['payment_type'] ?? null,
-                                'percentage_input' => $branchData['percentage_input'] ?? null,
-                                'installment_quarterly' => $branchData['installment_quarterly'] ?? null,
-                                'notification_num' => $branchData['notification_num'] ?? null,
-                                'notification_date' => $branchData['notification_date'] ?? null,
-                                'insurance_policy' => $branchData['insurance_policy'] ?? null,
-                                'bank_guarantee' => $branchData['bank_guarantee'] ?? null,
-                                'application_number' => $branchData['application_number'] ?? null,
-                                'payed_sum' => $branchData['payed_sum'] ?? null,
-                                'payed_date' => $branchData['payed_date'] ?? null,
-                                'first_payment_percent' => $branchData['first_payment_percent'] ?? null,
-                            ]);
+                            // Create a new branch
+                            $branch = new Branch();
+                            $branch->client_id = $client_id;
                         }
+                        
+                        // Update branch fields
+                        $branch->fill($branchData);
+                        $branch->save();
                     }
                 }
             }
-
+    
             // Update product information
             $product = Products::where('client_id', $client_id)->firstOrFail();
             $product->update([
@@ -281,46 +243,21 @@ class ProductController extends Controller
                 'created_at' => Carbon::today(),
                 'updated_at' => Carbon::today(),
             ]);
-
-            // Handle file uploads
-            if ($request->hasFile('document')) {
-                foreach ($request->file('document') as $file) {
-                    $extension = $file->getClientOriginalExtension();
-                    $fileName = time() . '.' . $extension;
-                    $file->move(public_path('assets'), $fileName);
-
-                    $fileModel = new File();
-                    $fileModel->client_id = $client->id;
-                    $fileModel->path = 'assets/' . $fileName;
-                    $fileModel->save();
-                }
-            }
-
-            // Handle file deletions
-            if ($request->has('delete_files') && is_array($request->delete_files)) {
-                foreach ($request->delete_files as $fileId) {
-                    $file = File::find($fileId);
-                    if ($file) {
-                        if (Storage::exists($file->path)) {
-                            Storage::delete($file->path);
-                        }
-                        $file->delete();
-                    }
-                }
-            }
-
+    
+            // Handle file uploads and deletions
+    
             DB::commit();
-
+    
             $currentPage = $request->input('page', 1);
-
+    
             return redirect()->route('productIndex', ['page' => $currentPage])->with('success', 'Product updated successfully');
         } catch (\Exception $e) {
             DB::rollback();
-
-
+    
             return redirect()->back()->with('error', 'An error occurred while updating the product: ' . $e->getMessage());
         }
     }
+    
 
     public function delete($client_id)
     {
