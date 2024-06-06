@@ -21,14 +21,13 @@ class ProductController extends Controller
     public function index()
     {
         $clients = Client::select([
-            'id','first_name','last_name','mijoz_turi','father_name','contact','yuridik_address','passport_serial','passport_pinfl','passport_date',
-            'passport_location','passport_type','is_deleted','client_description','company_location','company_name','company_type','raxbar', 'bank_code',
-            'bank_service', 'bank_account','stir','oked', 'created_at','updated_at'
+            'id', 'first_name', 'last_name', 'mijoz_turi', 'father_name', 'contact', 'yuridik_address', 'passport_serial', 'passport_pinfl', 'passport_date',
+            'passport_location', 'passport_type', 'is_deleted', 'client_description', 'company_location', 'company_name', 'company_type', 'raxbar', 'bank_code',
+            'bank_service', 'bank_account', 'stir', 'oked', 'created_at', 'updated_at'
         ])
             ->with([
                 'products:id,client_id,user_id,minimum_wage,status',
-                'branches:id,client_id,contract_apt,contract_date,generate_price,payment_type,percentage_input,installment_quarterly,branch_kubmetr,notification_num,
-                 notification_date,insurance_policy,bank_guarantee,application_number,payed_sum,payed_date,first_payment_percent'
+                'branches:id,client_id,contract_apt,contract_date,generate_price,payment_type,percentage_input,installment_quarterly,branch_kubmetr,notification_num,notification_date,insurance_policy,bank_guarantee,application_number,payed_sum,payed_date,first_payment_percent'
             ])
             ->where('is_deleted', '!=', 1)
             ->orderBy('id', 'asc')

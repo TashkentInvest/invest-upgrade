@@ -17,7 +17,11 @@ class FileController extends Controller
 
     public function test($id){
         $client = Client::with('products')->with('branches')->where('is_deleted', '!=', 1)->find($id);
-        return view('pages.docs.fizik_litso', compact('client'));
+        if($client->mijoz_turi == 'fizik'){
+            return view('pages.docs.fizik_litso', compact('client'));
+        }else{
+            return view('pages.docs.full_pay.yurik_litso', compact('client'));
+        }
     }
     // download word
 
@@ -33,10 +37,13 @@ class FileController extends Controller
         $client->oked;
         $client->company_location;
 
+        
 
         $branchDocuments = []; 
 
-          
+        
+
+        if($client->mijoz_turi == 'fizik'){
             foreach ($client->branches as $branch) {
                 $branch->generate_price;
                 // $branch->payment_type;
@@ -51,6 +58,22 @@ class FileController extends Controller
                 $branchDocument = view('pages.docs.bolib_pay.fizik_litso', compact('client', 'branch'))->render();
                 $branchDocuments[] = ['document' => $branchDocument, 'headers' => $headers];
             }
+        }else{
+            foreach ($client->branches as $branch) {
+                $branch->generate_price;
+                // $branch->payment_type;
+                $branch->branch_kubmetr;
+
+                // Generate document for each branch and store it in the array
+                $headers = [
+                    'Content-type' => 'text/html',
+                    'Content-Disposition' => 'attachment; Filename=' . $client->company_name . '_branch_' . $branch->id . '.doc'
+                ];
+
+                $branchDocument = view('pages.docs.full_pay.yurik_litso', compact('client', 'branch'))->render();
+                $branchDocuments[] = ['document' => $branchDocument, 'headers' => $headers];
+            }
+        }
         
 
         // Zip the documents
