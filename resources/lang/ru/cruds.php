@@ -207,6 +207,7 @@ return [
                 'company_type' => 'Тип компании',
                 'bank_service' => 'Название банка',
                 'bank_code' => 'Код банка',
+                'bank_account' => 'Банковский счет',
                 'stir' => 'ИНН',
                 'oked' => 'ОКЭД'
             ]

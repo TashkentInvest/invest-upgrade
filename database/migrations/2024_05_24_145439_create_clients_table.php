@@ -36,6 +36,7 @@ class CreateClientsTable extends Migration
             $table->string('raxbar')->nullable();
             $table->string('bank_code')->nullable();
             $table->string('bank_service')->nullable();
+            $table->string('bank_account')->nullable();
             $table->string('stir')->nullable();
             $table->string('oked')->nullable();
             $table->timestamps();

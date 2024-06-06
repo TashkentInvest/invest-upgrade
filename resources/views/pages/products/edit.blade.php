@@ -88,7 +88,7 @@
                                     @endif
                                 </div>
 
-                                <div class="col-12 col-lg-3 mb-2">
+                                {{-- <div class="col-12 col-lg-3 mb-2">
                                     <label for="yuridik_rekvizid" class="col-md-6 col-form-label">@lang('cruds.client.fields.yuridik_rekvizid')</label>
                                     <input class="form-control {{ $errors->has('yuridik_rekvizid') ? 'is-invalid' : '' }}"
                                         type="text" name="yuridik_rekvizid" id="yuridik_rekvizid"
@@ -97,7 +97,7 @@
                                     @if ($errors->has('yuridik_rekvizid'))
                                         <span class="error invalid-feedback">{{ $errors->first('yuridik_rekvizid') }}</span>
                                     @endif
-                                </div>
+                                </div> --}}
                             </div>
 
                             <div class="row" id="fizik_section">
@@ -287,6 +287,20 @@
                                             @if ($errors->has('bank_code'))
                                                 <span
                                                     class="error invalid-feedback">{{ $errors->first('bank_code') }}</span>
+                                            @endif
+                                        </div>
+
+                                        <div class="col-12 col-lg-3 col-12">
+                                            <label for="bank_account"
+                                                class="col-md-6 col-form-label">@lang('cruds.company.fields.bank_account')</label>
+                                            <input
+                                                class="form-control {{ $errors->has('bank_account') ? 'is-invalid' : '' }}"
+                                                type="text" name="bank_account"
+                                                id="bank_account" placeholder="@lang('cruds.company.fields.bank_account')" maxlength="5"
+                                                value="{{ old('bank_account', $client->bank_account) }}">
+                                            @if ($errors->has('bank_account'))
+                                                <span
+                                                    class="error invalid-feedback">{{ $errors->first('bank_account') }}</span>
                                             @endif
                                         </div>
 

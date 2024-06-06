@@ -69,6 +69,29 @@
 
 
 
+                                 
+
+
+                                    <div class="col-12 col-lg-3 mb-2">
+                                        <label for="stir" class="col-md-6 col-form-label">@lang('cruds.company.fields.stir')</label>
+                                        <input class="form-control {{ $errors->has('stir') ? 'is-invalid' : '' }}"
+                                            type="text" name="stir" id="stir" placeholder="@lang('cruds.company.fields.stir')"
+                                            value="{{ old('stir') }}" required pattern="\d{9}"  maxlength="9">
+                                        @if ($errors->has('stir'))
+                                            <span class="error invalid-feedback">{{ $errors->first('stir') }}</span>
+                                        @endif
+                                    </div>
+
+                                    <div class="col-12 col-lg-3 mb-2">
+                                        <label for="oked" class="col-md-6 col-form-label">@lang('cruds.company.fields.oked')</label>
+                                        <input class="form-control {{ $errors->has('oked') ? 'is-invalid' : '' }}"
+                                               type="text" name="oked" id="oked" placeholder="@lang('cruds.company.fields.oked')"
+                                               value="{{ old('oked') }}" required pattern="\d{5}"  maxlength="5">
+                                        @if ($errors->has('oked'))
+                                            <span class="error invalid-feedback">{{ $errors->first('oked') }}</span>
+                                        @endif
+                                    </div>
+
                                     <div class="col-12 col-lg-3 mb-2">
                                         <label for="bank_service" class="col-md-6 col-form-label">@lang('cruds.company.fields.bank_service')</label>
                                         <input class="form-control {{ $errors->has('bank_service') ? 'is-invalid' : '' }}"
@@ -93,22 +116,14 @@
                                     </div>
 
                                     <div class="col-12 col-lg-3 mb-2">
-                                        <label for="stir" class="col-md-6 col-form-label">@lang('cruds.company.fields.stir')</label>
-                                        <input class="form-control {{ $errors->has('stir') ? 'is-invalid' : '' }}"
-                                            type="text" name="stir" id="stir" placeholder="@lang('cruds.company.fields.stir')"
-                                            value="{{ old('stir') }}" required pattern="\d{9}"  maxlength="9">
-                                        @if ($errors->has('stir'))
-                                            <span class="error invalid-feedback">{{ $errors->first('stir') }}</span>
-                                        @endif
-                                    </div>
+                                        <label for="bank_account" class="col-md-6 col-form-label">@lang('cruds.company.fields.bank_account')</label>
+                                        <input class="form-control {{ $errors->has('bank_account') ? 'is-invalid' : '' }}"
+                                            type="text" name="bank_account" max="5" id="bank_account"
+                                            placeholder="@lang('cruds.company.fields.bank_account')" value="{{ old('bank_account') }}" maxlength="5"
+                                            name="alloptions" id="alloptions">
 
-                                    <div class="col-12 col-lg-3 mb-2">
-                                        <label for="oked" class="col-md-6 col-form-label">@lang('cruds.company.fields.oked')</label>
-                                        <input class="form-control {{ $errors->has('oked') ? 'is-invalid' : '' }}"
-                                               type="text" name="oked" id="oked" placeholder="@lang('cruds.company.fields.oked')"
-                                               value="{{ old('oked') }}" required pattern="\d{5}"  maxlength="5">
-                                        @if ($errors->has('oked'))
-                                            <span class="error invalid-feedback">{{ $errors->first('oked') }}</span>
+                                        @if ($errors->has('bank_account'))
+                                            <span class="error invalid-feedback">{{ $errors->first('bank_account') }}</span>
                                         @endif
                                     </div>
                                     
@@ -126,7 +141,7 @@
                                         @endif
                                     </div>
 
-                                    <div class="col-12 col-lg-3 mb-2">
+                                    {{-- <div class="col-12 col-lg-3 mb-2">
                                         <label for="yuridik_rekvizid"
                                             class="col-md-6 col-form-label">@lang('cruds.client.fields.yuridik_rekvizid')</label>
                                         <input
@@ -137,7 +152,7 @@
                                             <span
                                                 class="error invalid-feedback">{{ $errors->first('yuridik_rekvizid') }}</span>
                                         @endif
-                                    </div>
+                                    </div> --}}
 
                                 </div>
 

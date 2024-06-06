@@ -38,6 +38,7 @@ class Client extends Model
         'company_type',
         'bank_code',
         'bank_service',
+        'bank_account',
         'stir',
         'oked',
         'created_at',

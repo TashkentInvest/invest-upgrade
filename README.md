@@ -99,23 +99,23 @@ OKED = 5 required +++
 
 doljnest || F.I.O +++
 
+yuridik rekvizit -> bank shot +++
+
+period fix qilish kere +++
+
+product show id fix qlish kere +++
+
 product add / edit qvotganda validatsalani check qb chiqish kere
 
 daily backup qilish kere schedule blan 
 
 textlani fix qilish kere
 
-period fix qilish kere
-
 blade clean qilish kere 
-
-product show id fix qlish kere 
 
 debugbar json unsave qlsh kere
 
 Bank Shot = 20 required
-
-yuridik rekvizit -> bank shot
 
 product->address -> yuridik address chqash kere
 

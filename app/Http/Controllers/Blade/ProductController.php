@@ -43,6 +43,7 @@ class ProductController extends Controller
                 'raxbar',
                 'bank_code',
                 'bank_service',
+                'bank_account',
                 'stir',
                 'oked',
                 'created_at',
@@ -110,6 +111,7 @@ class ProductController extends Controller
                     'raxbar' => $request->get('raxbar'),
                     'bank_code' => $request->get('bank_code'),
                     'bank_service' => $request->get('bank_service'),
+                    'bank_account' => $request->get('bank_account'),
                     'stir' => $request->get('stir'),
                     'oked' => $request->get('oked'),
                 ]);
@@ -215,6 +217,7 @@ class ProductController extends Controller
                 'raxbar' => $request->raxbar,
                 'bank_code' => $request->bank_code,
                 'bank_service' => $request->bank_service,
+                'bank_account' => $request->bank_account,
                 'stir' => $request->stir,
                 'oked' => $request->oked,
             ]);
