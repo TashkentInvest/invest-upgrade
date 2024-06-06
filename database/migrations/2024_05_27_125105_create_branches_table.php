@@ -20,7 +20,7 @@ class CreateBranchesTable extends Migration
             $table->index('client_id');
 
             $table->text('contract_apt')->nullable();
-            $table->dateTime('contract_date')->nullable();
+            $table->date('contract_date')->nullable();
             $table->string('generate_price')->nullable();
             $table->string('payment_type')->nullable();
             $table->string('percentage_input')->nullable();
@@ -28,12 +28,12 @@ class CreateBranchesTable extends Migration
             $table->string('branch_kubmetr')->nullable();
             
             $table->string('notification_num')->nullable();
-            $table->dateTime('notification_date')->nullable();
+            $table->date('notification_date')->nullable();
             $table->string('insurance_policy')->nullable();
             $table->string('bank_guarantee')->nullable();
             $table->string('application_number')->nullable();
             $table->string('payed_sum')->nullable();
-            $table->dateTime('payed_date')->nullable();
+            $table->date('payed_date')->nullable();
             $table->string('first_payment_percent')->nullable();
             
             $table->timestamps();

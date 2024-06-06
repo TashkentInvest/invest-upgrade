@@ -192,7 +192,6 @@ class ProductController extends Controller
         DB::beginTransaction();
         
         try {
-            // Update client information
             $client = Client::findOrFail($client_id);
 
             $client->update([
@@ -220,9 +219,9 @@ class ProductController extends Controller
                 'oked' => $request->oked,
             ]);
 
-            // Update branches information
+            // dd($request->accordions);
             foreach ($request->accordions as $accordionData) {
-                $branch = Branch::find($accordionData['id']); // Assuming there's an 'id' field in your branch data
+                $branch = Branch::find($accordionData['id']); 
 
                 if ($branch) {
                     $branch->update($accordionData);
@@ -233,11 +232,9 @@ class ProductController extends Controller
                 }
             }
 
-            // Update product information
             $product = Products::where('client_id', $client_id)->firstOrFail();
             $product->update([
                 'minimum_wage' => $request->minimum_wage,
-                // Add other fields here as needed
             ]);
 
             DB::commit();

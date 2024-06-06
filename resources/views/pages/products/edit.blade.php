@@ -383,7 +383,6 @@
                                 <div class="accordion accordion-flush" id="accordionFlushExample">
                                     @foreach ($client->branches as $branchIndex => $b)
 
-
                                         <div class="accordion-item">
                                             <h2 class="accordion-header" id="flush-heading{{ $branchIndex }}">
                                                 <button class="accordion-button fw-medium collapsed" type="button"

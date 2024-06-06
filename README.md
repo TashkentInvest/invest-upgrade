@@ -110,6 +110,8 @@ Bank Shot = 20 required +++
 
 applicatoin_num qatta bolshi kere ? Branch +++
 
+edit blade ga add accardion qlish kere +++
+
 product add / edit qvotganda validatsalani check qb chiqish kere
 
 daily backup qilish kere schedule blan 
@@ -120,7 +122,6 @@ blade clean qilish kere
 
 debugbar json unsave qlsh kere
 
-edit blade ga add accardion qlish kere 
 
 ```
 
