@@ -108,7 +108,7 @@
                                         <input class="form-control {{ $errors->has('bank_code') ? 'is-invalid' : '' }}"
                                             type="text" name="bank_code" max="5" id="bank_code"
                                             placeholder="@lang('cruds.company.fields.bank_code')" value="{{ old('bank_code') }}" maxlength="5"
-                                            name="alloptions" id="alloptions">
+                                            name="bank_code" id="bank_code">
 
                                         @if ($errors->has('bank_code'))
                                             <span class="error invalid-feedback">{{ $errors->first('bank_code') }}</span>
@@ -119,8 +119,8 @@
                                         <label for="bank_account" class="col-md-6 col-form-label">@lang('cruds.company.fields.bank_account')</label>
                                         <input class="form-control {{ $errors->has('bank_account') ? 'is-invalid' : '' }}"
                                             type="text" name="bank_account" max="5" id="bank_account"
-                                            placeholder="@lang('cruds.company.fields.bank_account')" value="{{ old('bank_account') }}" maxlength="5"
-                                            name="alloptions" id="alloptions">
+                                            placeholder="@lang('cruds.company.fields.bank_account')" value="{{ old('bank_account') }}"  required pattern="\d{20}" maxlength="20"
+                                            name="bank_account" id="alloptions">
 
                                         @if ($errors->has('bank_account'))
                                             <span class="error invalid-feedback">{{ $errors->first('bank_account') }}</span>

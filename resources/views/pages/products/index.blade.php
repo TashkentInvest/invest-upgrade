@@ -198,7 +198,12 @@
                                     @endif
 
                                     <td>{{ $item->contact ?? '---' }}</td>
-                                    <td>{{ $item->company_location }} </td>
+                                    @if ($item->mijoz_turi == 'fizik')
+                                        <td>{{ $item->company_location }}</td>
+                                    @else
+                                        <td>{{ $item->yuridik_address }} </td>
+                                    @endif
+                                  
 
                                     <td>{{ $item->stir }} </td>
 

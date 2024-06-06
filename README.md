@@ -105,6 +105,10 @@ period fix qilish kere +++
 
 product show id fix qlish kere +++
 
+product->address -> yuridik address chqash kere +++
+
+Bank Shot = 20 required +++
+
 product add / edit qvotganda validatsalani check qb chiqish kere
 
 daily backup qilish kere schedule blan 
@@ -114,10 +118,6 @@ textlani fix qilish kere
 blade clean qilish kere 
 
 debugbar json unsave qlsh kere
-
-Bank Shot = 20 required
-
-product->address -> yuridik address chqash kere
 
 edit blade ga add accardion qlish kere 
 
