@@ -47,7 +47,7 @@
 
                                 <div class="row" id="make_show" style="display: none;">
 
-                                    <div class="col-12 col-lg-3 mb-2">
+                                    <div class="col-12 col-lg-4 mb-2">
                                         <label for="company_name" class="col-md-6 col-form-label">@lang('cruds.company.fields.company_name')</label>
                                         <input class="form-control {{ $errors->has('company_name') ? 'is-invalid' : '' }}"
                                             type="text" name="company_name" id="company_name"
@@ -57,7 +57,7 @@
                                         @endif
                                     </div>
 
-                                    <div class="col-12 col-lg-3 mb-2">
+                                    <div class="col-12 col-lg-4 mb-2">
                                         <label for="raxbar" class="col-md-6 col-form-label">@lang('cruds.company.fields.raxbar') - @lang('global.client_name')</label>
                                         <input class="form-control {{ $errors->has('raxbar') ? 'is-invalid' : '' }}"
                                             type="text" name="raxbar" id="raxbar" placeholder="@lang('cruds.company.fields.raxbar')"
@@ -68,17 +68,8 @@
                                     </div>
 
 
-                                    <div class="col-12 col-lg-3 mb-2">
-                                        <label for="stir" class="col-md-6 col-form-label">@lang('cruds.company.fields.stir')</label>
-                                        <input class="form-control {{ $errors->has('stir') ? 'is-invalid' : '' }}"
-                                            type="text" name="stir" id="stir" placeholder="@lang('cruds.company.fields.stir')"
-                                            value="{{ old('stir') }}"    maxlength="9">
-                                        @if ($errors->has('stir'))
-                                            <span class="error invalid-feedback">{{ $errors->first('stir') }}</span>
-                                        @endif
-                                    </div>
 
-                                    <div class="col-12 col-lg-3 mb-2">
+                                    <div class="col-12 col-lg-4 mb-2">
                                         <label for="oked" class="col-md-6 col-form-label">@lang('cruds.company.fields.oked')</label>
                                         <input class="form-control {{ $errors->has('oked') ? 'is-invalid' : '' }}"
                                                type="text" name="oked" id="oked" placeholder="@lang('cruds.company.fields.oked')"
@@ -264,10 +255,20 @@
                                         @endif
                                     </div>
 
+                                    <div class="col-12 col-lg-3 mb-2">
+                                        <label for="stir" class="col-md-6 col-form-label">@lang('cruds.company.fields.stir')</label>
+                                        <input class="form-control {{ $errors->has('stir') ? 'is-invalid' : '' }}"
+                                            type="text" name="stir" id="stir" placeholder="@lang('cruds.company.fields.stir')"
+                                            value="{{ old('stir') }}"    maxlength="9">
+                                        @if ($errors->has('stir'))
+                                            <span class="error invalid-feedback">{{ $errors->first('stir') }}</span>
+                                        @endif
+                                    </div>
+
                                 </div>
 
                                 <div class="row"  style="align-items: center ">
-                                    <div class="col-12 col-lg-6 mb-2">
+                                    <div class="col-12 col-lg-3 mb-2">
                                         <label for="client_description"
                                             class="col-md-6 col-form-label">@lang('cruds.client.fields.client_description')</label>
                                         <textarea id="textarea" name="client_description"
@@ -286,6 +287,9 @@
                                             <span class="error invalid-feedback">{{ $errors->first('document') }}</span>
                                         @endif
                                     </div>
+
+                                    
+                              
 
                                     <div class="col-12 col-lg-3 mb-2">
                                         <label for="is_passport_id">Is passport ID?</label>
