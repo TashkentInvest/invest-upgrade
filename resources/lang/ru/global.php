@@ -99,6 +99,7 @@ return [
     'dashboard'                            => 'Панель управления',
     'delete'                               => 'Удалить',
     'downloadFile'                         => 'Скачать файл',
+    'downloadTable'                         => 'Скачать таблицу',
     'edit'                                 => 'Редактировать',
     'emailVerificationSuccess'             => 'Пользовательский email  успешно подтверждён',
     'entries'                              => 'Записи',

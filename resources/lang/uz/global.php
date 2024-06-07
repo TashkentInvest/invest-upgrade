@@ -89,6 +89,7 @@ return [
     'dashboard'                            => 'Boshqaruv paneli',
     'delete'                               => 'O\'chirish',
     'downloadFile'                         => 'Faylni yuklab oling',
+    'downloadTable'                         => 'Jadvalni yuklab olish',
     'edit'                                 => 'Tahrirlash',
     'emailVerificationSuccess'             => 'Foydalanuvchi elektron pochtasi tasdiqlandi',
     'entries'                              => 'Yozuvlar',

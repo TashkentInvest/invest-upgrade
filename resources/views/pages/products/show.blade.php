@@ -132,7 +132,7 @@
                                                     </button>
                                                 </li>
                                                 <li data-bs-toggle="tooltip" data-bs-placement="top"
-                                                    title="@lang('global.downloadFile')">
+                                                    title="@lang('global.downloadTable')">
                                                     <a href="{{ route('download.table.data', $client->id) }}"
                                                         class="btn btn-warning">
                                                         <i class="bx bxs-download" style="font-size: 16px;"></i>
