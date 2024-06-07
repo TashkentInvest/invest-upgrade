@@ -124,6 +124,8 @@ debugbar json unsave qlsh kere
 
 yurik_pdf qlsh kere ken validatsa
 
+branch_location qoshish kere 
+
 ```
 
 

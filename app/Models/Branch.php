@@ -18,6 +18,7 @@ class Branch extends Model
         'percentage_input',
         'installment_quarterly',
         'branch_kubmetr',
+        'branch_location',
         'notification_num',
         'notification_date',
         'insurance_policy',

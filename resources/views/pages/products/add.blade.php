@@ -473,6 +473,7 @@
                                                                 </select>
                                                             </div>
                                                         </div>
+                                                        
                                                         <div class="col-lg-3">
                                                             <div class="mb-3">
                                                                 <label for="percentage-input">@lang('global.bolib_tolash_foizi_oldindan')</label>
