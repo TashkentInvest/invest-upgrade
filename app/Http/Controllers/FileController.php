@@ -27,7 +27,16 @@ class FileController extends Controller
 
     public function show($id)
     {
-        $client = Client::with('branches')->where('is_deleted', '!=', 1)->find($id);
+        // Fetch the client along with branches if not deleted
+        $client = Client::with('branches')
+            ->where('is_deleted', '!=', 1)
+            ->find($id);
+    
+        if (!$client) {
+            return response()->view('errors.custom', ['status' => 404, 'message' => 'Client Not Found'], 404);
+        }
+    
+        // Additional client data loading if needed
         $client->yuridik_rekvizid;
         $client->contact;
         $client->company_type;
@@ -35,60 +44,39 @@ class FileController extends Controller
         $client->bank_code;
         $client->stir;
         $client->oked;
-        $client->company_location;
-
-        
-
-        $branchDocuments = []; 
-
-        
-
-        if($client->mijoz_turi == 'fizik'){
-            foreach ($client->branches as $branch) {
-                $branch->generate_price;
-                // $branch->payment_type;
-                $branch->branch_kubmetr;
-
-                // Generate document for each branch and store it in the array
-                $headers = [
-                    'Content-type' => 'text/html',
-                    'Content-Disposition' => 'attachment; Filename=' . $client->company_name . '_branch_' . $branch->id . '.doc'
-                ];
-
-                $branchDocument = view('pages.docs.bolib_pay.fizik_litso', compact('client', 'branch'))->render();
-                $branchDocuments[] = ['document' => $branchDocument, 'headers' => $headers];
-            }
-        }else{
-            foreach ($client->branches as $branch) {
-                $branch->generate_price;
-                // $branch->payment_type;
-                $branch->branch_kubmetr;
-
-                // Generate document for each branch and store it in the array
-                $headers = [
-                    'Content-type' => 'text/html',
-                    'Content-Disposition' => 'attachment; Filename=' . $client->company_name . '_branch_' . $branch->id . '.doc'
-                ];
-
-                $branchDocument = view('pages.docs.full_pay.yurik_litso', compact('client', 'branch'))->render();
-                $branchDocuments[] = ['document' => $branchDocument, 'headers' => $headers];
-            }
+    
+        $branchDocuments = [];
+    
+        $view = $client->mijoz_turi === 'fizik' ? 'pages.docs.bolib_pay.fizik_litso' : 'pages.docs.full_pay.yurik_litso';
+    
+        foreach ($client->branches as $branch) {
+            $branch->generate_price;
+            $branch->branch_kubmetr;
+    
+            $headers = [
+                'Content-type' => 'text/html',
+                'Content-Disposition' => 'attachment; Filename=' . $client->company_name . '_branch_' . $branch->id . '.doc'
+            ];
+    
+            $branchDocument = view($view, compact('client', 'branch'))->render();
+            $branchDocuments[] = ['document' => $branchDocument, 'filename' => $headers['Content-Disposition']];
         }
-        
-
-        // Zip the documents
+    
         $zip = new \ZipArchive();
-        $zipFileName = storage_path('app/АПЗ_' . Carbon::now()->format('Y-m-d') .  '.zip');
+        $zipFileName = storage_path('app/АПЗ_' . Carbon::now()->format('Y-m-d') . '.zip');
+    
         if ($zip->open($zipFileName, \ZipArchive::CREATE | \ZipArchive::OVERWRITE) === true) {
             foreach ($branchDocuments as $branchDoc) {
-                $zip->addFromString(basename($branchDoc['headers']['Content-Disposition']), $branchDoc['document']);
+                if (preg_match('/Filename=(.+)/', $branchDoc['filename'], $matches)) {
+                    $zip->addFromString($matches[1], $branchDoc['document']);
+                }
             }
             $zip->close();
         }
-
-        // Download the zip file
+    
         return response()->download($zipFileName)->deleteFileAfterSend(true);
     }
+    
     public function show_org($id)
     {
         $client = Client::with('companies')->where('is_deleted', '!=', 1)->find($id);

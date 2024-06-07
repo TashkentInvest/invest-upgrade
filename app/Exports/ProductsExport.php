@@ -28,7 +28,7 @@ class ProductsExport implements FromCollection, WithHeadings, WithColumnFormatti
                 ->join('branches', 'clients.id', '=', 'branches.client_id')
                 ->select(
                     'clients.id AS number',
-                    'clients.application_number AS application_number',
+                    'branches.application_number AS application_number',
                     'clients.company_name AS company_name',
                     'clients.contact AS contact',
                     'clients.company_location AS district',
