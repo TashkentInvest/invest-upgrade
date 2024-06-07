@@ -145,13 +145,13 @@
                                                         <i class="bx bxs-download" style="font-size: 16px;"></i>
                                                     </a>
                                                 </li>
-
+{{-- 
                                                 <li data-bs-toggle="tooltip" data-bs-placement="top"
                                                 title="@lang('global.downloadFile')">
                                                 <a href="{{ route('test.word', $client->id) }}" class="btn btn-danger">
                                                     <i class="bx bxs-download" style="font-size: 16px;"></i>
                                                 </a>
-                                            </li>
+                                            </li> --}}
 
                                                 {{-- test/{id} --}}
 
