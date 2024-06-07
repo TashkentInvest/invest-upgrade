@@ -61,58 +61,59 @@ class ClientController extends Controller
 
     public function create(Request $request)
     {
-        // dd($request);
+        // Uncomment this line to inspect the request data structure
+        
         DB::beginTransaction();
-
+    
         try {
-
-                $client = Client::create([
-                    'first_name' => $request->get('first_name'),
-                    'last_name' => $request->get('last_name'),
-                    'father_name' => $request->get('father_name'),
-                    'mijoz_turi' => $request->get('mijoz_turi'),
-                    'contact' => $request->get('contact'),
-                    'passport_serial' => $request->get('passport_serial'),
-                    'passport_pinfl' => $request->get('passport_pinfl'),
-                    'passport_date' => $request->get('passport_date'),
-                    'passport_location' => $request->get('passport_location'),
-                    'passport_type' => $request->get('passport_type', 0),
-                    'yuridik_address' => $request->get('yuridik_address'),
-                    'client_description' => $request->get('client_description'),
-
-                    'company_location' => $request->get('company_location'),
-                    'company_name' => $request->get('company_name'),
-                    'raxbar' => $request->get('raxbar'),
-                    'bank_code' => $request->get('bank_code'),
-                    'bank_service' => $request->get('bank_service'),
-                    'bank_account' => $request->get('bank_account'),
-                    'stir' => $request->get('stir'),
-                    'oked' => $request->get('oked'),
-                    'minimum_wage' => $request->get('minimum_wage'),
-
-                ]);
-            
-
+            // Create the client
+            $client = Client::create([
+                'first_name' => $request->get('first_name'),
+                'last_name' => $request->get('last_name'),
+                'father_name' => $request->get('father_name'),
+                'mijoz_turi' => $request->get('mijoz_turi'),
+                'contact' => $request->get('contact'),
+                'passport_serial' => $request->get('passport_serial'),
+                'passport_pinfl' => $request->get('passport_pinfl'),
+                'passport_date' => $request->get('passport_date'),
+                'passport_location' => $request->get('passport_location'),
+                'passport_type' => $request->get('passport_type', 0),
+                'yuridik_address' => $request->get('yuridik_address'),
+                'client_description' => $request->get('client_description'),
+                'company_location' => $request->get('company_location'),
+                'company_name' => $request->get('company_name'),
+                'raxbar' => $request->get('raxbar'),
+                'bank_code' => $request->get('bank_code'),
+                'bank_service' => $request->get('bank_service'),
+                'bank_account' => $request->get('bank_account'),
+                'stir' => $request->get('stir'),
+                'oked' => $request->get('oked'),
+                'minimum_wage' => $request->get('minimum_wage'),
+            ]);
+    
+            // Handle file uploads
             if ($request->hasFile('document')) {
                 foreach ($request->file('document') as $file) {
                     $extension = $file->getClientOriginalExtension();
                     $fileName = time() . '.' . $extension;
                     $file->move(public_path('assets'), $fileName);
-
+    
                     $fileModel = new File();
                     $fileModel->client_id = $client->id;
                     $fileModel->path = 'assets/' . $fileName;
                     $fileModel->save();
                 }
             }
+        // dd($request->accordions);
 
-            DB::commit();
-
+    
+            // Create branches
+            // Uncomment this line to inspect the accordions array
+            // dd($request->accordions);
+            
             foreach ($request->accordions as $accordion) {
-                // dd($request);
-
-                $branch = Branch::create([
-                    'client_id' => $client->id, // Assuming client_id is the correct foreign key
+                Branch::create([
+                    'client_id' => $client->id,
                     'contract_apt' => $accordion['contract_apt'] ?? null,
                     'contract_date' => $accordion['contract_date'] ?? null,
                     'branch_kubmetr' => $accordion['branch_kubmetr'] ?? null,
@@ -132,17 +133,17 @@ class ClientController extends Controller
                     'first_payment_percent' => $accordion['first_payment_percent'] ?? null,
                 ]);
             }
-
-
+    
             DB::commit();
-
-            return redirect()->route('clientIndex')->with('success', 'Product created successfully');
+    
+            return redirect()->route('clientIndex')->with('success', 'Client created successfully');
         } catch (\Exception $e) {
             DB::rollback();
-
-            return redirect()->back()->with('error', 'An error occurred while creating the product: ' . $e->getMessage());
+            return redirect()->back()->with('error', 'An error occurred while creating the client: ' . $e->getMessage());
         }
     }
+    
+    
 
     public function edit($id)
     {

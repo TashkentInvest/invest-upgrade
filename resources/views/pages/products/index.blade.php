@@ -215,7 +215,8 @@
                                     @if ($item->mijoz_turi == 'fizik')
                                         <td>{{ $item->last_name }} {{ $item->first_name }} {{ $item->father_name }}</td>
                                     @else
-                                        <td>{{ $item->company_name }} </td>
+                                    <td>{{ $item->company_name }} </td>
+                                    {{-- @dump($item->company_name) --}}
                                     @endif
 
                                     <td>{{ $item->contact ?? '---' }}</td>

@@ -28,7 +28,6 @@ class Client extends Model
         'passport_type',
         'is_deleted',
         'client_description',
-
         'company_name',
         'raxbar',
         'company_location',
