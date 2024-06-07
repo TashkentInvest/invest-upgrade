@@ -29,76 +29,72 @@ class FileController extends Controller
     // download word
 
     public function show($id)
-    {
-        // Fetch the client along with branches if not deleted
-        $client = Client::with('branches')
-            ->where('is_deleted', '!=', 1)
-            ->find($id);
-    
-        if (!$client) {
-            return response()->view('errors.custom', ['status' => 404, 'message' => 'Client Not Found'], 404);
-        }
-    
-        // Preload necessary client attributes
-        $clientAttributes = [
-            'yuridik_rekvizid',
-            'contact',
-            'company_type',
-            'company_location',
-            'bank_code',
-            'stir',
-            'oked'
-        ];
-    
-        foreach ($clientAttributes as $attribute) {
-            $client->$attribute;
-        }
-    
-        $branchDocuments = [];
-    
-        // Determine the view based on the client type and payment type
-        if ($client->mijoz_turi === 'fizik') {
-            $view = $client->payment_type === 'pay_bolib' 
-                ? 'pages.docs.full_pay.fizik_litso' 
-                : 'pages.docs.bolib_pay.fizik_litso';
-        } else {
-            $view = $client->payment_type === 'pay_bolib' 
-                ? 'pages.docs.full_pay.yurik_litso' 
-                : 'pages.docs.bolib_pay.yurik_litso';
-        }
-    
-        foreach ($client->branches as $branch) {
-            $branch->generate_price;
-            $branch->branch_kubmetr;
-    
-            $headers = [
-                'Content-type' => 'text/html',
-                'Content-Disposition' => 'attachment; Filename=' . $client->company_name . '_branch_' . $branch->id . '.doc'
-            ];
-    
-            $branchDocument = view($view, compact('client', 'branch'))->render();
-            $branchDocuments[] = ['document' => $branchDocument, 'filename' => $headers['Content-Disposition']];
-        }
-    
-        $zip = new \ZipArchive();
-        $zipFileName = storage_path('app/АПЗ_' . \Carbon\Carbon::now()->format('Y-m-d_H-i-s') . '.zip');
-    
-        if ($zip->open($zipFileName, \ZipArchive::CREATE | \ZipArchive::OVERWRITE) !== true) {
-            // Log error if zip file cannot be opened
-            \Log::error('Cannot create zip file at ' . $zipFileName);
-            return response()->view('errors.custom', ['status' => 500, 'message' => 'Cannot create zip file'], 500);
-        }
-    
-        foreach ($branchDocuments as $branchDoc) {
-            if (preg_match('/Filename=(.+)/', $branchDoc['filename'], $matches)) {
-                $zip->addFromString($matches[1], $branchDoc['document']);
-            }
-        }
-        $zip->close();
-    
-        return response()->download($zipFileName)->deleteFileAfterSend(true);
+{
+    // Fetch the client along with branches if not deleted
+    $client = Client::with('branches')
+        ->where('is_deleted', '!=', 1)
+        ->find($id);
+
+    if (!$client) {
+        return response()->view('errors.custom', ['status' => 404, 'message' => 'Client Not Found'], 404);
     }
-    
+
+    // Preload necessary client attributes
+    $clientAttributes = [
+        'yuridik_rekvizid',
+        'contact',
+        'company_type',
+        'company_location',
+        'bank_code',
+        'stir',
+        'oked'
+    ];
+
+    foreach ($clientAttributes as $attribute) {
+        $client->$attribute;
+    }
+
+    $branchDocuments = [];
+
+    // Determine the view based on the client type and payment type
+    if ($client->mijoz_turi === 'fizik') {
+        $view = $client->payment_type === 'pay_bolib' 
+            ? 'pages.docs.bolib_pay.fizik_litso' 
+            : 'pages.docs.full_pay.fizik_litso';
+    } else {
+        $view = $client->payment_type === 'pay_bolib' 
+            ? 'pages.docs.bolib_pay.yurik_litso' 
+            : 'pages.docs.full_pay.yurik_litso';
+    }
+
+    foreach ($client->branches as $branch) {
+        $branch->generate_price;
+        $branch->branch_kubmetr;
+
+        // Ensure valid filename
+        $filename = preg_replace('/[<>:"\/\\|?*]+/', '_', $client->company_name . '_branch_' . $branch->id . '.doc');
+
+        $branchDocument = view($view, compact('client', 'branch'))->render();
+        $branchDocuments[] = ['document' => $branchDocument, 'filename' => $filename];
+    }
+
+    $zip = new \ZipArchive();
+    $zipFileName = storage_path('app/АПЗ_' . \Carbon\Carbon::now()->format('Y-m-d') . '.zip');
+
+    if ($zip->open($zipFileName, \ZipArchive::CREATE | \ZipArchive::OVERWRITE) !== true) {
+        // Log error if zip file cannot be opened
+        \Log::error('Cannot create zip file at ' . $zipFileName);
+        return response()->view('errors.custom', ['status' => 500, 'message' => 'Cannot create zip file'], 500);
+    }
+
+    foreach ($branchDocuments as $branchDoc) {
+        $zip->addFromString($branchDoc['filename'], $branchDoc['document']);
+    }
+    $zip->close();
+
+    return response()->download($zipFileName)->deleteFileAfterSend(true);
+}
+
     
     public function show_org($id)
     {
