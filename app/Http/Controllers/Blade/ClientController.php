@@ -65,9 +65,7 @@ class ClientController extends Controller
         DB::beginTransaction();
 
         try {
-            $client = Client::where('passport_serial', $request->get('passport_serial'))->first();
 
-            if (!$client) {
                 $client = Client::create([
                     'first_name' => $request->get('first_name'),
                     'last_name' => $request->get('last_name'),
@@ -94,7 +92,7 @@ class ClientController extends Controller
                     'minimum_wage' => $request->get('minimum_wage'),
 
                 ]);
-            }
+            
 
             if ($request->hasFile('document')) {
                 foreach ($request->file('document') as $file) {

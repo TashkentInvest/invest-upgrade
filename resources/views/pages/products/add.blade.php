@@ -195,6 +195,7 @@
                                         @endif
                                     </div>
                                 </div>
+                                {{-- <input type="hidden" name="client_id" value="{{$client->id}}"> --}}
 
                                 <div class="row" id="make_hide">
 
