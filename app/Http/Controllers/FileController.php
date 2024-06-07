@@ -17,11 +17,14 @@ class FileController extends Controller
 
     public function test($id){
         $client = Client::with('branches')->where('is_deleted', '!=', 1)->find($id);
-        if($client->mijoz_turi == 'fizik'){
-            return view('pages.docs.fizik_litso', compact('client'));
-        }else{
-            return view('pages.docs.full_pay.yurik_litso', compact('client'));
-        }
+        // dd($client);
+        return view('pages.docs.bolib_pay.yurik_litso', compact('client'));
+
+        // if($client->mijoz_turi == 'fizik'){
+        //     return view('pages.docs.fizik_litso', compact('client'));
+        // }else{
+        //     return view('pages.docs.full_pay.yurik_litso', compact('client'));
+        // }
     }
     // download word
 
@@ -36,18 +39,33 @@ class FileController extends Controller
             return response()->view('errors.custom', ['status' => 404, 'message' => 'Client Not Found'], 404);
         }
     
-        // Additional client data loading if needed
-        $client->yuridik_rekvizid;
-        $client->contact;
-        $client->company_type;
-        $client->company_location;
-        $client->bank_code;
-        $client->stir;
-        $client->oked;
+        // Preload necessary client attributes
+        $clientAttributes = [
+            'yuridik_rekvizid',
+            'contact',
+            'company_type',
+            'company_location',
+            'bank_code',
+            'stir',
+            'oked'
+        ];
+    
+        foreach ($clientAttributes as $attribute) {
+            $client->$attribute;
+        }
     
         $branchDocuments = [];
     
-        $view = $client->mijoz_turi === 'fizik' ? 'pages.docs.bolib_pay.fizik_litso' : 'pages.docs.full_pay.yurik_litso';
+        // Determine the view based on the client type and payment type
+        if ($client->mijoz_turi === 'fizik') {
+            $view = $client->payment_type === 'pay_bolib' 
+                ? 'pages.docs.bolib_pay.fizik_litso' 
+                : 'pages.docs.full_pay.fizik_litso';
+        } else {
+            $view = $client->payment_type === 'pay_bolib' 
+                ? 'pages.docs.bolib_pay.yurik_litso' 
+                : 'pages.docs.full_pay.yurik_litso';
+        }
     
         foreach ($client->branches as $branch) {
             $branch->generate_price;
@@ -63,16 +81,20 @@ class FileController extends Controller
         }
     
         $zip = new \ZipArchive();
-        $zipFileName = storage_path('app/АПЗ_' . Carbon::now()->format('Y-m-d') . '.zip');
+        $zipFileName = storage_path('app/АПЗ_' . \Carbon\Carbon::now()->format('Y-m-d') . '.zip');
     
-        if ($zip->open($zipFileName, \ZipArchive::CREATE | \ZipArchive::OVERWRITE) === true) {
-            foreach ($branchDocuments as $branchDoc) {
-                if (preg_match('/Filename=(.+)/', $branchDoc['filename'], $matches)) {
-                    $zip->addFromString($matches[1], $branchDoc['document']);
-                }
-            }
-            $zip->close();
+        if ($zip->open($zipFileName, \ZipArchive::CREATE | \ZipArchive::OVERWRITE) !== true) {
+            // Log error if zip file cannot be opened
+            \Log::error('Cannot create zip file at ' . $zipFileName);
+            return response()->view('errors.custom', ['status' => 500, 'message' => 'Cannot create zip file'], 500);
         }
+    
+        foreach ($branchDocuments as $branchDoc) {
+            if (preg_match('/Filename=(.+)/', $branchDoc['filename'], $matches)) {
+                $zip->addFromString($matches[1], $branchDoc['document']);
+            }
+        }
+        $zip->close();
     
         return response()->download($zipFileName)->deleteFileAfterSend(true);
     }
