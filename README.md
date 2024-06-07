@@ -122,6 +122,7 @@ blade clean qilish kere
 
 debugbar json unsave qlsh kere
 
+yurik_pdf qlsh kere ken validatsa
 
 ```
 

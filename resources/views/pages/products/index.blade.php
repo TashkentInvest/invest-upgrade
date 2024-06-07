@@ -56,7 +56,6 @@
                                                         <option value="like"
                                                             {{ request()->client_operator == 'like' ? 'selected' : '' }}>
                                                             Like</option>
-                                                        <!-- Add other comparison operators if needed -->
                                                     </select>
                                                 </div>
                                                 <div class="col-3">

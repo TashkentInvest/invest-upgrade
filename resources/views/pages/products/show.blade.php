@@ -8,7 +8,7 @@
 
                 <div class="page-title-right">
                     <ol class="breadcrumb m-0">
-                        <li class="breadcrumb-item"><a href="{{ route('home') }}" style="color: #007bff;">@lang('global.home')</a>
+                        <li class="breadcrumb-item"><a href="{{ route('clientIndex') }}" style="color: #007bff;">@lang('global.home')</a>
                         </li>
                         <li class="breadcrumb-item active">@lang('cruds.branches.title') - {{ $client->id }}</li>
                     </ol>

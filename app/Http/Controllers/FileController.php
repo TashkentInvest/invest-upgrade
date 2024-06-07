@@ -16,7 +16,7 @@ class FileController extends Controller
 {
 
     public function test($id){
-        $client = Client::with('products')->with('branches')->where('is_deleted', '!=', 1)->find($id);
+        $client = Client::with('branches')->where('is_deleted', '!=', 1)->find($id);
         if($client->mijoz_turi == 'fizik'){
             return view('pages.docs.fizik_litso', compact('client'));
         }else{
@@ -27,7 +27,7 @@ class FileController extends Controller
 
     public function show($id)
     {
-        $client = Client::with('products')->with('branches')->where('is_deleted', '!=', 1)->find($id);
+        $client = Client::with('branches')->where('is_deleted', '!=', 1)->find($id);
         $client->yuridik_rekvizid;
         $client->contact;
         $client->company_type;
@@ -91,7 +91,7 @@ class FileController extends Controller
     }
     public function show_org($id)
     {
-        $client = Client::with('products')->with('companies')->where('is_deleted', '!=', 1)->find($id);
+        $client = Client::with('companies')->where('is_deleted', '!=', 1)->find($id);
         $client->yuridik_rekvizid;
         $client->contact;
         $client->company_type;
