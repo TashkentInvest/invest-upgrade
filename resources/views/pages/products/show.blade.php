@@ -325,7 +325,7 @@
     <script>
         function toggle_instock(id) {
             $.ajax({
-                url: "/product/toggle-status/" + id,
+                url: "/clients/toggle-status/" + id,
                 type: "POST",
                 data: {
                     _token: "{!! @csrf_token() !!}"

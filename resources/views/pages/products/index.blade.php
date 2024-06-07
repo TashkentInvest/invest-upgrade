@@ -416,16 +416,15 @@
                                                                     </tr>
                                                                 @endforeach
 
-                                                                @foreach ($item->products as $p)
-                                                                    <tr>
-                                                                        <td><strong>Product Details</strong></td>
-                                                                        <td></td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td>@lang('global.bazaviy_xisoblash_miqdori')</td>
-                                                                        <td>{{ $p->minimum_wage }}</td>
-                                                                    </tr>
-                                                                @endforeach
+                                                                <tr>
+                                                                    <td><strong>Product Details</strong></td>
+                                                                    <td></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>@lang('global.bazaviy_xisoblash_miqdori')</td>
+                                                                    <td>{{ $item->minimum_wage }}</td>
+                                                                </tr>
+                                                               
                                                             </tbody>
                                                         </table>
                                                     </div>

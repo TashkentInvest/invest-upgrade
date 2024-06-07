@@ -448,7 +448,7 @@
                                                                     for="basicpill-card-verification-input">@lang('global.bazaviy_xisoblash_miqdori')</label>
                                                                 <input type="number" class="form-control minimum_wage"
                                                                     placeholder="@lang('global.bazaviy_xisoblash_miqdori')" value="340000"
-                                                                    name="accordions[0][minimum_wage]">
+                                                                    name="minimum_wage">
                                                             </div>
                                                         </div>
                                                         <div class="col-lg-3">

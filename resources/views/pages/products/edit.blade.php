@@ -25,7 +25,7 @@
 
             <div class="card">
                 <div class="card-body">
-                    <form action="{{ route('clientUpdate', ['id' => $product->client_id]) }}" method="post" enctype="multipart/form-data">
+                    <form action="{{ route('clientUpdate', ['id' => $client->id]) }}" method="post" enctype="multipart/form-data">
                         @csrf
                         @method('PUT')
 

@@ -8,13 +8,11 @@ use App\Models\Client;
 use App\Models\Company;
 use App\Models\File;
 use Illuminate\Http\Request;
-use App\Models\Products;
 use App\Models\Regions;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Cache;
-use Throwable;
 
 class ClientController extends Controller
 {
@@ -36,21 +34,21 @@ class ClientController extends Controller
         // $clients = Client::with('branches')->where('id', 170)->get()->first();
         // dd($clients);
         $clients = Client::with('branches')->orderBy('id', 'asc')
-        ->paginate(10);
+            ->paginate(10);
         // dd($clients);
 
         return view('pages.products.index', compact('clients'));
     }
 
-    public function show($id, Throwable $exception)
+    public function show($id)
     {
         $client = Client::where('id', $id)
             ->with(['branches', 'files'])
             ->where('is_deleted', '!=', 1)
             ->get()->first();
-        if($client){
+        if ($client) {
             return view('pages.products.show', compact('client'));
-        }else{
+        } else {
             return response()->view('errors.custom', ['status' => 404, 'message' => 'Applicant Not found'], 404);
         }
     }
@@ -93,6 +91,8 @@ class ClientController extends Controller
                     'bank_account' => $request->get('bank_account'),
                     'stir' => $request->get('stir'),
                     'oked' => $request->get('oked'),
+                    'minimum_wage' => $request->get('minimum_wage'),
+
                 ]);
             }
 
@@ -132,15 +132,6 @@ class ClientController extends Controller
                     'payed_date' => $accordion['payed_date'] ?? null,
                     'first_payment_percent' => $accordion['first_payment_percent'] ?? null,
                 ]);
-                // dd($branch);
-
-                Products::create([
-                    'user_id' => auth()->user()->id,
-                    'client_id' => $client->id,
-                    'minimum_wage' => $accordion['minimum_wage'],
-                    'created_at' => Carbon::today(),
-                    'updated_at' => Carbon::today(),
-                ]);
             }
 
 
@@ -157,23 +148,23 @@ class ClientController extends Controller
     public function edit($id)
     {
 
-        $client = Client::find($id)
+        $client = Client::where('id', $id)
             ->with(['branches', 'files'])
             ->where('is_deleted', '!=', 1)
             ->firstOrFail();
 
         $files = $client ? $client->files : collect();
 
-        return view('pages.products.edit', compact('product', 'client', 'files'));
+        return view('pages.products.edit', compact('client', 'files'));
     }
 
 
-    public function update(Request $request, $client_id)
+    public function update(Request $request, $id)
     {
         DB::beginTransaction();
 
         try {
-            $client = Client::findOrFail($client_id);
+            $client = Client::findOrFail($id);
 
             $client->update([
                 'first_name' => $request->first_name,
@@ -198,9 +189,10 @@ class ClientController extends Controller
                 'bank_account' => $request->bank_account,
                 'stir' => $request->stir,
                 'oked' => $request->oked,
+                'minimum_wage' => $request->minimum_wage,
+
             ]);
 
-            // dd($request->accordions);
             foreach ($request->accordions as $accordionData) {
                 $branch = Branch::find($accordionData['id']);
 
@@ -208,15 +200,10 @@ class ClientController extends Controller
                     $branch->update($accordionData);
                 } else {
                     $branch = new Branch($accordionData);
-                    $branch->client_id = $client_id;
+                    $branch->client_id = $client->id;
                     $branch->save();
                 }
             }
-
-            $product = Products::where('client_id', $client_id)->firstOrFail();
-            $product->update([
-                'minimum_wage' => $request->minimum_wage,
-            ]);
 
             DB::commit();
 
