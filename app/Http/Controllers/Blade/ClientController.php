@@ -219,10 +219,10 @@ class ClientController extends Controller
     }
 
 
-    public function delete($client_id)
+    public function delete($id)
     {
         try {
-            $client = Client::findOrFail($client_id);
+            $client = Client::wheree('id', $id);
 
             $client->update([
                 'is_deleted' => 1,
