@@ -17,7 +17,7 @@ class ExelSeeder extends Seeder
      */
     public function run()
     {
-        $exelData = json_decode(file_get_contents(__DIR__ . "/../references/exel_update.json"));
+        $exelData = json_decode(file_get_contents(__DIR__ . "/../references/exel.json"));
         // $exelData = json_decode(file_get_contents(__DIR__ . "/../references/exel.json"));
         echo "Exel::inserting" . PHP_EOL;
         

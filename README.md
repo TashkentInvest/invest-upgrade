@@ -126,6 +126,11 @@ yurik_pdf qlsh kere ken validatsa
 
 branch_location qoshish kere 
 
+pasport_date = date qlsh kere
+
+inn fizikga chqash kere
+
+kubmetr fload insert qlsh kere 
 ```
 
 

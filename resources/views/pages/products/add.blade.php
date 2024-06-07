@@ -424,7 +424,8 @@
                                                             <div class="inner-repeater mb-4">
                                                                 <div data-repeater-list="inner-group" class="inner mb-3">
                                                                     <label for="basicpill-cardno-input">@lang('global.obyekt_boyicha_tolanishi_lozim')</label>
-                                                                    <input type="number" class="form-control branch_kubmetr" placeholder="@lang('global.obyekt_boyicha_tolanishi_lozim')" name="accordions[0][branch_kubmetr]">
+                                                                    <input type="number" step="0.01" class="form-control branch_kubmetr" placeholder="@lang('global.obyekt_boyicha_tolanishi_lozim')" name="accordions[0][branch_kubmetr]">
+
                                                                 </div>
                                                             </div>
                                                         </div>
