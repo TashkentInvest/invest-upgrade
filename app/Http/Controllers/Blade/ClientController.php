@@ -222,17 +222,18 @@ class ClientController extends Controller
     public function delete($id)
     {
         try {
-            $client = Client::wheree('id', $id);
-
+            $client = Client::where('id', $id)->firstOrFail();
+    
             $client->update([
                 'is_deleted' => 1,
             ]);
-
+    
             return redirect()->route('clientIndex')->with('success', 'Client marked as deleted successfully');
         } catch (\Exception $e) {
             return redirect()->back()->with('error', 'An error occurred while marking the client as deleted: ' . $e->getMessage());
         }
     }
+    
     public function toggleclientActivation($id)
     {
         $client = Client::where('id', $id)->first();
