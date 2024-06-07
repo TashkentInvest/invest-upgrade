@@ -66,9 +66,9 @@
 
                                     <div class="col-lg-4">
                                         <div class="mb-3">
-                                            <label for="company_type">@lang('global.loyiha_turi')</label>
-                                            <input type="text" class="form-control" name="company_type"
-                                                value="{{ old('company_type', $client->company_type) }}"
+                                            <label for="branch_type">@lang('global.loyiha_turi')</label>
+                                            <input type="text" class="form-control" name="branch_type"
+                                                value="{{ old('branch_type', $client->branch_type) }}"
                                                 placeholder="@lang('global.loyiha_turi')">
                                         </div>
                                     </div>

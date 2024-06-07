@@ -141,7 +141,7 @@
         офиси.</p>
 
     <p style="margin-top:0pt; margin-bottom:0pt; text-indent:35.45pt; text-align:justify; line-height:normal;">
-        2.7.&nbsp;Лойиҳавий бино (иншоот) тури:{{ $clients[0]->companies[0]->company_type }}.</p>
+        2.7.&nbsp;Лойиҳавий бино (иншоот) тури:{{ $clients[0]->companies[0]->branch_type }}.</p>
     <p style="margin-top:0pt; margin-bottom:0pt; text-indent:35.45pt; text-align:justify; line-height:normal;">
         2.8.&nbsp;Лойиҳавий бино (иншоот)нинг манзили: {{ $clients[0]->companies[0]->company_location }}.</p>
     <p style="margin-top:6pt; margin-bottom:0pt; text-align:center; line-height:normal;"><strong>III. Тарафларнинг

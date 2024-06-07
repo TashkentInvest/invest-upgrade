@@ -237,10 +237,10 @@
                                 <div class="row">
                                     <div class="col-lg-3 col-12">
                                         <div class="mb-2">
-                                            <label for="company_type">@lang('global.loyiha_turi')</label>
-                                            <input type="text" class="form-control" id="company_type"
-                                                name="company_type"
-                                                value="{{ old('company_type', $client->company_type) }}">
+                                            <label for="branch_type">@lang('global.loyiha_turi')</label>
+                                            <input type="text" class="form-control" id="branch_type"
+                                                name="branch_type"
+                                                value="{{ old('branch_type', $client->branch_type) }}">
                                         </div>
                                     </div>
                                     <div class="col-lg-3 col-12">

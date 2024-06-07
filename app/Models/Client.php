@@ -32,7 +32,7 @@ class Client extends Model
         'company_name',
         'raxbar',
         'company_location',
-        'company_type',
+        'branch_type',
         'bank_code',
         'bank_service',
         'bank_account',

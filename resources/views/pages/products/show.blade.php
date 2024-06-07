@@ -188,7 +188,7 @@
                             </tr>
                             <tr>
                                 <td>@lang('global.loyiha_turi')</td>
-                                <td colspan="2">{{ $client->company_type }}</td>
+                                <td colspan="2">{{ $client->branch_type }}</td>
                             </tr>
                             <tr>
                                 <td>@lang('cruds.company.fields.raxbar')</td>

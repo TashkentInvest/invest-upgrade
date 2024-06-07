@@ -363,8 +363,8 @@
                                                                     <td>{{ $item->company_name }}</td>
                                                                 </tr>
                                                                 <tr>
-                                                                    <td>@lang('cruds.company.fields.company_type')</td>
-                                                                    <td>{{ $item->company_type }}</td>
+                                                                    <td>@lang('cruds.company.fields.branch_type')</td>
+                                                                    <td>{{ $item->branch_type }}</td>
                                                                 </tr>
                                                                 <tr>
                                                                     <td>@lang('cruds.company.fields.raxbar')</td>

@@ -52,7 +52,7 @@
     &ndash;&nbsp; Хизмат кўрсатувчи банк таркибий бўлинмаси: Тошкент шаҳар бошқармаси Тошкент шаҳар банк хизматлари
     офиси.</p>
 
-<p style="margin-top:0pt; margin-bottom:0pt; text-indent:35.45pt; text-align:justify; line-height:normal;">2.7.&nbsp;Лойиҳавий бино (иншоот) тури: {{ $company->company_type }}.</p>
+<p style="margin-top:0pt; margin-bottom:0pt; text-indent:35.45pt; text-align:justify; line-height:normal;">2.7.&nbsp;Лойиҳавий бино (иншоот) тури: {{ $company->branch_type }}.</p>
 <p style="margin-top:0pt; margin-bottom:0pt; text-indent:35.45pt; text-align:justify; line-height:normal;">2.8.&nbsp;Лойиҳавий бино (иншоот)нинг манзили: {{ $company->company_location }}.</p>
 <p style="margin-top:6pt; margin-bottom:0pt; text-align:center; line-height:normal;"><strong>III. Тарафларнинг ҳуқуқлари ва мажбуриятлари</strong></p>
 <p style="margin-top:0pt; margin-bottom:0pt; text-indent:35.45pt; text-align:justify; line-height:normal;">3.1.&nbsp;Мазкур шартнома доирасида Компания қуйидагиларга мажбур:</p>

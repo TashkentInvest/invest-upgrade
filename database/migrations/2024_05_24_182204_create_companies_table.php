@@ -19,7 +19,7 @@ class CreateCompaniesTable extends Migration
             $table->foreign('client_id')->references('id')->on('clients')->onDelete('cascade');
             $table->string('company_location')->nullable();
             $table->string('company_name')->nullable();
-            $table->string('company_type')->nullable();
+            $table->string('branch_type')->nullable();
             $table->string('raxbar')->nullable();
             $table->string('bank_code')->nullable();
             $table->string('bank_service')->nullable();

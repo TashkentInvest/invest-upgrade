@@ -43,7 +43,7 @@ class FileController extends Controller
     $clientAttributes = [
         'yuridik_rekvizid',
         'contact',
-        'company_type',
+        'branch_type',
         'company_location',
         'bank_code',
         'stir',
@@ -101,7 +101,7 @@ class FileController extends Controller
         $client = Client::with('companies')->where('is_deleted', '!=', 1)->find($id);
         $client->yuridik_rekvizid;
         $client->contact;
-        $client->company_type;
+        $client->branch_type;
         $client->company_location;
         $client->bank_code;
         $client->stir;

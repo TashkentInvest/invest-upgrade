@@ -20,7 +20,7 @@ class ClientController extends Controller
     {
         // $clients = Client::select([
         //     'id', 'first_name', 'last_name', 'mijoz_turi', 'father_name', 'contact', 'yuridik_address', 'passport_serial', 'passport_pinfl', 'passport_date',
-        //     'passport_location', 'passport_type', 'is_deleted', 'client_description', 'company_location', 'company_name', 'company_type', 'raxbar', 'bank_code',
+        //     'passport_location', 'passport_type', 'is_deleted', 'client_description', 'company_location', 'company_name', 'branch_type', 'raxbar', 'bank_code',
         //     'bank_service', 'bank_account', 'stir', 'oked', 'created_at', 'updated_at'
         // ])
         //     ->with([
@@ -81,7 +81,6 @@ class ClientController extends Controller
                     'client_description' => $request->get('client_description'),
 
                     'company_location' => $request->get('company_location'),
-                    'company_type' => $request->get('company_type'),
                     'company_name' => $request->get('company_name'),
                     'raxbar' => $request->get('raxbar'),
                     'bank_code' => $request->get('bank_code'),
@@ -117,6 +116,8 @@ class ClientController extends Controller
                     'contract_apt' => $accordion['contract_apt'] ?? null,
                     'contract_date' => $accordion['contract_date'] ?? null,
                     'branch_kubmetr' => $accordion['branch_kubmetr'] ?? null,
+                    'branch_type' => $accordion['branch_type'] ?? null,
+                    'branch_location' => $accordion['branch_location'] ?? null,
                     'generate_price' => $accordion['generate_price'] ?? null,
                     'payment_type' => $accordion['payment_type'] ?? null,
                     'percentage_input' => $accordion['percentage_input'] ?? null,
@@ -179,7 +180,6 @@ class ClientController extends Controller
                 'client_description' => $request->client_description,
 
                 'company_location' => $request->company_location,
-                'company_type' => $request->company_type,
                 'company_name' => $request->company_name,
                 'raxbar' => $request->raxbar,
                 'bank_code' => $request->bank_code,
