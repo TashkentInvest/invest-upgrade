@@ -137,7 +137,7 @@
                         <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:12pt;"><strong><span style="font-family:'Times New Roman';">Банк номи:&nbsp;</span></strong><span style="font-family:'Times New Roman';">{{$client->bank_service}}</span></p>
                         <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:12pt;"><strong><span style="font-family:'Times New Roman';">СТИР:</span></strong><span style="font-family:'Times New Roman';">&nbsp;{{$client->stir}}</span></p>
                         <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:12pt;"><strong><span style="font-family:'Times New Roman';">ОКЭД:</span></strong><span style="font-family:'Times New Roman';">&nbsp;{{$client->oked}}</span></p>
-                        <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:12pt;"><strong><span style="font-family:'Times New Roman';">Контакт:&nbsp;</span></strong><span style="font-family:'Times New Roman';">{{$client->oked}}</span></p>
+                        <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:12pt;"><strong><span style="font-family:'Times New Roman';">Контакт:&nbsp;</span></strong><span style="font-family:'Times New Roman';">{{$client->contact}}</span></p>
                         <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:12pt;"><span style="font-family:'Times New Roman';">&nbsp;</span></p>
                         <div style="border-bottom-style:solid; border-bottom-width:1.5pt; clear:both;">
                             <p style="margin-top:0pt; margin-bottom:0pt; font-size:12pt;"><strong><span style="font-family:'Times New Roman';">&nbsp;</span></strong></p>
@@ -170,7 +170,6 @@
         </table>
         <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; line-height:normal; font-size:12pt;"><strong><span style="font-family:'Times New Roman';">&nbsp;</span></strong></p>
     </div>
-    <p style="bottom: 10px; right: 10px; position: absolute;"><a href="https://wordtohtml.net" target="_blank" style="font-size:11px; color: #d0d0d0;">Converted to HTML with WordToHTML.net</a></p>
     
 </body>
 </html>

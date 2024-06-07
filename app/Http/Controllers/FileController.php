@@ -59,12 +59,12 @@ class FileController extends Controller
         // Determine the view based on the client type and payment type
         if ($client->mijoz_turi === 'fizik') {
             $view = $client->payment_type === 'pay_bolib' 
-                ? 'pages.docs.bolib_pay.fizik_litso' 
-                : 'pages.docs.full_pay.fizik_litso';
+                ? 'pages.docs.full_pay.fizik_litso' 
+                : 'pages.docs.bolib_pay.fizik_litso';
         } else {
             $view = $client->payment_type === 'pay_bolib' 
-                ? 'pages.docs.bolib_pay.yurik_litso' 
-                : 'pages.docs.full_pay.yurik_litso';
+                ? 'pages.docs.full_pay.yurik_litso' 
+                : 'pages.docs.bolib_pay.yurik_litso';
         }
     
         foreach ($client->branches as $branch) {
