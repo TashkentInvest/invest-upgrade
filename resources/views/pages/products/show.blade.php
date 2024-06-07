@@ -179,7 +179,7 @@
                         <tbody>
                             @if($client->mijoz_turi == 'fizik')
                             <tr>
-                                <td>@lang('cruds.company.fields.home_address')</td>
+                                <td>@lang('global.home_address')</td>
                                 <td colspan="2">{{ $client->home_address }}</td>
                             </tr>
                             @else
@@ -195,13 +195,11 @@
                                 <td>@lang('cruds.company.fields.oked')</td>
                                 <td colspan="2">{{ $client->oked }}</td>
                             </tr>
-                            @endif
-                           
-                        
                             <tr>
                                 <td>@lang('cruds.company.fields.raxbar')</td>
                                 <td colspan="2">{{ $client->raxbar }}</td>
                             </tr>
+
                             <tr>
                                 <td>@lang('cruds.company.fields.bank_code')</td>
                                 <td colspan="2">{{ $client->bank_code }}</td>
@@ -210,6 +208,11 @@
                                 <td>@lang('cruds.company.fields.bank_service')</td>
                                 <td colspan="2">{{ $client->bank_service }}</td>
                             </tr>
+                            @endif
+                           
+                        
+                        
+                     
                             <tr>
                                 <td>@lang('cruds.company.fields.stir')</td>
                                 <td colspan="2">{{ $client->stir }}</td>
