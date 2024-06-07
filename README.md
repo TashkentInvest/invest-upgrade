@@ -204,3 +204,5 @@ composer require irazasyed/telegram-bot-sdk
 ```
  /usr/local/bin/php /home/t123379/public_html/invest.teamdevs.uz/artisan db:backup>/dev/null 2>&1
  ```
+
+ https://extract.me/
