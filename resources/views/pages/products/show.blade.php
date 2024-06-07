@@ -66,8 +66,8 @@
                                         //     'data-priority' => 13,
                                         //     'default' => false,
                                         // ],
-                                        // ['name' => __('global.contact'), 'data-priority' => 14, 'default' => true],
-                                        // ['name' => __('global.actions'), 'data-priority' => 15, 'default' => true],
+                                        ['name' => __('global.contact'), 'data-priority' => 14, 'default' => true],
+                                        ['name' => __('global.actions'), 'data-priority' => 15, 'default' => true],
                                     ];
                                 @endphp
                                 @foreach ($columns as $index => $column)
@@ -186,10 +186,7 @@
                                 <td>@lang('cruds.company.fields.company_name')</td>
                                 <td colspan="2">{{ $client->company_name }}</td>
                             </tr>
-                            <tr>
-                                <td>@lang('global.loyiha_turi')</td>
-                                <td colspan="2">{{ $client->branch_type }}</td>
-                            </tr>
+                        
                             <tr>
                                 <td>@lang('cruds.company.fields.raxbar')</td>
                                 <td colspan="2">{{ $client->raxbar }}</td>
@@ -215,6 +212,14 @@
                                 <tr>
                                     <td colspan="3" class="text-center"><strong>@lang('global.contract_details') -
                                             {{ $b->contract_apt }}</strong></td>
+                                </tr>
+                                <tr>
+                                    <td>@lang('cruds.company.fields.branch_location')</td>
+                                    <td colspan="2">{{ $b->branch_type }}</td>
+                                </tr>
+                                <tr>
+                                    <td>@lang('cruds.company.fields.branch_location')</td>
+                                    <td colspan="2">{{ $b->location }}</td>
                                 </tr>
                                 <tr>
                                     <td>@lang('global.ruxsatnoma_raqami')</td>

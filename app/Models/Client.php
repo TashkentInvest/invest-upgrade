@@ -32,7 +32,6 @@ class Client extends Model
         'company_name',
         'raxbar',
         'company_location',
-        'branch_type',
         'bank_code',
         'bank_service',
         'bank_account',
@@ -40,7 +39,6 @@ class Client extends Model
         'oked',
         'created_at',
         'updated_at',
-
         'minimum_wage',
         'status'
     ];

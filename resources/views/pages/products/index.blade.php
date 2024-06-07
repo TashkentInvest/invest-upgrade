@@ -362,10 +362,7 @@
                                                                     <td>@lang('cruds.company.fields.company_name')</td>
                                                                     <td>{{ $item->company_name }}</td>
                                                                 </tr>
-                                                                <tr>
-                                                                    <td>@lang('cruds.company.fields.branch_type')</td>
-                                                                    <td>{{ $item->branch_type }}</td>
-                                                                </tr>
+                                                              
                                                                 <tr>
                                                                     <td>@lang('cruds.company.fields.raxbar')</td>
                                                                     <td>{{ $item->raxbar }}</td>
@@ -397,6 +394,14 @@
                                                                         <td class="text-center"><strong>Obyekt</strong>
                                                                         </td>
                                                                         <td></td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>@lang('cruds.company.fields.branch_type')</td>
+                                                                        <td>{{ $b->branch_type }}</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>@lang('cruds.company.fields.branch_location')</td>
+                                                                        <td>{{ $b->branch_location }}</td>
                                                                     </tr>
                                                                     <tr>
                                                                         <td>@lang('global.ruxsatnoma_raqami')</td>

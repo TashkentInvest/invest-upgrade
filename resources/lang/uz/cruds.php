@@ -202,7 +202,9 @@ return [
                 'company_name' => 'Kompaniya nomi',
                 'raxbar' => 'Lavozim',
                 'company_location' => 'Kompaniya joylashuvi',
-                'branch_type' => 'Kampanya turi',
+                'branch_location' => 'Obyekt joylashuvi',
+
+                'branch_type' => 'Obyekt turi',
 
                 'bank_service' => 'Bank nomi',
                 'bank_code' => 'Bank ko\'di',

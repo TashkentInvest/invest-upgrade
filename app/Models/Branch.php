@@ -19,6 +19,7 @@ class Branch extends Model
         'installment_quarterly',
         'branch_kubmetr',
         'branch_location',
+        'branch_type',
         'notification_num',
         'notification_date',
         'insurance_policy',

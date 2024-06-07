@@ -64,15 +64,8 @@
                                         @endif
                                     </div>
 
-                                    <div class="col-lg-4">
-                                        <div class="mb-3">
-                                            <label for="branch_type">@lang('global.loyiha_turi')</label>
-                                            <input type="text" class="form-control" name="branch_type"
-                                                value="{{ old('branch_type', $client->branch_type) }}"
-                                                placeholder="@lang('global.loyiha_turi')">
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-4">
+                                
+                                    <div class="col-lg-6">
                                         <div class="mb-3">
                                             <label for="company_location">@lang('global.loyiha_manzili')</label>
                                             <input type="text" class="form-control" name="company_location"
@@ -80,7 +73,7 @@
                                                 placeholder="@lang('global.loyiha_manzili')">
                                         </div>
                                     </div>
-                                    <div class="col-lg-4">
+                                    <div class="col-lg-6">
                                         <div class="mb-3">
                                             <label for="company_name">@lang('global.loyiha_nomi')</label>
                                             <input type="text" class="form-control" name="company_name"
@@ -491,7 +484,7 @@
                                                             </div>
                                                         </div>
                                                         <div class="row">
-                                                            <div class="col-lg-3">
+                                                            <div class="col-lg-4">
                                                                 <div class="inner-repeater mb-4">
                                                                     <div data-repeater-list="inner-group"
                                                                         class="inner mb-3">
@@ -505,6 +498,27 @@
                                                                     </div>
                                                                 </div>
                                                             </div>
+
+                                                            <div class="col-lg-4">
+                                                                <div class="mb-3">
+                                                                    <label for="branch_type">@lang('global.loyiha_turi')</label>
+                                                                    <input type="text" class="form-control" name="accordions[{{ $branchIndex }}][branch_type]"
+                                                                        value="{{ old('accordions.' . $branchIndex . '.branch_type', $b->branch_type) }}"
+
+                                                                        placeholder="@lang('global.loyiha_turi')">
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="col-lg-4">
+                                                                <div class="mb-3">
+                                                                    <label for="branch_location">@lang('global.branch_location')</label>
+                                                                    <input type="text" class="form-control" name="accordions[{{ $branchIndex }}][branch_location]"
+                                                                        value="{{ old('accordions.' . $branchIndex . '.branch_location', $b->branch_location) }}"
+
+                                                                        placeholder="@lang('global.branch_location')">
+                                                                </div>
+                                                            </div>
+                                                            
                                                             <div class="col-lg-3">
                                                                 <div class="mb-3">
                                                                     <label

@@ -70,6 +70,8 @@ class FileController extends Controller
     foreach ($client->branches as $branch) {
         $branch->generate_price;
         $branch->branch_kubmetr;
+        $branch->branch_type;
+        $branch->branch_location;
 
         // Ensure valid filename
         $filename = preg_replace('/[<>:"\/\\|?*]+/', '_', $client->company_name . '_branch_' . $branch->id . '.doc');
