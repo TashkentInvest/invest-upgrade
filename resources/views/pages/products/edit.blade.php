@@ -53,9 +53,6 @@
 
                                 <div class="row" id="make_show" style="display: none;">
 
-                                   
-
-                                
                                     <div class="col-lg-6">
                                         <div class="mb-3">
                                             <label for="company_location">@lang('global.loyiha_manzili')</label>
