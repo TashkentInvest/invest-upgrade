@@ -69,7 +69,7 @@
                                             <!-- Company Search -->
                                             <div class="form-group row align-items-center my-2">
                                                 <div class="col-3">
-                                                    <h6>@lang('global.loyiha_nomi')</h6>
+                                                    <h6>@lang('global.company_name')</h6>
                                                 </div>
                                                 <div class="col-2">
                                                     <select class="form-control form-control-sm" name="company_operator">
