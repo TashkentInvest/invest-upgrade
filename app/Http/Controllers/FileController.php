@@ -81,7 +81,7 @@ class FileController extends Controller
         }
     
         $zip = new \ZipArchive();
-        $zipFileName = storage_path('app/АПЗ_' . \Carbon\Carbon::now()->format('Y-m-d') . '.zip');
+        $zipFileName = storage_path('app/АПЗ_' . \Carbon\Carbon::now()->format('Y-m-d_H-i-s') . '.zip');
     
         if ($zip->open($zipFileName, \ZipArchive::CREATE | \ZipArchive::OVERWRITE) !== true) {
             // Log error if zip file cannot be opened
@@ -98,6 +98,7 @@ class FileController extends Controller
     
         return response()->download($zipFileName)->deleteFileAfterSend(true);
     }
+    
     
     public function show_org($id)
     {

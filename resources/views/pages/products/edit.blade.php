@@ -49,6 +49,7 @@
                                         @endif
                                     </div>
                                 </div>
+                              
 
                                 <div class="row" id="make_show" style="display: none;">
 
@@ -61,6 +62,31 @@
                                         @if ($errors->has('company_name'))
                                             <span class="error invalid-feedback">{{ $errors->first('company_name') }}</span>
                                         @endif
+                                    </div>
+
+                                    <div class="col-lg-4">
+                                        <div class="mb-3">
+                                            <label for="company_type">@lang('global.loyiha_turi')</label>
+                                            <input type="text" class="form-control" name="company_type"
+                                                value="{{ old('company_type', $client->company_type) }}"
+                                                placeholder="@lang('global.loyiha_turi')">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <div class="mb-3">
+                                            <label for="company_location">@lang('global.loyiha_manzili')</label>
+                                            <input type="text" class="form-control" name="company_location"
+                                                value="{{ old('company_location', $client->company_location) }}"
+                                                placeholder="@lang('global.loyiha_manzili')">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <div class="mb-3">
+                                            <label for="company_name">@lang('global.loyiha_nomi')</label>
+                                            <input type="text" class="form-control" name="company_name"
+                                                value="{{ old('company_name', $client->company_name) }}"
+                                                placeholder="@lang('global.loyiha_nomi')">
+                                        </div>
                                     </div>
 
                                     <div class="col-12 col-lg-3 mb-2">
@@ -343,39 +369,7 @@
                             </section>
 
 
-                            {{-- company start --}}
-                            <h3>@lang('global.company')</h3>
-                            <section>
-
-                                <div class="row">
-                                    <div class="col-lg-4">
-                                        <div class="mb-3">
-                                            <label for="company_type">@lang('global.loyiha_turi')</label>
-                                            <input type="text" class="form-control" name="company_type"
-                                                value="{{ old('company_type', $client->company_type) }}"
-                                                placeholder="@lang('global.loyiha_turi')">
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-4">
-                                        <div class="mb-3">
-                                            <label for="company_location">@lang('global.loyiha_manzili')</label>
-                                            <input type="text" class="form-control" name="company_location"
-                                                value="{{ old('company_location', $client->company_location) }}"
-                                                placeholder="@lang('global.loyiha_manzili')">
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-4">
-                                        <div class="mb-3">
-                                            <label for="company_name">@lang('global.loyiha_nomi')</label>
-                                            <input type="text" class="form-control" name="company_name"
-                                                value="{{ old('company_name', $client->company_name) }}"
-                                                placeholder="@lang('global.loyiha_nomi')">
-                                        </div>
-                                    </div>
-                                </div>
-
-
-                            </section>
+                      
 
 
                             <h3>@lang('global.object')</h3>
