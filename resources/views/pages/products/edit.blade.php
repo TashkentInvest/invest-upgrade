@@ -53,16 +53,7 @@
 
                                 <div class="row" id="make_show" style="display: none;">
 
-                                    <div class="col-12 col-lg-3 mb-2">
-                                        <label for="company_name" class="col-md-6 col-form-label">@lang('cruds.company.fields.company_name')</label>
-                                        <input class="form-control {{ $errors->has('company_name') ? 'is-invalid' : '' }}"
-                                            type="text" name="company_name" id="company_name"
-                                            placeholder="@lang('cruds.company.fields.company_name')"
-                                            value="{{ old('company_name', $client->company_name) }}">
-                                        @if ($errors->has('company_name'))
-                                            <span class="error invalid-feedback">{{ $errors->first('company_name') }}</span>
-                                        @endif
-                                    </div>
+                                   
 
                                 
                                     <div class="col-lg-6">
@@ -511,11 +502,11 @@
 
                                                             <div class="col-lg-4">
                                                                 <div class="mb-3">
-                                                                    <label for="branch_location">@lang('global.branch_location')</label>
+                                                                    <label for="branch_location">@lang('cruds.company.fields.branch_location')</label>
                                                                     <input type="text" class="form-control" name="accordions[{{ $branchIndex }}][branch_location]"
                                                                         value="{{ old('accordions.' . $branchIndex . '.branch_location', $b->branch_location) }}"
 
-                                                                        placeholder="@lang('global.branch_location')">
+                                                                        placeholder="@lang('cruds.company.fields.branch_location')">
                                                                 </div>
                                                             </div>
                                                             

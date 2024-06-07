@@ -423,8 +423,8 @@
                                                         </div>
                                                         <div class="col-lg-4">
                                                             <div class="mb-3">
-                                                                <label for="branch_location">@lang('global.branch_location')</label>
-                                                                <input type="text" class="form-control" name="accordions[0][branch_location]" placeholder="@lang('global.branch_location')">
+                                                                <label for="branch_location">@lang('cruds.company.fields.branch_location')</label>
+                                                                <input type="text" class="form-control" name="accordions[0][branch_location]" placeholder="@lang('cruds.company.fields.branch_location')">
                                                             </div>
                                                         </div>
                                                         <div class="col-lg-6">
