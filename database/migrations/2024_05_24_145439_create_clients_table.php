@@ -38,6 +38,9 @@ class CreateClientsTable extends Migration
             $table->string('bank_account')->nullable();
             $table->string('stir')->nullable();
             $table->string('oked')->nullable();
+
+            $table->text('minimum_wage')->nullable();
+            $table->integer('status')->default(1);
             $table->timestamps();
     
             $table->index('is_deleted');

@@ -23,7 +23,7 @@
             <div class="card">
                 <div class="card-header d-flex justify-content-between">
                     {{-- <h3 class="card-title">@lang('cruds.branches.title')</h3> --}}
-                    <a href="{{ route('productAdd') }}" class="btn btn-sm btn-success waves-effect waves-light float-right">
+                    <a href="{{ route('clientAdd') }}" class="btn btn-sm btn-success waves-effect waves-light float-right">
                         <span class="fas fa-plus-circle"></span>
                         @lang('global.add')
                     </a>
@@ -166,7 +166,7 @@
                             </div>
                         </form>
                         {{-- <button type="button" class="btn btn-sm btn-secondary waves-effect waves-light">Middle</button> --}}
-                        <a href="{{ route('productIndex') }}" class="btn btn-secondary waves-effect waves-light btn-sm">
+                        <a href="{{ route('clientIndex') }}" class="btn btn-secondary waves-effect waves-light btn-sm">
                             <i class="bx bx-revision"></i> @lang('global.clear')
                         </a>
                     </div>
@@ -213,7 +213,7 @@
                                     </td>
                                     <td> {{ $item->updated_at }} </td>
                                     <td class="text-center">
-                                        <form action="{{ route('productDestroy', $item->id) }}" method="post">
+                                        <form action="{{ route('clientDestroy', $item->id) }}" method="post">
                                             @csrf
                                             <ul class="list-unstyled hstack gap-1 mb-0">
                                                 <li data-bs-toggle="tooltip" data-bs-placement="top"
@@ -238,14 +238,14 @@
 
                                                 <li data-bs-toggle="tooltip" data-bs-placement="top"
                                                     title="@lang('global.edit')">
-                                                    <a href="{{ route('productEdit', $item->id) }}" class="btn btn-info">
+                                                    <a href="{{ route('clientEdit', $item->id) }}" class="btn btn-info">
                                                         <i class="bx bxs-edit" style="font-size:16px;"></i>
                                                     </a>
                                                 </li>
 
                                                 <li data-bs-toggle="tooltip" data-bs-placement="top"
                                                     title="@lang('global.view')">
-                                                    <a href="{{ route('productDetails', $item->id) }}"
+                                                    <a href="{{ route('clientDetails', $item->id) }}"
                                                         class="btn btn-success">
                                                         <i class="bx bxs-right-arrow-circle" style="font-size: 16px;"></i>
                                                     </a>
@@ -442,7 +442,8 @@
                         </tbody>
                     </table>
                     <div class="d-flex">
-                        {!! $clients->links() !!}
+                        
+                        {!! $clients->links()!!}
                     </div>
                 </div>
             </div>
@@ -454,7 +455,7 @@
     <script>
         function toggle_instock(id) {
             $.ajax({
-                url: "/products/toggle-status/" + id,
+                url: "/clients/toggle-status/" + id,
                 type: "POST",
                 data: {
                     _token: "{!! @csrf_token() !!}"
@@ -476,7 +477,7 @@
     {{-- <script>
     function updateData() {
         $.ajax({
-            url: '{{ route("productIndex") }}',
+            url: '{{ route("clientIndex") }}',
             method: 'GET',
             success: function(response) {
                 $('#layout-wrapper').html(response);

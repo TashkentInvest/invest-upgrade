@@ -10,7 +10,7 @@
                     <ol class="breadcrumb m-0">
                         <li class="breadcrumb-item"><a href="{{ route('home') }}" style="color: #007bff;">@lang('global.home')</a>
                         </li>
-                        <li class="breadcrumb-item"><a href="{{ route('productIndex') }}"
+                        <li class="breadcrumb-item"><a href="{{ route('clientIndex') }}"
                                 style="color: #007bff;">@lang('cruds.branches.title')</a></li>
                         <li class="breadcrumb-item active">@lang('global.add')</li>
                     </ol>
@@ -25,7 +25,7 @@
 
             <div class="card">
                 <div class="card-body">
-                    <form id='myForm' action="{{ route('productCreate') }}" method="post" enctype="multipart/form-data">
+                    <form id='myForm' action="{{ route('clientCreate') }}" method="post" enctype="multipart/form-data">
                         @csrf
 
                         <div id="basic-example">

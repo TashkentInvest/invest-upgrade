@@ -94,6 +94,7 @@
                         </thead>
                         <tbody>
                             @if (isset($client))
+                            {{-- @dd($client) --}}
                                 <tr>
                                     <td>{{ $client->id }}</td>
                                     <td>{{ $client->company_name }}</td>
@@ -113,12 +114,12 @@
                                     <td>{{ $client->contact }}</td>
 
                                     <td class="text-center">
-                                        <form action="{{ route('productDestroy', $client->id) }}" method="post">
+                                        <form action="{{ route('clientDestroy', $client->id) }}" method="post">
                                             @csrf
                                             <ul class="list-unstyled hstack gap-1 mb-0">
                                                 <li data-bs-toggle="tooltip" data-bs-placement="top"
                                                     title="@lang('global.edit')">
-                                                    <a href="{{ route('productEdit', $client->id) }}" class="btn btn-info">
+                                                    <a href="{{ route('clientEdit', $client->id) }}" class="btn btn-info">
                                                         <i class="bx bxs-edit" style="font-size:16px;"></i>
                                                     </a>
                                                 </li>

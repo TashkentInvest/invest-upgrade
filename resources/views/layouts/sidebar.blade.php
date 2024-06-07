@@ -8,7 +8,7 @@
                 <li class="menu-title">@lang('cruds.menu_top.menu')</li>
                 <!-- Branches -->
                 <li class="{{ Request::is('product*') ? 'mm-active':'' }}">
-                    <a href="{{ route('productIndex') }}" class=" waves-effect {{ Request::is('product*') ? 'mm-active':'' }}">
+                    <a href="{{ route('clientIndex') }}" class=" waves-effect {{ Request::is('product*') ? 'mm-active':'' }}">
                         <i class="bx bx-map-alt"></i>
                         <span>@lang('cruds.branches.title')</span>
                     </a>

@@ -10,8 +10,7 @@ use App\Http\Controllers\Blade\HomeController;
 use App\Http\Controllers\Blade\ApiUserController;
 use App\Http\Controllers\Blade\RegionController;
 use App\Http\Controllers\Blade\DistrictController;
-use App\Http\Controllers\Blade\ProductController;
-use App\Http\Controllers\ClientController;
+use App\Http\Controllers\Blade\ClientController;
 use App\Http\Controllers\FileController;
 
 /*
@@ -59,16 +58,16 @@ Route::group(['middleware' => 'auth'], function () {
     });
 
     // Products
-    Route::prefix('products')->group(function () {
-        Route::get('/', [ProductController::class, 'index'])->name('productIndex');
-        Route::get('/data', [ProductController::class, 'getClientsData'])->name('clients.data');
-        Route::get('/add', [ProductController::class, 'add'])->name('productAdd');
-        Route::get('/{id}', [ProductController::class, 'show'])->name('productDetails');
-        Route::post('/create', [ProductController::class, 'create'])->name('productCreate');
-        Route::get('/edit/{id}', [ProductController::class, 'edit'])->name('productEdit');
-        Route::delete('/delete/{id}', [ProductController::class, 'delete'])->name('productDestroy');
-        Route::match(['put', 'post'], 'product/{id}', [ProductController::class, 'update'])->name('productUpdate');
-        Route::post('/toggle-status/{id}', [ProductController::class, 'toggleProductActivation'])->name('productActivation');
+    Route::prefix('clients')->group(function () {
+        Route::get('/', [ClientController::class, 'index'])->name('clientIndex');
+        Route::get('/data', [ClientController::class, 'getClientsData'])->name('clients.data');
+        Route::get('/add', [ClientController::class, 'add'])->name('clientAdd');
+        Route::get('/{id}', [ClientController::class, 'show'])->name('clientDetails');
+        Route::post('/create', [ClientController::class, 'create'])->name('clientCreate');
+        Route::get('/edit/{id}', [ClientController::class, 'edit'])->name('clientEdit');
+        Route::delete('/delete/{id}', [ClientController::class, 'delete'])->name('clientDestroy');
+        Route::match(['put', 'post'], 'product/{id}', [ClientController::class, 'update'])->name('clientUpdate');
+        Route::post('/toggle-status/{id}', [ClientController::class, 'toggleclientActivation'])->name('clientActivation');
     });
     // Users
     Route::prefix('users')->group(function () {
@@ -79,16 +78,6 @@ Route::group(['middleware' => 'auth'], function () {
         Route::post('/update/{id}', [UserController::class, 'update'])->name('userUpdate');
         Route::delete('/delete/{id}', [UserController::class, 'destroy'])->name('userDestroy');
         Route::get('/theme-set/{id}', [UserController::class, 'setTheme'])->name('userSetTheme');
-    });
-
-    // Client
-    Route::prefix('clients')->group(function () {
-        Route::get('/', [ClientController::class, 'index'])->name('clientIndex');
-        Route::get('/add', [ClientController::class, 'add'])->name('clientAdd');
-        Route::post('/create', [ClientController::class, 'create'])->name('clientCreate');
-        Route::get('/{id}/edit', [ClientController::class, 'edit'])->name('clientEdit');
-        Route::post('/update/{id}', [ClientController::class, 'update'])->name('clientUpdate');
-        Route::delete('/delete/{id}', [ClientController::class, 'destroy'])->name('clientDestroy');
     });
 
     // Permissions

@@ -41,16 +41,14 @@ class Client extends Model
         'created_at',
         'updated_at',
 
+        'minimum_wage',
+        'status'
     ];
 
 
     
     public function branches(){
         return $this->hasMany(Branch::class);
-    }
-
-    public function products(){
-        return $this->hasMany(Products::class);
     }
 
     public function files()

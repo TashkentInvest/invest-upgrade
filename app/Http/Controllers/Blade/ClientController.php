@@ -14,41 +14,45 @@ use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Cache;
+use Throwable;
 
-
-class ProductController extends Controller
+class ClientController extends Controller
 {
     public function index()
     {
-        $clients = Client::select([
-            'id', 'first_name', 'last_name', 'mijoz_turi', 'father_name', 'contact', 'yuridik_address', 'passport_serial', 'passport_pinfl', 'passport_date',
-            'passport_location', 'passport_type', 'is_deleted', 'client_description', 'company_location', 'company_name', 'company_type', 'raxbar', 'bank_code',
-            'bank_service', 'bank_account', 'stir', 'oked', 'created_at', 'updated_at'
-        ])
-            ->with([
-                'products:id,client_id,user_id,minimum_wage,status',
-                'branches:id,client_id,contract_apt,contract_date,generate_price,payment_type,percentage_input,installment_quarterly,branch_kubmetr,notification_num,notification_date,insurance_policy,bank_guarantee,application_number,payed_sum,payed_date,first_payment_percent'
-            ])
-            ->where('is_deleted', '!=', 1)
-            ->orderBy('id', 'asc')
-            ->paginate(10);
+        // $clients = Client::select([
+        //     'id', 'first_name', 'last_name', 'mijoz_turi', 'father_name', 'contact', 'yuridik_address', 'passport_serial', 'passport_pinfl', 'passport_date',
+        //     'passport_location', 'passport_type', 'is_deleted', 'client_description', 'company_location', 'company_name', 'company_type', 'raxbar', 'bank_code',
+        //     'bank_service', 'bank_account', 'stir', 'oked', 'created_at', 'updated_at'
+        // ])
+        //     ->with([
+        //         'products:id,client_id,user_id,minimum_wage,status',
+        //         'branches:id,client_id,contract_apt,contract_date,generate_price,payment_type,percentage_input,installment_quarterly,branch_kubmetr,notification_num,notification_date,insurance_policy,bank_guarantee,application_number,payed_sum,payed_date,first_payment_percent'
+        //     ])
+        //     ->where('is_deleted', '!=', 1)
+        //     ->orderBy('id', 'asc')
+        //     ->paginate(10);
+
+        // $clients = Client::with('branches')->where('id', 170)->get()->first();
+        // dd($clients);
+        $clients = Client::with('branches')->orderBy('id', 'asc')
+        ->paginate(10);
+        // dd($clients);
 
         return view('pages.products.index', compact('clients'));
     }
 
-    public function show($id)
+    public function show($id, Throwable $exception)
     {
-        // Find the product by ID
-        $product = Products::findOrFail($id);
-
-        $client = Client::where('id', $product->client_id)
+        $client = Client::where('id', $id)
             ->with(['branches', 'files'])
             ->where('is_deleted', '!=', 1)
-            ->firstOrFail();
-
-        $files = $client ? $client->files : collect();
-
-        return view('pages.products.show', compact('product', 'client', 'files'));
+            ->get()->first();
+        if($client){
+            return view('pages.products.show', compact('client'));
+        }else{
+            return response()->view('errors.custom', ['status' => 404, 'message' => 'Applicant Not found'], 404);
+        }
     }
 
     public function add()
@@ -142,7 +146,7 @@ class ProductController extends Controller
 
             DB::commit();
 
-            return redirect()->route('productIndex')->with('success', 'Product created successfully');
+            return redirect()->route('clientIndex')->with('success', 'Product created successfully');
         } catch (\Exception $e) {
             DB::rollback();
 
@@ -152,9 +156,8 @@ class ProductController extends Controller
 
     public function edit($id)
     {
-        $product = Products::findOrFail($id);
 
-        $client = Client::where('id', $product->client_id)
+        $client = Client::find($id)
             ->with(['branches', 'files'])
             ->where('is_deleted', '!=', 1)
             ->firstOrFail();
@@ -219,7 +222,7 @@ class ProductController extends Controller
 
             $currentPage = $request->input('page', 1);
 
-            return redirect()->route('productIndex', ['page' => $currentPage])->with('success', 'Product updated successfully');
+            return redirect()->route('clientIndex', ['page' => $currentPage])->with('success', 'Product updated successfully');
         } catch (\Exception $e) {
             DB::rollback();
 
@@ -237,18 +240,18 @@ class ProductController extends Controller
                 'is_deleted' => 1,
             ]);
 
-            return redirect()->route('productIndex')->with('success', 'Client marked as deleted successfully');
+            return redirect()->route('clientIndex')->with('success', 'Client marked as deleted successfully');
         } catch (\Exception $e) {
             return redirect()->back()->with('error', 'An error occurred while marking the client as deleted: ' . $e->getMessage());
         }
     }
-    public function toggleProductActivation($id)
+    public function toggleclientActivation($id)
     {
-        $product = Products::where('id', $id)->first();
-        $product->status = $product->status === 1 ? 2 : 1;
-        $product->save();
+        $client = Client::where('id', $id)->first();
+        $client->status = $client->status === 1 ? 2 : 1;
+        $client->save();
         return [
-            'is_active' => $product->status
+            'is_active' => $client->status
         ];
     }
 }

@@ -22,7 +22,6 @@ class CreateProductsTable extends Migration
 
             $table->index('client_id');
 
-       
             $table->text('minimum_wage')->nullable();
             $table->integer('status')->default(1);
 

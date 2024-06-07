@@ -12,7 +12,7 @@
                     <ol class="breadcrumb m-0">
                         <li class="breadcrumb-item"><a href="{{ route('home') }}" style="color: #007bff;">@lang('global.home')</a>
                         </li>
-                        <li class="breadcrumb-item"><a href="{{ route('productIndex') }}"
+                        <li class="breadcrumb-item"><a href="{{ route('clientIndex') }}"
                                 style="color: #007bff;">@lang('cruds.branches.title')</a></li>
                         <li class="breadcrumb-item active">@lang('global.edit')</li>
                     </ol>
@@ -32,7 +32,7 @@
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body">
-                    <form action="{{ route('productUpdate', ['id' => $product->id]) }}" method="post"
+                    <form action="{{ route('clientUpdate', ['id' => $product->id]) }}" method="post"
                         enctype="multipart/form-data">
                         @csrf
                         @method('PUT')

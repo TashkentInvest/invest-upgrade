@@ -26,6 +26,7 @@ class ExelSeeder extends Seeder
                 'client_description' => isset($item->client_description) ? $item->client_description : null,
 
                 'company_name' => $item->company_name ?? null,
+                'minimum_wage' => $item->minimum_wage ?? null,
 
             ];
 
@@ -54,13 +55,6 @@ class ExelSeeder extends Seeder
 
             $branch = Branch::create($branchData);
 
-            $productData = [
-                'client_id' => $client->id,
-                'user_id' => 1,
-                'minimum_wage' => $item->minimum_wage ?? null,
-            ];
-
-            $product = Products::create($productData);
         }
     }
 }
