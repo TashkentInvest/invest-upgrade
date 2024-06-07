@@ -177,7 +177,12 @@
                     <!-- Data table -->
                     <table id="datatable" class="table table-bordered dt-responsive w-100">
                         <tbody>
-
+                            @if($client->mijoz_turi == 'fizik')
+                            <tr>
+                                <td>@lang('cruds.company.fields.home_address')</td>
+                                <td colspan="2">{{ $client->home_address }}</td>
+                            </tr>
+                            @else
                             <tr>
                                 <td>@lang('cruds.company.fields.company_location')</td>
                                 <td colspan="2">{{ $client->company_location }}</td>
@@ -186,6 +191,12 @@
                                 <td>@lang('cruds.company.fields.company_name')</td>
                                 <td colspan="2">{{ $client->company_name }}</td>
                             </tr>
+                            <tr>
+                                <td>@lang('cruds.company.fields.oked')</td>
+                                <td colspan="2">{{ $client->oked }}</td>
+                            </tr>
+                            @endif
+                           
                         
                             <tr>
                                 <td>@lang('cruds.company.fields.raxbar')</td>
@@ -203,10 +214,7 @@
                                 <td>@lang('cruds.company.fields.stir')</td>
                                 <td colspan="2">{{ $client->stir }}</td>
                             </tr>
-                            <tr>
-                                <td>@lang('cruds.company.fields.oked')</td>
-                                <td colspan="2">{{ $client->oked }}</td>
-                            </tr>
+                          
 
                             @foreach ($client->branches as $b)
                                 <tr>
@@ -214,12 +222,12 @@
                                             {{ $b->contract_apt }}</strong></td>
                                 </tr>
                                 <tr>
-                                    <td>@lang('cruds.company.fields.branch_location')</td>
+                                    <td>@lang('cruds.company.fields.branch_type')</td>
                                     <td colspan="2">{{ $b->branch_type }}</td>
                                 </tr>
                                 <tr>
                                     <td>@lang('cruds.company.fields.branch_location')</td>
-                                    <td colspan="2">{{ $b->location }}</td>
+                                    <td colspan="2">{{ $b->branch_location }}</td>
                                 </tr>
                                 <tr>
                                     <td>@lang('global.ruxsatnoma_raqami')</td>

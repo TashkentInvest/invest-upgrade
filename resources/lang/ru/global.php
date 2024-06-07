@@ -186,6 +186,7 @@ return [
     'action_id'                            => 'ID действия',
     'action_model'                         => 'Модель действия',
     'address'                              => 'Адрес',
+    'home_address'                              => 'Домашний адрес',
     'administrator_can_create_other_users' => 'Администратор (может создавать других пользователей)',
     'aggregate_function_use'               => 'Какую агрегатную функцию использовать?',
     'all'                                  => 'Все',

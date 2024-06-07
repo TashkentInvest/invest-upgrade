@@ -21,6 +21,7 @@ class CreateClientsTable extends Migration
             $table->string('father_name')->nullable();
             $table->string('contact')->nullable();
             $table->string('yuridik_address')->nullable();
+            $table->string('home_address')->nullable();
             $table->string('yuridik_rekvizid')->nullable();
             $table->string('passport_serial')->nullable();
             $table->string('passport_pinfl')->nullable();
@@ -40,7 +41,7 @@ class CreateClientsTable extends Migration
             $table->text('minimum_wage')->nullable();
             $table->integer('status')->default(1);
             $table->timestamps();
-            
+
             $table->index('is_deleted');
             $table->index(['last_name', 'first_name']);
         });

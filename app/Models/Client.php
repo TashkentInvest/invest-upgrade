@@ -19,6 +19,7 @@ class Client extends Model
         'user_birht',
         'serial_serial',
         'serial_pinfl',
+        'home_address',
         'yuridik_address',
         'yuridik_rekvizid',
         'passport_serial',

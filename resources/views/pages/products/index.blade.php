@@ -345,6 +345,10 @@
                                                                     <td>@lang('cruds.client.fields.yuridik_address')</td>
                                                                     <td>{{ $item->yuridik_address }}</td>
                                                                 </tr>
+                                                                <tr>
+                                                                    <td>@lang('global.home_address')</td>
+                                                                    <td>{{ $item->home_address }}</td>
+                                                                </tr>
                                                                 {{-- <tr>
                                                                     <td>@lang('cruds.client.fields.yuridik_rekvizid')</td>
                                                                     <td>{{ $item->yuridik_rekvizid }}</td>

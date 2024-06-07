@@ -78,6 +78,7 @@ class ClientController extends Controller
                 'passport_date' => $request->get('passport_date'),
                 'passport_location' => $request->get('passport_location'),
                 'passport_type' => $request->get('passport_type', 0),
+                'home_address' => $request->get('home_address'),
                 'yuridik_address' => $request->get('yuridik_address'),
                 'client_description' => $request->get('client_description'),
                 'company_location' => $request->get('company_location'),
@@ -178,6 +179,7 @@ class ClientController extends Controller
                 'passport_location' => $request->passport_location,
                 'passport_type' => $request->passport_type,
                 'yuridik_address' => $request->yuridik_address,
+                'home_address' => $request->home_address,
                 'client_description' => $request->client_description,
 
                 'company_location' => $request->company_location,

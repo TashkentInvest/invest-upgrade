@@ -251,6 +251,19 @@
                                         @endif
                                     </div>
 
+                                    <div class="col-12 col-lg-3 mb-2">
+                                        <label for="home_address"
+                                            class="col-md-6 col-form-label">@lang('global.home_address')</label>
+                                        <input
+                                            class="form-control {{ $errors->has('home_address') ? 'is-invalid' : '' }}"
+                                            type="text" name="home_address" id="home_address"
+                                            placeholder="@lang('global.home_address')" value="{{ old('home_address') }}">
+                                        @if ($errors->has('home_address'))
+                                            <span
+                                                class="error invalid-feedback">{{ $errors->first('home_address') }}</span>
+                                        @endif
+                                    </div>
+
                                 </div>
 
                                 <div class="row"  style="align-items: center ">
