@@ -156,14 +156,14 @@
                             <p style="margin-top:0pt; margin-bottom:0pt; font-size:12pt;"><span style="font-family:'Times New Roman';">АТБ &ldquo;{{$client->bank_service}}</span></p>
                             <p style="margin-top:0pt; margin-bottom:0pt; font-size:12pt;"><span style="font-family:'Times New Roman';">Банк коди {{$client->bank_code}}</span></p>
                             <p style="margin-top:0pt; margin-bottom:0pt; font-size:12pt;"><span style="font-family:'Times New Roman';">СТИР {{$client->stir}}</span></p>
-                            <p style="margin-top:0pt; margin-bottom:0pt; font-size:12pt;"><span style="font-family:'Times New Roman';">ИФУТ 45202</span></p>
+                            <p style="margin-top:0pt; margin-bottom:0pt; font-size:12pt;"><span style="font-family:'Times New Roman';">ОКЭД {{$client->oked}}</span></p>
                             <p style="margin-top:0pt; margin-bottom:0pt; font-size:12pt;"><strong><span style="font-family:'Times New Roman';">&nbsp;</span></strong></p>
                             <p style="margin-top:0pt; margin-bottom:0pt; font-size:12pt;"><strong><span style="font-family:'Times New Roman';">&nbsp;</span></strong></p>
                             <p style="margin-top:0pt; margin-bottom:0pt; font-size:12pt;"><strong><span style="font-family:'Times New Roman';">&nbsp;</span></strong></p>
                             <p style="margin-top:0pt; margin-bottom:0pt; font-size:12pt;"><strong><span style="font-family:'Times New Roman';">&nbsp;</span></strong></p>
                             <p style="margin-top:0pt; margin-bottom:0pt; padding-bottom:1pt; font-size:12pt;"><strong><span style="font-family:'Times New Roman';">&nbsp;</span></strong></p>
                         </div>
-                        <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; font-size:12pt;"><strong><span style="font-family:'Times New Roman';">{{$client->last_name}} - {{$client->first_name}} {{$client->father_name}}</span></strong></p>
+                        <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; font-size:12pt;"><strong><span style="font-family:'Times New Roman';">{{$client->last_name}} {{$client->first_name}} {{$client->father_name}}</span></strong></p>
                     </td>
                 </tr>
             </tbody>
