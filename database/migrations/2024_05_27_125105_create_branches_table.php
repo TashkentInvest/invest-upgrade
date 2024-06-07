@@ -26,11 +26,12 @@ class CreateBranchesTable extends Migration
             $table->string('percentage_input')->nullable();
             $table->string('installment_quarterly')->nullable();
             $table->string('branch_kubmetr')->nullable();
+            $table->string('branch_location')->nullable();
             
             $table->string('notification_num')->nullable();
             $table->date('notification_date')->nullable();
             $table->string('insurance_policy')->nullable();
-            $table->string('bank_guarantee')->nullable();
+            $table->string('bank_guarantee')->nullable();   
             $table->string('application_number')->nullable();
             $table->string('payed_sum')->nullable();
             $table->date('payed_date')->nullable();
