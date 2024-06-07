@@ -45,6 +45,28 @@
                                         </div>
                                         <div class="modal-body">
 
+                                            
+                                            <!-- Company Search -->
+                                            <div class="form-group row align-items-center my-2">
+                                                <div class="col-3">
+                                                    <h6>@lang('global.last_name')</h6>
+                                                </div>
+                                                <div class="col-2">
+                                                    <select class="form-control form-control-sm" name="company_operator">
+                                                        <option value="like"
+                                                            {{ request()->client_operator == 'like' ? 'selected' : '' }}>
+                                                            Like</option>
+                                                        <!-- Add other comparison operators if needed -->
+                                                    </select>
+                                                </div>
+                                                <div class="col-3">
+                                                    <input type="hidden" name="client_name_operator" value="like">
+                                                    <input class="form-control form-control-sm" type="text"
+                                                        name="last_name"
+                                                        value="{{ old('last_name', request()->last_name ?? '') }}">
+                                                </div>
+                                            </div>
+
                                             <!-- Company Search -->
                                             <div class="form-group row align-items-center my-2">
                                                 <div class="col-3">
