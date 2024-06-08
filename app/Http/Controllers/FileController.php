@@ -52,6 +52,7 @@ class FileController extends Controller
 
     foreach ($clientAttributes as $attribute) {
         $client->$attribute;
+
     }
 
     $branchDocuments = [];
@@ -67,6 +68,8 @@ class FileController extends Controller
             : 'pages.docs.full_pay.yurik_litso';
     }
 
+    $passport_formattedDate = Carbon::parse($client->passport_date)->format('Y-m-d H:i:s');
+
     foreach ($client->branches as $branch) {
         $branch->generate_price;
         $branch->branch_kubmetr;
@@ -76,7 +79,7 @@ class FileController extends Controller
         // Ensure valid filename
         $filename = preg_replace('/[<>:"\/\\|?*]+/', '_', $client->company_name . '_branch_' . $branch->id . '.doc');
 
-        $branchDocument = view($view, compact('client', 'branch'))->render();
+        $branchDocument = view($view, compact('client', 'branch','passport_formattedDate'))->render();
         $branchDocuments[] = ['document' => $branchDocument, 'filename' => $filename];
     }
 
@@ -109,6 +112,7 @@ class FileController extends Controller
         $client->stir;
         $client->oked;
         $client->company_location;
+
 
 
         $branchDocuments = []; 

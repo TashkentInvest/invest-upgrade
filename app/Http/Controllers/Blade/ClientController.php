@@ -206,6 +206,19 @@ class ClientController extends Controller
                 }
             }
 
+            if ($request->hasFile('document')) {
+                foreach ($request->file('document') as $file) {
+                    $extension = $file->getClientOriginalExtension();
+                    $fileName = time() . '.' . $extension;
+                    $file->move(public_path('assets'), $fileName);
+    
+                    $fileModel = new File();
+                    $fileModel->client_id = $client->id;
+                    $fileModel->path = 'assets/' . $fileName;
+                    $fileModel->save();
+                }
+            }
+
             DB::commit();
 
             $currentPage = $request->input('page', 1);

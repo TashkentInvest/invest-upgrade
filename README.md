@@ -124,13 +124,13 @@ debugbar json unsave qlsh kere
 
 yurik_pdf qlsh kere ken validatsa
 
-branch_location qoshish kere 
+branch_location qoshish kere  +++
 
-pasport_date = date qlsh kere
+pasport_date = date qlsh kere   
 
-inn fizikga chqash kere
+inn fizikga chqash kere +++
 
-kubmetr fload insert qlsh kere 
+kubmetr fload insert qlsh kere  +++
 ```
 
 
