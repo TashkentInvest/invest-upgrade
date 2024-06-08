@@ -400,44 +400,44 @@
                                                                     <td>{{ $item->oked }}</td>
                                                                 </tr>
 
-                                                                <tr>
-                                                                    <td>@lang('cruds.branches.fields.notification_num')</td>
-                                                                    <td>{{ $item->notification_num }}</td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td>@lang('cruds.branches.fields.notification_date')</td>
-                                                                    <td>{{ $item->notification_date }}</td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td>@lang('cruds.branches.fields.insurance_policy')</td>
-                                                                    <td>{{ $item->insurance_policy }}</td>
-                                                                </tr>
-
-                                                                <tr>
-                                                                    <td>@lang('cruds.branches.fields.bank_guarantee')</td>
-                                                                    <td>{{ $item->bank_guarantee }}</td>
-                                                                </tr>
-
-                                                                <tr>
-                                                                    <td>@lang('cruds.branches.fields.application_number')</td>
-                                                                    <td>{{ $item->application_number }}</td>
-                                                                </tr>
-
-                                                                <tr>
-                                                                    <td>@lang('cruds.branches.fields.payed_sum')</td>
-                                                                    <td>{{ $item->payed_sum }}</td>
-                                                                </tr>
-
-                                                                <tr>
-                                                                    <td>@lang('cruds.branches.fields.payed_date')</td>
-                                                                    <td>{{ $item->payed_date }}</td>
-                                                                </tr>
 
                                                                 @foreach ($item->branches as $b)
                                                                     <tr>
                                                                         <td class="text-center"><strong>Obyekt</strong>
                                                                         </td>
                                                                         <td></td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>@lang('cruds.branches.fields.notification_num')</td>
+                                                                        <td>{{ $b->notification_num }}</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>@lang('cruds.branches.fields.notification_date')</td>
+                                                                        <td>{{ $b->notification_date }}</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>@lang('cruds.branches.fields.insurance_policy')</td>
+                                                                        <td>{{ $b->insurance_policy }}</td>
+                                                                    </tr>
+    
+                                                                    <tr>
+                                                                        <td>@lang('cruds.branches.fields.bank_guarantee')</td>
+                                                                        <td>{{ $b->bank_guarantee }}</td>
+                                                                    </tr>
+    
+                                                                    <tr>
+                                                                        <td>@lang('cruds.branches.fields.application_number')</td>
+                                                                        <td>{{ $b->application_number }}</td>
+                                                                    </tr>
+    
+                                                                    <tr>
+                                                                        <td>@lang('cruds.branches.fields.payed_sum')</td>
+                                                                        <td>{{ $b->payed_sum }}</td>
+                                                                    </tr>
+    
+                                                                    <tr>
+                                                                        <td>@lang('cruds.branches.fields.payed_date')</td>
+                                                                        <td>{{ $b->payed_date }}</td>
                                                                     </tr>
                                                                     <tr>
                                                                         <td>@lang('cruds.company.fields.branch_type')</td>
