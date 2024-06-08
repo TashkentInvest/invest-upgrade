@@ -31,7 +31,7 @@ class ProductsExport implements FromCollection, WithHeadings, WithColumnFormatti
                     'branches.application_number AS application_number',
                     'clients.company_name AS company_name',
                     'clients.contact AS contact',
-                    'clients.company_location AS district',
+                    'clients.yuridik_address AS district',
                     'branches.branch_kubmetr AS calculated_volume',
                     'branches.generate_price AS infrastructure_payment',
                     DB::raw("CAST(NULLIF(REPLACE(branches.generate_price, ',', ''), '') AS DECIMAL(10,2)) * CAST(branches.percentage_input AS DECIMAL(10,2)) / 100 AS calculated_amount"),
