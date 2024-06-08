@@ -112,9 +112,19 @@ applicatoin_num qatta bolshi kere ? Branch +++
 
 edit blade ga add accardion qlish kere +++
 
-product add / edit qvotganda validatsalani check qb chiqish kere
+inn fizikga chqash kere +++
 
-daily backup qilish kere schedule blan 
+kubmetr fload insert qlsh kere  +++
+
+fizik uchun address +++
+
+daily backup qilish kere schedule blan +++
+
+branch_location qoshish kere  +++
+
+pasport_date = date qlsh kere   
+
+product add / edit qvotganda validatsalani check qb chiqish kere
 
 textlani fix qilish kere
 
@@ -124,13 +134,9 @@ debugbar json unsave qlsh kere
 
 yurik_pdf qlsh kere ken validatsa
 
-branch_location qoshish kere  +++
+generate_price not changeble bop qogan fix qlsh kere
 
-pasport_date = date qlsh kere   
-
-inn fizikga chqash kere +++
-
-kubmetr fload insert qlsh kere  +++
+edit boganda calc script qlish kere
 ```
 
 
@@ -189,9 +195,6 @@ Route::get('/clear-optimize-cache', function () {
     <button type="submit">Clear Optimized Cache</button>
 </form>
 
-generate_price not changeble bop qogan fix qlsh kere
-
-fizik uchun address
 ```
 
 ```
