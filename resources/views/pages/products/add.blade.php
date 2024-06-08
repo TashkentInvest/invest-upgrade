@@ -358,26 +358,19 @@
                                                                     name="accordions[0][contract_date]">
                                                             </div>
                                                         </div>
-                                                    </div>
+                                                    {{-- </div>
                                                     <div class="row">
                                                     
-                                                        <div class="col-lg-6">
+                                                         <div class="col-lg-6">
                                                             <div class="mb-3">
                                                                 <label for="company_location">@lang('global.loyiha_manzili')</label>
                                                                 <input type="text" class="form-control"
                                                                     name="company_location"
                                                                     placeholder="@lang('global.loyiha_manzili')">
                                                             </div>
-                                                        </div>
-                                                        <div class="col-lg-6">
-                                                            <div class="mb-3">
-                                                                <label for="company_name">@lang('global.loyiha_nomi')</label>
-                                                                <input type="text" class="form-control"
-                                                                    name="company_name"
-                                                                    placeholder="@lang('global.loyiha_nomi')">
-                                                            </div>
-                                                        </div>
-                                                    </div>
+                                                        </div> 
+                                                
+                                                    </div> --}}
                                                     {{-- Starting to add new rows --}}
 
                                                     <div class="row">
@@ -407,19 +400,19 @@
                                                         </div>
                                                     </div>
                                                     <div class="row">
-                                                        <div class="col-lg-3">
+                                                        <div class="col-lg-4">
                                                             <div class="mb-3">
                                                                 <label for="application_number">@lang('cruds.branches.fields.application_number')</label>
                                                                 <input type="text" class="form-control" name="accordions[0][application_number]" placeholder="@lang('cruds.branches.fields.application_number')">
                                                             </div>
                                                         </div>
-                                                        <div class="col-lg-3">
+                                                        <div class="col-lg-4">
                                                             <div class="mb-3">
                                                                 <label for="payed_sum">@lang('cruds.branches.fields.payed_sum')</label>
                                                                 <input type="text" class="form-control" name="accordions[0][payed_sum]" placeholder="@lang('cruds.branches.fields.payed_sum')">
                                                             </div>
                                                         </div>
-                                                        <div class="col-lg-3">
+                                                        <div class="col-lg-4">
                                                             <div class="mb-3">
                                                                 <label for="payed_date">@lang('cruds.branches.fields.payed_date')</label>
                                                                 <input type="date" class="form-control" name="accordions[0][payed_date]" placeholder="@lang('cruds.branches.fields.payed_date')">
@@ -427,7 +420,7 @@
                                                         </div>
                                                     </div>
                                                     <div class="row">
-                                                        <div class="col-lg-4">
+                                                        <div class="col-lg-3">
                                                             <div class="inner-repeater mb-4">
                                                                 <div data-repeater-list="inner-group" class="inner mb-3">
                                                                     <label for="basicpill-cardno-input">@lang('global.obyekt_boyicha_tolanishi_lozim')</label>
@@ -436,13 +429,21 @@
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                        <div class="col-lg-4">
+                                                        <div class="col-lg-3">
+                                                            <div class="mb-3">
+                                                                <label for="company_name">@lang('global.loyiha_nomi')</label>
+                                                                <input type="text" class="form-control"
+                                                                    name="company_name"
+                                                                    placeholder="@lang('global.loyiha_nomi')">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-3">
                                                             <div class="mb-3">
                                                                 <label for="branch_type">@lang('global.loyiha_turi')</label>
                                                                 <input type="text" class="form-control" name="accordions[0][branch_type]" placeholder="@lang('global.loyiha_turi')">
                                                             </div>
                                                         </div>
-                                                        <div class="col-lg-4">
+                                                        <div class="col-lg-3">
                                                             <div class="mb-3">
                                                                 <label for="branch_location">@lang('cruds.company.fields.branch_location')</label>
                                                                 <input type="text" class="form-control" name="accordions[0][branch_location]" placeholder="@lang('cruds.company.fields.branch_location')">
