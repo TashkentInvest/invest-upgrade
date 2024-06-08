@@ -53,17 +53,17 @@
 
                                 <div class="row" id="make_show" style="display: none;">
 
-                                    <div class="col-lg-6">
+                                    {{-- <div class="col-lg-6">
                                         <div class="mb-3">
                                             <label for="company_location">@lang('global.loyiha_manzili')</label>
                                             <input type="text" class="form-control" name="company_location"
                                                 value="{{ old('company_location', $client->company_location) }}"
                                                 placeholder="@lang('global.loyiha_manzili')">
                                         </div>
-                                    </div>
-                                    <div class="col-lg-6">
+                                    </div> --}}
+                                    <div class="col-12 col-lg-3 mb-2">
                                         <div class="mb-3">
-                                            <label for="company_name">@lang('global.loyiha_nomi')</label>
+                                            <label for="company_name">@lang('global.company_name')</label>
                                             <input type="text" class="form-control" name="company_name"
                                                 value="{{ old('company_name', $client->company_name) }}"
                                                 placeholder="@lang('global.loyiha_nomi')">
