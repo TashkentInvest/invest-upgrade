@@ -368,10 +368,10 @@
                                                                     </td>
                                                                     <td></td>
                                                                 </tr>
-                                                                <tr>
+                                                                {{-- <tr>
                                                                     <td>@lang('cruds.company.fields.company_location')</td>
                                                                     <td>{{ $item->company_location }}</td>
-                                                                </tr>
+                                                                </tr> --}}
                                                                 <tr>
                                                                     <td>@lang('cruds.company.fields.company_name')</td>
                                                                     <td>{{ $item->company_name }}</td>

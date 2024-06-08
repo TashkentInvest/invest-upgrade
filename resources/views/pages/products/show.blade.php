@@ -187,8 +187,8 @@
                             </tr>
                             @else
                             <tr>
-                                <td>@lang('cruds.company.fields.company_location')</td>
-                                <td colspan="2">{{ $client->company_location }}</td>
+                                <td>@lang('cruds.client.fields.yuridik_address')</td>
+                                <td colspan="2">{{ $client->yuridik_address }}</td>
                             </tr>
                             <tr>
                                 <td>@lang('cruds.company.fields.company_name')</td>
