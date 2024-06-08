@@ -33,7 +33,7 @@
                 <h3 class="card-title">Audit Logs</h3>
             </div>
             <div class="card-body">
-                <table id="datatable" class="table table-bordered table-striped w-100">
+                <table class="table table-bordered table-striped w-100">
                     <thead>
                         <tr>
                             <th>@lang('global.id')</th>
@@ -106,7 +106,9 @@
                                                             @endforeach
                                                             
                                                         </tbody>
-                                                    </table>
+                                                        
+                                                        </table>
+                                                        
                                                 </div>
                                                 <div class="modal-footer">
                                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -117,8 +119,16 @@
                                 </td>
                             </tr>
                         @endforeach
+
+                      
                     </tbody>
                 </table>
+                <div class="d-flex">
+
+                    {!! $auditLogs->links() !!}
+
+                </div>
+
             </div>
         </div>
     </div>
@@ -126,16 +136,3 @@
 
 @endsection
 
-@push('scripts')
-<link rel="stylesheet" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css">
-<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-<script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
-<script>
-    $(document).ready(function() {
-        $('#datatable').DataTable({
-            "order": [[ 4, "desc" ]], // Order by the Timestamp column by default
-            "pageLength": 10, // Show 10 entries per page by default
-        });
-    });
-</script>
-@endpush

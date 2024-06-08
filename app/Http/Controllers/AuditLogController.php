@@ -11,8 +11,7 @@ class AuditLogController extends Controller
 {
     public function index()
     {
-        $auditLogs = AuditLog::with(['user', 'client'])->orderBy('created_at', 'desc')->get();
-        
+        $auditLogs = AuditLog::with(['user', 'client'])->orderBy('created_at', 'desc')->paginate(10);
         return view('pages.audit-logs.index', compact('auditLogs'));
     }
     
