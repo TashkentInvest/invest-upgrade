@@ -213,8 +213,12 @@
                         </thead>
                         <tbody>
                             @foreach ($clients as $item)
+                            {{-- @dd($item->files) --}}
                                 <tr>
-                                    <td>{{ $item->id }}</td>
+                                    
+                                    {{-- <td >{{ $item->id }}</td> --}}
+                                    <td class="{{ $item->files->isNotEmpty() ? '' : 'bg-secondary text-light' }}">{{ $item->id }}</td>
+
                                     @if ($item->mijoz_turi == 'fizik')
                                         <td>{{ $item->last_name }} {{ $item->first_name }} {{ $item->father_name }}</td>
                                     @else
