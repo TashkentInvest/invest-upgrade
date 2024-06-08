@@ -436,9 +436,38 @@
     
                                                                     <tr>
                                                                         <td>@lang('cruds.branches.fields.payed_sum')</td>
-                                                                        <td>{{ $b->payed_sum }}</td>
+                                                                        <td colspan="2" id="payedSumCell">{{ $b->payed_sum }}</td>
                                                                     </tr>
-    
+                                                                    
+                                                                    {{-- <script>
+                                                                        window.onload = function () {
+                                                                            function formatNumberWithSpaces(number) {
+                                                                                return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
+                                                                            }
+                                                                    
+                                                                            var payedSumElement = document.getElementById('payedSumCell');
+                                                                            
+                                                                            if (payedSumElement) {
+                                                                                var payedSumValue = payedSumElement.textContent.trim();
+                                                                                console.log("Original value:", payedSumValue);
+                                                                                
+                                                                                // Check if the payedSumValue is a valid number
+                                                                                if (!isNaN(payedSumValue) && payedSumValue !== "") {
+                                                                                    var formattedValue = formatNumberWithSpaces(payedSumValue);
+                                                                                    console.log("Formatted value:", formattedValue);
+                                                                                    payedSumElement.textContent = formattedValue;
+                                                                                } else {
+                                                                                    console.error("payedSumValue is not a valid number:", payedSumValue);
+                                                                                }
+                                                                            } else {
+                                                                                console.error("Element with id 'payedSumCell' not found.");
+                                                                            }
+                                                                        };
+                                                                    </script>
+                                                                     --}}
+                                                                 
+                                                            
+                                                                    
                                                                     <tr>
                                                                         <td>@lang('cruds.branches.fields.payed_date')</td>
                                                                         <td>{{ $b->payed_date }}</td>
