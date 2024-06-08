@@ -680,6 +680,89 @@
                                         $(this).closest('.accordion-item').remove();
                                     });
                                 });
+
+                                $(document).on('input change', '.branch_kubmetr, .minimum_wage, .percentage-input, .quarterly-input',
+                                        function() {
+                                            let parentAccordion = $(this).closest('.accordion-body');
+                                            calculateGeneratePrice(parentAccordion);
+                                        });
+
+                                    function calculateGeneratePrice(parentAccordion) {
+                                        let companyKubmetr = parentAccordion.find('.branch_kubmetr').val();
+                                        let minimumWage = parentAccordion.find('.minimum_wage').val();
+                                        let generatePrice = companyKubmetr * minimumWage;
+                                        parentAccordion.find('.generate_price').val(generatePrice.toFixed(2));
+
+                                        let percentageInput = parseFloat(parentAccordion.find('.percentage-input').val());
+                                        let quarterlyInput = parseInt(parentAccordion.find('.quarterly-input').val());
+
+                                        if (!isNaN(generatePrice) && !isNaN(percentageInput) && !isNaN(quarterlyInput) && quarterlyInput >
+                                            0) {
+                                            let z = (generatePrice * percentageInput) / 100;
+                                            let n = generatePrice - z;
+                                            let y = n / quarterlyInput;
+                                            parentAccordion.find('.calculated-quarterly-payment').val(y.toFixed(2));
+
+                                            updatePaymentSchedule(parentAccordion, generatePrice);
+                                            updateQuarterlyPaymentSchedule(parentAccordion, y, quarterlyInput);
+                                        }
+                                    }
+
+                                    function updatePaymentSchedule(parentAccordion, generatePrice) {
+                                        let paymentSchedule = parentAccordion.find('.payment-schedule');
+                                        paymentSchedule.empty();
+                                        let percentages = [0, 10, 20, 30, 40, 50];
+                                        percentages.forEach(percentage => {
+                                            let z = Math.round((generatePrice * percentage) / 100); // Rounding z
+                                            let n = generatePrice - z;
+                                            let quarterlyInput = parentAccordion.find('.quarterly-input').val();
+                                            let y = quarterlyInput ? Math.round((n / quarterlyInput)) : "N/A";
+                                            paymentSchedule.append(
+                                                `<tr>
+                                                    <td>${percentage}%</td>
+                                                    <td>${Math.round(z)}</td>
+                                                    <td>${y}</td>
+                                                </tr>`
+                                            );
+                                        });
+                                    }
+
+
+                                    function updateQuarterlyPaymentSchedule(parentAccordion, quarterlyPayment, quarterlyCount) {
+                                        let quarterlyPaymentSchedule = parentAccordion.find('.quarterly-payment-schedule');
+                                        quarterlyPaymentSchedule.empty();
+                                        let totalQuarterlyPayment = 0;
+                                        for (let i = 1; i <= quarterlyCount; i++) {
+                                            quarterlyPaymentSchedule.append(
+                                                `<tr>
+                                                    <td>Chorak ${i}</td>
+                                                    <td>${Math.round(quarterlyPayment)}</td>
+                                                </tr>`
+                                            );
+                                            totalQuarterlyPayment += quarterlyPayment;
+                                        }
+                                        parentAccordion.find('.total-quarterly-payment').text(Math.round(totalQuarterlyPayment));
+                                    }
+
+                                    $(document).on('change', '.payment-type', function() {
+                                        let parentAccordion = $(this).closest('.accordion-body');
+                                        let paymentType = $(this).val();
+                                        let percentageInput = parentAccordion.find('.percentage-input');
+                                        let quarterlyInput = parentAccordion.find('.quarterly-input');
+
+                                        if (paymentType === 'pay_full') {
+                                            percentageInput.val(100).prop('disabled', true);
+                                            quarterlyInput.val('').prop('disabled', true);
+                                            parentAccordion.find('.calculated-quarterly-payment').val('N/A');
+                                            parentAccordion.find('.payment-schedule').empty();
+                                            parentAccordion.find('.quarterly-payment-schedule').empty();
+                                        } else {
+                                            percentageInput.prop('disabled', false);
+                                            quarterlyInput.prop('disabled', false);
+                                        }
+
+                                        calculateGeneratePrice(parentAccordion);
+                                    });
                             </script>
 
                             <!-- Confirm Details -->
