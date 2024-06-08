@@ -52,7 +52,7 @@
                                             'default' => false,
                                         ],
                                         [
-                                            'name' => __('global.passport_pinfl'),
+                                            'name' => __('passport date'),
                                             'data-priority' => 11,
                                             'default' => false,
                                         ],
@@ -106,6 +106,9 @@
                                     <td>{{ $client->father_name }}</td>
                                     <td class="d-none">{{ $client->passport_serial }}</td>
                                     <td class="d-none">{{ $client->passport_pinfl }}</td>
+                                    {{-- <td class="d-none">{{ $client->passport_date }}</td> --}}
+                                    <td class="d-none">{{ date('d-m-Y', strtotime($client->passport_date)) }}</td>
+
                                     <td class="d-none">
                                         {{ $client->passport_type ? $client->passport_type == 'Id' : ($client->passport_type = 'Passport') }}
                                     </td>
