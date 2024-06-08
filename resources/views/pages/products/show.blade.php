@@ -294,6 +294,8 @@
                             
                           
                             <ul>
+                                <h5>@lang('global.contract_details')</h5>
+
                                 @foreach ($files as $file)
                                     <div class="py-1">
                                         <a target="_blank" class="py-2 my-2"
