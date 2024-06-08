@@ -163,7 +163,7 @@ return [
             'address' => "Адрес",
             'open_with_google_maps' => 'Открыть в Google Картах',
 
-            'notification_num' => 'Номер уведомления',
+            'notification_num' => 'Номер разрешения',
             'notification_date' => 'Дата уведомления',
             'insurance_policy' => 'Страховой полис',
             'bank_guarantee' => 'Банковская гарантия',

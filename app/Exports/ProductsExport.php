@@ -82,7 +82,7 @@ class ProductsExport implements FromCollection, WithHeadings, WithColumnFormatti
             'Дата оплаты',
             '№ договора',
             'Дата договора',
-            '№ уведомления',
+            '№ разрешения',
             'Дата уведомления',
             'Страховой полис',
             'Банковская гарантия',

@@ -162,7 +162,7 @@ return [
             'address' => "Manzil",
             'open_with_google_maps' => 'Google Xarita orqali oching',
 
-            'notification_num' => 'Bildirishnoma raqami',
+            'notification_num' => 'Ruxsatnoma raqami',
             'notification_date' => 'Bildirishnoma sanasi',
             'insurance_policy' => 'Sugʻurta polisi',
             'bank_guarantee' => 'Bank kafolati',
