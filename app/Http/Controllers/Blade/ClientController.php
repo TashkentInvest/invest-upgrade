@@ -96,18 +96,34 @@ class ClientController extends Controller
             ]);
     
             // Handle file uploads
+            // if ($request->hasFile('document')) {
+            //     foreach ($request->file('document') as $file) {
+            //         $extension = $file->getClientOriginalExtension();
+            //         $fileName = time() . '.' . $extension;
+            //         $file->move(public_path('assets'), $fileName);
+    
+            //         $fileModel = new File();
+            //         $fileModel->client_id = $client->id;
+            //         $fileModel->path = 'assets/' . $fileName;
+            //         $fileModel->save();
+            //     }
+            // }
+
             if ($request->hasFile('document')) {
                 foreach ($request->file('document') as $file) {
+                    $originalName = pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME);
                     $extension = $file->getClientOriginalExtension();
-                    $fileName = time() . '.' . $extension;
+                    $date = date('Ymd_His');
+                    $fileName = $originalName . '_' . $date . '.' . $extension;
                     $file->move(public_path('assets'), $fileName);
-    
+            
                     $fileModel = new File();
                     $fileModel->client_id = $client->id;
                     $fileModel->path = 'assets/' . $fileName;
                     $fileModel->save();
                 }
             }
+
         // dd($request->accordions);
 
     
@@ -209,18 +225,34 @@ class ClientController extends Controller
                 }
             }
 
+            // if ($request->hasFile('document')) {
+            //     foreach ($request->file('document') as $file) {
+            //         $extension = $file->getClientOriginalExtension();
+            //         $fileName = time() . '.' . $extension;
+            //         $file->move(public_path('assets'), $fileName);
+    
+            //         $fileModel = new File();
+            //         $fileModel->client_id = $client->id;
+            //         $fileModel->path = 'assets/' . $fileName;
+            //         $fileModel->save();
+            //     }
+            // }
+
             if ($request->hasFile('document')) {
                 foreach ($request->file('document') as $file) {
+                    $originalName = pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME);
                     $extension = $file->getClientOriginalExtension();
-                    $fileName = time() . '.' . $extension;
+                    $date = date('Ymd_His');
+                    $fileName = $originalName . '_' . $date . '.' . $extension;
                     $file->move(public_path('assets'), $fileName);
-    
+            
                     $fileModel = new File();
                     $fileModel->client_id = $client->id;
                     $fileModel->path = 'assets/' . $fileName;
                     $fileModel->save();
                 }
             }
+            
 
             DB::commit();
 
