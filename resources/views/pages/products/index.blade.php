@@ -45,7 +45,7 @@
                                         </div>
                                         <div class="modal-body">
 
-                                            
+
                                             <!-- Company Search -->
                                             <div class="form-group row align-items-center my-2">
                                                 <div class="col-3">
@@ -133,7 +133,8 @@
                                                     <h6>@lang('global.created_at')</h6>
                                                 </div>
                                                 <div class="col-lg-2 col-md-2 col-sm-3 col-4">
-                                                    <select class="form-control form-control-sm" name="created_at_operator"
+                                                    <select class="form-control form-control-sm"
+                                                        name="created_at_operator"
                                                         onchange="
                                                                 if(this.value == 'between'){
                                                                 document.getElementById('created_at_pair').style.display = 'block';
@@ -142,10 +143,12 @@
                                                                 }
                                                                 ">
                                                         <option value="like"
-                                                            {{ request()->created_at_operator == '=' ? 'selected' : '' }}> =
+                                                            {{ request()->created_at_operator == '=' ? 'selected' : '' }}>
+                                                            =
                                                         </option>
                                                         <option value=">"
-                                                            {{ request()->created_at_operator == '>' ? 'selected' : '' }}> >
+                                                            {{ request()->created_at_operator == '>' ? 'selected' : '' }}>
+                                                            >
                                                         </option>
                                                         <option value="<"
                                                             {{ request()->created_at_operator == '<' ? 'selected' : '' }}>
@@ -215,8 +218,8 @@
                                     @if ($item->mijoz_turi == 'fizik')
                                         <td>{{ $item->last_name }} {{ $item->first_name }} {{ $item->father_name }}</td>
                                     @else
-                                    <td>{{ $item->company_name }} </td>
-                                    {{-- @dump($item->company_name) --}}
+                                        <td>{{ $item->company_name }} </td>
+                                        {{-- @dump($item->company_name) --}}
                                     @endif
 
                                     <td>{{ $item->contact ?? '---' }}</td>
@@ -327,7 +330,8 @@
                                                                 <tr>
                                                                     <td>@lang('cruds.client.fields.passport_date')</td>
                                                                     {{-- <td>{{ $item->passport_date }}</td> --}}
-                                                                    <td>{{ date('d-m-Y', strtotime($item->passport_date)) }}</td>
+                                                                    <td>{{ date('d-m-Y', strtotime($item->passport_date)) }}
+                                                                    </td>
                                                                 </tr>
                                                                 <tr>
                                                                     <td>@lang('cruds.client.fields.passport_location')</td>
@@ -368,7 +372,7 @@
                                                                     <td>@lang('cruds.company.fields.company_name')</td>
                                                                     <td>{{ $item->company_name }}</td>
                                                                 </tr>
-                                                              
+
                                                                 <tr>
                                                                     <td>@lang('cruds.company.fields.raxbar')</td>
                                                                     <td>{{ $item->raxbar }}</td>
@@ -390,7 +394,7 @@
                                                                     <td>@lang('cruds.company.fields.stir')</td>
                                                                     <td>{{ $item->stir }}</td>
                                                                 </tr>
-                                                                
+
                                                                 <tr>
                                                                     <td>@lang('cruds.company.fields.oked')</td>
                                                                     <td>{{ $item->oked }}</td>
@@ -408,30 +412,27 @@
                                                                     <td>@lang('cruds.branches.fields.insurance_policy')</td>
                                                                     <td>{{ $item->insurance_policy }}</td>
                                                                 </tr>
-                                                              
+
                                                                 <tr>
                                                                     <td>@lang('cruds.branches.fields.bank_guarantee')</td>
                                                                     <td>{{ $item->bank_guarantee }}</td>
                                                                 </tr>
-                                    
+
                                                                 <tr>
                                                                     <td>@lang('cruds.branches.fields.application_number')</td>
                                                                     <td>{{ $item->application_number }}</td>
                                                                 </tr>
-                                    
+
                                                                 <tr>
                                                                     <td>@lang('cruds.branches.fields.payed_sum')</td>
                                                                     <td>{{ $item->payed_sum }}</td>
                                                                 </tr>
-                                    
+
                                                                 <tr>
                                                                     <td>@lang('cruds.branches.fields.payed_date')</td>
                                                                     <td>{{ $item->payed_date }}</td>
                                                                 </tr>
-                                    
-                                    
 
-                                                            
                                                                 @foreach ($item->branches as $b)
                                                                     <tr>
                                                                         <td class="text-center"><strong>Obyekt</strong>
@@ -493,7 +494,7 @@
                                                                     <td>@lang('global.bazaviy_xisoblash_miqdori')</td>
                                                                     <td>{{ $item->minimum_wage }}</td>
                                                                 </tr>
-                                                               
+
                                                             </tbody>
                                                         </table>
                                                     </div>
@@ -510,8 +511,8 @@
                         </tbody>
                     </table>
                     <div class="d-flex">
-                        
-                        {!! $clients->links()!!}
+
+                        {!! $clients->links() !!}
                     </div>
                 </div>
             </div>
