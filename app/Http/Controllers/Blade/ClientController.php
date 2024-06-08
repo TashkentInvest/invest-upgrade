@@ -46,8 +46,11 @@ class ClientController extends Controller
             ->with(['branches', 'files'])
             ->where('is_deleted', '!=', 1)
             ->get()->first();
+
+        $files = $client ? $client->files : collect();
+
         if ($client) {
-            return view('pages.products.show', compact('client'));
+            return view('pages.products.show', compact('client','files'));
         } else {
             return response()->view('errors.custom', ['status' => 404, 'message' => 'Applicant Not found'], 404);
         }

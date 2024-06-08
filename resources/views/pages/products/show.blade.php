@@ -269,7 +269,7 @@
                             @endforeach
 
 
-                            @if (isset($files) && $files->isNotEmpty())
+                            {{-- @if (isset($files) && $files->isNotEmpty())
                                 <tr>
                                     <td colspan="3">
                                         <h4>@lang('global.downloadFile')</h4>
@@ -289,7 +289,19 @@
                                         <p>@lang('global.no_files_uploaded')</p>
                                     </td>
                                 </tr>
-                            @endif
+                            @endif --}}
+
+                            
+                          
+                            <ul>
+                                @foreach ($files as $file)
+                                    <div class="py-1">
+                                        <a target="_blank" class="py-2 my-2"
+                                            href="{{ asset($file->path) }}">{{ $file->path }}</a>
+                                  
+                                    </div>
+                                @endforeach
+                            </ul>
                         </tbody>
                     </table>
 
