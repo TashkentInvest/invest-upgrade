@@ -221,7 +221,7 @@
 
                                     <td>{{ $item->contact ?? '---' }}</td>
                                     @if ($item->mijoz_turi == 'fizik')
-                                        <td>{{ $item->company_location }}</td>
+                                        <td>{{ $item->home_address }}</td>
                                     @else
                                         <td>{{ $item->yuridik_address }} </td>
                                     @endif
