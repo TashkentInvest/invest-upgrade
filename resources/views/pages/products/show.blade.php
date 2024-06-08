@@ -255,8 +255,22 @@
     
                                 <tr>
                                     <td>@lang('cruds.branches.fields.payed_sum')</td>
-                                    <td colspan="2">{{ $b->payed_sum }}</td>
+                                    <td colspan="2" id="payedSumCell">{{ $b->payed_sum }}</td>
                                 </tr>
+                                
+                                <script>
+                                    document.addEventListener('DOMContentLoaded', function () {
+                                        function formatNumberWithSpaces(number) {
+                                            return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
+                                        }
+                                
+                                        var payedSumElement = document.getElementById('payedSumCell');
+                                        var payedSumValue = payedSumElement.textContent;
+                                
+                                        payedSumElement.textContent = formatNumberWithSpaces(payedSumValue);
+                                    });
+                                </script>
+                                
     
                                 <tr>
                                     <td>@lang('cruds.branches.fields.payed_date')</td>
