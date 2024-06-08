@@ -164,7 +164,7 @@
                                         @endif
                                     </div>
 
-                                    <div class="col-12 col-lg-3 mb-2">
+                                    <div class="col-12 col-lg-2 mb-2">
                                         <label for="father_name"
                                             class="col-md-4 col-form-label">@lang('cruds.client.fields.father_name')</label>
                                         <input class="form-control {{ $errors->has('father_name') ? 'is-invalid' : '' }}"
@@ -176,13 +176,23 @@
                                         @endif
                                     </div>
 
-                                    <div class="col-12 col-lg-3 mb-2">
+                                    <div class="col-12 col-lg-2 mb-2">
                                         <label for="contact" class="col-md-4 col-form-label">@lang('cruds.client.fields.contact')</label>
                                         <input class="form-control {{ $errors->has('contact') ? 'is-invalid' : '' }}"
                                             type="text" name="contact" id="contact"
                                             placeholder="@lang('cruds.client.fields.contact')" value="{{ old('contact') }}">
                                         @if ($errors->has('contact'))
                                             <span class="error invalid-feedback">{{ $errors->first('contact') }}</span>
+                                        @endif
+                                    </div>
+
+                                    <div class="col-12 col-lg-2 mb-2">
+                                        <label for="stir" class="col-md-6 col-form-label">@lang('cruds.company.fields.stir')</label>
+                                        <input class="form-control {{ $errors->has('stir') ? 'is-invalid' : '' }}"
+                                            type="text" name="stir" id="stir" placeholder="@lang('cruds.company.fields.stir')"
+                                            value="{{ old('stir') }}"    maxlength="9">
+                                        @if ($errors->has('stir'))
+                                            <span class="error invalid-feedback">{{ $errors->first('stir') }}</span>
                                         @endif
                                     </div>
                                 </div>
@@ -255,19 +265,12 @@
                                         @endif
                                     </div>
 
-                                    <div class="col-12 col-lg-3 mb-2">
-                                        <label for="stir" class="col-md-6 col-form-label">@lang('cruds.company.fields.stir')</label>
-                                        <input class="form-control {{ $errors->has('stir') ? 'is-invalid' : '' }}"
-                                            type="text" name="stir" id="stir" placeholder="@lang('cruds.company.fields.stir')"
-                                            value="{{ old('stir') }}"    maxlength="9">
-                                        @if ($errors->has('stir'))
-                                            <span class="error invalid-feedback">{{ $errors->first('stir') }}</span>
-                                        @endif
-                                    </div>
+                                  
 
                                 </div>
 
                                 <div class="row"  style="align-items: center ">
+                                    
                                     <div class="col-12 col-lg-3 mb-2">
                                         <label for="client_description"
                                             class="col-md-6 col-form-label">@lang('cruds.client.fields.client_description')</label>
