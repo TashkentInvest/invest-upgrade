@@ -221,6 +221,40 @@
                                 <td colspan="2">{{ $client->stir }}</td>
                             </tr>
                           
+                            <tr>
+                                <td>@lang('cruds.branches.fields.notification_num')</td>
+                                <td colspan="2">{{ $client->notification_num }}</td>
+                            </tr>
+                            <tr>
+                                <td>@lang('cruds.branches.fields.notification_date')</td>
+                                <td colspan="2">{{ $client->notification_date }}</td>
+                            </tr>
+                            <tr>
+                                <td>@lang('cruds.branches.fields.insurance_policy')</td>
+                                <td colspan="2">{{ $client->insurance_policy }}</td>
+                            </tr>
+                          
+                            <tr>
+                                <td>@lang('cruds.branches.fields.bank_guarantee')</td>
+                                <td colspan="2">{{ $client->bank_guarantee }}</td>
+                            </tr>
+
+                            <tr>
+                                <td>@lang('cruds.branches.fields.application_number')</td>
+                                <td colspan="2">{{ $client->application_number }}</td>
+                            </tr>
+
+                            <tr>
+                                <td>@lang('cruds.branches.fields.payed_sum')</td>
+                                <td colspan="2">{{ $client->payed_sum }}</td>
+                            </tr>
+
+                            <tr>
+                                <td>@lang('cruds.branches.fields.payed_date')</td>
+                                <td colspan="2">{{ $client->payed_date }}</td>
+                            </tr>
+
+
 
                             @foreach ($client->branches as $b)
                                 <tr>

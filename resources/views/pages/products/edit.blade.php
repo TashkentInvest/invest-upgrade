@@ -468,11 +468,43 @@
                                                             </div>
                                                             <div class="col-lg-3">
                                                                 <div class="mb-3">
-                                                                    <label for="payed_sum">@lang('cruds.branches.fields.payed_sum')</label>
-                                                                    <input type="text" class="form-control"
+                                                                    
+                                                                    <label for="payedSum_{{ $branchIndex }}">@lang('cruds.branches.fields.payed_sum')</label>
+                                                                    <input type="text" class="form-control payedSum"
+                                                                        id="payedSum_{{ $branchIndex }}"
                                                                         name="accordions[{{ $branchIndex }}][payed_sum]"
                                                                         value="{{ old('accordions.' . $branchIndex . '.payed_sum', $b->payed_sum) }}"
                                                                         placeholder="@lang('cruds.branches.fields.payed_sum')">
+                                                                    
+                                                                    
+                                                                        {{-- <script>
+                                                                                function formatNumberWithSpaces(number) {
+                                                                                    // Ensure the number is a string
+                                                                                    return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
+                                                                                }
+                                                                        
+                                                                                function unformatNumberWithSpaces(number) {
+                                                                                    // Remove all spaces
+                                                                                    return number.replace(/\s/g, '');
+                                                                                }
+                                                                        
+                                                                                document.querySelectorAll('.payedSum').forEach(function(input) {
+                                                                                    input.addEventListener('blur', function () {
+                                                                                        var value = unformatNumberWithSpaces(input.value);
+                                                                                        if (!isNaN(value) && value.trim() !== '') {
+                                                                                            input.value = formatNumberWithSpaces(value);
+                                                                                        }
+                                                                                    });
+                                                                        
+                                                                                    // Optionally format the value on page load if there's an initial value
+                                                                                    input.value = formatNumberWithSpaces(input.value);
+                                                                                });
+                                                                            
+                                                                        </script>
+                                                                         --}}
+                                                                        
+                                                                    
+                                                                        
                                                                 </div>
                                                             </div>
                                                             <div class="col-lg-3">

@@ -328,7 +328,6 @@
                                                                     <td>@lang('cruds.client.fields.passport_date')</td>
                                                                     {{-- <td>{{ $item->passport_date }}</td> --}}
                                                                     <td>{{ date('d-m-Y', strtotime($item->passport_date)) }}</td>
-
                                                                 </tr>
                                                                 <tr>
                                                                     <td>@lang('cruds.client.fields.passport_location')</td>
@@ -391,11 +390,48 @@
                                                                     <td>@lang('cruds.company.fields.stir')</td>
                                                                     <td>{{ $item->stir }}</td>
                                                                 </tr>
-
+                                                                
                                                                 <tr>
                                                                     <td>@lang('cruds.company.fields.oked')</td>
                                                                     <td>{{ $item->oked }}</td>
                                                                 </tr>
+
+                                                                <tr>
+                                                                    <td>@lang('cruds.branches.fields.notification_num')</td>
+                                                                    <td>{{ $item->notification_num }}</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>@lang('cruds.branches.fields.notification_date')</td>
+                                                                    <td>{{ $item->notification_date }}</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>@lang('cruds.branches.fields.insurance_policy')</td>
+                                                                    <td>{{ $item->insurance_policy }}</td>
+                                                                </tr>
+                                                              
+                                                                <tr>
+                                                                    <td>@lang('cruds.branches.fields.bank_guarantee')</td>
+                                                                    <td>{{ $item->bank_guarantee }}</td>
+                                                                </tr>
+                                    
+                                                                <tr>
+                                                                    <td>@lang('cruds.branches.fields.application_number')</td>
+                                                                    <td>{{ $item->application_number }}</td>
+                                                                </tr>
+                                    
+                                                                <tr>
+                                                                    <td>@lang('cruds.branches.fields.payed_sum')</td>
+                                                                    <td>{{ $item->payed_sum }}</td>
+                                                                </tr>
+                                    
+                                                                <tr>
+                                                                    <td>@lang('cruds.branches.fields.payed_date')</td>
+                                                                    <td>{{ $item->payed_date }}</td>
+                                                                </tr>
+                                    
+                                    
+
+                                                            
                                                                 @foreach ($item->branches as $b)
                                                                     <tr>
                                                                         <td class="text-center"><strong>Obyekt</strong>
