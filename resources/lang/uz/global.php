@@ -371,7 +371,8 @@ return [
     'calendar'                             => 'Taqvim',
     'messenger'                            => 'Rasululloh',
 
-    'ruxsatnoma_raqami' => 'Ruxsatnoma raqami',
+    'ruxsatnoma_raqami' => 'Shartnoma raqami',
+    
     'sanasi' => 'Sanasi',
     'loyiha_turi' => 'Loyiha Turi',
     'loyiha_manzili' => 'Loyiha Manzili',

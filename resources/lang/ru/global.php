@@ -384,7 +384,7 @@ return [
     'calendar'                             => 'Календарь',
     'messenger'                            => 'Мессенджер',
 
-    'ruxsatnoma_raqami'                    => 'Номер разрешения',
+    'ruxsatnoma_raqami'                    => 'Номер договора',
     'sanasi' => 'Дата',
     'loyiha_turi' => 'Тип проекта',
     'loyiha_manzili' => 'Адрес проекта',
