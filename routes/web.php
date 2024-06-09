@@ -114,9 +114,10 @@ Route::group(['middleware' => 'auth'], function () {
     });
 
     // import
-    Route::get('import', [ImportController::class,'index']);
-    Route::post('import', [ImportController::class, 'import_debat'])->name('import_debat.xls');
-    Route::post('imports', [ImportController::class, 'import_credit'])->name('import_credit.xls');
+    Route::get('import', [ImportController::class,'index'])->name('import');
+    Route::post('import', [ImportController::class, 'import'])->name('import.xls');
+    Route::post('import_debat', [ImportController::class, 'import_debat'])->name('import_debat.xls');
+    Route::post('import_credit', [ImportController::class, 'import_credit'])->name('import_credit.xls');
 
 
     // Audit-Log

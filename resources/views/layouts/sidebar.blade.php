@@ -104,6 +104,29 @@
                         @endcan --}}
                     </ul>
                 </li>
+
+                {{-- --------------------------- --}}
+
+                <li class="{{ (Request::is('import*') || Request::is('transactions*')) ? 'mm-active':''}}">
+                    <a href="javascript: void(0);" class="has-arrow waves-effect {{ (Request::is('import*') || Request::is('transactions*')) ? 'mm-active':''}}">
+                        <i class="bx bx-file"></i>
+
+                        <span>Transactions</span>
+                    </a>
+                    <ul class="sub-menu {{ (Request::is('import*') || Request::is('transactions*')) ? ' ':'d-none'}}" aria-expanded="false">
+                        @can('import.show')
+                            <li>
+                                <a href="{{ route('import') }}" class="{{ Request::is('import*') ? 'mm-active':'' }}">
+                                    <i class="bx bxs-upload" style="font-size: 14px; min-width: auto;"></i>
+                                    
+                                    Import
+                                </a>
+                            </li>
+                        @endcan
+                
+               
+                    </ul>
+                </li>
                 @endcan
 
                 <li class="menu-title">@lang('global.theme')</li>
