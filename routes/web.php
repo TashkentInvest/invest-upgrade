@@ -12,6 +12,7 @@ use App\Http\Controllers\Blade\RegionController;
 use App\Http\Controllers\Blade\DistrictController;
 use App\Http\Controllers\Blade\ClientController;
 use App\Http\Controllers\FileController;
+use App\Http\Controllers\ImportController;
 
 /*
 |--------------------------------------------------------------------------
@@ -111,6 +112,10 @@ Route::group(['middleware' => 'auth'], function () {
         Route::delete('/delete/{id}', [ApiUserController::class, 'destroy'])->name('api-userDestroy');
         Route::delete('-token/delete/{id}', [ApiUserController::class, 'destroyToken'])->name('api-tokenDestroy');
     });
+
+    // import
+    Route::get('import', [ImportController::class,'index']);
+    Route::post('import', [ImportController::class, 'import']);
 
     // Audit-Log
     Route::get('audit-logs', [AuditLogController::class, 'index'])->name('audit-logs.index');
