@@ -106,7 +106,6 @@ class Client extends Model
         return $query;
     }
 
-
     public static function boot()
     {
         parent::boot();
