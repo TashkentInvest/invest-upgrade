@@ -16,14 +16,14 @@ class CreateCreditTransactionsTable extends Migration
         Schema::create('credit_transactions', function (Blueprint $table) {
             $table->id();
             $table->integer('document_number');
-            $table->integer('operation_code');
+            $table->bigInteger('operation_code'); // Change data type to bigInteger
             $table->string('recipient_name');
             $table->string('recipient_inn');
             $table->string('recipient_mfo');
             $table->string('recipient_account');
             $table->date('payment_date');
             $table->text('payment_description');
-            $table->decimal('debit', 20, 2);
+            $table->text('debit');
             $table->decimal('credit', 20, 2);
             $table->string('payer_name');
             $table->string('payer_inn');
@@ -31,8 +31,8 @@ class CreateCreditTransactionsTable extends Migration
             $table->string('payer_bank');
             $table->string('payer_account');
             $table->timestamps();
-
         });
+        
     }
 
     /**

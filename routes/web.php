@@ -115,7 +115,8 @@ Route::group(['middleware' => 'auth'], function () {
 
     // import
     Route::get('import', [ImportController::class,'index']);
-    Route::post('import', [ImportController::class, 'import'])->name('import.xls');
+    Route::post('import', [ImportController::class, 'import_debat'])->name('import_debat.xls');
+    Route::post('imports', [ImportController::class, 'import_credit'])->name('import_credit.xls');
 
 
     // Audit-Log
