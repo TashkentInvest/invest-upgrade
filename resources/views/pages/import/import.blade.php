@@ -3,17 +3,7 @@
 @section('content')
     <div class="container mt-5">
         <h2 class="text-center">Import Excel Data</h2>
-        
-        @if (session('success'))
-            <div class="alert alert-success" role="alert">
-                {{ session('success') }}
-            </div>
-        @endif
-        @if (session('error'))
-            <div class="alert alert-danger" role="alert">
-                {{ session('error') }}
-            </div>
-        @endif
+
 
         <div class="card mt-3">
             <div class="card-body">

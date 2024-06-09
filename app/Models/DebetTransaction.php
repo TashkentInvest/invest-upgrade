@@ -8,4 +8,23 @@ use Illuminate\Database\Eloquent\Model;
 class DebetTransaction extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'document_number',
+        'operation_code',
+        'payer_name',
+        'payer_inn',
+        'payer_mfo',
+        'payer_account',
+        'payment_date',
+        'operation_day',
+        'payment_description',
+        'debit',
+        'credit',
+        'recipient_name',
+        'recipient_inn',
+        'recipient_mfo',
+        'recipient_bank',
+        'recipient_account',
+    ];
 }

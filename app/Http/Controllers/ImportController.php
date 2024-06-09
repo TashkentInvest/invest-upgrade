@@ -15,21 +15,19 @@ class ImportController extends Controller
 
     public function import(Request $request)
     {
-        dd($request);
-        $request->validate([
-            'excel_file' => 'required|file|mimes:xls,xlsx'
-        ]);
+
 
         $path = $request->file('excel_file')->getRealPath();
-
+        
+        
         if ($xlsx = SimpleXLSX::parse($path)) {
+            // dd($xlsx);
             $sheets = $xlsx->sheetNames();
 
-            // Process the first sheet for debet transactions
             $rows = $xlsx->rows(0);
             foreach ($rows as $key => $row) {
                 if ($key === 0) {
-                    continue; // Skip the header row
+                    continue;
                 }
                 DebetTransaction::create([
                     'document_number' => $row[0] ?? null,
@@ -52,29 +50,29 @@ class ImportController extends Controller
             }
 
             // Process the second sheet for credit transactions
-            $rows = $xlsx->rows(1);
-            foreach ($rows as $key => $row) {
-                if ($key === 0) {
-                    continue; // Skip the header row
-                }
-                CreditTransaction::create([
-                    'document_number' => $row[0] ?? null,
-                    'operation_code' => $row[1] ?? null,
-                    'recipient_name' => $row[2] ?? null,
-                    'recipient_inn' => $row[3] ?? null,
-                    'recipient_mfo' => $row[4] ?? null,
-                    'recipient_account' => $row[5] ?? null,
-                    'payment_date' => isset($row[6]) ? date('Y-m-d', strtotime($row[6])) : null,
-                    'payment_description' => $row[7] ?? null,
-                    'debit' => isset($row[8]) ? (float)str_replace(',', '', $row[8]) : 0,
-                    'credit' => isset($row[9]) ? (float)str_replace(',', '', $row[9]) : 0,
-                    'payer_name' => $row[10] ?? null,
-                    'payer_inn' => $row[11] ?? null,
-                    'payer_mfo' => $row[12] ?? null,
-                    'payer_bank' => $row[13] ?? null,
-                    'payer_account' => $row[14] ?? null,
-                ]);
-            }
+            // $rows = $xlsx->rows(1);
+            // foreach ($rows as $key => $row) {
+            //     if ($key === 0) {
+            //         continue; // Skip the header row
+            //     }
+            //     CreditTransaction::create([
+            //         'document_number' => $row[0] ?? null,
+            //         'operation_code' => $row[1] ?? null,
+            //         'recipient_name' => $row[2] ?? null,
+            //         'recipient_inn' => $row[3] ?? null,
+            //         'recipient_mfo' => $row[4] ?? null,
+            //         'recipient_account' => $row[5] ?? null,
+            //         'payment_date' => isset($row[6]) ? date('Y-m-d', strtotime($row[6])) : null,
+            //         'payment_description' => $row[7] ?? null,
+            //         'debit' => isset($row[8]) ? (float)str_replace(',', '', $row[8]) : 0,
+            //         'credit' => isset($row[9]) ? (float)str_replace(',', '', $row[9]) : 0,
+            //         'payer_name' => $row[10] ?? null,
+            //         'payer_inn' => $row[11] ?? null,
+            //         'payer_mfo' => $row[12] ?? null,
+            //         'payer_bank' => $row[13] ?? null,
+            //         'payer_account' => $row[14] ?? null,
+            //     ]);
+            // }
 
             return back()->with('success', 'Data imported successfully.');
         } else {
