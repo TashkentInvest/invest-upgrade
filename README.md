@@ -239,3 +239,8 @@ composer require irazasyed/telegram-bot-sdk
     });
 </script>
 ```
+
+```
+composer require shuchkin/simplexlsx
+
+```
