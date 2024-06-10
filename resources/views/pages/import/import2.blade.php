@@ -26,23 +26,23 @@
                         
                         <div class="row mb-4">
                             <label for="projectname" class="col-form-label col-lg-2">Transaction Name</label>
-                            <div class="col-lg-10">
-                                <input id="projectname" name="name" type="text" class="form-control" placeholder="Enter Transaction Name...">
+                            <div class="col-lg-7">
+                                <input id="projectname" name="name" type="text" class="form-control form-control-lg" placeholder="Enter Transaction Name...">
                             </div>
                         </div>
                         <div class="row mb-4">
                             <label for="projectdesc" class="col-form-label col-lg-2">Transaction Description</label>
-                            <div class="col-lg-10">
-                                <textarea class="form-control" id="description" name="description" rows="3" placeholder="Enter Transaction Description..."></textarea>
+                            <div class="col-lg-7">
+                                <textarea class="form-control form-control-lg" id="description" name="description" rows="3" placeholder="Enter Transaction Description..."></textarea>
                             </div>
                         </div>
 
                         <div class="row mb-4">
                             <label class="col-form-label col-lg-2">Transaction Date</label>
-                            <div class="col-lg-10">
+                            <div class="col-lg-7">
                                 <div class="input-daterange input-group" >
-                                    <input type="date" class="form-control" placeholder="Start Date" name="start_date" />
-                                    <input type="date" class="form-control" placeholder="End Date" name="end_date" />
+                                    <input type="date" class="form-control form-control-lg" placeholder="Start Date" name="start_date" />
+                                    <input type="date" class="form-control form-control-lg" placeholder="End Date" name="end_date" />
                                 </div>
                             </div>
                         </div>
@@ -50,16 +50,16 @@
                         <div class="row mb-4">
                             <label class="col-form-label col-lg-2">Attached Files</label>
 
-                            <div class="col-lg-5">
+                            <div class="col-lg-7">
                                 <div class="fallback">
                                     <label>Credit</label>
-                                    <input class="form-control" name="credit_excel_file" type="file" multiple />
+                                    <input class="form-control form-control-lg" name="credit_excel_file" type="file" multiple />
                                 </div>
                             </div>
                         </div>
 
                         <div class="row justify-content-end">
-                            <div class="col-lg-10">
+                            <div class="col-lg-7">
                                 <button type="submit" class="btn btn-primary">Create Transaction</button>
                             </div>
                         </div>
