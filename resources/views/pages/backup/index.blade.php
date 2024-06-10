@@ -121,16 +121,19 @@
                                 <table class="table align-middle table-nowrap table-hover mb-0">
                                     <thead>
                                         <tr>
+                                            <th scope="col">Select</th>
                                             <th scope="col">Name</th>
                                             <th scope="col">Date modified</th>
                                             <th scope="col">Size</th>
                                             <th scope="col">Actions</th>
-                                            <th scope="col">Delete</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         @foreach ($backupDetails as $backup)
                                         <tr>
+                                            <td>
+                                                <input type="checkbox" name="filenames[]" value="{{ basename($backup['file']) }}">
+                                            </td>
                                             <td>
                                                 <a href="javascript:void(0);" class="text-dark fw-medium">
                                                     <i class="mdi mdi-text-box font-size-16 align-middle text-muted me-2"></i>
@@ -155,9 +158,7 @@
                                                     </div>
                                                 </div>
                                             </td>
-                                            <td>
-                                                <input type="checkbox" name="filenames[]" value="{{ basename($backup['file']) }}">
-                                            </td>
+                                           
                                         </tr>
                                         @endforeach
                                     </tbody>
