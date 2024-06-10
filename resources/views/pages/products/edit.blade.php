@@ -229,7 +229,7 @@
                                             class="form-control {{ $errors->has('passport_serial') ? 'is-invalid' : '' }}"
                                             type="text" name="passport_serial" id="passport_serial"
                                             placeholder="@lang('cruds.client.fields.passport_serial')"
-                                            value="{{ old('passport_serial', $client->passport_serial) }}">
+                                            value="{{ old('passport_serial', $client->passport_serial) }}" maxlength="9">
                                         @if ($errors->has('passport_serial'))
                                             <span
                                                 class="error invalid-feedback">{{ $errors->first('passport_serial') }}</span>
@@ -243,7 +243,7 @@
                                             class="form-control {{ $errors->has('passport_pinfl') ? 'is-invalid' : '' }}"
                                             type="text" name="passport_pinfl" id="passport_pinfl"
                                             placeholder="@lang('cruds.client.fields.passport_pinfl')"
-                                            value="{{ old('passport_pinfl', $client->passport_pinfl) }}">
+                                            value="{{ old('passport_pinfl', $client->passport_pinfl) }}" maxlength="14">
                                         @if ($errors->has('passport_pinfl'))
                                             <span
                                                 class="error invalid-feedback">{{ $errors->first('passport_pinfl') }}</span>
