@@ -20,6 +20,7 @@ class Branch extends Model
         'branch_kubmetr',
         'branch_location',
         'branch_type',
+        'branch_name',
         'notification_num',
         'notification_date',
         'insurance_policy',

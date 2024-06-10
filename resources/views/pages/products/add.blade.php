@@ -431,9 +431,9 @@
                                                         </div>
                                                         <div class="col-lg-3">
                                                             <div class="mb-3">
-                                                                <label for="company_name">@lang('global.loyiha_nomi')</label>
+                                                                <label for="branch_name">@lang('global.loyiha_nomi')</label>
                                                                 <input type="text" class="form-control"
-                                                                    name="company_name"
+                                                                    name="accordions[0][branch_name]"
                                                                     placeholder="@lang('global.loyiha_nomi')">
                                                             </div>
                                                         </div>

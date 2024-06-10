@@ -65,6 +65,7 @@ class ClientController extends Controller
     public function create(Request $request)
     {
         // Uncomment this line to inspect the request data structure
+        // dd($request);
         
         DB::beginTransaction();
     
@@ -139,6 +140,7 @@ class ClientController extends Controller
                     'branch_kubmetr' => $accordion['branch_kubmetr'] ?? null,
                     'branch_type' => $accordion['branch_type'] ?? null,
                     'branch_location' => $accordion['branch_location'] ?? null,
+                    'branch_name' => $accordion['branch_name'] ?? null,
                     'generate_price' => $accordion['generate_price'] ?? null,
                     'payment_type' => $accordion['payment_type'] ?? null,
                     'percentage_input' => $accordion['percentage_input'] ?? null,
@@ -181,6 +183,8 @@ class ClientController extends Controller
 
     public function update(Request $request, $id)
     {
+        // dd($request);
+
         DB::beginTransaction();
 
         try {
