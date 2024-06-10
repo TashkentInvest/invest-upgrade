@@ -548,7 +548,7 @@
                                                                         <input type="number"
                                                                             class="form-control branch_kubmetr"
                                                                             step="0.01"
-                                                                            placeholder="@lang('global.obyekt_boyicha_tolanishi_lozim')"
+                                                                            placeholder="( m³ )"
                                                                             value="{{ old('accordions.' . $branchIndex . '.branch_kubmetr', $b->branch_kubmetr) }}"
                                                                             name="accordions[{{ $branchIndex }}][branch_kubmetr]">
                                                                     </div>

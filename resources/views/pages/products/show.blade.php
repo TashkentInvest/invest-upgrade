@@ -125,6 +125,7 @@
                                                         <i class="bx bxs-edit" style="font-size:16px;"></i>
                                                     </a>
                                                 </li>
+                                                @can('client.delete')        
                                                 <input name="_method" type="hidden" value="DELETE">
                                                 <li data-bs-toggle="tooltip" data-bs-placement="top"
                                                     title="@lang('global.delete')">
@@ -133,6 +134,8 @@
                                                         <i class="bx bxs-trash" style="font-size: 16px;"></i>
                                                     </button>
                                                 </li>
+                                                @endcan
+
                                                 <li data-bs-toggle="tooltip" data-bs-placement="top"
                                                     title="@lang('global.downloadTable')">
                                                     <a href="{{ route('download.table.data', $client->id) }}"
