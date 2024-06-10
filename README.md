@@ -136,7 +136,17 @@ yurik_pdf qlsh kere ken validatsa
 
 generate_price not changeble bop qogan fix qlsh kere
 
-edit boganda calc script qlish kere
+edit boganda calc script qlish kere 
+
+metrkub qurilish xajmi (m^3) 
+
+obshiy summa (so'm)
+
+sonlani orasini ochish kere 
+
+pinfl = 14
+
+seria = 9
 ```
 
 
