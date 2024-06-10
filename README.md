@@ -134,19 +134,19 @@ debugbar json unsave qlsh kere
 
 yurik_pdf qlsh kere ken validatsa
 
-generate_price not changeble bop qogan fix qlsh kere
+generate_price not changeble bop qogan fix qlsh kere 
 
 edit boganda calc script qlish kere 
 
-metrkub qurilish xajmi (m^3) 
+metrkub qurilish xajmi (m^3) +
 
-obshiy summa (so'm)
+obshiy summa (so'm) +
 
-sonlani orasini ochish kere 
+sonlani orasini ochish kere +
 
-pinfl = 14
+pinfl = 14 +
 
-seria = 9
+seria = 9 +
 ```
 
 

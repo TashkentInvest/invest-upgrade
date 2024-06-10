@@ -294,7 +294,7 @@
                                     <td colspan="2">{{ $b->contract_date }}</td>
                                 </tr>
                                 <tr>
-                                    <td>@lang('global.obyekt_boyicha_tolanishi_lozim')</td>
+                                    <td>@lang('global.obyekt_boyicha_tolanishi_lozim') ( m³ )</td>
                                     <td colspan="2">{{ $b->branch_kubmetr }}</td>
                                 </tr>
                                 <tr>
