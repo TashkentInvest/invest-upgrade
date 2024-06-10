@@ -117,8 +117,8 @@
                         @can('import.show')
                             <li>
                                 <a href="{{ route('import') }}" class="{{ Request::is('import*') ? 'mm-active':'' }}">
-                                    <i class="bx bxs-upload" style="font-size: 14px; min-width: auto;"></i>
-                                    
+                                    <i class="bx bx-import" style="font-size: 14px; min-width: auto;"></i>
+                                  
                                     Import
                                 </a>
                             </li>
@@ -127,7 +127,7 @@
                         @can('import.show')
                         <li>
                             <a href="{{ route('transactions.index') }}" class="{{ Request::is('transaction*') ? 'mm-active':'' }}">
-                                <i class="bx bxs-upload" style="font-size: 14px; min-width: auto;"></i>            
+                                <i class="bx bxs-bar-chart-square" style="font-size: 14px; min-width: auto;"></i>            
                                 View
                             </a>
                         </li>
