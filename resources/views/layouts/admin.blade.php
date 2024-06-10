@@ -25,6 +25,11 @@
 
 	<link href="{{asset('assets/libs/admin-resources/rwd-table/rwd-table.min.css')}}" rel="stylesheet" type="text/css" />
 
+	<link href="{{asset('assets/libs/bootstrap-datepicker/css/bootstrap-datepicker.min.css')}}" rel="stylesheet">
+
+	<!-- dropzone css -->
+	<link href="{{asset('assets/libs/dropzone/min/dropzone.min.css')}}" rel="stylesheet" type="text/css" />
+
 	{{-- <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400&display=swap" rel="stylesheet">
 	<link rel="stylesheet" href="{{ asset('assets/libs/sweetalert2/sweetalert2.min.css') }}"> --}}
 	@yield('styles')
@@ -226,6 +231,12 @@
 	<script src="{{ asset('assets/js/pages/job-list.init.js') }}"></script>
 	<!-- App js -->
 	<script src="{{ asset('assets/js/app.js') }}"></script>
+
+	  <!-- bootstrap datepicker -->
+	  <script src="{{asset('assets/libs/bootstrap-datepicker/js/bootstrap-datepicker.min.js')}}"></script>
+
+	  <!-- dropzone plugin -->
+	  <script src="{{asset('assets/libs/dropzone/min/dropzone.min.js')}}"></script>
 	{{-- <script src="{{ asset('assets/libs/sweetalert2/sweetalert2.min.js') }}"></script>  --}}
 
 	<script>
