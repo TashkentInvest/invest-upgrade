@@ -27,4 +27,9 @@ class DebetTransaction extends Model
         'recipient_bank',
         'recipient_account',
     ];
+
+    public function transactions()
+    {
+        return $this->hasMany(Transaction::class, 'debet_transaction_id');
+    }
 }

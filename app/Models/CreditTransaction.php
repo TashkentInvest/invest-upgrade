@@ -26,4 +26,9 @@ class CreditTransaction extends Model
         'payer_bank',
         'payer_account',
     ];
+
+    public function transactions()
+    {
+        return $this->hasMany(Transaction::class, 'debet_transaction_id');
+    }
 }
