@@ -71,48 +71,59 @@
                             <thead>
                                 <tr>
                                     <th scope="col">No</th>
-                                    <th scope="col">Job Title</th>
-                                    <th scope="col">Company Name</th>
-                                    <th scope="col">Location</th>
-                                    <th scope="col">Experience</th>
-                                    <th scope="col">Position</th>
-                                    <th scope="col">Type</th>
-                                    <th scope="col">Posted Date</th>
-                                    <th scope="col">Last Date</th>
-                                    <th scope="col">Status</th>
-                                    <th scope="col">Action</th>
+                                    <th scope="col">Document Number</th>
+                                    <th scope="col">Operation Code</th>
+                                    <th scope="col">Recipient Name</th>
+                                    <th scope="col">Recipient INN</th>
+                                    <th scope="col">Recipient MFO</th>
+                                    <th scope="col">Recipient Account</th>
+                                    <th scope="col">Payment Date</th>
+                                    <th scope="col">Payment Description</th>
+                                    <th scope="col">Debit</th>
+                                    <th scope="col">Credit</th>
+                                    <th scope="col">Payer Name</th>
+                                    <th scope="col">Payer INN</th>
+                                    <th scope="col">Payer MFO</th>
+                                    <th scope="col">Payer Bank</th>
+                                    <th scope="col">Payer Account</th>
+                                    <th scope="col">Created At</th>
+                                    <th scope="col">Updated At</th>
+                                    <th scope="col">Actions</th>
                                 </tr>
                             </thead>
                             <tbody>
+                                @foreach ($transactions as $transaction)
                                 <tr>
-                                    <th scope="row">1</th>
-                                    <td>Magento Developer</td>
-                                    <td>Themesbrand</td>
-                                    <td>California</td>
-                                    <td>0-2 Years</td>
-                                    <td>2</td>
-                                    <td><span class="badge badge-soft-success">Full Time</span></td>
-                                    <td>02 June 2021</td>
-                                    <td>25 June 2021</td>
-                                    <td><span class="badge bg-success">Active</span></td>
+                                    <td>{{ $loop->index + 1 }}</td>
+                                    <td>{{ $transaction->document_number }}</td>
+                                    <td>{{ $transaction->operation_code }}</td>
+                                    <td>{{ $transaction->recipient_name }}</td>
+                                    <td>{{ $transaction->recipient_inn }}</td>
+                                    <td>{{ $transaction->recipient_mfo }}</td>
+                                    <td>{{ $transaction->recipient_account }}</td>
+                                    <td>{{ $transaction->payment_date }}</td>
+                                    <td>{{ $transaction->payment_description }}</td>
+                                    <td>{{ $transaction->debit }}</td>
+                                    <td>{{ $transaction->credit }}</td>
+                                    <td>{{ $transaction->payer_name }}</td>
+                                    <td>{{ $transaction->payer_inn }}</td>
+                                    <td>{{ $transaction->payer_mfo }}</td>
+                                    <td>{{ $transaction->payer_bank }}</td>
+                                    <td>{{ $transaction->payer_account }}</td>
+                                    <td>{{ $transaction->created_at }}</td>
+                                    <td>{{ $transaction->updated_at }}</td>
                                     <td>
                                         <ul class="list-unstyled hstack gap-1 mb-0">
-                                            <li data-bs-toggle="tooltip" data-bs-placement="top" title="View">
-                                                <a href="job-details.html" class="btn btn-sm btn-soft-primary"><i
-                                                        class="mdi mdi-eye-outline"></i></a>
+                                            <li data-bs-toggle="tooltip" data-bs-placement="top" aria-label="View" aria-describedby="tooltip71766">
+                                                <a href="job-details.html" class="btn btn-sm btn-soft-primary"><i class="mdi mdi-eye-outline"></i></a>
                                             </li>
-                                            <li data-bs-toggle="tooltip" data-bs-placement="top" title="Edit">
-                                                <a href="#" class="btn btn-sm btn-soft-info"><i
-                                                        class="mdi mdi-pencil-outline"></i></a>
-                                            </li>
-                                            <li data-bs-toggle="tooltip" data-bs-placement="top" title="Delete">
-                                                <a href="#jobDelete" data-bs-toggle="modal"
-                                                    class="btn btn-sm btn-soft-danger"><i
-                                                        class="mdi mdi-delete-outline"></i></a>
+                                            <li data-bs-toggle="tooltip" data-bs-placement="top" aria-label="Delete">
+                                                <a href="#jobDelete" data-bs-toggle="modal" class="btn btn-sm btn-soft-danger"><i class="mdi mdi-delete-outline"></i></a>
                                             </li>
                                         </ul>
                                     </td>
                                 </tr>
+                            @endforeach
 
                             </tbody>
                         </table>
