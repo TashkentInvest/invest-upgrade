@@ -34,7 +34,7 @@ class ClientController extends Controller
         // $clients = Client::with('branches')->where('id', 170)->get()->first();
         // dd($clients);
         $clients = Client::deepFilters()->with(['branches', 'files'])->where('is_deleted', '!=', 1)->orderBy('id', 'asc')
-            ->paginate(10);
+            ->paginate(25);
         // dd($clients);
 
         return view('pages.products.index', compact('clients'));
