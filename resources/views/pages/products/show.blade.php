@@ -66,8 +66,7 @@
                                         //     'data-priority' => 13,
                                         //     'default' => false,
                                         // ],
-                                        ['name' => __('global.contact'), 'data-priority' => 14, 'default' => true],
-                                        ['name' => __('global.actions'), 'data-priority' => 15, 'default' => true],
+                                        ['name' => __('global.actions'), 'data-priority' => 14, 'default' => true],
                                     ];
                                 @endphp
                                 @foreach ($columns as $index => $column)
