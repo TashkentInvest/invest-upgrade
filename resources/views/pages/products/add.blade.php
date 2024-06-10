@@ -206,7 +206,7 @@
                                         <input
                                             class="form-control {{ $errors->has('passport_serial') ? 'is-invalid' : '' }}"
                                             type="text" name="passport_serial" id="passport_serial"
-                                            placeholder="@lang('cruds.client.fields.passport_serial')" value="{{ old('passport_serial') }}" maxlength="9">
+                                            placeholder="@lang('cruds.client.fields.passport_serial')" value="{{ old('passport_serial') }}" maxlength="10">
                                         @if ($errors->has('passport_serial'))
                                             <span
                                                 class="error invalid-feedback">{{ $errors->first('passport_serial') }}</span>
