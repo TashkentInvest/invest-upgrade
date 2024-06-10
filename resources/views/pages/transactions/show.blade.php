@@ -4,14 +4,14 @@
     <div class="row">
         <div class="col-12">
             <div class="page-title-box d-sm-flex align-items-center justify-content-between">
-                <h4 class="mb-sm-0 font-size-18">Transactions</h4>
+                <h4 class="mb-sm-0 font-size-18">Transactions show</h4>
 
                 <div class="page-title-right">
                     <ol class="breadcrumb m-0">
                         <li class="breadcrumb-item"><a href="{{ route('home') }}" style="color: #007bff;">@lang('global.home')</a>
                         </li>
                         <li class="breadcrumb-item"><a href="{{ route('transactions.index') }}"
-                                style="color: #007bff;">Transactions</a></li>
+                                style="color: #007bff;">Transactions show</a></li>
                         <li class="breadcrumb-item active">@lang('global.add')</li>
                     </ol>
                 </div>
@@ -25,7 +25,7 @@
             <div class="card">
                 <div class="card-body border-bottom">
                     <div class="d-flex align-items-center">
-                        <h5 class="mb-0 card-title flex-grow-1">Transactions Lists</h5>
+                        <h5 class="mb-0 card-title flex-grow-1">Transactions show</h5>
                         <div class="flex-shrink-0">
                             <a href="{{ route('import') }}" class="btn btn-primary">Import Exel</a>
                         </div>
@@ -88,13 +88,11 @@
                                     <th scope="col">Payer Account</th>
                                     <th scope="col">Created At</th>
                                     <th scope="col">Updated At</th>
-                                    <th scope="col">Actions</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($transactions as $transaction)
                                 <tr>
-                                    <td>{{ $loop->index + 1 }}</td>
+                                    <td>{{ $transaction->id }}</td>
                                     <td>{{ $transaction->document_number }}</td>
                                     <td>{{ $transaction->operation_code }}</td>
                                     <td>{{ $transaction->recipient_name }}</td>
@@ -112,16 +110,8 @@
                                     <td>{{ $transaction->payer_account }}</td>
                                     <td>{{ $transaction->created_at }}</td>
                                     <td>{{ $transaction->updated_at }}</td>
-                                    <td>
-                                        <ul class="list-unstyled hstack gap-1 mb-0">
-                                            <li data-bs-toggle="tooltip" data-bs-placement="top" aria-label="View" aria-describedby="tooltip71766">
-                                                <a href="{{route('transactions.show', $transaction->id)}}" class="btn btn-sm btn-soft-primary"><i class="mdi mdi-eye-outline"></i></a>
-                                            </li>
-                                           
-                                        </ul>
-                                    </td>
+                                 
                                 </tr>
-                            @endforeach
 
                             </tbody>
                         </table>

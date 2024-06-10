@@ -123,6 +123,7 @@ Route::group(['middleware' => 'auth'], function () {
 
     // import
     Route::get('transactions', [TransactionController::class,'index'])->name('transactions.index');
+    Route::get('transaction/{id}', [TransactionController::class,'show'])->name('transactions.show');
   
 
 

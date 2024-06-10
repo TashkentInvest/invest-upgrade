@@ -12,6 +12,11 @@ class TransactionController extends Controller
         $transactions = CreditTransaction::get()->all();
         return view('pages.transactions.index',compact('transactions'));
     }
+
+    public function show($id){
+        $transaction = CreditTransaction::find($id);
+        return view('pages.transactions.show',compact('transaction'));
+    }
     public function debat(){
 
     }
