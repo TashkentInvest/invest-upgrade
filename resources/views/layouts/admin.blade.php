@@ -229,6 +229,8 @@
 	<!-- form advanced init -->
 	<script src="{{ asset('assets/js/pages/form-advanced.init.js') }}"></script>
 	<script src="{{ asset('assets/js/pages/job-list.init.js') }}"></script>
+	<script src="{{asset('assets/js/pages/job-list.init.js')}}"></script>
+
 	<!-- App js -->
 	<script src="{{ asset('assets/js/app.js') }}"></script>
 

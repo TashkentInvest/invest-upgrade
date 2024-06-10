@@ -11,8 +11,10 @@ use App\Http\Controllers\Blade\ApiUserController;
 use App\Http\Controllers\Blade\RegionController;
 use App\Http\Controllers\Blade\DistrictController;
 use App\Http\Controllers\Blade\ClientController;
+use App\Http\Controllers\CreditTransactionController;
 use App\Http\Controllers\FileController;
 use App\Http\Controllers\ImportController;
+use App\Http\Controllers\TransactionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -118,6 +120,10 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('import', [ImportController::class, 'import'])->name('import.xls');
     Route::post('import_debat', [ImportController::class, 'import_debat'])->name('import_debat.xls');
     Route::post('import_credit', [ImportController::class, 'import_credit'])->name('import_credit.xls');
+
+    // import
+    Route::get('transactions', [TransactionController::class,'index'])->name('transactions.index');
+  
 
 
     // Audit-Log

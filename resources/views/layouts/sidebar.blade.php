@@ -123,6 +123,15 @@
                                 </a>
                             </li>
                         @endcan
+
+                        @can('import.show')
+                        <li>
+                            <a href="{{ route('transactions.index') }}" class="{{ Request::is('transaction*') ? 'mm-active':'' }}">
+                                <i class="bx bxs-upload" style="font-size: 14px; min-width: auto;"></i>            
+                                View
+                            </a>
+                        </li>
+                    @endcan
                 
                
                     </ul>

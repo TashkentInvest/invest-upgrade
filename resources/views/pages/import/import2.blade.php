@@ -59,7 +59,7 @@
                         </div>
 
                         <div class="row justify-content-end">
-                            <div class="col-lg-7">
+                            <div class="col-lg-10">
                                 <button type="submit" class="btn btn-primary">Create Transaction</button>
                             </div>
                         </div>
