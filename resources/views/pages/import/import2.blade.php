@@ -27,17 +27,17 @@
                         <div class="row mb-4">
                             <label for="projectname" class="col-form-label col-lg-2">Transaction Name</label>
                             <div class="col-lg-7">
-                                <input id="projectname" name="name" type="text" class="form-control form-control-lg" placeholder="Enter Transaction Name..." required>
+                                <input id="projectname" name="name" type="text" class="form-control form-control-lg" placeholder="Enter Transaction Name...">
                             </div>
                         </div>
                         <div class="row mb-4">
                             <label for="projectdesc" class="col-form-label col-lg-2">Transaction Description</label>
                             <div class="col-lg-7">
-                                <textarea class="form-control form-control-lg" id="description" name="description" rows="3" placeholder="Enter Transaction Description..." required></textarea>
+                                <textarea class="form-control form-control-lg" id="description" name="description" rows="3" placeholder="Enter Transaction Description..."></textarea>
                             </div>
                         </div>
 
-                        <div class="row mb-4">
+                        {{-- <div class="row mb-4">
                             <label class="col-form-label col-lg-2">Transaction Date</label>
                             <div class="col-lg-7">
                                 <div class="input-daterange input-group" >
@@ -45,7 +45,7 @@
                                     <input type="date" class="form-control form-control-lg" placeholder="End Date" name="end_date" required/>
                                 </div>
                             </div>
-                        </div>
+                        </div> --}}
 
                         <div class="row mb-4">
                             <label class="col-form-label col-lg-2">Attached Files</label>
