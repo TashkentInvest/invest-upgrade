@@ -78,13 +78,63 @@
                     </table>
                 </div>
 
+                <div class="table-responsive">
+                    <table class="table table-bordered table-hover align-middle nowrap">
+                        <thead class="table-light">
+                            <tr>
+                                <th scope="col">№ Док</th>
+                                <th scope="col">Дата платежа</th>
+                                <th scope="col" style="width: 200px;">Назначение платежа</th>
+                                <th scope="col">Дебит</th>
+                                <th scope="col">Кредит</th>
+                                <th scope="col">Инн</th>
+                                <th scope="col">МФО</th>
+                                <th scope="col">Расчетный счет</th>
+                                <th scope="col">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($transactions as $transaction)
+                                <tr>
+                                    <td>{{ $transaction->document_number }}</td>
+                                    <td>{{ $transaction->payment_date }}</td>
+                                    <td style="width: 200px;">{{ $transaction->payment_description }}</td>
+                                    <td>{{ $transaction->debit }}</td>
+                                    <td>{{ $transaction->credit }}</td>
+                                    <td>{{ $transaction->payer_inn }}</td>
+                                    <td>{{ $transaction->payer_mfo }}</td>
+                                    <td>{{ $transaction->payer_account }}</td>
+                                    <td>
+                                        <ul class="list-unstyled hstack gap-1 mb-0">
+                                            <li data-bs-toggle="tooltip" data-bs-placement="top" aria-label="View">
+                                                <a href="{{ route('transactions.show', $transaction->id) }}" class="btn btn-sm btn-soft-primary"><i class="mdi mdi-eye-outline"></i></a>
+                                            </li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
+
                 <div class="d-flex" style="justify-content: space-between">
-                    {{-- {{$transactions->links()}} --}}
                     {{$transactions->appends(['search' => request()->input('search')])->links()}}
 
-                
-                    <h4 class="text-bold">Credit: {{$creditSum}}</h4>
+                    <h4 id="payedSumCell1" class="text-bold">Credit: {{$creditSum}}</h4>
                 </div>
+
+                
+                <script>
+                    function formatNumberWithSpaces(number) {
+                        return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
+                    }
+            
+                    var payedSumElement = document.getElementById('payedSumCell1');
+                    var payedSumValue = payedSumElement.textContent;
+            
+                    payedSumElement.textContent = formatNumberWithSpaces(payedSumValue);
+                    
+                </script>
                 <!--end row-->
             </div>
         </div><!--end card-->

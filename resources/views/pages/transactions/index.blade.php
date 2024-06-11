@@ -80,8 +80,23 @@
                 <div class="d-flex" style="justify-content: space-between">
                     {{$transactions->appends(['search' => request()->input('search')])->links()}}
 
-                    <h4 class="text-bold">Credit: {{$creditSum}}</h4>
+                    <h4 id="payedSumCell1" class="text-bold">Credit: {{$creditSum}}</h4>
                 </div>
+
+                
+                <script>
+                    function formatNumberWithSpaces(number) {
+                        return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
+                    }
+            
+                    var payedSumElement = document.getElementById('payedSumCell1');
+                    var payedSumValue = payedSumElement.textContent;
+            
+                    payedSumElement.textContent = formatNumberWithSpaces(payedSumValue);
+                    
+                </script>
+
+                
                 
 
                 <!--end row-->
