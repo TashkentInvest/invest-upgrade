@@ -85,8 +85,7 @@ class TransactionController extends Controller
 
     public function show($id)
     {
-        // Eager load the transaction data
-        $transaction = CreditTransaction::with('relatedData')->find($id);
+        $transaction = CreditTransaction::find($id);
         return view('pages.transactions.show', compact('transaction'));
     }
 }
