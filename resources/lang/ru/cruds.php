@@ -183,7 +183,7 @@ return [
     ],
 
     'backup' => [
-        'title' => 'Резервное копирование',
+        'title' => 'Резервное копии',
         'fields' => [
             'name_uz' => "O'zbekcha nomi",
             'name_ru' => 'Rus tilida nomi',
