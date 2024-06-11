@@ -4,18 +4,15 @@
     <div class="row">
         <div class="col-12">
             <div class="page-title-box d-sm-flex align-items-center justify-content-between">
-                <h4 class="mb-sm-0 font-size-18">Transactions show</h4>
+                <h4 class="mb-sm-0 font-size-18">Transactions Show</h4>
 
                 <div class="page-title-right">
                     <ol class="breadcrumb m-0">
-                        <li class="breadcrumb-item"><a href="{{ route('home') }}" style="color: #007bff;">@lang('global.home')</a>
-                        </li>
-                        <li class="breadcrumb-item"><a href="{{ route('transactions.index') }}"
-                                style="color: #007bff;">Transactions show</a></li>
+                        <li class="breadcrumb-item"><a href="{{ route('home') }}" style="color: #007bff;">@lang('global.home')</a></li>
+                        <li class="breadcrumb-item"><a href="{{ route('transactions.index') }}" style="color: #007bff;">Transactions Show</a></li>
                         <li class="breadcrumb-item active">@lang('global.add')</li>
                     </ol>
                 </div>
-
             </div>
         </div>
     </div>
@@ -25,94 +22,88 @@
             <div class="card">
                 <div class="card-body border-bottom">
                     <div class="d-flex align-items-center">
-                        <h5 class="mb-0 card-title flex-grow-1">Transactions show</h5>
+                        <h5 class="mb-0 card-title flex-grow-1">Transactions Show</h5>
                         <div class="flex-shrink-0">
                             <a href="{{ route('import') }}" class="btn btn-primary">Import Exel</a>
                         </div>
                     </div>
                 </div>
-                <div class="card-body border-bottom">
-                    <div class="row g-3">
-                        <div class="col-xxl-4 col-lg-6">
-                            <input type="search" class="form-control" id="searchInput" placeholder="Search for ...">
-                        </div>
-                        <div class="col-xxl-2 col-lg-6">
-                            <select class="form-control select2">
-                                <option>Status</option>
-                                <option value="Active">Active</option>
-                                <option value="New">New</option>
-                                <option value="Close">Close</option>
-                            </select>
-                        </div>
-                        <div class="col-xxl-2 col-lg-4">
-                            <select class="form-control select2">
-                                <option>Select Type</option>
-                                <option value="1">Full Time</option>
-                                <option value="2">Part Time</option>
-                            </select>
-                        </div>
-                        <div class="col-xxl-2 col-lg-4">
-                            <div id="datepicker1">
-                                <input type="text" class="form-control" placeholder="Select date"
-                                    data-date-format="dd M, yyyy" data-date-autoclose="true"
-                                    data-date-container='#datepicker1' data-provide="datepicker">
-                            </div><!-- input-group -->
-                        </div>
-                        <div class="col-xxl-2 col-lg-4">
-                            <button type="button" class="btn btn-soft-secondary w-100"><i
-                                    class="mdi mdi-filter-outline align-middle"></i> Filter</button>
-                        </div>
-                    </div>
-                </div>
                 <div class="card-body">
-
                     <div class="table-responsive">
-                        <table class="table table-bordered align-middle nowrap">
-                            <thead>
-                                <tr>
-                                    <th scope="col">No</th>
-                                    <th scope="col">Document Number</th>
-                                    <th scope="col">Operation Code</th>
-                                    <th scope="col">Recipient Name</th>
-                                    <th scope="col">Recipient INN</th>
-                                    <th scope="col">Recipient MFO</th>
-                                    <th scope="col">Recipient Account</th>
-                                    <th scope="col">Payment Date</th>
-                                    <th scope="col">Payment Description</th>
-                                    <th scope="col">Debit</th>
-                                    <th scope="col">Credit</th>
-                                    <th scope="col">Payer Name</th>
-                                    <th scope="col">Payer INN</th>
-                                    <th scope="col">Payer MFO</th>
-                                    <th scope="col">Payer Bank</th>
-                                    <th scope="col">Payer Account</th>
-                                    <th scope="col">Created At</th>
-                                    <th scope="col">Updated At</th>
-                                </tr>
-                            </thead>
+                        <table class="table table-striped table-bordered align-middle">
                             <tbody>
                                 <tr>
-                                    <td>{{ $transaction->id }}</td>
-                                    <td>{{ $transaction->document_number }}</td>
-                                    <td>{{ $transaction->operation_code }}</td>
-                                    <td>{{ $transaction->recipient_name }}</td>
-                                    <td>{{ $transaction->recipient_inn }}</td>
-                                    <td>{{ $transaction->recipient_mfo }}</td>
-                                    <td>{{ $transaction->recipient_account }}</td>
-                                    <td>{{ $transaction->payment_date }}</td>
-                                    <td>{{ $transaction->payment_description }}</td>
-                                    <td>{{ $transaction->debit }}</td>
-                                    <td>{{ $transaction->credit }}</td>
-                                    <td>{{ $transaction->payer_name }}</td>
-                                    <td>{{ $transaction->payer_inn }}</td>
-                                    <td>{{ $transaction->payer_mfo }}</td>
-                                    <td>{{ $transaction->payer_bank }}</td>
-                                    <td>{{ $transaction->payer_account }}</td>
-                                    <td>{{ $transaction->created_at }}</td>
-                                    <td>{{ $transaction->updated_at }}</td>
-                                 
+                                    <th scope="row" style="width: 200px;">№</th>
+                                    <td colspan="2">{{ $transaction->id }}</td>
                                 </tr>
-
+                                <tr>
+                                    <th scope="row">№ Док</th>
+                                    <td colspan="2">{{ $transaction->document_number }}</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">ВО</th>
+                                    <td colspan="2">{{ $transaction->operation_code }}</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Наименование получателя</th>
+                                    <td colspan="2">{{ $transaction->recipient_name }}</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Инн</th>
+                                    <td colspan="2">{{ $transaction->recipient_inn }}</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">МФО</th>
+                                    <td colspan="2">{{ $transaction->recipient_mfo }}</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Расчетный счет</th>
+                                    <td colspan="2">{{ $transaction->recipient_account }}</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Дата платежа</th>
+                                    <td colspan="2">{{ $transaction->payment_date }}</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Назначение платежа</th>
+                                    <td colspan="2">{{ $transaction->payment_description }}</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Дебит</th>
+                                    <td colspan="2">{{ $transaction->debit }}</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Кредит</th>
+                                    <td colspan="2">{{ $transaction->credit }}</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Наименование плательщика</th>
+                                    <td colspan="2">{{ $transaction->payer_name }}</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Инн</th>
+                                    <td colspan="2">{{ $transaction->payer_inn }}</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">МФО</th>
+                                    <td colspan="2">{{ $transaction->payer_mfo }}</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Банк плательщика</th>
+                                    <td colspan="2">{{ $transaction->payer_bank }}</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Расчетный счет</th>
+                                    <td colspan="2">{{ $transaction->payer_account }}</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">@lang('global.created_at')</th>
+                                    <td colspan="2">{{ $transaction->created_at }}</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">@lang('global.updated_at')</th>
+                                    <td colspan="2">{{ $transaction->updated_at }}</td>
+                                </tr>
                             </tbody>
                         </table>
                     </div>
@@ -120,6 +111,18 @@
                 </div>
             </div><!--end card-->
         </div><!--end col-->
-
     </div><!--end row-->
 @endsection
+
+@push('styles')
+<style>
+    .table th {
+        background-color: #f8f9fa;
+        text-align: left;
+    }
+    .table th, .table td {
+        vertical-align: middle;
+        padding: 0.75rem;
+    }
+</style>
+@endpush

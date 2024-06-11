@@ -1,0 +1,105 @@
+<!-- saved from url=(0061)https://ibank.mikrokreditbank.uz/cib/reports/print_report.jsp -->
+<html>
+    <head>
+        <meta
+            http-equiv="Content-Type"
+            content="text/html; charset=windows-1251"
+        />
+        <title>Выписка лицевого счета (по документам)</title>
+        <meta http-equiv="Content-Language" content="ru" />
+        <meta http-equiv="X-UA-Compatible" content="IE=11" />
+        <style>
+            @media screen {
+                #print_page {
+                    display: inline;
+                }
+            }
+            @media print {
+                #print_page {
+                    display: none;
+                }
+            }
+        </style>
+        <script>
+            ie4 = document.all ? true : false;
+            function showit() {
+                if (ie4) {
+                    loader.style.visibility = "visible";
+                }
+                setTimeout("hideit()", 300);
+            }
+            function hideit() {
+                if (ie4) {
+                    loader.style.visibility = "hidden";
+                }
+                setTimeout("showit()", 150);
+            }
+            function Hide_Loader() {
+                loader.style.display = "none";
+            }
+            function printPage() {
+                document.getElementById("print_page").style.display = "none";
+                window.print();
+                document.getElementById("print_page").style.display = "inline";
+            }
+            function onK() {
+                var e = event,
+                    c = e.keyCode;
+                if (c == 27) window.close();
+                document.getElementById("print_page").style.display = "inline";
+                if (e.ctrlKey && c == 80) {
+                    document.getElementById("print_page").style.display =
+                        "none";
+                }
+            }
+        </script>
+        <style type="text/css" media="print">
+            @media print {
+                /* Стиль для печати */
+                @page {
+                    size: landscape;
+                }
+                table.my_table > tr {
+                    page-break-inside: avoid !important;
+                }
+                #print_page {
+                    -webkit-transform: rotate(-90deg);
+                    -moz-transform: rotate(-90deg);
+                    filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
+                    display: none;
+                }
+                body {
+                    zoom: 90%; /*or whatever percentage you need, play around with this number*/
+                }
+            }
+        </style>
+        <style>
+            #loader {
+                font: bold italic 10pt Arial;
+                color: #09f;
+                padding-left: 50px;
+            }
+            body {
+                font-family: Tahoma;
+                font-size: 13px;
+            }
+        </style>
+    </head>
+    <body onkeydown="onK()" onload="Hide_Loader()">
+        <div id="loader" style="display: none">
+            Пожалуйста, подождите, идет формирование отчета ...
+        </div>
+        <input
+            type="button"
+            media="print"
+            id="print_page"
+            value="Печать"
+            onclick="window.print();"
+        />
+        <script>
+            showit();
+        </script>
+        <pre><style>table{mso-displayed-decimal-separator:"\.";mso-displayed-thousand-separator:" ";font-size:9.0pt;}.txt{mso-number-format:"\@";text-align:left;}.num{white-space:nowrap;mso-number-format:Standard;text-align:right}.numb{white-space:nowrap;mso-number-format:Standard;background:#969696;text-align:right}.r{font-weight:bold;}.sum_itog{font-weight:bold;background-color:"#dfdfdf"}.tbl{border:1px solid gray;padding:3px;}.tbl th,.tbl tr,.tbl td{border:1px solid gray;text-align:center};.tbl th{background-color:silver};.l{text-align:left !important}.r{text-align:right !important}.stamp{position: relative;top:25px;font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;}.stamp__body{color:#4c9eeb;text-transform: uppercase;position: absolute;font-size: 12px;top: 0px;left: 640px;width: 200px;border:6px solid #4c9eeb;border-radius: 8px;font-weight: bold;}.stamp__header,.stamp__date{text-align: center;}.stamp__date{color: #000;}.stamp__header{font-size: 9px;} .stamp__aside{width: 200px; height: 50px;}.stamp__left{position: relative; top: 5px; left: 5px; text-align: center; width: 40px; font-size: 9px; line-height:12px;} .stamp__right{position: relative; bottom: 23px; left: 55px;} .stamp__date{position: relative; bottom: 8px;}.stamp__letter{font-size: 12px;}code{overflow-x: auto;white-space: pre-wrap;white-space: -moz-pre-wrap;white-space: -pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;}</style><table width="850" style="font-family: tahoma; font-size: 8pt;" bordercolor="#c0c0c0" border="0" cellspacing="0" cellpadding="2"><tbody><tr><td colspan="2" align="left"><b>ТОШКЕНТ Ш., "МИКРОКРЕДИТБАНК" АТБ БОШ ОФИСИ</b></td><td colspan="4" align="right"><img height="60" width="150" src="./Выписка лицевого счета (по документам)_files/logo_09005.png"></td></tr><tr><td colspan="5">: 22626000900101163001</td><td colspan="2" align="right">Дата последней проводки : 10.06.2024</td></tr><tr><td colspan="5">Клиент 00101163 ИНН 201623064</td></tr><tr><td colspan="5">Период выписки с 07.06.2024 по 10.06.2024</td></tr><tr><td colspan="5">Дата последней проводки : 10.06.2024</td></tr></tbody></table><table width="850" style="font-family: tahoma; font-size: 8pt;" bordercolor="#c0c0c0" border="1" cellspacing="0" cellpadding="2"><tbody><tr><td colspan="5"><b>Входящий остаток на 07.06.2024</b></td><td align="right"><b> 129,745,736,912.93</b></td></tr><tr><th>Дата проводки</th><th>Дата Опер. Дня</th><th>Номер документа</th><th>Корреспондент: Банк/Счет/Инн Наименование  Назначение платежа</th><th>Дебет</th><th>Кредит</th></tr><tr><td width="5%" align="center">06.06.2024 20:33:18</td><td width="5%" align="center">07.06.2024</td><td width="15%" align="center">0285841484</td><td width="45%">МФО: 00014 Счет:  23402000300100001010 ИНН:  201122919<br> <b>Иктисодиёт ва молия вазирлиги Ягона газна хисобвараги</b><br><code>00602 4014228606262693422677278~ Оплата из "ГОРОД ТАШКЕНТ", "Мирзо-Улугбекский район". Отчисление 20.0 % от 23065600</code></td><td align="right" width="15%" nowrap="">&nbsp;</td><td align="right" width="15%" nowrap="">4,613,120.00</td></tr><tr><td width="5%" align="center">07.06.2024 08:09:48</td><td width="5%" align="center">07.06.2024</td><td width="15%" align="center">1032311228</td><td width="45%">МФО: 00423 Счет:  20208000300864974001 ИНН:  305444069<br> <b>"REACENTER TOSHKENT" MCHJ</b><br><code>00668~ЧАСТИЧНАЯ ОПЛАТА АХИТЕКТУРНО-ПРОЕКТИРОВОЧНАЯ ЗАДАНИЯ (АПЗ), сог.дог.№ АРТ 47/24 от 03.06.2024 года.</code></td><td align="right" width="15%" nowrap="">&nbsp;</td><td align="right" width="15%" nowrap="">13,000,000.00</td></tr><tr><td width="5%" align="center">07.06.2024 11:06:41</td><td width="5%" align="center">07.06.2024</td><td width="15%" align="center">0285946582</td><td width="45%">МФО: 00014 Счет:  23402000300100001010 ИНН:  201122919<br> <b>Иктисодиёт ва молия вазирлиги Ягона газна хисобвараги</b><br><code>006024014228606262693422677278~ Оплата из "ГОРОД ТАШКЕНТ", "Мирзо-Улугбекский район". Отчисление 20.0 % от 23065600</code></td><td align="right" width="15%" nowrap="">&nbsp;</td><td align="right" width="15%" nowrap="">4,613,120.00</td></tr><tr><td width="5%" align="center">07.06.2024 17:06:49</td><td width="5%" align="center">07.06.2024</td><td width="15%" align="center">1032311230</td><td width="45%">МФО: 00423 Счет:  20208000300864974001 ИНН:  305444069<br> <b>"REACENTER TOSHKENT" MCHJ</b><br><code>00668~ЧАСТИЧНАЯ ОПЛАТА АХИТЕКТУРНО-ПРОЕКТИРОВОЧНАЯ ЗАДАНИЯ (АПЗ), сог.дог.№ АРТ 47/24 от 03.06.2024 года.</code></td><td align="right" width="15%" nowrap="">&nbsp;</td><td align="right" width="15%" nowrap="">13,000,000.00</td></tr><tr><td colspan="3"><b>Всего оборотов</b></td><th></th><td align="right"><b>0.00</b></td><td align="right"><b>35,226,240.00</b></td></tr><tr><td colspan="5"><b>Остаток на конец дня 07.06.2024</b></td><td align="right"><b>129,780,963,152.93</b></td></tr></tbody></table><br><table width="850" style="font-family: tahoma; font-size: 8pt;" bordercolor="#c0c0c0" border="0" cellspacing="0" cellpadding="2"><tbody><tr><td colspan="2" align="left"><b>ТОШКЕНТ Ш., "МИКРОКРЕДИТБАНК" АТБ БОШ ОФИСИ</b></td><td colspan="4" align="right"><img height="60" width="150" src="./Выписка лицевого счета (по документам)_files/logo_09005.png"></td></tr><tr><td colspan="5">: 22626000900101163001</td><td colspan="2" align="right">Дата последней проводки : 10.06.2024</td></tr><tr><td colspan="5">Клиент 00101163 ИНН 201623064</td></tr><tr><td colspan="5">Период выписки с 07.06.2024 по 10.06.2024</td></tr><tr><td colspan="5">Дата последней проводки : 10.06.2024</td></tr></tbody></table><table width="850" style="font-family: tahoma; font-size: 8pt;" bordercolor="#c0c0c0" border="1" cellspacing="0" cellpadding="2"><tbody><tr><td colspan="5"><b>Входящий остаток на 10.06.2024</b></td><td align="right"><b> 129,780,963,152.93</b></td></tr><tr><th>Дата проводки</th><th>Дата Опер. Дня</th><th>Номер документа</th><th>Корреспондент: Банк/Счет/Инн Наименование  Назначение платежа</th><th>Дебет</th><th>Кредит</th></tr><tr><td width="5%" align="center">07.06.2024 20:19:28</td><td width="5%" align="center">10.06.2024</td><td width="15%" align="center">0268764768</td><td width="45%">МФО: 00014 Счет:  23402000300100001010 ИНН:  201122919<br> <b>Иктисодиёт ва молия вазирлиги Ягона газна хисобвараги</b><br><code>00602 4014228604262873422677278~ Оплата из "ГОРОД ТАШКЕНТ", "Яккасарайский район". Отчисление 20.0 % от 62809696</code></td><td align="right" width="15%" nowrap="">&nbsp;</td><td align="right" width="15%" nowrap="">12,561,939.20</td></tr><tr><td width="5%" align="center">07.06.2024 20:57:31</td><td width="5%" align="center">10.06.2024</td><td width="15%" align="center">0269535715</td><td width="45%">МФО: 00014 Счет:  23402000300100001010 ИНН:  201122919<br> <b>Иктисодиёт ва молия вазирлиги Ягона газна хисобвараги</b><br><code>00602 4014228609262923422677278~ Оплата из "ГОРОД ТАШКЕНТ", "Янгихаятский район". Отчисление 20.0 % от 18755352</code></td><td align="right" width="15%" nowrap="">&nbsp;</td><td align="right" width="15%" nowrap="">3,751,070.40</td></tr><tr><td width="5%" align="center">07.06.2024 21:00:01</td><td width="5%" align="center">10.06.2024</td><td width="15%" align="center">0269524729</td><td width="45%">МФО: 00014 Счет:  23402000300100001010 ИНН:  201122919<br> <b>Иктисодиёт ва молия вазирлиги Ягона газна хисобвараги</b><br><code>00602 4014228601262903422677278~ Оплата из "ГОРОД ТАШКЕНТ", "Яшнаабадский район". Отчисление 20.0 % от 221503314.24</code></td><td align="right" width="15%" nowrap="">&nbsp;</td><td align="right" width="15%" nowrap="">44,300,662.85</td></tr><tr><td width="5%" align="center">07.06.2024 21:12:29</td><td width="5%" align="center">10.06.2024</td><td width="15%" align="center">0286433663</td><td width="45%">МФО: 00014 Счет:  23402000300100001010 ИНН:  201122919<br> <b>Иктисодиёт ва молия вазирлиги Ягона газна хисобвараги</b><br><code>00602 4014228605262663422677278~ Оплата из "ГОРОД ТАШКЕНТ", "Юнусабадский район". Отчисление 20.0 % от 15354400</code></td><td align="right" width="15%" nowrap="">&nbsp;</td><td align="right" width="15%" nowrap="">3,070,880.00</td></tr><tr><td width="5%" align="center">07.06.2024 21:13:42</td><td width="5%" align="center">10.06.2024</td><td width="15%" align="center">0286434972</td><td width="45%">МФО: 00014 Счет:  23402000300100001010 ИНН:  201122919<br> <b>Иктисодиёт ва молия вазирлиги Ягона газна хисобвараги</b><br><code>00602 4014228606262693422677278~ Оплата из "ГОРОД ТАШКЕНТ", "Мирзо-Улугбекский район". Отчисление 20.0 % от 56344800</code></td><td align="right" width="15%" nowrap="">&nbsp;</td><td align="right" width="15%" nowrap="">11,268,960.00</td></tr><tr><td width="5%" align="center">10.06.2024 09:16:49</td><td width="5%" align="center">10.06.2024</td><td width="15%" align="center">1032311232</td><td width="45%">МФО: 00423 Счет:  20208000300864974001 ИНН:  305444069<br> <b>"REACENTER TOSHKENT" MCHJ</b><br><code>00634~ЧАСТИЧНАЯ ОПЛАТА АХИТЕКТУРНО-ПРОЕКТИРОВОЧНАЯ ЗАДАНИЯ (АПЗ), сог.дог.№ АРТ 47/24 от 03.06.2024 года.</code></td><td align="right" width="15%" nowrap="">&nbsp;</td><td align="right" width="15%" nowrap="">23,000,000.00</td></tr><tr><td colspan="3"><b>Всего оборотов</b></td><th></th><td align="right"><b>0.00</b></td><td align="right"><b>97,953,512.45</b></td></tr><tr><td colspan="5"><b>Остаток на конец дня 10.06.2024</b></td><td align="right"><b>129,878,916,665.38</b></td></tr></tbody></table><br></pre>
+    </body>
+</html>
+    
