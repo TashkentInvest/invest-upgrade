@@ -78,8 +78,11 @@
                     </table>
                 </div>
 
-                <h3 class="text-bold">Credit: {{$creditSum}}</h3>
-
+                <div class="d-flex" style="justify-content: space-between">
+                    {{-- {{$transactions->links()}} --}}
+                
+                    <h4 class="text-bold">Credit: {{$creditSum}}</h4>
+                </div>
                 <!--end row-->
             </div>
         </div><!--end card-->

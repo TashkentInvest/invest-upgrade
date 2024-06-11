@@ -77,7 +77,11 @@
                     </table>
                 </div>
 
-                <h3 class="text-bold">Credit: {{$creditSum}}</h3>
+                <div class="d-flex" style="justify-content: space-between">
+                
+                    <h4 class="text-bold">Credit: {{$creditSum}}</h4>
+                </div>
+                
 
                 <!--end row-->
             </div>
