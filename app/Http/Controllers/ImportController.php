@@ -168,15 +168,15 @@ class ImportController extends Controller
     public function import_credit(Request $request)
     {
         $path = $request->file('credit_excel_file')->getRealPath();
-    
+
         if ($xlsx = SimpleXLSX::parse($path)) {
             $rows = $xlsx->rows(0);
-    
+
             foreach ($rows as $key => $row) {
                 if ($key === 0) {
                     continue; // Skip the header row
                 }
-                
+
                 // Preprocess and sanitize data before insertion
                 $rowData = [
                     'document_number' => $row[1] ?? null,
@@ -195,27 +195,34 @@ class ImportController extends Controller
                     'payer_bank' => $row[14] ?? null,
                     'payer_account' => $row[15] ?? null,
                 ];
-                
-    
-                // Insert data into the CreditTransaction table
-                $creditTransaction = CreditTransaction::create($rowData);
-    
-                // Assuming each CreditTransaction is associated with a Transaction
-                // You can adjust this logic based on your actual requirements
-                $transaction = Transaction::create([
+
+                // Update existing record or create a new one if it doesn't exist
+                $creditTransaction = CreditTransaction::updateOrCreate(
+                    ['document_number' => $rowData['document_number']], // unique identifier to find the record
+                    $rowData
+                );
+
+                // Prepare transaction data
+                $transactionData = [
+                    'credit_transaction_id' => $creditTransaction->id, // Ensure this field exists in the transactions table
                     'name' => $request->get('name'),
                     'description' => $request->get('description'),
                     'father_name' => $request->get('father_name'),
                     'start_date' => $request->get('start_date'),
                     'end_date' => $request->get('end_date'),
-                    'credit_transaction_id' => $creditTransaction->id,
-                ]);
+                ];
+
+                // Update existing transaction or create a new one if it doesn't exist
+                $transaction = Transaction::updateOrCreate(
+                    ['credit_transaction_id' => $creditTransaction->id], // unique identifier to find the record
+                    $transactionData
+                );
             }
-    
+
             return back()->with('success', 'Data imported successfully.');
         } else {
             return back()->with('error', SimpleXLSX::parseError());
         }
     }
-    
+
 }
