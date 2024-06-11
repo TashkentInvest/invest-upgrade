@@ -34,7 +34,7 @@
 
                 <div class="card-body border-bottom">
 
-                    <form action="{{ route('transactions.art') }}" method="GET">
+                    <form action="{{ route('transactions.ads') }}" method="GET">
                         <div class="input-group mb-3">
                             <input type="text" class="form-control" placeholder="Search..." name="search" value="{{ request('search') }}">
                             <button class="btn btn-outline-secondary" type="submit">Search</button>

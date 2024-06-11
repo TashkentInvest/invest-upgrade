@@ -9,25 +9,27 @@ class TransactionController extends Controller
 {
     public function index(Request $request)
     {
-        $query = CreditTransaction::deepFilters();
-    
+        // Initialize the query builder
+        $query = CreditTransaction::query();
+        
+        // Check if there's a search input
         if ($request->has('search')) {
             $search = $request->input('search');
             $query->where(function ($query) use ($search) {
                 $query->where('payer_inn', 'like', "%$search%")
                     ->orWhere('payer_mfo', 'like', "%$search%")
-
-                      ->orWhere('payment_date', 'like', "%$search%")
-                      ->orWhere('payer_account', 'like', "%$search%")
-                      ->orWhere('document_number', 'like', "%$search%");
+                    ->orWhere('payment_date', 'like', "%$search%")
+                    ->orWhere('payer_account', 'like', "%$search%")
+                    ->orWhere('document_number', 'like', "%$search%");
             });
         }
     
         $transactions = $query->orderBy('payment_date', 'asc')->get();
         $creditSum = $query->sum('credit');
-        
+    
         return view('pages.transactions.index', compact('transactions', 'creditSum'));
     }
+    
     public function art(Request $request)
     {
         $query = CreditTransaction::deepFilters()
@@ -63,10 +65,10 @@ class TransactionController extends Controller
             $search = $request->input('search');
             $query->where(function ($query) use ($search) {
                 $query->where('payer_inn', 'like', "%$search%")
-                    ->orWhere('payer_mfo', 'like', "%$search%")
-                    ->orWhere('payment_date', 'like', "%$search%")
-                    ->orWhere('payer_account', 'like', "%$search%")
-                    ->orWhere('document_number', 'like', "%$search%");
+                ->orWhere('payer_mfo', 'like', "%$search%")
+                ->orWhere('payment_date', 'like', "%$search%")
+                ->orWhere('payer_account', 'like', "%$search%")
+                ->orWhere('document_number', 'like', "%$search%");
             });
         }
 
