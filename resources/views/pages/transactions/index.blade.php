@@ -78,10 +78,8 @@
                 </div>
 
                 <div class="d-flex" style="justify-content: space-between">
-                    @if(isset($transactions))
-                        {{$transactions->links()}}
-                    @endif
-                    
+                    {{$transactions->appends(['search' => request()->input('search')])->links()}}
+
                     <h4 class="text-bold">Credit: {{$creditSum}}</h4>
                 </div>
                 
