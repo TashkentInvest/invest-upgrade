@@ -62,21 +62,21 @@
                     <table class="table table-bordered align-middle nowrap">
                         <thead>
                             <th scope="col">No</th>
-                                    <th scope="col">Document Number</th>
-                                    <th scope="col">Operation Code</th>
+                                    <th scope="col">№ Док</th>
+                                    {{-- <th scope="col">Operation Code</th>
                                     <th scope="col">Recipient Name</th>
                                     <th scope="col">Recipient INN</th>
                                     <th scope="col">Recipient MFO</th>
-                                    <th scope="col">Recipient Account</th>
-                                    <th scope="col">Payment Date</th>
-                                    <th scope="col">Payment Description</th>
-                                    <th scope="col">Debit</th>
-                                    <th scope="col">Credit</th>
-                                    <th scope="col">Payer Name</th>
-                                    <th scope="col">Payer INN</th>
-                                    <th scope="col">Payer MFO</th>
-                                    <th scope="col">Payer Bank</th>
-                                    <th scope="col">Payer Account</th>
+                                    <th scope="col">Recipient Account</th> --}}
+                                    <th scope="col">Дата платежа</th>
+                                    <th scope="col">Назначение платежа</th>
+                                    <th scope="col">Дебит</th>
+                                    <th scope="col">Дебит</th>
+                                    {{-- <th scope="col">Payer Name</th> --}}
+                                    <th scope="col">Инн</th>
+                                    <th scope="col">МФО</th>
+                                    {{-- <th scope="col">Payer Bank</th> --}}
+                                    <th scope="col">Расчетный счет</th>
                                    
                         </thead>
                         <tbody>
@@ -85,19 +85,19 @@
                                 <tr>
                                     <td>{{ $transaction->id }}</td>
                                     <td>{{ $transaction->document_number }}</td>
-                                    <td>{{ $transaction->operation_code }}</td>
+                                    {{-- <td>{{ $transaction->operation_code }}</td>
                                     <td>{{ $transaction->recipient_name }}</td>
                                     <td>{{ $transaction->recipient_inn }}</td>
                                     <td>{{ $transaction->recipient_mfo }}</td>
-                                    <td>{{ $transaction->recipient_account }}</td>
+                                    <td>{{ $transaction->recipient_account }}</td> --}}
                                     <td>{{ $transaction->payment_date }}</td>
                                     <td>{{ $transaction->payment_description }}</td>
                                     <td>{{ $transaction->debit }}</td>
                                     <td>{{ $transaction->credit }}</td>
-                                    <td>{{ $transaction->payer_name }}</td>
+                                    {{-- <td>{{ $transaction->payer_name }}</td> --}}
                                     <td>{{ $transaction->payer_inn }}</td>
                                     <td>{{ $transaction->payer_mfo }}</td>
-                                    <td>{{ $transaction->payer_bank }}</td>
+                                    {{-- <td>{{ $transaction->payer_bank }}</td> --}}
                                     <td>{{ $transaction->payer_account }}</td>
 
                                     <td>
