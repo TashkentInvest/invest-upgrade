@@ -352,9 +352,11 @@
                                                                 </tr>
                                                                 <tr>
                                                                     <td>@lang('cruds.client.fields.passport_date')</td>
-                                                                    {{-- <td>{{ $item->passport_date }}</td> --}}
-                                                                    <td>{{ date('d-m-Y', strtotime($item->passport_date)) }}
-                                                                    </td>
+                                                                    @if ($item->passport_date)
+                                                                        <td>{{ date('d-m-Y', strtotime($item->passport_date)) }}</td>
+                                                                    @else
+                                                                        <td></td> 
+                                                                    @endif
                                                                 </tr>
                                                                 <tr>
                                                                     <td>@lang('cruds.client.fields.passport_location')</td>

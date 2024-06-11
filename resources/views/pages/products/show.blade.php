@@ -22,82 +22,29 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-body">
-                    <div class="btn-toolbar">
-
-                        <div class="btn-group dropdown-btn-group pull-right">
-                            <button type="button" class="btn btn-default btn btn-primary">Display all</button>
-                            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"
-                                aria-expanded="false">
-                                Display <span class="caret"></span>
-                            </button>
-                            <ul class="dropdown-menu">
-                                @php
-                                    $columns = [
-                                        ['name' => __('global.id'), 'data-priority' => 1, 'default' => true],
-                                        ['name' => __('global.company_name'), 'data-priority' => 2, 'default' => true],
-                                        ['name' => __('global.contact'), 'data-priority' => 4, 'default' => true],
-                                        [
-                                            'name' => __('global.passport_serial'),
-                                            'data-priority' => 5,
-                                            'default' => false,
-                                        ],
-                                        [
-                                            'name' => __('global.passport_pinfl'),
-                                            'data-priority' => 6,
-                                            'default' => false,
-                                        ],
-                                        [
-                                            'name' => __('passport date'),
-                                            'data-priority' => 7,
-                                            'default' => false,
-                                        ],
-                                        [
-                                            'name' => __('global.yuridik_address'),
-                                            'data-priority' => 8,
-                                            'default' => false,
-                                        ],
-                                        ['name' => __('global.actions'), 'data-priority' => 14, 'default' => true],
-                                    ];
-                                @endphp
-                                @foreach ($columns as $index => $column)
-                                    <li class="checkbox-row">
-                                        <input type="checkbox" class="toggle-column" id="toggle-column-{{ $index }}"
-                                            data-column="{{ $index }}" {{ $column['default'] ? 'checked' : '' }}>
-                                        <label for="toggle-column-{{ $index }}">{{ $column['name'] }}</label>
-                                    </li>
-                                @endforeach
-                            </ul>
-
-                        </div>
-                    </div>
-
+                  
                     <!-- Data table -->
-                    <table id="datatable" class="table table-striped focus-on">
+                    <table class="table table-striped focus-on">
                         <thead>
                             <tr>
-                                @foreach ($columns as $index => $column)
-                                    <th data-priority="{{ $column['data-priority'] }}"
-                                        class="{{ $column['default'] ? '' : 'd-none' }}">{{ $column['name'] }}</th>
-                                @endforeach
+                                <th>{{ __('global.id') }}</th>
+                                <th>{{ __('global.company_name') }}</th>
+                                <th>{{ __('global.contact') }}</th>
+                                <th>@lang('cruds.company.fields.stir')</th>
+                                <th>@lang('global.created_at')</th>
+                              
+                                <th>{{ __('global.actions') }}</th>
                             </tr>
                         </thead>
                         <tbody>
                             @if (isset($client))
-                            {{-- @dd($client) --}}
                                 <tr>
                                     <td>{{ $client->id }}</td>
                                     <td>{{ $client->company_name }}</td>
                                     <td>{{ $client->contact ?? '---' }}</td>
-                                    <td class="d-none">{{ $client->passport_serial }}</td>
-                                    <td class="d-none">{{ $client->passport_pinfl }}</td>
-                                    {{-- <td class="d-none">{{ $client->passport_date }}</td> --}}
-                                    <td class="d-none">{{ date('d-m-Y', strtotime($client->passport_date)) }}</td>
-
-                                    <td class="d-none">
-                                        {{ $client->passport_type ? $client->passport_type == 'Id' : ($client->passport_type = 'Passport') }}
-                                    </td>
-                                    <td class="d-none">{{ $client->yuridik_address }}</td>
-
+                                    <td>{{ $client->stir ?? '---' }}</td>
+                                    <td>{{ $client->created_at ?? '---' }}</td>
+                                  
                                     <td class="text-center">
                                         <form action="{{ route('clientDestroy', $client->id) }}" method="post">
                                             @csrf
@@ -108,17 +55,17 @@
                                                         <i class="bx bxs-edit" style="font-size:16px;"></i>
                                                     </a>
                                                 </li>
-                                                @can('client.delete')        
-                                                <input name="_method" type="hidden" value="DELETE">
-                                                <li data-bs-toggle="tooltip" data-bs-placement="top"
-                                                    title="@lang('global.delete')">
-                                                    <button onclick="if (confirm('Вы уверены?')) { this.form.submit() }"
-                                                        type="button" data-bs-toggle="modal" class="btn btn-danger">
-                                                        <i class="bx bxs-trash" style="font-size: 16px;"></i>
-                                                    </button>
-                                                </li>
+                                                @can('client.delete')
+                                                    <input name="_method" type="hidden" value="DELETE">
+                                                    <li data-bs-toggle="tooltip" data-bs-placement="top"
+                                                        title="@lang('global.delete')">
+                                                        <button
+                                                            onclick="if (confirm('Вы уверены?')) { this.form.submit() }"
+                                                            type="button" data-bs-toggle="modal" class="btn btn-danger">
+                                                            <i class="bx bxs-trash" style="font-size: 16px;"></i>
+                                                        </button>
+                                                    </li>
                                                 @endcan
-
                                                 <li data-bs-toggle="tooltip" data-bs-placement="top"
                                                     title="@lang('global.downloadTable')">
                                                     <a href="{{ route('download.table.data', $client->id) }}"
@@ -126,7 +73,6 @@
                                                         <i class="bx bxs-download" style="font-size: 16px;"></i>
                                                     </a>
                                                 </li>
-
                                                 <li data-bs-toggle="tooltip" data-bs-placement="top"
                                                     title="@lang('global.downloadFile')">
                                                     <a href="{{ route('word', $client->id) }}" class="btn btn-secondary">
@@ -143,6 +89,7 @@
                 </div>
             </div>
         </div>
+        
 
 
         <div class="col-12">
@@ -160,6 +107,35 @@
                                 <td colspan="2">{{ $client->last_name }} {{ $client->first_name }} {{ $client->father_name }}</td>
                             </tr>
                             @if($client->mijoz_turi == 'fizik')
+
+                            <tr>
+                                <td>{{ __('global.passport_pinfl') }}</td>
+                                <td>{{ $client->passport_pinfl }}</td>
+                            </tr>
+
+                            <tr>
+                                <td>{{ __('global.passport_serial') }}</td>
+                                <td>{{ $client->passport_serial }}</td>
+                            </tr>
+
+                            <tr>
+                                @if ($client->passport_date)
+                                    <td>@lang('cruds.client.fields.passport_date')</td>
+                                    <td>{{ date('d-m-Y', strtotime($client->passport_date)) }}</td>
+                                @else
+                                    <td>@lang('cruds.client.fields.passport_date')</td> 
+                                    <td></td>
+                                @endif
+                            </tr>
+
+
+                            <tr>
+                                <td>@lang('cruds.client.fields.passport_location')</td>
+                                <td>{{ $client->passport_location }}</td>
+                            </tr>
+
+
+
                             <tr>
                                 <td>@lang('global.home_address')</td>
                                 <td colspan="2">{{ $client->home_address }}</td>
