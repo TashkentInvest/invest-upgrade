@@ -296,3 +296,10 @@ php artisan make:migration change_document_number_type_in_credit_transactions_ta
     php artisan migrate
 
 ```
+
+```
+APT = Apz uchun 
+
+"ГОРОД ТАШКЕНТ",  => reklama
+
+```
