@@ -122,7 +122,9 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('import_credit', [ImportController::class, 'import_credit'])->name('import_credit.xls');
 
     // import
-    Route::get('transactions', [TransactionController::class,'index'])->name('transactions.index');
+    Route::get('transactions/all', [TransactionController::class,'index'])->name('transactions.index');
+    Route::get('transactions/art', [TransactionController::class,'art'])->name('transactions.art');
+    Route::get('transactions/ads', [TransactionController::class,'ads'])->name('transactions.ads');
     Route::get('transaction/{id}', [TransactionController::class,'show'])->name('transactions.show');
   
 

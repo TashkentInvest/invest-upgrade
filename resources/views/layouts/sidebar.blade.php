@@ -58,9 +58,25 @@
                             @can('import.show')
                                 <li>
                                     <a href="{{ route('transactions.index') }}"
-                                        class="{{ Request::is('transaction*') ? 'mm-active' : '' }}">
+                                        class="{{ Request::is('transactions.index*') ? 'mm-active' : '' }}">
                                         <i class="bx bxs-bar-chart-square" style="font-size: 14px; min-width: auto;"></i>
-                                        @lang('global.view_file')
+                                        @lang('global.view_file') ALL
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a href="{{ route('transactions.art') }}"
+                                        class="{{ Request::is('transactions.art*') ? 'mm-active' : '' }}">
+                                        <i class="bx bxs-bar-chart-square" style="font-size: 14px; min-width: auto;"></i>
+                                        @lang('global.view_file') ART
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a href="{{ route('transactions.ads') }}"
+                                        class="{{ Request::is('transactions.ads*') ? 'mm-active' : '' }}">
+                                        <i class="bx bxs-bar-chart-square" style="font-size: 14px; min-width: auto;"></i>
+                                        @lang('global.view_file') ADS
                                     </a>
                                 </li>
                             @endcan
