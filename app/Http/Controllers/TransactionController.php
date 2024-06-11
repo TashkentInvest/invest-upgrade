@@ -10,24 +10,35 @@ class TransactionController extends Controller
 
     public function index()
     {
-        $transactions = CreditTransaction::orderBy('payment_date', 'asc')->get()->all();
-        return view('pages.transactions.index', compact('transactions'));
+        $transactions = CreditTransaction::orderBy('payment_date', 'asc')->get();
+        $creditSum = CreditTransaction::sum('credit');
+    
+        return view('pages.transactions.index', compact('transactions', 'creditSum'));
     }
+    
 
     public function art()
     {
-        $transactions = CreditTransaction::where('payment_description', 'like', '%APT%')->orWhere('payment_description', 'like', '%АПЗ%')
+        $transactions = CreditTransaction::where('payment_description', 'like', '%APT%')
+            ->orWhere('payment_description', 'like', '%АПЗ%')
             ->orderBy('payment_date', 'asc')
-            ->get();
-        return view('pages.transactions.art', compact('transactions'));
+            ->get();    
+    
+        $creditSum = CreditTransaction::where('payment_description', 'like', '%APT%')
+            ->orWhere('payment_description', 'like', '%АПЗ%')
+            ->sum('credit');
+    
+        return view('pages.transactions.art', compact('transactions', 'creditSum'));
     }
-
+    
     public function ads()
     {
         $transactions = CreditTransaction::where('payment_description', 'like', '%ГОРОД ТАШКЕНТ%')
             ->orderBy('payment_date', 'asc')
             ->get();
-        return view('pages.transactions.ads', compact('transactions'));
+
+        $creditSum = CreditTransaction::where('payment_description', 'like', '%ГОРОД ТАШКЕНТ%')->sum('credit');
+        return view('pages.transactions.ads', compact('transactions','creditSum'));
     }
 
     public function show($id)

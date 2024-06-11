@@ -58,6 +58,8 @@
                 </div>
             </div>
             <div class="card-body">
+                <h3 class="text-bold">Credit: {{$creditSum}}</h3>
+                
                 <div class="table-responsive">
                     <table class="table table-bordered table-hover align-middle nowrap">
                         <thead class="table-light">
