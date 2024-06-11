@@ -9,7 +9,7 @@ class TransactionController extends Controller
 {
 
     public function index(){
-        $transactions = CreditTransaction::get()->all();
+        $transactions = CreditTransaction::orderBy('payment_date', 'asc')->get()->all();
         return view('pages.transactions.index',compact('transactions'));
     }
 

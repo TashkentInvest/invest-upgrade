@@ -62,7 +62,6 @@
                     <table class="table table-bordered table-hover align-middle nowrap">
                         <thead class="table-light">
                             <tr>
-                                <th scope="col">No</th>
                                 <th scope="col">№ Док</th>
                                 <th scope="col">Дата платежа</th>
                                 <th scope="col" style="width: 200px;">Назначение платежа</th>
@@ -77,7 +76,6 @@
                         <tbody>
                             @foreach ($transactions as $transaction)
                                 <tr>
-                                    <td>{{ $transaction->id }}</td>
                                     <td>{{ $transaction->document_number }}</td>
                                     <td>{{ $transaction->payment_date }}</td>
                                     <td style="width: 200px;">{{ $transaction->payment_description }}</td>
