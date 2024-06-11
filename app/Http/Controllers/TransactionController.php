@@ -10,7 +10,7 @@ class TransactionController extends Controller
 
     public function index()
     {
-        $transactions = CreditTransaction::orderBy('payment_date', 'asc')->get();
+        $transactions = CreditTransaction::deepFilters()->orderBy('payment_date', 'asc')->get();
         $creditSum = CreditTransaction::sum('credit');
     
         return view('pages.transactions.index', compact('transactions', 'creditSum'));
@@ -19,11 +19,12 @@ class TransactionController extends Controller
 
     public function art()
     {
-        $transactions = CreditTransaction::where('payment_description', 'like', '%APT%')
+        $transactions = CreditTransaction::deepFilters()
+            ->where('payment_description', 'like', '%APT%')
             ->orWhere('payment_description', 'like', '%АПЗ%')
             ->orderBy('payment_date', 'asc')
             ->get();    
-    
+        
         $creditSum = CreditTransaction::where('payment_description', 'like', '%APT%')
             ->orWhere('payment_description', 'like', '%АПЗ%')
             ->sum('credit');
@@ -31,9 +32,10 @@ class TransactionController extends Controller
         return view('pages.transactions.art', compact('transactions', 'creditSum'));
     }
     
+    
     public function ads()
     {
-        $transactions = CreditTransaction::where('payment_description', 'like', '%ГОРОД ТАШКЕНТ%')
+        $transactions = CreditTransaction::deepFilters()->where('payment_description', 'like', '%ГОРОД ТАШКЕНТ%')
             ->orderBy('payment_date', 'asc')
             ->get();
 

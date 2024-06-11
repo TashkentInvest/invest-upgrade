@@ -58,7 +58,6 @@
                 </div>
             </div>
             <div class="card-body">
-                <h3 class="text-bold">Credit: {{$creditSum}}</h3>
 
                 <div class="table-responsive">
                     <table class="table table-bordered table-hover align-middle nowrap">
@@ -98,6 +97,9 @@
                         </tbody>
                     </table>
                 </div>
+
+                <h3 class="text-bold">Credit: {{$creditSum}}</h3>
+
                 <!--end row-->
             </div>
         </div><!--end card-->
