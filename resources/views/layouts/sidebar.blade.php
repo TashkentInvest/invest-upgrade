@@ -15,7 +15,6 @@
                     </a>
                 </li>
 
-                {{-- Audit logs --}}
                 @can('audit.show')
                     <li class="{{ Request::is('audit-logs*') ? 'mm-active' : '' }}">
                         <a href="{{ route('audit-logs.index') }}"
@@ -31,20 +30,20 @@
                         <a href="{{ route('backup.index') }}"
                             class=" waves-effect {{ Request::is('backup*') ? 'mm-active' : '' }}">
                             <i class="bx bx-data"></i>
-                            <span>Backup</span>
+                            <span>@lang('cruds.backup.title')</span>
                         </a>
                     </li>
                 @endcan
 
                 @can('user.show')
                     <li
-                        class="{{ Request::is('permission*') || Request::is('role*') || Request::is('user*') || Request::is('client*') ? 'mm-active' : '' }}">
+                        class="{{ Request::is('permission*') || Request::is('role*') || Request::is('user*') ? 'mm-active' : '' }}">
                         <a href="javascript: void(0);"
-                            class="has-arrow waves-effect {{ Request::is('permission*') || Request::is('role*') || Request::is('user*') || Request::is('client*') ? 'mm-active' : '' }}">
+                            class="has-arrow waves-effect {{ Request::is('permission*') || Request::is('role*') || Request::is('user*') ? 'mm-active' : '' }}">
                             <i class="fas fa-users-cog"></i>
                             <span>@lang('cruds.userManagement.title')</span>
                         </a>
-                        <ul class="sub-menu {{ Request::is('permission*') || Request::is('role*') || Request::is('user*') || Request::is('client*') ? ' ' : 'd-none' }}"
+                        <ul class="sub-menu {{ Request::is('permission*') || Request::is('role*') || Request::is('user*') ? ' ' : 'd-none' }}"
                             aria-expanded="false">
                             @can('permission.show')
                                 <li>
@@ -93,7 +92,7 @@
                             class="has-arrow waves-effect {{ Request::is('import*') || Request::is('transactions*') ? 'mm-active' : '' }}">
                             <i class="bx bx-file"></i>
 
-                            <span>Transactions</span>
+                            <span>@lang('cruds.transaction.title')</span>
                         </a>
                         <ul class="sub-menu {{ Request::is('import*') || Request::is('transactions*') ? ' ' : 'd-none' }}"
                             aria-expanded="false">
@@ -102,7 +101,7 @@
                                     <a href="{{ route('import') }}" class="{{ Request::is('import*') ? 'mm-active' : '' }}">
                                         <i class="bx bx-import" style="font-size: 14px; min-width: auto;"></i>
 
-                                        Import
+                                        @lang('global.app_import_data')
                                     </a>
                                 </li>
                             @endcan
@@ -112,7 +111,7 @@
                                     <a href="{{ route('transactions.index') }}"
                                         class="{{ Request::is('transaction*') ? 'mm-active' : '' }}">
                                         <i class="bx bxs-bar-chart-square" style="font-size: 14px; min-width: auto;"></i>
-                                        View
+                                        @lang('global.view_file')
                                     </a>
                                 </li>
                             @endcan

@@ -220,8 +220,8 @@
                     <table class="table table-bordered dt-responsive w-100">
                         <thead>
                             <tr>
-                                <th>ID</th>
-                                <th>@lang('global.client_name') || Yurik</th>
+                                <th>@lang('global.id')</th>
+                                <th>@lang('global.client_name') || @lang('cruds.company.fields.company_name')</th>
                                 <th>@lang('cruds.client.fields.contact')</th>
                                 <th>@lang('cruds.company.fields.address')</th>
                                 <th>@lang('cruds.company.fields.stir')</th>

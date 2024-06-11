@@ -181,6 +181,22 @@ return [
         ]
     ],
 
+    'backup' => [
+        'title' => 'Backup',
+        'fields' => [
+            'name_uz' => "O'zbekcha nomi",
+            'name_ru' => 'Rus tilida nomi',
+        ]
+    ],
+
+    'transaction' => [
+        'title' => 'Tranzaksiyalar',
+        'fields' => [
+            'name_uz' => "O'zbekcha nomi",
+            'name_ru' => 'Rus tilida nomi',
+        ]
+    ],
+
     'blogs' => [
         'title' => 'Blog',
         'fields' => [

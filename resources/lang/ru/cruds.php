@@ -182,6 +182,23 @@ return [
         ]
     ],
 
+    'backup' => [
+        'title' => 'Резервное копирование',
+        'fields' => [
+            'name_uz' => "O'zbekcha nomi",
+            'name_ru' => 'Rus tilida nomi',
+        ]
+    ],
+
+    'transaction' => [
+        'title' => 'Транзакции',
+        'fields' => [
+            'name_uz' => "O'zbekcha nomi",
+            'name_ru' => 'Rus tilida nomi',
+        ]
+    ],
+
+
     'blogs' => [
         'title' => 'Новости',
         'fields' => [
