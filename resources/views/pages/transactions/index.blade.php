@@ -61,27 +61,32 @@
                 <div class="table-responsive">
                     <table class="table table-bordered align-middle nowrap">
                         <thead>
-                            <tr>
-                                <th scope="col">No</th>
-                                <th scope="col">Operation Code</th>
-                                <th scope="col">Recipient INN</th>
-                                <th scope="col">Recipient MFO</th>
-                                <th scope="col">Recipient Account</th>
-                                <th scope="col">Payment Date</th>
-                                <th scope="col">Payment Description</th>
-                                <th scope="col">Debit</th>
-                                <th scope="col">Credit</th>
-                                <th scope="col">Payer Name</th>
-                                <th scope="col">Payer INN</th>
-                                <th scope="col">Payer Account</th>
-                                <th scope="col">Actions</th>
-                            </tr>
+                            <th scope="col">No</th>
+                                    <th scope="col">Document Number</th>
+                                    <th scope="col">Operation Code</th>
+                                    <th scope="col">Recipient Name</th>
+                                    <th scope="col">Recipient INN</th>
+                                    <th scope="col">Recipient MFO</th>
+                                    <th scope="col">Recipient Account</th>
+                                    <th scope="col">Payment Date</th>
+                                    <th scope="col">Payment Description</th>
+                                    <th scope="col">Debit</th>
+                                    <th scope="col">Credit</th>
+                                    <th scope="col">Payer Name</th>
+                                    <th scope="col">Payer INN</th>
+                                    <th scope="col">Payer MFO</th>
+                                    <th scope="col">Payer Bank</th>
+                                    <th scope="col">Payer Account</th>
+                                   
                         </thead>
                         <tbody>
                             @foreach ($transactions as $transaction)
+                            {{-- @dd($transaction->document_number) --}}
                                 <tr>
-                                    <td>{{ $loop->index + 1 }}</td>
+                                    <td>{{ $transaction->id }}</td>
+                                    <td>{{ $transaction->document_number }}</td>
                                     <td>{{ $transaction->operation_code }}</td>
+                                    <td>{{ $transaction->recipient_name }}</td>
                                     <td>{{ $transaction->recipient_inn }}</td>
                                     <td>{{ $transaction->recipient_mfo }}</td>
                                     <td>{{ $transaction->recipient_account }}</td>
@@ -91,6 +96,8 @@
                                     <td>{{ $transaction->credit }}</td>
                                     <td>{{ $transaction->payer_name }}</td>
                                     <td>{{ $transaction->payer_inn }}</td>
+                                    <td>{{ $transaction->payer_mfo }}</td>
+                                    <td>{{ $transaction->payer_bank }}</td>
                                     <td>{{ $transaction->payer_account }}</td>
 
                                     <td>

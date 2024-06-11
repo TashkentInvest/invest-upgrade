@@ -147,6 +147,9 @@ sonlani orasini ochish kere +
 pinfl = 14 +
 
 seria = 9 +
+
+$table->bigInteger('document_number'); // Changed to bigInteger
+
 ```
 
 
