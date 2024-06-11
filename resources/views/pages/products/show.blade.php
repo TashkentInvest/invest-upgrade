@@ -35,37 +35,27 @@
                                     $columns = [
                                         ['name' => __('global.id'), 'data-priority' => 1, 'default' => true],
                                         ['name' => __('global.company_name'), 'data-priority' => 2, 'default' => true],
-                                        ['name' => __('global.fio'), 'data-priority' => 3, 'default' => true],
                                         ['name' => __('global.contact'), 'data-priority' => 4, 'default' => true],
-                                        ['name' => __('global.mijoz_turi'), 'data-priority' => 5, 'default' => true],
-                                        ['name' => __('global.name'), 'data-priority' => 6, 'default' => true],
-                                        ['name' => __('global.last_name'), 'data-priority' => 7, 'default' => true],
-                                        ['name' => __('global.father_name'), 'data-priority' => 8, 'default' => true],
                                         [
                                             'name' => __('global.passport_serial'),
-                                            'data-priority' => 9,
+                                            'data-priority' => 5,
                                             'default' => false,
                                         ],
                                         [
                                             'name' => __('global.passport_pinfl'),
-                                            'data-priority' => 10,
+                                            'data-priority' => 6,
                                             'default' => false,
                                         ],
                                         [
                                             'name' => __('passport date'),
-                                            'data-priority' => 11,
+                                            'data-priority' => 7,
                                             'default' => false,
                                         ],
                                         [
                                             'name' => __('global.yuridik_address'),
-                                            'data-priority' => 12,
+                                            'data-priority' => 8,
                                             'default' => false,
                                         ],
-                                        // [
-                                        //     'name' => __('global.yuridik_rekvizid'),
-                                        //     'data-priority' => 13,
-                                        //     'default' => false,
-                                        // ],
                                         ['name' => __('global.actions'), 'data-priority' => 14, 'default' => true],
                                     ];
                                 @endphp
@@ -97,12 +87,7 @@
                                 <tr>
                                     <td>{{ $client->id }}</td>
                                     <td>{{ $client->company_name }}</td>
-                                    <td>{{ $client->last_name }} {{ $client->first_name }} {{ $client->father_name }}</td>
                                     <td>{{ $client->contact ?? '---' }}</td>
-                                    <td>{{ $client->mijoz_turi }}</td>
-                                    <td>{{ $client->last_name }}</td>
-                                    <td>{{ $client->first_name }}</td>
-                                    <td>{{ $client->father_name }}</td>
                                     <td class="d-none">{{ $client->passport_serial }}</td>
                                     <td class="d-none">{{ $client->passport_pinfl }}</td>
                                     {{-- <td class="d-none">{{ $client->passport_date }}</td> --}}
@@ -112,8 +97,6 @@
                                         {{ $client->passport_type ? $client->passport_type == 'Id' : ($client->passport_type = 'Passport') }}
                                     </td>
                                     <td class="d-none">{{ $client->yuridik_address }}</td>
-                                    {{-- <td class="d-none">{{ $client->yuridik_rekvizid }}</td> --}}
-                                    <td>{{ $client->contact }}</td>
 
                                     <td class="text-center">
                                         <form action="{{ route('clientDestroy', $client->id) }}" method="post">
@@ -150,16 +133,6 @@
                                                         <i class="bx bxs-download" style="font-size: 16px;"></i>
                                                     </a>
                                                 </li>
-{{-- 
-                                                <li data-bs-toggle="tooltip" data-bs-placement="top"
-                                                title="@lang('global.downloadFile')">
-                                                <a href="{{ route('test.word', $client->id) }}" class="btn btn-danger">
-                                                    <i class="bx bxs-download" style="font-size: 16px;"></i>
-                                                </a>
-                                            </li> --}}
-
-                                                {{-- test/{id} --}}
-
                                             </ul>
                                         </form>
                                     </td>
@@ -182,6 +155,10 @@
                     <!-- Data table -->
                     <table id="datatable" class="table table-bordered dt-responsive w-100">
                         <tbody>
+                            <tr>
+                                <td>@lang('global.fio')</td>
+                                <td colspan="2">{{ $client->last_name }} {{ $client->first_name }} {{ $client->father_name }}</td>
+                            </tr>
                             @if($client->mijoz_turi == 'fizik')
                             <tr>
                                 <td>@lang('global.home_address')</td>
