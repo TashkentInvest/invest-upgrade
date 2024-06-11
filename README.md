@@ -154,6 +154,8 @@ $table->bigInteger('document_number'); // Changed to bigInteger
 
 php artisan make:migration change_document_number_type_in_credit_transactions_table
 
+edit qvotganda branch_kubmetrga float kiritib bomyapti +++
+
 
 ```
 

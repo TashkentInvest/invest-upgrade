@@ -541,19 +541,27 @@
                                                             </div>
                                                             <div class="col-lg-4">
                                                                 <div class="inner-repeater mb-4">
-                                                                    <div data-repeater-list="inner-group"
-                                                                        class="inner mb-3">
-                                                                        <label
-                                                                            for="basicpill-cardno-input">@lang('global.obyekt_boyicha_tolanishi_lozim')</label>
+                                                                    <div data-repeater-list="inner-group" class="inner mb-3">
+                                                                        <label for="basicpill-cardno-input">@lang('global.obyekt_boyicha_tolanishi_lozim')</label>
                                                                         <input type="number"
-                                                                            class="form-control branch_kubmetr"
-                                                                            step="0.01"
-                                                                            placeholder="( m³ )"
-                                                                            value="{{ old('accordions.' . $branchIndex . '.branch_kubmetr', $b->branch_kubmetr) }}"
-                                                                            name="accordions[{{ $branchIndex }}][branch_kubmetr]">
+                                                                               class="form-control branch_kubmetr"
+                                                                               step="0.00001"
+                                                                               placeholder="( m³ )"
+                                                                               value="{{ old('accordions.' . $branchIndex . '.branch_kubmetr', $b->branch_kubmetr) }}"
+                                                                               name="accordions[{{ $branchIndex }}][branch_kubmetr]"
+                                                                               onchange="displayFiveDigitsAfterDecimal(this)">
                                                                     </div>
                                                                 </div>
                                                             </div>
+                                                            
+                                                            <script>
+                                                                function displayFiveDigitsAfterDecimal(inputField) {
+                                                                    var value = parseFloat(inputField.value);
+                                                                    var roundedValue = value.toFixed(5);
+                                                                    inputField.value = roundedValue;
+                                                                }
+                                                            </script>
+                                                            
 
                                                             <div class="col-lg-4">
                                                                 <div class="inner-repeater mb-4">

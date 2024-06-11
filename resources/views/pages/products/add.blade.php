@@ -424,11 +424,24 @@
                                                             <div class="inner-repeater mb-4">
                                                                 <div data-repeater-list="inner-group" class="inner mb-3">
                                                                     <label for="basicpill-cardno-input">@lang('global.obyekt_boyicha_tolanishi_lozim')</label>
-                                                                    <input type="number" step="0.01" class="form-control branch_kubmetr" placeholder="( m³ )" name="accordions[0][branch_kubmetr]">
-
+                                                                    <input type="number"
+                                                                           step="0.00001"
+                                                                           class="form-control branch_kubmetr"
+                                                                           placeholder="( m³ )"
+                                                                           name="accordions[0][branch_kubmetr]"
+                                                                           onchange="displayFiveDigitsAfterDecimal(this)">
                                                                 </div>
                                                             </div>
                                                         </div>
+                                                        
+                                                        <script>
+                                                            function displayFiveDigitsAfterDecimal(inputField) {
+                                                                var value = parseFloat(inputField.value);
+                                                                var roundedValue = value.toFixed(5);
+                                                                inputField.value = roundedValue;
+                                                            }
+                                                        </script>
+                                                        
                                                         <div class="col-lg-3">
                                                             <div class="mb-3">
                                                                 <label for="branch_name">@lang('global.loyiha_nomi')</label>
