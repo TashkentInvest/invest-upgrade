@@ -150,7 +150,7 @@ return [
         ]
     ],
     'branches' => [
-        'title' => 'TEST',
+        'title' => 'АПЗ',
         'fields' => [
             'name_uz' => 'Название на узбекском',
             'name_ru' => 'Название на русском',
@@ -171,6 +171,14 @@ return [
             'payed_sum' => 'Оплаченная сумма',
             'payed_date' => 'Дата оплаты',
             'first_payment_percent' => 'Процент первого платежа'
+        ]
+    ],
+
+    'audit_logs' => [
+        'title' => 'История запросов',
+        'fields' => [
+            'name_uz' => "O'zbekcha nomi",
+            'name_ru' => 'Rus tilida nomi',
         ]
     ],
 

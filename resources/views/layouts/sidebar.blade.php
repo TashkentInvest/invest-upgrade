@@ -21,11 +21,10 @@
                         <a href="{{ route('audit-logs.index') }}"
                             class=" waves-effect {{ Request::is('audit-logs*') ? 'mm-active' : '' }}">
                             <i class="bx bx-info-circle"></i>
-                            <span>Audit Logs</span>
+                            <span>@lang('cruds.audit_logs.title')</span>
                         </a>
                     </li>
                 @endcan
-
 
                 @can('backup.show')
                     <li class="{{ Request::is('backup*') ? 'mm-active' : '' }}">

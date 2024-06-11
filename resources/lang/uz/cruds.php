@@ -149,7 +149,7 @@ return [
         ]
     ],
     'branches' => [
-        'title' => 'Test',
+        'title' => 'ART',
         'fields' => [
             'name_uz' => "O'zbekcha nomi",
             'name_ru' => 'Rus tilida nomi',
@@ -170,6 +170,14 @@ return [
             'payed_sum' => 'Toʻlangan summa',
             'payed_date' => 'Toʻlov sanasi',
             'first_payment_percent' => 'Birinchi toʻlov foizi'
+        ]
+    ],
+
+    'audit_logs' => [
+        'title' => 'So\'rovlar tarixi',
+        'fields' => [
+            'name_uz' => "O'zbekcha nomi",
+            'name_ru' => 'Rus tilida nomi',
         ]
     ],
 
