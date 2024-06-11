@@ -38,6 +38,20 @@
 </head>
 
 <body data-sidebar="{{ auth()->user()->theme()['sidebar'] ?? '' }}" data-layout-mode="{{ auth()->user()->theme()['body'] ?? '' }}">
+
+    <div id="preloader">
+        <div id="status">
+            <div class="spinner-chase">
+                <div class="chase-dot"></div>
+                <div class="chase-dot"></div>
+                <div class="chase-dot"></div>
+                <div class="chase-dot"></div>
+                <div class="chase-dot"></div>
+                <div class="chase-dot"></div>
+            </div>
+        </div>
+    </div>
+
     <!-- Begin page -->
     <div id="layout-wrapper">
 
