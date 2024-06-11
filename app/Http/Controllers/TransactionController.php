@@ -8,38 +8,77 @@ use Illuminate\Http\Request;
 class TransactionController extends Controller
 {
 
-    public function index()
+    public function index(Request $request)
     {
-        $transactions = CreditTransaction::deepFilters()->orderBy('payment_date', 'asc')->get();
-        $creditSum = CreditTransaction::sum('credit');
+        $query = CreditTransaction::deepFilters();
     
+        if ($request->has('search')) {
+            $search = $request->input('search');
+            $query->where(function ($query) use ($search) {
+                $query->where('payer_inn', 'like', "%$search%")
+                    ->orWhere('payer_mfo', 'like', "%$search%")
+
+                      ->orWhere('payment_date', 'like', "%$search%")
+                      ->orWhere('payer_account', 'like', "%$search%")
+                      ->orWhere('document_number', 'like', "%$search%");
+            });
+        }
+    
+        $transactions = $query->orderBy('payment_date', 'asc')->get();
+        $creditSum = $query->sum('credit');
+        
         return view('pages.transactions.index', compact('transactions', 'creditSum'));
     }
     
-
-    public function art()
+    public function art(Request $request)
     {
-        $transactions = CreditTransaction::deepFilters()
-            ->where('payment_description', 'like', '%APT%')
-            ->orWhere('payment_description', 'like', '%АПЗ%')
-            ->orderBy('payment_date', 'asc')
-            ->get();    
-        
-        $creditSum = CreditTransaction::where('payment_description', 'like', '%APT%')
-            ->orWhere('payment_description', 'like', '%АПЗ%')
-            ->sum('credit');
+        $query = CreditTransaction::deepFilters()
+            ->where(function ($query) {
+                $query->where('payment_description', 'like', '%APT%')
+                      ->orWhere('payment_description', 'like', '%АПЗ%');
+            });
+    
+        if ($request->has('search')) {
+            $search = $request->input('search');
+            $query->where(function ($query) use ($search) {
+                $query->where('payer_inn', 'like', "%$search%")
+                    ->orWhere('payer_mfo', 'like', "%$search%")
+                      ->orWhere('payment_date', 'like', "%$search%")
+                      ->orWhere('payer_account', 'like', "%$search%")
+                      ->orWhere('document_number', 'like', "%$search%");
+            });
+        }
+    
+        $transactions = $query->orderBy('payment_date', 'asc')->get();    
+        $creditSum = $query->sum('credit');
     
         return view('pages.transactions.art', compact('transactions', 'creditSum'));
     }
     
     
-    public function ads()
+    
+    
+    public function ads(Request $request)
     {
-        $transactions = CreditTransaction::deepFilters()->where('payment_description', 'like', '%ГОРОД ТАШКЕНТ%')
-            ->orderBy('payment_date', 'asc')
-            ->get();
+        $query = CreditTransaction::deepFilters()
+        ->where(function ($query) {
+            $query->where('payment_description', 'like', '%ГОРОД ТАШКЕНТ%');
+        });
 
-        $creditSum = CreditTransaction::where('payment_description', 'like', '%ГОРОД ТАШКЕНТ%')->sum('credit');
+        if ($request->has('search')) {
+            $search = $request->input('search');
+            $query->where(function ($query) use ($search) {
+                $query->where('payer_inn', 'like', "%$search%")
+                    ->orWhere('payer_mfo', 'like', "%$search%")
+                    ->orWhere('payment_date', 'like', "%$search%")
+                    ->orWhere('payer_account', 'like', "%$search%")
+                    ->orWhere('document_number', 'like', "%$search%");
+            });
+        }
+
+        $transactions = $query->orderBy('payment_date', 'asc')->get();    
+        $creditSum = $query->sum('credit');
+    
         return view('pages.transactions.ads', compact('transactions','creditSum'));
     }
 
