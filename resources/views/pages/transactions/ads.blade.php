@@ -44,8 +44,6 @@
 
                     <div class="card-body">
 
-
-
                         <div class="table-responsive">
                             <table class="table table-bordered table-hover align-middle nowrap">
                                 <thead class="table-light">
@@ -88,7 +86,7 @@
                         </div>
 
                         <div class="d-flex" style="justify-content: space-between">
-                            {{-- {{$transactions->links()}} --}}
+                            {{$transactions->links()}}
                         
                             <h4 class="text-bold">Credit: {{$creditSum}}</h4>
                         </div>

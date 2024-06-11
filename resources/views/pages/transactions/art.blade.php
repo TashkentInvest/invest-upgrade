@@ -79,7 +79,7 @@
                 </div>
 
                 <div class="d-flex" style="justify-content: space-between">
-                    {{-- {{$transactions->links()}} --}}
+                    {{$transactions->links()}}
                 
                     <h4 class="text-bold">Credit: {{$creditSum}}</h4>
                 </div>

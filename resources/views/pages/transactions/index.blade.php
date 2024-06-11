@@ -78,7 +78,10 @@
                 </div>
 
                 <div class="d-flex" style="justify-content: space-between">
-                
+                    @if(isset($transactions))
+                        {{$transactions->links()}}
+                    @endif
+                    
                     <h4 class="text-bold">Credit: {{$creditSum}}</h4>
                 </div>
                 
