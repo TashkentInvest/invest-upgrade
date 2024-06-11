@@ -27,13 +27,13 @@
                         <div class="row mb-4">
                             <label for="projectname" class="col-form-label col-lg-2">Transaction Name</label>
                             <div class="col-lg-7">
-                                <input id="projectname" name="name" type="text" class="form-control form-control-lg" placeholder="Enter Transaction Name...">
+                                <input id="projectname" name="name" type="text" class="form-control form-control-lg" placeholder="Enter Transaction Name..." required>
                             </div>
                         </div>
                         <div class="row mb-4">
                             <label for="projectdesc" class="col-form-label col-lg-2">Transaction Description</label>
                             <div class="col-lg-7">
-                                <textarea class="form-control form-control-lg" id="description" name="description" rows="3" placeholder="Enter Transaction Description..."></textarea>
+                                <textarea class="form-control form-control-lg" id="description" name="description" rows="3" placeholder="Enter Transaction Description..." required></textarea>
                             </div>
                         </div>
 
@@ -41,8 +41,8 @@
                             <label class="col-form-label col-lg-2">Transaction Date</label>
                             <div class="col-lg-7">
                                 <div class="input-daterange input-group" >
-                                    <input type="date" class="form-control form-control-lg" placeholder="Start Date" name="start_date" />
-                                    <input type="date" class="form-control form-control-lg" placeholder="End Date" name="end_date" />
+                                    <input type="date" class="form-control form-control-lg" placeholder="Start Date" name="start_date" required/>
+                                    <input type="date" class="form-control form-control-lg" placeholder="End Date" name="end_date" required/>
                                 </div>
                             </div>
                         </div>

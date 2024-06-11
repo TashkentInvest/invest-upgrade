@@ -35,6 +35,41 @@
                     </li>
                 @endcan
 
+                @can('transaction.show')
+                    <li class="{{ Request::is('import*') || Request::is('transactions*') ? 'mm-active' : '' }}">
+                        <a href="javascript: void(0);"
+                            class="has-arrow waves-effect {{ Request::is('import*') || Request::is('transactions*') ? 'mm-active' : '' }}">
+                            <i class="bx bx-file"></i>
+
+                            <span>@lang('cruds.transaction.title')</span>
+                        </a>
+                        <ul class="sub-menu {{ Request::is('import*') || Request::is('transactions*') ? ' ' : 'd-none' }}"
+                            aria-expanded="false">
+                            @can('import.show')
+                                <li>
+                                    <a href="{{ route('import') }}" class="{{ Request::is('import*') ? 'mm-active' : '' }}">
+                                        <i class="bx bx-import" style="font-size: 14px; min-width: auto;"></i>
+
+                                        @lang('global.app_import_data')
+                                    </a>
+                                </li>
+                            @endcan
+
+                            @can('import.show')
+                                <li>
+                                    <a href="{{ route('transactions.index') }}"
+                                        class="{{ Request::is('transaction*') ? 'mm-active' : '' }}">
+                                        <i class="bx bxs-bar-chart-square" style="font-size: 14px; min-width: auto;"></i>
+                                        @lang('global.view_file')
+                                    </a>
+                                </li>
+                            @endcan
+
+
+                        </ul>
+                    </li>
+                @endcan
+
                 @can('user.show')
                     <li
                         class="{{ Request::is('permission*') || Request::is('role*') || Request::is('user*') ? 'mm-active' : '' }}">
@@ -82,41 +117,6 @@
                                     </a>
                                 </li>
                             @endcan --}}
-                        </ul>
-                    </li>
-                @endcan
-
-                @can('transaction.show')
-                    <li class="{{ Request::is('import*') || Request::is('transactions*') ? 'mm-active' : '' }}">
-                        <a href="javascript: void(0);"
-                            class="has-arrow waves-effect {{ Request::is('import*') || Request::is('transactions*') ? 'mm-active' : '' }}">
-                            <i class="bx bx-file"></i>
-
-                            <span>@lang('cruds.transaction.title')</span>
-                        </a>
-                        <ul class="sub-menu {{ Request::is('import*') || Request::is('transactions*') ? ' ' : 'd-none' }}"
-                            aria-expanded="false">
-                            @can('import.show')
-                                <li>
-                                    <a href="{{ route('import') }}" class="{{ Request::is('import*') ? 'mm-active' : '' }}">
-                                        <i class="bx bx-import" style="font-size: 14px; min-width: auto;"></i>
-
-                                        @lang('global.app_import_data')
-                                    </a>
-                                </li>
-                            @endcan
-
-                            @can('import.show')
-                                <li>
-                                    <a href="{{ route('transactions.index') }}"
-                                        class="{{ Request::is('transaction*') ? 'mm-active' : '' }}">
-                                        <i class="bx bxs-bar-chart-square" style="font-size: 14px; min-width: auto;"></i>
-                                        @lang('global.view_file')
-                                    </a>
-                                </li>
-                            @endcan
-
-
                         </ul>
                     </li>
                 @endcan
