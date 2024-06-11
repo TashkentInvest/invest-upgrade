@@ -23,7 +23,7 @@
                     </a>
                 </li>
 
-                @can('client.delete')
+                @can('backup.delete')
                     
                 <li class="{{ Request::is('backup*') ? 'mm-active':'' }}">
                     <a href="{{ route('backup.index') }}" class=" waves-effect {{ Request::is('backup*') ? 'mm-active':'' }}">
