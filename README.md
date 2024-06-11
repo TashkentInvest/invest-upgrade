@@ -148,7 +148,12 @@ pinfl = 14 +
 
 seria = 9 +
 
+composer require doctrine/dbal
+
 $table->bigInteger('document_number'); // Changed to bigInteger
+
+php artisan make:migration change_document_number_type_in_credit_transactions_table
+
 
 ```
 
@@ -255,5 +260,39 @@ composer require irazasyed/telegram-bot-sdk
 
 ```
 composer require shuchkin/simplexlsx
+
+```
+
+```
+php artisan make:migration change_document_number_type_in_credit_transactions_table
+
+ public function up()
+    {
+        Schema::table('credit_transactions', function (Blueprint $table) {
+            $table->dropColumn('document_number');
+        });
+
+        Schema::table('credit_transactions', function (Blueprint $table) {
+            $table->bigInteger('document_number')->after('id');
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::table('credit_transactions', function (Blueprint $table) {
+            $table->dropColumn('document_number');
+        });
+
+        Schema::table('credit_transactions', function (Blueprint $table) {
+            $table->integer('document_number')->after('id');
+        });
+    }
+
+    php artisan migrate
 
 ```
