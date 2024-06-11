@@ -33,10 +33,6 @@
                         <table class="table table-striped table-bordered align-middle">
                             <tbody>
                                 <tr>
-                                    <th scope="row" style="width: 200px;">№</th>
-                                    <td colspan="2">{{ $transaction->id }}</td>
-                                </tr>
-                                <tr>
                                     <th scope="row">№ Док</th>
                                     <td colspan="2">{{ $transaction->document_number }}</td>
                                 </tr>
