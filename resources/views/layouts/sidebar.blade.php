@@ -16,14 +16,16 @@
                 </li>
 
                 {{-- Audit logs --}}
+                @can('audit.show')
+                    <li class="{{ Request::is('audit-logs*') ? 'mm-active' : '' }}">
+                        <a href="{{ route('audit-logs.index') }}"
+                            class=" waves-effect {{ Request::is('audit-logs*') ? 'mm-active' : '' }}">
+                            <i class="bx bx-info-circle"></i>
+                            <span>Audit Logs</span>
+                        </a>
+                    </li>
+                @endcan
 
-                <li class="{{ Request::is('audit-logs*') ? 'mm-active' : '' }}">
-                    <a href="{{ route('audit-logs.index') }}"
-                        class=" waves-effect {{ Request::is('audit-logs*') ? 'mm-active' : '' }}">
-                        <i class="bx bx-info-circle"></i>
-                        <span>Audit Logs</span>
-                    </a>
-                </li>
 
                 @can('backup.show')
                     <li class="{{ Request::is('backup*') ? 'mm-active' : '' }}">
@@ -34,31 +36,6 @@
                         </a>
                     </li>
                 @endcan
-
-                <!-- regions and districts start -->
-                {{-- <li class="{{ (Request::is('region*') || Request::is('district*') ) ? 'mm-active':''}}">
-                    <a href="javascript: void(0);" class="has-arrow waves-effect {{ (Request::is('region*') || Request::is('district*') ) ? 'mm-active':''}}">
-                        <i class="fas fa-globe-asia"></i>
-                        <span>@lang('cruds.regions_districts.title')</span>
-                    </a>
-                    <ul class="sub-menu {{ (Request::is('region*') || Request::is('district*') ) ? ' ':'d-none'}}" aria-expanded="false">
-                        <li>
-                            <a href="{{ route('regionIndex') }}" class="{{ Request::is('region*') ? 'mm-active':'' }}">
-                                <!-- <i class="fas fa-globe-asia" style="font-size: 14px; min-width: auto;"></i> -->
-                                @lang('cruds.regions_districts.regions.title')
-                            </a>
-                        </li>
-
-                        <li>
-                            <a href="{{ route('districtIndex') }}" class="{{ Request::is('district*') ? 'mm-active':'' }}">
-                                <!-- <i class="fas fa-globe-asia" style="font-size: 14px; min-width: auto;"></i> -->
-                                @lang('cruds.regions_districts.districts.title')
-                            </a>
-                        </li>
-                    </ul>
-                </li> --}}
-                <!-- regions and districts end -->
-
 
                 @can('user.show')
                     <li
@@ -111,7 +88,6 @@
                     </li>
                 @endcan
 
-                {{-- --------------------------- --}}
                 @can('transaction.show')
                     <li class="{{ Request::is('import*') || Request::is('transactions*') ? 'mm-active' : '' }}">
                         <a href="javascript: void(0);"
@@ -177,6 +153,31 @@
                         </li>
                     </ul>
                 </li>
+
+                <!-- regions and districts start -->
+                {{-- <li class="{{ (Request::is('region*') || Request::is('district*') ) ? 'mm-active':''}}">
+                    <a href="javascript: void(0);" class="has-arrow waves-effect {{ (Request::is('region*') || Request::is('district*') ) ? 'mm-active':''}}">
+                        <i class="fas fa-globe-asia"></i>
+                        <span>@lang('cruds.regions_districts.title')</span>
+                    </a>
+                    <ul class="sub-menu {{ (Request::is('region*') || Request::is('district*') ) ? ' ':'d-none'}}" aria-expanded="false">
+                        <li>
+                            <a href="{{ route('regionIndex') }}" class="{{ Request::is('region*') ? 'mm-active':'' }}">
+                                <!-- <i class="fas fa-globe-asia" style="font-size: 14px; min-width: auto;"></i> -->
+                                @lang('cruds.regions_districts.regions.title')
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="{{ route('districtIndex') }}" class="{{ Request::is('district*') ? 'mm-active':'' }}">
+                                <!-- <i class="fas fa-globe-asia" style="font-size: 14px; min-width: auto;"></i> -->
+                                @lang('cruds.regions_districts.districts.title')
+                            </a>
+                        </li>
+                    </ul>
+                </li> --}}
+                <!-- regions and districts end -->
+
             </ul>
         </div>
         <!-- Sidebar -->
