@@ -49,7 +49,7 @@ class TransactionController extends Controller
             });
         }
 
-        $transactions = $query->orderBy('payment_date', 'asc')->paginate(20);
+        $transactions = $query->orderBy('payment_date', 'desc')->paginate(20);
         
         $creditSum = CreditTransaction::where('payment_description', 'like', '%APT%')
         ->orWhere('payment_description', 'like', '%АПЗ%')
@@ -75,7 +75,7 @@ class TransactionController extends Controller
             });
         }
 
-        $transactions = $query->orderBy('payment_date', 'asc')->paginate(20);
+        $transactions = $query->orderBy('payment_date', 'desc')->paginate(20);
         
         $creditSum = CreditTransaction::where('payment_description', 'like', '%ГОРОД ТАШКЕНТ%')
         ->sum('credit');
