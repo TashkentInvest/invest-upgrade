@@ -7,7 +7,6 @@ use Illuminate\Support\Facades\Storage;
 
 class BackupController extends Controller
 {
-
     public function index()
     {
         $backupFiles = Storage::allFiles('backups');
@@ -35,20 +34,16 @@ class BackupController extends Controller
     
         return view('pages.backup.index', compact('backupDetails', 'totalSizeFormatted'));
     }
-    
     private function formatBytes($bytes, $precision = 2)
     {
         $units = ['B', 'KB', 'MB', 'GB', 'TB'];
-
         $bytes = max($bytes, 0);
         $pow = floor(($bytes ? log($bytes) : 0) / log(1024));
         $pow = min($pow, count($units) - 1);
-
         $bytes /= pow(1024, $pow);
 
         return round($bytes, $precision) . ' ' . $units[$pow];
     }
-
     public function download($filename)
     {
         $filePath = 'backups/' . $filename;
@@ -72,9 +67,6 @@ class BackupController extends Controller
     
         return redirect()->back()->with('success', 'Selected files deleted successfully.');
     }
-    
-        
-
     public function delete($filename)
     {
         $filePath = 'backups/' . $filename;

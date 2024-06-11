@@ -17,17 +17,8 @@ class FileController extends Controller
 
     public function test($id){
         $client = Client::with('branches')->where('is_deleted', '!=', 1)->find($id);
-        // dd($client);
         return view('pages.docs.bolib_pay.yurik_litso', compact('client'));
-
-        // if($client->mijoz_turi == 'fizik'){
-        //     return view('pages.docs.fizik_litso', compact('client'));
-        // }else{
-        //     return view('pages.docs.full_pay.yurik_litso', compact('client'));
-        // }
     }
-    // download word
-
     public function show($id)
     {
         // Fetch the client along with branches if not deleted
@@ -99,9 +90,7 @@ class FileController extends Controller
         $zip->close();
     
         return response()->download($zipFileName)->deleteFileAfterSend(true);
-    }
-    
-    
+    }    
     public function show_org($id)
     {
         $client = Client::with('companies')->where('is_deleted', '!=', 1)->find($id);
@@ -114,17 +103,13 @@ class FileController extends Controller
         $client->oked;
         $client->company_location;
 
-
-
         $branchDocuments = []; 
 
-          
             foreach ($client->branches as $branch) {
                 $branch->generate_price;
                 $branch->payment_type;
                 $branch->branch_kubmetr;
 
-                // Generate document for each branch and store it in the array
                 $headers = [
                     'Content-type' => 'text/html',
                     'Content-Disposition' => 'attachment; Filename=' . $client->company_name . '_branch_' . $branch->id . '.doc'
@@ -134,8 +119,6 @@ class FileController extends Controller
                 $branchDocuments[] = ['document' => $branchDocument, 'headers' => $headers];
             }
         
-
-        // Zip the documents
         $zip = new \ZipArchive();
         $zipFileName = storage_path('app/АПЗ_' . Carbon::now()->format('Y-m-d') .  '.zip');
         if ($zip->open($zipFileName, \ZipArchive::CREATE | \ZipArchive::OVERWRITE) === true) {
@@ -145,10 +128,8 @@ class FileController extends Controller
             $zip->close();
         }
 
-        // Download the zip file
         return response()->download($zipFileName)->deleteFileAfterSend(true);
     }
-
     public function downloadExcel(Request $request)
     {
         $id = $request->input('id');
@@ -161,14 +142,12 @@ class FileController extends Controller
             return $this->downloadFullTableData($startDate, $endDate);
         }
     }
-
     public function downloadFullTableData($startDate = null, $endDate = null)
     {
         $fileName = 'АПЗ_РАҚАМ' . '_' . now()->format('Y-m-d') . '.xls';
 
         return Excel::download(new ProductsExport(null, $startDate, $endDate), $fileName);
     }
-
     public function downloadTableData($id, $startDate = null, $endDate = null)
     {
         $fileName = 'АПЗ_РАҚАМ' . '_' . now()->format('Y-m-d') . '.xls';

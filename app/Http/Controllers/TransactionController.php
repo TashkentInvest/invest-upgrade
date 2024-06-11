@@ -7,7 +7,6 @@ use Illuminate\Http\Request;
 
 class TransactionController extends Controller
 {
-
     public function index(Request $request)
     {
         $query = CreditTransaction::deepFilters();
@@ -29,7 +28,6 @@ class TransactionController extends Controller
         
         return view('pages.transactions.index', compact('transactions', 'creditSum'));
     }
-    
     public function art(Request $request)
     {
         $query = CreditTransaction::deepFilters()
@@ -54,10 +52,6 @@ class TransactionController extends Controller
     
         return view('pages.transactions.art', compact('transactions', 'creditSum'));
     }
-    
-    
-    
-    
     public function ads(Request $request)
     {
         $query = CreditTransaction::deepFilters()
@@ -81,7 +75,6 @@ class TransactionController extends Controller
     
         return view('pages.transactions.ads', compact('transactions','creditSum'));
     }
-
     public function show($id)
     {
         $transaction = CreditTransaction::find($id);
