@@ -569,7 +569,7 @@
                                                                         class="inner mb-3">
                                                                         <label
                                                                             for="basicpill-cardno-input">@lang('global.loyiha_nomi')</label>
-                                                                        <input type="number"
+                                                                        <input type="text"
                                                                             class="form-control branch_name"
                                                                             placeholder="@lang('global.loyiha_nomi')"
                                                                             value="{{ old('accordions.' . $branchIndex . '.branch_name', $b->branch_name) }}"
