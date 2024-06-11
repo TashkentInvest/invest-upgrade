@@ -122,6 +122,22 @@ daily backup qilish kere schedule blan +++
 
 branch_location qoshish kere  +++
 
+metrkub qurilish xajmi (m^3) +
+
+obshiy summa (so'm) +
+
+sonlani orasini ochish kere +
+
+pinfl = 14 +
+
+seria = 9 +
+
+$table->bigInteger('document_number'); // Changed to bigInteger  +++
+
+php artisan make:migration change_document_number_type_in_credit_transactions_table +++
+
+edit qvotganda branch_kubmetrga float kiritib bomyapti +++
+
 pasport_date = date qlsh kere   
 
 product add / edit qvotganda validatsalani check qb chiqish kere
@@ -138,23 +154,7 @@ generate_price not changeble bop qogan fix qlsh kere
 
 edit boganda calc script qlish kere 
 
-metrkub qurilish xajmi (m^3) +
-
-obshiy summa (so'm) +
-
-sonlani orasini ochish kere +
-
-pinfl = 14 +
-
-seria = 9 +
-
-composer require doctrine/dbal
-
-$table->bigInteger('document_number'); // Changed to bigInteger
-
-php artisan make:migration change_document_number_type_in_credit_transactions_table
-
-edit qvotganda branch_kubmetrga float kiritib bomyapti +++
+remove accardion ochishi keremas agar bitta bosa
 
 
 ```
