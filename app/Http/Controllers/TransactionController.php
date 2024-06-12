@@ -120,10 +120,11 @@ class TransactionController extends Controller
     public function payers(Request $request)
     {
         $query = \DB::table('credit_transactions')
-            ->join('clients', 'clients.stir', 'like', \DB::raw("CONCAT('%', credit_transactions.payer_inn, '%')"))
-            ->select('credit_transactions.*', 'clients.*')
-            ->whereNotNull('credit_transactions.document_number'); // Exclude rows where document_number is null
-        
+        ->join('clients', 'clients.stir', 'like', \DB::raw("CONCAT('%', credit_transactions.payer_inn, '%')"))
+        ->join('branches', 'branches.client_id', '=', 'clients.id') // Adjust the join condition based on your schema
+        ->select('credit_transactions.*', 'clients.*', 'branches.*')
+        ->whereNotNull('credit_transactions.document_number'); // Exclude rows where document_number is null
+    
         if ($request->has('search')) {
             $search = $request->input('search');
             $query->where(function ($query) use ($search) {

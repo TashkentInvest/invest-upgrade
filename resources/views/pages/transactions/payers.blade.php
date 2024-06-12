@@ -46,6 +46,8 @@
                                 <th scope="col">Дата платежа</th>
                                 <th scope="col" style="width: 200px;">Назначение платежа</th>
                                 <th scope="col">@lang('global.company_name')</th>
+                                <th scope="col">Credit</th>
+                                <th scope="col">Payed sum</th>
                                 <th scope="col">Инн</th>
                                 <th scope="col">STIR</th>
                                 <th scope="col">Расчетный счет</th>
@@ -61,6 +63,9 @@
                                     <td>{{ $transaction->payment_date }}</td>
                                     <td style="width: 200px;">{{ $transaction->payment_description }}</td>
                                     <td>{{ $transaction->company_name }}</td>
+                                    <td>{{ $transaction->credit }}</td>
+                                    <td>{{ $transaction->payed_sum }}</td>
+                                   
                                     <td>{{ $transaction->payer_inn }}</td>
                                     <td>{{ $transaction->stir }}</td>
                                     <td>{{ $transaction->payer_account }}</td>
