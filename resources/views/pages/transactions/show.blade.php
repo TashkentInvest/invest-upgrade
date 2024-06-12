@@ -95,8 +95,9 @@
                                     <td colspan="2">{{ $transaction->payer_account }}</td>
                                 </tr>
 
-                                @if(isset($payerUser))
-                                    @if ($transaction->payer_inn == $payerUser->stir)
+                                {{-- @dump($p) --}}
+                                {{-- @if(!empty($payerUser)) --}}
+                                    {{-- @if ($payerUser->payer_inn == $payerUser->stir) --}}
                                         <tr>
                                             <th>@lang('global.company_name')</td>
                                             <td>{{ $payerUser->company_name }}</td>
@@ -120,8 +121,13 @@
                                             <th>@lang('global.contact')</th>
                                             <td>{{ $payerUser->contact }}</td>
                                         </tr>
-                                    @endif
-                                @endif
+
+                                        <tr>
+                                            <th>@lang('global.inn')</th>
+                                            <td>{{ $payerUser->stir }}</td>
+                                        </tr>
+                                    {{-- @endif --}}
+                                
 
                                 <tr>
                                     <th scope="row">@lang('global.created_at')</th>
