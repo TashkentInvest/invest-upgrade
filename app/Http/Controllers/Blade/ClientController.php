@@ -168,7 +168,7 @@ class ClientController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'stir' => 'required|string|max:9|min:9|unique:clients,stir',
+            // 'stir' => 'required|string|max:9|min:9|unique:clients,stir',
             'oked' => 'required|string|max:5|min:5',
             'bank_code' => 'required|string|max:5|min:5',
             'bank_account' => 'required|string|max:20|min:20',
