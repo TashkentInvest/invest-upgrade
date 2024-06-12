@@ -130,18 +130,18 @@ class FileController extends Controller
 
         return response()->download($zipFileName)->deleteFileAfterSend(true);
     }
-    public function downloadExcel(Request $request)
-    {
-        $id = $request->input('id');
-        $startDate = $request->input('created_at');
-        $endDate = $request->input('created_at_pair');
+    // public function downloadExcel(Request $request)
+    // {
+    //     $id = $request->input('id');
+    //     $startDate = $request->input('created_at');
+    //     $endDate = $request->input('created_at_pair');
 
-        if ($id) {
-            return $this->downloadTableData($id, $startDate, $endDate);
-        } else {
-            return $this->downloadFullTableData($startDate, $endDate);
-        }
-    }
+    //     if ($id) {
+    //         return $this->downloadTableData($id, $startDate, $endDate);
+    //     } else {
+    //         return $this->downloadFullTableData($startDate, $endDate);
+    //     }
+    // }
     public function downloadFullTableData($startDate = null, $endDate = null)
     {
         $fileName = 'АПЗ_РАҚАМ' . '_' . now()->format('Y-m-d') . '.xls';
@@ -153,5 +153,17 @@ class FileController extends Controller
         $fileName = 'АПЗ_РАҚАМ' . '_' . now()->format('Y-m-d') . '.xls';
 
         return Excel::download(new ProductsExport($id, $startDate, $endDate), $fileName);
+    }
+
+    public function downloadExcel(Request $request)
+    {
+        $columns = $request->input('columns', []);
+
+        return Excel::download(new ProductsExport(null, null, null, $columns), 'products.xlsx');
+    }
+
+    public function showColumnSelectionForm()
+    {
+        return view('pages.exel.select_columns');
     }
 }

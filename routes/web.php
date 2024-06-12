@@ -137,8 +137,10 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/doc/{id}', [FileController::class, 'show'])->name('word');
     Route::get('/test/{id}', [FileController::class, 'test'])->name('test.word');
     Route::get('/downloading-exel/{id}', [FileController::class, 'downloadTableData'])->name('download.table.data');
-    Route::get('/downloading-exel', [FileController::class, 'downloadExcel'])->name('download.excel');
+    // Route::get('/downloading-exel', [FileController::class, 'downloadExcel'])->name('download.excel');
 
+    Route::get('/select-columns', [FileController::class, 'showColumnSelectionForm'])->name('select.columns');
+    Route::get('/download-excel', [FileController::class, 'downloadExcel'])->name('download.excel');
     // Backup 
     Route::get('/backups', [BackupController::class, 'index'])->name('backup.index');
     Route::get('/backup/{id}', [BackupController::class, 'show'])->name('backup.show');

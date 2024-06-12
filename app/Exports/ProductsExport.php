@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Exports;
 
 use Illuminate\Support\Facades\DB;
@@ -13,12 +12,14 @@ class ProductsExport implements FromCollection, WithHeadings, WithColumnFormatti
     protected $id;
     protected $startDate;
     protected $endDate;
+    protected $selectedColumns;
 
-    public function __construct($id = null, $startDate = null, $endDate = null)
+    public function __construct($id = null, $startDate = null, $endDate = null, $selectedColumns = [])
     {
         $this->id = $id;
         $this->startDate = $startDate;
         $this->endDate = $endDate;
+        $this->selectedColumns = $selectedColumns;
     }
 
     public function collection()
@@ -26,39 +27,14 @@ class ProductsExport implements FromCollection, WithHeadings, WithColumnFormatti
         try {
             $query = DB::table('clients')
                 ->join('branches', 'clients.id', '=', 'branches.client_id')
-                ->select(
-                    'clients.id AS number',
-                    'branches.application_number AS application_number',
-                    'branches.contract_apt AS contract_number',
-                    'branches.contract_date AS contract_date',
-                    'branches.notification_num AS notification_number',
+                ->select($this->buildSelectColumns());
 
-                    'clients.company_name AS company_name',
-                    'clients.yuridik_address AS district',
-                    'clients.home_address AS home_district',
-                    'branches.branch_kubmetr AS calculated_volume',
-                    'branches.generate_price AS infrastructure_payment',
-                    'branches.percentage_input AS percentage_input',
-                    // DB::raw("CAST(NULLIF(REPLACE(branches.generate_price, ',', ''), '') AS DECIMAL(10,2)) * CAST(branches.percentage_input AS DECIMAL(10,2)) / 100 AS calculated_amount"),
-                    'branches.payed_sum AS paid_amount',
-                    'branches.payed_date AS payment_date',
-                    
-                    'branches.notification_date AS notification_date',
-                    'branches.branch_name AS branch_name',
-                    'branches.branch_type AS branch_type',
-                    'branches.branch_location AS branch_location',
-                    'branches.insurance_policy AS insurance_policy',
-                    'branches.bank_guarantee AS bank_guarantee',
-                    'clients.contact AS contact',
-                    'clients.client_description AS note'
-                );
-
-                $query->where('clients.is_deleted', '!=', 1);
+            $query->where('clients.is_deleted', '!=', 1);
 
             if ($this->id !== null) {
                 $query->where('clients.id', $this->id);
             }
-            // Apply date filters if provided
+
             if ($this->startDate !== null && $this->endDate !== null) {
                 $query->whereBetween('clients.updated_at', [$this->startDate, $this->endDate]);
             }
@@ -68,43 +44,72 @@ class ProductsExport implements FromCollection, WithHeadings, WithColumnFormatti
                 return (array) $item;
             });
         } catch (\Exception $e) {
-            // Handle the exception gracefully, you can log the error or return an empty collection
             \Log::error('Error exporting products: ' . $e->getMessage());
             return collect([]);
         }
     }
 
+    protected function buildSelectColumns()
+    {
+        $columns = [
+            'number' => 'clients.id AS number',
+            'application_number' => 'branches.application_number AS application_number',
+            'contract_number' => 'branches.contract_apt AS contract_number',
+            'contract_date' => 'branches.contract_date AS contract_date',
+            'notification_number' => 'branches.notification_num AS notification_number',
+            'company_name' => 'clients.company_name AS company_name',
+            'district' => 'clients.yuridik_address AS district',
+            'home_district' => 'clients.home_address AS home_district',
+            'calculated_volume' => 'branches.branch_kubmetr AS calculated_volume',
+            'infrastructure_payment' => 'branches.generate_price AS infrastructure_payment',
+            'percentage_input' => 'branches.percentage_input AS percentage_input',
+            'paid_amount' => 'branches.payed_sum AS paid_amount',
+            'payment_date' => 'branches.payed_date AS payment_date',
+            'notification_date' => 'branches.notification_date AS notification_date',
+            'branch_name' => 'branches.branch_name AS branch_name',
+            'branch_type' => 'branches.branch_type AS branch_type',
+            'branch_location' => 'branches.branch_location AS branch_location',
+            'insurance_policy' => 'branches.insurance_policy AS insurance_policy',
+            'bank_guarantee' => 'branches.bank_guarantee AS bank_guarantee',
+            'contact' => 'clients.contact AS contact',
+            'note' => 'clients.client_description AS note'
+        ];
+
+        return array_intersect_key($columns, array_flip($this->selectedColumns));
+    }
+
     public function headings(): array
     {
-        return [
-            '№',
-            'Номер заявления',
-            '№ договора',
-            'Дата договора',
-            '№ разрешения',
-            'Наименование организации',
-            'Юридический адрес',
-            'Домашний адрес',
-            'Расчетный объем здания',
-            'Инфраструктурный платеж (сўм) по договору',
-            'Процент предоплаты при рассрочке (%)',
-            // 'Рассчитанная сумма',    
-            'Оплаченная сумма (сўм)',
-            'Дата оплаты',
-            'Дата уведомления',
-            'Название объекта',
-            'Тип объекта',
-            'Местоположение объекта',
-            'Страховой полис',
-            'Банковская гарантия',
-            'Контакты',
-            'Примечание'
+        $headings = [
+            'number' => '№',
+            'application_number' => 'Номер заявления',
+            'contract_number' => '№ договора',
+            'contract_date' => 'Дата договора',
+            'notification_number' => '№ разрешения',
+            'company_name' => 'Наименование организации',
+            'district' => 'Юридический адрес',
+            'home_district' => 'Домашний адрес',
+            'calculated_volume' => 'Расчетный объем здания',
+            'infrastructure_payment' => 'Инфраструктурный платеж (сўм) по договору',
+            'percentage_input' => 'Процент предоплаты при рассрочке (%)',
+            'paid_amount' => 'Оплаченная сумма (сўм)',
+            'payment_date' => 'Дата оплаты',
+            'notification_date' => 'Дата уведомления',
+            'branch_name' => 'Название объекта',
+            'branch_type' => 'Тип объекта',
+            'branch_location' => 'Местоположение объекта',
+            'insurance_policy' => 'Страховой полис',
+            'bank_guarantee' => 'Банковская гарантия',
+            'contact' => 'Контакты',
+            'note' => 'Примечание'
         ];
+
+        return array_values(array_intersect_key($headings, array_flip($this->selectedColumns)));
     }
 
     public function columnFormats(): array
     {
-        return [
+        $formats = [
             'A' => '@',
             'B' => '@',
             'C' => '@',
@@ -123,5 +128,14 @@ class ProductsExport implements FromCollection, WithHeadings, WithColumnFormatti
             'P' => '@',
             'Q' => '@'
         ];
+
+        $alphabet = range('A', 'Z');
+        $selectedFormats = [];
+
+        foreach (array_keys($this->selectedColumns) as $index => $column) {
+            $selectedFormats[$alphabet[$index]] = '@';
+        }
+
+        return $selectedFormats;
     }
 }
