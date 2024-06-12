@@ -239,7 +239,7 @@
                                 </tr>
                                 <tr>
                                     <td>@lang('global.obyekt_boyicha_tolanishi_lozim') ( m³ )</td>
-                                    <td colspan="2">{{ $b->branch_kubmetr }}</td>
+                                    <td colspan="2">{{ number_format($b->branch_kubmetr, 1) }}</td>
                                 </tr>
                                 <tr>
                                     <td>@lang('global.jami_tolanishi_kerak')</td>

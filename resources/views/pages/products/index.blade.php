@@ -232,10 +232,7 @@
                         </thead>
                         <tbody>
                             @foreach ($clients as $item)
-                                {{-- @dd($item->files) --}}
                                 <tr>
-
-                                    {{-- <td >{{ $item->id }}</td> --}}
                                     <td class="{{ $item->files->isNotEmpty() ? '' : 'bg-secondary text-light' }}">
                                         {{ $item->id }}</td>
 
@@ -398,8 +395,8 @@
                                                                     <td>@lang('cruds.client.fields.yuridik_address')</td>
                                                                     <td>{{ $item->yuridik_address }}</td>
                                                                 </tr>
-                            @endif
-                            </tr>
+                                                            @endif
+                                                        </tr>
 
                             <tr>
                                 <td>@lang('cruds.company.fields.stir')</td>
@@ -438,7 +435,7 @@
                                     <td>@lang('cruds.company.fields.branch_location')</td>
                                     <td>{{ $b->branch_location }}</td>
                                 </tr>
-                             
+
                                 <tr>
                                     <td>@lang('global.obyekt_boyicha_tolanishi_lozim')
                                     </td>
@@ -475,7 +472,7 @@
                                     <td>@lang('global.bolib_tolash_foizi_oldindan')</td>
                                     <td>{{ $b->percentage_input }} %</td>
                                 </tr>
-                           
+
 
                                 <tr>
                                     <td>@lang('cruds.branches.fields.notification_num')</td>
