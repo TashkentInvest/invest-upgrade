@@ -29,22 +29,24 @@ class ProductsExport implements FromCollection, WithHeadings, WithColumnFormatti
                 ->select(
                     'clients.id AS number',
                     'branches.application_number AS application_number',
-                    'clients.company_name AS company_name',
-                    'clients.contact AS contact',
-                    'clients.yuridik_address AS district',
-                    'branches.branch_kubmetr AS calculated_volume',
-                    'branches.generate_price AS infrastructure_payment',
-                    // DB::raw("CAST(NULLIF(REPLACE(branches.generate_price, ',', ''), '') AS DECIMAL(10,2)) * CAST(branches.percentage_input AS DECIMAL(10,2)) / 100 AS calculated_amount"),
-                    'branches.payed_sum AS paid_amount',
-                    'branches.payed_date AS payment_date',
                     'branches.contract_apt AS contract_number',
                     'branches.contract_date AS contract_date',
                     'branches.notification_num AS notification_number',
+
+                    'clients.company_name AS company_name',
+                    'clients.yuridik_address AS district',
+                    'branches.branch_kubmetr AS calculated_volume',
+                    'branches.generate_price AS infrastructure_payment',
+                    'branches.percentage_input AS percentage_input',
+                    // DB::raw("CAST(NULLIF(REPLACE(branches.generate_price, ',', ''), '') AS DECIMAL(10,2)) * CAST(branches.percentage_input AS DECIMAL(10,2)) / 100 AS calculated_amount"),
+                    'branches.payed_sum AS paid_amount',
+                    'branches.payed_date AS payment_date',
+                    
                     'branches.notification_date AS notification_date',
                     'branches.branch_name AS branch_name',
-
                     'branches.insurance_policy AS insurance_policy',
                     'branches.bank_guarantee AS bank_guarantee',
+                    'clients.contact AS contact',
                     'clients.client_description AS note'
                 );
 
@@ -74,21 +76,22 @@ class ProductsExport implements FromCollection, WithHeadings, WithColumnFormatti
         return [
             '№',
             'Номер заявления',
-            'Наименование организации',
-            'Контакты',
-            'Район',
-            'Расчетный объем здания',
-            'Инфраструктурный платеж (сўм) по договору',
-            // 'Рассчитанная сумма',
-            'Оплаченная сумма (сўм)',
-            'Дата оплаты',
             '№ договора',
             'Дата договора',
             '№ разрешения',
+            'Наименование организации',
+            'Район',
+            'Расчетный объем здания',
+            'Инфраструктурный платеж (сўм) по договору',
+            'Процент предоплаты при рассрочке (%)',
+            // 'Рассчитанная сумма',    
+            'Оплаченная сумма (сўм)',
+            'Дата оплаты',
             'Дата уведомления',
             'Название проекта',
             'Страховой полис',
             'Банковская гарантия',
+            'Контакты',
             'Примечание'
         ];
     }
