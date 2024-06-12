@@ -156,6 +156,22 @@ edit boganda calc script qlish kere
 
 remove accardion ochishi keremas agar bitta bosa
 
+INN = minimum & maximum = 9
+
+Modal window optimizatsiya qilish kere
+
+Mijoz_turi keremas
+
+.0000 lani ob tashash kere
+
+mesta raspalajenya xato chqazvotti
+
+Transaction da Inn bo'yicha fetch qilish kere
+
+Company name, platej descriptoin, data, inn : tip keremas
+
+exel da N_ keremas
+
 
 ```
 
