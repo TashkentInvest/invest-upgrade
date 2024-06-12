@@ -713,7 +713,13 @@
                                     let companyKubmetr = parseFloat(parentAccordion.find('.branch_kubmetr').val()) || 0;
                                     let minimumWage = parseFloat(parentAccordion.find('.minimum_wage').val()) || 0;
                                     let generatePrice = companyKubmetr * minimumWage;
-                                    parentAccordion.find('.generate_price').val(generatePrice.toFixed(2));
+                                    // parentAccordion.find('.generate_price').val(generatePrice.toFixed(2));
+                                    parentAccordion.find('.generate_price').val(generatePrice);
+
+                                    // var formattedPrice = generatePrice.toLocaleString();
+                                    // parentAccordion.find('.generate_price').val(formattedPrice);
+
+
 
                                     let percentageInput = parseFloat(parentAccordion.find('.percentage-input').val()) || 0;
                                     let quarterlyInput = parseInt(parentAccordion.find('.quarterly-input').val()) || 0;

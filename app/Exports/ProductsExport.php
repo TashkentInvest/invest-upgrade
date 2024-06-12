@@ -41,6 +41,8 @@ class ProductsExport implements FromCollection, WithHeadings, WithColumnFormatti
                     'branches.contract_date AS contract_date',
                     'branches.notification_num AS notification_number',
                     'branches.notification_date AS notification_date',
+                    'branches.branch_name AS branch_name',
+
                     'branches.insurance_policy AS insurance_policy',
                     'branches.bank_guarantee AS bank_guarantee',
                     'clients.client_description AS note'
@@ -84,6 +86,7 @@ class ProductsExport implements FromCollection, WithHeadings, WithColumnFormatti
             'Дата договора',
             '№ разрешения',
             'Дата уведомления',
+            'Название проекта',
             'Страховой полис',
             'Банковская гарантия',
             'Примечание'
