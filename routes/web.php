@@ -121,10 +121,11 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('import_debat', [ImportController::class, 'import_debat'])->name('import_debat.xls');
     Route::post('import_credit', [ImportController::class, 'import_credit'])->name('import_credit.xls');
 
-    // import
+    // Transactions
     Route::get('transactions/all', [TransactionController::class,'index'])->name('transactions.index');
     Route::get('transactions/art', [TransactionController::class,'art'])->name('transactions.art');
     Route::get('transactions/ads', [TransactionController::class,'ads'])->name('transactions.ads');
+    Route::get('transactions/payers', [TransactionController::class,'payers'])->name('transactions.payers');
     Route::get('transaction/{id}', [TransactionController::class,'show'])->name('transactions.show');
   
 

@@ -11,29 +11,29 @@ class CreateCreditTransactionsTable extends Migration
      *
      * @return void
      */
-    public function up()
-    {
-        Schema::create('credit_transactions', function (Blueprint $table) {
-            $table->id();
-            $table->integer('document_number');
-            $table->bigInteger('operation_code'); 
-            $table->string('recipient_name');
-            $table->string('recipient_inn');
-            $table->string('recipient_mfo');
-            $table->string('recipient_account');
-            $table->date('payment_date');
-            $table->text('payment_description');
-            $table->text('debit');
-            $table->decimal('credit', 20, 2);
-            $table->string('payer_name');
-            $table->string('payer_inn');
-            $table->string('payer_mfo');
-            $table->string('payer_bank');
-            $table->string('payer_account');
-            $table->timestamps();
-        });
-        
-    }
+        public function up()
+        {
+            Schema::create('credit_transactions', function (Blueprint $table) {
+                $table->id();
+                $table->integer('document_number');
+                $table->bigInteger('operation_code'); 
+                $table->string('recipient_name');
+                $table->string('recipient_inn');
+                $table->string('recipient_mfo');
+                $table->string('recipient_account');
+                $table->date('payment_date');
+                $table->text('payment_description');
+                $table->text('debit');
+                $table->decimal('credit', 20, 2);
+                $table->string('payer_name');
+                $table->string('payer_inn');
+                $table->string('payer_mfo');
+                $table->string('payer_bank');
+                $table->string('payer_account');
+                $table->timestamps();
+            });
+            
+        }
 
     /**
      * Reverse the migrations.

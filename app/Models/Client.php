@@ -150,4 +150,9 @@ class Client extends Model
             ]);
         });
     }
+
+    public function creditTransactions()
+    {
+        return $this->hasMany(CreditTransaction::class, 'payer_inn', 'stir');
+    }
 }

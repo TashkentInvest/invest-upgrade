@@ -8,8 +8,10 @@
 
                 <div class="page-title-right">
                     <ol class="breadcrumb m-0">
-                        <li class="breadcrumb-item"><a href="{{ route('home') }}" style="color: #007bff;">@lang('global.home')</a></li>
-                        <li class="breadcrumb-item"><a href="{{ route('transactions.index') }}" style="color: #007bff;">Transactions Show</a></li>
+                        <li class="breadcrumb-item"><a href="{{ route('home') }}" style="color: #007bff;">@lang('global.home')</a>
+                        </li>
+                        <li class="breadcrumb-item"><a href="{{ route('transactions.index') }}"
+                                style="color: #007bff;">Transactions Show</a></li>
                         <li class="breadcrumb-item active">@lang('global.add')</li>
                     </ol>
                 </div>
@@ -111,14 +113,16 @@
 @endsection
 
 @push('styles')
-<style>
-    .table th {
-        background-color: #f8f9fa;
-        text-align: left;
-    }
-    .table th, .table td {
-        vertical-align: middle;
-        padding: 0.75rem;
-    }
-</style>
+    <style>
+        .table th {
+            background-color: #f8f9fa;
+            text-align: left;
+        }
+
+        .table th,
+        .table td {
+            vertical-align: middle;
+            padding: 0.75rem;
+        }
+    </style>
 @endpush

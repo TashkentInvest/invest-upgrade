@@ -83,4 +83,9 @@ class CreditTransaction extends Model
     {
         return $this->hasMany(Transaction::class, 'debet_transaction_id');
     }
+
+    public function client()
+    {
+        return $this->belongsTo(Client::class, 'payer_inn', 'stir');
+    }
 }

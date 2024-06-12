@@ -60,7 +60,6 @@ class TransactionController extends Controller
 
     public function ads(Request $request)
     {
-        // Initialize the query builder
         $query = CreditTransaction::deepFilters()
             ->where('payment_description', 'like', '%ГОРОД ТАШКЕНТ%');
 
@@ -86,6 +85,64 @@ class TransactionController extends Controller
     public function show($id)
     {
         $transaction = CreditTransaction::find($id);
-        return view('pages.transactions.show', compact('transaction'));
+
+        $payerUser = \DB::table('credit_transactions')
+        ->join('clients', 'clients.stir', 'like', \DB::raw("CONCAT('%', credit_transactions.payer_inn, '%')"))
+        ->select('credit_transactions.*', 'clients.*')
+        ->where('credit_transactions.id', $id)
+        ->first(); 
+
+        // $payerUser = \DB::table('credit_transactions')
+        // ->join('clients', 'clients.stir', 'like', \DB::raw("CONCAT('%', credit_transactions.payer_inn, '%')"))
+        // ->select('credit_transactions.*', 'clients.*')
+        // ->where('credit_transactions.id', $id)
+        // ->whereNotNull('credit_transactions.document_number') // Exclude rows where document_number is null
+        // ->first();
+
+        // if (!$payerUser) {
+        //     abort(404, 'Transaction not found');
+        // }
+
+        return view('pages.transactions.show', compact('transaction', 'payerUser'));
     }
+
+    // public function payers()
+    // {
+    //     $transactions = \DB::table('credit_transactions')
+    //         ->join('clients', 'clients.stir', 'like', \DB::raw("CONCAT('%', credit_transactions.payer_inn, '%')"))
+    //         ->select('credit_transactions.*', 'clients.*')
+    //         ->paginate(20);
+    
+    //     return view('pages.transactions.payers', compact('transactions'));
+
+    // }
+
+    public function payers(Request $request)
+    {
+        $query = \DB::table('credit_transactions')
+            ->join('clients', 'clients.stir', 'like', \DB::raw("CONCAT('%', credit_transactions.payer_inn, '%')"))
+            ->select('credit_transactions.*', 'clients.*')
+            ->whereNotNull('credit_transactions.document_number'); // Exclude rows where document_number is null
+        
+        if ($request->has('search')) {
+            $search = $request->input('search');
+            $query->where(function ($query) use ($search) {
+                $query->where('credit_transactions.payer_inn', 'like', "%$search%")
+                    ->orWhere('credit_transactions.payer_mfo', 'like', "%$search%")
+                    ->orWhere('credit_transactions.payment_date', 'like', "%$search%")
+                    ->orWhere('credit_transactions.payer_account', 'like', "%$search%")
+                    ->orWhere('clients.stir', 'like', "%$search%")
+                    ->orWhere('clients.company_name', 'like', "%$search%")
+                    ->orWhere('clients.contact', 'like', "%$search%")
+                    ->orWhere('credit_transactions.document_number', 'like', "%$search%");
+            });
+        }
+        
+        $transactions = $query->orderBy('credit_transactions.payment_date', 'desc')->paginate(20);
+    
+        return view('pages.transactions.payers', compact('transactions'));
+    }
+
+
+    
 }

@@ -79,6 +79,14 @@
                                         @lang('global.view_file') ADS
                                     </a>
                                 </li>
+
+                                <li>
+                                    <a href="{{ route('transactions.payers') }}"
+                                        class="{{ Request::is('transactions.payers*') ? 'mm-active' : '' }}">
+                                        <i class="bx bxs-bar-chart-square" style="font-size: 14px; min-width: auto;"></i>
+                                        @lang('global.view_file') Payers
+                                    </a>
+                                </li>
                             @endcan
 
 

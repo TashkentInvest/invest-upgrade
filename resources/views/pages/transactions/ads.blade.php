@@ -56,7 +56,7 @@
                                         <th scope="col">Инн</th>
                                         <th scope="col">МФО</th>
                                         <th scope="col">Расчетный счет</th>
-                                        <th scope="col">Actions</th>
+                                        <th scope="col">@lang('global.actions')</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -96,7 +96,7 @@
                                         <th scope="col">Инн</th>
                                         <th scope="col">МФО</th>
                                         <th scope="col">Расчетный счет</th>
-                                        <th scope="col">Actions</th>
+                                        <th scope="col">@lang('global.actions')</th>
                                     </tr>
                                 </thead>
                                 <tbody>

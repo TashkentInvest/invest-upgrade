@@ -321,7 +321,11 @@
                                                                 </tr>
                                                                 <tr>
                                                                     <td>@lang('cruds.client.fields.mijoz_turi')</td>
-                                                                    <td>{{ $item->mijoz_turi }}</td>
+                                                                    @if($item->mijoz_turi == 'fizik')
+                                                                    <td>@lang('cruds.client.fields.mijoz_turi_fizik')</td>
+                                                                    @else
+                                                                    <td> @lang('cruds.client.fields.mijoz_turi_yuridik')</td>
+                                                                    @endif
                                                                 </tr>
                                                                 <tr>
                                                                     <td>@lang('cruds.client.fields.last_name')</td>
