@@ -65,12 +65,12 @@ class ClientController extends Controller
     public function create(Request $request)
     {
         $request->validate([
-            'stir' => 'required|string|max:9|min:9|unique:clients,stir',
-            'oked' => 'required|string|max:5|min:5',
-            'bank_code' => 'required|string|max:5|min:5',
-            'bank_account' => 'required|string|max:20|min:20',
-            'passport_serial' => 'required|string|max:10|min:9',
-            'passport_pinfl' => 'required|string|max:14|min:14',
+            'stir' => 'nullable|string|max:9|min:9|unique:clients,stir',
+            'oked' => 'nullable|string|max:5|min:5',
+            'bank_code' => 'nullable|string|max:5|min:5',
+            'bank_account' => 'nullable|string|max:20|min:20',
+            'passport_serial' => 'nullable|string|max:10|min:9',
+            'passport_pinfl' => 'nullable|string|max:14|min:14',
         ]);
         
         DB::beginTransaction();
@@ -168,12 +168,12 @@ class ClientController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            // 'stir' => 'required|string|max:9|min:9|unique:clients,stir',
-            'oked' => 'required|string|max:5|min:5',
-            'bank_code' => 'required|string|max:5|min:5',
-            'bank_account' => 'required|string|max:20|min:20',
-            'passport_serial' => 'required|string|max:10|min:9',
-            'passport_pinfl' => 'required|string|max:14|min:14',
+            // 'stir' => 'nullable|string|max:9|min:9|unique:clients,stir',
+            'oked' => 'nullable|string|max:5|min:5',
+            'bank_code' => 'nullable|string|max:5|min:5',
+            'bank_account' => 'nullable|string|max:20|min:20',
+            'passport_serial' => 'nullable|string|max:10|min:9',
+            'passport_pinfl' => 'nullable|string|max:14|min:14',
         ]);
 
         DB::beginTransaction();
