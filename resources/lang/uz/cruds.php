@@ -190,12 +190,20 @@ return [
     ],
 
     'transaction' => [
-        'title' => 'Tranzaksiyalar',
+        'title' => 'Transaktsiyalar',
         'fields' => [
-            'name_uz' => "O'zbekcha nomi",
-            'name_ru' => 'Rus tilida nomi',
+            'name' => "Transaktsiya nomi",
+            'description' => 'Transaktsiya tavsifi',
+            'credit' => 'Kredit',
+            'payers' => 'Transaktsiya to‘lovchilari',
+            'import' => 'Yangi transaktsiyani import qilish',
+
+            'all' => 'Barcha Transaktsiyalar',
+            'apz' => 'ART',
+            'ads' => 'Reklama'
         ]
     ],
+
 
     'blogs' => [
         'title' => 'Blog',

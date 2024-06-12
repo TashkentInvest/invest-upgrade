@@ -222,6 +222,8 @@ C:\xampp\mysql\bin\mysqldump.exe -u root -p invest > C:\Users\user\Desktop\inves
 
 composer require irazasyed/telegram-bot-sdk
 
+direktor nomi chqmyapti
+
 
 ```
 

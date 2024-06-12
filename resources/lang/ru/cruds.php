@@ -193,8 +193,15 @@ return [
     'transaction' => [
         'title' => 'Транзакции',
         'fields' => [
-            'name_uz' => "O'zbekcha nomi",
-            'name_ru' => 'Rus tilida nomi',
+            'name' => "Название транзакции",
+            'description' => 'Описание транзакции',
+            'credit' => 'Кредит',
+            'payers' => 'Плательщики транзакций',
+            'import' => 'Импортировать новую транзакцию',
+            
+            'all' => 'Все транзакции',
+            'apz' => 'АПЗ',
+            'ads' => 'Реклама'
         ]
     ],
 
