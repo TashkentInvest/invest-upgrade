@@ -193,7 +193,7 @@
 
                                         <div class="box container text-center">
                                             <i class="bx bx-file " style="font-size: 20px"></i>
-                                            <a class="border rounded " href="{{ route('download.excel') }}">Download
+                                            <a class="border rounded " href="{{ route('select.columns') }}">Visit
                                                 Exel</a>
                                         </div>
                                         <div class="modal-footer">

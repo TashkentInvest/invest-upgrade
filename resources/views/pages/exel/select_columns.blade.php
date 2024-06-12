@@ -43,7 +43,12 @@
                 </div>
             @endforeach
         </div>
-        <button type="submit" class="btn btn-primary">Download Excel</button>
+        <div class="d-flex justify-content-between">
+
+
+            <button type="submit" class="btn btn-primary">@lang('global.downloadFile')</button>
+            <a href="{{route('clientIndex')}}" class="btn btn-primary">@lang('global.home')</a>
+        </div>
     </form>
 </div>
 </body>
