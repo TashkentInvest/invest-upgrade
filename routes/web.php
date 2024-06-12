@@ -113,20 +113,20 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/{id}', [TransactionController::class,'show'])->name('transactions.show');
     });
     // Backup
-    Route::prefix('backup')->group(function () {
-        Route::get('/backups', [BackupController::class, 'index'])->name('backup.index');
-        Route::get('/backup/{id}', [BackupController::class, 'show'])->name('backup.show');
-        Route::any('/backup/download/{filename}', [BackupController::class, 'download'])->name('backup.download');
-        Route::delete('/backup/{filename}', [BackupController::class, 'delete'])->name('backup.delete');
+    Route::prefix('backups')->group(function () {
+        Route::get('/', [BackupController::class, 'index'])->name('backup.index');
+        Route::get('/{id}', [BackupController::class, 'show'])->name('backup.show');
+        Route::any('/download/{filename}', [BackupController::class, 'download'])->name('backup.download');
+        Route::delete('/{filename}', [BackupController::class, 'delete'])->name('backup.delete');
         Route::any('/backup-delete', [BackupController::class, 'deleteAll'])->name('backup.deleteAll');
     });
     // File
     Route::prefix('files')->group(function () {
-        Route::get('/doc/{id}', [FileController::class, 'show'])->name('files.word');
-        Route::get('/test/{id}', [FileController::class, 'test'])->name('files.test.word');
-        Route::get('/downloading-excel/{id}', [FileController::class, 'downloadTableData'])->name('files.download.table.data');
-        Route::get('/select-columns', [FileController::class, 'showColumnSelectionForm'])->name('files.select.columns');
-        Route::get('/download-excel', [FileController::class, 'downloadExcel'])->name('files.download.excel');
+        Route::get('/doc/{id}', [FileController::class, 'show'])->name('word');
+        Route::get('/test/{id}', [FileController::class, 'test'])->name('test.word');
+        Route::get('/downloading-excel/{id}', [FileController::class, 'downloadTableData'])->name('download.table.data');
+        Route::get('/select-columns', [FileController::class, 'showColumnSelectionForm'])->name('select.columns');
+        Route::get('/download-excel', [FileController::class, 'downloadExcel'])->name('download.excel');
     });
     // Audit-Log
     Route::get('audit-logs', [AuditLogController::class, 'index'])->name('audit-logs.index');

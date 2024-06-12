@@ -1,6 +1,7 @@
 @extends('layouts.admin')
 
 @section('content')
+
     <div class="row">
         <div class="col-12">
             <div class="page-title-box d-sm-flex align-items-center justify-content-between">
@@ -8,12 +9,12 @@
 
                 <div class="page-title-right">
                     <ol class="breadcrumb m-0">
-                        <li class="breadcrumb-item"><a href="{{ route('clientIndex') }}" style="color: #007bff;">@lang('global.home')</a>
+                        <li class="breadcrumb-item"><a href="{{ route('clientIndex') }}"
+                                style="color: #007bff;">@lang('global.home')</a>
                         </li>
                         <li class="breadcrumb-item active">@lang('cruds.branches.title') - {{ $client->id }}</li>
                     </ol>
                 </div>
-
             </div>
         </div>
     </div>
@@ -22,7 +23,6 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-body">
-                  
                     <!-- Data table -->
                     <table class="table table-striped focus-on">
                         <thead>
@@ -32,7 +32,7 @@
                                 <th>{{ __('global.contact') }}</th>
                                 <th>@lang('cruds.company.fields.stir')</th>
                                 <th>@lang('global.created_at')</th>
-                              
+
                                 <th>{{ __('global.actions') }}</th>
                             </tr>
                         </thead>
@@ -41,14 +41,14 @@
                                 <tr>
                                     <td>{{ $client->id }}</td>
                                     @if ($client->mijoz_turi == 'fizik')
-                                    <td>{{ $client->last_name }} {{ $client->first_name }} {{ $client->father_name }}</td>
+                                        <td>{{ $client->last_name }} {{ $client->first_name }} {{ $client->father_name }}
+                                        </td>
                                     @else
                                         <td>{{ $client->company_name }} </td>
                                     @endif
                                     <td>{{ $client->contact ?? '---' }}</td>
                                     <td>{{ $client->stir ?? '---' }}</td>
                                     <td>{{ $client->created_at ?? '---' }}</td>
-                                  
                                     <td class="text-center">
                                         <form action="{{ route('clientDestroy', $client->id) }}" method="post">
                                             @csrf
@@ -63,20 +63,12 @@
                                                     <input name="_method" type="hidden" value="DELETE">
                                                     <li data-bs-toggle="tooltip" data-bs-placement="top"
                                                         title="@lang('global.delete')">
-                                                        <button
-                                                            onclick="if (confirm('Вы уверены?')) { this.form.submit() }"
+                                                        <button onclick="if (confirm('Вы уверены?')) { this.form.submit() }"
                                                             type="button" data-bs-toggle="modal" class="btn btn-danger">
                                                             <i class="bx bxs-trash" style="font-size: 16px;"></i>
                                                         </button>
                                                     </li>
                                                 @endcan
-                                                <li data-bs-toggle="tooltip" data-bs-placement="top"
-                                                    title="@lang('global.downloadTable')">
-                                                    <a href="{{ route('download.table.data', $client->id) }}"
-                                                        class="btn btn-warning">
-                                                        <i class="bx bxs-download" style="font-size: 16px;"></i>
-                                                    </a>
-                                                </li>
                                                 <li data-bs-toggle="tooltip" data-bs-placement="top"
                                                     title="@lang('global.downloadFile')">
                                                     <a href="{{ route('word', $client->id) }}" class="btn btn-secondary">
@@ -93,8 +85,6 @@
                 </div>
             </div>
         </div>
-        
-
 
         <div class="col-12">
             <div class="card">
@@ -108,80 +98,75 @@
                         <tbody>
                             <tr>
                                 <td>@lang('global.fio')</td>
-                                <td colspan="2">{{ $client->last_name }} {{ $client->first_name }} {{ $client->father_name }}</td>
+                                <td colspan="2">{{ $client->last_name }} {{ $client->first_name }}
+                                    {{ $client->father_name }}</td>
                             </tr>
-                            @if($client->mijoz_turi == 'fizik')
+                            @if ($client->mijoz_turi == 'fizik')
 
-                            <tr>
-                                <td>{{ __('global.passport_pinfl') }}</td>
-                                <td>{{ $client->passport_pinfl }}</td>
-                            </tr>
+                                <tr>
+                                    <td>{{ __('global.passport_pinfl') }}</td>
+                                    <td>{{ $client->passport_pinfl }}</td>
+                                </tr>
 
-                            <tr>
-                                <td>{{ __('global.passport_serial') }}</td>
-                                <td>{{ $client->passport_serial }}</td>
-                            </tr>
+                                <tr>
+                                    <td>{{ __('global.passport_serial') }}</td>
+                                    <td>{{ $client->passport_serial }}</td>
+                                </tr>
 
-                            <tr>
-                                @if ($client->passport_date)
-                                    <td>@lang('cruds.client.fields.passport_date')</td>
-                                    <td>{{ date('d-m-Y', strtotime($client->passport_date)) }}</td>
-                                @else
-                                    <td>@lang('cruds.client.fields.passport_date')</td> 
-                                    <td></td>
-                                @endif
-                            </tr>
-
-
-                            <tr>
-                                <td>@lang('cruds.client.fields.passport_location')</td>
-                                <td>{{ $client->passport_location }}</td>
-                            </tr>
+                                <tr>
+                                    @if ($client->passport_date)
+                                        <td>@lang('cruds.client.fields.passport_date')</td>
+                                        <td>{{ date('d-m-Y', strtotime($client->passport_date)) }}</td>
+                                    @else
+                                        <td>@lang('cruds.client.fields.passport_date')</td>
+                                        <td></td>
+                                    @endif
+                                </tr>
 
 
+                                <tr>
+                                    <td>@lang('cruds.client.fields.passport_location')</td>
+                                    <td>{{ $client->passport_location }}</td>
+                                </tr>
 
-                            <tr>
-                                <td>@lang('global.home_address')</td>
-                                <td colspan="2">{{ $client->home_address }}</td>
-                            </tr>
+
+
+                                <tr>
+                                    <td>@lang('global.home_address')</td>
+                                    <td colspan="2">{{ $client->home_address }}</td>
+                                </tr>
                             @else
-                            <tr>
-                                <td>@lang('cruds.client.fields.yuridik_address')</td>
-                                <td colspan="2">{{ $client->yuridik_address }}</td>
-                            </tr>
-                            <tr>
-                                <td>@lang('cruds.company.fields.company_name')</td>
-                                <td colspan="2">{{ $client->company_name }}</td>
-                            </tr>
-                            <tr>
-                                <td>@lang('cruds.company.fields.oked')</td>
-                                <td colspan="2">{{ $client->oked }}</td>
-                            </tr>
-                            <tr>
-                                <td>@lang('cruds.company.fields.raxbar')</td>
-                                <td colspan="2">{{ $client->raxbar }}</td>
-                            </tr>
+                                <tr>
+                                    <td>@lang('cruds.client.fields.yuridik_address')</td>
+                                    <td colspan="2">{{ $client->yuridik_address }}</td>
+                                </tr>
+                                <tr>
+                                    <td>@lang('cruds.company.fields.company_name')</td>
+                                    <td colspan="2">{{ $client->company_name }}</td>
+                                </tr>
+                                <tr>
+                                    <td>@lang('cruds.company.fields.oked')</td>
+                                    <td colspan="2">{{ $client->oked }}</td>
+                                </tr>
+                                <tr>
+                                    <td>@lang('cruds.company.fields.raxbar')</td>
+                                    <td colspan="2">{{ $client->raxbar }}</td>
+                                </tr>
 
-                            <tr>
-                                <td>@lang('cruds.company.fields.bank_code')</td>
-                                <td colspan="2">{{ $client->bank_code }}</td>
-                            </tr>
-                            <tr>
-                                <td>@lang('cruds.company.fields.bank_service')</td>
-                                <td colspan="2">{{ $client->bank_service }}</td>
-                            </tr>
+                                <tr>
+                                    <td>@lang('cruds.company.fields.bank_code')</td>
+                                    <td colspan="2">{{ $client->bank_code }}</td>
+                                </tr>
+                                <tr>
+                                    <td>@lang('cruds.company.fields.bank_service')</td>
+                                    <td colspan="2">{{ $client->bank_service }}</td>
+                                </tr>
                             @endif
-                           
-                        
-                        {{-- @dd($client->notification_num) --}}
-                     
+
                             <tr>
                                 <td>@lang('cruds.company.fields.stir')</td>
                                 <td colspan="2">{{ $client->stir }}</td>
                             </tr>
-                          
-                       
-
 
                             @foreach ($client->branches as $b)
                                 <tr>
@@ -201,41 +186,40 @@
                                     <td>@lang('cruds.branches.fields.insurance_policy')</td>
                                     <td colspan="2">{{ $b->insurance_policy }}</td>
                                 </tr>
-                              
+
                                 <tr>
                                     <td>@lang('cruds.branches.fields.bank_guarantee')</td>
                                     <td colspan="2">{{ $b->bank_guarantee }}</td>
                                 </tr>
-    
+
                                 <tr>
                                     <td>@lang('cruds.branches.fields.application_number')</td>
                                     <td colspan="2">{{ $b->application_number }}</td>
                                 </tr>
-    
+
                                 <tr>
                                     <td>@lang('cruds.branches.fields.payed_sum')</td>
                                     <td colspan="2" id="payedSumCell">{{ $b->payed_sum }}</td>
                                 </tr>
 
                                 <script>
-                                        function formatNumberWithSpaces(number) {
-                                            return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
-                                        }
-                                
-                                        var payedSumElement = document.getElementById('payedSumCell');
-                                        var payedSumValue = payedSumElement.textContent;
-                                
-                                        payedSumElement.textContent = formatNumberWithSpaces(payedSumValue);
-                                    
+                                    function formatNumberWithSpaces(number) {
+                                        return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
+                                    }
+
+                                    var payedSumElement = document.getElementById('payedSumCell');
+                                    var payedSumValue = payedSumElement.textContent;
+
+                                    payedSumElement.textContent = formatNumberWithSpaces(payedSumValue);
                                 </script>
-                                
-                          
-    
+
+
+
                                 <tr>
                                     <td>@lang('cruds.branches.fields.payed_date')</td>
                                     <td colspan="2">{{ $b->payed_date }}</td>
                                 </tr>
-    
+
 
                                 <tr>
                                     <td>@lang('cruds.company.fields.branch_type')</td>
@@ -263,17 +247,16 @@
                                 </tr>
 
                                 <script>
-                                        function formatNumberWithSpaces(number) {
-                                            return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
-                                        }
-                                
-                                        var payedSumElement = document.getElementById('payedSumCell1');
-                                        var payedSumValue = payedSumElement.textContent;
-                                
-                                        payedSumElement.textContent = formatNumberWithSpaces(payedSumValue);
-                                    
+                                    function formatNumberWithSpaces(number) {
+                                        return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
+                                    }
+
+                                    var payedSumElement = document.getElementById('payedSumCell1');
+                                    var payedSumValue = payedSumElement.textContent;
+
+                                    payedSumElement.textContent = formatNumberWithSpaces(payedSumValue);
                                 </script>
-                                
+
                                 <tr>
                                     <td>@lang('global.bolib_tolash')</td>
                                     <td colspan="2">
@@ -294,31 +277,6 @@
                                 </tr>
                             @endforeach
 
-
-                            {{-- @if (isset($files) && $files->isNotEmpty())
-                                <tr>
-                                    <td colspan="3">
-                                        <h4>@lang('global.downloadFile')</h4>
-                                        <ul>
-                                            @foreach ($files as $file)
-                                                <li>
-                                                    <a target="_blank"
-                                                        href="{{ asset($file->path) }}">{{ $file->path }}</a>
-                                                </li>
-                                            @endforeach
-                                        </ul>
-                                    </td>
-                                </tr>
-                            @else
-                                <tr>
-                                    <td colspan="3">
-                                        <p>@lang('global.no_files_uploaded')</p>
-                                    </td>
-                                </tr>
-                            @endif --}}
-
-                            
-                          
                             <ul>
                                 <h5>@lang('global.contract_details')</h5>
 
@@ -326,10 +284,11 @@
                                     <div class="py-1">
                                         <a target="_blank" class="py-2 my-2"
                                             href="{{ asset($file->path) }}">{{ $file->path }}</a>
-                                  
+
                                     </div>
                                 @endforeach
                             </ul>
+
                         </tbody>
                     </table>
 
@@ -338,10 +297,8 @@
 
         </div>
     </div>
+
 @endsection
-
-@section('scripts')
-
 
 @section('scripts')
     <script>
