@@ -232,11 +232,12 @@
                         </thead>
                         <tbody>
                             @foreach ($clients as $item)
-                            {{-- @dd($item->files) --}}
+                                {{-- @dd($item->files) --}}
                                 <tr>
-                                    
+
                                     {{-- <td >{{ $item->id }}</td> --}}
-                                    <td class="{{ $item->files->isNotEmpty() ? '' : 'bg-secondary text-light' }}">{{ $item->id }}</td>
+                                    <td class="{{ $item->files->isNotEmpty() ? '' : 'bg-secondary text-light' }}">
+                                        {{ $item->id }}</td>
 
                                     @if ($item->mijoz_turi == 'fizik')
                                         <td>{{ $item->last_name }} {{ $item->first_name }} {{ $item->father_name }}</td>
@@ -316,36 +317,19 @@
                                                             <tbody>
 
                                                                 <tr>
-                                                                    <td><strong>@lang('global.personal_informations')</strong></td>
-                                                                    <td></td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td>@lang('cruds.client.fields.mijoz_turi')</td>
-                                                                    @if($item->mijoz_turi == 'fizik')
-                                                                    <td>@lang('cruds.client.fields.mijoz_turi_fizik')</td>
-                                                                    @else
-                                                                    <td> @lang('cruds.client.fields.mijoz_turi_yuridik')</td>
-                                                                    @endif
-                                                                </tr>
-                                                                <tr>
-                                                                    <td>@lang('cruds.client.fields.last_name')</td>
-                                                                    <td>{{ $item->last_name }}</td>
+                                                                    <td>@lang('global.fio')</td>
+                                                                    <td>{{ $item->last_name }} {{ $item->first_name }}
+                                                                        {{ $item->father_name }}</td>
                                                                 </tr>
 
-                                                                <tr>
-                                                                    <td>@lang('cruds.client.fields.first_name')</td>
-                                                                    <td>{{ $item->first_name }}</td>
-                                                                </tr>
-
-                                                                <tr>
-                                                                    <td>@lang('cruds.client.fields.father_name')</td>
-                                                                    <td>{{ $item->father_name }}</td>
-                                                                </tr>
 
                                                                 <tr>
                                                                     <td>@lang('cruds.client.fields.contact')</td>
                                                                     <td>{{ $item->contact }}</td>
                                                                 </tr>
+
+                                                                <tr>
+                                                                    @if ($item->mijoz_turi == 'fizik')
                                                                 <tr>
                                                                     <td>@lang('cruds.client.fields.passport_serial')</td>
                                                                     <td>{{ $item->passport_serial }}</td>
@@ -357,9 +341,10 @@
                                                                 <tr>
                                                                     <td>@lang('cruds.client.fields.passport_date')</td>
                                                                     @if ($item->passport_date)
-                                                                        <td>{{ date('d-m-Y', strtotime($item->passport_date)) }}</td>
+                                                                        <td>{{ date('d-m-Y', strtotime($item->passport_date)) }}
+                                                                        </td>
                                                                     @else
-                                                                        <td></td> 
+                                                                        <td></td>
                                                                     @endif
                                                                 </tr>
                                                                 <tr>
@@ -375,28 +360,12 @@
                                                                     @endif
 
                                                                 </tr>
-                                                                <tr>
-                                                                    <td>@lang('cruds.client.fields.yuridik_address')</td>
-                                                                    <td>{{ $item->yuridik_address }}</td>
-                                                                </tr>
+
                                                                 <tr>
                                                                     <td>@lang('global.home_address')</td>
                                                                     <td>{{ $item->home_address }}</td>
                                                                 </tr>
-                                                                {{-- <tr>
-                                                                    <td>@lang('cruds.client.fields.yuridik_rekvizid')</td>
-                                                                    <td>{{ $item->yuridik_rekvizid }}</td>
-                                                                </tr> --}}
-
-                                                                <tr>
-                                                                    <td class="text-center"><strong>Company</strong>
-                                                                    </td>
-                                                                    <td></td>
-                                                                </tr>
-                                                                {{-- <tr>
-                                                                    <td>@lang('cruds.company.fields.company_location')</td>
-                                                                    <td>{{ $item->company_location }}</td>
-                                                                </tr> --}}
+                                                            @else
                                                                 <tr>
                                                                     <td>@lang('cruds.company.fields.company_name')</td>
                                                                     <td>{{ $item->company_name }}</td>
@@ -419,163 +388,140 @@
                                                                     <td>@lang('cruds.company.fields.bank_account')</td>
                                                                     <td>{{ $item->bank_account }}</td>
                                                                 </tr>
-                                                                <tr>
-                                                                    <td>@lang('cruds.company.fields.stir')</td>
-                                                                    <td>{{ $item->stir }}</td>
-                                                                </tr>
 
                                                                 <tr>
                                                                     <td>@lang('cruds.company.fields.oked')</td>
                                                                     <td>{{ $item->oked }}</td>
                                                                 </tr>
 
-
-                                                                @foreach ($item->branches as $b)
-                                                                    <tr>
-                                                                        <td class="text-center"><strong>Obyekt</strong>
-                                                                        </td>
-                                                                        <td></td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td>@lang('cruds.branches.fields.notification_num')</td>
-                                                                        <td>{{ $b->notification_num }}</td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td>@lang('cruds.branches.fields.notification_date')</td>
-                                                                        <td>{{ $b->notification_date }}</td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td>@lang('cruds.branches.fields.insurance_policy')</td>
-                                                                        <td>{{ $b->insurance_policy }}</td>
-                                                                    </tr>
-    
-                                                                    <tr>
-                                                                        <td>@lang('cruds.branches.fields.bank_guarantee')</td>
-                                                                        <td>{{ $b->bank_guarantee }}</td>
-                                                                    </tr>
-    
-                                                                    <tr>
-                                                                        <td>@lang('cruds.branches.fields.application_number')</td>
-                                                                        <td>{{ $b->application_number }}</td>
-                                                                    </tr>
-    
-                                                                    <tr>
-                                                                        <td>@lang('cruds.branches.fields.payed_sum')</td>
-                                                                        <td colspan="2" id="payedSumCell">{{ $b->payed_sum }}</td>
-                                                                    </tr>
-                                                                    
-                                                                    {{-- <script>
-                                                                        window.onload = function () {
-                                                                            function formatNumberWithSpaces(number) {
-                                                                                return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
-                                                                            }
-                                                                    
-                                                                            var payedSumElement = document.getElementById('payedSumCell');
-                                                                            
-                                                                            if (payedSumElement) {
-                                                                                var payedSumValue = payedSumElement.textContent.trim();
-                                                                                console.log("Original value:", payedSumValue);
-                                                                                
-                                                                                // Check if the payedSumValue is a valid number
-                                                                                if (!isNaN(payedSumValue) && payedSumValue !== "") {
-                                                                                    var formattedValue = formatNumberWithSpaces(payedSumValue);
-                                                                                    console.log("Formatted value:", formattedValue);
-                                                                                    payedSumElement.textContent = formattedValue;
-                                                                                } else {
-                                                                                    console.error("payedSumValue is not a valid number:", payedSumValue);
-                                                                                }
-                                                                            } else {
-                                                                                console.error("Element with id 'payedSumCell' not found.");
-                                                                            }
-                                                                        };
-                                                                    </script>
-                                                                     --}}
-                                                                 
-                                                            
-                                                                    
-                                                                    <tr>
-                                                                        <td>@lang('cruds.branches.fields.payed_date')</td>
-                                                                        <td>{{ $b->payed_date }}</td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td>@lang('cruds.company.fields.branch_type')</td>
-                                                                        <td>{{ $b->branch_type }}</td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td>@lang('cruds.company.fields.branch_location')</td>
-                                                                        <td>{{ $b->branch_location }}</td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td>@lang('global.ruxsatnoma_raqami')</td>
-                                                                        <td>{{ $b->contract_apt }}</td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td>@lang('global.sanasi')</td>
-                                                                        <td>{{ $b->contract_date }}</td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td>@lang('global.obyekt_boyicha_tolanishi_lozim')
-                                                                        </td>
-                                                                        <td>{{ $b->branch_kubmetr }}</td>
-                                                                    </tr>
-
-                                                                    <tr>
-                                                                        <td>@lang('global.jami_tolanishi_kerak')</td>
-                                                                        <td>{{ $b->generate_price }}</td>
-                                                                        {{-- @dump($b->generate_price) --}}
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td>@lang('global.bolib_tolash')</td>
-                                                                        <td>
-                                                                            @if ($b->payment_type == 'pay_bolib')
-                                                                                @lang('global.pay_bolib')
-                                                                            @else
-                                                                                @lang('global.pay_full')
-                                                                            @endif
-
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td>@lang('global.bolib_tolash_foizi_oldindan')</td>
-                                                                        <td>{{ $b->percentage_input }} %</td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td>@lang('global.quarterly_payment')</td>
-                                                                        <td>{{ $b->installment_quarterly }}</td>
-                                                                    </tr>
-                                                                @endforeach
-
                                                                 <tr>
-                                                                    <td><strong>Product Details</strong></td>
-                                                                    <td></td>
+                                                                    <td>@lang('cruds.client.fields.yuridik_address')</td>
+                                                                    <td>{{ $item->yuridik_address }}</td>
                                                                 </tr>
-                                                                <tr>
-                                                                    <td>@lang('global.bazaviy_xisoblash_miqdori')</td>
-                                                                    <td>{{ $item->minimum_wage }}</td>
-                                                                </tr>
+                            @endif
+                            </tr>
 
-                                                            </tbody>
-                                                        </table>
-                                                    </div>
-                                                    <div class="modal-footer">
-                                                        <button type="button" class="btn btn-secondary"
-                                                            data-bs-dismiss="modal">@lang('global.closed')</button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
+                            <tr>
+                                <td>@lang('cruds.company.fields.stir')</td>
+                                <td>{{ $item->stir }}</td>
+                            </tr>
+
+                            @foreach ($item->branches as $b)
+                                <tr>
+                                    <td class="text-center"><strong>Obyekt</strong>
+                                    </td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>@lang('cruds.branches.fields.notification_num')</td>
+                                    <td>{{ $b->notification_num }}</td>
+                                </tr>
+                                <tr>
+                                    <td>@lang('cruds.branches.fields.notification_date')</td>
+                                    <td>{{ $b->notification_date }}</td>
+                                </tr>
+                                <tr>
+                                    <td>@lang('cruds.branches.fields.insurance_policy')</td>
+                                    <td>{{ $b->insurance_policy }}</td>
+                                </tr>
+
+                                <tr>
+                                    <td>@lang('cruds.branches.fields.bank_guarantee')</td>
+                                    <td>{{ $b->bank_guarantee }}</td>
+                                </tr>
+
+                                <tr>
+                                    <td>@lang('cruds.branches.fields.application_number')</td>
+                                    <td>{{ $b->application_number }}</td>
+                                </tr>
+
+                                <tr>
+                                    <td>@lang('cruds.branches.fields.payed_sum')</td>
+                                    <td colspan="2" id="payedSumCell">{{ $b->payed_sum }}</td>
+                                </tr>
+
+                                <tr>
+                                    <td>@lang('cruds.branches.fields.payed_date')</td>
+                                    <td>{{ $b->payed_date }}</td>
+                                </tr>
+                                <tr>
+                                    <td>@lang('cruds.company.fields.branch_type')</td>
+                                    <td>{{ $b->branch_type }}</td>
+                                </tr>
+                                <tr>
+                                    <td>@lang('cruds.company.fields.branch_location')</td>
+                                    <td>{{ $b->branch_location }}</td>
+                                </tr>
+                                <tr>
+                                    <td>@lang('global.ruxsatnoma_raqami')</td>
+                                    <td>{{ $b->contract_apt }}</td>
+                                </tr>
+                                <tr>
+                                    <td>@lang('global.sanasi')</td>
+                                    <td>{{ $b->contract_date }}</td>
+                                </tr>
+                                <tr>
+                                    <td>@lang('global.obyekt_boyicha_tolanishi_lozim')
+                                    </td>
+                                    <td>{{ $b->branch_kubmetr }}</td>
+                                </tr>
+
+                                <tr>
+                                    <td>@lang('global.jami_tolanishi_kerak')</td>
+                                    <td>{{ $b->generate_price }}</td>
+                                    {{-- @dump($b->generate_price) --}}
+                                </tr>
+                                <tr>
+                                    <td>@lang('global.bolib_tolash')</td>
+                                    <td>
+                                        @if ($b->payment_type == 'pay_bolib')
+                                            @lang('global.pay_bolib')
+                                        @else
+                                            @lang('global.pay_full')
+                                        @endif
+
                                     </td>
                                 </tr>
+                                <tr>
+                                    <td>@lang('global.bolib_tolash_foizi_oldindan')</td>
+                                    <td>{{ $b->percentage_input }} %</td>
+                                </tr>
+                                <tr>
+                                    <td>@lang('global.quarterly_payment')</td>
+                                    <td>{{ $b->installment_quarterly }}</td>
+                                </tr>
                             @endforeach
+
+                            <tr>
+                                <td><strong>Product Details</strong></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>@lang('global.bazaviy_xisoblash_miqdori')</td>
+                                <td>{{ $item->minimum_wage }}</td>
+                            </tr>
+
                         </tbody>
                     </table>
-                    <div class="d-flex">
-
-                        {!! $clients->links() !!}
-                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">@lang('global.closed')</button>
                 </div>
             </div>
         </div>
+    </div>
+    </td>
+    </tr>
+    @endforeach
+    </tbody>
+    </table>
+    <div class="d-flex">
+
+        {!! $clients->links() !!}
+    </div>
+    </div>
+    </div>
+    </div>
     </div>
 @endsection
 
