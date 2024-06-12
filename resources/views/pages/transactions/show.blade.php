@@ -96,7 +96,7 @@
                                 </tr>
 
                                 @if(isset($payerUser))
-                                    @if ($payerUser->payer_inn == $payerUser->stir)
+                                    @if ($transaction->payer_inn == $payerUser->stir)
                                         <tr>
                                             <th>@lang('global.company_name')</td>
                                             <td>{{ $payerUser->company_name }}</td>

@@ -84,27 +84,35 @@ class TransactionController extends Controller
 
     public function show($id)
     {
+        // Retrieve the transaction using Eloquent ORM
         $transaction = CreditTransaction::find($id);
-
+        
+        // Check if the transaction exists
+        if (!$transaction) {
+            abort(404, 'Transaction not found');
+        }
+    
         $payerUser = \DB::table('credit_transactions')
-        ->join('clients', 'clients.stir', 'like', \DB::raw("CONCAT('%', credit_transactions.payer_inn, '%')"))
-        ->select('credit_transactions.*', 'clients.*')
-        ->where('credit_transactions.id', $id)
-        ->first(); 
-
-        // $payerUser = \DB::table('credit_transactions')
-        // ->join('clients', 'clients.stir', 'like', \DB::raw("CONCAT('%', credit_transactions.payer_inn, '%')"))
-        // ->select('credit_transactions.*', 'clients.*')
-        // ->where('credit_transactions.id', $id)
-        // ->whereNotNull('credit_transactions.document_number') // Exclude rows where document_number is null
-        // ->first();
-
-        // if (!$payerUser) {
-        //     abort(404, 'Transaction not found');
-        // }
-
+        ->join('clients', function ($join) {
+            $join->on('clients.stir', 'like', \DB::raw("CONCAT('%', credit_transactions.payer_inn, '%')"));
+        })
+        ->join('branches', 'branches.client_id', '=', 'clients.id')
+        ->select('credit_transactions.*', 'clients.*', 'branches.*')
+        ->whereNotNull('credit_transactions.document_number')
+        // ->where('credit_transactions', $id)
+        ->get();
+    
+       
+    
+        
+    
+        // Debugging: Dump the payerUser object to verify the data
+        dd($payerUser);
+    
         return view('pages.transactions.show', compact('transaction', 'payerUser'));
     }
+    
+    
 
     // public function payers()
     // {
