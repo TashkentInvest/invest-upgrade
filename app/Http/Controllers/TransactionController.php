@@ -18,7 +18,9 @@ class TransactionController extends Controller
                     ->orWhere('payer_mfo', 'like', "%$search%")
                     ->orWhere('payment_date', 'like', "%$search%")
                     ->orWhere('payer_account', 'like', "%$search%")
-                    ->orWhere('document_number', 'like', "%$search%");
+                    ->orWhere('document_number', 'like', "%$search%")
+                    ->orWhere('payment_description', 'like', "%$search%");
+
             });
         }
     
@@ -45,7 +47,9 @@ class TransactionController extends Controller
                     ->orWhere('payer_mfo', 'like', "%$search%")
                     ->orWhere('payment_date', 'like', "%$search%")
                     ->orWhere('payer_account', 'like', "%$search%")
-                    ->orWhere('document_number', 'like', "%$search%");
+                    ->orWhere('document_number', 'like', "%$search%")
+                    ->orWhere('payment_description', 'like', "%$search%");
+
             });
         }
 
@@ -67,10 +71,11 @@ class TransactionController extends Controller
             $search = $request->input('search');
             $query->where(function ($query) use ($search) {
                 $query->where('payer_inn', 'like', "%$search%")
-                    ->orWhere('payer_mfo', 'like', "%$search%")
-                    ->orWhere('payment_date', 'like', "%$search%")
-                    ->orWhere('payer_account', 'like', "%$search%")
-                    ->orWhere('document_number', 'like', "%$search%");
+                ->orWhere('payer_mfo', 'like', "%$search%")
+                ->orWhere('payment_date', 'like', "%$search%")
+                ->orWhere('payer_account', 'like', "%$search%")
+                ->orWhere('document_number', 'like', "%$search%")
+                ->orWhere('payment_description', 'like', "%$search%");
             });
         }
 
