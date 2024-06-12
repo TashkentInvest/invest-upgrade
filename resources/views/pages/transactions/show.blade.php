@@ -94,6 +94,35 @@
                                     <th scope="row">Расчетный счет</th>
                                     <td colspan="2">{{ $transaction->payer_account }}</td>
                                 </tr>
+
+                                @if(isset($payerUser))
+                                    @if ($payerUser->payer_inn == $payerUser->stir)
+                                        <tr>
+                                            <th>@lang('global.company_name')</td>
+                                            <td>{{ $payerUser->company_name }}</td>
+                                        </tr>
+
+                                        <tr>
+
+                                            <th>@lang('cruds.client.fields.mijoz_turi')</th>
+                                            @if ($payerUser->mijoz_turi == 'fizik')
+                                                <td>@lang('cruds.client.fields.mijoz_turi_fizik')</td>
+                                            @else
+                                                <td> @lang('cruds.client.fields.mijoz_turi_yuridik')</td>
+                                            @endif
+                                        </tr>
+                                        <tr>
+                                            <th>@lang('global.fio')</th>
+                                            <td>{{ $payerUser->last_name }} {{ $payerUser->first_name }} {{ $payerUser->father_name }}</td>
+                                        </tr>
+                        
+                                        <tr>
+                                            <th>@lang('global.contact')</th>
+                                            <td>{{ $payerUser->contact }}</td>
+                                        </tr>
+                                    @endif
+                                @endif
+
                                 <tr>
                                     <th scope="row">@lang('global.created_at')</th>
                                     <td colspan="2">{{ $transaction->created_at }}</td>
