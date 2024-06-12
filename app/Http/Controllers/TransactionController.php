@@ -92,22 +92,14 @@ class TransactionController extends Controller
             abort(404, 'Transaction not found');
         }
     
-        $payerUsers = \DB::table('credit_transactions')
-        ->join('clients', function ($join) {
-            $join->on('clients.stir', 'like', \DB::raw("CONCAT('%', credit_transactions.payer_inn, '%')"));
-        })
-        ->join('branches', 'branches.client_id', '=', 'clients.id')
-        ->select('credit_transactions.*', 'clients.*', 'branches.*')
-        ->whereNotNull('credit_transactions.document_number')
-        ->get();
+        // $payerUser = \DB::table('credit_transactions')
+        // ->join('clients', 'clients.stir', 'like', \DB::raw("CONCAT('%', credit_transactions.payer_inn, '%')"))
+        // ->join('branches', 'branches.client_id', '=', 'clients.id')
+        // ->select('credit_transactions.*', 'clients.*', 'branches.*')
+        // ->where('credit_transactions.id', $id)
+        // ->get();
 
-        foreach($payerUsers as $payerUser){
-
-            if($payerUser->id == $id){
-    
-                return view('pages.transactions.show', compact('transaction', 'payerUser'));
-            }
-        }
+        return view('pages.transactions.show', compact('transaction'));
 
     }
     

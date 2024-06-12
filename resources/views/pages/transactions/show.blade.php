@@ -95,16 +95,14 @@
                                     <td colspan="2">{{ $transaction->payer_account }}</td>
                                 </tr>
 
-                                {{-- @dump($p) --}}
-                                {{-- @if(!empty($payerUser)) --}}
-                                    {{-- @if ($payerUser->payer_inn == $payerUser->stir) --}}
+                                @if (isset($payerUser))
+                                    @if ($payerUser->payer_inn == $payerUser->stir)
                                         <tr>
                                             <th>@lang('global.company_name')</td>
                                             <td>{{ $payerUser->company_name }}</td>
                                         </tr>
 
                                         <tr>
-
                                             <th>@lang('cruds.client.fields.mijoz_turi')</th>
                                             @if ($payerUser->mijoz_turi == 'fizik')
                                                 <td>@lang('cruds.client.fields.mijoz_turi_fizik')</td>
@@ -121,14 +119,12 @@
                                             <th>@lang('global.contact')</th>
                                             <td>{{ $payerUser->contact }}</td>
                                         </tr>
-
                                         <tr>
                                             <th>@lang('global.inn')</th>
                                             <td>{{ $payerUser->stir }}</td>
                                         </tr>
-                                    {{-- @endif --}}
-                                
-
+                                    @endif
+                                @endif
                                 <tr>
                                     <th scope="row">@lang('global.created_at')</th>
                                     <td colspan="2">{{ $transaction->created_at }}</td>
