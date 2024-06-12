@@ -522,6 +522,7 @@
                                                                     <tr>
                                                                         <td>@lang('global.jami_tolanishi_kerak')</td>
                                                                         <td>{{ $b->generate_price }}</td>
+                                                                        {{-- @dump($b->generate_price) --}}
                                                                     </tr>
                                                                     <tr>
                                                                         <td>@lang('global.bolib_tolash')</td>
