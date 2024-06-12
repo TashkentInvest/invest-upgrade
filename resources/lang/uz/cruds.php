@@ -192,6 +192,7 @@ return [
     'transaction' => [
         'title' => 'Transaktsiyalar',
         'fields' => [
+            'show' => 'Transaktsiya',
             'name' => "Transaktsiya nomi",
             'description' => 'Transaktsiya tavsifi',
             'credit' => 'Kredit',
@@ -199,8 +200,8 @@ return [
             'import' => 'Yangi transaktsiyani import qilish',
 
             'all' => 'Barcha Transaktsiyalar',
-            'apz' => 'ART',
-            'ads' => 'Reklama'
+            'apz' => 'ART Transaktsiyalar',
+            'ads' => 'Reklama Transaktsiyalar'
         ]
     ],
 

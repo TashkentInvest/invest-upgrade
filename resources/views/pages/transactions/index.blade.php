@@ -4,11 +4,11 @@
 <div class="row">
     <div class="col-12">
         <div class="page-title-box d-sm-flex align-items-center justify-content-between">
-            <h4 class="mb-sm-0 font-size-18">Transactions</h4>
+            <h4 class="mb-sm-0 font-size-18">@lang('cruds.transaction.title')</h4>
             <div class="page-title-right">
                 <ol class="breadcrumb m-0">
                     <li class="breadcrumb-item"><a href="{{ route('home') }}" style="color: #007bff;">@lang('global.home')</a></li>
-                    <li class="breadcrumb-item"><a href="{{ route('transactions.index') }}" style="color: #007bff;">Transactions</a></li>
+                    <li class="breadcrumb-item"><a href="{{ route('transactions.index') }}" style="color: #007bff;">@lang('cruds.transaction.title')</a></li>
                     <li class="breadcrumb-item active">@lang('global.add')</li>
                 </ol>
             </div>
@@ -21,9 +21,9 @@
         <div class="card">
             <div class="card-body border-bottom">
                 <div class="d-flex align-items-center">
-                    <h5 class="mb-0 card-title flex-grow-1">Transactions Lists</h5>
+                    <h5 class="mb-0 card-title flex-grow-1">@lang('cruds.transaction.fields.all')</h5>
                     <div class="flex-shrink-0">
-                        <a href="{{ route('import') }}" class="btn btn-primary">Import Exel</a>
+                        <a href="{{ route('import') }}" class="btn btn-primary">@lang('global.import_data')</a>
                     </div>
                 </div>
             </div>
@@ -31,13 +31,13 @@
 
                 <form action="{{ route('transactions.index') }}" method="GET">
                     <div class="input-group mb-3">
-                        <input type="text" class="form-control" placeholder="Search..." name="search" value="{{ request('search') }}">
-                        <button class="btn btn-outline-secondary" type="submit">Search</button>
+                        <input type="text" class="form-control" placeholder="@lang('global.search')" name="search" value="{{ request('search') }}">
+                        <button class="btn btn-outline-secondary" type="submit">@lang('global.search')</button>
                     </div>
                 </form>
             </div>
             <div class="card-body">
-                <h4 id="payedSumCell1" class="text-bold">Credit: {{$creditSum}}</h4>
+                <h4 id="payedSumCell1" class="text-bold">@lang('cruds.transaction.fields.credit'): {{$creditSum}}</h4>
 
                 <div class="table-responsive">
                     <table class="table table-bordered table-hover align-middle nowrap">
@@ -94,9 +94,6 @@
                     payedSumElement.textContent = formatNumberWithSpaces(payedSumValue);
                     
                 </script>
-
-                
-                
 
                 <!--end row-->
             </div>

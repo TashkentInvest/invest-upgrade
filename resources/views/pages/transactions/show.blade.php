@@ -4,14 +4,14 @@
     <div class="row">
         <div class="col-12">
             <div class="page-title-box d-sm-flex align-items-center justify-content-between">
-                <h4 class="mb-sm-0 font-size-18">Transactions Show</h4>
+                <h4 class="mb-sm-0 font-size-18">@lang('cruds.transaction.fields.show')</h4>
 
                 <div class="page-title-right">
                     <ol class="breadcrumb m-0">
                         <li class="breadcrumb-item"><a href="{{ route('home') }}" style="color: #007bff;">@lang('global.home')</a>
                         </li>
                         <li class="breadcrumb-item"><a href="{{ route('transactions.index') }}"
-                                style="color: #007bff;">Transactions Show</a></li>
+                                style="color: #007bff;">@lang('cruds.transaction.fields.show')</a></li>
                         <li class="breadcrumb-item active">@lang('global.add')</li>
                     </ol>
                 </div>
@@ -24,9 +24,9 @@
             <div class="card">
                 <div class="card-body border-bottom">
                     <div class="d-flex align-items-center">
-                        <h5 class="mb-0 card-title flex-grow-1">Transactions Show</h5>
+                        <h5 class="mb-0 card-title flex-grow-1">@lang('cruds.transaction.fields.show')</h5>
                         <div class="flex-shrink-0">
-                            <a href="{{ route('import') }}" class="btn btn-primary">Import Exel</a>
+                            <a href="{{ route('import') }}" class="btn btn-primary">@lang('global.import_data')</a>
                         </div>
                     </div>
                 </div>
