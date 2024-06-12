@@ -170,26 +170,17 @@
 
                             @foreach ($client->branches as $b)
                                 <tr>
-                                    <td colspan="3" class="text-center"><strong>@lang('global.contract_details') -
+                                    <td colspan="3" class="text-center bg-secondary text-light"><strong>@lang('global.contract_details') -
                                             {{ $b->contract_apt }}</strong></td>
                                 </tr>
 
                                 <tr>
-                                    <td>@lang('cruds.branches.fields.notification_num')</td>
-                                    <td colspan="2">{{ $b->notification_num }}</td>
+                                    <td>@lang('global.ruxsatnoma_raqami')</td>
+                                    <td colspan="2">{{ $b->contract_apt }}</td>
                                 </tr>
                                 <tr>
-                                    <td>@lang('cruds.branches.fields.notification_date')</td>
-                                    <td colspan="2">{{ $b->notification_date }}</td>
-                                </tr>
-                                <tr>
-                                    <td>@lang('cruds.branches.fields.insurance_policy')</td>
-                                    <td colspan="2">{{ $b->insurance_policy }}</td>
-                                </tr>
-
-                                <tr>
-                                    <td>@lang('cruds.branches.fields.bank_guarantee')</td>
-                                    <td colspan="2">{{ $b->bank_guarantee }}</td>
+                                    <td>@lang('global.created_at')</td>
+                                    <td colspan="2">{{ $b->contract_date }}</td>
                                 </tr>
 
                                 <tr>
@@ -198,26 +189,8 @@
                                 </tr>
 
                                 <tr>
-                                    <td>@lang('cruds.branches.fields.payed_sum')</td>
-                                    <td colspan="2" id="payedSumCell">{{ $b->payed_sum }}</td>
-                                </tr>
-
-                                <script>
-                                    function formatNumberWithSpaces(number) {
-                                        return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
-                                    }
-
-                                    var payedSumElement = document.getElementById('payedSumCell');
-                                    var payedSumValue = payedSumElement.textContent;
-
-                                    payedSumElement.textContent = formatNumberWithSpaces(payedSumValue);
-                                </script>
-
-
-
-                                <tr>
-                                    <td>@lang('cruds.branches.fields.payed_date')</td>
-                                    <td colspan="2">{{ $b->payed_date }}</td>
+                                    <td>@lang('global.loyiha_nomi')</td>
+                                    <td colspan="2">{{ $b->branch_type }}</td>
                                 </tr>
 
 
@@ -229,14 +202,7 @@
                                     <td>@lang('cruds.company.fields.branch_location')</td>
                                     <td colspan="2">{{ $b->branch_location }}</td>
                                 </tr>
-                                <tr>
-                                    <td>@lang('global.ruxsatnoma_raqami')</td>
-                                    <td colspan="2">{{ $b->contract_apt }}</td>
-                                </tr>
-                                <tr>
-                                    <td>@lang('global.created_at')</td>
-                                    <td colspan="2">{{ $b->contract_date }}</td>
-                                </tr>
+                              
                                 <tr>
                                     <td>@lang('global.obyekt_boyicha_tolanishi_lozim') ( m³ )</td>
                                     <td colspan="2">{{ number_format($b->branch_kubmetr, 1) }}</td>
@@ -258,6 +224,15 @@
                                 </script>
 
                                 <tr>
+                                    <td>@lang('global.bolib_tolash_foizi_oldindan')</td>
+                                    <td colspan="2">{{ $b->percentage_input }}%</td>
+                                </tr>
+                                <tr>
+                                    <td>@lang('global.quarterly_payment')</td>
+                                    <td colspan="2">{{ $b->installment_quarterly }}</td>
+                                </tr>
+
+                                <tr>
                                     <td>@lang('global.bolib_tolash')</td>
                                     <td colspan="2">
                                         @if ($b->payment_type == 'pay_bolib')
@@ -267,14 +242,46 @@
                                         @endif
                                     </td>
                                 </tr>
+
                                 <tr>
-                                    <td>@lang('global.bolib_tolash_foizi_oldindan')</td>
-                                    <td colspan="2">{{ $b->percentage_input }}%</td>
+                                    <td>@lang('cruds.branches.fields.payed_sum')</td>
+                                    <td colspan="2" id="payedSumCell">{{ $b->payed_sum }}</td>
+                                </tr>
+
+                                <script>
+                                    function formatNumberWithSpaces(number) {
+                                        return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
+                                    }
+
+                                    var payedSumElement = document.getElementById('payedSumCell');
+                                    var payedSumValue = payedSumElement.textContent;
+
+                                    payedSumElement.textContent = formatNumberWithSpaces(payedSumValue);
+                                </script>
+
+                                <tr>
+                                    <td>@lang('cruds.branches.fields.payed_date')</td>
+                                    <td colspan="2">{{ $b->payed_date }}</td>
+                                </tr>
+
+                                <tr>
+                                    <td>@lang('cruds.branches.fields.notification_num')</td>
+                                    <td colspan="2">{{ $b->notification_num }}</td>
                                 </tr>
                                 <tr>
-                                    <td>@lang('global.quarterly_payment')</td>
-                                    <td colspan="2">{{ $b->installment_quarterly }}</td>
+                                    <td>@lang('cruds.branches.fields.notification_date')</td>
+                                    <td colspan="2">{{ $b->notification_date }}</td>
                                 </tr>
+                                <tr>
+                                    <td>@lang('cruds.branches.fields.insurance_policy')</td>
+                                    <td colspan="2">{{ $b->insurance_policy }}</td>
+                                </tr>
+
+                                <tr>
+                                    <td>@lang('cruds.branches.fields.bank_guarantee')</td>
+                                    <td colspan="2">{{ $b->bank_guarantee }}</td>
+                                </tr>
+
                             @endforeach
 
                             <ul>
