@@ -39,6 +39,7 @@
             </div>
             <div class="card-body">
 
+                <h4 id="payedSumCell1" class="text-bold">Credit: {{$creditSum}}</h4>
 
                 <div class="table-responsive">
                     <table class="table table-bordered table-hover align-middle nowrap">
@@ -82,7 +83,6 @@
                 <div class="d-flex" style="justify-content: space-between">
                     {{$transactions->appends(['search' => request()->input('search')])->links()}}
 
-                    <h4 id="payedSumCell1" class="text-bold">Credit: {{$creditSum}}</h4>
                 </div>
 
                 

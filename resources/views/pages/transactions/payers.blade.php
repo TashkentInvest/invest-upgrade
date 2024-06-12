@@ -104,7 +104,6 @@
 
                     <div class="d-flex" style="justify-content: space-between">
                         {{ $transactions->appends(['search' => request()->input('search')])->links() }}
-
                     </div>
 
 
