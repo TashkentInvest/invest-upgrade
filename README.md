@@ -138,25 +138,27 @@ php artisan make:migration change_document_number_type_in_credit_transactions_ta
 
 edit qvotganda branch_kubmetrga float kiritib bomyapti +++
 
-pasport_date = date qlsh kere   
+pasport_date = date qlsh kere +++
 
-product add / edit qvotganda validatsalani check qb chiqish kere
+product add / edit qvotganda validatsalani check qb chiqish kere +++
 
-textlani fix qilish kere
+textlani fix qilish kere +++
+
+debugbar json unsave qlsh kere +++
+
+yurik_pdf qlsh kere ken validatsa +++
+
+Company name, platej descriptoin, data, inn : tip keremas +++
+
+edit boganda calc script qlish kere +++ 
+ 
+generate_price not changeble bop qogan fix qlsh kere  +++
+
+INN = minimum & maximum = 9 +++
 
 blade clean qilish kere 
 
-debugbar json unsave qlsh kere
-
-yurik_pdf qlsh kere ken validatsa
-
-generate_price not changeble bop qogan fix qlsh kere 
-
-edit boganda calc script qlish kere 
-
 remove accardion ochishi keremas agar bitta bosa
-
-INN = minimum & maximum = 9
 
 Modal window optimizatsiya qilish kere
 
@@ -166,9 +168,7 @@ Mijoz_turi keremas
 
 mesta raspalajenya xato chqazvotti
 
-Transaction da Inn bo'yicha fetch qilish kere
-
-Company name, platej descriptoin, data, inn : tip keremas
+Transaction da Inn bo'yicha fetch qilish kere : Not Xato maybe
 
 exel da N_ keremas
 

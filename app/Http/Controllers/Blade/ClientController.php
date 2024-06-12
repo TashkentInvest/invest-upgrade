@@ -64,8 +64,14 @@ class ClientController extends Controller
 
     public function create(Request $request)
     {
-        // Uncomment this line to inspect the request data structure
-        // dd($request);
+        $request->validate([
+            'stir' => 'required|string|max:9|min:9|unique:clients,stir',
+            'oked' => 'required|string|max:5|min:5',
+            'bank_code' => 'required|string|max:5|min:5',
+            'bank_account' => 'required|string|max:20|min:20',
+            'passport_serial' => 'required|string|max:10|min:9',
+            'passport_pinfl' => 'required|string|max:14|min:14',
+        ]);
         
         DB::beginTransaction();
     
@@ -95,20 +101,7 @@ class ClientController extends Controller
                 'oked' => $request->get('oked'),
                 'minimum_wage' => $request->get('minimum_wage'),
             ]);
-    
-            // Handle file uploads
-            // if ($request->hasFile('document')) {
-            //     foreach ($request->file('document') as $file) {
-            //         $extension = $file->getClientOriginalExtension();
-            //         $fileName = time() . '.' . $extension;
-            //         $file->move(public_path('assets'), $fileName);
-    
-            //         $fileModel = new File();
-            //         $fileModel->client_id = $client->id;
-            //         $fileModel->path = 'assets/' . $fileName;
-            //         $fileModel->save();
-            //     }
-            // }
+
 
             if ($request->hasFile('document')) {
                 foreach ($request->file('document') as $file) {
@@ -125,12 +118,6 @@ class ClientController extends Controller
                 }
             }
 
-        // dd($request->accordions);
-
-    
-            // Create branches
-            // Uncomment this line to inspect the accordions array
-            // dd($request->accordions);
             
             foreach ($request->accordions as $accordion) {
                 Branch::create([
@@ -165,8 +152,6 @@ class ClientController extends Controller
         }
     }
     
-    
-
     public function edit($id)
     {
 
@@ -180,10 +165,16 @@ class ClientController extends Controller
         return view('pages.products.edit', compact('client', 'files'));
     }
 
-
     public function update(Request $request, $id)
     {
-        // dd($request);
+        $request->validate([
+            'stir' => 'required|string|max:9|min:9|unique:clients,stir',
+            'oked' => 'required|string|max:5|min:5',
+            'bank_code' => 'required|string|max:5|min:5',
+            'bank_account' => 'required|string|max:20|min:20',
+            'passport_serial' => 'required|string|max:10|min:9',
+            'passport_pinfl' => 'required|string|max:14|min:14',
+        ]);
 
         DB::beginTransaction();
 

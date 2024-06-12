@@ -54,7 +54,6 @@
                                     <th scope="col">@lang('global.fio')</th>
                                     <th scope="col">@lang('global.contact')</th>
 
-
                                     <th scope="col">@lang('cruds.transaction.fields.credit')</th>
                                     <th scope="col">@lang('global.actions')</th>
                                 </tr>
@@ -68,10 +67,9 @@
                                             <td style="width: 200px;">{{ $transaction->payment_description }}</td>
                                             <td>{{ $transaction->payment_date }}</td>
                                             <td>{{ $transaction->payer_inn }}</td>
-                                        
-                                            <td>{{ $transaction->last_name }} {{ $transaction->first_name }} {{ $transaction->father_name }}</td>
-                                                
 
+                                            <td>{{ $transaction->last_name }} {{ $transaction->first_name }}
+                                                {{ $transaction->father_name }}</td>
 
                                             <td>{{ $transaction->contact }}</td>
 
