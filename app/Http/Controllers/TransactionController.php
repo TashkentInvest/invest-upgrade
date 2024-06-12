@@ -139,7 +139,9 @@ class TransactionController extends Controller
                     ->orWhere('clients.stir', 'like', "%$search%")
                     ->orWhere('clients.company_name', 'like', "%$search%")
                     ->orWhere('clients.contact', 'like', "%$search%")
-                    ->orWhere('credit_transactions.document_number', 'like', "%$search%");
+                    ->orWhere('credit_transactions.document_number', 'like', "%$search%")
+                    ->orWhere('payment_description', 'like', "%$search%");
+
             });
         }
         
