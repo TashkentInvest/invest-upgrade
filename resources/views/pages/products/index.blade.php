@@ -413,6 +413,71 @@
                                     <td></td>
                                 </tr>
                                 <tr>
+                                    <td>@lang('global.ruxsatnoma_raqami')</td>
+                                    <td>{{ $b->contract_apt }}</td>
+                                </tr>
+                                <tr>
+                                    <td>@lang('global.sanasi')</td>
+                                    <td>{{ $b->contract_date }}</td>
+                                </tr>
+
+                                <tr>
+                                    <td>@lang('cruds.branches.fields.application_number')</td>
+                                    <td>{{ $b->application_number }}</td>
+                                </tr>
+
+                                <tr>
+                                    <td>@lang('global.loyiha_nomi')</td>
+                                    <td>{{ $b->branch_name }}</td>
+                                </tr>
+                                <tr>
+                                    <td>@lang('cruds.company.fields.branch_type')</td>
+                                    <td>{{ $b->branch_type }}</td>
+                                </tr>
+                                <tr>
+                                    <td>@lang('cruds.company.fields.branch_location')</td>
+                                    <td>{{ $b->branch_location }}</td>
+                                </tr>
+                             
+                                <tr>
+                                    <td>@lang('global.obyekt_boyicha_tolanishi_lozim')
+                                    </td>
+                                    <td>{{ $b->branch_kubmetr }}</td>
+                                </tr>
+
+                                <tr>
+                                    <td>@lang('global.jami_tolanishi_kerak')</td>
+                                    <td>{{ $b->generate_price }}</td>
+                                </tr>
+                                <tr>
+                                    <td>@lang('global.bolib_tolash')</td>
+                                    <td>
+                                        @if ($b->payment_type == 'pay_bolib')
+                                            @lang('global.pay_bolib')
+                                        @else
+                                            @lang('global.pay_full')
+                                        @endif
+
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>@lang('cruds.branches.fields.payed_sum')</td>
+                                    <td colspan="2" id="payedSumCell">{{ $b->payed_sum }}</td>
+                                </tr>
+
+                                <tr>
+                                    <td>@lang('cruds.branches.fields.payed_date')</td>
+                                    <td>{{ $b->payed_date }}</td>
+                                </tr>
+
+                                <tr>
+                                    <td>@lang('global.bolib_tolash_foizi_oldindan')</td>
+                                    <td>{{ $b->percentage_input }} %</td>
+                                </tr>
+                           
+
+                                <tr>
                                     <td>@lang('cruds.branches.fields.notification_num')</td>
                                     <td>{{ $b->notification_num }}</td>
                                 </tr>
@@ -430,62 +495,6 @@
                                     <td>{{ $b->bank_guarantee }}</td>
                                 </tr>
 
-                                <tr>
-                                    <td>@lang('cruds.branches.fields.application_number')</td>
-                                    <td>{{ $b->application_number }}</td>
-                                </tr>
-
-                                <tr>
-                                    <td>@lang('cruds.branches.fields.payed_sum')</td>
-                                    <td colspan="2" id="payedSumCell">{{ $b->payed_sum }}</td>
-                                </tr>
-
-                                <tr>
-                                    <td>@lang('cruds.branches.fields.payed_date')</td>
-                                    <td>{{ $b->payed_date }}</td>
-                                </tr>
-                                <tr>
-                                    <td>@lang('cruds.company.fields.branch_type')</td>
-                                    <td>{{ $b->branch_type }}</td>
-                                </tr>
-                                <tr>
-                                    <td>@lang('cruds.company.fields.branch_location')</td>
-                                    <td>{{ $b->branch_location }}</td>
-                                </tr>
-                                <tr>
-                                    <td>@lang('global.ruxsatnoma_raqami')</td>
-                                    <td>{{ $b->contract_apt }}</td>
-                                </tr>
-                                <tr>
-                                    <td>@lang('global.sanasi')</td>
-                                    <td>{{ $b->contract_date }}</td>
-                                </tr>
-                                <tr>
-                                    <td>@lang('global.obyekt_boyicha_tolanishi_lozim')
-                                    </td>
-                                    <td>{{ $b->branch_kubmetr }}</td>
-                                </tr>
-
-                                <tr>
-                                    <td>@lang('global.jami_tolanishi_kerak')</td>
-                                    <td>{{ $b->generate_price }}</td>
-                                    {{-- @dump($b->generate_price) --}}
-                                </tr>
-                                <tr>
-                                    <td>@lang('global.bolib_tolash')</td>
-                                    <td>
-                                        @if ($b->payment_type == 'pay_bolib')
-                                            @lang('global.pay_bolib')
-                                        @else
-                                            @lang('global.pay_full')
-                                        @endif
-
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>@lang('global.bolib_tolash_foizi_oldindan')</td>
-                                    <td>{{ $b->percentage_input }} %</td>
-                                </tr>
                                 <tr>
                                     <td>@lang('global.quarterly_payment')</td>
                                     <td>{{ $b->installment_quarterly }}</td>

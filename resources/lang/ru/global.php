@@ -386,9 +386,9 @@ return [
 
     'ruxsatnoma_raqami'                    => 'Номер договора',
     'sanasi' => 'Дата',
-    'loyiha_turi' => 'Тип проекта',
-    'loyiha_manzili' => 'Адрес проекта',
-    'loyiha_nomi' => 'Название проекта',
+    'loyiha_turi' => 'Тип объекта',
+    'loyiha_manzili' => 'Адрес объекта',
+    'loyiha_nomi' => 'Название объекта',
     "obyekt_boyicha_tolanishi_lozim" => 'Объём строительства',
     'bazaviy_xisoblash_miqdori' => 'Базовая расчетная сумма',
     "jami_tolanishi_kerak" => 'Общая сумма к оплате ( сўм )',
