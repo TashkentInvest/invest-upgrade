@@ -45,18 +45,17 @@
                         <table class="table table-bordered table-hover align-middle nowrap">
                             <thead class="table-light">
                                 <tr>
-                                    <th scope="col">№ Док</th>
-                                    <th scope="col">Дата платежа</th>
-                                    <th scope="col" style="width: 200px;">Назначение платежа</th>
+                                    {{-- <th scope="col">№ Док</th> --}}
                                     <th scope="col">@lang('global.company_name')</th>
-                                    <th scope="col">@lang('cruds.client.fields.mijoz_turi')</th>
+                                    <th scope="col" style="width: 200px;">Назначение платежа</th>
+                                    <th scope="col">Дата платежа</th>
+                                    <th scope="col">Инн</th>
+
                                     <th scope="col">@lang('global.fio')</th>
                                     <th scope="col">@lang('global.contact')</th>
 
 
                                     <th scope="col">@lang('cruds.transaction.fields.credit')</th>
-                                    <th scope="col">Инн</th>
-                                    <th scope="col">Расчетный счет</th>
                                     <th scope="col">@lang('global.actions')</th>
                                 </tr>
                             </thead>
@@ -64,18 +63,12 @@
                                 @foreach ($transactions as $transaction)
                                     @if ($transaction->payer_inn == $transaction->stir)
                                         <tr>
-                                            <td>{{ $transaction->document_number }}</td>
-                                            <td>{{ $transaction->payment_date }}</td>
-                                            <td style="width: 200px;">{{ $transaction->payment_description }}</td>
+                                            {{-- <td>{{ $transaction->document_number }}</td> --}}
                                             <td>{{ $transaction->company_name }}</td>
+                                            <td style="width: 200px;">{{ $transaction->payment_description }}</td>
+                                            <td>{{ $transaction->payment_date }}</td>
+                                            <td>{{ $transaction->payer_inn }}</td>
                                         
-                                            <td>
-                                                @if ($transaction->mijoz_turi == 'fizik')
-                                                    @lang('cruds.client.fields.mijoz_turi_fizik')
-                                                @else
-                                                    @lang('cruds.client.fields.mijoz_turi_yuridik')
-                                                @endif                                                      
-                                            </td>
                                             <td>{{ $transaction->last_name }} {{ $transaction->first_name }} {{ $transaction->father_name }}</td>
                                                 
 
@@ -84,8 +77,6 @@
 
                                             <td>{{ $transaction->credit }}</td>
 
-                                            <td>{{ $transaction->payer_inn }}</td>
-                                            <td>{{ $transaction->payer_account }}</td>
                                             <td>
                                                 <ul class="list-unstyled hstack gap-1 mb-0">
                                                     <li data-bs-toggle="tooltip" data-bs-placement="top" aria-label="View">
