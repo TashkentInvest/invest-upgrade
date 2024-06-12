@@ -60,7 +60,7 @@
                                     <a href="{{ route('transactions.index') }}"
                                         class="{{ Request::is('transactions.index*') ? 'mm-active' : '' }}">
                                         <i class="bx bxs-bar-chart-square" style="font-size: 14px; min-width: auto;"></i>
-                                        @lang('global.view_file') ALL
+                                        @lang('cruds.transaction.fields.all')
                                     </a>
                                 </li>
 
@@ -68,7 +68,7 @@
                                     <a href="{{ route('transactions.art') }}"
                                         class="{{ Request::is('transactions.art*') ? 'mm-active' : '' }}">
                                         <i class="bx bxs-bar-chart-square" style="font-size: 14px; min-width: auto;"></i>
-                                        @lang('global.view_file') ART
+                                        @lang('cruds.transaction.fields.apz')
                                     </a>
                                 </li>
 
@@ -76,7 +76,7 @@
                                     <a href="{{ route('transactions.ads') }}"
                                         class="{{ Request::is('transactions.ads*') ? 'mm-active' : '' }}">
                                         <i class="bx bxs-bar-chart-square" style="font-size: 14px; min-width: auto;"></i>
-                                        @lang('global.view_file') ADS
+                                        @lang('cruds.transaction.fields.ads')
                                     </a>
                                 </li>
 
@@ -84,7 +84,7 @@
                                     <a href="{{ route('transactions.payers') }}"
                                         class="{{ Request::is('transactions.payers*') ? 'mm-active' : '' }}">
                                         <i class="bx bxs-bar-chart-square" style="font-size: 14px; min-width: auto;"></i>
-                                        @lang('global.view_file') Payers
+                                        @lang('cruds.transaction.fields.payers')
                                     </a>
                                 </li>
                             @endcan
