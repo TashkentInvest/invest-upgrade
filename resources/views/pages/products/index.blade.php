@@ -439,7 +439,7 @@
                                 <tr>
                                     <td>@lang('global.obyekt_boyicha_tolanishi_lozim')
                                     </td>
-                                    <td>{{ $b->branch_kubmetr }}</td>
+                                    <td>{{ number_format($b->branch_kubmetr, 1) }}</td>
                                 </tr>
 
                                 <tr>
