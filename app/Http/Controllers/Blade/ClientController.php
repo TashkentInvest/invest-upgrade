@@ -229,18 +229,7 @@ class ClientController extends Controller
                 }
             }
 
-            // if ($request->hasFile('document')) {
-            //     foreach ($request->file('document') as $file) {
-            //         $extension = $file->getClientOriginalExtension();
-            //         $fileName = time() . '.' . $extension;
-            //         $file->move(public_path('assets'), $fileName);
-    
-            //         $fileModel = new File();
-            //         $fileModel->client_id = $client->id;
-            //         $fileModel->path = 'assets/' . $fileName;
-            //         $fileModel->save();
-            //     }
-            // }
+           
 
             if ($request->hasFile('document')) {
                 foreach ($request->file('document') as $file) {
@@ -256,6 +245,21 @@ class ClientController extends Controller
                     $fileModel->save();
                 }
             }
+
+            if ($request->has('delete_files')) {
+                foreach ($request->input('delete_files') as $fileId) {
+                    $file = File::find($fileId);
+                    if ($file) {
+                        // Delete the file from storage
+                        if (Storage::exists($file->path)) {
+                            Storage::delete($file->path);
+                        }
+                        // Delete the file record from the database
+                        $file->delete();
+                    }
+                }
+            }
+            
             
 
             DB::commit();

@@ -25,7 +25,8 @@
 
             <div class="card">
                 <div class="card-body">
-                    <form action="{{ route('clientUpdate', ['id' => $client->id]) }}" method="post" enctype="multipart/form-data">
+                    <form action="{{ route('clientUpdate', ['id' => $client->id]) }}" method="post"
+                        enctype="multipart/form-data">
                         @csrf
                         @method('PUT')
 
@@ -49,18 +50,9 @@
                                         @endif
                                     </div>
                                 </div>
-                              
 
                                 <div class="row" id="make_show" style="display: none;">
 
-                                    {{-- <div class="col-lg-6">
-                                        <div class="mb-3">
-                                            <label for="company_location">@lang('global.loyiha_manzili')</label>
-                                            <input type="text" class="form-control" name="company_location"
-                                                value="{{ old('company_location', $client->company_location) }}"
-                                                placeholder="@lang('global.loyiha_manzili')">
-                                        </div>
-                                    </div> --}}
                                     <div class="col-12 col-lg-3 mb-2">
                                         <div class="mb-3">
                                             <label for="company_name">@lang('global.company_name')</label>
@@ -156,20 +148,6 @@
                                                 class="error invalid-feedback">{{ $errors->first('yuridik_address') }}</span>
                                         @endif
                                     </div>
-
-                                    {{-- <div class="col-12 col-lg-3 mb-2">
-                                        <label for="yuridik_rekvizid"
-                                            class="col-md-6 col-form-label">@lang('cruds.client.fields.yuridik_rekvizid')</label>
-                                        <input
-                                            class="form-control {{ $errors->has('yuridik_rekvizid') ? 'is-invalid' : '' }}"
-                                            type="text" name="yuridik_rekvizid" id="yuridik_rekvizid"
-                                            placeholder="@lang('cruds.client.fields.yuridik_rekvizid')" value="{{ old('yuridik_rekvizid') }}">
-                                        @if ($errors->has('yuridik_rekvizid'))
-                                            <span
-                                                class="error invalid-feedback">{{ $errors->first('yuridik_rekvizid') }}</span>
-                                        @endif
-                                    </div> --}}
-
                                 </div>
 
                                 <div class="row">
@@ -229,7 +207,8 @@
                                             class="form-control {{ $errors->has('passport_serial') ? 'is-invalid' : '' }}"
                                             type="text" name="passport_serial" id="passport_serial"
                                             placeholder="@lang('cruds.client.fields.passport_serial')"
-                                            value="{{ old('passport_serial', $client->passport_serial) }}" maxlength="10">
+                                            value="{{ old('passport_serial', $client->passport_serial) }}"
+                                            maxlength="10">
                                         @if ($errors->has('passport_serial'))
                                             <span
                                                 class="error invalid-feedback">{{ $errors->first('passport_serial') }}</span>
@@ -281,8 +260,7 @@
                                     <div class="col-12 col-lg-3 mb-2">
                                         <label for="home_address"
                                             class="col-md-6 col-form-label">@lang('global.home_address')</label>
-                                        <input
-                                            class="form-control {{ $errors->has('home_address') ? 'is-invalid' : '' }}"
+                                        <input class="form-control {{ $errors->has('home_address') ? 'is-invalid' : '' }}"
                                             type="text" name="home_address" id="home_address"
                                             placeholder="@lang('global.home_address')"
                                             value="{{ old('home_address', $client->home_address) }}">
@@ -315,6 +293,7 @@
                                         @endif
                                     </div>
                                     <ul>
+
                                         @foreach ($files as $file)
                                             <div class="py-1">
                                                 <a target="_blank" class="py-2 my-2"
@@ -334,8 +313,6 @@
                                         <input type="checkbox" name="passport_type" id="is_passport_id" value="1">
                                     </div>
                                 </div>
-
-
 
                                 <script>
                                     $(document).ready(function() {
@@ -363,15 +340,10 @@
 
                             </section>
 
-
-                      
-
-
                             <h3>@lang('global.object')</h3>
                             <section>
                                 <div class="accordion accordion-flush" id="accordionFlushExample">
                                     @foreach ($client->branches as $branchIndex => $b)
-
                                         <div class="accordion-item">
                                             <h2 class="accordion-header" id="flush-heading{{ $branchIndex }}">
                                                 <button class="accordion-button fw-medium collapsed" type="button"
@@ -382,7 +354,8 @@
                                                     Accordion Item #{{ $branchIndex }}
                                                 </button>
                                             </h2>
-                                            <input type="hidden" name="accordions[{{ $branchIndex }}][id]" value="{{ $b->id }}">
+                                            <input type="hidden" name="accordions[{{ $branchIndex }}][id]"
+                                                value="{{ $b->id }}">
 
                                             <div id="flush-collapse{{ $branchIndex }}"
                                                 class="accordion-collapse collapse show"
@@ -397,7 +370,6 @@
                                                                     <input type="text" class="form-control"
                                                                         name="accordions[{{ $branchIndex }}][contract_apt]"
                                                                         value="{{ old('accordions.' . $branchIndex . '.contract_apt', $b->contract_apt) }}"
-
                                                                         placeholder="@lang('global.ruxsatnoma_raqami')">
                                                                 </div>
                                                             </div>
@@ -419,7 +391,6 @@
                                                                     <input type="text" class="form-control"
                                                                         name="accordions[{{ $branchIndex }}][notification_num]"
                                                                         value="{{ old('accordions.' . $branchIndex . '.notification_num', $b->notification_num) }}"
-                                                                        
                                                                         placeholder="@lang('cruds.branches.fields.notification_num')">
                                                                 </div>
                                                             </div>
@@ -430,7 +401,6 @@
                                                                     <input type="date" class="form-control"
                                                                         name="accordions[{{ $branchIndex }}][notification_date]"
                                                                         value="{{ old('accordions.' . $branchIndex . '.notification_date', $b->notification_date) }}"
-                                                                        
                                                                         placeholder="@lang('cruds.branches.fields.notification_date')">
                                                                 </div>
                                                             </div>
@@ -441,7 +411,6 @@
                                                                     <input type="text" class="form-control"
                                                                         name="accordions[{{ $branchIndex }}][insurance_policy]"
                                                                         value="{{ old('accordions.' . $branchIndex . '.insurance_policy', $b->insurance_policy) }}"
-                                                                        
                                                                         placeholder="@lang('cruds.branches.fields.insurance_policy')">
                                                                 </div>
                                                             </div>
@@ -451,7 +420,6 @@
                                                                     <input type="text" class="form-control"
                                                                         name="accordions[{{ $branchIndex }}][bank_guarantee]"
                                                                         value="{{ old('accordions.' . $branchIndex . '.bank_guarantee', $b->bank_guarantee) }}"
-                                                                        
                                                                         placeholder="@lang('cruds.branches.fields.bank_guarantee')">
                                                                 </div>
                                                             </div>
@@ -462,22 +430,22 @@
                                                                     <input type="text" class="form-control"
                                                                         name="accordions[{{ $branchIndex }}][application_number]"
                                                                         value="{{ old('accordions.' . $branchIndex . '.application_number', $b->application_number) }}"
-                                                                        
                                                                         placeholder="@lang('cruds.branches.fields.application_number')">
                                                                 </div>
                                                             </div>
                                                             <div class="col-lg-4">
                                                                 <div class="mb-3">
-                                                                    
-                                                                    <label for="payedSum_{{ $branchIndex }}">@lang('cruds.branches.fields.payed_sum')</label>
+
+                                                                    <label
+                                                                        for="payedSum_{{ $branchIndex }}">@lang('cruds.branches.fields.payed_sum')</label>
                                                                     <input type="text" class="form-control payedSum"
                                                                         id="payedSum_{{ $branchIndex }}"
                                                                         name="accordions[{{ $branchIndex }}][payed_sum]"
                                                                         value="{{ old('accordions.' . $branchIndex . '.payed_sum', $b->payed_sum) }}"
                                                                         placeholder="@lang('cruds.branches.fields.payed_sum')">
-                                                                    
-                                                                    
-                                                                        {{-- <script>
+
+
+                                                                    {{-- <script>
                                                                                 function formatNumberWithSpaces(number) {
                                                                                     // Ensure the number is a string
                                                                                     return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
@@ -502,9 +470,9 @@
                                                                             
                                                                         </script>
                                                                          --}}
-                                                                        
-                                                                    
-                                                                        
+
+
+
                                                                 </div>
                                                             </div>
                                                             <div class="col-lg-4">
@@ -518,14 +486,14 @@
                                                             </div>
                                                         </div>
                                                         <div class="row">
-                                                          
+
 
                                                             <div class="col-lg-4">
                                                                 <div class="mb-3">
                                                                     <label for="branch_type">@lang('global.loyiha_turi')</label>
-                                                                    <input type="text" class="form-control" name="accordions[{{ $branchIndex }}][branch_type]"
+                                                                    <input type="text" class="form-control"
+                                                                        name="accordions[{{ $branchIndex }}][branch_type]"
                                                                         value="{{ old('accordions.' . $branchIndex . '.branch_type', $b->branch_type) }}"
-
                                                                         placeholder="@lang('global.loyiha_turi')">
                                                                 </div>
                                                             </div>
@@ -533,27 +501,28 @@
                                                             <div class="col-lg-4">
                                                                 <div class="mb-3">
                                                                     <label for="branch_location">@lang('cruds.company.fields.branch_location')</label>
-                                                                    <input type="text" class="form-control" name="accordions[{{ $branchIndex }}][branch_location]"
+                                                                    <input type="text" class="form-control"
+                                                                        name="accordions[{{ $branchIndex }}][branch_location]"
                                                                         value="{{ old('accordions.' . $branchIndex . '.branch_location', $b->branch_location) }}"
-
                                                                         placeholder="@lang('cruds.company.fields.branch_location')">
                                                                 </div>
                                                             </div>
                                                             <div class="col-lg-4">
                                                                 <div class="inner-repeater mb-4">
-                                                                    <div data-repeater-list="inner-group" class="inner mb-3">
-                                                                        <label for="basicpill-cardno-input">@lang('global.obyekt_boyicha_tolanishi_lozim')</label>
+                                                                    <div data-repeater-list="inner-group"
+                                                                        class="inner mb-3">
+                                                                        <label
+                                                                            for="basicpill-cardno-input">@lang('global.obyekt_boyicha_tolanishi_lozim')</label>
                                                                         <input type="number"
-                                                                               class="form-control branch_kubmetr"
-                                                                               step="0.00001"
-                                                                               placeholder="( m³ )"
-                                                                               value="{{ old('accordions.' . $branchIndex . '.branch_kubmetr', $b->branch_kubmetr) }}"
-                                                                               name="accordions[{{ $branchIndex }}][branch_kubmetr]"
-                                                                               onchange="displayFiveDigitsAfterDecimal(this)">
+                                                                            class="form-control branch_kubmetr"
+                                                                            step="0.00001" placeholder="( m³ )"
+                                                                            value="{{ old('accordions.' . $branchIndex . '.branch_kubmetr', $b->branch_kubmetr) }}"
+                                                                            name="accordions[{{ $branchIndex }}][branch_kubmetr]"
+                                                                            onchange="displayFiveDigitsAfterDecimal(this)">
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                            
+
                                                             <script>
                                                                 function displayFiveDigitsAfterDecimal(inputField) {
                                                                     var value = parseFloat(inputField.value);
@@ -561,7 +530,7 @@
                                                                     inputField.value = roundedValue;
                                                                 }
                                                             </script>
-                                                            
+
 
                                                             <div class="col-lg-4">
                                                                 <div class="inner-repeater mb-4">
@@ -577,7 +546,7 @@
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                            
+
                                                             <div class="col-lg-4">
                                                                 <div class="mb-3">
                                                                     <label
@@ -637,13 +606,12 @@
                                                                             name="accordions[{{ $branchIndex }}][quarterly_input]"
                                                                             value="{{ old('accordions.' . $branchIndex . '.quarterly_input', $b->quarterly_input) }}"
                                                                             min="0">
-                                                                        <span
-                                                                            class="input-group-text"></span>
+                                                                        <span class="input-group-text"></span>
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                       
+
                                                     </main>
                                                     <button type="button"
                                                         class="removeAccordion btn btn-danger mt-3">Remove</button>
@@ -656,153 +624,148 @@
                                 <button id="addAccordion" type="button" class="btn btn-primary text-light ">Add
                                     Accordion</button>
                             </section>
-                            
 
                             <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
                             <script>
-                                $(document).ready(function() {
-                                    let accordionCount = {{ count($client->branches) }};
-                                    const addAccordionButton = $('#addAccordion');
+                                    $(document).ready(function() {
+                                        let accordionCount = {{ count($client->branches) }};
+                                        const addAccordionButton = $('#addAccordion');
 
-                                    addAccordionButton.on('click', function() {
-                                        console.log('Add Accordion button clicked');
-                                        const accordionItem = $('.accordion-item').last(); // Select the last accordion item
-                                        if (!accordionItem.length) {
-                                            console.error('Accordion item template not found');
-                                            return;
-                                        }
-                                        console.log('Found accordion item template');
-
-                                        const newAccordion = accordionItem.clone();
-                                        const newId = 'flush-collapse' + accordionCount;
-                                        const newButtonId = 'flush-heading' + accordionCount;
-
-                                        newAccordion.find('.accordion-collapse').attr('id', newId);
-                                        newAccordion.find('.accordion-button').attr('data-bs-target', '#' + newId);
-                                        newAccordion.find('.accordion-header').attr('id', newButtonId);
-                                        newAccordion.find('.accordion-button').attr('aria-controls', newId);
-                                        newAccordion.find('.accordion-button').text('Accordion Item #' + accordionCount);
-
-                                        newAccordion.find('input, select').each(function() {
-                                            let name = $(this).attr('name');
-                                            if (name) {
-                                                let newName = name.replace(/\[\d+\]/, '[' + accordionCount + ']');
-                                                $(this).attr('name', newName);
-                                                $(this).attr('id', newName + '-' + accordionCount);
+                                        addAccordionButton.on('click', function() {
+                                            console.log('Add Accordion button clicked');
+                                            const accordionItem = $('.accordion-item').last(); // Select the last accordion item
+                                            if (!accordionItem.length) {
+                                                console.error('Accordion item template not found');
+                                                return;
                                             }
-                                            $(this).val('');
+                                            console.log('Found accordion item template');
+
+                                            const newAccordion = accordionItem.clone();
+                                            const newId = 'flush-collapse' + accordionCount;
+                                            const newButtonId = 'flush-heading' + accordionCount;
+
+                                            newAccordion.find('.accordion-collapse').attr('id', newId);
+                                            newAccordion.find('.accordion-button').attr('data-bs-target', '#' + newId);
+                                            newAccordion.find('.accordion-header').attr('id', newButtonId);
+                                            newAccordion.find('.accordion-button').attr('aria-controls', newId);
+                                            newAccordion.find('.accordion-button').text('Accordion Item #' + accordionCount);
+
+                                            newAccordion.find('input, select').each(function() {
+                                                let name = $(this).attr('name');
+                                                if (name) {
+                                                    let newName = name.replace(/\[\d+\]/, '[' + accordionCount + ']');
+                                                    $(this).attr('name', newName);
+                                                    $(this).attr('id', newName + '-' + accordionCount);
+                                                }
+                                                $(this).val('');
+                                            });
+
+                                            $('#accordionFlushExample').append(newAccordion);
+                                            console.log('Accordion item added with count:', accordionCount);
+                                            accordionCount++;
                                         });
 
-                                        $('#accordionFlushExample').append(newAccordion);
-                                        console.log('Accordion item added with count:', accordionCount);
-                                        accordionCount++;
+                                        $(document).on('click', '.removeAccordion', function() {
+                                            console.log('Remove Accordion button clicked');
+                                            $(this).closest('.accordion-item').remove();
+                                        });
                                     });
 
-                                    $(document).on('click', '.removeAccordion', function() {
-                                        console.log('Remove Accordion button clicked');
-                                        $(this).closest('.accordion-item').remove();
+                                    $(document).on('input change', '.branch_kubmetr, .minimum_wage, .percentage-input, .quarterly-input', function() {
+                                        let parentAccordion = $(this).closest('.accordion-body');
+                                        calculateGeneratePrice(parentAccordion);
                                     });
-                                });
 
-                                $(document).on('input change', '.branch_kubmetr, .minimum_wage, .percentage-input, .quarterly-input', function() {
-                                    let parentAccordion = $(this).closest('.accordion-body');
-                                    calculateGeneratePrice(parentAccordion);
-                                });
+                                    function calculateGeneratePrice(parentAccordion) {
+                                        let companyKubmetr = parseFloat(parentAccordion.find('.branch_kubmetr').val()) || 0;
+                                        let minimumWage = parseFloat(parentAccordion.find('.minimum_wage').val()) || 0;
+                                        let generatePrice = companyKubmetr * minimumWage;
+                                        // parentAccordion.find('.generate_price').val(generatePrice.toFixed(2));
+                                        parentAccordion.find('.generate_price').val(generatePrice);
 
-                                function calculateGeneratePrice(parentAccordion) {
-                                    let companyKubmetr = parseFloat(parentAccordion.find('.branch_kubmetr').val()) || 0;
-                                    let minimumWage = parseFloat(parentAccordion.find('.minimum_wage').val()) || 0;
-                                    let generatePrice = companyKubmetr * minimumWage;
-                                    // parentAccordion.find('.generate_price').val(generatePrice.toFixed(2));
-                                    parentAccordion.find('.generate_price').val(generatePrice);
-
-                                    // var formattedPrice = generatePrice.toLocaleString();
-                                    // parentAccordion.find('.generate_price').val(formattedPrice);
+                                        // var formattedPrice = generatePrice.toLocaleString();
+                                        // parentAccordion.find('.generate_price').val(formattedPrice);
 
 
 
-                                    let percentageInput = parseFloat(parentAccordion.find('.percentage-input').val()) || 0;
-                                    let quarterlyInput = parseInt(parentAccordion.find('.quarterly-input').val()) || 0;
-
-                                    if (percentageInput > 100) percentageInput = 100;
-                                    if (percentageInput < 0) percentageInput = 0;
-
-                                    if (!isNaN(generatePrice) && !isNaN(percentageInput) && !isNaN(quarterlyInput) && quarterlyInput > 0) {
-                                        let z = (generatePrice * percentageInput) / 100;
-                                        let n = generatePrice - z;
-                                        let y = n / quarterlyInput;
-                                        parentAccordion.find('.calculated-quarterly-payment').val(y.toFixed(2));
-
-                                        updatePaymentSchedule(parentAccordion, generatePrice);
-                                        updateQuarterlyPaymentSchedule(parentAccordion, y, quarterlyInput);
-                                    } else {
-                                        parentAccordion.find('.calculated-quarterly-payment').val('');
-                                        parentAccordion.find('.payment-schedule').html('');
-                                        parentAccordion.find('.quarterly-payment-schedule').html('');
-                                    }
-                                }
-
-                                function updatePaymentSchedule(parentAccordion, generatePrice) {
-                                    let paymentSchedule = parentAccordion.find('.payment-schedule');
-                                    paymentSchedule.html('');
-                                    let percentages = [0, 10, 20, 30, 40, 50];
-                                    percentages.forEach(percentage => {
-                                        let z = Math.round((generatePrice * percentage) / 100); // Rounding z
-                                        let n = generatePrice - z;
+                                        let percentageInput = parseFloat(parentAccordion.find('.percentage-input').val()) || 0;
                                         let quarterlyInput = parseInt(parentAccordion.find('.quarterly-input').val()) || 0;
-                                        let y = quarterlyInput ? Math.round((n / quarterlyInput)) : "N/A";
-                                        paymentSchedule.append(
-                                            `<tr>
-                                                <td>${percentage}%</td>
-                                                <td>${Math.round(z)}</td>
-                                                <td>${y}</td>
-                                            </tr>`
-                                        );
+
+                                        if (percentageInput > 100) percentageInput = 100;
+                                        if (percentageInput < 0) percentageInput = 0;
+
+                                        if (!isNaN(generatePrice) && !isNaN(percentageInput) && !isNaN(quarterlyInput) && quarterlyInput > 0) {
+                                            let z = (generatePrice * percentageInput) / 100;
+                                            let n = generatePrice - z;
+                                            let y = n / quarterlyInput;
+                                            parentAccordion.find('.calculated-quarterly-payment').val(y.toFixed(2));
+
+                                            updatePaymentSchedule(parentAccordion, generatePrice);
+                                            updateQuarterlyPaymentSchedule(parentAccordion, y, quarterlyInput);
+                                        } else {
+                                            parentAccordion.find('.calculated-quarterly-payment').val('');
+                                            parentAccordion.find('.payment-schedule').html('');
+                                            parentAccordion.find('.quarterly-payment-schedule').html('');
+                                        }
+                                    }
+
+                                    function updatePaymentSchedule(parentAccordion, generatePrice) {
+                                        let paymentSchedule = parentAccordion.find('.payment-schedule');
+                                        paymentSchedule.html('');
+                                        let percentages = [0, 10, 20, 30, 40, 50];
+                                        percentages.forEach(percentage => {
+                                            let z = Math.round((generatePrice * percentage) / 100); // Rounding z
+                                            let n = generatePrice - z;
+                                            let quarterlyInput = parseInt(parentAccordion.find('.quarterly-input').val()) || 0;
+                                            let y = quarterlyInput ? Math.round((n / quarterlyInput)) : "N/A";
+                                            paymentSchedule.append(
+                                                `<tr>
+                                                    <td>${percentage}%</td>
+                                                    <td>${Math.round(z)}</td>
+                                                    <td>${y}</td>
+                                                </tr>`
+                                            );
+                                        });
+                                    }
+
+                                    function updateQuarterlyPaymentSchedule(parentAccordion, quarterlyPayment, quarterlyCount) {
+                                        let quarterlyPaymentSchedule = parentAccordion.find('.quarterly-payment-schedule');
+                                        quarterlyPaymentSchedule.html('');
+                                        let totalQuarterlyPayment = 0;
+                                        for (let i = 1; i <= quarterlyCount; i++) {
+                                            quarterlyPaymentSchedule.append(
+                                                `<tr>
+                                                    <td>Chorak ${i}</td>
+                                                    <td>${Math.round(quarterlyPayment)}</td>
+                                                </tr>`
+                                            );
+                                            totalQuarterlyPayment += quarterlyPayment;
+                                        }
+                                        parentAccordion.find('.total-quarterly-payment').html(Math.round(totalQuarterlyPayment));
+                                    }
+
+                                    $(document).on('change', '.payment-type', function() {
+                                        let parentAccordion = $(this).closest('.accordion-body');
+                                        let paymentType = $(this).val();
+                                        let percentageInput = parentAccordion.find('.percentage-input');
+                                        let quarterlyInput = parentAccordion.find('.quarterly-input');
+
+                                        if (paymentType === 'pay_full') {
+                                            percentageInput.val(100).prop('disabled', true);
+                                            quarterlyInput.val('').prop('disabled', true);
+                                            parentAccordion.find('.calculated-quarterly-payment').val('N/A');
+                                            parentAccordion.find('.payment-schedule').html('');
+                                            parentAccordion.find('.quarterly-payment-schedule').html('');
+                                        } else {
+                                            percentageInput.prop('disabled', false);
+                                            quarterlyInput.prop('disabled', false);
+                                        }
+
+                                        calculateGeneratePrice(parentAccordion);
                                     });
-                                }
-
-                                function updateQuarterlyPaymentSchedule(parentAccordion, quarterlyPayment, quarterlyCount) {
-                                    let quarterlyPaymentSchedule = parentAccordion.find('.quarterly-payment-schedule');
-                                    quarterlyPaymentSchedule.html('');
-                                    let totalQuarterlyPayment = 0;
-                                    for (let i = 1; i <= quarterlyCount; i++) {
-                                        quarterlyPaymentSchedule.append(
-                                            `<tr>
-                                                <td>Chorak ${i}</td>
-                                                <td>${Math.round(quarterlyPayment)}</td>
-                                            </tr>`
-                                        );
-                                        totalQuarterlyPayment += quarterlyPayment;
-                                    }
-                                    parentAccordion.find('.total-quarterly-payment').html(Math.round(totalQuarterlyPayment));
-                                }
-
-                                $(document).on('change', '.payment-type', function() {
-                                    let parentAccordion = $(this).closest('.accordion-body');
-                                    let paymentType = $(this).val();
-                                    let percentageInput = parentAccordion.find('.percentage-input');
-                                    let quarterlyInput = parentAccordion.find('.quarterly-input');
-
-                                    if (paymentType === 'pay_full') {
-                                        percentageInput.val(100).prop('disabled', true);
-                                        quarterlyInput.val('').prop('disabled', true);
-                                        parentAccordion.find('.calculated-quarterly-payment').val('N/A');
-                                        parentAccordion.find('.payment-schedule').html('');
-                                        parentAccordion.find('.quarterly-payment-schedule').html('');
-                                    } else {
-                                        percentageInput.prop('disabled', false);
-                                        quarterlyInput.prop('disabled', false);
-                                    }
-
-                                    calculateGeneratePrice(parentAccordion);
-                                });
-
-
                             </script>
 
-                            <!-- Confirm Details -->
                             <h3>@lang('global.confirmation')</h3>
-
                             <section>
                                 <div class="row justify-content-center">
                                     <div class="col-lg-6">
@@ -823,14 +786,11 @@
 
                         </div>
                     </form>
-
                 </div>
                 <!-- end card body -->
             </div>
-            <!-- end card -->
 
         </div>
-        <!-- end col -->
     </div>
 @endsection
 
