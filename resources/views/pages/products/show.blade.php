@@ -28,7 +28,7 @@
                         <thead>
                             <tr>
                                 <th>{{ __('global.id') }}</th>
-                                <th>{{ __('global.company_name') }}</th>
+                                <th> @lang('global.fio') || @lang('global.company_name')</th>
                                 <th>{{ __('global.contact') }}</th>
                                 <th>@lang('cruds.company.fields.stir')</th>
                                 <th>@lang('global.created_at')</th>
@@ -40,7 +40,11 @@
                             @if (isset($client))
                                 <tr>
                                     <td>{{ $client->id }}</td>
-                                    <td>{{ $client->company_name }}</td>
+                                    @if ($client->mijoz_turi == 'fizik')
+                                    <td>{{ $client->last_name }} {{ $client->first_name }} {{ $client->father_name }}</td>
+                                    @else
+                                        <td>{{ $client->company_name }} </td>
+                                    @endif
                                     <td>{{ $client->contact ?? '---' }}</td>
                                     <td>{{ $client->stir ?? '---' }}</td>
                                     <td>{{ $client->created_at ?? '---' }}</td>
