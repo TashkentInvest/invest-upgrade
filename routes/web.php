@@ -11,20 +11,9 @@ use App\Http\Controllers\Blade\ApiUserController;
 use App\Http\Controllers\Blade\RegionController;
 use App\Http\Controllers\Blade\DistrictController;
 use App\Http\Controllers\Blade\ClientController;
-use App\Http\Controllers\CreditTransactionController;
 use App\Http\Controllers\FileController;
 use App\Http\Controllers\ImportController;
 use App\Http\Controllers\TransactionController;
-
-/*
-|--------------------------------------------------------------------------
-| Blade (front-end) Routes
-|--------------------------------------------------------------------------
-|
-| Here is we write all routes which are related to web pages
-| like UserManagement interfaces, Diagrams and others
-|
-*/
 
 // Default laravel auth routes
 Auth::routes(['register' => false]);
@@ -33,7 +22,6 @@ Auth::routes(['register' => false]);
 Route::get('/', function () {
     return view('welcome');
 });
-
 // Web pages
 Route::group(['middleware' => 'auth'], function () {
 
@@ -49,7 +37,6 @@ Route::group(['middleware' => 'auth'], function () {
         Route::post('/update/{id}', [RegionController::class, 'update'])->name('regionUpdate');
         Route::delete('/delete/{id}', [RegionController::class, 'destroy'])->name('regionDestroy');
     });
-
     // Districts 
     Route::prefix('districts')->group(function () {
         Route::get('/', [DistrictController::class, 'index'])->name('districtIndex');
@@ -59,7 +46,6 @@ Route::group(['middleware' => 'auth'], function () {
         Route::post('/update/{id}', [DistrictController::class, 'update'])->name('districtUpdate');
         Route::delete('/delete/{id}', [DistrictController::class, 'destroy'])->name('districtDestroy');
     });
-
     // Products
     Route::prefix('clients')->group(function () {
         Route::get('/', [ClientController::class, 'index'])->name('clientIndex');
@@ -82,7 +68,6 @@ Route::group(['middleware' => 'auth'], function () {
         Route::delete('/delete/{id}', [UserController::class, 'destroy'])->name('userDestroy');
         Route::get('/theme-set/{id}', [UserController::class, 'setTheme'])->name('userSetTheme');
     });
-
     // Permissions
     Route::prefix('permissions')->group(function () {
         Route::get('/', [PermissionController::class, 'index'])->name('permissionIndex');
@@ -92,7 +77,6 @@ Route::group(['middleware' => 'auth'], function () {
         Route::post('/update/{id}', [PermissionController::class, 'update'])->name('permissionUpdate');
         Route::delete('/delete/{id}', [PermissionController::class, 'destroy'])->name('permissionDestroy');
     });
-
     // Roles
     Route::prefix('roles')->group(function () {
         Route::get('/', [RoleController::class, 'index'])->name('roleIndex');
@@ -102,7 +86,6 @@ Route::group(['middleware' => 'auth'], function () {
         Route::post('/update/{role_id}', [RoleController::class, 'update'])->name('roleUpdate');
         Route::delete('/delete/{id}', [RoleController::class, 'destroy'])->name('roleDestroy');
     });
-
     // ApiUsers
     Route::prefix('api-users')->group(function () {
         Route::get('/', [ApiUserController::class, 'index'])->name('api-userIndex');
@@ -114,45 +97,43 @@ Route::group(['middleware' => 'auth'], function () {
         Route::delete('/delete/{id}', [ApiUserController::class, 'destroy'])->name('api-userDestroy');
         Route::delete('-token/delete/{id}', [ApiUserController::class, 'destroyToken'])->name('api-tokenDestroy');
     });
-
     // import
-    Route::get('import', [ImportController::class,'index'])->name('import');
-    Route::post('import', [ImportController::class, 'import'])->name('import.xls');
-    Route::post('import_debat', [ImportController::class, 'import_debat'])->name('import_debat.xls');
-    Route::post('import_credit', [ImportController::class, 'import_credit'])->name('import_credit.xls');
-
+    Route::prefix('import')->group(function () {
+        Route::get('/', [ImportController::class, 'index'])->name('import');
+        Route::post('/', [ImportController::class, 'import'])->name('import.xls');
+        Route::post('_debat', [ImportController::class, 'import_debat'])->name('import_debat.xls');
+        Route::post('_credit', [ImportController::class, 'import_credit'])->name('import_credit.xls');
+    });
     // Transactions
-    Route::get('transactions/all', [TransactionController::class,'index'])->name('transactions.index');
-    Route::get('transactions/art', [TransactionController::class,'art'])->name('transactions.art');
-    Route::get('transactions/ads', [TransactionController::class,'ads'])->name('transactions.ads');
-    Route::get('transactions/payers', [TransactionController::class,'payers'])->name('transactions.payers');
-    Route::get('transaction/{id}', [TransactionController::class,'show'])->name('transactions.show');
-  
-
-
+    Route::prefix('transactions')->group(function () {
+        Route::get('/all', [TransactionController::class,'index'])->name('transactions.index');
+        Route::get('/art', [TransactionController::class,'art'])->name('transactions.art');
+        Route::get('/ads', [TransactionController::class,'ads'])->name('transactions.ads');
+        Route::get('/payers', [TransactionController::class,'payers'])->name('transactions.payers');
+        Route::get('/{id}', [TransactionController::class,'show'])->name('transactions.show');
+    });
+    // Backup
+    Route::prefix('backup')->group(function () {
+        Route::get('/backups', [BackupController::class, 'index'])->name('backup.index');
+        Route::get('/backup/{id}', [BackupController::class, 'show'])->name('backup.show');
+        Route::any('/backup/download/{filename}', [BackupController::class, 'download'])->name('backup.download');
+        Route::delete('/backup/{filename}', [BackupController::class, 'delete'])->name('backup.delete');
+        Route::any('/backup-delete', [BackupController::class, 'deleteAll'])->name('backup.deleteAll');
+    });
+    // File
+    Route::prefix('files')->group(function () {
+        Route::get('/doc/{id}', [FileController::class, 'show'])->name('files.word');
+        Route::get('/test/{id}', [FileController::class, 'test'])->name('files.test.word');
+        Route::get('/downloading-excel/{id}', [FileController::class, 'downloadTableData'])->name('files.download.table.data');
+        Route::get('/select-columns', [FileController::class, 'showColumnSelectionForm'])->name('files.select.columns');
+        Route::get('/download-excel', [FileController::class, 'downloadExcel'])->name('files.download.excel');
+    });
     // Audit-Log
     Route::get('audit-logs', [AuditLogController::class, 'index'])->name('audit-logs.index');
 
-    // File
-    Route::get('/doc/{id}', [FileController::class, 'show'])->name('word');
-    Route::get('/test/{id}', [FileController::class, 'test'])->name('test.word');
-    Route::get('/downloading-exel/{id}', [FileController::class, 'downloadTableData'])->name('download.table.data');
-    // Route::get('/downloading-exel', [FileController::class, 'downloadExcel'])->name('download.excel');
-
-    Route::get('/select-columns', [FileController::class, 'showColumnSelectionForm'])->name('select.columns');
-    Route::get('/download-excel', [FileController::class, 'downloadExcel'])->name('download.excel');
-    // Backup 
-    Route::get('/backups', [BackupController::class, 'index'])->name('backup.index');
-    Route::get('/backup/{id}', [BackupController::class, 'show'])->name('backup.show');
-    Route::any('/backup/download/{filename}', 'BackupController@download')->name('backup.download');
-    Route::delete('/backup/{filename}', 'BackupController@delete')->name('backup.delete');
-    Route::any('/backup-delete', 'BackupController@deleteAll')->name('backup.deleteAll');
-
-    
 
 });
 
-// Change language session condition
 Route::get('/language/{lang}', function ($lang) {
     $lang = strtolower($lang);
     if ($lang == 'ru' || $lang == 'uz') {
@@ -162,9 +143,3 @@ Route::get('/language/{lang}', function ($lang) {
     }
     return redirect()->back();
 })->name('changelang');
-
-/*
-|--------------------------------------------------------------------------
-| This is the end of Blade (front-end) Routes
-|-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\
-*/
