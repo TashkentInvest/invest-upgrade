@@ -1,7 +1,5 @@
 <?php
 
+use App\Http\Controllers\Blade\UserController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/construction', function () {
-    dd('Welcome to manager user routes.');
-});
