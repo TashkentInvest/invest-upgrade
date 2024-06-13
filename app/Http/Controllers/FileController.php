@@ -25,7 +25,6 @@ class FileController extends Controller
             return response()->view('errors.custom', ['status' => 404, 'message' => 'Client Not Found'], 404);
         }
     
-        // Preload necessary client attributes
         $clientAttributes = [
             'yuridik_rekvizid',
             'contact',
@@ -49,6 +48,8 @@ class FileController extends Controller
         $yurikFullView = 'pages.docs.full_pay.yurik_litso';
     
         $passport_formattedDate = Carbon::parse($client->passport_date)->format('Y-m-d H:i:s');
+        $client->passport_serial;
+        // dd($client->passport_serial);
     
         foreach ($client->branches as $branch) {
             $branch->generate_price;

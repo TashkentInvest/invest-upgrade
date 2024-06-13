@@ -131,23 +131,16 @@
                     <td style="width:237.25pt; padding-right:5.4pt; padding-left:5.4pt; vertical-align:top;">
                         <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; font-size:12pt;"><strong><span style="font-family:'Times New Roman';">&nbsp;</span></strong></p>
                         <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; font-size:12pt;"><strong><span style="font-family:'Times New Roman';">ИНВЕСТОР</span></strong></p>
-                        <p style="margin-top:0pt; margin-bottom:0pt; font-size:12pt;"><strong><span style="font-family:'Times New Roman';">Aдрес: {{$client->home_address}}</span></strong></p>
-                        <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:12pt;"><strong><span style="font-family:'Times New Roman';">Ҳисобварақ:</span></strong><span style="font-family:'Times New Roman';">&nbsp; {{$client->bank_account}}</span></p>
-                        <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:12pt;"><strong><span style="font-family:'Times New Roman';">Банк коди:&nbsp;</span></strong><span style="font-family:'Times New Roman';">{{$client->bank_code}}</span></p>
-                        <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:12pt;"><strong><span style="font-family:'Times New Roman';">Банк номи:&nbsp;</span></strong><span style="font-family:'Times New Roman';">{{$client->bank_service}}</span></p>
-                        <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:12pt;"><strong><span style="font-family:'Times New Roman';">СТИР:</span></strong><span style="font-family:'Times New Roman';">&nbsp;{{$client->stir}}</span></p>
-                        <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:12pt;"><strong><span style="font-family:'Times New Roman';">ОКЭД:</span></strong><span style="font-family:'Times New Roman';">&nbsp;{{$client->oked}}</span></p>
-                        <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:12pt;"><strong><span style="font-family:'Times New Roman';">Контакт:&nbsp;</span></strong><span style="font-family:'Times New Roman';">{{$client->contact}}</span></p>
-                        <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:12pt;"><span style="font-family:'Times New Roman';">&nbsp;</span></p>
                         <div style="border-bottom-style:solid; border-bottom-width:1.5pt; clear:both;">
-                            <p style="margin-top:0pt; margin-bottom:0pt; font-size:12pt;"><strong><span style="font-family:'Times New Roman';">&nbsp;</span></strong></p>
-                            <p style="margin-top:0pt; margin-bottom:0pt; font-size:12pt;"><strong><span style="font-family:'Times New Roman';">&nbsp;</span></strong></p>
-                            <p style="margin-top:0pt; margin-bottom:0pt; font-size:12pt;"><strong><span style="font-family:'Times New Roman';">&nbsp;</span></strong></p>
-                            <p style="margin-top:0pt; margin-bottom:0pt; font-size:12pt;"><strong><span style="font-family:'Times New Roman';">&nbsp;</span></strong></p>
-                            <p style="margin-top:0pt; margin-bottom:0pt; font-size:12pt;"><strong><span style="font-family:'Times New Roman';">&nbsp;</span></strong></p>
-                            <p style="margin-top:0pt; margin-bottom:0pt; font-size:12pt;"><strong><span style="font-family:'Times New Roman';">&nbsp;</span></strong></p>
-                            <p style="margin-top:0pt; margin-bottom:0pt; font-size:12pt;"><strong><span style="font-family:'Times New Roman';">&nbsp;</span></strong></p>
-                            <p style="margin-top:0pt; margin-bottom:0pt; font-size:12pt;"><strong><span style="font-family:'Times New Roman';">&nbsp;</span></strong></p>
+                            {{-- <p style="margin-top:0pt; margin-bottom:0pt; font-size:12pt;"><strong><span style="font-family:'Times New Roman';">Миртўлаганов Исмоилжон Мурод ўғли&nbsp;</span></strong></p> --}}
+                            <p style="margin-top:0pt; margin-bottom:0pt; font-size:12pt;"><strong><span style="font-family:'Times New Roman';">ID рақами ва серияси:&nbsp;</span></strong><span style="font-family:'Times New Roman';">{{$client->passport_serial}};</span></p>
+                            <p style="margin-top:0pt; margin-bottom:0pt; font-size:12pt;"><strong><span style="font-family:'Times New Roman';">Берилган санаси: </span></strong><span style="font-family:'Times New Roman';">.{{ date('d-m-Y', strtotime($client->passport_date)) }}й.;</span><strong><span style="font-family:'Times New Roman';">&nbsp;</span></strong></p>
+                            <p style="margin-top:0pt; margin-bottom:0pt; font-size:12pt;"><strong><span style="font-family:'Times New Roman';">ЖШШИРИ:&nbsp;</span></strong><span style="font-family:'Times New Roman';">{{$client->passport_pinfl}}</span></p>
+                            <p style="margin-top:0pt; margin-bottom:0pt; font-size:12pt;"><strong><span style="font-family:'Times New Roman';">Туғилган йили:&nbsp;</span></strong><span style="font-family:'Times New Roman';">___ й.</span></p>
+                            <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:12pt;"><strong><span style="font-family:'Times New Roman';">Контакт:&nbsp;</span></strong><span style="font-family:'Times New Roman';">{{$client->contact}}</span></p>
+                            <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:12pt;"><strong><span style="font-family:'Times New Roman';">СТИР:</span></strong><span style="font-family:'Times New Roman';">&nbsp;{{$client->stir}}</span></p>
+                            <p style="margin-top:0pt; margin-bottom:0pt; font-size:12pt;"><strong><span style="font-family:'Times New Roman';">Доимий яшаш манзили:&nbsp;</span></strong><span style="font-family:'Times New Roman';">{{$client->home_address}}</span><strong><span style="font-family:'Times New Roman';">&nbsp;</span></strong></p>
+
                             <p style="margin-top:0pt; margin-bottom:0pt; font-size:12pt;"><strong><span style="font-family:'Times New Roman';">&nbsp;</span></strong></p>
                             <p style="margin-top:0pt; margin-bottom:0pt; font-size:12pt;"><strong><span style="font-family:'Times New Roman';">&nbsp;</span></strong></p>
                             <p style="margin-top:0pt; margin-bottom:0pt; font-size:12pt;"><strong><span style="font-family:'Times New Roman';">&nbsp;</span></strong></p>
@@ -155,7 +148,7 @@
                             <p style="margin-top:0pt; margin-bottom:0pt; font-size:12pt;"><strong><span style="font-family:'Times New Roman';">&nbsp;</span></strong></p>
                             <p style="margin-top:0pt; margin-bottom:0pt; padding-bottom:1pt; font-size:12pt;"><strong><span style="font-family:'Times New Roman';">&nbsp;</span></strong></p>
                         </div>
-                        <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; font-size:12pt;"><strong><span style="font-family:'Times New Roman';">&nbsp;</span></strong></p>
+                        <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; font-size:12pt;"><strong><span style="font-family:'Times New Roman';">{{$client->last_name}} {{$client->first_name}} {{$client->father_name}}</span></strong></p>
                     </td>
                 </tr>
                 <tr style="height:44.9pt;">
