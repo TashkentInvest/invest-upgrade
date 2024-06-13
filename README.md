@@ -331,3 +331,37 @@ APT = Apz uchun
 "ГОРОД ТАШКЕНТ",  => reklama
 
 ```
+
+## Create custom route 
+
+```
+php artisan make:middleware ConstructionMiddleware
+
+<!-- app/http/kernel.php -->
+
+protected $routeMiddleware = [
+    'construction' => \App\Http\Middleware\ConstructionMiddleware::class,
+];
+
+<!-- Route service provider -->
+
+ public function boot()
+    {
+        $this->configureRateLimiting();
+
+        $this->routes(function () {
+            Route::prefix('api')
+                ->middleware('api')
+                ->namespace($this->namespace)
+                ->group(base_path('routes/api.php'));
+
+            Route::middleware('web')
+                ->namespace($this->namespace)
+                ->group(base_path('routes/web.php'));
+
+            Route::middleware('construction')
+                ->namespace($this->namespace)
+                ->group(base_path('routes/construction.php'));
+        });
+    }
+```

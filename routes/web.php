@@ -130,8 +130,6 @@ Route::group(['middleware' => 'auth'], function () {
     });
     // Audit-Log
     Route::get('audit-logs', [AuditLogController::class, 'index'])->name('audit-logs.index');
-
-
 });
 
 Route::get('/language/{lang}', function ($lang) {
