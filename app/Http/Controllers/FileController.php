@@ -49,6 +49,7 @@ class FileController extends Controller
     
         $passport_formattedDate = Carbon::parse($client->passport_date)->format('Y-m-d H:i:s');
         $client->passport_serial;
+        $client->raxbar;
         // dd($client->passport_serial);
     
         foreach ($client->branches as $branch) {
