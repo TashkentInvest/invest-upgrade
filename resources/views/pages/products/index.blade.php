@@ -127,8 +127,8 @@
                                                 </div>
                                             </div>
 
-                                               {{-- passport serial --}}
-                                               <div class="form-group row align-items-center my-2">
+                                            {{-- passport serial --}}
+                                            <div class="form-group row align-items-center my-2">
                                                 <div class="col-3">
                                                     <h6>@lang('global.passport_pinfl')</h6>
                                                 </div>
@@ -415,8 +415,8 @@
                                                                     <td>@lang('cruds.client.fields.yuridik_address')</td>
                                                                     <td>{{ $item->yuridik_address }}</td>
                                                                 </tr>
-                                                            @endif
-                                                        </tr>
+                            @endif
+                            </tr>
 
                             <tr>
                                 <td>@lang('cruds.company.fields.stir')</td>

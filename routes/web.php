@@ -11,6 +11,7 @@ use App\Http\Controllers\Blade\ApiUserController;
 use App\Http\Controllers\Blade\RegionController;
 use App\Http\Controllers\Blade\DistrictController;
 use App\Http\Controllers\Blade\ClientController;
+use App\Http\Controllers\ConstructionController;
 use App\Http\Controllers\FileController;
 use App\Http\Controllers\ImportController;
 use App\Http\Controllers\TransactionController;
@@ -135,16 +136,11 @@ Route::group(['middleware' => 'auth'], function () {
 
     // Construction routes started **********************************************************
 
-    Route::get('/ccc', function () {
-        // dd('Welcome to manager user routes.');
-        return view('pages.construction.tasks.index');
-    });
+    Route::get('/ccc', [ConstructionController::class,'index'])->name('construction.index');
+    Route::get('/ccc/{id}', [ConstructionController::class,'show'])->name('construction.show');
 
-    Route::get('/ccc/show', function () {
-        // dd('Welcome to manager user routes.');
-        return view('pages.construction.tasks.show');
-    });
 
+ 
     Route::get('/ccc/show2', function () {
         // dd('Welcome to manager user routes.');
         return view('pages.construction.tasks.show2');
