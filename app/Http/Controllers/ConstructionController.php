@@ -15,9 +15,16 @@ class ConstructionController extends Controller
     }
 
     public function show($id){
-        
+
         $construction = Client::find($id);
         return view('pages.construction.tasks.show', compact('construction'));
+
+    }
+
+    public function edit($id){
+        
+        $construction = Client::find($id);
+        return view('pages.construction.tasks.edit', compact('construction'));
 
     }
 }
