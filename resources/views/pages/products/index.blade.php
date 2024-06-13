@@ -126,6 +126,26 @@
                                                         value="{{ old('passport_serial', request()->passport_serial ?? '') }}">
                                                 </div>
                                             </div>
+
+                                               {{-- passport serial --}}
+                                               <div class="form-group row align-items-center my-2">
+                                                <div class="col-3">
+                                                    <h6>@lang('global.passport_pinfl')</h6>
+                                                </div>
+                                                <div class="col-2">
+                                                    <select class="form-control form-control-sm" name="passport_operator">
+                                                        <option value="like"
+                                                            {{ request()->passport_operator == 'like' ? 'selected' : '' }}>
+                                                            Like</option>
+                                                    </select>
+                                                </div>
+                                                <div class="col-3">
+                                                    <input type="hidden" name="passport_operator" value="like">
+                                                    <input class="form-control form-control-sm" type="text"
+                                                        name="passport_pinfl"
+                                                        value="{{ old('passport_pinfl', request()->passport_pinfl ?? '') }}">
+                                                </div>
+                                            </div>
                                             {{-- contact search --}}
                                             <div class="form-group row align-items-center my-2">
                                                 <div class="col-3">
