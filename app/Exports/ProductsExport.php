@@ -23,38 +23,37 @@ class ProductsExport implements FromCollection, WithHeadings, WithColumnFormatti
     }
 
     public function collection()
-{
-    try {
-        $query = DB::table('clients')
-            ->join('branches', 'clients.id', '=', 'branches.client_id')
-            ->select($this->buildSelectColumns());
+    {
+        try {
+            $query = DB::table('clients')
+                ->join('branches', 'clients.id', '=', 'branches.client_id')
+                ->select($this->buildSelectColumns());
 
-        $query->where('clients.is_deleted', '!=', 1);
+            $query->where('clients.is_deleted', '!=', 1);
 
-        if ($this->id !== null) {
-            $query->where('clients.id', $this->id);
+            if ($this->id !== null) {
+                $query->where('clients.id', $this->id);
+            }
+
+            if ($this->startDate !== null && $this->endDate !== null) {
+                $query->whereBetween('clients.updated_at', [$this->startDate, $this->endDate]);
+            }
+
+            $collection = $query->get();
+
+            // Remove the 'number' attribute
+            $collection->each(function ($item) {
+                unset($item->number);
+            });
+
+            return $collection->map(function ($item) {
+                return (array) $item;
+            });
+        } catch (\Exception $e) {
+            \Log::error('Error exporting products: ' . $e->getMessage());
+            return collect([]);
         }
-
-        if ($this->startDate !== null && $this->endDate !== null) {
-            $query->whereBetween('clients.updated_at', [$this->startDate, $this->endDate]);
-        }
-
-        $collection = $query->get();
-
-        // Remove the 'number' attribute
-        $collection->each(function ($item) {
-            unset($item->number);
-        });
-
-        return $collection->map(function ($item) {
-            return (array) $item;
-        });
-    } catch (\Exception $e) {
-        \Log::error('Error exporting products: ' . $e->getMessage());
-        return collect([]);
     }
-}
-
 
     protected function buildSelectColumns()
     {
@@ -84,7 +83,6 @@ class ProductsExport implements FromCollection, WithHeadings, WithColumnFormatti
         return array_intersect_key($columns, array_flip($this->selectedColumns));
     }
     
-
     public function headings(): array
     {
         $headings = [

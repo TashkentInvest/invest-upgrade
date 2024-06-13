@@ -172,6 +172,14 @@ Transaction da Inn bo'yicha fetch qilish kere : Not Xato maybe
 
 exel da N_ keremas
 
+word : fizik => [
+    oked keremas
+    pinfl passport => pinfl
+    passport seriya chqmadi
+    full_name pasida chqazish kere
+    float sonlani fixed() qilish kere
+]
+
 
 ```
 

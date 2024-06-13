@@ -14,7 +14,6 @@ class ImportController extends Controller
     public function index(){
         return view('pages.import.import2');
     }
-
     public function import_credit(Request $request){
         $path = $request->file('credit_excel_file')->getRealPath();
 

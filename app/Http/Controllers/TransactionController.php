@@ -28,8 +28,6 @@ class TransactionController extends Controller
 
         return view('pages.transactions.index', compact('transactions', 'creditSum'));
     }
-
-
     public function art(Request $request)
     {
         $query = CreditTransaction::deepFilters()
@@ -58,7 +56,6 @@ class TransactionController extends Controller
 
         return view('pages.transactions.art', compact('transactions', 'creditSum'));
     }
-
     public function ads(Request $request)
     {
         $query = CreditTransaction::deepFilters()
@@ -83,7 +80,6 @@ class TransactionController extends Controller
 
         return view('pages.transactions.ads', compact('transactions', 'creditSum'));
     }
-
     public function show($id)
     {
         $transaction = CreditTransaction::find($id);
@@ -101,20 +97,6 @@ class TransactionController extends Controller
 
         return view('pages.transactions.show', compact('transaction'));
     }
-
-
-
-    // public function payers()
-    // {
-    //     $transactions = \DB::table('credit_transactions')
-    //         ->join('clients', 'clients.stir', 'like', \DB::raw("CONCAT('%', credit_transactions.payer_inn, '%')"))
-    //         ->select('credit_transactions.*', 'clients.*')
-    //         ->paginate(20);
-
-    //     return view('pages.transactions.payers', compact('transactions'));
-
-    // }
-
     public function payers(Request $request)
     {
         $query = \DB::table('credit_transactions')

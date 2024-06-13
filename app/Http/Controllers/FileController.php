@@ -14,11 +14,6 @@ use Carbon\Carbon;
 
 class FileController extends Controller
 {
-
-    public function test($id){
-        $client = Client::with('branches')->where('is_deleted', '!=', 1)->find($id);
-        return view('pages.docs.bolib_pay.yurik_litso', compact('client'));
-    }
     public function show($id)
     {
         // Fetch the client along with branches if not deleted
@@ -91,57 +86,7 @@ class FileController extends Controller
     
         return response()->download($zipFileName)->deleteFileAfterSend(true);
     }    
-    public function show_org($id)
-    {
-        $client = Client::with('companies')->where('is_deleted', '!=', 1)->find($id);
-        $client->yuridik_rekvizid;
-        $client->contact;
-        $client->branch_type;
-        $client->company_location;
-        $client->bank_code;
-        $client->stir;
-        $client->oked;
-        $client->company_location;
 
-        $branchDocuments = []; 
-
-            foreach ($client->branches as $branch) {
-                $branch->generate_price;
-                $branch->payment_type;
-                $branch->branch_kubmetr;
-
-                $headers = [
-                    'Content-type' => 'text/html',
-                    'Content-Disposition' => 'attachment; Filename=' . $client->company_name . '_branch_' . $branch->id . '.doc'
-                ];
-
-                $branchDocument = view('pages.docs.full2', compact('client', 'company', 'branch'))->render();
-                $branchDocuments[] = ['document' => $branchDocument, 'headers' => $headers];
-            }
-        
-        $zip = new \ZipArchive();
-        $zipFileName = storage_path('app/АПЗ_' . Carbon::now()->format('Y-m-d') .  '.zip');
-        if ($zip->open($zipFileName, \ZipArchive::CREATE | \ZipArchive::OVERWRITE) === true) {
-            foreach ($branchDocuments as $branchDoc) {
-                $zip->addFromString(basename($branchDoc['headers']['Content-Disposition']), $branchDoc['document']);
-            }
-            $zip->close();
-        }
-
-        return response()->download($zipFileName)->deleteFileAfterSend(true);
-    }
-    // public function downloadExcel(Request $request)
-    // {
-    //     $id = $request->input('id');
-    //     $startDate = $request->input('created_at');
-    //     $endDate = $request->input('created_at_pair');
-
-    //     if ($id) {
-    //         return $this->downloadTableData($id, $startDate, $endDate);
-    //     } else {
-    //         return $this->downloadFullTableData($startDate, $endDate);
-    //     }
-    // }
     public function downloadFullTableData($startDate = null, $endDate = null)
     {
         $fileName = 'АПЗ_РАҚАМ' . '_' . now()->format('Y-m-d') . '.xls';
@@ -154,14 +99,12 @@ class FileController extends Controller
 
         return Excel::download(new ProductsExport($id, $startDate, $endDate), $fileName);
     }
-
     public function downloadExcel(Request $request)
     {
         $columns = $request->input('columns', []);
 
         return Excel::download(new ProductsExport(null, null, null, $columns), 'products.xlsx');
     }
-
     public function showColumnSelectionForm()
     {
         return view('pages.exel.select_columns');
