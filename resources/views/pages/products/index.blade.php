@@ -93,9 +93,9 @@
                                                     <h6>@lang('cruds.company.fields.stir')</h6>
                                                 </div>
                                                 <div class="col-2">
-                                                    <select class="form-control form-control-sm" name="inn_operator">
+                                                    <select class="form-control form-control-sm" name="stir_operator">
                                                         <option value="like"
-                                                            {{ request()->inn_operator == 'like' ? 'selected' : '' }}>Like
+                                                            {{ request()->stir_operator == 'like' ? 'selected' : '' }}>Like
                                                         </option>
                                                         <!-- Add other comparison operators if needed -->
                                                     </select>

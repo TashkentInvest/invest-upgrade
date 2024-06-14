@@ -48,55 +48,88 @@ class Client extends Model
 
     public static function deepFilters()
     {
-
-        $tiyin = [];
-
         $obj = new self();
         $request = request();
-
-        $query = self::where('id', '!=', '0');
-
+    
+        $query = self::where('id', '!=', 0); // Assuming 'id' is the primary key of your model
+    
         foreach ($obj->fillable as $item) {
-            //request operator key
+            // Determine operator and value based on request input
             $operator = $item . '_operator';
-
-            if ($request->has($item) && $request->$item != '') {
-                if (isset($tiyin[$item])) {
-                    $select = $request->$item * 100;
-                    $select_pair = $request->{$item . '_pair'} * 100;
+            $value = $request->input($item);
+    
+            if ($request->filled($operator)) {
+                $operatorValue = $request->input($operator);
+    
+                if (strtolower($operatorValue) == 'between' && $request->filled($item . '_pair')) {
+                    // Handle 'between' operator
+                    $value = [
+                        $value,
+                        $request->input($item . '_pair')
+                    ];
+                    $query->whereBetween($item, $value);
+                } elseif (strtolower($operatorValue) == 'wherein') {
+                    // Handle 'wherein' operator
+                    $value = explode(',', str_replace(' ', '', $value));
+                    $query->whereIn($item, $value);
+                } elseif (strtolower($operatorValue) == 'like') {
+                    // Handle 'like' operator
+                    $query->where($item, 'like', '%' . $value . '%');
                 } else {
-                    $select = $request->$item;
-                    $select_pair = $request->{$item . '_pair'};
+                    // Default case for other operators (e.g., '=', '>', '<', etc.)
+                    $query->where($item, $operatorValue, $value);
                 }
-                //set value for query
-                if ($request->has($operator) && $request->$operator != '') {
-                    if (strtolower($request->$operator) == 'between' && $request->has($item . '_pair') && $request->{$item . '_pair'} != '') {
-                        $value = [
-                            $select,
-                            $select_pair
-                        ];
-
-                        $query->whereBetween($item, $value);
-                    } elseif (strtolower($request->$operator) == 'wherein') {
-                        $value = explode(',', str_replace(' ', '', $select));
-                        $query->whereIn($item, $value);
-                    } elseif (strtolower($request->$operator) == 'like') {
-                        if (strpos($select, '%') === false)
-                            $query->where($item, 'like', '%' . $select . '%');
-                        else
-                            $query->where($item, 'like', $select);
-                    } else {
-                        $query->where($item, $request->$operator, $select);
-                    }
-                } else {
-                    $query->where($item, $select);
-                }
+            } elseif ($request->filled($item)) {
+                // No operator specified, use default '=' operator
+                $query->where($item, $value);
             }
         }
+    
+        // Special handling for 'company_name'
+        if ($request->filled('company_name')) {
+            $operator = $request->input('company_operator', 'like');
+            $value = '%' . $request->input('company_name') . '%';
+    
+            $query->whereHas('company', function ($query) use ($operator, $value) {
+                $query->where('company_name', $operator, $value);
+            });
+        }
+    
+        // Special handling for 'stir'
+        if ($request->filled('stir')) {
+            $operator = $request->input('stir_operator', 'like');
+            $value = '%' . $request->input('stir') . '%';
+    
+            $query->whereHas('company', function ($query) use ($operator, $value) {
+                $query->where('stir', $operator, $value);
+            });
+        }
 
+        // Passport serial
+        if ($request->filled('passport_serial')) {
+            $operator = $request->input('passport_operator', 'like');
+            $value = '%' . $request->input('passport_serial') . '%';
+    
+            $query->whereHas('passport', function ($query) use ($operator, $value) {
+                $query->where('passport_serial', $operator, $value);
+            });
+        }
+
+        
+        // Passport pinfl
+        if ($request->filled('passport_pinfl')) {
+            $operator = $request->input('passport_operator', 'like');
+            $value = '%' . $request->input('passport_pinfl') . '%';
+    
+            $query->whereHas('passport', function ($query) use ($operator, $value) {
+                $query->where('passport_pinfl', $operator, $value);
+            });
+        }
+    
         return $query;
     }
-
+    
+    
     public static function boot()
     {
         parent::boot();
