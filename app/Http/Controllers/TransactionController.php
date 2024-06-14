@@ -97,31 +97,35 @@ class TransactionController extends Controller
 
         return view('pages.transactions.show', compact('transaction'));
     }
-    public function payers(Request $request)
-    {
-        $query = \DB::table('credit_transactions')
-            ->join('clients', 'clients.stir', 'like', \DB::raw("CONCAT('%', credit_transactions.payer_inn, '%')"))
-            ->join('branches', 'branches.client_id', '=', 'clients.id')
-            ->select('credit_transactions.*', 'clients.*', 'branches.*')
-            ->whereNotNull('credit_transactions.document_number');
+   
+public function payers(Request $request)
+{
+    // dd($request);
+    $query = \DB::table('credit_transactions')
+        ->join('branches', 'branches.client_id', '=', 'clients.id')
+        ->join('companies', 'clients.id', '=', 'companies.client_id') // Join with companies table
+        ->select('credit_transactions.*', 'clients.*', 'branches.*', 'companies.*') 
+        ->whereNotNull('credit_transactions.document_number');
 
-        if ($request->has('search')) {
-            $search = $request->input('search');
-            $query->where(function ($query) use ($search) {
-                $query->where('credit_transactions.payer_inn', 'like', "%$search%")
-                    ->orWhere('credit_transactions.payer_mfo', 'like', "%$search%")
-                    ->orWhere('credit_transactions.payment_date', 'like', "%$search%")
-                    ->orWhere('credit_transactions.payer_account', 'like', "%$search%")
-                    ->orWhere('clients.stir', 'like', "%$search%")
-                    ->orWhere('clients.company_name', 'like', "%$search%")
-                    ->orWhere('clients.contact', 'like', "%$search%")
-                    ->orWhere('credit_transactions.document_number', 'like', "%$search%")
-                    ->orWhere('payment_description', 'like', "%$search%");
-            });
-        }
-
-        $transactions = $query->orderBy('credit_transactions.payment_date', 'desc')->paginate(20);
-
-        return view('pages.transactions.payers', compact('transactions'));
+    if ($request->has('search')) {
+        $search = $request->input('search');
+        $query->where(function ($query) use ($search) {
+            $query->where('credit_transactions.payer_inn', 'like', "%$search%")
+                ->orWhere('credit_transactions.payer_mfo', 'like', "%$search%")
+                ->orWhere('credit_transactions.payment_date', 'like', "%$search%")
+                ->orWhere('credit_transactions.payer_account', 'like', "%$search%")
+                ->orWhere('companies.stir', 'like', "%$search%") // Search in companies.stir instead of clients.stir
+                ->orWhere('clients.company_name', 'like', "%$search%")
+                ->orWhere('clients.contact', 'like', "%$search%")
+                ->orWhere('credit_transactions.document_number', 'like', "%$search%")
+                ->orWhere('payment_description', 'like', "%$search%");
+        });
     }
+
+    // Execute the query with pagination
+    $transactions = $query->orderBy('credit_transactions.payment_date', 'desc')->paginate(20);
+
+    // Return the view with the paginated transactions
+    return view('pages.transactions.payers', compact('transactions'));
 }
+}    

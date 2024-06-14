@@ -172,7 +172,6 @@ class ClientController extends Controller
         DB::beginTransaction();
 
         try {
-            $client = Client::findOrFail($id);
 
             $client = Client::findOrFail($id);
             $client->update([

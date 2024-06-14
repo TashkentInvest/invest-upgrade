@@ -23,48 +23,71 @@
             <div class="card">
                 <div class="card-body">
                     <h4 class="card-title mb-4">Edit Project</h4>
-                    <form>
-                        <div class="row">
-                            <div class="col lg-6">
-                                <label for="projectname" class="col-form-label">Ruxsatnoma raqami</label>
-                                    <input id="projectname" name="projectname" type="text" class="form-control"
-                                        placeholder="Enter Project Name...">
-                            </div>
-                            <div class="col lg-6">
-                                <label for="projectname" class="col-form-label">Ruxsatnoma sanasi</label>
-                                    <input id="projectname" name="projectname" type="date" class="form-control"
-                                        placeholder="Enter Project Name...">
-                            </div>
-                        </div>
-                       
-                        <div class="row">
-                            <div class="col lg-6">
-                                <label for="projectname" class="col-form-label">Apz raqami</label>
-                                    <input id="projectname" name="projectname" type="text" class="form-control"
-                                        placeholder="Enter Project Name...">
-                            </div>
-                            <div class="col lg-6">
-                                <label for="projectname" class="col-form-label">Apz sanasi</label>
-                                    <input id="projectname" name="projectname" type="date" class="form-control"
-                                        placeholder="Enter Project Name...">
-                            </div>
-                        </div>
+                    <form action="{{ route('clientUpdate', $construction->id) }}" method="post">
 
-                        <textarea class="w-100 my-3 form-control" name="" id="" cols="30" rows="10">Kengash xulosa</textarea>
-                       
-                     
 
-                        <div class="row justify-content-end">
-                            <div class="col-lg-12 my-3">
-                                <button type="submit" class="btn btn-primary">Create Project</button>
+
+
+                        @foreach ($construction->branches as $branchIndex => $b)
+                            <input type="hidden" name="accordions[{{ $branchIndex }}][id]" value="{{ $b->id }}">
+
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="mb-3">
+                                        <label for="contract_apt">@lang('global.ruxsatnoma_raqami')</label>
+                                        <input type="text" class="form-control"
+                                            name="accordions[{{ $branchIndex }}][contract_apt]"
+                                            value="{{ old('accordions.' . $branchIndex . '.contract_apt', $b->contract_apt) }}"
+                                            placeholder="@lang('global.ruxsatnoma_raqami')">
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="mb-3">
+                                        <label for="contract_date">@lang('global.sanasi')</label>
+                                        <input class="form-control" type="date"
+                                            name="accordions[{{ $branchIndex }}][contract_date]"
+                                            value="{{ old('accordions.' . $branchIndex . '.contract_date', $b->contract_date) }}">
+
+                                    </div>
+                                </div>
+
+                                <div class="col lg-6">
+                                    <label for="projectname" class="col-form-label">Apz raqami</label>
+                                    <input id="projectname"
+                                     name="accordions[{{ $branchIndex }}][apz_raqami]"
+                                        type="text" class="form-control"
+                                    value="{{ old('accordions.' . $branchIndex . '.apz_raqami', $b->apz_raqami) }}"
+
+                                          placeholder="Enter Project Name...">
+                                </div>
+                                <div class="col lg-6">
+                                    <label for="projectname" class="col-form-label">Apz sanasi</label>
+                                    <input id="projectname"
+                                     name="accordions[{{ $branchIndex }}][apz_sanasi]"
+                                     type="date"
+                                     class="form-control"
+                                    value="{{ old('accordions.' . $branchIndex . '.apz_sanasi', $b->apz_sanasi) }}"
+                                     placeholder="Enter Project Name...">
+                                </div>
+
+                                <div class="col-12">
+                                    <textarea class="w-100 my-3 form-control" name="accordions[{{ $branchIndex }}][kengash]" id="" cols="30"
+                                        rows="10" placeholder="Kengash xulosa">
+                                        {{ old('accordions.' . $branchIndex . '.kengash', $b->kengash) }}"
+                                    </textarea>
+
+                                </div>
                             </div>
+                        @endforeach
                     </form>
-                   
-                   
-                    </div>
+
+
+                    {{-- update end ************************************ --}}
 
                 </div>
+
             </div>
         </div>
+    </div>
     </div>
 @endsection

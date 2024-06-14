@@ -139,6 +139,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/ccc', [ConstructionController::class,'index'])->name('construction.index');
     Route::get('/ccc/{id}', [ConstructionController::class,'show'])->name('construction.show');
     Route::get('/ccc/{id}/edit', [ConstructionController::class,'edit'])->name('construction.edit');
+    Route::post('/update/{id}', [ConstructionController::class, 'update'])->name('construction.update');
 
 
     Route::get('/ccc/show2', function () {
