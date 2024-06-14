@@ -15,10 +15,10 @@ class CreateTransactionsTable extends Migration
     {
         Schema::create('transactions', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->text('description');
-            $table->date('start_date');
-            $table->date('end_date');
+            $table->string('name')->nullable();
+            $table->text('description')->nullable();
+            $table->date('start_date')->nullable();
+            $table->date('end_date')->nullable();
             $table->unsignedBigInteger('debet_transaction_id')->nullable();
             $table->unsignedBigInteger('credit_transaction_id')->nullable();
             $table->timestamps();

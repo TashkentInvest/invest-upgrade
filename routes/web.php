@@ -141,7 +141,6 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/ccc/{id}/edit', [ConstructionController::class,'edit'])->name('construction.edit');
 
 
- 
     Route::get('/ccc/show2', function () {
         // dd('Welcome to manager user routes.');
         return view('pages.construction.tasks.show2');
@@ -151,6 +150,10 @@ Route::group(['middleware' => 'auth'], function () {
         // dd('Welcome to manager user routes.');
         return view('pages.construction.tasks.create');
     });
+    
+
+    Route::get('/import/backup', [BackupController::class, 'import'])->name('backup.import');
+
     
 
 });

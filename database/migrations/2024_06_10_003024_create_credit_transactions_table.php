@@ -15,7 +15,7 @@ class CreateCreditTransactionsTable extends Migration
         {
             Schema::create('credit_transactions', function (Blueprint $table) {
                 $table->id();
-                $table->integer('document_number');
+                $table->bigInteger('document_number');
                 $table->bigInteger('operation_code'); 
                 $table->string('recipient_name');
                 $table->string('recipient_inn');

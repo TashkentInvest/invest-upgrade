@@ -50,7 +50,7 @@ class ClientController extends Controller
         $files = $client ? $client->files : collect();
 
         if ($client) {
-            return view('pages.products.show', compact('client','files'));
+            return view('pages.products.show', compact('client', 'files'));
         } else {
             return response()->view('errors.custom', ['status' => 404, 'message' => 'Applicant Not found'], 404);
         }
@@ -65,43 +65,53 @@ class ClientController extends Controller
     public function create(Request $request)
     {
         $request->validate([
-            'stir' => 'nullable|string|max:9|min:9|unique:clients,stir',
+            'stir' => 'nullable|string|max:9|min:9|unique:company,stir',
             'oked' => 'nullable|string|max:5|min:5',
             'bank_code' => 'nullable|string|max:5|min:5',
             'bank_account' => 'nullable|string|max:20|min:20',
             'passport_serial' => 'nullable|string|max:10|min:9',
             'passport_pinfl' => 'nullable|string|max:14|min:14',
         ]);
-        
+
         DB::beginTransaction();
-    
+
         try {
-            // Create the client
             $client = Client::create([
                 'first_name' => $request->get('first_name'),
                 'last_name' => $request->get('last_name'),
                 'father_name' => $request->get('father_name'),
                 'mijoz_turi' => $request->get('mijoz_turi'),
                 'contact' => $request->get('contact'),
-                'passport_serial' => $request->get('passport_serial'),
-                'passport_pinfl' => $request->get('passport_pinfl'),
-                'passport_date' => $request->get('passport_date'),
-                'passport_location' => $request->get('passport_location'),
-                'passport_type' => $request->get('passport_type', 0),
-                'home_address' => $request->get('home_address'),
-                'yuridik_address' => $request->get('yuridik_address'),
                 'client_description' => $request->get('client_description'),
-                'company_location' => $request->get('company_location'),
-                'company_name' => $request->get('company_name'),
-                'raxbar' => $request->get('raxbar'),
-                'bank_code' => $request->get('bank_code'),
-                'bank_service' => $request->get('bank_service'),
-                'bank_account' => $request->get('bank_account'),
-                'stir' => $request->get('stir'),
-                'oked' => $request->get('oked'),
-                'minimum_wage' => $request->get('minimum_wage'),
             ]);
 
+            $companyData = [
+                'client_id' => $request->client->id,
+                'company_name' => $request->get('company_name') ?? null,
+                'raxbar' => $request->get('raxbar') ?? null,
+                'bank_code' => $request->get('bank_code') ?? null,
+                'bank_service' => $request->get('bank_service') ?? null,
+                'bank_account' => $request->get('bank_account') ?? null,
+                'stir' => $request->get('stir') ?? null,
+                'oked' => $request->get('oked') ?? null,
+                'minimum_wage' => $request->get('minimum_wage') ?? null,
+            ];
+
+            Company::create($companyData);
+
+            $client->passport()->create([
+                'passport_serial' => $request->get('passport_serial') ?? null,
+                'passport_pinfl' => $request->get('passport_pinfl') ?? null,
+                'passport_date' => $request->get('passport_date') ?? null,
+                'passport_location' => $request->get('passport_location') ?? null,
+                'passport_type' => $request->get('passport_type') ?? 0,
+            ]);
+
+            $client->address()->create([
+                'yuridik_address' => $request->get('yuridik_address') ?? null,
+                'home_address' => $request->get('home_address') ?? null,
+                'company_location' => $request->get('company_location') ?? null,
+            ]);
 
             if ($request->hasFile('document')) {
                 foreach ($request->file('document') as $file) {
@@ -110,7 +120,7 @@ class ClientController extends Controller
                     $date = date('Ymd_His');
                     $fileName = $originalName . '_' . $date . '.' . $extension;
                     $file->move(public_path('assets'), $fileName);
-            
+
                     $fileModel = new File();
                     $fileModel->client_id = $client->id;
                     $fileModel->path = 'assets/' . $fileName;
@@ -118,7 +128,7 @@ class ClientController extends Controller
                 }
             }
 
-            
+
             foreach ($request->accordions as $accordion) {
                 Branch::create([
                     'client_id' => $client->id,
@@ -142,16 +152,16 @@ class ClientController extends Controller
                     'first_payment_percent' => $accordion['first_payment_percent'] ?? null,
                 ]);
             }
-    
+
             DB::commit();
-    
+
             return redirect()->route('clientIndex')->with('success', 'Client created successfully');
         } catch (\Exception $e) {
             DB::rollback();
             return redirect()->back()->with('error', 'An error occurred while creating the client: ' . $e->getMessage());
         }
     }
-    
+
     public function edit($id)
     {
 
@@ -181,31 +191,39 @@ class ClientController extends Controller
         try {
             $client = Client::findOrFail($id);
 
+            $client = Client::findOrFail($id);
             $client->update([
-                'first_name' => $request->first_name,
-                'last_name' => $request->last_name,
-                'father_name' => $request->father_name,
-                'mijoz_turi' => $request->mijoz_turi,
-                'contact' => $request->contact,
-                'passport_serial' => $request->passport_serial,
-                'passport_pinfl' => $request->passport_pinfl,
-                'passport_date' => $request->passport_date,
-                'passport_location' => $request->passport_location,
-                'passport_type' => $request->passport_type,
-                'yuridik_address' => $request->yuridik_address,
-                'home_address' => $request->home_address,
-                'client_description' => $request->client_description,
+                'first_name' => $request->get('first_name'),
+                'last_name' => $request->get('last_name'),
+                'father_name' => $request->get('father_name'),
+                'mijoz_turi' => $request->get('mijoz_turi'),
+                'contact' => $request->get('contact'),
+                'client_description' => $request->get('client_description'),
+            ]);
 
-                'company_location' => $request->company_location,
-                'company_name' => $request->company_name,
-                'raxbar' => $request->raxbar,
-                'bank_code' => $request->bank_code,
-                'bank_service' => $request->bank_service,
-                'bank_account' => $request->bank_account,
-                'stir' => $request->stir,
-                'oked' => $request->oked,
-                'minimum_wage' => $request->minimum_wage,
+            $client->company->update([
+                'company_name' => $request->get('company_name') ?? null,
+                'raxbar' => $request->get('raxbar') ?? null,
+                'bank_code' => $request->get('bank_code') ?? null,
+                'bank_service' => $request->get('bank_service') ?? null,
+                'bank_account' => $request->get('bank_account') ?? null,
+                'stir' => $request->get('stir') ?? null,
+                'oked' => $request->get('oked') ?? null,
+                'minimum_wage' => $request->get('minimum_wage') ?? null,
+            ]);
 
+            $client->passport->update([
+                'passport_serial' => $request->get('passport_serial') ?? null,
+                'passport_pinfl' => $request->get('passport_pinfl') ?? null,
+                'passport_date' => $request->get('passport_date') ?? null,
+                'passport_location' => $request->get('passport_location') ?? null,
+                'passport_type' => $request->get('passport_type') ?? 0,
+            ]);
+
+            $client->address->update([
+                'yuridik_address' => $request->get('yuridik_address') ?? null,
+                'home_address' => $request->get('home_address') ?? null,
+                'company_location' => $request->get('company_location') ?? null,
             ]);
 
             foreach ($request->accordions as $accordionData) {
@@ -220,8 +238,6 @@ class ClientController extends Controller
                 }
             }
 
-           
-
             if ($request->hasFile('document')) {
                 foreach ($request->file('document') as $file) {
                     $originalName = pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME);
@@ -229,7 +245,7 @@ class ClientController extends Controller
                     $date = date('Ymd_His');
                     $fileName = $originalName . '_' . $date . '.' . $extension;
                     $file->move(public_path('assets'), $fileName);
-            
+
                     $fileModel = new File();
                     $fileModel->client_id = $client->id;
                     $fileModel->path = 'assets/' . $fileName;
@@ -241,17 +257,13 @@ class ClientController extends Controller
                 foreach ($request->input('delete_files') as $fileId) {
                     $file = File::find($fileId);
                     if ($file) {
-                        // Delete the file from storage
                         if (Storage::exists($file->path)) {
                             Storage::delete($file->path);
                         }
-                        // Delete the file record from the database
                         $file->delete();
                     }
                 }
             }
-            
-            
 
             DB::commit();
 
@@ -270,17 +282,17 @@ class ClientController extends Controller
     {
         try {
             $client = Client::where('id', $id)->firstOrFail();
-    
+
             $client->update([
                 'is_deleted' => 1,
             ]);
-    
+
             return redirect()->route('clientIndex')->with('success', 'Client marked as deleted successfully');
         } catch (\Exception $e) {
             return redirect()->back()->with('error', 'An error occurred while marking the client as deleted: ' . $e->getMessage());
         }
     }
-    
+
     public function toggleclientActivation($id)
     {
         $client = Client::where('id', $id)->first();

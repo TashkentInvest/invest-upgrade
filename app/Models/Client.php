@@ -16,34 +16,25 @@ class Client extends Model
         'last_name',
         'father_name',
         'contact',
-        'user_birht',
-        'serial_serial',
-        'serial_pinfl',
-        'home_address',
-        'yuridik_address',
-        'yuridik_rekvizid',
-        'passport_serial',
-        'passport_pinfl',
-        'passport_date',
-        'passport_location',
-        'passport_type',
         'is_deleted',
+        'status',
         'client_description',
-        'company_name',
-        'raxbar',
-        'company_location',
-        'bank_code',
-        'bank_service',
-        'bank_account',
-        'stir',
-        'oked',
-        'created_at',
-        'updated_at',
-        'minimum_wage',
-        'status'
     ];
 
+    public function company()
+    {
+        return $this->hasOne(Company::class);
+    }
 
+    public function passport()
+    {
+        return $this->hasOne(Passport::class);
+    }
+
+    public function address()
+    {
+        return $this->hasOne(Address::class);
+    }
 
     public function branches()
     {
@@ -155,4 +146,5 @@ class Client extends Model
     {
         return $this->hasMany(CreditTransaction::class, 'payer_inn', 'stir');
     }
+
 }

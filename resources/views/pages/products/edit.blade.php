@@ -57,7 +57,7 @@
                                         <div class="mb-3">
                                             <label for="company_name">@lang('global.company_name')</label>
                                             <input type="text" class="form-control" name="company_name"
-                                                value="{{ old('company_name', $client->company_name) }}"
+                                                value="{{ old('company_name', $client->company->company_name) }}"
                                                 placeholder="@lang('global.loyiha_nomi')">
                                         </div>
                                     </div>
@@ -67,7 +67,7 @@
                                             @lang('global.client_name')</label>
                                         <input class="form-control {{ $errors->has('raxbar') ? 'is-invalid' : '' }}"
                                             type="text" name="raxbar" id="raxbar" placeholder="@lang('cruds.company.fields.raxbar')"
-                                            value="{{ old('raxbar', $client->raxbar) }}">
+                                            value="{{ old('raxbar', $client->company->raxbar) }}">
                                         @if ($errors->has('raxbar'))
                                             <span class="error invalid-feedback">{{ $errors->first('raxbar') }}</span>
                                         @endif
@@ -78,7 +78,7 @@
                                         <label for="stir" class="col-md-6 col-form-label">@lang('cruds.company.fields.stir')</label>
                                         <input class="form-control {{ $errors->has('stir') ? 'is-invalid' : '' }}"
                                             type="text" name="stir" id="stir" placeholder="@lang('cruds.company.fields.stir')"
-                                            value="{{ old('stir', $client->stir) }}" maxlength="9">
+                                            value="{{ old('stir', $client->company->stir) }}" maxlength="9">
                                         @if ($errors->has('stir'))
                                             <span class="error invalid-feedback">{{ $errors->first('stir') }}</span>
                                         @endif
@@ -88,7 +88,7 @@
                                         <label for="oked" class="col-md-6 col-form-label">@lang('cruds.company.fields.oked')</label>
                                         <input class="form-control {{ $errors->has('oked') ? 'is-invalid' : '' }}"
                                             type="text" name="oked" id="oked" placeholder="@lang('cruds.company.fields.oked')"
-                                            value="{{ old('oked', $client->oked) }}" maxlength="5">
+                                            value="{{ old('oked', $client->company->oked) }}" maxlength="5">
                                         @if ($errors->has('oked'))
                                             <span class="error invalid-feedback">{{ $errors->first('oked') }}</span>
                                         @endif
@@ -99,7 +99,7 @@
                                         <input class="form-control {{ $errors->has('bank_service') ? 'is-invalid' : '' }}"
                                             type="text" name="bank_service" id="bank_service"
                                             placeholder="@lang('cruds.company.fields.bank_service')"
-                                            value="{{ old('bank_service', $client->bank_service) }}">
+                                            value="{{ old('bank_service', $client->company->bank_service) }}">
                                         @if ($errors->has('bank_service'))
                                             <span
                                                 class="error invalid-feedback">{{ $errors->first('bank_service') }}</span>
@@ -111,7 +111,7 @@
                                         <input class="form-control {{ $errors->has('bank_code') ? 'is-invalid' : '' }}"
                                             type="text" name="bank_code" max="5" id="bank_code"
                                             placeholder="@lang('cruds.company.fields.bank_code')"
-                                            value="{{ old('bank_code', $client->bank_code) }}" maxlength="5"
+                                            value="{{ old('bank_code', $client->company->bank_code) }}" maxlength="5"
                                             name="bank_code" id="bank_code">
 
                                         @if ($errors->has('bank_code'))
@@ -125,7 +125,7 @@
                                         <input class="form-control {{ $errors->has('bank_account') ? 'is-invalid' : '' }}"
                                             type="text" name="bank_account" max="5" id="bank_account"
                                             placeholder="@lang('cruds.company.fields.bank_account')"
-                                            value="{{ old('bank_account', $client->bank_account) }}" maxlength="20"
+                                            value="{{ old('bank_account', $client->company->bank_account) }}" maxlength="20"
                                             name="bank_account" id="alloptions">
 
                                         @if ($errors->has('bank_account'))
@@ -142,7 +142,7 @@
                                             class="form-control {{ $errors->has('yuridik_address') ? 'is-invalid' : '' }}"
                                             type="text" name="yuridik_address" id="yuridik_address"
                                             placeholder="@lang('cruds.client.fields.yuridik_address')"
-                                            value="{{ old('yuridik_address', $client->yuridik_address) }}">
+                                            value="{{ old('yuridik_address', $client->company->yuridik_address) }}">
                                         @if ($errors->has('yuridik_address'))
                                             <span
                                                 class="error invalid-feedback">{{ $errors->first('yuridik_address') }}</span>
@@ -207,7 +207,7 @@
                                             class="form-control {{ $errors->has('passport_serial') ? 'is-invalid' : '' }}"
                                             type="text" name="passport_serial" id="passport_serial"
                                             placeholder="@lang('cruds.client.fields.passport_serial')"
-                                            value="{{ old('passport_serial', $client->passport_serial) }}"
+                                            value="{{ old('passport_serial', $client->passport->passport_serial) }}"
                                             maxlength="10">
                                         @if ($errors->has('passport_serial'))
                                             <span
@@ -222,7 +222,7 @@
                                             class="form-control {{ $errors->has('passport_pinfl') ? 'is-invalid' : '' }}"
                                             type="text" name="passport_pinfl" id="passport_pinfl"
                                             placeholder="@lang('cruds.client.fields.passport_pinfl')"
-                                            value="{{ old('passport_pinfl', $client->passport_pinfl) }}" maxlength="14">
+                                            value="{{ old('passport_pinfl', $client->passport->passport_pinfl) }}" maxlength="14">
                                         @if ($errors->has('passport_pinfl'))
                                             <span
                                                 class="error invalid-feedback">{{ $errors->first('passport_pinfl') }}</span>
@@ -236,7 +236,7 @@
                                             class="form-control {{ $errors->has('passport_date') ? 'is-invalid' : '' }}"
                                             type="date" name="passport_date" id="passport_date"
                                             placeholder="@lang('cruds.client.fields.passport_date')"
-                                            value="{{ old('passport_date', $client->passport_date) }}">
+                                            value="{{ old('passport_date', $client->passport->passport_date) }}">
                                         @if ($errors->has('passport_date'))
                                             <span
                                                 class="error invalid-feedback">{{ $errors->first('passport_date') }}</span>
@@ -250,7 +250,7 @@
                                             class="form-control {{ $errors->has('passport_location') ? 'is-invalid' : '' }}"
                                             type="text" name="passport_location" id="passport_location"
                                             placeholder="@lang('cruds.client.fields.passport_location')"
-                                            value="{{ old('passport_location', $client->passport_location) }}">
+                                            value="{{ old('passport_location', $client->passport->passport_location) }}">
                                         @if ($errors->has('passport_location'))
                                             <span
                                                 class="error invalid-feedback">{{ $errors->first('passport_location') }}</span>
@@ -263,7 +263,7 @@
                                         <input class="form-control {{ $errors->has('home_address') ? 'is-invalid' : '' }}"
                                             type="text" name="home_address" id="home_address"
                                             placeholder="@lang('global.home_address')"
-                                            value="{{ old('home_address', $client->home_address) }}">
+                                            value="{{ old('home_address', $client->address->home_address) }}">
                                         @if ($errors->has('home_address'))
                                             <span
                                                 class="error invalid-feedback">{{ $errors->first('home_address') }}</span>
