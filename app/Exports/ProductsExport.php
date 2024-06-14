@@ -26,7 +26,9 @@ class ProductsExport implements FromCollection, WithHeadings, WithColumnFormatti
     {
         try {
             $query = DB::table('clients')
+                ->join('companies', 'clients.id', '=', 'companies.client_id')
                 ->join('branches', 'clients.id', '=', 'branches.client_id')
+                ->join('addresses', 'clients.id', '=', 'addresses.client_id')
                 ->select($this->buildSelectColumns());
 
             $query->where('clients.is_deleted', '!=', 1);
@@ -62,9 +64,9 @@ class ProductsExport implements FromCollection, WithHeadings, WithColumnFormatti
             'contract_number' => 'branches.contract_apt AS contract_number',
             'contract_date' => 'branches.contract_date AS contract_date',
             'notification_number' => 'branches.notification_num AS notification_number',
-            'company_name' => 'clients.company_name AS company_name',
-            'district' => 'clients.yuridik_address AS district',
-            'home_district' => 'clients.home_address AS home_district',
+            'company_name' => 'companies.company_name AS company_name',
+            'district' => 'addresses.yuridik_address AS district',
+            'home_district' => 'addresses.home_address AS home_district',
             'calculated_volume' => 'branches.branch_kubmetr AS calculated_volume',
             'infrastructure_payment' => 'branches.generate_price AS infrastructure_payment',
             'percentage_input' => 'branches.percentage_input AS percentage_input',

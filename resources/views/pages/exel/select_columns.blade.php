@@ -11,7 +11,7 @@
         <div class="form-group">
             @php
                 $columns = [
-                    'number' => '№',
+                    // 'number' => '№',
                     'application_number' => 'Номер заявления',
                     'contract_number' => '№ договора',
                     'contract_date' => 'Дата договора',
