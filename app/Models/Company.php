@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Company extends Model
 {
+    protected $table = 'companies'; 
+
     protected $fillable = [
         'client_id',
         'company_name',
@@ -19,7 +21,6 @@ class Company extends Model
         'minimum_wage',
     ];
 
-    // Relationship with Client
     public function client()
     {
         return $this->belongsTo(Client::class);

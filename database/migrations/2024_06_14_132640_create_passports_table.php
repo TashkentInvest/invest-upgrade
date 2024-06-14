@@ -13,6 +13,7 @@ class CreatePassportsTable extends Migration
      */
     public function up()
     {
+        if (!Schema::hasTable('passports')) {
         Schema::create('passports', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('client_id');
@@ -24,6 +25,7 @@ class CreatePassportsTable extends Migration
             $table->boolean('passport_type')->default(0);
             $table->timestamps();
         });
+    }
     }
 
     /**

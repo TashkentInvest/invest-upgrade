@@ -65,13 +65,15 @@ class ClientController extends Controller
     public function create(Request $request)
     {
         $request->validate([
-            'stir' => 'nullable|string|max:9|min:9|unique:company,stir',
+            'stir' => 'nullable|string|max:9|min:9|unique:companies,stir',
             'oked' => 'nullable|string|max:5|min:5',
             'bank_code' => 'nullable|string|max:5|min:5',
             'bank_account' => 'nullable|string|max:20|min:20',
             'passport_serial' => 'nullable|string|max:10|min:9',
             'passport_pinfl' => 'nullable|string|max:14|min:14',
         ]);
+        // dd($request);
+        
 
         DB::beginTransaction();
 
@@ -85,8 +87,7 @@ class ClientController extends Controller
                 'client_description' => $request->get('client_description'),
             ]);
 
-            $companyData = [
-                'client_id' => $request->client->id,
+            $client->company()->create([
                 'company_name' => $request->get('company_name') ?? null,
                 'raxbar' => $request->get('raxbar') ?? null,
                 'bank_code' => $request->get('bank_code') ?? null,
@@ -95,9 +96,7 @@ class ClientController extends Controller
                 'stir' => $request->get('stir') ?? null,
                 'oked' => $request->get('oked') ?? null,
                 'minimum_wage' => $request->get('minimum_wage') ?? null,
-            ];
-
-            Company::create($companyData);
+            ]);
 
             $client->passport()->create([
                 'passport_serial' => $request->get('passport_serial') ?? null,

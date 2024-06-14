@@ -13,14 +13,16 @@ class CreateAddressesTable extends Migration
      */
     public function up()
     {
-        Schema::create('addresses', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('client_id')->constrained('clients')->onDelete('cascade');
-            $table->string('yuridik_address')->nullable();
-            $table->string('home_address')->nullable();
-            $table->string('company_location')->nullable();
-            $table->timestamps();
-        });
+        if (!Schema::hasTable('addresses')) {
+            Schema::create('addresses', function (Blueprint $table) {
+                $table->id();
+                $table->foreignId('client_id')->constrained('clients')->onDelete('cascade');
+                $table->string('yuridik_address')->nullable();
+                $table->string('home_address')->nullable();
+                $table->string('company_location')->nullable();
+                $table->timestamps();
+            });
+        }
     }
 
     /**

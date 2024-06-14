@@ -13,19 +13,21 @@ class CreateCompaniesTable extends Migration
      */
     public function up()
     {
-        Schema::create('companies', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('client_id')->constrained('clients')->onDelete('cascade');
-            $table->string('company_name')->nullable();
-            $table->string('raxbar')->nullable();
-            $table->string('bank_code')->nullable();
-            $table->string('bank_service')->nullable();
-            $table->string('bank_account')->nullable();
-            $table->string('stir')->nullable();
-            $table->string('oked')->nullable();
-            $table->text('minimum_wage')->nullable();
-            $table->timestamps();
-        });
+        if (!Schema::hasTable('companies')) {
+            Schema::create('companies', function (Blueprint $table) {
+                $table->id();
+                $table->foreignId('client_id')->constrained('clients')->onDelete('cascade');
+                $table->string('company_name')->nullable();
+                $table->string('raxbar')->nullable();
+                $table->string('bank_code')->nullable();
+                $table->string('bank_service')->nullable();
+                $table->string('bank_account')->nullable();
+                $table->string('stir')->nullable()->unique();
+                $table->string('oked')->nullable();
+                $table->text('minimum_wage')->nullable();
+                $table->timestamps();
+            });
+        }
     }
 
     /**
