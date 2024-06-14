@@ -154,9 +154,6 @@ Route::group(['middleware' => 'auth'], function () {
     
 
     Route::get('/import/backup', [BackupController::class, 'import'])->name('backup.import');
-
-    
-
 });
 
 Route::get('/language/{lang}', function ($lang) {
