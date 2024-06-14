@@ -23,8 +23,9 @@
             <div class="card">
                 <div class="card-body">
                     <h4 class="card-title mb-4">Edit Project</h4>
-                    <form action="{{ route('clientUpdate', $construction->id) }}" method="post">
-
+                    <form action="{{ route('construction.update', $construction->id) }}" method="post">
+                    @csrf
+                    @method('PUT')
 
 
 
@@ -79,6 +80,8 @@
                                 </div>
                             </div>
                         @endforeach
+
+                        <button type="submit" class="btn btn-primary">submit</button>
                     </form>
 
 
