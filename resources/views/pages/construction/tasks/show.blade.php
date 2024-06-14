@@ -81,20 +81,20 @@
     
                                     <tr>
                                         <td>{{ __('global.passport_pinfl') }}</td>
-                                        <td>{{ $construction->passport_pinfl }}</td>
+                                        <td>{{ $construction->passport->passport_pinfl }}</td>
                                     </tr>
     
                                     <tr>
                                         <td>{{ __('global.passport_serial') }}</td>
-                                        <td>{{ $construction->passport_serial }}</td>
+                                        <td>{{ $construction->passport->passport_serial }}</td>
                                     </tr>
     
                                     <tr>
-                                        @if ($construction->passport_date)
+                                        @if ($construction->passport->passport_date)
                                             <td>@lang('cruds.client.fields.passport_date')</td>
-                                            <td>{{ date('d-m-Y', strtotime($construction->passport_date)) }}</td>
+                                            <td>{{ date('d-m-Y', strtotime($construction->passport->passport_date)) }}</td>
                                         @else
-                                            <td>@lang('cruds.client.fields.passport_date')</td>
+                                            <td>@lang('cruds.client.fields.passport->passport_date')</td>
                                             <td></td>
                                         @endif
                                     </tr>
@@ -102,46 +102,46 @@
     
                                     <tr>
                                         <td>@lang('cruds.client.fields.passport_location')</td>
-                                        <td>{{ $construction->passport_location }}</td>
+                                        <td>{{ $construction->passport->passport_location }}</td>
                                     </tr>
     
     
     
                                     <tr>
                                         <td>@lang('global.home_address')</td>
-                                        <td colspan="2">{{ $construction->home_address }}</td>
+                                        <td colspan="2">{{ $construction->address->home_address }}</td>
                                     </tr>
                                 @else
                                     <tr>
                                         <td>@lang('cruds.client.fields.yuridik_address')</td>
-                                        <td colspan="2">{{ $construction->yuridik_address }}</td>
+                                        <td colspan="2">{{ $construction->address->yuridik_address }}</td>
                                     </tr>
                                     <tr>
                                         <td>@lang('cruds.company.fields.company_name')</td>
-                                        <td colspan="2">{{ $construction->company_name }}</td>
+                                        <td colspan="2">{{ $construction->company->company_name }}</td>
                                     </tr>
                                     <tr>
                                         <td>@lang('cruds.company.fields.oked')</td>
-                                        <td colspan="2">{{ $construction->oked }}</td>
+                                        <td colspan="2">{{ $construction->company->oked }}</td>
                                     </tr>
                                     <tr>
                                         <td>@lang('cruds.company.fields.raxbar')</td>
-                                        <td colspan="2">{{ $construction->raxbar }}</td>
+                                        <td colspan="2">{{ $construction->company->raxbar }}</td>
                                     </tr>
     
                                     <tr>
                                         <td>@lang('cruds.company.fields.bank_code')</td>
-                                        <td colspan="2">{{ $construction->bank_code }}</td>
+                                        <td colspan="2">{{ $construction->company->bank_code }}</td>
                                     </tr>
                                     <tr>
                                         <td>@lang('cruds.company.fields.bank_service')</td>
-                                        <td colspan="2">{{ $construction->bank_service }}</td>
+                                        <td colspan="2">{{ $construction->company->bank_service }}</td>
                                     </tr>
                                 @endif
     
                                 <tr>
                                     <td>@lang('cruds.company.fields.stir')</td>
-                                    <td colspan="2">{{ $construction->stir }}</td>
+                                    <td colspan="2">{{ $construction->company->stir }}</td>
                                 </tr>
     
                                 @foreach ($construction->branches as $b)

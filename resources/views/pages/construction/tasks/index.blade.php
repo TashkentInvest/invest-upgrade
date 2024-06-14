@@ -56,26 +56,26 @@
                                         @if ($item->mijoz_turi == 'fizik')
                                             <td>{{ $item->last_name }} {{ $item->first_name }} {{ $item->father_name }}</td>
                                         @else
-                                            <td>{{ $item->company_name }} </td>
+                                            <td>{{ $item->company->company_name }} </td>
                                             {{-- @dump($item->company_name) --}}
                                         @endif
 
                                         <td>{{ $item->contact ?? '---' }}</td>
                                         @if ($item->mijoz_turi == 'fizik')
-                                            <td>{{ $item->home_address }}</td>
+                                            <td>{{ $item->address->home_address }}</td>
                                         @else
-                                            <td>{{ $item->yuridik_address }} </td>
+                                            <td>{{ $item->address->yuridik_address }} </td>
                                         @endif
 
-                                        <td>{{ $item->stir }} </td>
+                                        <td>{{ $item->company->stir }} </td>
 
-                                      
+
                                         <td> {{ $item->updated_at }} </td>
                                         <td class="text-center">
                                             <form action="{{ route('clientDestroy', $item->id) }}" method="post">
                                                 @csrf
                                                 <ul class="list-unstyled hstack gap-1 mb-0">
-                                                  
+
 
 
                                                     <li data-bs-toggle="tooltip" data-bs-placement="top"
@@ -92,6 +92,8 @@
                                             <!-- Modal -->
                                     </tr>
                                 @endforeach
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
