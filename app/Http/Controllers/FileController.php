@@ -47,9 +47,9 @@ class FileController extends Controller
         $yurikBolibView = 'pages.docs.bolib_pay.yurik_litso';
         $yurikFullView = 'pages.docs.full_pay.yurik_litso';
     
-        $passport_formattedDate = Carbon::parse($client->passport_date)->format('Y-m-d H:i:s');
-        $client->passport_serial;
-        $client->raxbar;
+        // $passport_formattedDate = Carbon::parse($client->passport_date)->format('Y-m-d H:i:s');
+        // $client->passport_serial;
+        // $client->raxbar;
         // dd($client->passport_serial);
     
         foreach ($client->branches as $branch) {
@@ -59,16 +59,16 @@ class FileController extends Controller
             $branch->branch_location;
         
             // Ensure valid filenames with identifiers
-            $fizikBolibFilename = 'fizik_bolib_' . preg_replace('/[<>:"\/\\|?*]+/', '_', $client->company_name . '_branch_' . $branch->id . '.doc');
-            $fizikFullFilename = 'fizik_full_' . preg_replace('/[<>:"\/\\|?*]+/', '_', $client->company_name . '_branch_' . $branch->id . '.doc');
-            $yurikBolibFilename = 'yurik_bolib_' . preg_replace('/[<>:"\/\\|?*]+/', '_', $client->company_name . '_branch_' . $branch->id . '.doc');
-            $yurikFullFilename = 'yurik_full_' . preg_replace('/[<>:"\/\\|?*]+/', '_', $client->company_name . '_branch_' . $branch->id . '.doc');
+            $fizikBolibFilename = 'fizik_bolib_' . preg_replace('/[<>:"\/\\|?*]+/', '_', $client->company_name . '_branch_' . $branch->id . '_name_' . $branch->contract_apt . '.doc');
+            $fizikFullFilename = 'fizik_full_' . preg_replace('/[<>:"\/\\|?*]+/', '_', $client->company_name . '_branch_' . $branch->id . '_name_' . $branch->contract_apt . '.doc');
+            $yurikBolibFilename = 'yurik_bolib_' . preg_replace('/[<>:"\/\\|?*]+/', '_', $client->company_name . '_branch_' . $branch->id . '_name_' . $branch->contract_apt . '.doc');
+            $yurikFullFilename = 'yurik_full_' . preg_replace('/[<>:"\/\\|?*]+/', '_', $client->company_name . '_branch_' . $branch->id . '_name_' . $branch->contract_apt . '.doc');
         
             // Render documents for each branch and add them to the branchDocuments array
-            $branchDocuments[] = ['document' => view($fizikBolibView, compact('client', 'branch', 'passport_formattedDate'))->render(), 'filename' => $fizikBolibFilename];
-            $branchDocuments[] = ['document' => view($fizikFullView, compact('client', 'branch', 'passport_formattedDate'))->render(), 'filename' => $fizikFullFilename];
-            $branchDocuments[] = ['document' => view($yurikBolibView, compact('client', 'branch', 'passport_formattedDate'))->render(), 'filename' => $yurikBolibFilename];
-            $branchDocuments[] = ['document' => view($yurikFullView, compact('client', 'branch', 'passport_formattedDate'))->render(), 'filename' => $yurikFullFilename];
+            $branchDocuments[] = ['document' => view($fizikBolibView, compact('client', 'branch'))->render(), 'filename' => $fizikBolibFilename];
+            $branchDocuments[] = ['document' => view($fizikFullView, compact('client', 'branch'))->render(), 'filename' => $fizikFullFilename];
+            $branchDocuments[] = ['document' => view($yurikBolibView, compact('client', 'branch'))->render(), 'filename' => $yurikBolibFilename];
+            $branchDocuments[] = ['document' => view($yurikFullView, compact('client', 'branch'))->render(), 'filename' => $yurikFullFilename];
         }
         
     
