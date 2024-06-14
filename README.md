@@ -365,3 +365,7 @@ protected $routeMiddleware = [
         });
     }
 ```
+
+```
+composer require symfony/mailer
+```
