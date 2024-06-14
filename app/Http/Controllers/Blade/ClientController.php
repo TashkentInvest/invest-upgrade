@@ -33,7 +33,7 @@ class ClientController extends Controller
 
         // $clients = Client::with('branches')->where('id', 170)->get()->first();
         // dd($clients);
-        $clients = Client::deepFilters()->with(['branches', 'files'])->where('is_deleted', '!=', 1)->orderBy('id', 'desc')
+        $clients = Client::deepFilters()->with(['company','branches','address','passport','files'])->where('is_deleted', '!=', 1)->orderBy('id', 'desc')
             ->paginate(25);
         // dd($clients);
 
@@ -43,7 +43,7 @@ class ClientController extends Controller
     public function show($id)
     {
         $client = Client::where('id', $id)
-            ->with(['branches', 'files'])
+            ->with(['company','branches','address','passport','files'])
             ->where('is_deleted', '!=', 1)
             ->get()->first();
 
@@ -72,8 +72,7 @@ class ClientController extends Controller
             'passport_serial' => 'nullable|string|max:10|min:9',
             'passport_pinfl' => 'nullable|string|max:14|min:14',
         ]);
-        // dd($request);
-        
+
 
         DB::beginTransaction();
 

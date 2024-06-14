@@ -27,7 +27,7 @@ class AppServiceProvider extends ServiceProvider
 
         // Laravel Pagination use Bootstrap
         Paginator::useBootstrap();
-        \Debugbar::disable();
+        // \Debugbar::disable();
 
         // Connect Helpers
         foreach (glob(__DIR__.'/../Helpers/*.php') as $filename) {
