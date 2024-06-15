@@ -144,6 +144,16 @@
                                 </tr>
 
                                 @foreach ($construction->branches as $b)
+                                {{-- qurilish start --}}
+                                    <tr>
+                                        <td>Apz raqami</td>
+                                        <td colspan="2">{{ $b->apz_raqami }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Apz sanasi</td>
+                                        <td colspan="2">{{ $b->apz_sanasi }}</td>
+                                    </tr>
+
                                     <tr>
                                         <td>@lang('global.ruxsatnoma_raqami')</td>
                                         <td colspan="2">{{ $b->contract_apt }}</td>
@@ -151,6 +161,11 @@
                                     <tr>
                                         <td>@lang('global.created_at')</td>
                                         <td colspan="2">{{ $b->contract_date }}</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>Kengash</td>
+                                        <td colspan="2">{{ $b->kengash }}</td>
                                     </tr>
 
                                     <tr>
@@ -291,21 +306,30 @@
                                     @csrf
                                     @method('PUT')
                                 <div class="modal-body">
-                                    {{-- <table class="table table-striped">
-                                        <tbody>
-
-                                           
-                                        </tbody>
-                                    </table> --}}
-
-                                    
-                    
-                    
-                    
                                             @foreach ($construction->branches as $branchIndex => $b)
                                                 <input type="hidden" name="accordions[{{ $branchIndex }}][id]" value="{{ $b->id }}">
                     
                                                 <div class="row">
+
+                                                    <div class="col-lg-6 mb-3">
+                                                        <label for="projectname" class="col-form-label">Apz raqami</label>
+                                                        <input id="projectname"
+                                                         name="accordions[{{ $branchIndex }}][apz_raqami]"
+                                                            type="text" class="form-control"
+                                                        value="{{ old('accordions.' . $branchIndex . '.apz_raqami', $b->apz_raqami) }}"
+                    
+                                                              placeholder="Enter Project Name...">
+                                                    </div>
+                                                    <div class="col-lg-6 mb-3">
+                                                        <label for="projectname" class="col-form-label">Apz sanasi</label>
+                                                        <input id="projectname"
+                                                         name="accordions[{{ $branchIndex }}][apz_sanasi]"
+                                                         type="date"
+                                                         class="form-control"
+                                                        value="{{ old('accordions.' . $branchIndex . '.apz_sanasi', $b->apz_sanasi) }}"
+                                                         placeholder="Enter Project Name...">
+                                                    </div>
+                                                    
                                                     <div class="col-lg-6">
                                                         <div class="mb-3">
                                                             <label for="contract_apt">@lang('global.ruxsatnoma_raqami')</label>
@@ -325,24 +349,7 @@
                                                         </div>
                                                     </div>
                     
-                                                    <div class="col lg-6">
-                                                        <label for="projectname" class="col-form-label">Apz raqami</label>
-                                                        <input id="projectname"
-                                                         name="accordions[{{ $branchIndex }}][apz_raqami]"
-                                                            type="text" class="form-control"
-                                                        value="{{ old('accordions.' . $branchIndex . '.apz_raqami', $b->apz_raqami) }}"
-                    
-                                                              placeholder="Enter Project Name...">
-                                                    </div>
-                                                    <div class="col lg-6">
-                                                        <label for="projectname" class="col-form-label">Apz sanasi</label>
-                                                        <input id="projectname"
-                                                         name="accordions[{{ $branchIndex }}][apz_sanasi]"
-                                                         type="date"
-                                                         class="form-control"
-                                                        value="{{ old('accordions.' . $branchIndex . '.apz_sanasi', $b->apz_sanasi) }}"
-                                                         placeholder="Enter Project Name...">
-                                                    </div>
+                                                 
                     
                                                     <div class="col-12">
                                                         <textarea class="w-100 my-3 form-control" name="accordions[{{ $branchIndex }}][kengash]" id="" cols="30"

@@ -30,7 +30,6 @@ class ConstructionController extends Controller
             ->orderBy('id', 'desc')
             ->paginate(25);
     
-        // Ensure to select all necessary fields from branches table
         $branchNotifications = Branch::whereNotNull('payed_sum')
             ->select('id', 'branch_name', 'generate_price', 'contract_date', 'payment_type', 'percentage_input', 'installment_quarterly', 'branch_kubmetr', 'branch_location')
             ->get();
@@ -67,16 +66,7 @@ class ConstructionController extends Controller
 
         try {
 
-            $client = Client::findOrFail($id);
-            $client->update([
-                'contract_apt' => $request->get('contract_apt'),
-                'contract_date' => $request->get('contract_date'),
-                'apz_raqami' => $request->get('apz_raqami'),
-                'apz_sanasi' => $request->get('apz_sanasi'),
-                'kengash' => $request->get('kengash'),
-            ]);
-
-
+            // dd($request);
             foreach ($request->accordions as $accordionData) {
                 $branch = Branch::find($accordionData['id']);
 
@@ -84,16 +74,14 @@ class ConstructionController extends Controller
                     $branch->update($accordionData);
                 } else {
                     $branch = new Branch($accordionData);
-                    $branch->client_id = $client->id;
                     $branch->save();
                 }
             }
 
             DB::commit();
 
-            $currentPage = $request->input('page', 1);
 
-            return redirect()->route('clientIndex', ['page' => $currentPage])->with('success', 'Product updated successfully');
+            return redirect()->back()->with('success', 'Product updated successfully');
         } catch (\Exception $e) {
             DB::rollback();
 

@@ -91,6 +91,7 @@
         </div>
     </div>
 </div>
+
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.0/dist/sweetalert2.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
@@ -100,18 +101,29 @@
         function showNextNotification(index) {
             if (index < notifications.length) {
                 const notification = notifications[index];
+                const {
+                    branch_name,
+                    generate_price,
+                    contract_date,
+                    payment_type,
+                    percentage_input,
+                    installment_quarterly,
+                    branch_kubmetr,
+                    branch_location
+                } = notification;
+
                 Swal.fire({
-                    title: 'Branch: ' + notification.contract_apt,
+                    title: `Branch: ${notification.branch_name}`,
                     html: `
                         <div>
-                            <p><strong>Branch Name:</strong> ${notification.branch_name}</p>
-                            <p><strong>Generate Price:</strong> ${notification.generate_price}</p>
-                            <p><strong>Contract Date:</strong> ${notification.contract_date}</p>
-                            <p><strong>Payment Type:</strong> ${notification.payment_type}</p>
-                            <p><strong>Percentage Input:</strong> ${notification.percentage_input}</p>
-                            <p><strong>Installment Quarterly:</strong> ${notification.installment_quarterly}</p>
-                            <p><strong>Branch Kubmetr:</strong> ${notification.branch_kubmetr}</p>
-                            <p><strong>Branch Location:</strong> ${notification.branch_location}</p>
+                            <p><strong>Branch Name:</strong> ${branch_name}</p>
+                            <p><strong>Generate Price:</strong> ${generate_price}</p>
+                            <p><strong>Contract Date:</strong> ${contract_date}</p>
+                            <p><strong>Payment Type:</strong> ${payment_type}</p>
+                            <p><strong>Percentage Input:</strong> ${percentage_input}</p>
+                            <p><strong>Installment Quarterly:</strong> ${installment_quarterly}</p>
+                            <p><strong>Branch Kubmetr:</strong> ${branch_kubmetr}</p>
+                            <p><strong>Branch Location:</strong> ${branch_location}</p>
                         </div>
                     `,
                     icon: 'info',
@@ -121,7 +133,7 @@
                 }).then((result) => {
                     if (result.isConfirmed) {
                         $.ajax({
-                            url: '{{ route("updateStatus") }}', // Updated route name
+                            url: '{{ route("updateStatus") }}', // Ensure this route is defined correctly
                             method: 'POST',
                             data: {
                                 _token: '{{ csrf_token() }}',
