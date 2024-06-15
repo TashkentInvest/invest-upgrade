@@ -30,14 +30,16 @@ class ConstructionController extends Controller
             ->orderBy('id', 'desc')
             ->paginate(25);
     
+        // Ensure to select all necessary fields from branches table
         $branchNotifications = Branch::whereNotNull('payed_sum')
-            ->get(['id', 'branch_name', 'generate_price']);
+            ->select('id', 'branch_name', 'generate_price', 'contract_date', 'payment_type', 'percentage_input', 'installment_quarterly', 'branch_kubmetr', 'branch_location')
+            ->get();
     
-        // Store notifications in session
         session()->flash('branchNotifications', $branchNotifications);
     
         return view('pages.construction.tasks.index', compact('constructions'));
     }
+    
 
     public function show($id){
 

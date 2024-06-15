@@ -101,8 +101,19 @@
             if (index < notifications.length) {
                 const notification = notifications[index];
                 Swal.fire({
-                    title: 'Branch: ' + notification.branch_name,
-                    text: 'Price: ' + notification.generate_price,
+                    title: 'Branch: ' + notification.contract_apt,
+                    html: `
+                        <div>
+                            <p><strong>Branch Name:</strong> ${notification.branch_name}</p>
+                            <p><strong>Generate Price:</strong> ${notification.generate_price}</p>
+                            <p><strong>Contract Date:</strong> ${notification.contract_date}</p>
+                            <p><strong>Payment Type:</strong> ${notification.payment_type}</p>
+                            <p><strong>Percentage Input:</strong> ${notification.percentage_input}</p>
+                            <p><strong>Installment Quarterly:</strong> ${notification.installment_quarterly}</p>
+                            <p><strong>Branch Kubmetr:</strong> ${notification.branch_kubmetr}</p>
+                            <p><strong>Branch Location:</strong> ${notification.branch_location}</p>
+                        </div>
+                    `,
                     icon: 'info',
                     showCancelButton: true,
                     confirmButtonText: 'Confirm',
@@ -147,5 +158,4 @@
         showNextNotification(0);
     @endif
 </script>
-
 @endsection
