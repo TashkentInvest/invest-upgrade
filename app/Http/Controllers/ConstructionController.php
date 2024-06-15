@@ -4,17 +4,38 @@ namespace App\Http\Controllers;
 
 use App\Models\Branch;
 use App\Models\Client;
+use App\Models\View;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 class ConstructionController extends Controller
 {
-    public function index(){
-        $constructions = Client::deepFilters()
-        ->with(['company','branches','address','passport'])
-        ->where('is_deleted', '!=', 1)->orderBy('id', 'desc')
-        ->paginate(25);
+    // public function index(){
+    //     $constructions = Client::deepFilters()
+    //     ->with(['company','branches','address','passport'])
+    //     ->where('is_deleted', '!=', 1)->orderBy('id', 'desc')
+    //     ->paginate(25);
         
+    //     return view('pages.construction.tasks.index', compact('constructions'));
+    // }
+
+
+    public function index()
+    {
+        $constructions = Client::deepFilters()
+            ->with(['company', 'branches' => function ($query) {
+                $query->whereNotNull('payed_sum');
+            }, 'address', 'passport'])
+            ->where('is_deleted', '!=', 1)
+            ->orderBy('id', 'desc')
+            ->paginate(25);
+    
+        $branchNotifications = Branch::whereNotNull('payed_sum')
+            ->get(['id', 'branch_name', 'generate_price']);
+    
+        // Store notifications in session
+        session()->flash('branchNotifications', $branchNotifications);
+    
         return view('pages.construction.tasks.index', compact('constructions'));
     }
 
@@ -76,5 +97,21 @@ class ConstructionController extends Controller
 
             return redirect()->back()->with('error', 'An error occurred while updating the product: ' . $e->getMessage());
         }
+    }
+
+    public function updateStatus(Request $request)
+    {
+
+
+        $view = View::updateOrCreate(
+            ['user_id' => auth()->id(), 'branch_id' => $request->branch_id],
+            ['status' => $request->status]
+        );
+
+        if ($view) {
+            return response()->json(['success' => true]);
+        }
+
+        return response()->json(['success' => false], 500); 
     }
 }
