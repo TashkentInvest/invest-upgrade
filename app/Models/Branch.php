@@ -14,7 +14,7 @@ class Branch extends Model
         'contract_apt',
         'contract_date',
         'apz_raqami',
-        'apz_date',
+        'apz_sanasi',
         'kengash',
         'generate_price',
         'payment_type',

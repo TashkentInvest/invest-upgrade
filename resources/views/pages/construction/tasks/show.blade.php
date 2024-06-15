@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('content')
-    <!-- start page title -->
+    <!-- Start page title -->
     <div class="row">
         <div class="col-12">
             <div class="page-title-box d-sm-flex align-items-center justify-content-between">
@@ -9,15 +9,14 @@
 
                 <div class="page-title-right">
                     <ol class="breadcrumb m-0">
-                        <li class="breadcrumb-item"><a href="javascript: void(0);">Invoices</a></li>
+                        <li class="breadcrumb-item"><a href="javascript:void(0);">Invoices</a></li>
                         <li class="breadcrumb-item active">Detail</li>
                     </ol>
                 </div>
-
             </div>
         </div>
     </div>
-    <!-- end page title -->
+    <!-- End page title -->
 
     <div class="row">
         <div class="col-lg-12">
@@ -26,199 +25,151 @@
                     <div class="invoice-title">
                         <h4 class="float-end font-size-16">ART / # 12345</h4>
                         <div class="mb-4">
-                            {{-- <img src="{{asset('assets/images/logo-dark.png')}}" alt="logo" height="20" /> --}}
                             <h3>Obyekt</h3>
                         </div>
                     </div>
                     <hr>
-                    {{-- <div class="row">
-                        <div class="col-sm-6">
-                            <address>
-                                <strong>Billed To:</strong><br>
-                                John Smith<br>
-                                1234 Main<br>
-                                Apt. 4B<br>
-                                Springfield, ST 54321
-                            </address>
-                        </div>
-                        <div class="col-sm-6 text-sm-end">
-                            <address class="mt-2 mt-sm-0">
-                                <strong>Shipped To:</strong><br>
-                                Kenny Rigdon<br>
-                                1234 Main<br>
-                                Apt. 4B<br>
-                                Springfield, ST 54321
-                            </address>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-sm-6 mt-3">
-                            <address>
-                                <strong>Payment Method:</strong><br>
-                                Visa ending **** 4242<br>
-                                jsmith@email.com
-                            </address>
-                        </div>
-                        <div class="col-sm-6 mt-3 text-sm-end">
-                            <address>
-                                <strong>Order Date:</strong><br>
-                                October 16, 2019<br><br>
-                            </address>
-                        </div>
-                    </div> --}}
+
+                    <!-- Obyekt Malumotlari Section -->
                     <div class="py-2 mt-3">
                         <h3 class="font-size-15 fw-bold">Obyekt Malumotlari</h3>
                     </div>
+
                     <div class="table-responsive">
-                        <table class="table table-nowrap">
+                        <table class="table table-bordered dt-responsive w-100 table-nowrap" style="font-size: 16px;">
                             <tbody>
                                 <tr>
-                                    <td>@lang('global.fio')</td>
+                                    <td><strong>@lang('global.fio')</strong></td>
                                     <td colspan="2">{{ $construction->last_name }} {{ $construction->first_name }}
                                         {{ $construction->father_name }}</td>
                                 </tr>
                                 @if ($construction->mijoz_turi == 'fizik')
                                     <tr>
-                                        <td>{{ __('global.passport_pinfl') }}</td>
+                                        <td><strong>{{ __('global.passport_pinfl') }}</strong></td>
                                         <td>{{ $construction->passport->passport_pinfl }}</td>
                                     </tr>
 
                                     <tr>
-                                        <td>{{ __('global.passport_serial') }}</td>
+                                        <td><strong>{{ __('global.passport_serial') }}</strong></td>
                                         <td>{{ $construction->passport->passport_serial }}</td>
                                     </tr>
 
                                     <tr>
                                         @if ($construction->passport->passport_date)
-                                            <td>@lang('cruds.client.fields.passport_date')</td>
+                                            <td><strong>@lang('cruds.client.fields.passport_date')</strong></td>
                                             <td>{{ date('d-m-Y', strtotime($construction->passport->passport_date)) }}</td>
                                         @else
-                                            <td>@lang('cruds.client.fields.passport->passport_date')</td>
+                                            <td><strong>@lang('cruds.client.fields.passport_date')</strong></td>
                                             <td></td>
                                         @endif
                                     </tr>
 
-
                                     <tr>
-                                        <td>@lang('cruds.client.fields.passport_location')</td>
+                                        <td><strong>@lang('cruds.client.fields.passport_location')</strong></td>
                                         <td>{{ $construction->passport->passport_location }}</td>
                                     </tr>
 
-
-
                                     <tr>
-                                        <td>@lang('global.home_address')</td>
+                                        <td><strong>@lang('global.home_address')</strong></td>
                                         <td colspan="2">{{ $construction->address->home_address }}</td>
                                     </tr>
                                 @else
                                     <tr>
-                                        <td>@lang('cruds.client.fields.yuridik_address')</td>
+                                        <td><strong>@lang('cruds.client.fields.yuridik_address')</strong></td>
                                         <td colspan="2">{{ $construction->address->yuridik_address }}</td>
                                     </tr>
                                     <tr>
-                                        <td>@lang('cruds.company.fields.company_name')</td>
+                                        <td><strong>@lang('cruds.company.fields.company_name')</strong></td>
                                         <td colspan="2">{{ $construction->company->company_name }}</td>
                                     </tr>
                                     <tr>
-                                        <td>@lang('cruds.company.fields.oked')</td>
+                                        <td><strong>@lang('cruds.company.fields.oked')</strong></td>
                                         <td colspan="2">{{ $construction->company->oked }}</td>
                                     </tr>
                                     <tr>
-                                        <td>@lang('cruds.company.fields.raxbar')</td>
+                                        <td><strong>@lang('cruds.company.fields.raxbar')</strong></td>
                                         <td colspan="2">{{ $construction->company->raxbar }}</td>
                                     </tr>
 
                                     <tr>
-                                        <td>@lang('cruds.company.fields.bank_code')</td>
+                                        <td><strong>@lang('cruds.company.fields.bank_code')</strong></td>
                                         <td colspan="2">{{ $construction->company->bank_code }}</td>
                                     </tr>
                                     <tr>
-                                        <td>@lang('cruds.company.fields.bank_service')</td>
+                                        <td><strong>@lang('cruds.company.fields.bank_service')</strong></td>
                                         <td colspan="2">{{ $construction->company->bank_service }}</td>
                                     </tr>
                                 @endif
 
                                 <tr>
-                                    <td>@lang('cruds.company.fields.stir')</td>
+                                    <td><strong>@lang('cruds.company.fields.stir')</strong></td>
                                     <td colspan="2">{{ $construction->company->stir }}</td>
                                 </tr>
 
                                 @foreach ($construction->branches as $b)
-                                {{-- qurilish start --}}
+                                    <!-- Branch Information -->
                                     <tr>
-                                        <td>Apz raqami</td>
+                                        <td><strong>Apz raqami</strong></td>
                                         <td colspan="2">{{ $b->apz_raqami }}</td>
                                     </tr>
                                     <tr>
-                                        <td>Apz sanasi</td>
+                                        <td><strong>Apz sanasi</strong></td>
                                         <td colspan="2">{{ $b->apz_sanasi }}</td>
                                     </tr>
 
                                     <tr>
-                                        <td>@lang('global.ruxsatnoma_raqami')</td>
+                                        <td><strong>@lang('global.ruxsatnoma_raqami')</strong></td>
                                         <td colspan="2">{{ $b->contract_apt }}</td>
                                     </tr>
                                     <tr>
-                                        <td>@lang('global.created_at')</td>
+                                        <td><strong>@lang('global.created_at')</strong></td>
                                         <td colspan="2">{{ $b->contract_date }}</td>
                                     </tr>
 
                                     <tr>
-                                        <td>Kengash</td>
+                                        <td><strong>Kengash</strong></td>
                                         <td colspan="2">{{ $b->kengash }}</td>
                                     </tr>
 
                                     <tr>
-                                        <td>@lang('cruds.branches.fields.application_number')</td>
+                                        <td><strong>@lang('cruds.branches.fields.application_number')</strong></td>
                                         <td colspan="2">{{ $b->application_number }}</td>
                                     </tr>
 
                                     <tr>
-                                        <td>@lang('global.loyiha_nomi')</td>
+                                        <td><strong>@lang('global.loyiha_nomi')</strong></td>
                                         <td colspan="2">{{ $b->branch_type }}</td>
                                     </tr>
 
-
                                     <tr>
-                                        <td>@lang('cruds.company.fields.branch_type')</td>
+                                        <td><strong>@lang('cruds.company.fields.branch_type')</strong></td>
                                         <td colspan="2">{{ $b->branch_type }}</td>
                                     </tr>
                                     <tr>
-                                        <td>@lang('cruds.company.fields.branch_location')</td>
+                                        <td><strong>@lang('cruds.company.fields.branch_location')</strong></td>
                                         <td colspan="2">{{ $b->branch_location }}</td>
                                     </tr>
 
                                     <tr>
-                                        <td>@lang('global.obyekt_boyicha_tolanishi_lozim') ( m³ )</td>
+                                        <td><strong>@lang('global.obyekt_boyicha_tolanishi_lozim') ( m³ )</strong></td>
                                         <td colspan="2">{{ number_format($b->branch_kubmetr, 1) }}</td>
                                     </tr>
                                     <tr>
-                                        <td>@lang('global.jami_tolanishi_kerak')</td>
-                                        <td colspan="2" id="payedSumCell1">{{ $b->generate_price }}</td>
+                                        <td><strong>@lang('global.jami_tolanishi_kerak')</strong></td>
+                                        <td colspan="2">{{ $b->generate_price }}</td>
                                     </tr>
 
-                                    <script>
-                                        function formatNumberWithSpaces(number) {
-                                            return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
-                                        }
-
-                                        var payedSumElement = document.getElementById('payedSumCell1');
-                                        var payedSumValue = payedSumElement.textContent;
-
-                                        payedSumElement.textContent = formatNumberWithSpaces(payedSumValue);
-                                    </script>
-
                                     <tr>
-                                        <td>@lang('global.bolib_tolash_foizi_oldindan')</td>
+                                        <td><strong>@lang('global.bolib_tolash_foizi_oldindan')</strong></td>
                                         <td colspan="2">{{ $b->percentage_input }}%</td>
                                     </tr>
                                     <tr>
-                                        <td>@lang('global.quarterly_payment')</td>
+                                        <td><strong>@lang('global.quarterly_payment')</strong></td>
                                         <td colspan="2">{{ $b->installment_quarterly }}</td>
                                     </tr>
 
                                     <tr>
-                                        <td>@lang('global.bolib_tolash')</td>
+                                        <td><strong>@lang('global.bolib_tolash')</strong></td>
                                         <td colspan="2">
                                             @if ($b->payment_type == 'pay_bolib')
                                                 @lang('global.pay_bolib')
@@ -229,69 +180,51 @@
                                     </tr>
 
                                     <tr>
-                                        <td>@lang('cruds.branches.fields.payed_sum')</td>
-                                        <td colspan="2" id="payedSumCell">{{ $b->payed_sum }}</td>
+                                        <td><strong>@lang('cruds.branches.fields.payed_sum')</strong></td>
+                                        <td colspan="2">{{ $b->payed_sum }}</td>
                                     </tr>
 
-                                    <script>
-                                        function formatNumberWithSpaces(number) {
-                                            return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
-                                        }
-
-                                        var payedSumElement = document.getElementById('payedSumCell');
-                                        var payedSumValue = payedSumElement.textContent;
-
-                                        payedSumElement.textContent = formatNumberWithSpaces(payedSumValue);
-                                    </script>
-
                                     <tr>
-                                        <td>@lang('cruds.branches.fields.payed_date')</td>
+                                        <td><strong>@lang('cruds.branches.fields.payed_date')</strong></td>
                                         <td colspan="2">{{ $b->payed_date }}</td>
                                     </tr>
 
                                     <tr>
-                                        <td>@lang('cruds.branches.fields.notification_num')</td>
+                                        <td><strong>@lang('cruds.branches.fields.notification_num')</strong></td>
                                         <td colspan="2">{{ $b->notification_num }}</td>
                                     </tr>
                                     <tr>
-                                        <td>@lang('cruds.branches.fields.notification_date')</td>
+                                        <td><strong>@lang('cruds.branches.fields.notification_date')</strong></td>
                                         <td colspan="2">{{ $b->notification_date }}</td>
                                     </tr>
                                     <tr>
-                                        <td>@lang('cruds.branches.fields.insurance_policy')</td>
+                                        <td><strong>@lang('cruds.branches.fields.insurance_policy')</strong></td>
                                         <td colspan="2">{{ $b->insurance_policy }}</td>
                                     </tr>
 
                                     <tr>
-                                        <td>@lang('cruds.branches.fields.bank_guarantee')</td>
+                                        <td><strong>@lang('cruds.branches.fields.bank_guarantee')</strong></td>
                                         <td colspan="2">{{ $b->bank_guarantee }}</td>
                                     </tr>
                                 @endforeach
-
                             </tbody>
                         </table>
-
                     </div>
 
-
-
-                    <div class="d-print-none">
+                    <!-- Edit Button -->
+                    <div class="d-print-none mt-4">
                         <div class="float-end">
-                            <a href="javascript:window.print()" class="btn btn-success waves-effect waves-light me-1"><i
+                            <a href="javascript:window.print()"
+                                class="btn btn
+                            btn-success waves-effect waves-light me-1"><i
                                     class="fa fa-print"></i></a>
-                            {{-- <a href="{{ route('construction.edit', $construction->id) }}"
-                                class="btn btn-primary w-md waves-effect waves-light">Edit</a> --}}
-                                <button type="button" data-bs-toggle="modal"
+                            <button type="button" data-bs-toggle="modal"
                                 data-bs-target="#exampleModal_{{ $construction->id }}"
-                                class="btn btn-primary">
-                                Edit
-                            </button>
+                                class="btn btn-primary">Edit</button>
                         </div>
                     </div>
 
-                    {{-- modal start --}}
-
-                    <!-- Modal -->
+                    <!-- Edit Modal -->
                     <div class="modal fade" id="exampleModal_{{ $construction->id }}" tabindex="-1"
                         aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog modal-dialog-scrollable modal-lg">
@@ -305,75 +238,65 @@
                                 <form action="{{ route('construction.update', $construction->id) }}" method="post">
                                     @csrf
                                     @method('PUT')
-                                <div class="modal-body">
-                                            @foreach ($construction->branches as $branchIndex => $b)
-                                                <input type="hidden" name="accordions[{{ $branchIndex }}][id]" value="{{ $b->id }}">
-                    
-                                                <div class="row">
+                                    <div class="modal-body">
+                                        @foreach ($construction->branches as $branchIndex => $b)
+                                            <input type="hidden" name="accordions[{{ $branchIndex }}][id]"
+                                                value="{{ $b->id }}">
 
-                                                    <div class="col-lg-6 mb-3">
-                                                        <label for="projectname" class="col-form-label">Apz raqami</label>
-                                                        <input id="projectname"
-                                                         name="accordions[{{ $branchIndex }}][apz_raqami]"
-                                                            type="text" class="form-control"
+                                            <div class="row">
+                                                <div class="col-lg-6 mb-3">
+                                                    <label for="projectname" class="col-form-label">Apz raqami</label>
+                                                    <input id="projectname"
+                                                        name="accordions[{{ $branchIndex }}][apz_raqami]" type="text"
+                                                        class="form-control"
                                                         value="{{ old('accordions.' . $branchIndex . '.apz_raqami', $b->apz_raqami) }}"
-                    
-                                                              placeholder="Enter Project Name...">
-                                                    </div>
-                                                    <div class="col-lg-6 mb-3">
-                                                        <label for="projectname" class="col-form-label">Apz sanasi</label>
-                                                        <input id="projectname"
-                                                         name="accordions[{{ $branchIndex }}][apz_sanasi]"
-                                                         type="date"
-                                                         class="form-control"
+                                                        placeholder="Enter Project Name...">
+                                                </div>
+                                                <div class="col-lg-6 mb-3">
+                                                    <label for="projectname" class="col-form-label">Apz sanasi</label>
+                                                    <input id="projectname"
+                                                        name="accordions[{{ $branchIndex }}][apz_sanasi]" type="date"
+                                                        class="form-control"
                                                         value="{{ old('accordions.' . $branchIndex . '.apz_sanasi', $b->apz_sanasi) }}"
-                                                         placeholder="Enter Project Name...">
-                                                    </div>
-                                                    
-                                                    <div class="col-lg-6">
-                                                        <div class="mb-3">
-                                                            <label for="contract_apt">@lang('global.ruxsatnoma_raqami')</label>
-                                                            <input type="text" class="form-control"
-                                                                name="accordions[{{ $branchIndex }}][contract_apt]"
-                                                                value="{{ old('accordions.' . $branchIndex . '.contract_apt', $b->contract_apt) }}"
-                                                                placeholder="@lang('global.ruxsatnoma_raqami')">
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-lg-6">
-                                                        <div class="mb-3">
-                                                            <label for="contract_date">@lang('global.sanasi')</label>
-                                                            <input class="form-control" type="date"
-                                                                name="accordions[{{ $branchIndex }}][contract_date]"
-                                                                value="{{ old('accordions.' . $branchIndex . '.contract_date', $b->contract_date) }}">
-                    
-                                                        </div>
-                                                    </div>
-                    
-                                                 
-                    
-                                                    <div class="col-12">
-                                                        <textarea class="w-100 my-3 form-control" name="accordions[{{ $branchIndex }}][kengash]" id="" cols="30"
-                                                            rows="10" placeholder="Kengash xulosa">
-                                                            {{ old('accordions.' . $branchIndex . '.kengash', $b->kengash) }}"
-                                                        </textarea>
-                    
+                                                        placeholder="Enter Project Name...">
+                                                </div>
+                                                <div class="col-lg-6">
+                                                    <div class="mb-3">
+                                                        <label for="contract_apt">@lang('global.ruxsatnoma_raqami')</label>
+                                                        <input type="text" class="form-control"
+                                                            name="accordions[{{ $branchIndex }}][contract_apt]"
+                                                            value="{{ old('accordions.' . $branchIndex . '.contract_apt', $b->contract_apt) }}"
+                                                            placeholder="@lang('global.ruxsatnoma_raqami')">
                                                     </div>
                                                 </div>
-                                            @endforeach
-                    
-                                        </div>
-                                        <div class="modal-footer d-flex">
-                                            <button type="submit" class="btn btn-primary ">submit</button>
-                                            <button type="button" class="btn btn-secondary"
-                                                data-bs-dismiss="modal">@lang('global.closed')</button>
-                                        </div>
-                            </form>
-
+                                                <div class="col-lg-6">
+                                                    <div class="mb-3">
+                                                        <label for="contract_date">@lang('global.sanasi')</label>
+                                                        <input class="form-control" type="date"
+                                                            name="accordions[{{ $branchIndex }}][contract_date]"
+                                                            value="{{ old('accordions.' . $branchIndex . '.contract_date', $b->contract_date) }}">
+                                                    </div>
+                                                </div>
+                                                <div class="col-12">
+                                                    <textarea class="w-100 my-3 form-control" name="accordions[{{ $branchIndex }}][kengash]" id=""
+                                                        cols="30" rows="10" placeholder="Kengash xulosa">
+                                                        {{ old('accordions.' . $branchIndex . '.kengash', $b->kengash) }}"
+                                                    </textarea>
+                                                </div>
+                                            </div>
+                                        @endforeach
+                                    </div>
+                                    <div class="modal-footer d-flex">
+                                        <button type="submit" class="btn btn-primary ">Submit</button>
+                                        <button type="button" class="btn btn-secondary"
+                                            data-bs-dismiss="modal">Close</button>
+                                    </div>
+                                </form>
                             </div>
-                            {{-- modal end --}}
-
                         </div>
                     </div>
                 </div>
             </div>
-        @endsection
+        </div>
+    </div>
+@endsection

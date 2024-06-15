@@ -180,6 +180,7 @@ word : fizik => [
     float sonlani fixed() qilish kere
 ]
 
+modal window hamma userga chqshi kere where auth()->user()->id = views.user_id toxtaw kere
 
 ```
 

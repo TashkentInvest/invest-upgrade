@@ -26,11 +26,18 @@ class ConstructionController extends Controller
             ->with(['company', 'branches' => function ($query) {
                 $query->whereNotNull('payed_sum');
             }, 'address', 'passport'])
+            ->whereHas('branches', function ($query) {
+                $query->whereNotNull('payed_sum');
+            })
             ->where('is_deleted', '!=', 1)
             ->orderBy('id', 'desc')
             ->paginate(25);
     
-        $branchNotifications = Branch::whereNotNull('payed_sum')
+        // Fetch branch notifications separately if needed for other purposes
+        $branchNotifications = Branch::where(function ($query) {
+                $query->whereNotNull('payed_sum')
+                      ->orWhere('payed_sum', '>=', DB::raw('generate_price'));
+            })
             ->select('id', 'branch_name', 'generate_price', 'contract_date', 'payment_type', 'percentage_input', 'installment_quarterly', 'branch_kubmetr', 'branch_location')
             ->get();
     
@@ -38,6 +45,7 @@ class ConstructionController extends Controller
     
         return view('pages.construction.tasks.index', compact('constructions'));
     }
+    
     
 
     public function show($id){
