@@ -37,6 +37,10 @@ class Branch extends Model
         return $this->belongsTo(Client::class);
     }
 
+    public function view(){
+        return $this->hasOne(View::class);
+    }
+
     public static function boot()
     {
         parent::boot();

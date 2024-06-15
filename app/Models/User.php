@@ -80,4 +80,8 @@ class User extends Authenticatable
     {
         return $date->format('Y-m-d H:i:s');
     }
+
+    public function view(){
+        return $this->hasOne(View::class);
+    }
 }
