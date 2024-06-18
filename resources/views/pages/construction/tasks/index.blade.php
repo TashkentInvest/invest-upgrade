@@ -105,13 +105,13 @@
                 $modalIndex++;
             @endphp
             <div class="modal fade" id="notificationModal{{ $modalIndex }}" tabindex="-1"
-                aria-labelledby="notificationModalLabel{{ $modalIndex }}" aria-hidden="true">
+                aria-labelledby="notificationModalLabel{{ $modalIndex }}" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
                 <div class="modal-dialog modal-lg">
                     <div class="modal-content">
                         <div class="modal-header">
                             <h5 class="modal-title" id="notificationModalLabel{{ $modalIndex }}">Branch Notification
                             </h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            {{-- Remove the close button --}}
                         </div>
                         <div class="modal-body">
                             <div>
@@ -126,7 +126,7 @@
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <form action="{{ route('updateStatus') }}" method="post">
+                            <form action="{{ route('updateStatus') }}" method="post" class="update-status-form">
                                 @csrf
                                 <input type="hidden" name="branch_id" value="{{ $b->id }}">
                                 <input type="hidden" name="status" value="1">
@@ -153,9 +153,24 @@
                 }
             }
 
-            $('.modal').on('hidden.bs.modal', function() {
-                modalIndex++;
-                showNextModal();
+            $('.update-status-form').on('submit', function(e) {
+                e.preventDefault();
+                let form = $(this);
+                let modal = form.closest('.modal');
+
+                $.ajax({
+                    type: form.attr('method'),
+                    url: form.attr('action'),
+                    data: form.serialize(),
+                    success: function(response) {
+                        modal.modal('hide');
+                        modalIndex++;
+                        showNextModal();
+                    },
+                    error: function(response) {
+                        // Handle error
+                    }
+                });
             });
 
             // Start the sequence
