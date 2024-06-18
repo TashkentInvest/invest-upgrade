@@ -206,11 +206,24 @@
                                         <td><strong>@lang('cruds.branches.fields.bank_guarantee')</strong></td>
                                         <td colspan="2">{{ $b->bank_guarantee }}</td>
                                     </tr>
+
+                                    {{-- view start --}}
+                                    <tr>
+                                        <td><strong>view start</strong></td>
+                                        <td colspan="2">
+                                            Name: {{$b->view->user->name}}
+                                            Email: {{$b->view->user->email}}
+                                            When: {{$b->view->updated_at}}
+
+                                        </td>
+                                    </tr>
+                                        
                                 @endforeach
                             </tbody>
                         </table>
                     </div>
 
+                  
                     <!-- Edit Button -->
                     <div class="d-print-none mt-4">
                         <div class="float-end">
