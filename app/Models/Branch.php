@@ -40,8 +40,8 @@ class Branch extends Model
         return $this->belongsTo(Client::class);
     }
 
-    public function viewing(){
-        return $this->hasOne(View::class,'branch_id', 'id');
+    public function view(){
+        return $this->hasOne(View::class);
     }
 
     public static function boot()
