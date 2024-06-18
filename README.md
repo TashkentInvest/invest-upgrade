@@ -156,21 +156,7 @@ generate_price not changeble bop qogan fix qlsh kere  +++
 
 INN = minimum & maximum = 9 +++
 
-blade clean qilish kere 
-
-remove accardion ochishi keremas agar bitta bosa
-
-Modal window optimizatsiya qilish kere
-
-Mijoz_turi keremas
-
-.0000 lani ob tashash kere
-
-mesta raspalajenya xato chqazvotti
-
-Transaction da Inn bo'yicha fetch qilish kere : Not Xato maybe
-
-exel da N_ keremas
+exel da N_ keremas +++
 
 word : fizik => [
     oked keremas
@@ -178,9 +164,28 @@ word : fizik => [
     passport seriya chqmadi
     full_name pasida chqazish kere
     float sonlani fixed() qilish kere
-]
+] +++
 
-modal window hamma userga chqshi kere where auth()->user()->id = views.user_id toxtaw kere
+modal window hamma userga chqshi kere where auth()->user()->id = views.user_id toxtaw kere +++
+
+.0000 lani ob tashash kere +++
+
+Mijoz_turi keremas +++
+
+mesta raspalajenya xato chqazvotti +++
+
+blade clean qilish kere 
+
+remove accardion ochishi keremas agar bitta bosa
+
+Modal window optimizatsiya qilish kere
+
+Transaction da Inn bo'yicha fetch qilish kere : Not Xato maybe
+
+bazadigi data ni import qilish kere columnlani toglab chqb push qvorsh kere
+
+constrcutions ga text lani fix qb chqish kere
+
 
 ```
 
