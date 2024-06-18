@@ -24,6 +24,9 @@ class ConstructionController extends Controller
         ->where('is_deleted', '!=', 1)
         ->orderBy('id', 'desc')
         ->paginate(25);
+
+        
+
     
         return view('pages.construction.tasks.index', compact('constructions'));
     }

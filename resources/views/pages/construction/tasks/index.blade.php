@@ -91,7 +91,6 @@
                     </div>
                 </div>
             </div>
-            
         </div>
     </div>
 
@@ -100,39 +99,68 @@
         $modalIndex = 0;
     @endphp
 
+    {{-- @dd(auth()->user()->view->status) --}}
+
     @foreach ($constructions as $notification)
         @foreach ($notification->branches as $b)
-            @if($b->view ? $b->view->status != 1 : true)
+        @dd($b)
+            {{-- @if($b->view ? $b->view->status != 1 : true) --}}
+            @if(auth()->user()->view ? auth()->user()->view->status != 1 : true )
                 @php
                     $modalIndex++;
                 @endphp
                 <div class="modal fade" id="notificationModal{{ $modalIndex }}" tabindex="-1"
                     aria-labelledby="notificationModalLabel{{ $modalIndex }}" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
-                    <div class="modal-dialog modal-lg">
+                    <div class="modal-dialog modal-xl">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title" id="notificationModalLabel{{ $modalIndex }}">Branch Notification
-                                </h5>
+                                <h5 class="modal-title fw-bold" id="notificationModalLabel{{ $modalIndex }}">Branch Notification</h5>
                                 {{-- Remove the close button --}}
                             </div>
                             <div class="modal-body">
-                                <div>
-                                    <p><strong>Branch Name:</strong> {{ $b->branch_name ?? '' }}</p>
-                                    <p><strong>Generate Price:</strong> {{ $b->generate_price ?? '' }}</p>
-                                    <p><strong>Contract Date:</strong> {{ $b->contract_date ?? '' }}</p>
-                                    <p><strong>Payment Type:</strong> {{ $b->payment_type ?? '' }}</p>
-                                    <p><strong>Percentage Input:</strong> {{ $b->percentage_input ?? '' }}</p>
-                                    <p><strong>Installment Quarterly:</strong> {{ $b->installment_quarterly ?? '' }}</p>
-                                    <p><strong>Branch Kubmetr:</strong> {{ $b->branch_kubmetr ?? '' }}</p>
-                                    <p><strong>Branch Location:</strong> {{ $b->branch_location ?? '' }}</p>
-                                </div>
+                                <table class="table table-striped table-bordered">
+                                    <tbody>
+                                        <tr>
+                                            <th>Branch Name:</th>
+                                            <td>{{ $b->branch_name ?? '' }}</td>
+                                        </tr>
+                                        <tr>
+                                            <th>Generate Price:</th>
+                                            <td>{{ $b->generate_price ?? '' }}</td>
+                                        </tr>
+                                        <tr>
+                                            <th>Contract Date:</th>
+                                            <td>{{ $b->contract_date ?? '' }}</td>
+                                        </tr>
+                                        <tr>
+                                            <th>Payment Type:</th>
+                                            <td>{{ $b->payment_type ?? '' }}</td>
+                                        </tr>
+                                        <tr>
+                                            <th>Percentage Input:</th>
+                                            <td>{{ $b->percentage_input ?? '' }}</td>
+                                        </tr>
+                                        <tr>
+                                            <th>Installment Quarterly:</th>
+                                            <td>{{ $b->installment_quarterly ?? '' }}</td>
+                                        </tr>
+                                        <tr>
+                                            <th>Branch Kubmetr:</th>
+                                            <td>{{ $b->branch_kubmetr ?? '' }}</td>
+                                        </tr>
+                                        <tr>
+                                            <th>Branch Location:</th>
+                                            <td>{{ $b->branch_location ?? '' }}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
                             </div>
                             <div class="modal-footer">
                                 <form action="{{ route('updateStatus') }}" method="post" class="update-status-form">
                                     @csrf
                                     <input type="hidden" name="branch_id" value="{{ $b->id }}">
                                     <input type="hidden" name="status" value="1">
-                                    <button type="submit" class="btn btn-primary">Confirm</button>
+                                    <button type="submit" class="btn btn-primary btn-lg">Confirm</button>
                                 </form>
                             </div>
                         </div>
