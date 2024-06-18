@@ -18,8 +18,9 @@ class ClientController extends Controller
 {
     public function index()
     {
-        $clients = Client::deepFilters()->with(['company','branches','address','passport','files'])->where('is_deleted', '!=', 1)->orderBy('id', 'desc')
-            ->paginate(25);
+        $clients = Client::deepFilters()->with(['company','branches','address','passport','files'])
+        ->where('is_deleted', '!=', 1)->orderBy('id', 'desc')
+        ->paginate(25);
 
         return view('pages.products.index', compact('clients'));
     }
