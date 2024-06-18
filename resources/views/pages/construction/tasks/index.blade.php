@@ -91,6 +91,7 @@
                     </div>
                 </div>
             </div>
+            
         </div>
     </div>
 
@@ -101,41 +102,43 @@
 
     @foreach ($constructions as $notification)
         @foreach ($notification->branches as $b)
-            @php
-                $modalIndex++;
-            @endphp
-            <div class="modal fade" id="notificationModal{{ $modalIndex }}" tabindex="-1"
-                aria-labelledby="notificationModalLabel{{ $modalIndex }}" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
-                <div class="modal-dialog modal-lg">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="notificationModalLabel{{ $modalIndex }}">Branch Notification
-                            </h5>
-                            {{-- Remove the close button --}}
-                        </div>
-                        <div class="modal-body">
-                            <div>
-                                <p><strong>Branch Name:</strong> {{ $b->branch_name ?? '' }}</p>
-                                <p><strong>Generate Price:</strong> {{ $b->generate_price ?? '' }}</p>
-                                <p><strong>Contract Date:</strong> {{ $b->contract_date ?? '' }}</p>
-                                <p><strong>Payment Type:</strong> {{ $b->payment_type ?? '' }}</p>
-                                <p><strong>Percentage Input:</strong> {{ $b->percentage_input ?? '' }}</p>
-                                <p><strong>Installment Quarterly:</strong> {{ $b->installment_quarterly ?? '' }}</p>
-                                <p><strong>Branch Kubmetr:</strong> {{ $b->branch_kubmetr ?? '' }}</p>
-                                <p><strong>Branch Location:</strong> {{ $b->branch_location ?? '' }}</p>
+            @if($b->view ? $b->view->status != 1 : true)
+                @php
+                    $modalIndex++;
+                @endphp
+                <div class="modal fade" id="notificationModal{{ $modalIndex }}" tabindex="-1"
+                    aria-labelledby="notificationModalLabel{{ $modalIndex }}" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="notificationModalLabel{{ $modalIndex }}">Branch Notification
+                                </h5>
+                                {{-- Remove the close button --}}
                             </div>
-                        </div>
-                        <div class="modal-footer">
-                            <form action="{{ route('updateStatus') }}" method="post" class="update-status-form">
-                                @csrf
-                                <input type="hidden" name="branch_id" value="{{ $b->id }}">
-                                <input type="hidden" name="status" value="1">
-                                <button type="submit" class="btn btn-primary">Confirm</button>
-                            </form>
+                            <div class="modal-body">
+                                <div>
+                                    <p><strong>Branch Name:</strong> {{ $b->branch_name ?? '' }}</p>
+                                    <p><strong>Generate Price:</strong> {{ $b->generate_price ?? '' }}</p>
+                                    <p><strong>Contract Date:</strong> {{ $b->contract_date ?? '' }}</p>
+                                    <p><strong>Payment Type:</strong> {{ $b->payment_type ?? '' }}</p>
+                                    <p><strong>Percentage Input:</strong> {{ $b->percentage_input ?? '' }}</p>
+                                    <p><strong>Installment Quarterly:</strong> {{ $b->installment_quarterly ?? '' }}</p>
+                                    <p><strong>Branch Kubmetr:</strong> {{ $b->branch_kubmetr ?? '' }}</p>
+                                    <p><strong>Branch Location:</strong> {{ $b->branch_location ?? '' }}</p>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <form action="{{ route('updateStatus') }}" method="post" class="update-status-form">
+                                    @csrf
+                                    <input type="hidden" name="branch_id" value="{{ $b->id }}">
+                                    <input type="hidden" name="status" value="1">
+                                    <button type="submit" class="btn btn-primary">Confirm</button>
+                                </form>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            @endif
         @endforeach
     @endforeach
 
@@ -163,9 +166,11 @@
                     url: form.attr('action'),
                     data: form.serialize(),
                     success: function(response) {
-                        modal.modal('hide');
-                        modalIndex++;
-                        showNextModal();
+                        if(response.success) {
+                            modal.modal('hide');
+                            modalIndex++;
+                            showNextModal();
+                        }
                     },
                     error: function(response) {
                         // Handle error

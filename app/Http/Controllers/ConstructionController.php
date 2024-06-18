@@ -74,20 +74,17 @@ class ConstructionController extends Controller
     }
 
    
-public function updateStatus(Request $request)
-{
-    $request->validate([
-        'branch_id' => 'required|integer|exists:branches,id',
-        'status' => 'required|integer',
-    ]);
-
-    View::create([
-        'user_id' => auth()->id(), // Assuming the user is authenticated
-        'branch_id' => $request->branch_id,
-        'status' => $request->status,
-    ]);
-
-    return redirect()->back()->with('success', 'confirmed');
-    // return response()->json(['success' => true]);
-}
+    public function updateStatus(Request $request)
+    {
+        // dump($request);
+    
+        View::create([
+            'user_id' => auth()->id(),
+            'branch_id' => $request->branch_id,
+            'status' => $request->status,
+        ]);
+    
+        return response()->json(['success' => true]);
+    }
+    
 }
