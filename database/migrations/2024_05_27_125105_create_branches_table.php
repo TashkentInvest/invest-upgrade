@@ -31,6 +31,10 @@ class CreateBranchesTable extends Migration
             $table->string('branch_name')->nullable();
             $table->string('branch_type')->nullable();
 
+            $table->string('apz_raqami')->nullable();
+            $table->date('apz_sanasi')->nullable();
+            $table->text('kengash')->nullable();
+
             $table->string('notification_num')->nullable();
             $table->date('notification_date')->nullable();
             $table->string('insurance_policy')->nullable();
