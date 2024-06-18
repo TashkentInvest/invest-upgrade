@@ -261,18 +261,18 @@
                                         <td>{{ $item->last_name }} {{ $item->first_name }} {{ $item->father_name }}</td>
                                     @else
                                     {{-- @dump($item) --}}
-                                        <td>{{ $item->company->company_name }} </td>
+                                        <td>{{ $item->company->company_name ?? '' }} </td>
                                         {{-- @dump($item->company_name) --}}
                                     @endif
 
                                     <td>{{ $item->contact ?? '---' }}</td>
                                     @if ($item->mijoz_turi == 'fizik')
-                                        <td>{{ $item->address->home_address }}</td>
+                                        <td>{{ $item->address->home_address ?? ''}}</td>
                                     @else
-                                        <td>{{ $item->address->yuridik_address }} </td>
+                                        <td>{{ $item->address->yuridik_address ?? '' }} </td>
                                     @endif
 
-                                    <td>{{ $item->company->stir }} </td>
+                                    <td>{{ $item->company->stir ?? ''}} </td>
 
                                     <td class="text-center">
                                         <i style="cursor: pointer; font-size: 16px;" id="program_{{ $item->id }}"
@@ -351,16 +351,16 @@
                                                                     @if ($item->mijoz_turi == 'fizik')
                                                                 <tr>
                                                                     <td>@lang('cruds.client.fields.passport_serial')</td>
-                                                                    <td>{{ $item->passport->passport_serial }}</td>
+                                                                    <td>{{ $item->passport->passport_serial ?? ''}}</td>
                                                                 </tr>
                                                                 <tr>
                                                                     <td>@lang('cruds.client.fields.passport_pinfl')</td>
-                                                                    <td>{{ $item->passport->passport_pinfl }}</td>
+                                                                    <td>{{ $item->passport->passport_pinfl ?? ''}}</td>
                                                                 </tr>
                                                                 <tr>
                                                                     <td>@lang('cruds.client.fields.passport_date')</td>
-                                                                    @if ($item->passport->passport_date)
-                                                                        <td>{{ date('d-m-Y', strtotime($item->passport->passport_date)) }}
+                                                                    @if ($item->passport->passport_date ?? '')
+                                                                        <td>{{ date('d-m-Y', strtotime($item->passport->passport_date)) ?? ''}}
                                                                         </td>
                                                                     @else
                                                                         <td></td>
@@ -368,11 +368,11 @@
                                                                 </tr>
                                                                 <tr>
                                                                     <td>@lang('cruds.client.fields.passport_location')</td>
-                                                                    <td>{{ $item->passport->passport_location }}</td>
+                                                                    <td>{{ $item->passport->passport_location ?? ''}}</td>
                                                                 </tr>
                                                                 <tr>
                                                                     <td>Is Id ?</td>
-                                                                    @if ($item->passport->passport_type == 0)
+                                                                    @if (isset($item->passport->passport_type) == 0 )
                                                                         <td>Passport</td>
                                                                     @else
                                                                         <td>Id Card</td>
@@ -382,47 +382,47 @@
 
                                                                 <tr>
                                                                     <td>@lang('global.home_address')</td>
-                                                                    <td>{{ $item->address->home_address }}</td>
+                                                                    <td>{{ $item->address->home_address ?? '' }}</td>
                                                                 </tr>
                                                             @else
                                                                 <tr>
                                                                     <td>@lang('cruds.company.fields.company_name')</td>
-                                                                    <td>{{ $item->company->company_name }}</td>
+                                                                    <td>{{ $item->company->company_name ?? '' }}</td>
                                                                 </tr>
 
                                                                 <tr>
                                                                     <td>@lang('cruds.company.fields.raxbar')</td>
-                                                                    <td>{{ $item->company->raxbar }}</td>
+                                                                    <td>{{ $item->company->raxbar ?? ''}}</td>
                                                                 </tr>
                                                                 <tr>
                                                                     <td>@lang('cruds.company.fields.bank_code')</td>
-                                                                    <td>{{ $item->company->bank_code }}</td>
+                                                                    <td>{{ $item->company->bank_code ?? ''}}</td>
                                                                 </tr>
                                                                 <tr>
                                                                     <td>@lang('cruds.company.fields.bank_service')</td>
-                                                                    <td>{{ $item->company->bank_service }}</td>
+                                                                    <td>{{ $item->company->bank_service ?? ''}}</td>
                                                                 </tr>
 
                                                                 <tr>
                                                                     <td>@lang('cruds.company.fields.bank_account')</td>
-                                                                    <td>{{ $item->company->bank_account }}</td>
+                                                                    <td>{{ $item->company->bank_account ?? ''}}</td>
                                                                 </tr>
 
                                                                 <tr>
                                                                     <td>@lang('cruds.company.fields.oked')</td>
-                                                                    <td>{{ $item->company->oked }}</td>
+                                                                    <td>{{ $item->company->oked ?? ''}}</td>
                                                                 </tr>
 
                                                                 <tr>
                                                                     <td>@lang('cruds.client.fields.yuridik_address')</td>
-                                                                    <td>{{ $item->address->yuridik_address }}</td>
+                                                                    <td>{{ $item->address->yuridik_address ?? ''}}</td>
                                                                 </tr>
                             @endif
                             </tr>
 
                             <tr>
                                 <td>@lang('cruds.company.fields.stir')</td>
-                                <td>{{ $item->company->stir }}</td>
+                                <td>{{ $item->company->stir ?? ''}}</td>
                             </tr>
 
                             @foreach ($item->branches as $b)

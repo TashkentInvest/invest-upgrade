@@ -10,44 +10,24 @@ use Illuminate\Support\Facades\DB;
 
 class ConstructionController extends Controller
 {
-    // public function index(){
-    //     $constructions = Client::deepFilters()
-    //     ->with(['company','branches','address','passport'])
-    //     ->where('is_deleted', '!=', 1)->orderBy('id', 'desc')
-    //     ->paginate(25);
-        
-    //     return view('pages.construction.tasks.index', compact('constructions'));
-    // }
-
 
     public function index()
     {
-        $constructions = Client::deepFilters()
-            ->with(['company', 'branches' => function ($query) {
-                $query->whereNotNull('payed_sum');
-            }, 'address', 'passport'])
-            ->whereHas('branches', function ($query) {
-                $query->whereNotNull('payed_sum');
-            })
-            ->where('is_deleted', '!=', 1)
-            ->orderBy('id', 'desc')
-            ->paginate(25);
-    
-        // Fetch branch notifications separately if needed for other purposes
-        $branchNotifications = Branch::where(function ($query) {
-                $query->whereNotNull('payed_sum')
-                      ->orWhere('payed_sum', '>=', DB::raw('generate_price'));
-            })
-            ->select('id', 'branch_name', 'generate_price', 'contract_date', 'payment_type', 'percentage_input', 'installment_quarterly', 'branch_kubmetr', 'branch_location')
-            ->get();
-    
-        session()->flash('branchNotifications', $branchNotifications);
+        $constructions = Client::with(['company', 'branches' => function ($query) {
+            $query->whereNotNull('payed_sum')
+                  ->select('id', 'branch_name', 'generate_price', 'contract_date', 'payment_type', 'percentage_input', 'installment_quarterly', 'branch_kubmetr', 'branch_location', 'client_id'); // client_id is necessary to maintain the relationship
+        }, 'address', 'passport'])
+        ->whereHas('branches', function ($query) {
+            $query->whereNotNull('payed_sum')
+                  ->orWhere('payed_sum', '>=', DB::raw('generate_price'));
+        })
+        ->where('is_deleted', '!=', 1)
+        ->orderBy('id', 'desc')
+        ->paginate(25);
     
         return view('pages.construction.tasks.index', compact('constructions'));
     }
     
-    
-
     public function show($id){
 
         $construction = Client::with(['company','branches','address','passport'])->find($id);
@@ -56,13 +36,10 @@ class ConstructionController extends Controller
     }
 
     public function edit($id){
-        
-
         $construction = Client::where('id', $id)
         ->with(['branches', 'files'])
         ->where('is_deleted', '!=', 1)
         ->firstOrFail();
-
         
         return view('pages.construction.tasks.edit', compact('construction'));
     }
@@ -88,7 +65,6 @@ class ConstructionController extends Controller
 
             DB::commit();
 
-
             return redirect()->back()->with('success', 'Product updated successfully');
         } catch (\Exception $e) {
             DB::rollback();
@@ -97,19 +73,21 @@ class ConstructionController extends Controller
         }
     }
 
-    public function updateStatus(Request $request)
-    {
+   
+public function updateStatus(Request $request)
+{
+    $request->validate([
+        'branch_id' => 'required|integer|exists:branches,id',
+        'status' => 'required|integer',
+    ]);
 
+    View::create([
+        'user_id' => auth()->id(), // Assuming the user is authenticated
+        'branch_id' => $request->branch_id,
+        'status' => $request->status,
+    ]);
 
-        $view = View::updateOrCreate(
-            ['user_id' => auth()->id(), 'branch_id' => $request->branch_id],
-            ['status' => $request->status]
-        );
-
-        if ($view) {
-            return response()->json(['success' => true]);
-        }
-
-        return response()->json(['success' => false], 500); 
-    }
+    return redirect()->back()->with('success', 'confirmed');
+    // return response()->json(['success' => true]);
+}
 }

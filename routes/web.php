@@ -133,7 +133,6 @@ Route::group(['middleware' => 'auth'], function () {
     // Audit-Log
     Route::get('audit-logs', [AuditLogController::class, 'index'])->name('audit-logs.index');
 
-
     // Construction routes started **********************************************************
 
     Route::get('/ccc', [ConstructionController::class,'index'])->name('construction.index');
@@ -142,20 +141,14 @@ Route::group(['middleware' => 'auth'], function () {
     Route::any('/update/{id}', [ConstructionController::class, 'update'])->name('construction.update');
     Route::post('/update-status', [ConstructionController::class, 'updateStatus'])->name('updateStatus');
 
-
-
-
     Route::get('/ccc/show2', function () {
-        // dd('Welcome to manager user routes.');
         return view('pages.construction.tasks.show2');
     });
 
     Route::get('/ccc/create', function () {
-        // dd('Welcome to manager user routes.');
         return view('pages.construction.tasks.create');
     });
     
-
     Route::get('/import/backup', [BackupController::class, 'import'])->name('backup.import');
 });
 
