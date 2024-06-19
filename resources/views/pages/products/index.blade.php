@@ -436,7 +436,7 @@
                             </tr>
                             <tr>
                                 <td><strong>@lang('global.jami_tolanishi_kerak')</strong></td>
-                                <td>{{ number_format($b->generate_price, 0, ',', ' ') }}</td>
+                                <td class="formatted-number">{{ $b->generate_price }}</td>
                             </tr>
                             <tr>
                                 <td><strong>@lang('global.bolib_tolash')</strong></td>
@@ -450,7 +450,7 @@
                             </tr>
                             <tr>
                                 <td><strong>@lang('cruds.branches.fields.payed_sum')</strong></td>
-                                <td>{{ number_format($b->payed_sum, 0, ',', ' ') }}</td>
+                                <td class="formatted-number">{{ $b->payed_sum }}</td>
                             </tr>
                             <tr>
                                 <td><strong>@lang('cruds.branches.fields.payed_date')</strong></td>
@@ -481,6 +481,20 @@
                                 <td>{{ $b->installment_quarterly }}</td>
                             </tr>
                         @endforeach
+
+                        
+                        <script>
+                            function formatNumberWithSpaces(number) {
+                                return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
+                            }
+                
+                            document.addEventListener('DOMContentLoaded', function() {
+                                var elements = document.querySelectorAll('.formatted-number');
+                                elements.forEach(function(element) {
+                                    element.textContent = formatNumberWithSpaces(element.textContent);
+                                });
+                            });
+                        </script>
 
                         <tr>
                             <td colspan="2"><strong>Product Details</strong></td>
