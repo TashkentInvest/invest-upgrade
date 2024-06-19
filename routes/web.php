@@ -133,16 +133,15 @@ Route::group(['middleware' => ['auth', 'checkUserRole']], function () {
     // Audit-Log
     Route::get('audit-logs', [AuditLogController::class, 'index'])->name('audit-logs.index');
 
-    // Construction routes started **********************************************************
+    Route::get('/import/backup', [BackupController::class, 'import'])->name('backup.import');
+});
 
+Route::group(['middleware' => ['auth']], function () {
     Route::get('/constructions', [ConstructionController::class,'index'])->name('construction.index');
     Route::get('/construction/{id}', [ConstructionController::class,'show'])->name('construction.show');
     Route::get('/construction/{id}/edit', [ConstructionController::class,'edit'])->name('construction.edit');
     Route::any('/construction/update/{id}', [ConstructionController::class, 'update'])->name('construction.update');
     Route::post('/construction/update-status', [ConstructionController::class, 'updateStatus'])->name('updateStatus');
-
-    
-    Route::get('/import/backup', [BackupController::class, 'import'])->name('backup.import');
 });
 
 Route::get('/language/{lang}', function ($lang) {

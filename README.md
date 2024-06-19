@@ -415,3 +415,13 @@ php artisan make:migration add_apz_columns_to_branches_table --table=branches
 
     712100261
  ```
+
+ ## if storage undeletable 
+ ```
+ unlink storage
+ 
+ rm storage
+
+ls -l storage
+
+ ```
