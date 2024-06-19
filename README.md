@@ -382,3 +382,28 @@ protected $routeMiddleware = [
 ```
 composer require symfony/mailer
 ```
+
+```
+php artisan make:migration add_apz_columns_to_branches_table --table=branches
+
+ public function up()
+    {
+        Schema::table('branches', function (Blueprint $table) {
+            $table->string('apz_raqami')->nullable()->after('branch_type');
+            $table->date('apz_sanasi')->nullable()->after('apz_raqami');
+            $table->text('kengash')->nullable()->after('apz_sanasi');
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::table('branches', function (Blueprint $table) {
+            $table->dropColumn(['apz_raqami', 'apz_sanasi', 'kengash']);
+        });
+    }
+ ```
