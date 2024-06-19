@@ -210,6 +210,8 @@ modal kada confirm bosaganda timer qoyish kere
 
 product index/show add some beauty
 
+company_name and branch_name word ga qoshish kere 
+
 
 ```
 
