@@ -109,34 +109,34 @@
                 </div><!--end card-->
             </div><!--end col-->
         </div><!--end row-->
-    @endsection
+@endsection
 
-    @push('styles')
-        <style>
-            .table th,
-            .table td {
-                vertical-align: middle;
-                text-align: center;
-            }
+@push('styles')
+    <style>
+        .table th,
+        .table td {
+            vertical-align: middle;
+            text-align: center;
+        }
 
-            .table th {
-                background-color: #f8f9fa;
-            }
+        .table th {
+            background-color: #f8f9fa;
+        }
 
-            .btn-soft-primary {
-                background-color: #d1e7dd;
-                border-color: #badbcc;
-                color: #0f5132;
-            }
+        .btn-soft-primary {
+            background-color: #d1e7dd;
+            border-color: #badbcc;
+            color: #0f5132;
+        }
 
-            .btn-soft-primary:hover {
-                background-color: #badbcc;
-                border-color: #a5cfbb;
-                color: #0f5132;
-            }
+        .btn-soft-primary:hover {
+            background-color: #badbcc;
+            border-color: #a5cfbb;
+            color: #0f5132;
+        }
 
-            .card-body.border-bottom {
-                border-bottom: 1px solid #e9ecef !important;
-            }
-        </style>
-    @endpush
+        .card-body.border-bottom {
+            border-bottom: 1px solid #e9ecef !important;
+        }
+    </style>
+@endpush

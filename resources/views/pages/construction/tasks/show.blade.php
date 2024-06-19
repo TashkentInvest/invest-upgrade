@@ -26,7 +26,7 @@
                 <div class="card-body">
                     <div class="invoice-title">
                         <h4 class="float-end font-size-16">
-                                {{-- @lang('global.contract_details') - {{ $b->contract_apt }} --}}
+                            {{-- @lang('global.contract_details') - {{ $b->contract_apt }} --}}
 
                         </h4>
                         <div class="mb-4">
@@ -40,7 +40,8 @@
                             <tbody>
                                 <tr>
                                     <td><strong>@lang('global.fio')</strong></td>
-                                    <td colspan="2">{{ $construction->last_name }} {{ $construction->first_name }} {{ $construction->father_name }}</td>
+                                    <td colspan="2">{{ $construction->last_name }} {{ $construction->first_name }}
+                                        {{ $construction->father_name }}</td>
                                 </tr>
                                 @if ($construction->mijoz_turi == 'fizik')
                                     <tr>
@@ -211,7 +212,7 @@
                                     function formatNumberWithSpaces(number) {
                                         return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
                                     }
-                        
+
                                     document.addEventListener('DOMContentLoaded', function() {
                                         var elements = document.querySelectorAll('.formatted-number');
                                         elements.forEach(function(element) {
@@ -228,15 +229,19 @@
                         <h5>@lang('cruds.construction.fields.viewers'): </h5>
                         @php $viewCount = 0; @endphp
                         @foreach ($construction->branches as $b)
-                            @foreach ($b->views as  $key => $v)
-                                @if($v)
+                            @foreach ($b->views as $key => $v)
+                                @if ($v)
                                     @php $viewCount++; @endphp
                                     <div class="d-flex py-3 border-bottom">
                                         <div class="px-3 flex-grow-1">
                                             {{-- <h4>{{$key+1}} ) </h4> --}}
-                                            <h4 class="mb-1 font-size-15"><i class="far fa-user text-primary me-1"></i> {{ $v->user->name }}</h4>
-                                            <p class="text-muted"><i class="far fa-envelope text-primary me-1"></i> {{ $v->user->email }}</p>
-                                            <div class="text-muted font-size-12"><i class="far fa-calendar-alt text-primary me-1"></i> {{ $v->updated_at }} ( {{ $v->updated_at->diffForHumans() }} )</div>
+                                            <h4 class="mb-1 font-size-15"><i class="far fa-user text-primary me-1"></i>
+                                                {{ $v->user->name }}</h4>
+                                            <p class="text-muted"><i class="far fa-envelope text-primary me-1"></i>
+                                                {{ $v->user->email }}</p>
+                                            <div class="text-muted font-size-12"><i
+                                                    class="far fa-calendar-alt text-primary me-1"></i> {{ $v->updated_at }}
+                                                ( {{ $v->updated_at->diffForHumans() }} )</div>
                                         </div>
                                     </div>
                                 @endif
@@ -246,60 +251,84 @@
                             <h5>@lang('cruds.construction.fields.views_count'): {{ $viewCount }}</h5>
                         </div>
                     </div>
-                    
+
                     <!-- Edit Button -->
                     <div class="d-print-none mt-4">
                         <div class="float-end">
-                            <a href="javascript:window.print()" class="btn btn btn-success waves-effect waves-light me-1"><i class="fa fa-print"></i></a>
-                            <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal_{{ $construction->id }}" class="btn btn-primary">@lang('global.edit')</button>
+                            <a href="javascript:window.print()" class="btn btn btn-success waves-effect waves-light me-1"><i
+                                    class="fa fa-print"></i></a>
+                            <button type="button" data-bs-toggle="modal"
+                                data-bs-target="#exampleModal_{{ $construction->id }}"
+                                class="btn btn-primary">@lang('global.edit')</button>
                         </div>
                     </div>
 
                     <!-- Edit Modal -->
-                    <div class="modal fade" id="exampleModal_{{ $construction->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal fade" id="exampleModal_{{ $construction->id }}" tabindex="-1"
+                        aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog modal-dialog-scrollable modal-lg">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalLabel">{{ $construction->{'name_' . app()->getLocale()} }}</h5>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    <h5 class="modal-title" id="exampleModalLabel">
+                                        {{ $construction->{'name_' . app()->getLocale()} }}</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
                                 </div>
                                 <form action="{{ route('construction.update', $construction->id) }}" method="post">
                                     @csrf
                                     @method('PUT')
                                     <div class="modal-body">
                                         @foreach ($construction->branches as $branchIndex => $b)
-                                            <input type="hidden" name="accordions[{{ $branchIndex }}][id]" value="{{ $b->id }}">
+                                            <input type="hidden" name="accordions[{{ $branchIndex }}][id]"
+                                                value="{{ $b->id }}">
 
                                             <div class="row">
                                                 <div class="col-lg-6 mb-3">
-                                                    <label for="projectname" class="col-form-label">@lang('cruds.branches.fields.apz_number')</label>
-                                                    <input id="projectname" name="accordions[{{ $branchIndex }}][apz_raqami]" type="text" class="form-control" value="{{ old('accordions.' . $branchIndex . '.apz_raqami', $b->apz_raqami) }}" placeholder="@lang('cruds.branches.fields.apz_number')">
+                                                    <label for="projectname"
+                                                        class="col-form-label">@lang('cruds.branches.fields.apz_number')</label>
+                                                    <input id="projectname"
+                                                        name="accordions[{{ $branchIndex }}][apz_raqami]" type="text"
+                                                        class="form-control"
+                                                        value="{{ old('accordions.' . $branchIndex . '.apz_raqami', $b->apz_raqami) }}"
+                                                        placeholder="@lang('cruds.branches.fields.apz_number')">
                                                 </div>
                                                 <div class="col-lg-6 mb-3">
-                                                    <label for="projectname" class="col-form-label">@lang('cruds.branches.fields.apz_date')</label>
-                                                    <input id="projectname" name="accordions[{{ $branchIndex }}][apz_sanasi]" type="date" class="form-control" value="{{ old('accordions.' . $branchIndex . '.apz_sanasi', $b->apz_sanasi) }}" placeholder="@lang('cruds.branches.fields.apz_date')">
+                                                    <label for="projectname"
+                                                        class="col-form-label">@lang('cruds.branches.fields.apz_date')</label>
+                                                    <input id="projectname"
+                                                        name="accordions[{{ $branchIndex }}][apz_sanasi]" type="date"
+                                                        class="form-control"
+                                                        value="{{ old('accordions.' . $branchIndex . '.apz_sanasi', $b->apz_sanasi) }}"
+                                                        placeholder="@lang('cruds.branches.fields.apz_date')">
                                                 </div>
                                                 <div class="col-lg-6">
                                                     <div class="mb-3">
                                                         <label for="contract_apt">@lang('global.ruxsatnoma_raqami')</label>
-                                                        <input type="text" class="form-control" name="accordions[{{ $branchIndex }}][contract_apt]" value="{{ old('accordions.' . $branchIndex . '.contract_apt', $b->contract_apt) }}" placeholder="@lang('global.ruxsatnoma_raqami')">
+                                                        <input type="text" class="form-control"
+                                                            name="accordions[{{ $branchIndex }}][contract_apt]"
+                                                            value="{{ old('accordions.' . $branchIndex . '.contract_apt', $b->contract_apt) }}"
+                                                            placeholder="@lang('global.ruxsatnoma_raqami')">
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-6">
                                                     <div class="mb-3">
                                                         <label for="contract_date">@lang('global.sanasi')</label>
-                                                        <input class="form-control" type="date" name="accordions[{{ $branchIndex }}][contract_date]" value="{{ old('accordions.' . $branchIndex . '.contract_date', $b->contract_date) }}">
+                                                        <input class="form-control" type="date"
+                                                            name="accordions[{{ $branchIndex }}][contract_date]"
+                                                            value="{{ old('accordions.' . $branchIndex . '.contract_date', $b->contract_date) }}">
                                                     </div>
                                                 </div>
                                                 <div class="col-12">
-                                                    <textarea class="w-100 my-3 form-control" name="accordions[{{ $branchIndex }}][kengash]" id="" cols="30" rows="10" placeholder="@lang('cruds.branches.fields.kengash')">{{ old('accordions.' . $branchIndex . '.kengash', $b->kengash) }}</textarea>
+                                                    <textarea class="w-100 my-3 form-control" name="accordions[{{ $branchIndex }}][kengash]" id=""
+                                                        cols="30" rows="10" placeholder="@lang('cruds.branches.fields.kengash')">{{ old('accordions.' . $branchIndex . '.kengash', $b->kengash) }}</textarea>
                                                 </div>
                                             </div>
                                         @endforeach
                                     </div>
                                     <div class="modal-footer d-flex">
                                         <button type="submit" class="btn btn-primary">Submit</button>
-                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                        <button type="button" class="btn btn-secondary"
+                                            data-bs-dismiss="modal">Close</button>
                                     </div>
                                 </form>
                             </div>

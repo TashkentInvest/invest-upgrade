@@ -1,7 +1,6 @@
 @extends('layouts.admin')
 
 @section('content')
-
     <div class="row">
         <div class="col-12">
             <div class="page-title-box d-sm-flex align-items-center justify-content-between">
@@ -102,7 +101,6 @@
                                     {{ $client->father_name }}</td>
                             </tr>
                             @if ($client->mijoz_turi == 'fizik')
-
                                 <tr>
                                     <td>{{ __('global.passport_pinfl') }}</td>
                                     <td>{{ $client->passport->passport_pinfl }}</td>
@@ -170,7 +168,8 @@
 
                             @foreach ($client->branches as $b)
                                 <tr>
-                                    <td colspan="3" class="text-center bg-secondary text-light"><strong>@lang('global.contract_details') -
+                                    <td colspan="3" class="text-center bg-secondary text-light">
+                                        <strong>@lang('global.contract_details') -
                                             {{ $b->contract_apt }}</strong></td>
                                 </tr>
 
@@ -202,7 +201,7 @@
                                     <td>@lang('cruds.company.fields.branch_location')</td>
                                     <td colspan="2">{{ $b->branch_location }}</td>
                                 </tr>
-                              
+
                                 <tr>
                                     <td>@lang('global.obyekt_boyicha_tolanishi_lozim') ( m³ )</td>
                                     <td colspan="2">{{ number_format($b->branch_kubmetr, 1) }}</td>
@@ -212,7 +211,7 @@
                                     <td colspan="2" class="formatted-number">{{ $b->generate_price }}</td>
                                 </tr>
 
-                
+
 
                                 <tr>
                                     <td>@lang('global.bolib_tolash_foizi_oldindan')</td>
@@ -261,14 +260,13 @@
                                     <td>@lang('cruds.branches.fields.bank_guarantee')</td>
                                     <td colspan="2">{{ $b->bank_guarantee }}</td>
                                 </tr>
-
                             @endforeach
 
                             <script>
                                 function formatNumberWithSpaces(number) {
                                     return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
                                 }
-                    
+
                                 document.addEventListener('DOMContentLoaded', function() {
                                     var elements = document.querySelectorAll('.formatted-number');
                                     elements.forEach(function(element) {
@@ -296,7 +294,6 @@
 
         </div>
     </div>
-
 @endsection
 
 @section('scripts')

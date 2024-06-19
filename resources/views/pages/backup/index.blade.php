@@ -131,7 +131,6 @@
     </div>
 @endsection
 
-
 @section('scripts')
     <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
@@ -212,7 +211,7 @@
                                         'success'
                                     ).then((result) => {
                                         location
-                                    .reload(); // Refresh the page after deletion
+                                            .reload(); // Refresh the page after deletion
                                     });
                                 },
                                 error: function(xhr, status, error) {

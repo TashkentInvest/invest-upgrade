@@ -19,7 +19,6 @@
     </div>
 
     <div class="row">
-
         <div class="col-12">
             <div class="card">
                 <div class="card-header d-flex justify-content-between">
@@ -320,211 +319,222 @@
                                                 </li>
                                             </ul>
                                         </form>
-                                    <!-- Modal -->
-<div class="modal fade" id="exampleModal_{{ $item->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-scrollable modal-lg">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">
-                    <strong>{{ $item->{'name_' . app()->getLocale()} }}</strong>
-                </h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <table class="table table-striped">
-                    <tbody style="font-size: 1.2em;"> <!-- Larger font size -->
-                        <tr>
-                            <td><strong>@lang('global.fio')</strong></td>
-                            <td>{{ $item->last_name }} {{ $item->first_name }} {{ $item->father_name }}</td>
-                        </tr>
-                        <tr>
-                            <td><strong>@lang('cruds.client.fields.contact')</strong></td>
-                            <td>{{ $item->contact }}</td>
-                        </tr>
-                        @if ($item->mijoz_turi == 'fizik')
-                            <tr>
-                                <td><strong>@lang('cruds.client.fields.passport_serial')</strong></td>
-                                <td>{{ $item->passport->passport_serial ?? '' }}</td>
-                            </tr>
-                            <tr>
-                                <td><strong>@lang('cruds.client.fields.passport_pinfl')</strong></td>
-                                <td>{{ $item->passport->passport_pinfl ?? '' }}</td>
-                            </tr>
-                            <tr>
-                                <td><strong>@lang('cruds.client.fields.passport_date')</strong></td>
-                                <td>{{ $item->passport->passport_date ? date('d-m-Y', strtotime($item->passport->passport_date)) : '' }}</td>
-                            </tr>
-                            <tr>
-                                <td><strong>@lang('cruds.client.fields.passport_location')</strong></td>
-                                <td>{{ $item->passport->passport_location ?? '' }}</td>
-                            </tr>
-                            <tr>
-                                <td><strong>@lang('global.passportId') ?</strong></td>
-                                <td>{{ isset($item->passport->passport_type) == 0 ? 'Passport' : 'Id Card' }}</td>
-                            </tr>
-                            <tr>
-                                <td><strong>@lang('global.home_address')</strong></td>
-                                <td>{{ $item->address->home_address ?? '' }}</td>
-                            </tr>
-                        @else
-                            <tr>
-                                <td><strong>@lang('cruds.company.fields.company_name')</strong></td>
-                                <td>{{ $item->company->company_name ?? '' }}</td>
-                            </tr>
-                            <tr>
-                                <td><strong>@lang('cruds.company.fields.raxbar')</strong></td>
-                                <td>{{ $item->company->raxbar ?? '' }}</td>
-                            </tr>
-                            <tr>
-                                <td><strong>@lang('cruds.company.fields.bank_code')</strong></td>
-                                <td>{{ $item->company->bank_code ?? '' }}</td>
-                            </tr>
-                            <tr>
-                                <td><strong>@lang('cruds.company.fields.bank_service')</strong></td>
-                                <td>{{ $item->company->bank_service ?? '' }}</td>
-                            </tr>
-                            <tr>
-                                <td><strong>@lang('cruds.company.fields.bank_account')</strong></td>
-                                <td>{{ $item->company->bank_account ?? '' }}</td>
-                            </tr>
-                            <tr>
-                                <td><strong>@lang('cruds.company.fields.oked')</strong></td>
-                                <td>{{ $item->company->oked ?? '' }}</td>
-                            </tr>
-                            <tr>
-                                <td><strong>@lang('cruds.client.fields.yuridik_address')</strong></td>
-                                <td>{{ $item->address->yuridik_address ?? '' }}</td>
-                            </tr>
-                        @endif
+                                        <!-- Modal -->
+                                        <div class="modal fade" id="exampleModal_{{ $item->id }}" tabindex="-1"
+                                            aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog modal-dialog-scrollable modal-lg">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="exampleModalLabel">
+                                                            <strong>{{ $item->{'name_' . app()->getLocale()} }}</strong>
+                                                        </h5>
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                            aria-label="Close"></button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <table class="table table-striped">
+                                                            <tbody style="font-size: 1.2em;"> <!-- Larger font size -->
+                                                                <tr>
+                                                                    <td><strong>@lang('global.fio')</strong></td>
+                                                                    <td>{{ $item->last_name }} {{ $item->first_name }}
+                                                                        {{ $item->father_name }}</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td><strong>@lang('cruds.client.fields.contact')</strong></td>
+                                                                    <td>{{ $item->contact }}</td>
+                                                                </tr>
+                                                                @if ($item->mijoz_turi == 'fizik')
+                                                                    <tr>
+                                                                        <td><strong>@lang('cruds.client.fields.passport_serial')</strong></td>
+                                                                        <td>{{ $item->passport->passport_serial ?? '' }}
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td><strong>@lang('cruds.client.fields.passport_pinfl')</strong></td>
+                                                                        <td>{{ $item->passport->passport_pinfl ?? '' }}
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td><strong>@lang('cruds.client.fields.passport_date')</strong></td>
+                                                                        <td>{{ $item->passport->passport_date ? date('d-m-Y', strtotime($item->passport->passport_date)) : '' }}
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td><strong>@lang('cruds.client.fields.passport_location')</strong></td>
+                                                                        <td>{{ $item->passport->passport_location ?? '' }}
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td><strong>@lang('global.passportId') ?</strong></td>
+                                                                        <td>{{ isset($item->passport->passport_type) == 0 ? 'Passport' : 'Id Card' }}
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td><strong>@lang('global.home_address')</strong></td>
+                                                                        <td>{{ $item->address->home_address ?? '' }}</td>
+                                                                    </tr>
+                                                                @else
+                                                                    <tr>
+                                                                        <td><strong>@lang('cruds.company.fields.company_name')</strong></td>
+                                                                        <td>{{ $item->company->company_name ?? '' }}</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td><strong>@lang('cruds.company.fields.raxbar')</strong></td>
+                                                                        <td>{{ $item->company->raxbar ?? '' }}</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td><strong>@lang('cruds.company.fields.bank_code')</strong></td>
+                                                                        <td>{{ $item->company->bank_code ?? '' }}</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td><strong>@lang('cruds.company.fields.bank_service')</strong></td>
+                                                                        <td>{{ $item->company->bank_service ?? '' }}</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td><strong>@lang('cruds.company.fields.bank_account')</strong></td>
+                                                                        <td>{{ $item->company->bank_account ?? '' }}</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td><strong>@lang('cruds.company.fields.oked')</strong></td>
+                                                                        <td>{{ $item->company->oked ?? '' }}</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td><strong>@lang('cruds.client.fields.yuridik_address')</strong></td>
+                                                                        <td>{{ $item->address->yuridik_address ?? '' }}
+                                                                        </td>
+                                                                    </tr>
+                                                                @endif
 
-                        <tr>
-                            <td><strong>@lang('cruds.company.fields.stir')</strong></td>
-                            <td>{{ $item->company->stir ?? '' }}</td>
-                        </tr>
+                                                                <tr>
+                                                                    <td><strong>@lang('cruds.company.fields.stir')</strong></td>
+                                                                    <td>{{ $item->company->stir ?? '' }}</td>
+                                                                </tr>
 
-                        @foreach ($item->branches as $b)
-                            {{-- <tr>
-                                <td colspan="2"><strong>Obyekt</strong></td>
-                            </tr> --}}
-                            <tr>
-                                <td><strong>@lang('global.ruxsatnoma_raqami')</strong></td>
-                                <td>{{ $b->contract_apt }}</td>
-                            </tr>
-                            <tr>
-                                <td><strong>@lang('global.sanasi')</strong></td>
-                                <td>{{ $b->contract_date }}</td>
-                            </tr>
-                            <tr>
-                                <td><strong>@lang('cruds.branches.fields.application_number')</strong></td>
-                                <td>{{ $b->application_number }}</td>
-                            </tr>
-                            <tr>
-                                <td><strong>@lang('global.loyiha_nomi')</strong></td>
-                                <td>{{ $b->branch_name }}</td>
-                            </tr>
-                            <tr>
-                                <td><strong>@lang('cruds.company.fields.branch_type')</strong></td>
-                                <td>{{ $b->branch_type }}</td>
-                            </tr>
-                            <tr>
-                                <td><strong>@lang('cruds.company.fields.branch_location')</strong></td>
-                                <td>{{ $b->branch_location }}</td>
-                            </tr>
-                            <tr>
-                                <td><strong>@lang('global.obyekt_boyicha_tolanishi_lozim')</strong></td>
-                                <td>{{ number_format($b->branch_kubmetr, 1) }}</td>
-                            </tr>
-                            <tr>
-                                <td><strong>@lang('global.jami_tolanishi_kerak')</strong></td>
-                                <td class="formatted-number">{{ $b->generate_price }}</td>
-                            </tr>
-                            <tr>
-                                <td><strong>@lang('global.bolib_tolash')</strong></td>
-                                <td>
-                                    @if ($b->payment_type == 'pay_bolib')
-                                        @lang('global.pay_bolib')
-                                    @else
-                                        @lang('global.pay_full')
-                                    @endif
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><strong>@lang('cruds.branches.fields.payed_sum')</strong></td>
-                                <td class="formatted-number">{{ $b->payed_sum }}</td>
-                            </tr>
-                            <tr>
-                                <td><strong>@lang('cruds.branches.fields.payed_date')</strong></td>
-                                <td>{{ $b->payed_date }}</td>
-                            </tr>
-                            <tr>
-                                <td><strong>@lang('global.bolib_tolash_foizi_oldindan')</strong></td>
-                                <td>{{ $b->percentage_input }} %</td>
-                            </tr>
-                            <tr>
-                                <td><strong>@lang('cruds.branches.fields.notification_num')</strong></td>
-                                <td>{{ $b->notification_num }}</td>
-                            </tr>
-                            <tr>
-                                <td><strong>@lang('cruds.branches.fields.notification_date')</strong></td>
-                                <td>{{ $b->notification_date }}</td>
-                            </tr>
-                            <tr>
-                                <td><strong>@lang('cruds.branches.fields.insurance_policy')</strong></td>
-                                <td>{{ $b->insurance_policy }}</td>
-                            </tr>
-                            <tr>
-                                <td><strong>@lang('cruds.branches.fields.bank_guarantee')</strong></td>
-                                <td>{{ $b->bank_guarantee }}</td>
-                            </tr>
-                            <tr>
-                                <td><strong>@lang('global.quarterly_payment')</strong></td>
-                                <td>{{ $b->installment_quarterly }}</td>
-                            </tr>
-                        @endforeach
+                                                                @foreach ($item->branches as $b)
+                                                        
+                                                                    <tr>
+                                                                        <td><strong>@lang('global.ruxsatnoma_raqami')</strong></td>
+                                                                        <td>{{ $b->contract_apt }}</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td><strong>@lang('global.sanasi')</strong></td>
+                                                                        <td>{{ $b->contract_date }}</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td><strong>@lang('cruds.branches.fields.application_number')</strong></td>
+                                                                        <td>{{ $b->application_number }}</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td><strong>@lang('global.loyiha_nomi')</strong></td>
+                                                                        <td>{{ $b->branch_name }}</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td><strong>@lang('cruds.company.fields.branch_type')</strong></td>
+                                                                        <td>{{ $b->branch_type }}</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td><strong>@lang('cruds.company.fields.branch_location')</strong></td>
+                                                                        <td>{{ $b->branch_location }}</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td><strong>@lang('global.obyekt_boyicha_tolanishi_lozim')</strong></td>
+                                                                        <td>{{ number_format($b->branch_kubmetr, 1) }}</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td><strong>@lang('global.jami_tolanishi_kerak')</strong></td>
+                                                                        <td class="formatted-number">
+                                                                            {{ $b->generate_price }}</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td><strong>@lang('global.bolib_tolash')</strong></td>
+                                                                        <td>
+                                                                            @if ($b->payment_type == 'pay_bolib')
+                                                                                @lang('global.pay_bolib')
+                                                                            @else
+                                                                                @lang('global.pay_full')
+                                                                            @endif
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td><strong>@lang('cruds.branches.fields.payed_sum')</strong></td>
+                                                                        <td class="formatted-number">{{ $b->payed_sum }}
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td><strong>@lang('cruds.branches.fields.payed_date')</strong></td>
+                                                                        <td>{{ $b->payed_date }}</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td><strong>@lang('global.bolib_tolash_foizi_oldindan')</strong></td>
+                                                                        <td>{{ $b->percentage_input }} %</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td><strong>@lang('cruds.branches.fields.notification_num')</strong></td>
+                                                                        <td>{{ $b->notification_num }}</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td><strong>@lang('cruds.branches.fields.notification_date')</strong></td>
+                                                                        <td>{{ $b->notification_date }}</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td><strong>@lang('cruds.branches.fields.insurance_policy')</strong></td>
+                                                                        <td>{{ $b->insurance_policy }}</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td><strong>@lang('cruds.branches.fields.bank_guarantee')</strong></td>
+                                                                        <td>{{ $b->bank_guarantee }}</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td><strong>@lang('global.quarterly_payment')</strong></td>
+                                                                        <td>{{ $b->installment_quarterly }}</td>
+                                                                    </tr>
+                                                                @endforeach
 
-                        
-                        <script>
-                            function formatNumberWithSpaces(number) {
-                                return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
-                            }
-                
-                            document.addEventListener('DOMContentLoaded', function() {
-                                var elements = document.querySelectorAll('.formatted-number');
-                                elements.forEach(function(element) {
-                                    element.textContent = formatNumberWithSpaces(element.textContent);
-                                });
-                            });
-                        </script>
 
-                        <tr>
-                            <td colspan="2"><strong>Product Details</strong></td>
-                        </tr>
-                        <tr>
-                            <td><strong>@lang('global.bazaviy_xisoblash_miqdori')</strong></td>
-                            <td>{{ $item->minimum_wage }}</td>
-                        </tr>
+                                                                <script>
+                                                                    function formatNumberWithSpaces(number) {
+                                                                        return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
+                                                                    }
 
-                    </tbody>
-                </table>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">@lang('global.closed')</button>
+                                                                    document.addEventListener('DOMContentLoaded', function() {
+                                                                        var elements = document.querySelectorAll('.formatted-number');
+                                                                        elements.forEach(function(element) {
+                                                                            element.textContent = formatNumberWithSpaces(element.textContent);
+                                                                        });
+                                                                    });
+                                                                </script>
+
+                                                                <tr>
+                                                                    <td colspan="2"><strong>Product Details</strong>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td><strong>@lang('global.bazaviy_xisoblash_miqdori')</strong></td>
+                                                                    <td>{{ $item->minimum_wage }}</td>
+                                                                </tr>
+
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary"
+                                                            data-bs-dismiss="modal">@lang('global.closed')</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                    <div class="d-flex">
+
+                        {!! $clients->links() !!}
+                    </div>
+                </div>
             </div>
         </div>
-        </div>
-    </div>
-    </td>
-    </tr>
-    @endforeach
-    </tbody>
-    </table>
-    <div class="d-flex">
-
-        {!! $clients->links() !!}
-    </div>
-    </div>
-    </div>
-    </div>
     </div>
 @endsection
 
@@ -552,20 +562,20 @@
     </script>
 
     {{-- <script>
-    function updateData() {
-        $.ajax({
-            url: '{{ route("clientIndex") }}',
-            method: 'GET',
-            success: function(response) {
-                $('#layout-wrapper').html(response);
-                // console.log(response)
-            },
-            error: function(xhr, status, error) {
-                console.error(xhr.responseText);
-            }
-        });
-    }
+        function updateData() {
+            $.ajax({
+                url: '{{ route("clientIndex") }}',
+                method: 'GET',
+                success: function(response) {
+                    $('#layout-wrapper').html(response);
+                    // console.log(response)
+                },
+                error: function(xhr, status, error) {
+                    console.error(xhr.responseText);
+                }
+            });
+        }
 
-    setInterval(updateData, 10000);
-</script> --}}
+        setInterval(updateData, 10000);
+    </script> --}}
 @endsection

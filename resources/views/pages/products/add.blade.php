@@ -58,7 +58,8 @@
                                     </div>
 
                                     <div class="col-12 col-lg-4 mb-2">
-                                        <label for="raxbar" class="col-md-6 col-form-label">@lang('cruds.company.fields.raxbar') - @lang('global.client_name')</label>
+                                        <label for="raxbar" class="col-md-6 col-form-label">@lang('cruds.company.fields.raxbar') -
+                                            @lang('global.client_name')</label>
                                         <input class="form-control {{ $errors->has('raxbar') ? 'is-invalid' : '' }}"
                                             type="text" name="raxbar" id="raxbar" placeholder="@lang('cruds.company.fields.raxbar')"
                                             value="{{ old('raxbar') }}">
@@ -72,8 +73,8 @@
                                     <div class="col-12 col-lg-4 mb-2">
                                         <label for="oked" class="col-md-6 col-form-label">@lang('cruds.company.fields.oked')</label>
                                         <input class="form-control {{ $errors->has('oked') ? 'is-invalid' : '' }}"
-                                               type="text" name="oked" id="oked" placeholder="@lang('cruds.company.fields.oked')"
-                                               value="{{ old('oked') }}"    maxlength="5">
+                                            type="text" name="oked" id="oked" placeholder="@lang('cruds.company.fields.oked')"
+                                            value="{{ old('oked') }}" maxlength="5">
                                         @if ($errors->has('oked'))
                                             <span class="error invalid-feedback">{{ $errors->first('oked') }}</span>
                                         @endif
@@ -106,14 +107,15 @@
                                         <label for="bank_account" class="col-md-6 col-form-label">@lang('cruds.company.fields.bank_account')</label>
                                         <input class="form-control {{ $errors->has('bank_account') ? 'is-invalid' : '' }}"
                                             type="text" name="bank_account" max="5" id="bank_account"
-                                            placeholder="@lang('cruds.company.fields.bank_account')" value="{{ old('bank_account') }}"    maxlength="20"
-                                            name="bank_account" id="alloptions">
+                                            placeholder="@lang('cruds.company.fields.bank_account')" value="{{ old('bank_account') }}"
+                                            maxlength="20" name="bank_account" id="alloptions">
 
                                         @if ($errors->has('bank_account'))
-                                            <span class="error invalid-feedback">{{ $errors->first('bank_account') }}</span>
+                                            <span
+                                                class="error invalid-feedback">{{ $errors->first('bank_account') }}</span>
                                         @endif
                                     </div>
-                                    
+
 
                                     <div class="col-12 col-lg-3 mb-2">
                                         <label for="yuridik_address"
@@ -189,8 +191,8 @@
                                     <div class="col-12 col-lg-2 mb-2">
                                         <label for="stir" class="col-md-6 col-form-label">@lang('cruds.company.fields.stir')</label>
                                         <input class="form-control {{ $errors->has('stir') ? 'is-invalid' : '' }}"
-                                            type="text" name="stir" id="stir" placeholder="@lang('cruds.company.fields.stir')"
-                                            value="{{ old('stir') }}"    maxlength="9">
+                                            type="text" name="stir" id="stir"
+                                            placeholder="@lang('cruds.company.fields.stir')" value="{{ old('stir') }}" maxlength="9">
                                         @if ($errors->has('stir'))
                                             <span class="error invalid-feedback">{{ $errors->first('stir') }}</span>
                                         @endif
@@ -206,7 +208,8 @@
                                         <input
                                             class="form-control {{ $errors->has('passport_serial') ? 'is-invalid' : '' }}"
                                             type="text" name="passport_serial" id="passport_serial"
-                                            placeholder="@lang('cruds.client.fields.passport_serial')" value="{{ old('passport_serial') }}" maxlength="10">
+                                            placeholder="@lang('cruds.client.fields.passport_serial')" value="{{ old('passport_serial') }}"
+                                            maxlength="10">
                                         @if ($errors->has('passport_serial'))
                                             <span
                                                 class="error invalid-feedback">{{ $errors->first('passport_serial') }}</span>
@@ -219,7 +222,8 @@
                                         <input
                                             class="form-control {{ $errors->has('passport_pinfl') ? 'is-invalid' : '' }}"
                                             type="text" name="passport_pinfl" id="passport_pinfl"
-                                            placeholder="@lang('cruds.client.fields.passport_pinfl')" value="{{ old('passport_pinfl') }}" maxlength="14">
+                                            placeholder="@lang('cruds.client.fields.passport_pinfl')" value="{{ old('passport_pinfl') }}"
+                                            maxlength="14">
                                         @if ($errors->has('passport_pinfl'))
                                             <span
                                                 class="error invalid-feedback">{{ $errors->first('passport_pinfl') }}</span>
@@ -255,8 +259,7 @@
                                     <div class="col-12 col-lg-3 mb-2">
                                         <label for="home_address"
                                             class="col-md-6 col-form-label">@lang('global.home_address')</label>
-                                        <input
-                                            class="form-control {{ $errors->has('home_address') ? 'is-invalid' : '' }}"
+                                        <input class="form-control {{ $errors->has('home_address') ? 'is-invalid' : '' }}"
                                             type="text" name="home_address" id="home_address"
                                             placeholder="@lang('global.home_address')" value="{{ old('home_address') }}">
                                         @if ($errors->has('home_address'))
@@ -265,12 +268,12 @@
                                         @endif
                                     </div>
 
-                                  
+
 
                                 </div>
 
-                                <div class="row"  style="align-items: center ">
-                                    
+                                <div class="row" style="align-items: center ">
+
                                     <div class="col-12 col-lg-3 mb-2">
                                         <label for="client_description"
                                             class="col-md-6 col-form-label">@lang('cruds.client.fields.client_description')</label>
@@ -291,8 +294,8 @@
                                         @endif
                                     </div>
 
-                                    
-                              
+
+
 
                                     <div class="col-12 col-lg-3 mb-2">
                                         <label for="is_passport_id">Is passport ID?</label>
@@ -300,7 +303,7 @@
                                     </div>
                                 </div>
 
-                           
+
 
                                 <script>
                                     $(document).ready(function() {
@@ -358,7 +361,7 @@
                                                                     name="accordions[0][contract_date]">
                                                             </div>
                                                         </div>
-                                                    {{-- </div>
+                                                        {{-- </div>
                                                     <div class="row">
                                                     
                                                          <div class="col-lg-6">
@@ -371,163 +374,207 @@
                                                         </div> 
                                                 
                                                     </div> --}}
-                                                    {{-- Starting to add new rows --}}
+                                                        {{-- Starting to add new rows --}}
 
-                                                    <div class="row">
-                                                        <div class="col-lg-3">
-                                                            <div class="mb-3">
-                                                                <label for="notification_num">@lang('cruds.branches.fields.notification_num')</label>
-                                                                <input type="text" class="form-control" name="accordions[0][notification_num]" placeholder="@lang('cruds.branches.fields.notification_num')">
+                                                        <div class="row">
+                                                            <div class="col-lg-3">
+                                                                <div class="mb-3">
+                                                                    <label
+                                                                        for="notification_num">@lang('cruds.branches.fields.notification_num')</label>
+                                                                    <input type="text" class="form-control"
+                                                                        name="accordions[0][notification_num]"
+                                                                        placeholder="@lang('cruds.branches.fields.notification_num')">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-lg-3">
+                                                                <div class="mb-3">
+                                                                    <label
+                                                                        for="notification_date">@lang('cruds.branches.fields.notification_date')</label>
+                                                                    <input type="date" class="form-control"
+                                                                        name="accordions[0][notification_date]"
+                                                                        placeholder="@lang('cruds.branches.fields.notification_date')">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-lg-3">
+                                                                <div class="mb-3">
+                                                                    <label
+                                                                        for="insurance_policy">@lang('cruds.branches.fields.insurance_policy')</label>
+                                                                    <input type="text" class="form-control"
+                                                                        name="accordions[0][insurance_policy]"
+                                                                        placeholder="@lang('cruds.branches.fields.insurance_policy')">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-lg-3">
+                                                                <div class="mb-3">
+                                                                    <label for="bank_guarantee">@lang('cruds.branches.fields.bank_guarantee')</label>
+                                                                    <input type="text" class="form-control"
+                                                                        name="accordions[0][bank_guarantee]"
+                                                                        placeholder="@lang('cruds.branches.fields.bank_guarantee')">
+                                                                </div>
                                                             </div>
                                                         </div>
-                                                        <div class="col-lg-3">
-                                                            <div class="mb-3">
-                                                                <label for="notification_date">@lang('cruds.branches.fields.notification_date')</label>
-                                                                <input type="date" class="form-control" name="accordions[0][notification_date]" placeholder="@lang('cruds.branches.fields.notification_date')">
+                                                        <div class="row">
+                                                            <div class="col-lg-4">
+                                                                <div class="mb-3">
+                                                                    <label
+                                                                        for="application_number">@lang('cruds.branches.fields.application_number')</label>
+                                                                    <input type="text" class="form-control"
+                                                                        name="accordions[0][application_number]"
+                                                                        placeholder="@lang('cruds.branches.fields.application_number')">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-lg-4">
+                                                                <div class="mb-3">
+                                                                    <label for="payed_sum">@lang('cruds.branches.fields.payed_sum')</label>
+                                                                    <input type="text" class="form-control"
+                                                                        name="accordions[0][payed_sum]"
+                                                                        placeholder="@lang('cruds.branches.fields.payed_sum')">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-lg-4">
+                                                                <div class="mb-3">
+                                                                    <label for="payed_date">@lang('cruds.branches.fields.payed_date')</label>
+                                                                    <input type="date" class="form-control"
+                                                                        name="accordions[0][payed_date]"
+                                                                        placeholder="@lang('cruds.branches.fields.payed_date')">
+                                                                </div>
                                                             </div>
                                                         </div>
-                                                        <div class="col-lg-3">
-                                                            <div class="mb-3">
-                                                                <label for="insurance_policy">@lang('cruds.branches.fields.insurance_policy')</label>
-                                                                <input type="text" class="form-control" name="accordions[0][insurance_policy]" placeholder="@lang('cruds.branches.fields.insurance_policy')">
+                                                        <div class="row">
+                                                            <div class="col-lg-3">
+                                                                <div class="inner-repeater mb-4">
+                                                                    <div data-repeater-list="inner-group"
+                                                                        class="inner mb-3">
+                                                                        <label
+                                                                            for="basicpill-cardno-input">@lang('global.obyekt_boyicha_tolanishi_lozim')</label>
+                                                                        <input type="number" step="0.00001"
+                                                                            class="form-control branch_kubmetr"
+                                                                            placeholder="( m³ )"
+                                                                            name="accordions[0][branch_kubmetr]"
+                                                                            onchange="displayFiveDigitsAfterDecimal(this)">
+                                                                    </div>
+                                                                </div>
                                                             </div>
-                                                        </div>
-                                                        <div class="col-lg-3">
-                                                            <div class="mb-3">
-                                                                <label for="bank_guarantee">@lang('cruds.branches.fields.bank_guarantee')</label>
-                                                                <input type="text" class="form-control" name="accordions[0][bank_guarantee]" placeholder="@lang('cruds.branches.fields.bank_guarantee')">
+
+                                                            <script>
+                                                                function displayFiveDigitsAfterDecimal(inputField) {
+                                                                    var value = parseFloat(inputField.value);
+                                                                    var roundedValue = value.toFixed(5);
+                                                                    inputField.value = roundedValue;
+                                                                }
+                                                            </script>
+
+                                                            <div class="col-lg-3">
+                                                                <div class="mb-3">
+                                                                    <label for="branch_name">@lang('global.loyiha_nomi')</label>
+                                                                    <input type="text" class="form-control"
+                                                                        name="accordions[0][branch_name]"
+                                                                        placeholder="@lang('global.loyiha_nomi')">
+                                                                </div>
                                                             </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="row">
-                                                        <div class="col-lg-4">
-                                                            <div class="mb-3">
-                                                                <label for="application_number">@lang('cruds.branches.fields.application_number')</label>
-                                                                <input type="text" class="form-control" name="accordions[0][application_number]" placeholder="@lang('cruds.branches.fields.application_number')">
+                                                            <div class="col-lg-3">
+                                                                <div class="mb-3">
+                                                                    <label for="branch_type">@lang('global.loyiha_turi')</label>
+                                                                    <input type="text" class="form-control"
+                                                                        name="accordions[0][branch_type]"
+                                                                        placeholder="@lang('global.loyiha_turi')">
+                                                                </div>
                                                             </div>
-                                                        </div>
-                                                        <div class="col-lg-4">
-                                                            <div class="mb-3">
-                                                                <label for="payed_sum">@lang('cruds.branches.fields.payed_sum')</label>
-                                                                <input type="text" class="form-control" name="accordions[0][payed_sum]" placeholder="@lang('cruds.branches.fields.payed_sum')">
+                                                            <div class="col-lg-3">
+                                                                <div class="mb-3">
+                                                                    <label for="branch_location">@lang('cruds.company.fields.branch_location')</label>
+                                                                    <input type="text" class="form-control"
+                                                                        name="accordions[0][branch_location]"
+                                                                        placeholder="@lang('cruds.company.fields.branch_location')">
+                                                                </div>
                                                             </div>
-                                                        </div>
-                                                        <div class="col-lg-4">
-                                                            <div class="mb-3">
-                                                                <label for="payed_date">@lang('cruds.branches.fields.payed_date')</label>
-                                                                <input type="date" class="form-control" name="accordions[0][payed_date]" placeholder="@lang('cruds.branches.fields.payed_date')">
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="row">
-                                                        <div class="col-lg-3">
-                                                            <div class="inner-repeater mb-4">
-                                                                <div data-repeater-list="inner-group" class="inner mb-3">
-                                                                    <label for="basicpill-cardno-input">@lang('global.obyekt_boyicha_tolanishi_lozim')</label>
+                                                            <div class="col-lg-6">
+                                                                <div class="mb-3">
+                                                                    <label
+                                                                        for="basicpill-card-verification-input">@lang('global.bazaviy_xisoblash_miqdori')</label>
                                                                     <input type="number"
-                                                                           step="0.00001"
-                                                                           class="form-control branch_kubmetr"
-                                                                           placeholder="( m³ )"
-                                                                           name="accordions[0][branch_kubmetr]"
-                                                                           onchange="displayFiveDigitsAfterDecimal(this)">
+                                                                        class="form-control minimum_wage"
+                                                                        placeholder="@lang('global.bazaviy_xisoblash_miqdori')" value="340000"
+                                                                        name="minimum_wage">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-lg-6">
+                                                                <div class="mb-3">
+                                                                    <label
+                                                                        for="basicpill-card-verification-input">@lang('global.jami_tolanishi_kerak')</label>
+                                                                    <input type="text"
+                                                                        class="form-control generate_price"
+                                                                        name="accordions[0][generate_price]"
+                                                                        placeholder="@lang('global.jami_tolanishi_kerak')" readonly>
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                        
-                                                        <script>
-                                                            function displayFiveDigitsAfterDecimal(inputField) {
-                                                                var value = parseFloat(inputField.value);
-                                                                var roundedValue = value.toFixed(5);
-                                                                inputField.value = roundedValue;
-                                                            }
-                                                        </script>
-                                                        
-                                                        <div class="col-lg-3">
-                                                            <div class="mb-3">
-                                                                <label for="branch_name">@lang('global.loyiha_nomi')</label>
-                                                                <input type="text" class="form-control"
-                                                                    name="accordions[0][branch_name]"
-                                                                    placeholder="@lang('global.loyiha_nomi')">
+                                                        <div class="row">
+                                                            <div class="col-lg-3">
+                                                                <div class="mb-3">
+                                                                    <label>@lang('global.tolash_turlari')</label>
+                                                                    <select class="form-select payment-type"
+                                                                        name="accordions[0][payment_type]">
+                                                                        <option value="pay_full">@lang('global.toliq_xajimda_tolash')
+                                                                        </option>
+                                                                        <option value="pay_bolib">@lang('global.bolib_tolash')
+                                                                        </option>
+                                                                    </select>
+                                                                </div>
                                                             </div>
-                                                        </div>
-                                                        <div class="col-lg-3">
-                                                            <div class="mb-3">
-                                                                <label for="branch_type">@lang('global.loyiha_turi')</label>
-                                                                <input type="text" class="form-control" name="accordions[0][branch_type]" placeholder="@lang('global.loyiha_turi')">
+                                                            <div class="col-lg-3">
+                                                                <div class="mb-3">
+                                                                    <label
+                                                                        for="percentage-input">@lang('global.bolib_tolash_foizi_oldindan')</label>
+                                                                    <div class="input-group">
+                                                                        <input type="number"
+                                                                            class="form-control percentage-input"
+                                                                            name="accordions[0][percentage_input]"
+                                                                            min="0" max="100">
+                                                                        <span class="input-group-text">%</span>
+                                                                    </div>
+                                                                </div>
                                                             </div>
-                                                        </div>
-                                                        <div class="col-lg-3">
-                                                            <div class="mb-3">
-                                                                <label for="branch_location">@lang('cruds.company.fields.branch_location')</label>
-                                                                <input type="text" class="form-control" name="accordions[0][branch_location]" placeholder="@lang('cruds.company.fields.branch_location')">
+                                                            <div class="col-lg-3">
+                                                                <div class="mb-3">
+                                                                    <label for="quarterly-input">@lang('global.bolib_tolash_har_chorakda')</label>
+                                                                    <input type="number"
+                                                                        class="form-control quarterly-input"
+                                                                        name="accordions[0][installment_quarterly]"
+                                                                        placeholder="@lang('global.bolib_tolash_har_chorakda')" disabled>
+                                                                </div>
                                                             </div>
-                                                        </div>
-                                                        <div class="col-lg-6">
-                                                            <div class="mb-3">
-                                                                <label for="basicpill-card-verification-input">@lang('global.bazaviy_xisoblash_miqdori')</label>
-                                                                <input type="number" class="form-control minimum_wage" placeholder="@lang('global.bazaviy_xisoblash_miqdori')" value="340000" name="minimum_wage">
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-lg-6">
-                                                            <div class="mb-3">
-                                                                <label for="basicpill-card-verification-input">@lang('global.jami_tolanishi_kerak')</label>
-                                                                <input type="text" class="form-control generate_price" name="accordions[0][generate_price]" placeholder="@lang('global.jami_tolanishi_kerak')" readonly>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="row">
-                                                        <div class="col-lg-3">
-                                                            <div class="mb-3">
-                                                                <label>@lang('global.tolash_turlari')</label>
-                                                                <select class="form-select payment-type" name="accordions[0][payment_type]">
-                                                                    <option value="pay_full">@lang('global.toliq_xajimda_tolash')</option>
-                                                                    <option value="pay_bolib">@lang('global.bolib_tolash')</option>
-                                                                </select>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-lg-3">
-                                                            <div class="mb-3">
-                                                                <label for="percentage-input">@lang('global.bolib_tolash_foizi_oldindan')</label>
-                                                                <div class="input-group">
-                                                                    <input type="number" class="form-control percentage-input" name="accordions[0][percentage_input]" min="0" max="100">
-                                                                    <span class="input-group-text">%</span>
+                                                            <div class="col-lg-3">
+                                                                <div class="mb-3">
+                                                                    <label
+                                                                        for="calculated-quarterly-payment">@lang('global.quarterly_payment')</label>
+                                                                    <input type="text"
+                                                                        class="form-control calculated-quarterly-payment"
+                                                                        placeholder="@lang('global.quarterly_payment')" readonly>
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                        <div class="col-lg-3">
-                                                            <div class="mb-3">
-                                                                <label for="quarterly-input">@lang('global.bolib_tolash_har_chorakda')</label>
-                                                                <input type="number" class="form-control quarterly-input" name="accordions[0][installment_quarterly]" placeholder="@lang('global.bolib_tolash_har_chorakda')" disabled>
+
+                                                        <div class="row">
+                                                            <div class="col-lg-12">
+                                                                <table class="table">
+                                                                    <thead>
+                                                                        <tr>
+                                                                            <th>Chorak</th>
+                                                                            <th>To'lanadigan miqdor</th>
+                                                                        </tr>
+                                                                    </thead>
+                                                                    <tbody class="quarterly-payment-schedule">
+                                                                    </tbody>
+                                                                    <tfoot>
+                                                                        <tr>
+                                                                            <th>Jami</th>
+                                                                            <th class="total-quarterly-payment">0.00</th>
+                                                                        </tr>
+                                                                    </tfoot>
+                                                                </table>
                                                             </div>
                                                         </div>
-                                                        <div class="col-lg-3">
-                                                            <div class="mb-3">
-                                                                <label for="calculated-quarterly-payment">@lang('global.quarterly_payment')</label>
-                                                                <input type="text" class="form-control calculated-quarterly-payment" placeholder="@lang('global.quarterly_payment')" readonly>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    
-                                                    <div class="row">
-                                                        <div class="col-lg-12">
-                                                            <table class="table">
-                                                                <thead>
-                                                                    <tr>
-                                                                        <th>Chorak</th>
-                                                                        <th>To'lanadigan miqdor</th>
-                                                                    </tr>
-                                                                </thead>
-                                                                <tbody class="quarterly-payment-schedule">
-                                                                </tbody>
-                                                                <tfoot>
-                                                                    <tr>
-                                                                        <th>Jami</th>
-                                                                        <th class="total-quarterly-payment">0.00</th>
-                                                                    </tr>
-                                                                </tfoot>
-                                                            </table>
-                                                        </div>
-                                                    </div>
                                                 </main>
                                             </div>
                                         </div>

@@ -24,8 +24,8 @@
                 <div class="card-body">
                     <h4 class="card-title mb-4">Edit Project</h4>
                     <form action="{{ route('construction.update', $construction->id) }}" method="post">
-                    @csrf
-                    @method('PUT')
+                        @csrf
+                        @method('PUT')
 
 
 
@@ -54,21 +54,17 @@
 
                                 <div class="col lg-6">
                                     <label for="projectname" class="col-form-label">Apz raqami</label>
-                                    <input id="projectname"
-                                     name="accordions[{{ $branchIndex }}][apz_raqami]"
+                                    <input id="projectname" name="accordions[{{ $branchIndex }}][apz_raqami]"
                                         type="text" class="form-control"
-                                    value="{{ old('accordions.' . $branchIndex . '.apz_raqami', $b->apz_raqami) }}"
-
-                                          placeholder="Enter Project Name...">
+                                        value="{{ old('accordions.' . $branchIndex . '.apz_raqami', $b->apz_raqami) }}"
+                                        placeholder="Enter Project Name...">
                                 </div>
                                 <div class="col lg-6">
                                     <label for="projectname" class="col-form-label">Apz sanasi</label>
-                                    <input id="projectname"
-                                     name="accordions[{{ $branchIndex }}][apz_sanasi]"
-                                     type="date"
-                                     class="form-control"
-                                    value="{{ old('accordions.' . $branchIndex . '.apz_sanasi', $b->apz_sanasi) }}"
-                                     placeholder="Enter Project Name...">
+                                    <input id="projectname" name="accordions[{{ $branchIndex }}][apz_sanasi]"
+                                        type="date" class="form-control"
+                                        value="{{ old('accordions.' . $branchIndex . '.apz_sanasi', $b->apz_sanasi) }}"
+                                        placeholder="Enter Project Name...">
                                 </div>
 
                                 <div class="col-12">
