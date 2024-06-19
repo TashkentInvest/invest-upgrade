@@ -198,10 +198,13 @@ remove accardion ochishi keremas agar bitta bosa
     
 Transaction da Inn bo'yicha fetch qilish kere : Not Xato maybe
 
+Transactionlani payed date blan solishtrib fix qilish kere
+
 constrcutions ga text lani fix qb chqish kere 
 
 modal kada confirm bosaganda timer qoyish kere 
 
+product show dayam 000 000 sonlani fix qlish kere with optimal way
 
 ```
 
