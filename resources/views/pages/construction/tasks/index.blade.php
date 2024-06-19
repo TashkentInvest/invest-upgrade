@@ -97,8 +97,8 @@
                                 @endforeach
                             </tbody>
                         </table>
-                        {{ $constructions->links() }}
                     </div>
+                    {{ $constructions->links() }}
                 </div>
             </div>
         </div>
