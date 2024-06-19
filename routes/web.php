@@ -137,11 +137,15 @@ Route::group(['middleware' => ['auth', 'checkUserRole']], function () {
 });
 
 Route::group(['middleware' => ['auth']], function () {
-    Route::get('/constructions', [ConstructionController::class,'index'])->name('construction.index');
-    Route::get('/construction/{id}', [ConstructionController::class,'show'])->name('construction.show');
-    Route::get('/construction/{id}/edit', [ConstructionController::class,'edit'])->name('construction.edit');
-    Route::any('/construction/update/{id}', [ConstructionController::class, 'update'])->name('construction.update');
-    Route::post('/construction/update-status', [ConstructionController::class, 'updateStatus'])->name('updateStatus');
+
+    Route::prefix('constructions')->group(function () {
+        Route::get('/', [ConstructionController::class,'index'])->name('construction.index');
+        Route::get('/{id}', [ConstructionController::class,'show'])->name('construction.show');
+        Route::get('/{id}/edit', [ConstructionController::class,'edit'])->name('construction.edit');
+        Route::any('/update/{id}', [ConstructionController::class, 'update'])->name('construction.update');
+        Route::post('/update-status', [ConstructionController::class, 'updateStatus'])->name('updateStatus');
+    });
+    
 });
 
 Route::get('/language/{lang}', function ($lang) {

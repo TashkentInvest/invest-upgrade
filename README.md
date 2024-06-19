@@ -208,6 +208,8 @@ Transactionlani payed date blan solishtrib fix qilish kere
 
 modal kada confirm bosaganda timer qoyish kere 
 
+product index/show add some beauty
+
 
 ```
 
