@@ -149,14 +149,13 @@
                 @endcan
 
                 @can('qurilish.show')
-             
-                    <li>
-                        <a href="/ccc"
-                            class="{{ Request::is('permission*') ? 'mm-active' : '' }}">
-                          Qurilish
+                    <li class="{{ Request::is('construction*') ? 'mm-active' : '' }}">
+                        <a href="{{ route('construction.index') }}"
+                            class=" waves-effect {{ Request::is('backup*') ? 'mm-active' : '' }}">
+                            <i class="bx bxs-building-house"></i>
+                            <span>Qurilish</span>
                         </a>
                     </li>
-                
                 @endcan
 
                 <li class="menu-title">@lang('global.theme')</li>

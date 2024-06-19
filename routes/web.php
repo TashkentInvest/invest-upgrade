@@ -135,19 +135,12 @@ Route::group(['middleware' => 'auth'], function () {
 
     // Construction routes started **********************************************************
 
-    Route::get('/ccc', [ConstructionController::class,'index'])->name('construction.index');
-    Route::get('/ccc/{id}', [ConstructionController::class,'show'])->name('construction.show');
-    Route::get('/ccc/{id}/edit', [ConstructionController::class,'edit'])->name('construction.edit');
-    Route::any('/update/{id}', [ConstructionController::class, 'update'])->name('construction.update');
-    Route::post('/update-status', [ConstructionController::class, 'updateStatus'])->name('updateStatus');
+    Route::get('/constructions', [ConstructionController::class,'index'])->name('construction.index');
+    Route::get('/construction/{id}', [ConstructionController::class,'show'])->name('construction.show');
+    Route::get('/construction/{id}/edit', [ConstructionController::class,'edit'])->name('construction.edit');
+    Route::any('/construction/update/{id}', [ConstructionController::class, 'update'])->name('construction.update');
+    Route::post('/construction/update-status', [ConstructionController::class, 'updateStatus'])->name('updateStatus');
 
-    Route::get('/ccc/show2', function () {
-        return view('pages.construction.tasks.show2');
-    });
-
-    Route::get('/ccc/create', function () {
-        return view('pages.construction.tasks.create');
-    });
     
     Route::get('/import/backup', [BackupController::class, 'import'])->name('backup.import');
 });
