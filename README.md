@@ -180,21 +180,24 @@ constructionsda faqat role constructions uchun role chqish kere +++
 
 constructionsda kim ko'rganini chqazish kere +++
 
+Modal window optimizatsiya qilish kere +++
+
+consttuctionga search qoshish kere +++
+
+agar view table da user_id && branch_id && status == bosa update qlsh kere alohida create qmasdan +++
+
+middlware qoshish kere qurilishga +++
+
 blade clean qilish kere 
 
 remove accardion ochishi keremas agar bitta bosa
     
-Modal window optimizatsiya qilish kere
-
 Transaction da Inn bo'yicha fetch qilish kere : Not Xato maybe
 
-constrcutions ga text lani fix qb chqish kere\
+constrcutions ga text lani fix qb chqish kere 
 
-consttuctionga search qoshish kere
+modal kada confirm bosaganda timer qoyish kere 
 
-modal kada confirm bosaganda timer qoyish kere
-
-agar view table da user_id && branch_id && status == bosa update qlsh kere alohida create qmasdan
 ```
 
 
@@ -409,4 +412,6 @@ php artisan make:migration add_apz_columns_to_branches_table --table=branches
             $table->dropColumn(['apz_raqami', 'apz_sanasi', 'kengash']);
         });
     }
+
+    712100261
  ```

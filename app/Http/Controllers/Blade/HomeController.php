@@ -27,6 +27,6 @@ class HomeController extends Controller
     public function optimize()
     {
         Artisan::call('cache:clear-optimize');
-        return redirect()->route('clientIndex')->with('success', 'Optimized cache cleared successfully');
+        return redirect()->back()->with('success', 'Optimized cache cleared successfully');
     }
 }

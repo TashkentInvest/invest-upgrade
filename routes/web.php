@@ -24,10 +24,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/home', [HomeController::class, 'index'])->name('home');
 // Web pages
-Route::group(['middleware' => 'auth'], function () {
+Route::group(['middleware' => ['auth', 'checkUserRole']], function () {
 
-    Route::get('/home', [HomeController::class, 'index'])->name('home');
     Route::get('/optimize-cache', [HomeController::class,'optimize'])->name('optimize.command');
 
     // Regions  

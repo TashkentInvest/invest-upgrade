@@ -94,13 +94,24 @@ class ConstructionController extends Controller
    
     public function updateStatus(Request $request)
     {
-        // dump($request);
+        $userId = auth()->id();
+        $branchId = $request->branch_id;
     
-        View::create([
-            'user_id' => auth()->id(),
-            'branch_id' => $request->branch_id,
-            'status' => $request->status,
-        ]);
+        $view = View::where('user_id', $userId)
+                    ->where('branch_id', $branchId)
+                    ->first();
+    
+        if ($view) {
+            $view->update([
+                'status' => $request->status,
+            ]);
+        } else {
+            View::create([
+                'user_id' => $userId,
+                'branch_id' => $branchId,
+                'status' => $request->status,
+            ]);
+        }
     
         return response()->json(['success' => true]);
     }

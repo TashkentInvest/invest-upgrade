@@ -68,6 +68,8 @@ class Kernel extends HttpKernel
         'api-auth' => \App\Http\Middleware\ApiToken::class,
         'ajax.check' => \App\Http\Middleware\ApiAjax::class,
         'construction' => \App\Http\Middleware\ConstructionMiddleware::class,
+        'checkUserRole' => \App\Http\Middleware\CheckUserRole::class,
+
 
     ];
 }
