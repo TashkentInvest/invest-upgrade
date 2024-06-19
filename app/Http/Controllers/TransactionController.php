@@ -33,7 +33,14 @@ class TransactionController extends Controller
         $query = CreditTransaction::deepFilters()
             ->where(function ($query) {
                 $query->where('payment_description', 'like', '%APT%')
-                    ->orWhere('payment_description', 'like', '%АПЗ%');
+                    ->orWhere('payment_description', 'like', '%АПЗ%')
+                    ->orWhere('payment_description', 'like', '%ART%')
+                    ->orWhere('payment_description', 'like', '%шартнома%')
+                    ->orWhere('payment_description', 'like', '%SHARTNOMA%');
+
+                    
+
+                    
             });
 
         if ($request->has('search')) {
