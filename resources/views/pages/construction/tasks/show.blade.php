@@ -23,9 +23,12 @@
             <div class="card">
                 <div class="card-body">
                     <div class="invoice-title">
-                        <h4 class="float-end font-size-16">ART / # 12345</h4>
+                        <h4 class="float-end font-size-16">
+                                {{-- @lang('global.contract_details') - {{ $b->contract_apt }} --}}
+
+                        </h4>
                         <div class="mb-4">
-                            <h3>Obyekt</h3>
+                            <h3>@lang('global.contract_details')</h3>
                         </div>
                     </div>
                     <hr>

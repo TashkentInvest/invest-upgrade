@@ -29,16 +29,18 @@
                                 <div class="position-relative">
                                     <form action="{{ route('construction.index') }}" method="GET">
                                         <div class="input-group mb-3">
-                                            <input type="text" class="form-control" placeholder="@lang('global.search')" name="search" value="{{ request('search') }}">
+                                            <input type="text" class="form-control" placeholder="@lang('global.search')"
+                                                name="search" value="{{ request('search') }}">
                                             <i class="bx bx-search-alt search-icon"></i>
-        
-                                            <button class="btn btn-outline-secondary" type="submit">@lang('global.search')</button>
+
+                                            <button class="btn btn-outline-secondary"
+                                                type="submit">@lang('global.search')</button>
                                         </div>
-                                    </form> 
+                                    </form>
                                 </div>
                             </div>
 
-                           
+
                         </div>
                     </div>
 
@@ -109,113 +111,114 @@
 
     {{-- @dd(auth()->user()->view->status) --}}
 
-    @if(auth()->user()->roles[0]->name == 'Qurilish')
-    @foreach ($constructions as $notification)
-        @foreach ($notification->branches as $b)
-            @php
-                $modalIndex++;
-            @endphp
-            <div class="modal fade" id="notificationModal{{ $modalIndex }}" tabindex="-1"
-                aria-labelledby="notificationModalLabel{{ $modalIndex }}" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
-                <div class="modal-dialog modal-xl">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title fw-bold" id="notificationModalLabel{{ $modalIndex }}">
-                                <strong>@lang('global.contract_details') - {{ $b->contract_apt }}</strong>
-                            </h5>
-                            {{-- Remove the close button --}}
-                        </div>
-                        <div class="modal-body">
-                            <table class="table table-striped table-bordered">
-                                <tbody style="font-size: 1.25em;"> <!-- Increased font size -->
-                                    <tr>
-                                        <td><strong>@lang('global.ruxsatnoma_raqami')</strong></td>
-                                        <td colspan="2">{{ $b->contract_apt }}</td>
-                                    </tr>
-                                    <tr>
-                                        <td><strong>@lang('global.created_at')</strong></td>
-                                        <td colspan="2">{{ $b->contract_date }}</td>
-                                    </tr>
-                                    <tr>
-                                        <td><strong>@lang('cruds.branches.fields.application_number')</strong></td>
-                                        <td colspan="2">{{ $b->application_number }}</td>
-                                    </tr>
-                                    <tr>
-                                        <td><strong>@lang('global.loyiha_nomi')</strong></td>
-                                        <td colspan="2">{{ $b->branch_type }}</td>
-                                    </tr>
-                                    <tr>
-                                        <td><strong>@lang('cruds.company.fields.branch_type')</strong></td>
-                                        <td colspan="2">{{ $b->branch_type }}</td>
-                                    </tr>
-                                    <tr>
-                                        <td><strong>@lang('cruds.company.fields.branch_location')</strong></td>
-                                        <td colspan="2">{{ $b->branch_location }}</td>
-                                    </tr>
-                                    <tr>
-                                        <td><strong>@lang('global.obyekt_boyicha_tolanishi_lozim') ( m³ )</strong></td>
-                                        <td colspan="2">{{ number_format($b->branch_kubmetr, 1) }}</td>
-                                    </tr>
-                                    <tr>
-                                        <td><strong>@lang('global.jami_tolanishi_kerak')</strong></td>
-                                        <td colspan="2" class="formatted-number">{{ $b->generate_price }}</td>
-                                    </tr>
-                                    <tr>
-                                        <td><strong>@lang('global.bolib_tolash_foizi_oldindan')</strong></td>
-                                        <td colspan="2">{{ $b->percentage_input }}%</td>
-                                    </tr>
-                                    <tr>
-                                        <td><strong>@lang('global.quarterly_payment')</strong></td>
-                                        <td colspan="2">{{ $b->installment_quarterly }}</td>
-                                    </tr>
-                                    <tr>
-                                        <td><strong>@lang('global.bolib_tolash')</strong></td>
-                                        <td colspan="2">
-                                            @if ($b->payment_type == 'pay_bolib')
-                                                @lang('global.pay_bolib')
-                                            @else
-                                                @lang('global.pay_full')
-                                            @endif
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td><strong>@lang('cruds.branches.fields.payed_sum')</strong></td>
-                                        <td colspan="2" class="formatted-number">{{ $b->payed_sum }}</td>
-                                    </tr>
-                                    <tr>
-                                        <td><strong>@lang('cruds.branches.fields.payed_date')</strong></td>
-                                        <td colspan="2">{{ $b->payed_date }}</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                        <div class="modal-footer">
-                            <form action="{{ route('updateStatus') }}" method="post" class="update-status-form">
-                                @csrf
-                                <input type="hidden" name="branch_id" value="{{ $b->id }}">
-                                <input type="hidden" name="status" value="1">
-                                <button type="submit" class="btn btn-primary btn-lg">Confirm</button>
-                            </form>
+    @if (auth()->user()->roles[0]->name == 'Qurilish')
+        @foreach ($constructions as $notification)
+            @foreach ($notification->branches as $b)
+                @php
+                    $modalIndex++;
+                @endphp
+                <div class="modal fade" id="notificationModal{{ $modalIndex }}" tabindex="-1"
+                    aria-labelledby="notificationModalLabel{{ $modalIndex }}" aria-hidden="true"
+                    data-bs-backdrop="static" data-bs-keyboard="false">
+                    <div class="modal-dialog modal-xl">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title fw-bold" id="notificationModalLabel{{ $modalIndex }}">
+                                    <strong>@lang('global.contract_details') - {{ $b->contract_apt }}</strong>
+                                </h5>
+                                {{-- Remove the close button --}}
+                            </div>
+                            <div class="modal-body">
+                                <table class="table table-striped table-bordered">
+                                    <tbody style="font-size: 1.25em;"> <!-- Increased font size -->
+                                        <tr>
+                                            <td><strong>@lang('global.ruxsatnoma_raqami')</strong></td>
+                                            <td colspan="2">{{ $b->contract_apt }}</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>@lang('global.created_at')</strong></td>
+                                            <td colspan="2">{{ $b->contract_date }}</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>@lang('cruds.branches.fields.application_number')</strong></td>
+                                            <td colspan="2">{{ $b->application_number }}</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>@lang('global.loyiha_nomi')</strong></td>
+                                            <td colspan="2">{{ $b->branch_type }}</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>@lang('cruds.company.fields.branch_type')</strong></td>
+                                            <td colspan="2">{{ $b->branch_type }}</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>@lang('cruds.company.fields.branch_location')</strong></td>
+                                            <td colspan="2">{{ $b->branch_location }}</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>@lang('global.obyekt_boyicha_tolanishi_lozim') ( m³ )</strong></td>
+                                            <td colspan="2">{{ number_format($b->branch_kubmetr, 1) }}</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>@lang('global.jami_tolanishi_kerak')</strong></td>
+                                            <td colspan="2" class="formatted-number">{{ $b->generate_price }}</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>@lang('global.bolib_tolash_foizi_oldindan')</strong></td>
+                                            <td colspan="2">{{ $b->percentage_input }}%</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>@lang('global.quarterly_payment')</strong></td>
+                                            <td colspan="2">{{ $b->installment_quarterly }}</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>@lang('global.bolib_tolash')</strong></td>
+                                            <td colspan="2">
+                                                @if ($b->payment_type == 'pay_bolib')
+                                                    @lang('global.pay_bolib')
+                                                @else
+                                                    @lang('global.pay_full')
+                                                @endif
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>@lang('cruds.branches.fields.payed_sum')</strong></td>
+                                            <td colspan="2" class="formatted-number">{{ $b->payed_sum }}</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>@lang('cruds.branches.fields.payed_date')</strong></td>
+                                            <td colspan="2">{{ $b->payed_date }}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="modal-footer">
+                                <form action="{{ route('updateStatus') }}" method="post" class="update-status-form">
+                                    @csrf
+                                    <input type="hidden" name="branch_id" value="{{ $b->id }}">
+                                    <input type="hidden" name="status" value="1">
+                                    <button type="submit" class="btn btn-primary btn-lg">Confirm</button>
+                                </form>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            @endforeach
         @endforeach
-    @endforeach
 
-    <script>
-        function formatNumberWithSpaces(number) {
-            return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
-        }
+        <script>
+            function formatNumberWithSpaces(number) {
+                return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
+            }
 
-        document.addEventListener('DOMContentLoaded', function() {
-            var elements = document.querySelectorAll('.formatted-number');
-            elements.forEach(function(element) {
-                element.textContent = formatNumberWithSpaces(element.textContent);
+            document.addEventListener('DOMContentLoaded', function() {
+                var elements = document.querySelectorAll('.formatted-number');
+                elements.forEach(function(element) {
+                    element.textContent = formatNumberWithSpaces(element.textContent);
+                });
             });
-        });
-    </script>
-@endif
+        </script>
+    @endif
 
 
 
@@ -227,7 +230,7 @@
         $(document).ready(function() {
             let modalIndex = 1;
             const totalModals = {{ $modalIndex }};
-            
+
             function showNextModal() {
                 if (modalIndex <= totalModals) {
                     $(`#notificationModal${modalIndex}`).modal('show');
@@ -244,7 +247,7 @@
                     url: form.attr('action'),
                     data: form.serialize(),
                     success: function(response) {
-                        if(response.success) {
+                        if (response.success) {
                             modal.modal('hide');
                             modalIndex++;
                             showNextModal();
