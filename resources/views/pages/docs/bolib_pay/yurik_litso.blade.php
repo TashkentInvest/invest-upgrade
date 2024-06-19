@@ -151,7 +151,7 @@
                         <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; font-size:12pt;"><strong><span style="font-family:'Times New Roman';">ИНВЕСТОР</span></strong></p>
                         <div style="border-bottom-style:solid; border-bottom-width:1.5pt; clear:both;">
                             <p style="margin-top:0pt; margin-bottom:0pt; font-size:12pt;"><strong><span style="font-family:'Times New Roman';">&nbsp;</span></strong></p>
-                            <p style="margin-top:0pt; margin-bottom:0pt; font-size:12pt;"><span style="font-family:'Times New Roman';">Aдрес {{$client->company->yuridik_address}},</span><span style="font-family:'Times New Roman';">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="font-family:'Times New Roman';"></span></p>
+                            <p style="margin-top:0pt; margin-bottom:0pt; font-size:12pt;"><span style="font-family:'Times New Roman';">Aдрес {{$client->address->yuridik_address}},</span><span style="font-family:'Times New Roman';">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="font-family:'Times New Roman';"></span></p>
                             <p style="margin-top:0pt; margin-bottom:0pt; font-size:12pt;"><span style="font-family:'Times New Roman';">Ҳисобварақ {{$client->company->bank_account}}</span></p>
                             <p style="margin-top:0pt; margin-bottom:0pt; font-size:12pt;"><span style="font-family:'Times New Roman';">АТБ &ldquo;{{$client->company->bank_service}}</span></p>
                             <p style="margin-top:0pt; margin-bottom:0pt; font-size:12pt;"><span style="font-family:'Times New Roman';">Банк коди {{$client->company->bank_code}}</span></p>

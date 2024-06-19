@@ -131,7 +131,7 @@
                     <td style="width:237.25pt; padding-right:5.4pt; padding-left:5.4pt; vertical-align:top;">
                         <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; font-size:12pt;"><strong><span style="font-family:'Times New Roman';">&nbsp;</span></strong></p>
                         <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; font-size:12pt;"><strong><span style="font-family:'Times New Roman';">ИНВЕСТОР</span></strong></p>
-                        <p style="margin-top:0pt; margin-bottom:0pt; font-size:12pt;"><strong><span style="font-family:'Times New Roman';">Aдрес: {{$client->company->yuridik_address}}</span></strong></p>
+                        <p style="margin-top:0pt; margin-bottom:0pt; font-size:12pt;"><strong><span style="font-family:'Times New Roman';">Aдрес: {{$client->address->yuridik_address}}</span></strong></p>
                         <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:12pt;"><strong><span style="font-family:'Times New Roman';">Ҳисобварақ:</span></strong><span style="font-family:'Times New Roman';">&nbsp; {{$client->company->bank_account}}</span></p>
                         <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:12pt;"><strong><span style="font-family:'Times New Roman';">Банк коди:&nbsp;</span></strong><span style="font-family:'Times New Roman';">{{$client->company->bank_code}}</span></p>
                         <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:12pt;"><strong><span style="font-family:'Times New Roman';">Банк номи:&nbsp;</span></strong><span style="font-family:'Times New Roman';">{{$client->company->bank_service}}</span></p>
