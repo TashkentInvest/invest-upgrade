@@ -10,30 +10,42 @@ use Illuminate\Support\Facades\DB;
 
 class ConstructionController extends Controller
 { 
-    public function index()
+
+    public function index(Request $request)
     {
         $userId = auth()->user()->id;
+        $search = $request->input('search');
     
         $constructions = Client::with(['company', 'branches' => function ($query) use ($userId) {
             $query->whereNotNull('payed_sum')
-                    ->select('id', 'branch_name', 'generate_price', 'contract_date', 'payment_type', 'percentage_input', 'installment_quarterly', 'branch_kubmetr', 'branch_location', 'client_id')
-                    ->whereDoesntHave('views', function ($q) use ($userId) {
-                        $q->where('user_id', $userId)
+                  ->select('id', 'branch_name', 'generate_price', 'contract_date', 'payment_type', 'percentage_input', 'installment_quarterly', 'branch_kubmetr', 'branch_location', 'client_id')
+                  ->whereDoesntHave('views', function ($q) use ($userId) {
+                      $q->where('user_id', $userId)
                         ->where('status', 1);
-                    })
-                    ->with('views');
+                  })
+                  ->with('views');
         }, 'address', 'passport'])
         ->whereHas('branches', function ($query) {
             $query->whereNotNull('payed_sum')
-                    ->orWhere('payed_sum', '>=', DB::raw('generate_price'));
+                  ->orWhere('payed_sum', '>=', DB::raw('generate_price'));
         })
         ->where('is_deleted', '!=', 1)
+        ->when($search, function ($query, $search) {
+            $query->where(function ($q) use ($search) {
+                $q->where('company_name', 'like', "%{$search}%")
+                  ->orWhere('stir', 'like', "%{$search}%")
+                  ->orWhereHas('branches', function ($q) use ($search) {
+                      $q->where('branch_location', 'like', "%{$search}%")
+                        ->orWhere('branch_type', 'like', "%{$search}%")
+                        ->orWhere('branch_name', 'like', "%{$search}%");
+                  });
+            });
+        })
         ->orderBy('id', 'desc')
         ->paginate(25);
     
         return view('pages.construction.tasks.index', compact('constructions'));
     }
-    
     public function show($id){
 
         $construction = Client::with(['company','branches','address','passport'])->find($id);

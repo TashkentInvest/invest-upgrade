@@ -191,6 +191,10 @@ Transaction da Inn bo'yicha fetch qilish kere : Not Xato maybe
 constrcutions ga text lani fix qb chqish kere\
 
 consttuctionga search qoshish kere
+
+modal kada confirm bosaganda timer qoyish kere
+
+agar view table da user_id && branch_id && status == bosa update qlsh kere alohida create qmasdan
 ```
 
 
