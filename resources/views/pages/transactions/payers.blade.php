@@ -7,10 +7,8 @@
                 <h4 class="mb-sm-0 font-size-18">@lang('cruds.transaction.title')</h4>
                 <div class="page-title-right">
                     <ol class="breadcrumb m-0">
-                        <li class="breadcrumb-item"><a href="{{ route('home') }}" style="color: #007bff;">@lang('global.home')</a>
-                        </li>
-                        <li class="breadcrumb-item"><a href="{{ route('transactions.payers') }}"
-                                style="color: #007bff;">@lang('cruds.transaction.title')</a></li>
+                        <li class="breadcrumb-item"><a href="{{ route('home') }}" style="color: #007bff;">@lang('global.home')</a></li>
+                        <li class="breadcrumb-item"><a href="{{ route('transactions.payers') }}" style="color: #007bff;">@lang('cruds.transaction.title')</a></li>
                         <li class="breadcrumb-item active">@lang('global.add')</li>
                     </ol>
                 </div>
@@ -30,93 +28,60 @@
                     </div>
                 </div>
                 <div class="card-body border-bottom">
-
                     <form action="{{ route('transactions.payers') }}" method="GET">
                         <div class="input-group mb-3">
-                            <input type="text" class="form-control" placeholder="@lang('global.search')" name="search"
-                                value="{{ request('search') }}">
+                            <input type="text" class="form-control" placeholder="@lang('global.search')" name="search" value="{{ request('search') }}">
                             <button class="btn btn-outline-secondary" type="submit">@lang('global.search')</button>
                         </div>
                     </form>
                 </div>
                 <div class="card-body">
-
                     <div class="table-responsive">
                         <table class="table table-bordered table-hover align-middle nowrap">
                             <thead class="table-light">
                                 <tr>
-                                    {{-- <th scope="col">№ Док</th> --}}
                                     <th scope="col">@lang('global.company_name')</th>
                                     <th scope="col" style="width: 200px;">Назначение платежа</th>
                                     <th scope="col">Дата платежа</th>
                                     <th scope="col">Инн</th>
-
-                                    <th scope="col">@lang('global.fio')</th>
-                                    <th scope="col">@lang('global.contact')</th>
-
                                     <th scope="col">@lang('cruds.transaction.fields.credit')</th>
                                     <th scope="col">@lang('global.actions')</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach ($transactions as $transaction)
-                                    @if ($transaction->payer_inn == $transaction->stir)
-                                        <tr>
-                                            {{-- <td>{{ $transaction->document_number }}</td> --}}
-                                            <td>{{ $transaction->company_name }}</td>
-                                            <td style="width: 200px;">{{ $transaction->payment_description }}</td>
-                                            <td>{{ $transaction->payment_date }}</td>
-                                            <td>{{ $transaction->payer_inn }}</td>
-
-                                            <td>{{ $transaction->last_name }} {{ $transaction->first_name }}
-                                                {{ $transaction->father_name }}</td>
-
-                                            <td>{{ $transaction->contact }}</td>
-
-                                            <td>{{ $transaction->credit }}</td>
-
-                                            <td>
-                                                <ul class="list-unstyled hstack gap-1 mb-0">
-                                                    <li data-bs-toggle="tooltip" data-bs-placement="top" aria-label="View">
-                                                        <a href="{{ route('transactions.show', $transaction->id) }}"
-                                                            class="btn btn-sm btn-soft-primary"><i
-                                                                class="mdi mdi-eye-outline"></i></a>
-                                                    </li>
-                                                </ul>
-                                            </td>
-                                        </tr>
-                                    @endif
+                                    <tr>
+                                        <td>{{ $transaction->company_name ?? '' }}</td>
+                                        <td style="width: 200px;">{{ $transaction->payment_description ?? '' }}</td>
+                                        <td>{{ $transaction->payment_date ?? '' }}</td>
+                                        <td>{{ $transaction->payer_inn ?? '' }}</td>
+                                        <td>{{ $transaction->credit ?? '' }}</td>
+                                        <td>
+                                            <ul class="list-unstyled hstack gap-1 mb-0">
+                                                <li data-bs-toggle="tooltip" data-bs-placement="top" aria-label="View">
+                                                    <a href="{{ route('transactions.show', $transaction->id) }}" class="btn btn-sm btn-soft-primary">
+                                                        <i class="mdi mdi-eye-outline"></i>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </td>
+                                    </tr>
                                 @endforeach
                             </tbody>
                         </table>
                     </div>
-
                     <div class="d-flex" style="justify-content: space-between">
                         {{ $transactions->appends(['search' => request()->input('search')])->links() }}
                     </div>
-
-
-                    <script>
-                        function formatNumberWithSpaces(number) {
-                            return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
-                        }
-
-                        var payedSumElement = document.getElementById('payedSumCell1');
-                        var payedSumValue = payedSumElement.textContent;
-
-                        payedSumElement.textContent = formatNumberWithSpaces(payedSumValue);
-                    </script>
-                    <!--end row-->
                 </div>
-            </div><!--end card-->
-        </div><!--end col-->
-    </div><!--end row-->
+            </div>
+        </div>
+    </div>
 @endsection
 
 @push('styles')
     <style>
-        .table th,
-        .table td {
+        .table th, .table td {
             vertical-align: middle;
             text-align: center;
         }

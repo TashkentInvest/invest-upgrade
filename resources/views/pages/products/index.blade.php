@@ -322,7 +322,7 @@
                                         </form>
                                     <!-- Modal -->
 <div class="modal fade" id="exampleModal_{{ $item->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-scrollable modal-xl">
+    <div class="modal-dialog modal-dialog-scrollable modal-lg">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">
@@ -359,7 +359,7 @@
                                 <td>{{ $item->passport->passport_location ?? '' }}</td>
                             </tr>
                             <tr>
-                                <td><strong>Is Id ?</strong></td>
+                                <td><strong>@lang('global.passportId') ?</strong></td>
                                 <td>{{ isset($item->passport->passport_type) == 0 ? 'Passport' : 'Id Card' }}</td>
                             </tr>
                             <tr>
