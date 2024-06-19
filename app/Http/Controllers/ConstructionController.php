@@ -18,7 +18,7 @@ class ConstructionController extends Controller
     
         $constructions = Client::with(['company', 'branches' => function ($query) use ($userId) {
             $query->whereNotNull('payed_sum')
-                  ->select('id', 'branch_name', 'generate_price', 'contract_date', 'payment_type', 'percentage_input', 'installment_quarterly', 'branch_kubmetr', 'branch_location', 'client_id')
+                //   ->select('id', 'branch_name', 'generate_price', 'contract_date', 'payment_type', 'percentage_input', 'installment_quarterly', 'branch_kubmetr', 'branch_location', 'client_id')
                   ->whereDoesntHave('views', function ($q) use ($userId) {
                       $q->where('user_id', $userId)
                         ->where('status', 1);

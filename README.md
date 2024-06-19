@@ -188,6 +188,10 @@ agar view table da user_id && branch_id && status == bosa update qlsh kere alohi
 
 middlware qoshish kere qurilishga +++
 
+modalkada correct value la chqazsh kere +++
+
+modalkada summalani orasini ochish kere +++
+
 blade clean qilish kere 
 
 remove accardion ochishi keremas agar bitta bosa
@@ -198,9 +202,6 @@ constrcutions ga text lani fix qb chqish kere
 
 modal kada confirm bosaganda timer qoyish kere 
 
-modalkada correct value la chqazsh kere
-
-modalkada summalani orasini ochish kere
 
 ```
 
