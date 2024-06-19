@@ -37,7 +37,7 @@
                     </form>
                 </div>
                 <div class="card-body">
-                    <h4 id="payedSumCell1" class="text-bold">@lang('cruds.transaction.fields.credit'): {{$creditSum}}</h4>
+                    <h4 id="payedSumCell1" class="text-bold">@lang('cruds.transaction.fields.credit'): {{$creditSum}} || count: {{count($transactionCount)}}</h4>
 
                     <div class="table-responsive">
                         <table class="table table-bordered table-hover align-middle nowrap">

@@ -25,8 +25,10 @@ class TransactionController extends Controller
 
         $transactions = $query->orderBy('payment_date', 'desc')->paginate(20);
         $creditSum = CreditTransaction::sum('credit');
+        $transactionCount = CreditTransaction::get()->all();
+        
 
-        return view('pages.transactions.index', compact('transactions', 'creditSum'));
+        return view('pages.transactions.index', compact('transactions', 'creditSum','transactionCount'));
     }
     public function art(Request $request)
     {

@@ -47,11 +47,11 @@ class ImportController extends Controller
     
                     // Check if required fields are present
                     if (!isset($rowData['document_number']) || !isset($rowData['payment_date'])) {
-                        throw new \Exception('Document number or payment date is missing.');
+                        throw new \Exception('credit number or payment date is missing.');
                     }
     
                     // Check if a record with the same document number and payment date exists
-                    $creditTransaction = CreditTransaction::where('document_number', $rowData['document_number'])
+                    $creditTransaction = CreditTransaction::where('credit', $rowData['credit'])
                         ->where('payment_date', $rowData['payment_date'])
                         ->first();
     
