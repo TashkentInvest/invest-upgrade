@@ -215,16 +215,19 @@
                         <h5>Viewers: </h5>
                         @php $viewCount = 0; @endphp
                         @foreach ($construction->branches as $b)
-                            @if($b->view)
-                                @php $viewCount++; @endphp
-                                <div class="d-flex py-3 border-bottom">
-                                    <div class="px-3 flex-grow-1">
-                                        <h5 class="mb-1 font-size-15"><i class="far fa-user text-primary me-1"></i> {{ $b->view->user->name }}</h5>
-                                        <p class="text-muted"><i class="far fa-envelope text-primary me-1"></i> {{ $b->view->user->email }}</p>
-                                        <div class="text-muted font-size-12"><i class="far fa-calendar-alt text-primary me-1"></i> {{ $b->view->updated_at }} | {{ $b->view->updated_at->diffForHumans() }}</div>
+                            @foreach ($b->views as  $key => $v)
+                                @if($v)
+                                    @php $viewCount++; @endphp
+                                    <div class="d-flex py-3 border-bottom">
+                                        <div class="px-3 flex-grow-1">
+                                            {{-- <h4>{{$key+1}} ) </h4> --}}
+                                            <h4 class="mb-1 font-size-15"><i class="far fa-user text-primary me-1"></i> {{ $v->user->name }}</h4>
+                                            <p class="text-muted"><i class="far fa-envelope text-primary me-1"></i> {{ $v->user->email }}</p>
+                                            <div class="text-muted font-size-12"><i class="far fa-calendar-alt text-primary me-1"></i> {{ $v->updated_at }} | {{ $v->updated_at->diffForHumans() }}</div>
+                                        </div>
                                     </div>
-                                </div>
-                            @endif
+                                @endif
+                            @endforeach
                         @endforeach
                         <div class="mt-3">
                             <h5>Total Viewers: {{ $viewCount }}</h5>

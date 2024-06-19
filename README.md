@@ -176,19 +176,20 @@ mesta raspalajenya xato chqazvotti +++
 
 bazadigi data ni import qilish kere columnlani toglab chqb push qvorsh kere +++
 
+constructionsda faqat role constructions uchun role chqish kere +++  
+
+constructionsda kim ko'rganini chqazish kere +++
+
 blade clean qilish kere 
 
 remove accardion ochishi keremas agar bitta bosa
-
+    
 Modal window optimizatsiya qilish kere
 
 Transaction da Inn bo'yicha fetch qilish kere : Not Xato maybe
 
 constrcutions ga text lani fix qb chqish kere
 
-constructionsda faqat role constructions uchun role chqish kere
-
-constructionsda kim ko'rganini chqazish kere
 
 
 ```
