@@ -198,6 +198,10 @@ constrcutions ga text lani fix qb chqish kere
 
 modal kada confirm bosaganda timer qoyish kere 
 
+modalkada correct value la chqazsh kere
+
+modalkada summalani orasini ochish kere
+
 ```
 
 
