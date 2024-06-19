@@ -169,7 +169,11 @@ return [
             'application_number' => 'Ariza raqami',
             'payed_sum' => 'Toʻlangan summa',
             'payed_date' => 'Toʻlov sanasi',
-            'first_payment_percent' => 'Birinchi toʻlov foizi'
+            'first_payment_percent' => 'Birinchi toʻlov foizi',
+
+            'apz_number' => 'Apz raqami',
+            'apz_date' => 'Apz sanasi',
+            'kengash' => 'Kengash',
         ]
     ],
 
@@ -245,6 +249,14 @@ return [
                 'stir' => 'INN',
                 'oked' => 'OKED'
             ]
-        ]
-        
+            ],
+
+            'construction'       => [
+                'title' => 'Qurilish',
+                'text' => 'Qurilish Boshqarmasi',
+                'fields' => [
+                    'viewers' => 'Ko\'rganlar',
+                    'views_count' => 'Ko\'rganlar soni'
+                ]
+            ]
 ];

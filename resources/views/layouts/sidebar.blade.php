@@ -153,7 +153,7 @@
                         <a href="{{ route('construction.index') }}"
                             class=" waves-effect {{ Request::is('backup*') ? 'mm-active' : '' }}">
                             <i class="bx bxs-building-house"></i>
-                            <span>Qurilish</span>
+                            <span>@lang('cruds.construction.title')</span>
                         </a>
                     </li>
                 @endcan

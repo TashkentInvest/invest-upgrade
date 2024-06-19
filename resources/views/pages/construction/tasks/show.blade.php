@@ -5,12 +5,14 @@
     <div class="row">
         <div class="col-12">
             <div class="page-title-box d-sm-flex align-items-center justify-content-between">
-                <h4 class="mb-sm-0 font-size-18">Detail</h4>
+                <h4 class="mb-sm-0 font-size-18">@lang('cruds.construction.title')</h4>
 
                 <div class="page-title-right">
                     <ol class="breadcrumb m-0">
-                        <li class="breadcrumb-item"><a href="javascript:void(0);">Invoices</a></li>
-                        <li class="breadcrumb-item active">Detail</li>
+                        <li class="breadcrumb-item"><a href="{{ route('construction.index') }}"
+                                style="color: #007bff;">@lang('global.home')</a>
+                        </li>
+                        <li class="breadcrumb-item active">@lang('cruds.construction.title')</li>
                     </ol>
                 </div>
             </div>
@@ -32,11 +34,6 @@
                         </div>
                     </div>
                     <hr>
-
-                    <!-- Obyekt Malumotlari Section -->
-                    <div class="py-2 mt-3">
-                        <h3 class="font-size-15 fw-bold">Obyekt Malumotlari</h3>
-                    </div>
 
                     <div class="table-responsive">
                         <table class="table table-bordered dt-responsive w-100 table-nowrap" style="font-size: 16px;">
@@ -111,11 +108,11 @@
                                 @foreach ($construction->branches as $b)
                                     <!-- Branch Information -->
                                     <tr>
-                                        <td><strong>Apz raqami</strong></td>
+                                        <td><strong>@lang('cruds.branches.fields.apz_number')</strong></td>
                                         <td colspan="2">{{ $b->apz_raqami }}</td>
                                     </tr>
                                     <tr>
-                                        <td><strong>Apz sanasi</strong></td>
+                                        <td><strong>@lang('cruds.branches.fields.apz_date')</strong></td>
                                         <td colspan="2">{{ $b->apz_sanasi }}</td>
                                     </tr>
 
@@ -129,7 +126,7 @@
                                     </tr>
 
                                     <tr>
-                                        <td><strong>Kengash</strong></td>
+                                        <td><strong>@lang('cruds.branches.fields.kengash')</strong></td>
                                         <td colspan="2">{{ $b->kengash }}</td>
                                     </tr>
 
@@ -215,7 +212,7 @@
 
                     <!-- Viewers Section -->
                     <div class="mt-5 px-3">
-                        <h5>Viewers: </h5>
+                        <h5>@lang('cruds.construction.fields.viewers'): </h5>
                         @php $viewCount = 0; @endphp
                         @foreach ($construction->branches as $b)
                             @foreach ($b->views as  $key => $v)
@@ -226,14 +223,14 @@
                                             {{-- <h4>{{$key+1}} ) </h4> --}}
                                             <h4 class="mb-1 font-size-15"><i class="far fa-user text-primary me-1"></i> {{ $v->user->name }}</h4>
                                             <p class="text-muted"><i class="far fa-envelope text-primary me-1"></i> {{ $v->user->email }}</p>
-                                            <div class="text-muted font-size-12"><i class="far fa-calendar-alt text-primary me-1"></i> {{ $v->updated_at }} | {{ $v->updated_at->diffForHumans() }}</div>
+                                            <div class="text-muted font-size-12"><i class="far fa-calendar-alt text-primary me-1"></i> {{ $v->updated_at }} ( {{ $v->updated_at->diffForHumans() }} )</div>
                                         </div>
                                     </div>
                                 @endif
                             @endforeach
                         @endforeach
                         <div class="mt-3">
-                            <h5>Total Viewers: {{ $viewCount }}</h5>
+                            <h5>@lang('cruds.construction.fields.views_count'): {{ $viewCount }}</h5>
                         </div>
                     </div>
                     
@@ -241,7 +238,7 @@
                     <div class="d-print-none mt-4">
                         <div class="float-end">
                             <a href="javascript:window.print()" class="btn btn btn-success waves-effect waves-light me-1"><i class="fa fa-print"></i></a>
-                            <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal_{{ $construction->id }}" class="btn btn-primary">Edit</button>
+                            <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal_{{ $construction->id }}" class="btn btn-primary">@lang('global.edit')</button>
                         </div>
                     </div>
 
@@ -262,12 +259,12 @@
 
                                             <div class="row">
                                                 <div class="col-lg-6 mb-3">
-                                                    <label for="projectname" class="col-form-label">Apz raqami</label>
-                                                    <input id="projectname" name="accordions[{{ $branchIndex }}][apz_raqami]" type="text" class="form-control" value="{{ old('accordions.' . $branchIndex . '.apz_raqami', $b->apz_raqami) }}" placeholder="Enter Project Name...">
+                                                    <label for="projectname" class="col-form-label">@lang('cruds.branches.fields.apz_number')</label>
+                                                    <input id="projectname" name="accordions[{{ $branchIndex }}][apz_raqami]" type="text" class="form-control" value="{{ old('accordions.' . $branchIndex . '.apz_raqami', $b->apz_raqami) }}" placeholder="@lang('cruds.branches.fields.apz_number')">
                                                 </div>
                                                 <div class="col-lg-6 mb-3">
-                                                    <label for="projectname" class="col-form-label">Apz sanasi</label>
-                                                    <input id="projectname" name="accordions[{{ $branchIndex }}][apz_sanasi]" type="date" class="form-control" value="{{ old('accordions.' . $branchIndex . '.apz_sanasi', $b->apz_sanasi) }}" placeholder="Enter Project Name...">
+                                                    <label for="projectname" class="col-form-label">@lang('cruds.branches.fields.apz_date')</label>
+                                                    <input id="projectname" name="accordions[{{ $branchIndex }}][apz_sanasi]" type="date" class="form-control" value="{{ old('accordions.' . $branchIndex . '.apz_sanasi', $b->apz_sanasi) }}" placeholder="@lang('cruds.branches.fields.apz_date')">
                                                 </div>
                                                 <div class="col-lg-6">
                                                     <div class="mb-3">
@@ -282,7 +279,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="col-12">
-                                                    <textarea class="w-100 my-3 form-control" name="accordions[{{ $branchIndex }}][kengash]" id="" cols="30" rows="10" placeholder="Kengash xulosa">{{ old('accordions.' . $branchIndex . '.kengash', $b->kengash) }}</textarea>
+                                                    <textarea class="w-100 my-3 form-control" name="accordions[{{ $branchIndex }}][kengash]" id="" cols="30" rows="10" placeholder="@lang('cruds.branches.fields.kengash')">{{ old('accordions.' . $branchIndex . '.kengash', $b->kengash) }}</textarea>
                                                 </div>
                                             </div>
                                         @endforeach

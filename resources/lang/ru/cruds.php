@@ -75,7 +75,7 @@ return [
         ],
     ],
 
-    'client'           => [
+    'client'         => [
         'title'          => 'Клиенты',
         'title_singular' => 'Клиент',
         'fields'         => [
@@ -141,7 +141,7 @@ return [
             "select_region" => 'Выберите регион'
         ]
     ],
-    'job'  => [
+    'job'            => [
         'title' => 'Работа',
         'programs' => 'Программы',
         'fields' => [
@@ -149,7 +149,7 @@ return [
             'name_ru' => 'Название на русском'
         ]
     ],
-    'branches' => [
+    'branches'       => [
         'title' => 'АПЗ',
         'fields' => [
             'name_uz' => 'Название на узбекском',
@@ -170,27 +170,29 @@ return [
             'application_number' => 'Номер заявки',
             'payed_sum' => 'Оплаченная сумма',
             'payed_date' => 'Дата оплаты',
-            'first_payment_percent' => 'Процент первого платежа'
+            'first_payment_percent' => 'Процент первого платежа',
+
+            'apz_number' => 'Номер апз',
+            'apz_date' => 'Дата апз',
+            'kengash' => 'Совет',
+
         ]
     ],
-
-    'audit_logs' => [
+    'audit_logs'     => [
         'title' => 'История запросов',
         'fields' => [
             'name_uz' => "O'zbekcha nomi",
             'name_ru' => 'Rus tilida nomi',
         ]
     ],
-
-    'backup' => [
+    'backup'        => [
         'title' => 'Резервное копии',
         'fields' => [
             'name_uz' => "O'zbekcha nomi",
             'name_ru' => 'Rus tilida nomi',
         ]
     ],
-
-    'transaction' => [
+    'transaction'   => [
         'title' => 'Транзакции',
         'fields' => [
             'show' => 'Транзакция',
@@ -205,9 +207,7 @@ return [
             'ads' => 'Реклама транзакции'
         ]
     ],
-
-
-    'blogs' => [
+    'blogs'         => [
         'title' => 'Новости',
         'fields' => [
             'name_uz' => 'Название на узбекском',
@@ -219,7 +219,7 @@ return [
             'open_with_google_maps' => 'Открыть в Google Картах'
         ]
     ],
-    'category' => [
+    'category'      => [
         'title' => 'Категории',
         'fields' => [
             'branch_id' => 'Офис',
@@ -228,23 +228,31 @@ return [
             'parent_id'=>'Родительская категория',
             'address' => "Адрес"
         ]
-        ],
-
-        'company' => [
-            'title' => 'Компания',
-            'fields' => [
-                'address' => "Адрес",
-                'company_name' => 'Название компании',
-                'raxbar' => 'Должность',
-                'company_location' => 'Местоположение компании',
-                'branch_location' => 'Местоположение объекта',
-                'branch_type' => 'Тип объекта',
-                'bank_service' => 'Название банка',
-                'bank_code' => 'Код банка',
-                'bank_account' => 'Банковский счет',
-                'stir' => 'ИНН',
-                'oked' => 'ОКЭД'
-            ]
+    ],
+    'company'       => [
+        'title' => 'Компания',
+        'fields' => [
+            'address' => "Адрес",
+            'company_name' => 'Название компании',
+            'raxbar' => 'Должность',
+            'company_location' => 'Местоположение компании',
+            'branch_location' => 'Местоположение объекта',
+            'branch_type' => 'Тип объекта',
+            'bank_service' => 'Название банка',
+            'bank_code' => 'Код банка',
+            'bank_account' => 'Банковский счет',
+            'stir' => 'ИНН',
+            'oked' => 'ОКЭД'
         ]
+        ],
+    'construction'       => [
+        'title' => 'Строительство',
+        'text' => 'Строительный отдел',
+
+        'fields' => [
+            'viewers' => 'Прасмотронние',
+            'views_count' => 'Прасмотренное число'
+        ]
+    ]
         
 ];
