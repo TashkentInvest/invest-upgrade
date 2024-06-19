@@ -198,19 +198,17 @@ construction show digi 000 000 lani fix qilish kere +++
 
 product show dayam 000 000 sonlani fix qlish kere with optimal way +++
 
+company_name and branch_name word ga qoshish kere +++
+
 blade clean qilish kere 
 
 remove accardion ochishi keremas agar bitta bosa
     
-Transaction da Inn bo'yicha fetch qilish kere : Not Xato maybe
-
 Transactionlani payed date blan solishtrib fix qilish kere
 
 modal kada confirm bosaganda timer qoyish kere 
 
 product index/show add some beauty
-
-company_name and branch_name word ga qoshish kere 
 
 
 ```
