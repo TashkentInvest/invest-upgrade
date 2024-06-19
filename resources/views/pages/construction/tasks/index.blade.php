@@ -27,10 +27,18 @@
                         <div class="col-sm-4">
                             <div class="search-box me-2 mb-2 d-inline-block">
                                 <div class="position-relative">
-                                    <input type="text" class="form-control" placeholder="Search...">
-                                    <i class="bx bx-search-alt search-icon"></i>
+                                    <form action="{{ route('construction.index') }}" method="GET">
+                                        <div class="input-group mb-3">
+                                            <input type="text" class="form-control" placeholder="@lang('global.search')" name="search" value="{{ request('search') }}">
+                                            <i class="bx bx-search-alt search-icon"></i>
+        
+                                            <button class="btn btn-outline-secondary" type="submit">@lang('global.search')</button>
+                                        </div>
+                                    </form> 
                                 </div>
                             </div>
+
+                           
                         </div>
                     </div>
 

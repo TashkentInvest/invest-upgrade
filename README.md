@@ -188,10 +188,9 @@ Modal window optimizatsiya qilish kere
 
 Transaction da Inn bo'yicha fetch qilish kere : Not Xato maybe
 
-constrcutions ga text lani fix qb chqish kere
+constrcutions ga text lani fix qb chqish kere\
 
-
-
+consttuctionga search qoshish kere
 ```
 
 
