@@ -194,6 +194,10 @@ modalkada summalani orasini ochish kere +++
 
 constrcutions ga text lani fix qb chqish kere +++
 
+construction show digi 000 000 lani fix qilish kere +++
+
+product show dayam 000 000 sonlani fix qlish kere with optimal way +++
+
 blade clean qilish kere 
 
 remove accardion ochishi keremas agar bitta bosa
@@ -204,9 +208,6 @@ Transactionlani payed date blan solishtrib fix qilish kere
 
 modal kada confirm bosaganda timer qoyish kere 
 
-product show dayam 000 000 sonlani fix qlish kere with optimal way
-
-construction show digi 000 000 lani fix qilish kere
 
 ```
 

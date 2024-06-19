@@ -209,19 +209,10 @@
                                 </tr>
                                 <tr>
                                     <td>@lang('global.jami_tolanishi_kerak')</td>
-                                    <td colspan="2" id="payedSumCell1">{{ $b->generate_price }}</td>
+                                    <td colspan="2" class="formatted-number">{{ $b->generate_price }}</td>
                                 </tr>
 
-                                <script>
-                                    function formatNumberWithSpaces(number) {
-                                        return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
-                                    }
-
-                                    var payedSumElement = document.getElementById('payedSumCell1');
-                                    var payedSumValue = payedSumElement.textContent;
-
-                                    payedSumElement.textContent = formatNumberWithSpaces(payedSumValue);
-                                </script>
+                
 
                                 <tr>
                                     <td>@lang('global.bolib_tolash_foizi_oldindan')</td>
@@ -245,19 +236,8 @@
 
                                 <tr>
                                     <td>@lang('cruds.branches.fields.payed_sum')</td>
-                                    <td colspan="2" id="payedSumCell">{{ $b->payed_sum }}</td>
+                                    <td colspan="2" class="formatted-number">{{ $b->payed_sum }}</td>
                                 </tr>
-
-                                <script>
-                                    function formatNumberWithSpaces(number) {
-                                        return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
-                                    }
-
-                                    var payedSumElement = document.getElementById('payedSumCell');
-                                    var payedSumValue = payedSumElement.textContent;
-
-                                    payedSumElement.textContent = formatNumberWithSpaces(payedSumValue);
-                                </script>
 
                                 <tr>
                                     <td>@lang('cruds.branches.fields.payed_date')</td>
@@ -284,6 +264,18 @@
 
                             @endforeach
 
+                            <script>
+                                function formatNumberWithSpaces(number) {
+                                    return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
+                                }
+                    
+                                document.addEventListener('DOMContentLoaded', function() {
+                                    var elements = document.querySelectorAll('.formatted-number');
+                                    elements.forEach(function(element) {
+                                        element.textContent = formatNumberWithSpaces(element.textContent);
+                                    });
+                                });
+                            </script>
                             <ul>
                                 <h5>@lang('global.contract_details')</h5>
 
