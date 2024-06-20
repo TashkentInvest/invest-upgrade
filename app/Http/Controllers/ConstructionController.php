@@ -17,7 +17,7 @@ class ConstructionController extends Controller
         $search = $request->input('search');
     
         // Query construction with relationships
-        $constructions = Client::with(['company', 'branches' => function ($query) use ($userId) {
+        $constructions = Client::with(['company','files', 'branches' => function ($query) use ($userId) {
                 $query->whereNotNull('payed_sum')
                       ->whereDoesntHave('views', function ($q) use ($userId) {
                           $q->where('user_id', $userId)

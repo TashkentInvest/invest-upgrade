@@ -191,6 +191,31 @@
                                             <td><strong>@lang('cruds.branches.fields.payed_date')</strong></td>
                                             <td colspan="2">{{ $b->payed_date }}</td>
                                         </tr>
+
+                                        {{--  Platejka start--}}
+                                        {{-- @foreach ($files as $file)
+                                        <div class="py-1">
+                                            <a target="_blank" class="py-2 my-2"
+                                                href="{{ asset($file->path) }}">{{ $file->path }}</a>
+                                            @can('client.delete')
+                                                Delete
+                                                <input type="checkbox" name="delete_files[]"
+                                                    value="{{ $file->id }}">
+                                            @endcan
+                                        </div>
+                                    @endforeach --}}
+                                    <h4>Pinned payment file</h4>
+                                    @foreach ($construction->files as $file)
+                                    @if (preg_match('/^assets\/payment\/.+$/', $file->path))
+                                        <div class="py-1">
+                                            <a target="_blank" class="py-2 my-2" href="{{ asset($file->path) }}">{{ $file->path }}</a>
+                                        </div>
+                
+                
+                                    @endif
+                                @endforeach
+
+                                        {{--  Platejka end--}}
                                     </tbody>
                                 </table>
                             </div>

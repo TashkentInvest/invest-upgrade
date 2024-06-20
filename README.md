@@ -212,7 +212,7 @@ product index/show add some beauty
 
 product raspnsive qlsh kere
 
-platejka pinned qlsh kere 
+platejka pinned qlsh kere +++
 
 chat qlsh kere
 
