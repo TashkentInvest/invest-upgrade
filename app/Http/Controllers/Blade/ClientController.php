@@ -221,20 +221,30 @@ class ClientController extends Controller
                 }
             }
 
-            if ($request->hasFile('document')) {
-                foreach ($request->file('document') as $file) {
+            function handleFileUpload($files, $client, $folder)
+            {
+                foreach ($files as $file) {
                     $originalName = pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME);
                     $extension = $file->getClientOriginalExtension();
                     $date = date('Ymd_His');
                     $fileName = $originalName . '_' . $date . '.' . $extension;
-                    $file->move(public_path('assets'), $fileName);
+                    $file->move(public_path('assets/' . $folder), $fileName);
 
                     $fileModel = new File();
                     $fileModel->client_id = $client->id;
-                    $fileModel->path = 'assets/' . $fileName;
+                    $fileModel->path = 'assets/' . $folder . '/' . $fileName;
                     $fileModel->save();
                 }
             }
+
+            if ($request->hasFile('document')) {
+                handleFileUpload($request->file('document'), $client, 'documents');
+            }
+
+            if ($request->hasFile('document_payment')) {
+                handleFileUpload($request->file('document_payment'), $client, 'payment');
+            }
+
 
             if ($request->has('delete_files')) {
                 foreach ($request->input('delete_files') as $fileId) {

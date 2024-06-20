@@ -294,13 +294,22 @@
                                 <div class="row" style="align-items: center ">
                                   
 
-                                    <div class="col-12 col-md-6 col-lg-6 col-xl-3 mb-2">
-                                        <label for="file" >File document</label>
+                                    <div class="col-12 col-md-6 col-lg-6 col-xl-4 mb-2">
+                                        <label class="col-12 mt-2" for="file">File APZ</label>
                                         <input type="file" name="document[]" multiple>
                                         @if ($errors->has('document'))
                                             <span class="error invalid-feedback">{{ $errors->first('document') }}</span>
                                         @endif
                                     </div>
+                                    
+                                    <div class="col-12 col-md-6 col-lg-6 col-xl-4 mb-2">
+                                        <label class="col-12 mt-2" for="file">Platejka document</label>
+                                        <input type="file" name="document_payment[]" multiple>
+                                        @if ($errors->has('document_payment'))
+                                            <span class="error invalid-feedback">{{ $errors->first('document_payment') }}</span>
+                                        @endif
+                                    </div>
+                                    
                                     <ul>
 
                                         @foreach ($files as $file)
