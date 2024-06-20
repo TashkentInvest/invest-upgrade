@@ -205,7 +205,7 @@
                                         </div>
                                     @endforeach --}}
                                     <h4>Pinned payment file</h4>
-                                    @foreach ($construction->files as $file)
+                                    @foreach ($notification->files as $file)
                                     @if (preg_match('/^assets\/payment\/.+$/', $file->path))
                                         <div class="py-1">
                                             <a target="_blank" class="py-2 my-2" href="{{ asset($file->path) }}">{{ $file->path }}</a>
