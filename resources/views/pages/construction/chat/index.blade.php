@@ -32,7 +32,21 @@
             <div>
                 <div id="chat-conversation" class="chat-conversation p-3" style="height: 500px; overflow-y: auto;">
                     <ul class="list-unstyled mb-0" data-simplebar>
+                        @php
+                            $lastDate = null;
+                        @endphp
                         @foreach ($messages as $message)
+                            @php
+                                $messageDate = $message->created_at->format('Y-m-d');
+                            @endphp
+                            @if ($lastDate !== $messageDate)
+                                <li class="chat-day-title">
+                                    <span class="title">{{ $message->created_at->format('F j, Y') }}</span>
+                                </li>
+                                @php
+                                    $lastDate = $messageDate;
+                                @endphp
+                            @endif
                             <li class="{{ $message->user->id === auth()->id() ? 'right' : '' }}">
                                 <div class="conversation-list">
                                     <div class="ctext-wrap">
