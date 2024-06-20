@@ -16,11 +16,12 @@ use Illuminate\Support\Facades\Cache;
 
 class ClientController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $clients = Client::deepFilters()->with(['company','branches','address','passport','files'])
-        ->where('is_deleted', '!=', 1)->orderBy('id', 'desc')
-        ->paginate(25);
+        $client = new Client();
+        $clients = $client->deepFilters($request)
+            ->with(['company', 'passport']) // Adjust relationships as needed
+            ->paginate(25);
 
         return view('pages.products.index', compact('clients'));
     }
