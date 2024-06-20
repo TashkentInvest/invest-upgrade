@@ -61,16 +61,6 @@ Route::group(['middleware' => ['auth', 'checkUserRole']], function () {
         Route::match(['put', 'post'], 'product/{id}', [ClientController::class, 'update'])->name('clientUpdate');
         Route::post('/toggle-status/{id}', [ClientController::class, 'toggleclientActivation'])->name('clientActivation');
     });
-    // Users
-    Route::prefix('users')->group(function () {
-        Route::get('/', [UserController::class, 'index'])->name('userIndex');
-        Route::get('/add', [UserController::class, 'add'])->name('userAdd');
-        Route::post('/create', [UserController::class, 'create'])->name('userCreate');
-        Route::get('/{id}/edit', [UserController::class, 'edit'])->name('userEdit');
-        Route::post('/update/{id}', [UserController::class, 'update'])->name('userUpdate');
-        Route::delete('/delete/{id}', [UserController::class, 'destroy'])->name('userDestroy');
-        Route::get('/theme-set/{id}', [UserController::class, 'setTheme'])->name('userSetTheme');
-    });
     // Permissions
     Route::prefix('permissions')->group(function () {
         Route::get('/', [PermissionController::class, 'index'])->name('permissionIndex');
@@ -138,7 +128,17 @@ Route::group(['middleware' => ['auth', 'checkUserRole']], function () {
 });
 
 Route::group(['middleware' => ['auth']], function () {
-
+   // Users
+    Route::prefix('users')->group(function () {
+        Route::get('/', [UserController::class, 'index'])->name('userIndex');
+        Route::get('/add', [UserController::class, 'add'])->name('userAdd');
+        Route::post('/create', [UserController::class, 'create'])->name('userCreate');
+        Route::get('/{id}/edit', [UserController::class, 'edit'])->name('userEdit');
+        Route::post('/update/{id}', [UserController::class, 'update'])->name('userUpdate');
+        Route::delete('/delete/{id}', [UserController::class, 'destroy'])->name('userDestroy');
+        Route::get('/theme-set/{id}', [UserController::class, 'setTheme'])->name('userSetTheme');
+    });
+    // Constructions
     Route::prefix('constructions')->group(function () {
         Route::get('/', [ConstructionController::class,'index'])->name('construction.index');
         Route::get('/{id}', [ConstructionController::class,'show'])->name('construction.show');
@@ -147,9 +147,7 @@ Route::group(['middleware' => ['auth']], function () {
         Route::post('/update-status', [ConstructionController::class, 'updateStatus'])->name('updateStatus');
     });
     
-    // Route::get('/chat', [ChatController::class,'index'])->name('chat.index');
-    // Route::get('/chat', [ChatController::class, 'index'])->name('chat.index');
-    // Route::post('/chat', [ChatController::class, 'store'])->name('chat.store');
+    // Chat
     Route::get('/chat', [ChatController::class, 'index'])->name('chat.index');
     Route::post('/chat', [ChatController::class, 'store'])->name('chat.store');
     Route::put('/chat/{id}', [ChatController::class, 'update'])->name('chat.update');

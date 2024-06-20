@@ -85,7 +85,7 @@
                         <div class="row">
                             <div class="col">
                                 <div class="position-relative">
-                                    <input type="text" name="message" class="form-control chat-input" placeholder="Enter Message...">
+                                    <input type="text" name="message" class="form-control chat-input" placeholder="@lang('global.new_message')">
                                 </div>
                             </div>
                             <div class="col-auto">
