@@ -8,8 +8,7 @@
             <div class="page-title-right">
                 <ol class="breadcrumb m-0">
                     <li class="breadcrumb-item"><a href="{{ route('construction.index') }}"
-                            style="color: #007bff;">@lang('global.home')</a>
-                    </li>
+                            style="color: #007bff;">@lang('global.home')</a></li>
                     <li class="breadcrumb-item active">Chat</li>
                 </ol>
             </div>
@@ -49,6 +48,20 @@
                             @endif
                             <li class="{{ $message->user->id === auth()->id() ? 'right' : '' }}">
                                 <div class="conversation-list">
+                                    <div class="dropdown">
+                                        <button class="btn btn-link dropdown-toggle" type="button" id="dropdownMenuButton-{{ $message->id }}" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <i class="bx bx-dots-vertical-rounded"></i>
+                                        </button>
+                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton-{{ $message->id }}">
+                                            {{-- <a class="dropdown-item" href="#">Copy</a> --}}
+                                            <button class="dropdown-item edit-message" data-id="{{ $message->id }}" data-message="{{ $message->message }}">Edit</button>
+                                            <form action="{{ route('chat.destroy', $message->id) }}" method="POST">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class="dropdown-item text-danger">Delete</button>
+                                            </form>
+                                        </div>
+                                    </div>
                                     <div class="ctext-wrap">
                                         <div class="conversation-name">{{ $message->user->name }}</div>
                                         <p>{{ $message->message }}</p>
@@ -59,43 +72,9 @@
                                                 <span class="badge bg-info text-dark">Edited</span>
                                             @endif
                                         </p>
-                                        <div class="message-actions">
-                                            <button class="btn btn-sm btn-primary edit-message" data-id="{{ $message->id }}" data-message="{{ $message->message }}">Edit</button>
-                                            <form action="{{ route('chat.destroy', $message->id) }}" method="POST" style="display:inline;">
-                                                @csrf
-                                                @method('DELETE')
-                                                <button type="submit" class="btn btn-sm btn-danger">Delete</button>
-                                            </form>
-                                        </div>
                                     </div>
                                 </div>
                             </li>
-
-                            {{-- <li>
-                                <div class="conversation-list">
-                                    <div class="dropdown">
-
-                                        <a class="dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            <i class="bx bx-dots-vertical-rounded"></i>
-                                          </a>
-                                        <div class="dropdown-menu">
-                                            <a class="dropdown-item" href="#">Copy</a>
-                                            <a class="dropdown-item" href="#">Save</a>
-                                            <a class="dropdown-item" href="#">Forward</a>
-                                            <a class="dropdown-item" href="#">Delete</a>
-                                        </div>
-                                    </div>
-                                    <div class="ctext-wrap">
-                                        <div class="conversation-name">Steven Franklin</div>
-                                        <p>
-                                            Yeah everything is fine
-                                        </p>
-                                        
-                                        <p class="chat-time mb-0"><i class="bx bx-time-five align-middle me-1"></i> 10:06</p>
-                                    </div>
-                                    
-                                </div>
-                            </li> --}}
                         @endforeach
                     </ul>
                 </div>
@@ -166,8 +145,8 @@
                 document.getElementById('editMessageId').value = messageId;
                 document.getElementById('editMessage').value = messageText;
 
-                var formAction = '{{ route('chat.update', ':id') }}';
-                formAction = formAction.replace(':id', messageId);
+                var formAction = '{{ route('chat.update', 0) }}';
+                formAction = formAction.replace('0', messageId);
                 document.getElementById('editMessageForm').action = formAction;
 
                 var editModal = new bootstrap.Modal(document.getElementById('editMessageModal'), {});
