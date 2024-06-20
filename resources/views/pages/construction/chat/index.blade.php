@@ -52,7 +52,13 @@
                                     <div class="ctext-wrap">
                                         <div class="conversation-name">{{ $message->user->name }}</div>
                                         <p>{{ $message->message }}</p>
-                                        <p class="chat-time mb-0"><i class="bx bx-time-five align-middle me-1"></i> {{ $message->created_at->format('H:i') }}</p>
+                                        <p class="chat-time mb-0">
+                                            <i class="bx bx-time-five align-middle me-1"></i> 
+                                            {{ $message->created_at->format('H:i') }}
+                                            @if ($message->updated_at != $message->created_at)
+                                                <span class="badge bg-info text-dark">Edited</span>
+                                            @endif
+                                        </p>
                                         <div class="message-actions">
                                             <button class="btn btn-sm btn-primary edit-message" data-id="{{ $message->id }}" data-message="{{ $message->message }}">Edit</button>
                                             <form action="{{ route('chat.destroy', $message->id) }}" method="POST" style="display:inline;">
@@ -79,7 +85,7 @@
                             </div>
                             <div class="col-auto">
                                 <button type="submit" class="btn btn-primary btn-rounded chat-send w-md waves-effect waves-light">
-                                    <span class="d-none d-sm-inline-block me-2">Send</span>
+                                    <span class="d-none d-sm-inline-block me-2">@lang('global.send')</span>
                                     <i class="mdi mdi-send"></i>
                                 </button>
                             </div>
