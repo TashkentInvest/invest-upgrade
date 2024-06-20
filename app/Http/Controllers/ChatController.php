@@ -19,10 +19,39 @@ class ChatController extends Controller
             'message' => 'required|string|max:255',
         ]);
 
-        Message::create([
-            'user_id' => auth()->id(),
-            'message' => $request->message,
+        $message = new Message();
+        $message->user_id = auth()->id();
+        $message->message = $request->message;
+        $message->save();
+
+        return redirect()->route('chat.index');
+    }
+
+    public function update(Request $request, $id)
+    {
+        $request->validate([
+            'message' => 'required|string|max:255',
         ]);
+
+        $message = Message::findOrFail($id);
+        if ($message->user_id !== auth()->id()) {
+            return redirect()->route('chat.index')->with('error', 'You can only edit your own messages.');
+        }
+
+        $message->message = $request->message;
+        $message->save();
+
+        return redirect()->route('chat.index');
+    }
+
+    public function destroy($id)
+    {
+        $message = Message::findOrFail($id);
+        if ($message->user_id !== auth()->id()) {
+            return redirect()->route('chat.index')->with('error', 'You can only delete your own messages.');
+        }
+
+        $message->delete();
 
         return redirect()->route('chat.index');
     }

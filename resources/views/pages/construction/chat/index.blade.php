@@ -53,6 +53,14 @@
                                         <div class="conversation-name">{{ $message->user->name }}</div>
                                         <p>{{ $message->message }}</p>
                                         <p class="chat-time mb-0"><i class="bx bx-time-five align-middle me-1"></i> {{ $message->created_at->format('H:i') }}</p>
+                                        <div class="message-actions">
+                                            <button class="btn btn-sm btn-primary edit-message" data-id="{{ $message->id }}" data-message="{{ $message->message }}">Edit</button>
+                                            <form action="{{ route('chat.destroy', $message->id) }}" method="POST" style="display:inline;">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+                                            </form>
+                                        </div>
                                     </div>
                                 </div>
                             </li>
@@ -82,6 +90,34 @@
         </div>
     </div>
 </div>
+
+<!-- Edit Modal -->
+<div class="modal fade" id="editMessageModal" tabindex="-1" aria-labelledby="editMessageModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form id="editMessageForm" action="{{ route('chat.update', 0) }}" method="POST">
+                @csrf
+                @method('PUT')
+                <div class="modal-header">
+                    <h5 class="modal-title" id="editMessageModalLabel">Edit Message</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <input type="hidden" name="message_id" id="editMessageId">
+                    <div class="mb-3">
+                        <label for="editMessage" class="form-label">Message</label>
+                        <textarea class="form-control" id="editMessage" name="message" rows="3"></textarea>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Save changes</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
 @endsection
 
 @section('scripts')
@@ -89,6 +125,23 @@
     document.addEventListener('DOMContentLoaded', function() {
         var chatConversation = document.getElementById('chat-conversation');
         chatConversation.scrollTop = chatConversation.scrollHeight;
+
+        document.querySelectorAll('.edit-message').forEach(button => {
+            button.addEventListener('click', function() {
+                var messageId = this.getAttribute('data-id');
+                var messageText = this.getAttribute('data-message');
+
+                document.getElementById('editMessageId').value = messageId;
+                document.getElementById('editMessage').value = messageText;
+
+                var formAction = '{{ route('chat.update', ':id') }}';
+                formAction = formAction.replace(':id', messageId);
+                document.getElementById('editMessageForm').action = formAction;
+
+                var editModal = new bootstrap.Modal(document.getElementById('editMessageModal'), {});
+                editModal.show();
+            });
+        });
     });
 </script>
 @endsection
