@@ -36,7 +36,7 @@
 
                                 <div class="row">
                                     <div class="col-12 col-lg-12 mb-2">
-                                        <label for="mijoz_turi" class="col-md-6 col-form-label">@lang('cruds.client.fields.mijoz_turi')</label>
+                                        <label for="mijoz_turi" >@lang('cruds.client.fields.mijoz_turi')</label>
                                         <select class="form-control" name="mijoz_turi" id="mijoz_turi">
                                             <option value="fizik"
                                                 {{ old('mijoz_turi', $client->mijoz_turi) == 'fizik' ? 'selected' : '' }}>
@@ -53,7 +53,7 @@
 
                                 <div class="row" id="make_show" style="display: none;">
 
-                                    <div class="col-12 col-lg-3 mb-2">
+                                    <div class="col-12 col-md-6 col-lg-4 col-xl-3 mb-2">
                                         <div class="mb-3">
                                             <label for="company_name">@lang('global.company_name')</label>
                                             <input type="text" class="form-control" name="company_name"
@@ -62,8 +62,8 @@
                                         </div>
                                     </div>
 
-                                    <div class="col-12 col-lg-3 mb-2">
-                                        <label for="raxbar" class="col-md-6 col-form-label">@lang('cruds.company.fields.raxbar') -
+                                    <div class="col-12 col-md-6 col-lg-4 col-xl-3 mb-2">
+                                        <label for="raxbar" >@lang('cruds.company.fields.raxbar') -
                                             @lang('global.client_name')</label>
                                         <input class="form-control {{ $errors->has('raxbar') ? 'is-invalid' : '' }}"
                                             type="text" name="raxbar" id="raxbar" placeholder="@lang('cruds.company.fields.raxbar')"
@@ -74,8 +74,8 @@
                                     </div>
 
 
-                                    <div class="col-12 col-lg-3 mb-2">
-                                        <label for="stir" class="col-md-6 col-form-label">@lang('cruds.company.fields.stir')</label>
+                                    <div class="col-12 col-md-6 col-lg-4 col-xl-3 mb-2">
+                                        <label for="stir" >@lang('cruds.company.fields.stir')</label>
                                         <input class="form-control {{ $errors->has('stir') ? 'is-invalid' : '' }}"
                                             type="text" name="stir" id="stir" placeholder="@lang('cruds.company.fields.stir')"
                                             value="{{ old('stir', $client->company->stir) }}" maxlength="9">
@@ -84,8 +84,8 @@
                                         @endif
                                     </div>
 
-                                    <div class="col-12 col-lg-3 mb-2">
-                                        <label for="oked" class="col-md-6 col-form-label">@lang('cruds.company.fields.oked')</label>
+                                    <div class="col-12 col-md-6 col-lg-4 col-xl-3 mb-2">
+                                        <label for="oked" >@lang('cruds.company.fields.oked')</label>
                                         <input class="form-control {{ $errors->has('oked') ? 'is-invalid' : '' }}"
                                             type="text" name="oked" id="oked" placeholder="@lang('cruds.company.fields.oked')"
                                             value="{{ old('oked', $client->company->oked) }}" maxlength="5">
@@ -94,8 +94,8 @@
                                         @endif
                                     </div>
 
-                                    <div class="col-12 col-lg-3 mb-2">
-                                        <label for="bank_service" class="col-md-6 col-form-label">@lang('cruds.company.fields.bank_service')</label>
+                                    <div class="col-12 col-md-6 col-lg-4 col-xl-3 mb-2">
+                                        <label for="bank_service" >@lang('cruds.company.fields.bank_service')</label>
                                         <input class="form-control {{ $errors->has('bank_service') ? 'is-invalid' : '' }}"
                                             type="text" name="bank_service" id="bank_service"
                                             placeholder="@lang('cruds.company.fields.bank_service')"
@@ -106,8 +106,8 @@
                                         @endif
                                     </div>
 
-                                    <div class="col-12 col-lg-3 mb-2">
-                                        <label for="bank_code" class="col-md-6 col-form-label">@lang('cruds.company.fields.bank_code')</label>
+                                    <div class="col-12 col-md-6 col-lg-4 col-xl-3 mb-2">
+                                        <label for="bank_code" >@lang('cruds.company.fields.bank_code')</label>
                                         <input class="form-control {{ $errors->has('bank_code') ? 'is-invalid' : '' }}"
                                             type="text" name="bank_code" max="5" id="bank_code"
                                             placeholder="@lang('cruds.company.fields.bank_code')"
@@ -119,9 +119,9 @@
                                         @endif
                                     </div>
 
-                                    <div class="col-12 col-lg-3 mb-2">
+                                    <div class="col-12 col-md-6 col-lg-4 col-xl-3 mb-2">
                                         <label for="bank_account"
-                                            class="col-md-6 col-form-label">@lang('cruds.company.fields.bank_account')</label>
+                                            >@lang('cruds.company.fields.bank_account')</label>
                                         <input class="form-control {{ $errors->has('bank_account') ? 'is-invalid' : '' }}"
                                             type="text" name="bank_account" max="5" id="bank_account"
                                             placeholder="@lang('cruds.company.fields.bank_account')"
@@ -135,9 +135,9 @@
                                     </div>
 
 
-                                    <div class="col-12 col-lg-3 mb-2">
+                                    <div class="col-12 col-md-6 col-lg-4 col-xl-3 mb-2">
                                         <label for="yuridik_address"
-                                            class="col-md-6 col-form-label">@lang('cruds.client.fields.yuridik_address')</label>
+                                            >@lang('cruds.client.fields.yuridik_address')</label>
                                         <input
                                             class="form-control {{ $errors->has('yuridik_address') ? 'is-invalid' : '' }}"
                                             type="text" name="yuridik_address" id="yuridik_address"
@@ -151,8 +151,8 @@
                                 </div>
 
                                 <div class="row">
-                                    <div class="col-12 col-lg-3 mb-2">
-                                        <label for="last_name" class="col-md-4 col-form-label">@lang('cruds.client.fields.last_name')</label>
+                                    <div class="col-12 col-md-6 col-lg-6 col-xl-3 mb-2">
+                                        <label for="last_name" >@lang('cruds.client.fields.last_name')</label>
                                         <input class="form-control {{ $errors->has('last_name') ? 'is-invalid' : '' }}"
                                             type="text" name="last_name" id="last_name"
                                             placeholder="@lang('cruds.client.fields.last_name')"
@@ -162,8 +162,8 @@
                                         @endif
                                     </div>
 
-                                    <div class="col-12 col-lg-3 mb-2">
-                                        <label for="name" class="col-md-4 col-form-label">@lang('cruds.client.fields.name')</label>
+                                    <div class="col-12 col-md-6 col-lg-6 col-xl-3 mb-2">
+                                        <label for="name" >@lang('cruds.client.fields.name')</label>
                                         <input class="form-control {{ $errors->has('first_name') ? 'is-invalid' : '' }}"
                                             type="text" name="first_name" id="first_name"
                                             placeholder="@lang('cruds.client.fields.first_name')"
@@ -173,9 +173,9 @@
                                         @endif
                                     </div>
 
-                                    <div class="col-12 col-lg-3 mb-2">
+                                    <div class="col-12 col-md-6 col-lg-6 col-xl-3 mb-2">
                                         <label for="father_name"
-                                            class="col-md-4 col-form-label">@lang('cruds.client.fields.father_name')</label>
+                                            >@lang('cruds.client.fields.father_name')</label>
                                         <input class="form-control {{ $errors->has('father_name') ? 'is-invalid' : '' }}"
                                             type="text" name="father_name" id="father_name"
                                             placeholder="@lang('cruds.client.fields.father_name')"
@@ -186,8 +186,8 @@
                                         @endif
                                     </div>
 
-                                    <div class="col-12 col-lg-3 mb-2">
-                                        <label for="contact" class="col-md-4 col-form-label">@lang('cruds.client.fields.contact')</label>
+                                    <div class="col-12 col-md-6 col-lg-6 col-xl-3 mb-2">
+                                        <label for="contact" >@lang('cruds.client.fields.contact')</label>
                                         <input class="form-control {{ $errors->has('contact') ? 'is-invalid' : '' }}"
                                             type="text" name="contact" id="contact"
                                             placeholder="@lang('cruds.client.fields.contact')"
@@ -200,9 +200,9 @@
 
                                 <div class="row" id="make_hide">
 
-                                    <div class="col-12 col-lg-3 mb-2">
+                                    <div class="col-12 col-md-6 col-lg-6 col-xl-3 mb-2">
                                         <label for="passport_serial"
-                                            class="col-md-6 col-form-label">@lang('cruds.client.fields.passport_serial')</label>
+                                            >@lang('cruds.client.fields.passport_serial')</label>
                                         <input
                                             class="form-control {{ $errors->has('passport_serial') ? 'is-invalid' : '' }}"
                                             type="text" name="passport_serial" id="passport_serial"
@@ -215,9 +215,9 @@
                                         @endif
                                     </div>
 
-                                    <div class="col-12 col-lg-3 mb-2">
+                                    <div class="col-12 col-md-6 col-lg-6 col-xl-3 mb-2">
                                         <label for="passport_pinfl"
-                                            class="col-md-6 col-form-label">@lang('cruds.client.fields.passport_pinfl')</label>
+                                            >@lang('cruds.client.fields.passport_pinfl')</label>
                                         <input
                                             class="form-control {{ $errors->has('passport_pinfl') ? 'is-invalid' : '' }}"
                                             type="text" name="passport_pinfl" id="passport_pinfl"
@@ -230,9 +230,9 @@
                                         @endif
                                     </div>
 
-                                    <div class="col-12 col-lg-3 mb-2">
+                                    <div class="col-12 col-md-6 col-lg-6 col-xl-3 mb-2">
                                         <label for="passport_date"
-                                            class="col-md-4 col-form-label">@lang('cruds.client.fields.passport_date')</label>
+                                            >@lang('cruds.client.fields.passport_date')</label>
                                         <input
                                             class="form-control {{ $errors->has('passport_date') ? 'is-invalid' : '' }}"
                                             type="date" name="passport_date" id="passport_date"
@@ -244,9 +244,9 @@
                                         @endif
                                     </div>
 
-                                    <div class="col-12 col-lg-3 mb-2">
+                                    <div class="col-12 col-md-6 col-lg-6 col-xl-3 mb-2">
                                         <label for="passport_location"
-                                            class="col-md-6 col-form-label">@lang('cruds.client.fields.passport_location')</label>
+                                            >@lang('cruds.client.fields.passport_location')</label>
                                         <input
                                             class="form-control {{ $errors->has('passport_location') ? 'is-invalid' : '' }}"
                                             type="text" name="passport_location" id="passport_location"
@@ -258,9 +258,9 @@
                                         @endif
                                     </div>
 
-                                    <div class="col-12 col-lg-3 mb-2">
+                                    <div class="col-12 col-md-6 col-lg-6 col-xl-3 mb-2">
                                         <label for="home_address"
-                                            class="col-md-6 col-form-label">@lang('global.home_address')</label>
+                                            >@lang('global.home_address')</label>
                                         <input class="form-control {{ $errors->has('home_address') ? 'is-invalid' : '' }}"
                                             type="text" name="home_address" id="home_address"
                                             placeholder="@lang('global.home_address')"
@@ -271,23 +271,31 @@
                                         @endif
                                     </div>
 
-                                </div>
-
-                                <div class="row" style="align-items: center ">
-                                    <div class="col-12 col-lg-6 mb-2">
+                                    <div class="col-12 col-md-6 col-lg64 col-xl-6 mb-2">
                                         <label for="client_description"
-                                            class="col-md-6 col-form-label">@lang('cruds.client.fields.client_description')</label>
+                                            >@lang('cruds.client.fields.client_description')</label>
                                         <textarea id="textarea" name="client_description"
-                                            class="form-control {{ $errors->has('client_description') ? 'is-invalid' : '' }}" maxlength="225" rows="3"
-                                            placeholder="This textarea has a limit of 225 chars.">{{ old('client_description', $client->client_description) }}</textarea>
+                                            class="form-control {{ $errors->has('client_description') ? 'is-invalid' : '' }}" maxlength="225" rows="1"
+                                            placeholder="@lang('cruds.client.fields.client_description')">{{ old('client_description', $client->client_description) }}</textarea>
                                         @if ($errors->has('client_description'))
                                             <span
                                                 class="error invalid-feedback">{{ $errors->first('client_description') }}</span>
                                         @endif
                                     </div>
 
-                                    <div class="col-12 col-lg-3 mb-2">
-                                        <label for="file" class="col-md-4 col-form-label">File document</label>
+                                    <div class="col-12 col-md-6 col-lg-6 col-xl-3 mb-2">
+                                        <label for="is_passport_id" >Is passport
+                                            ID?</label>
+                                        <input type="checkbox" name="passport_type" id="is_passport_id" value="1">
+                                    </div>
+
+                                </div>
+
+                                <div class="row" style="align-items: center ">
+                                  
+
+                                    <div class="col-12 col-md-6 col-lg-6 col-xl-3 mb-2">
+                                        <label for="file" >File document</label>
                                         <input type="file" name="document[]" multiple>
                                         @if ($errors->has('document'))
                                             <span class="error invalid-feedback">{{ $errors->first('document') }}</span>
@@ -308,11 +316,7 @@
                                         @endforeach
                                     </ul>
 
-                                    <div class="col-12 col-lg-3 mb-2">
-                                        <label for="is_passport_id" class="col-md-6 col-form-label">Is passport
-                                            ID?</label>
-                                        <input type="checkbox" name="passport_type" id="is_passport_id" value="1">
-                                    </div>
+                                   
                                 </div>
 
                                 <script>
@@ -365,7 +369,7 @@
                                                 <div class="accordion-body text-muted">
                                                     <main class="main_of_objects">
                                                         <div class="row">
-                                                            <div class="col-lg-6">
+                                                            <div class="col-12 col-md-6 col-lg-6 col-xl-6">
                                                                 <div class="mb-3">
                                                                     <label for="contract_apt">@lang('global.ruxsatnoma_raqami')</label>
                                                                     <input type="text" class="form-control"
@@ -374,7 +378,7 @@
                                                                         placeholder="@lang('global.ruxsatnoma_raqami')">
                                                                 </div>
                                                             </div>
-                                                            <div class="col-lg-6">
+                                                            <div class="col-12 col-md-6 col-lg-6 col-xl-6">
                                                                 <div class="mb-3">
                                                                     <label for="contract_date">@lang('global.sanasi')</label>
                                                                     <input class="form-control" type="date"
@@ -385,7 +389,7 @@
                                                             </div>
                                                         </div>
                                                         <div class="row">
-                                                            <div class="col-lg-3">
+                                                            <div class="col-12 col-md-6 col-lg-6 col-xl-3">
                                                                 <div class="mb-3">
                                                                     <label
                                                                         for="notification_num">@lang('cruds.branches.fields.notification_num')</label>
@@ -395,7 +399,7 @@
                                                                         placeholder="@lang('cruds.branches.fields.notification_num')">
                                                                 </div>
                                                             </div>
-                                                            <div class="col-lg-3">
+                                                            <div class="col-12 col-md-6 col-lg-6 col-xl-3">
                                                                 <div class="mb-3">
                                                                     <label
                                                                         for="notification_date">@lang('cruds.branches.fields.notification_date')</label>
@@ -405,7 +409,7 @@
                                                                         placeholder="@lang('cruds.branches.fields.notification_date')">
                                                                 </div>
                                                             </div>
-                                                            <div class="col-lg-3">
+                                                            <div class="col-12 col-md-6 col-lg-6 col-xl-3">
                                                                 <div class="mb-3">
                                                                     <label
                                                                         for="insurance_policy">@lang('cruds.branches.fields.insurance_policy')</label>
@@ -415,7 +419,7 @@
                                                                         placeholder="@lang('cruds.branches.fields.insurance_policy')">
                                                                 </div>
                                                             </div>
-                                                            <div class="col-lg-3">
+                                                            <div class="col-12 col-md-6 col-lg-6 col-xl-3">
                                                                 <div class="mb-3">
                                                                     <label for="bank_guarantee">@lang('cruds.branches.fields.bank_guarantee')</label>
                                                                     <input type="text" class="form-control"
@@ -424,7 +428,7 @@
                                                                         placeholder="@lang('cruds.branches.fields.bank_guarantee')">
                                                                 </div>
                                                             </div>
-                                                            <div class="col-lg-4">
+                                                            <div class="col-12 col-md-6 col-lg-6 col-xl-12 ">
                                                                 <div class="mb-3">
                                                                     <label
                                                                         for="application_number">@lang('cruds.branches.fields.application_number')</label>
@@ -434,7 +438,7 @@
                                                                         placeholder="@lang('cruds.branches.fields.application_number')">
                                                                 </div>
                                                             </div>
-                                                            <div class="col-lg-4">
+                                                            <div class="col-12 col-md-6 col-lg-6 col-xl-12 ">
                                                                 <div class="mb-3">
 
                                                                     <label
@@ -445,38 +449,9 @@
                                                                         value="{{ old('accordions.' . $branchIndex . '.payed_sum', $b->payed_sum) }}"
                                                                         placeholder="@lang('cruds.branches.fields.payed_sum')">
 
-
-                                                                    {{-- <script>
-                                                                                function formatNumberWithSpaces(number) {
-                                                                                    // Ensure the number is a string
-                                                                                    return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
-                                                                                }
-                                                                        
-                                                                                function unformatNumberWithSpaces(number) {
-                                                                                    // Remove all spaces
-                                                                                    return number.replace(/\s/g, '');
-                                                                                }
-                                                                        
-                                                                                document.querySelectorAll('.payedSum').forEach(function(input) {
-                                                                                    input.addEventListener('blur', function () {
-                                                                                        var value = unformatNumberWithSpaces(input.value);
-                                                                                        if (!isNaN(value) && value.trim() !== '') {
-                                                                                            input.value = formatNumberWithSpaces(value);
-                                                                                        }
-                                                                                    });
-                                                                        
-                                                                                    // Optionally format the value on page load if there's an initial value
-                                                                                    input.value = formatNumberWithSpaces(input.value);
-                                                                                });
-                                                                            
-                                                                        </script>
-                                                                         --}}
-
-
-
                                                                 </div>
                                                             </div>
-                                                            <div class="col-lg-4">
+                                                            <div class="col-12 col-md-12 col-lg-12 col-xl-12 ">
                                                                 <div class="mb-3">
                                                                     <label for="payed_date">@lang('cruds.branches.fields.payed_date')</label>
                                                                     <input type="date" class="form-control"
@@ -489,7 +464,7 @@
                                                         <div class="row">
 
 
-                                                            <div class="col-lg-4">
+                                                            <div class="col-12 col-md-6 col-lg-6 col-xl-12 ">
                                                                 <div class="mb-3">
                                                                     <label for="branch_type">@lang('global.loyiha_turi')</label>
                                                                     <input type="text" class="form-control"
@@ -499,7 +474,7 @@
                                                                 </div>
                                                             </div>
 
-                                                            <div class="col-lg-4">
+                                                            <div class="col-12 col-md-6 col-lg-6 col-xl-12 ">
                                                                 <div class="mb-3">
                                                                     <label for="branch_location">@lang('cruds.company.fields.branch_location')</label>
                                                                     <input type="text" class="form-control"
@@ -508,7 +483,7 @@
                                                                         placeholder="@lang('cruds.company.fields.branch_location')">
                                                                 </div>
                                                             </div>
-                                                            <div class="col-lg-4">
+                                                            <div class="col-12 col-md-6 col-lg-6 col-xl-12 ">
                                                                 <div class="inner-repeater mb-4">
                                                                     <div data-repeater-list="inner-group"
                                                                         class="inner mb-3">
@@ -533,7 +508,7 @@
                                                             </script>
 
 
-                                                            <div class="col-lg-4">
+                                                            <div class="col-12 col-md-6 col-lg-6 col-xl-12 ">
                                                                 <div class="inner-repeater mb-4">
                                                                     <div data-repeater-list="inner-group"
                                                                         class="inner mb-3">
@@ -548,7 +523,7 @@
                                                                 </div>
                                                             </div>
 
-                                                            <div class="col-lg-4">
+                                                            <div class="col-12 col-md-6 col-lg-6 col-xl-12 ">
                                                                 <div class="mb-3">
                                                                     <label
                                                                         for="basicpill-card-verification-input">@lang('global.bazaviy_xisoblash_miqdori')</label>
@@ -558,7 +533,7 @@
                                                                         name="accordions[{{ $branchIndex }}][minimum_wage]">
                                                                 </div>
                                                             </div>
-                                                            <div class="col-lg-4">
+                                                            <div class="col-12 col-md-6 col-lg-6 col-xl-12 ">
                                                                 <div class="mb-3">
                                                                     <label
                                                                         for="basicpill-card-verification-input">@lang('global.jami_tolanishi_kerak')</label>
@@ -569,7 +544,7 @@
                                                                         placeholder="@lang('global.jami_tolanishi_kerak')">
                                                                 </div>
                                                             </div>
-                                                            <div class="col-lg-4">
+                                                            <div class="col-12 col-md-6 col-lg-6 col-xl-12 ">
                                                                 <div class="mb-3">
                                                                     <label>@lang('global.tolash_turlari')</label>
                                                                     <select class="form-select payment-type"
@@ -584,7 +559,7 @@
                                                                     </select>
                                                                 </div>
                                                             </div>
-                                                            <div class="col-lg-4">
+                                                            <div class="col-12 col-md-6 col-lg-6 col-xl-12 ">
                                                                 <div class="mb-3">
                                                                     <label
                                                                         for="percentage-input">@lang('global.bolib_tolash_foizi_oldindan')</label>
@@ -598,7 +573,7 @@
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                            <div class="col-lg-4">
+                                                            <div class="col-12 col-md-6 col-lg-6 col-xl-12 ">
                                                                 <div class="mb-3">
                                                                     <label for="quarterly-input">@lang('global.bolib_tolash_har_chorakda')</label>
                                                                     <div class="input-group">

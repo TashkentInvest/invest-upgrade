@@ -199,7 +199,7 @@
                                     @csrf
                                     <input type="hidden" name="branch_id" value="{{ $b->id }}">
                                     <input type="hidden" name="status" value="1">
-                                    <button type="submit" class="btn btn-primary btn-lg">Confirm</button>
+                                    <button type="submit" class="btn btn-primary btn-lg">@lang('global.confirmation')</button>
                                 </form>
                             </div>
                         </div>

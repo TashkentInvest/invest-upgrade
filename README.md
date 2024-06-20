@@ -210,6 +210,7 @@ modal kada confirm bosaganda timer qoyish kere
 
 product index/show add some beauty
 
+product raspnsive qlsh kere
 
 ```
 
