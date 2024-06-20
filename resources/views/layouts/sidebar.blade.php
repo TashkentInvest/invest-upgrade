@@ -156,6 +156,15 @@
                             <span>@lang('cruds.construction.title')</span>
                         </a>
                     </li>
+
+                    <li class="{{ Request::is('chat*') ? 'mm-active' : '' }}">
+                        <a href="{{ route('chat.index') }}"
+                            class=" waves-effect {{ Request::is('backup*') ? 'mm-active' : '' }}">
+                            <i class="bx bx-chat"></i>
+                            <span>Chat</span>
+                            {{-- <span class="badge rounded-pill bg-danger float-end">10</span> --}}
+                        </a>
+                    </li>
                 @endcan
 
                 <li class="menu-title">@lang('global.theme')</li>
