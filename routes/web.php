@@ -147,7 +147,10 @@ Route::group(['middleware' => ['auth']], function () {
         Route::post('/update-status', [ConstructionController::class, 'updateStatus'])->name('updateStatus');
     });
     
-    Route::get('/chat', [ChatController::class,'index'])->name('chat.index');
+    // Route::get('/chat', [ChatController::class,'index'])->name('chat.index');
+    Route::get('/chat', [ChatController::class, 'index'])->name('chat.index');
+    Route::post('/chat', [ChatController::class, 'store'])->name('chat.store');
+
 
 
 });
