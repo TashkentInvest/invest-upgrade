@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuditLogController;
 use App\Http\Controllers\BackupController;
+use App\Http\Controllers\ChatController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Blade\UserController;
 use App\Http\Controllers\Blade\RoleController;
@@ -146,6 +147,9 @@ Route::group(['middleware' => ['auth']], function () {
         Route::post('/update-status', [ConstructionController::class, 'updateStatus'])->name('updateStatus');
     });
     
+    Route::get('/chat', [ChatController::class,'index'])->name('chat.index');
+
+
 });
 
 Route::get('/language/{lang}', function ($lang) {
