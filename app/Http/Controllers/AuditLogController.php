@@ -29,16 +29,18 @@ class AuditLogController extends Controller
         {
             // Fetch the specific client
             $client = Client::findOrFail($id);
-    
-            // Fetch the history for the specific client
-            $clientHistory = ClientHistory::where('client_id', $id)->orderBy('created_at', 'desc')->get();
-            $fileHistories = FileHistory::where('client_id', $id)->orderBy('created_at', 'desc')->get();
-            $addressHistories = AddressHistory::where('client_id', $id)->orderBy('created_at', 'desc')->get();
-            $passportHistories = PassportHistory::where('client_id', $id)->orderBy('created_at', 'desc')->get();
-            $companyHistories = CompanyHistory::where('client_id', $id)->orderBy('created_at', 'desc')->get();
-            $branchHistories = BranchHistory::where('client_id', $id)->orderBy('created_at', 'desc')->get();
-    
-            return view('pages.audit-logs.show', compact('client', 'clientHistory', 'fileHistories', 'addressHistories', 'passportHistories', 'companyHistories', 'branchHistories'));
+        
+            // Fetch all history records grouped by type
+            $histories = [
+                'client' => ClientHistory::where('client_id', $id)->orderBy('created_at', 'desc')->get(),
+                'file' => FileHistory::where('client_id', $id)->orderBy('created_at', 'desc')->get(),
+                'address' => AddressHistory::where('client_id', $id)->orderBy('created_at', 'desc')->get(),
+                'passport' => PassportHistory::where('client_id', $id)->orderBy('created_at', 'desc')->get(),
+                'company' => CompanyHistory::where('client_id', $id)->orderBy('created_at', 'desc')->get(),
+                'branch' => BranchHistory::where('client_id', $id)->orderBy('created_at', 'desc')->get(),
+            ];
+        
+            return view('pages.audit-logs.show', compact('client', 'histories'));
         }
     
 }

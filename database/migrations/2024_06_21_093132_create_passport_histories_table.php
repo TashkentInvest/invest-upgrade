@@ -15,6 +15,15 @@ class CreatePassportHistoriesTable extends Migration
     {
         Schema::create('passport_histories', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('client_id');
+            $table->foreign('client_id')->references('id')->on('clients')->onDelete('cascade');
+            $table->string('passport_serial')->nullable();
+            $table->string('passport_pinfl')->nullable();
+            $table->dateTime('passport_date')->nullable();
+            $table->string('passport_location')->nullable();
+            $table->boolean('passport_type')->default(0);
+            $table->string('event')->nullable();
+
             $table->timestamps();
         });
     }

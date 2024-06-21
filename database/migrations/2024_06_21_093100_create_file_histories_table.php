@@ -15,6 +15,10 @@ class CreateFileHistoriesTable extends Migration
     {
         Schema::create('file_histories', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('client_id');
+            $table->foreign('client_id')->references('id')->on('clients')->onDelete('cascade');
+            $table->string('path');
+            $table->string('event');
             $table->timestamps();
         });
     }

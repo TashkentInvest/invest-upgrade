@@ -15,6 +15,37 @@ class CreateBranchHistoriesTable extends Migration
     {
         Schema::create('branch_histories', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('client_id')->nullable();
+            $table->foreign('client_id')->references('id')->on('clients')->onDelete('cascade');
+            $table->index('client_id');
+
+            $table->text('contract_apt')->nullable();
+            $table->date('contract_date')->nullable();
+            $table->string('generate_price')->nullable();
+            $table->string('payment_type')->nullable();
+            $table->string('percentage_input')->nullable();
+            $table->string('installment_quarterly')->nullable();
+            $table->string('branch_kubmetr')->nullable();
+            $table->string('branch_location')->nullable();
+
+            $table->string('branch_name')->nullable();
+            $table->string('branch_type')->nullable();
+
+            $table->string('apz_raqami')->nullable();
+            $table->date('apz_sanasi')->nullable();
+            $table->text('kengash')->nullable();
+
+            $table->string('notification_num')->nullable();
+            $table->date('notification_date')->nullable();
+            $table->string('insurance_policy')->nullable();
+            $table->string('bank_guarantee')->nullable();   
+            $table->string('application_number')->nullable();
+            $table->string('payed_sum')->nullable();
+            $table->date('payed_date')->nullable();
+            $table->string('first_payment_percent')->nullable();
+
+            $table->string('event')->nullable();
+            
             $table->timestamps();
         });
     }
