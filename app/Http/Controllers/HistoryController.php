@@ -66,10 +66,8 @@ class HistoryController extends Controller
 
         public function showHistory($id)
         {
-            // Fetch the specific client
             $client = Client::findOrFail($id);
         
-            // Fetch all history records grouped by type
             $histories = [
                 'client' => ClientHistory::where('client_id', $id)->orderBy('created_at', 'desc')->get(),
                 'file' => FileHistory::where('client_id', $id)->orderBy('created_at', 'desc')->get(),
@@ -81,5 +79,5 @@ class HistoryController extends Controller
         
             return view('pages.history.show', compact('client', 'histories'));
         }
-    
+   
 }

@@ -200,6 +200,14 @@ product show dayam 000 000 sonlani fix qlish kere with optimal way +++
 
 company_name and branch_name word ga qoshish kere +++
 
+product index/show add some beauty +++
+
+product raspnsive qlsh kere +++
+
+platejka pinned qlsh kere +++
+
+chat qlsh kere +++
+
 blade clean qilish kere 
 
 remove accardion ochishi keremas agar bitta bosa
@@ -208,15 +216,13 @@ Transactionlani payed date blan solishtrib fix qilish kere
 
 modal kada confirm bosaganda timer qoyish kere 
 
-product index/show add some beauty
-
-product raspnsive qlsh kere
-
-platejka pinned qlsh kere +++
-
-chat qlsh kere
-
 ob serverga user_id relation qlsh kere
+
+history show dan realtion qb chqaxsh kere
+
+history timestamp not works well
+
+optimize history queries
 
 ```
 
