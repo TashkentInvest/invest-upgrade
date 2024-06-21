@@ -122,7 +122,9 @@ Route::group(['middleware' => ['auth', 'checkUserRole']], function () {
         Route::get('/download-excel', [FileController::class, 'downloadExcel'])->name('download.excel');
     });
     // Audit-Log
-    Route::get('audit-logs', [AuditLogController::class, 'index'])->name('audit-logs.index');
+    Route::get('/history', [AuditLogController::class, 'index'])->name('audit-logs.index');
+    Route::get('/history/{id}', [AuditLogController::class, 'showHistory'])->name('audit-logs.show');
+
 
     Route::get('/import/backup', [BackupController::class, 'import'])->name('backup.import');
 });
