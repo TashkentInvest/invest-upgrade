@@ -216,6 +216,8 @@ platejka pinned qlsh kere +++
 
 chat qlsh kere
 
+ob serverga user_id relation qlsh kere
+
 ```
 
 

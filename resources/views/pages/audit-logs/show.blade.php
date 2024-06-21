@@ -36,6 +36,7 @@
                                 <table class="table table-bordered">
                                     <thead>
                                         <tr>
+                                            <th>@lang('Changed By')</th>
                                             <th>@lang(ucfirst($type))</th>
                                             <th>@lang('Old Value')</th>
                                             <th>@lang('New Value')</th>
@@ -45,6 +46,7 @@
                                     <tbody>
                                         @foreach ($history as $record)
                                             <tr>
+                                                <td>{{ $record->user ? $record->user->name : 'Unknown User' }}</td> {{-- Check if $record->user exists --}}
                                                 <td>{{ $record->{$type . '_name'} ?? $record->{$type . '_serial'} ?? $record->{$type . '_address'} }}</td>
                                                 <td>
                                                     <ul>
@@ -87,3 +89,4 @@
 </style>
 
 @endsection
+    
