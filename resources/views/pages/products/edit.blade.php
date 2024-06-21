@@ -272,7 +272,7 @@
                                         @endif
                                     </div>
 
-                                    <div class="col-12 col-md-6 col-lg64 col-xl-6 mb-2">
+                                    <div class="col-12 col-md-6 col-lg-4 col-xl-6 mb-2">
                                         <label for="client_description"
                                             >@lang('cruds.client.fields.client_description')</label>
                                         <textarea id="textarea" name="client_description"
