@@ -177,7 +177,7 @@ return [
         ]
     ],
 
-    'audit_logs' => [
+    'history' => [
         'title' => 'So\'rovlar tarixi',
         'fields' => [
             'name_uz' => "O'zbekcha nomi",

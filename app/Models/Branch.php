@@ -44,39 +44,4 @@ class Branch extends Model
         return $this->hasMany(View::class);
     }
 
-    public static function boot()
-    {
-        parent::boot();
-
-        static::created(function ($branch) {
-            AuditLog::create([
-                'user_id' => auth()->user()->id ?? 1,
-                'client_id' => $branch->client_id,
-                'event' => 'branch_created',
-                'new_values' => $branch->toJson(),
-            ]);
-        });
-
-        static::updating(function ($branch) {
-            $original = $branch->getOriginal();
-            $changes = $branch->getChanges();
-
-            AuditLog::create([
-                'user_id' => auth()->user()->id ?? 1,
-                'client_id' => $branch->client_id,
-                'event' => 'branch_updated',
-                'old_values' => json_encode($original),
-                'new_values' => json_encode($changes),
-            ]);
-        });
-
-        static::deleted(function ($branch) {
-            AuditLog::create([
-                'user_id' => auth()->user()->id ?? 1,
-                'client_id' => $branch->client_id,
-                'event' => 'branch_deleted',
-                'old_values' => $branch->toJson(),
-            ]);
-        });
-    }
 }

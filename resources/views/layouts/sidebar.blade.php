@@ -18,12 +18,12 @@
                 @endcan
 
 
-                @can('audit.show')
-                    <li class="{{ Request::is('audit-logs*') ? 'mm-active' : '' }}">
-                        <a href="{{ route('audit-logs.index') }}"
-                            class=" waves-effect {{ Request::is('audit-logs*') ? 'mm-active' : '' }}">
+                @can('history.show')
+                    <li class="{{ Request::is('history*') ? 'mm-active' : '' }}">
+                        <a href="{{ route('history.index') }}"
+                            class=" waves-effect {{ Request::is('history*') ? 'mm-active' : '' }}">
                             <i class="bx bx-info-circle"></i>
-                            <span>@lang('cruds.audit_logs.title')</span>
+                            <span>@lang('cruds.history.title')</span>
                         </a>
                     </li>
                 @endcan

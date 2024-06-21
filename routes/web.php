@@ -1,6 +1,5 @@
 <?php
 
-use App\Http\Controllers\AuditLogController;
 use App\Http\Controllers\BackupController;
 use App\Http\Controllers\ChatController;
 use Illuminate\Support\Facades\Route;
@@ -14,6 +13,7 @@ use App\Http\Controllers\Blade\DistrictController;
 use App\Http\Controllers\Blade\ClientController;
 use App\Http\Controllers\ConstructionController;
 use App\Http\Controllers\FileController;
+use App\Http\Controllers\HistoryController;
 use App\Http\Controllers\ImportController;
 use App\Http\Controllers\TransactionController;
 
@@ -121,9 +121,10 @@ Route::group(['middleware' => ['auth', 'checkUserRole']], function () {
         Route::get('/select-columns', [FileController::class, 'showColumnSelectionForm'])->name('select.columns');
         Route::get('/download-excel', [FileController::class, 'downloadExcel'])->name('download.excel');
     });
-    // Audit-Log
-    Route::get('/history', [AuditLogController::class, 'index'])->name('audit-logs.index');
-    Route::get('/history/{id}', [AuditLogController::class, 'showHistory'])->name('audit-logs.show');
+    
+    // History
+    Route::get('/history', [HistoryController::class, 'index'])->name('history.index');
+    Route::get('/history/{id}', [HistoryController::class, 'showHistory'])->name('history.show');
 
 
     Route::get('/import/backup', [BackupController::class, 'import'])->name('backup.import');

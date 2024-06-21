@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\AuditLog;
 use App\Models\Client;
 use App\Models\ClientHistory;
 use App\Models\FileHistory;
@@ -12,17 +11,14 @@ use App\Models\CompanyHistory;
 use App\Models\BranchHistory;
 
 
-class AuditLogController extends Controller
+class HistoryController extends Controller
 {
-          // $auditLogs = AuditLog::with(['user', 'client'])->orderBy('created_at', 'desc')->paginate(10);
-        // return view('pages.audit-logs.index', compact('auditLogs'));
-
         public function index()
         {
             // Fetch all clients
             $clients = Client::paginate(25);
     
-            return view('pages.audit-logs.index', compact('clients'));
+            return view('pages.history.index', compact('clients'));
         }
     
         public function showHistory($id)
@@ -40,7 +36,7 @@ class AuditLogController extends Controller
                 'branch' => BranchHistory::where('client_id', $id)->orderBy('created_at', 'desc')->get(),
             ];
         
-            return view('pages.audit-logs.show', compact('client', 'histories'));
+            return view('pages.history.show', compact('client', 'histories'));
         }
     
 }

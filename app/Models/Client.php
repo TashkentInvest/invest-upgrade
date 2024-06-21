@@ -257,51 +257,7 @@ class Client extends Model
         return $query;
     }
 
-    
-    public static function boot()
-    {
-        parent::boot();
 
-        static::created(function ($client) {
-            AuditLog::create([
-                'user_id' => auth()->user()->id ?? 1,
-                'client_id' => $client->id,
-                'event' => 'created',
-                'new_values' => $client->toJson(),
-            ]);
-        });
-
-        static::updating(function ($client) {
-            $original = $client->getOriginal();
-            $changes = $client->getChanges();
-
-            if ($client->is_deleted == 0) {
-                AuditLog::create([
-                    'user_id' => auth()->user()->id ?? 1,
-                    'client_id' => $client->id,
-                    'event' => 'updated',
-                    'old_values' => json_encode($original),
-                    'new_values' => json_encode($changes),
-                ]);
-            } else {
-                AuditLog::create([
-                    'user_id' => auth()->user()->id ?? 1,
-                    'client_id' => $client->id,
-                    'event' => 'deleted',
-                    'old_values' => $client->toJson(),
-                ]);
-            }
-        });
-
-        static::deleted(function ($client) {
-            AuditLog::create([
-                'user_id' => auth()->user()->id ?? 1,
-                'client_id' => $client->id,
-                'event' => 'deleted',
-                'old_values' => $client->toJson(),
-            ]);
-        });
-    }
 
     public function creditTransactions()
     {
