@@ -69,6 +69,7 @@ class PassportObserver
     {
         PassportHistory::create([
             'client_id' => $passport->id,
+            'user_id' => auth()->user()->id,
             'event' => $event,
             'passport_serial' => $passport->passport_serial,
             'passport_pinfl' => $passport->passport_pinfl,

@@ -67,6 +67,7 @@ class AddressObserver
     {
         AddressHistory::create([
             'client_id' => $address->id,
+            'user_id' => auth()->user()->id,
             'event' => $event,
             'yuridik_address' => $address->yuridik_address,
             'home_address' => $address->home_address,

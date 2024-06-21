@@ -8,6 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class PassportHistory extends Model
 {
     use HasFactory;
-    protected $fillable = ['client_id', 'passport_serial', 'passport_pinfl', 'passport_date', 'passport_location', 'passport_type','event'];
+    protected $fillable = ['client_id','user_id', 'passport_serial', 'passport_pinfl', 'passport_date', 'passport_location', 'passport_type','event'];
 
 }

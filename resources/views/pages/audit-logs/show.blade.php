@@ -45,8 +45,13 @@
                                     </thead>
                                     <tbody>
                                         @foreach ($history as $record)
+                                        {{-- @dd($record) --}}
                                             <tr>
-                                                <td>{{ $record->user ? $record->user->name : 'Unknown User' }}</td> {{-- Check if $record->user exists --}}
+                                                {{-- <td>{{ $record->user ? $record->user->name : 'Unknown User' }}</td> --}}
+                                                <td>
+                                                    {{ $record->user_id ? App\Models\User::find($record->user_id)->name ?? 'Unknown User' : 'Unknown User' }}
+                                                </td>
+                                                {{-- Check if $record->user exists --}}
                                                 <td>{{ $record->{$type . '_name'} ?? $record->{$type . '_serial'} ?? $record->{$type . '_address'} }}</td>
                                                 <td>
                                                     <ul>
@@ -89,4 +94,3 @@
 </style>
 
 @endsection
-    

@@ -17,6 +17,8 @@ class CreateBranchHistoriesTable extends Migration
             $table->id();
             $table->unsignedBigInteger('client_id')->nullable();
             $table->foreign('client_id')->references('id')->on('clients')->onDelete('cascade');
+            $table->foreignId('user_id')->constrained('users')->onDelete('cascade'); // Add user_id column
+
             $table->index('client_id');
 
             $table->text('contract_apt')->nullable();

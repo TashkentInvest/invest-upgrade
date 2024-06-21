@@ -68,6 +68,7 @@ class ClientObserver
     {
         ClientHistory::create([
             'client_id' => $client->id,
+            'user_id' => auth()->user()->id,
             'event' => $event,
             'mijoz_turi' => $client->mijoz_turi,
             'first_name' => $client->first_name,

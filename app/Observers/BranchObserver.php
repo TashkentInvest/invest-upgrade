@@ -66,6 +66,7 @@ class BranchObserver
     {
         BranchHistory::create([
             'client_id' => $branch->client_id,
+            'user_id' => auth()->user()->id,
             'event' => $event,
             'contract_apt' => $branch->contract_apt,
             'contract_date' => $branch->contract_date,

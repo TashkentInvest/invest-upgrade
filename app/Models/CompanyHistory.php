@@ -10,6 +10,7 @@ class CompanyHistory extends Model
     use HasFactory;
     protected $fillable = [
         'client_id',
+        'user_id',
         'company_name',
         'raxbar',
         'bank_code',

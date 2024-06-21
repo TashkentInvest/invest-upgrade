@@ -17,6 +17,8 @@ class CreatePassportHistoriesTable extends Migration
             $table->id();
             $table->unsignedBigInteger('client_id');
             $table->foreign('client_id')->references('id')->on('clients')->onDelete('cascade');
+            $table->foreignId('user_id')->constrained('users')->onDelete('cascade'); // Add user_id column
+
             $table->string('passport_serial')->nullable();
             $table->string('passport_pinfl')->nullable();
             $table->dateTime('passport_date')->nullable();

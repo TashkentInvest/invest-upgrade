@@ -9,6 +9,6 @@ class FileHistory extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['client_id', 'path','event'];
+    protected $fillable = ['client_id', 'user_id','path','event'];
 
 }

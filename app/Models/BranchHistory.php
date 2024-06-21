@@ -11,6 +11,7 @@ class BranchHistory extends Model
 
     protected $fillable = [
         'client_id',
+        'user_id',
         'event',
         'contract_apt',
         'contract_date',

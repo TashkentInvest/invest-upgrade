@@ -16,6 +16,8 @@ class CreateAddressHistoriesTable extends Migration
         Schema::create('address_histories', function (Blueprint $table) {
             $table->id();
             $table->foreignId('client_id')->constrained('clients')->onDelete('cascade');
+            $table->foreignId('user_id')->constrained('users')->onDelete('cascade'); // Add user_id column
+
             $table->string('yuridik_address')->nullable();
             $table->string('home_address')->nullable();
             $table->string('company_location')->nullable();

@@ -8,6 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class AddressHistory extends Model
 {
     use HasFactory;
-    protected $fillable = ['client_id', 'yuridik_address', 'home_address', 'company_location','event'];
+    protected $fillable = ['client_id','user_id', 'yuridik_address', 'home_address', 'company_location','event'];
 
 }

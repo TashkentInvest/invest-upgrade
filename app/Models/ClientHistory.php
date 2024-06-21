@@ -11,6 +11,7 @@ class ClientHistory extends Model
 
     protected $fillable = [
         'client_id',
+        'user_id',
         'event',
         'mijoz_turi',
         'first_name',

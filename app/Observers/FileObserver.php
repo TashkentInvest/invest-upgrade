@@ -69,6 +69,7 @@ class FileObserver
     {
         FileHistory::create([
             'client_id' => $file->id,
+            'user_id' => auth()->user()->id,
             'event' => $event,
             'path' => $file->path,
         ]);
