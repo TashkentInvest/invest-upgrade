@@ -51,6 +51,7 @@
                                     </div>
                                 </div>
 
+
                                 <div class="row" id="make_show" style="display: none;">
 
                                     <div class="col-12 col-md-6 col-lg-4 col-xl-3 mb-2">
@@ -142,7 +143,7 @@
                                             class="form-control {{ $errors->has('yuridik_address') ? 'is-invalid' : '' }}"
                                             type="text" name="yuridik_address" id="yuridik_address"
                                             placeholder="@lang('cruds.client.fields.yuridik_address')"
-                                            value="{{ old('yuridik_address', $client->company->yuridik_address) }}">
+                                            value="{{ old('yuridik_address', $client->address->yuridik_address) }}">
                                         @if ($errors->has('yuridik_address'))
                                             <span
                                                 class="error invalid-feedback">{{ $errors->first('yuridik_address') }}</span>
@@ -353,6 +354,7 @@
                                 </script>
 
                             </section>
+                            
 
                             <h3>@lang('global.object')</h3>
                             <section>
