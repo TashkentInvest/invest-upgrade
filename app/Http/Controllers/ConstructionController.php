@@ -12,41 +12,46 @@ class ConstructionController extends Controller
 { 
 
     public function index(Request $request)
-    {
-        $userId = auth()->user()->id;
-        $search = $request->input('search');
-    
-        // Query construction with relationships
-        $constructions = Client::with(['company','files', 'branches' => function ($query) use ($userId) {
-                $query->whereNotNull('payed_sum')
-                      ->whereDoesntHave('views', function ($q) use ($userId) {
-                          $q->where('user_id', $userId)
-                            ->where('status', 1);
-                      })
-                      ->with('views');
-            }, 'address', 'passport'])
-            ->whereHas('branches', function ($query) {
-                $query->whereNotNull('payed_sum');
-                    //   ->orWhereColumn('payed_sum', '>=', 'generate_price');
-            })
-            ->where('is_deleted', '!=', 1)
-            ->when($search, function ($query, $search) {
-                $query->where(function ($q) use ($search) {
-                    $q->where('company_name', 'like', "%{$search}%")
-                      ->orWhere('stir', 'like', "%{$search}%")
-                      ->orWhereHas('branches', function ($q) use ($search) {
-                          $q->where('branch_location', 'like', "%{$search}%")
-                            ->orWhere('branch_type', 'like', "%{$search}%")
-                            ->orWhere('branch_name', 'like', "%{$search}%");
-                      });
-                });
-            })
-            ->orderBy('id', 'desc')
-            ->paginate(25); 
-    
-        return view('pages.construction.tasks.index', compact('constructions'));
-    }
-    
+{
+    $userId = auth()->user()->id;
+    $search = $request->input('search');
+
+    // Query construction with relationships
+    $constructions = Client::with(['company', 'files', 'branches' => function ($query) use ($userId) {
+            $query->whereNotNull('payed_sum')
+                  ->whereDoesntHave('views', function ($q) use ($userId) {
+                      $q->where('user_id', $userId)
+                        ->where('status', 1);
+                  })
+                  ->with('views');
+        }, 'address', 'passport'])
+        ->whereHas('branches', function ($query) {
+            $query->whereNotNull('payed_sum');
+        })
+        ->where('is_deleted', '!=', 1)
+        ->when($search, function ($query, $search) {
+            $query->where(function ($q) use ($search) {
+                $q->where('company_name', 'like', "%{$search}%")
+                  ->orWhere('stir', 'like', "%{$search}%")
+                  ->orWhereHas('company', function ($q) use ($search) {
+                      $q->where('company_name', 'like', "%{$search}%");
+                  })
+                  ->orWhereHas('branches', function ($q) use ($search) {
+                      $q->where('branch_location', 'like', "%{$search}%")
+                        ->orWhere('branch_type', 'like', "%{$search}%")
+                        ->orWhere('branch_name', 'like', "%{$search}%");
+                  })
+                  ->orWhere('contact', 'like', "%{$search}%") // Changed this line
+                  ->orWhere('last_name', 'like', "%{$search}%") // Changed this line
+                  ->orWhere('first_name', 'like', "%{$search}%"); // Changed this line
+            });
+        })
+        ->orderBy('id', 'desc')
+        ->paginate(25);
+
+    return view('pages.construction.tasks.index', compact('constructions'));
+}
+
     public function show($id){
 
         $construction = Client::with(['company','branches','address','passport'])->find($id);

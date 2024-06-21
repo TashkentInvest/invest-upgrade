@@ -29,7 +29,7 @@
                 </div>
 
                 @foreach ($histories as $type => $history)
-                    @if ($history->count() > 0)
+                    @if (!$history->isEmpty())
                         <div class="mb-4">
                             <h4>@lang(ucfirst($type) . ' Histories')</h4>
                             <div class="table-responsive">
@@ -47,21 +47,25 @@
                                         @foreach ($history as $record)
                                             <tr>
                                                 <td>
-                                                    {{ $record->user ? $record->user->name : 'Unknown User' }}
+                                                    {{-- Display user name if available, otherwise show 'Unknown User' --}}
+                                                    {{ $record->user_id ? App\Models\User::find($record->user_id)->name ?? 'Unknown User' : 'Unknown User' }}
                                                 </td>
                                                 <td>{{ $record->{$type . '_name'} ?? $record->{$type . '_serial'} ?? $record->{$type . '_address'} }}</td>
                                                 <td>
                                                     <ul>
+                                                        {{-- Display original values --}}
                                                         @foreach ($record->getOriginal() as $key => $value)
+                                                        {{-- @dd($record->getOriginal()  $record->getAttributes()) --}}
                                                             <li>{{ $key }}: {{ $value }}</li>
                                                         @endforeach
                                                     </ul>
                                                 </td>
                                                 <td>
                                                     <ul>
+                                                        {{-- Display current values, highlighting differences for client --}}
                                                         @foreach ($record->getAttributes() as $key => $value)
                                                             <li>
-                                                                @if (isset($client->{$key}) && $client->{$key} != $value)
+                                                                @if ($type === 'client' && isset($client->{$key}) && $client->{$key} != $value)
                                                                     <span class="highlight-diff">{{ $client->{$key} }}</span>
                                                                 @else
                                                                     {{ $value }}
@@ -76,12 +80,6 @@
                                     </tbody>
                                 </table>
                             </div>
-                            {{ $history->links() }} <!-- Pagination links -->
-                        </div>
-                    @else
-                        <div class="mb-4">
-                            <h4>@lang(ucfirst($type) . ' Histories')</h4>
-                            <p>No {{ ucfirst($type) }} histories found.</p>
                         </div>
                     @endif
                 @endforeach
