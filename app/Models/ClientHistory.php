@@ -23,4 +23,5 @@ class ClientHistory extends Model
         'client_description'
     ];
 
+   
 }

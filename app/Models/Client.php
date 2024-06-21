@@ -46,6 +46,31 @@ class Client extends Model
         return $this->hasMany(File::class);
     }
 
+    public function companyHistory()
+    {
+        return $this->hasOne(Company::class);
+    }
+
+    public function passportHistory()
+    {
+        return $this->hasOne(Passport::class);
+    }
+
+    public function addressHistory()
+    {
+        return $this->hasOne(Address::class);
+    }
+
+    public function branchHistory()
+    {
+        return $this->hasMany(Branch::class);
+    }
+
+    public function fileHistory()
+    {
+        return $this->hasMany(File::class);
+    }
+
     // public static function deepFilters()
     // {
     //     $obj = new self();
