@@ -437,7 +437,7 @@
                                                                         placeholder="@lang('cruds.branches.fields.bank_guarantee')">
                                                                 </div>
                                                             </div>
-                                                            <div class="col-12 col-md-6 col-lg-6 col-xl-12 ">
+                                                            <div class="col-12 col-md-6 col-lg-6 col-xl-6 ">
                                                                 <div class="mb-3">
                                                                     <label
                                                                         for="application_number">@lang('cruds.branches.fields.application_number')</label>
@@ -447,7 +447,7 @@
                                                                         placeholder="@lang('cruds.branches.fields.application_number')">
                                                                 </div>
                                                             </div>
-                                                            <div class="col-12 col-md-6 col-lg-6 col-xl-12 ">
+                                                            <div class="col-12 col-md-6 col-lg-6 col-xl-6 ">
                                                                 <div class="mb-3">
 
                                                                     <label
@@ -473,7 +473,7 @@
                                                         <div class="row">
 
 
-                                                            <div class="col-12 col-md-6 col-lg-6 col-xl-12 ">
+                                                            <div class="col-12 col-md-6 col-lg-6 col-xl-6 ">
                                                                 <div class="mb-3">
                                                                     <label for="branch_type">@lang('global.loyiha_turi')</label>
                                                                     <input type="text" class="form-control"
@@ -483,7 +483,7 @@
                                                                 </div>
                                                             </div>
 
-                                                            <div class="col-12 col-md-6 col-lg-6 col-xl-12 ">
+                                                            <div class="col-12 col-md-6 col-lg-6 col-xl-6 ">
                                                                 <div class="mb-3">
                                                                     <label for="branch_location">@lang('cruds.company.fields.branch_location')</label>
                                                                     <input type="text" class="form-control"
@@ -492,7 +492,7 @@
                                                                         placeholder="@lang('cruds.company.fields.branch_location')">
                                                                 </div>
                                                             </div>
-                                                            <div class="col-12 col-md-6 col-lg-6 col-xl-12 ">
+                                                            <div class="col-12 col-md-6 col-lg-6 col-xl-6 ">
                                                                 <div class="inner-repeater mb-4">
                                                                     <div data-repeater-list="inner-group"
                                                                         class="inner mb-3">
@@ -517,7 +517,7 @@
                                                             </script>
 
 
-                                                            <div class="col-12 col-md-6 col-lg-6 col-xl-12 ">
+                                                            <div class="col-12 col-md-6 col-lg-6 col-xl-6 ">
                                                                 <div class="inner-repeater mb-4">
                                                                     <div data-repeater-list="inner-group"
                                                                         class="inner mb-3">
@@ -532,7 +532,7 @@
                                                                 </div>
                                                             </div>
 
-                                                            <div class="col-12 col-md-6 col-lg-6 col-xl-12 ">
+                                                            <div class="col-12 col-md-6 col-lg-6 col-xl-6 ">
                                                                 <div class="mb-3">
                                                                     <label
                                                                         for="basicpill-card-verification-input">@lang('global.bazaviy_xisoblash_miqdori')</label>
@@ -542,7 +542,7 @@
                                                                         name="accordions[{{ $branchIndex }}][minimum_wage]">
                                                                 </div>
                                                             </div>
-                                                            <div class="col-12 col-md-6 col-lg-6 col-xl-12 ">
+                                                            <div class="col-12 col-md-6 col-lg-6 col-xl-6 ">
                                                                 <div class="mb-3">
                                                                     <label
                                                                         for="basicpill-card-verification-input">@lang('global.jami_tolanishi_kerak')</label>
@@ -553,7 +553,7 @@
                                                                         placeholder="@lang('global.jami_tolanishi_kerak')">
                                                                 </div>
                                                             </div>
-                                                            <div class="col-12 col-md-6 col-lg-6 col-xl-12 ">
+                                                            <div class="col-12 col-md-6 col-lg-6 col-xl-6 ">
                                                                 <div class="mb-3">
                                                                     <label>@lang('global.tolash_turlari')</label>
                                                                     <select class="form-select payment-type"
@@ -568,7 +568,7 @@
                                                                     </select>
                                                                 </div>
                                                             </div>
-                                                            <div class="col-12 col-md-6 col-lg-6 col-xl-12 ">
+                                                            <div class="col-12 col-md-6 col-lg-6 col-xl-6 ">
                                                                 <div class="mb-3">
                                                                     <label
                                                                         for="percentage-input">@lang('global.bolib_tolash_foizi_oldindan')</label>
@@ -582,7 +582,7 @@
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                            <div class="col-12 col-md-6 col-lg-6 col-xl-12 ">
+                                                            <div class="col-12 col-md-6 col-lg-6 col-xl-6 ">
                                                                 <div class="mb-3">
                                                                     <label for="quarterly-input">@lang('global.bolib_tolash_har_chorakda')</label>
                                                                     <div class="input-group">
