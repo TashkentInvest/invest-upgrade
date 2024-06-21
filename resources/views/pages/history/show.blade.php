@@ -29,7 +29,7 @@
                 </div>
 
                 @foreach ($histories as $type => $history)
-                    @if (!$history->isEmpty())
+                    @if ($history->count() > 0)
                         <div class="mb-4">
                             <h4>@lang(ucfirst($type) . ' Histories')</h4>
                             <div class="table-responsive">
@@ -45,13 +45,10 @@
                                     </thead>
                                     <tbody>
                                         @foreach ($history as $record)
-                                        {{-- @dd($record) --}}
                                             <tr>
-                                                {{-- <td>{{ $record->user ? $record->user->name : 'Unknown User' }}</td> --}}
                                                 <td>
-                                                    {{ $record->user_id ? App\Models\User::find($record->user_id)->name ?? 'Unknown User' : 'Unknown User' }}
+                                                    {{ $record->user ? $record->user->name : 'Unknown User' }}
                                                 </td>
-                                                {{-- Check if $record->user exists --}}
                                                 <td>{{ $record->{$type . '_name'} ?? $record->{$type . '_serial'} ?? $record->{$type . '_address'} }}</td>
                                                 <td>
                                                     <ul>
@@ -79,7 +76,12 @@
                                     </tbody>
                                 </table>
                             </div>
-                            
+                            {{ $history->links() }} <!-- Pagination links -->
+                        </div>
+                    @else
+                        <div class="mb-4">
+                            <h4>@lang(ucfirst($type) . ' Histories')</h4>
+                            <p>No {{ ucfirst($type) }} histories found.</p>
                         </div>
                     @endif
                 @endforeach

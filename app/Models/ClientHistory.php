@@ -23,5 +23,8 @@ class ClientHistory extends Model
         'client_description'
     ];
 
-   
+    public function client()
+    {
+        return $this->belongsTo(Client::class);
+    }
 }
