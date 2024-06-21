@@ -70,6 +70,7 @@ class CreateClientsTable extends Migration
      */
     public function down()
     {
+        Schema::dropIfExists('client_histories');
         Schema::dropIfExists('Clients');
     }
 }
