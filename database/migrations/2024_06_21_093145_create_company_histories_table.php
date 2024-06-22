@@ -16,7 +16,7 @@ class CreateCompanyHistoriesTable extends Migration
         Schema::create('company_histories', function (Blueprint $table) {
             $table->id();
             $table->foreignId('client_id')->constrained('clients')->onDelete('cascade');
-            $table->foreignId('user_id')->constrained('users')->onDelete('cascade'); // Add user_id column
+            $table->foreignId('user_id')->constrained('users')->onDelete('cascade'); 
 
             $table->string('company_name')->nullable();
             $table->string('raxbar')->nullable();

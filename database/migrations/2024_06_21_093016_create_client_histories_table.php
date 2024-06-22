@@ -16,7 +16,7 @@ class CreateClientHistoriesTable extends Migration
         Schema::create('client_histories', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('client_id');
-            $table->foreignId('user_id')->constrained('users')->onDelete('cascade'); // Add user_id column
+            $table->foreignId('user_id')->constrained('users')->onDelete('cascade'); 
             $table->string('event'); // 'created', 'updated', 'deleted'
             $table->enum('mijoz_turi', ['yuridik', 'fizik'])->nullable();
             $table->string('first_name')->nullable();
