@@ -28,8 +28,8 @@
                     <strong>@lang('Name'):</strong> {{ $client->first_name }} {{ $client->last_name }}
                 </div>
 
-                @foreach ($histories as $type => $history)
-                    @if (!$history->isEmpty())
+                @foreach ($historyTypes as $type => $histories)
+                    @if (!$histories->isEmpty())
                         <div class="mb-4">
                             <h4>@lang(ucfirst($type) . ' Histories')</h4>
                             <div class="table-responsive">
@@ -39,46 +39,33 @@
                                             <th>@lang('Changed By')</th>
                                             <th>@lang(ucfirst($type))</th>
                                             <th>@lang('Old Value')</th>
-                                            <th>@lang('New Value')</th>
                                             <th>@lang('Timestamp')</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach ($history as $record)
+                                        @foreach ($histories as $history)
                                             <tr>
                                                 <td>
                                                     {{-- Display user name if available, otherwise show 'Unknown User' --}}
-                                                    {{ $record->user_id ? App\Models\User::find($record->user_id)->name ?? 'Unknown User' : 'Unknown User' }}
+                                                    {{ $history->user_id ? App\Models\User::find($history->user_id)->name ?? 'Unknown User' : 'Unknown User' }}
                                                 </td>
-                                                <td>{{ $record->{$type . '_name'} ?? $record->{$type . '_serial'} ?? $record->{$type . '_address'} }}</td>
+                                                <td>{{ $history->{$type . '_name'} }}</td>
                                                 <td>
                                                     <ul>
-                                                        {{-- Display original values --}}
-                                                        @foreach ($record->getOriginal() as $key => $value)
-                                                        {{-- @dd($record->getOriginal()  $record->getAttributes()) --}}
+                                                        {{-- Display all attributes from $history --}}
+                                                        @foreach ($history->getAttributes() as $key => $value)
                                                             <li>{{ $key }}: {{ $value }}</li>
                                                         @endforeach
                                                     </ul>
                                                 </td>
-                                                <td>
-                                                    <ul>
-                                                        {{-- Display current values, highlighting differences for client --}}
-                                                        @foreach ($record->getAttributes() as $key => $value)
-                                                            <li>
-                                                                @if ($type === 'client' && isset($client->{$key}) && $client->{$key} != $value)
-                                                                    <span class="highlight-diff">{{ $client->{$key} }}</span>
-                                                                @else
-                                                                    {{ $value }}
-                                                                @endif
-                                                            </li>
-                                                        @endforeach
-                                                    </ul>
-                                                </td>
-                                                <td>{{ $record->created_at }}</td>
+                                              
+                                                <td>{{ $history->created_at }}</td>
                                             </tr>
                                         @endforeach
                                     </tbody>
                                 </table>
+                                {{-- Pagination links --}}
+                                {{ $histories->links() }}
                             </div>
                         </div>
                     @endif

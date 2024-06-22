@@ -1,3 +1,6 @@
+
+
+
 @extends('layouts.admin')
 
 @section('content')
@@ -34,44 +37,44 @@
                     <h3 class="card-title">@lang('cruds.history.title')</h3>
                 </div>
                 <div class="card-body">
-                    <table class="table table-bordered table-striped w-100">
-                        <thead>
+                    <table class="table table-striped table-bordered">
+                        <thead class="thead-dark">
                             <tr>
-                                <th>ID</th>
-                                <th>Company</th>
-                                <th>INN</th>
-                                <th>Address</th>
-                                <th>Details</th>
+                                <th scope="col">Client ID</th>
+                                <th scope="col">Company</th>
+                                <th scope="col">INN</th>
+                                <th scope="col">Contact</th>
+                                <th scope="col">Address</th>
+                                <th scope="col">Action</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($clients as $client)
+                            @foreach($clientHistories as $client)
                             <tr>
                                 <td>{{ $client->id }}</td>
-
                                 @if ($client->mijoz_turi == 'fizik')
                                     <td>{{ $client->last_name }} {{ $client->first_name }} {{ $client->father_name }}</td>
                                 @else
                                     <td>{{ $client->company->company_name ?? '' }} </td>
                                 @endif
-
                                 <td>{{ $client->company->stir }}</td>
-
-
+                                <td>{{ $client->last_name }}</td>
+                                <td>{{ $client->contact }}</td>
                                 @if ($client->mijoz_turi == 'fizik')
                                     <td>{{ $client->address->home_address ?? '' }}</td>
                                 @else
                                     <td>{{ $client->address->yuridik_address ?? '' }} </td>
                                 @endif
-
-                                <td><a class="btn btn-primary" href="{{route('history.show', $client->id)}}">View History</a></td>
+                                <td>
+                                    <a href="{{ route('history.show', $client->id) }}" class="btn btn-primary btn-sm">View Details</a>
+                                </td>
                             </tr>
                             @endforeach
                         </tbody>
                     </table>
                     <div class="d-flex">
 
-                        {!! $clients->links() !!}
+                        {!! $clientHistories->links() !!}
 
                     </div>
 

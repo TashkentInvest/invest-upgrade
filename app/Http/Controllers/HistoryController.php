@@ -83,37 +83,32 @@ class HistoryController extends Controller
         ->orderBy('created_at', 'desc')
         ->paginate(10); 
     
-        return view('pages.history.index2', compact('clientHistories'));
+        return view('pages.history.index', compact('clientHistories'));
     }
     
-    public function show($id)
-    {
-        $clientHistory = ClientHistory::with([
-            'client', 
-            'passportHistories',
-            'fileHistories',
-            'companyHistories',
-            'branchHistories',
-            'addressHistories'
-        ])->findOrFail($id);
-
-        return view('pages.history.show2', compact('clientHistory'));
-    }
-
-        public function showHistory($id)
-        {
-            $client = Client::findOrFail($id);
-        
-            $histories = [
-                'client' => ClientHistory::where('client_id', $id)->orderBy('created_at', 'desc')->get(),
-                'file' => FileHistory::where('client_id', $id)->orderBy('created_at', 'desc')->get(),
-                'address' => AddressHistory::where('client_id', $id)->orderBy('created_at', 'desc')->get(),
-                'passport' => PassportHistory::where('client_id', $id)->orderBy('created_at', 'desc')->get(),
-                'company' => CompanyHistory::where('client_id', $id)->orderBy('created_at', 'desc')->get(),
-                'branch' => BranchHistory::where('client_id', $id)->orderBy('created_at', 'desc')->get(),
-            ];
-        
-            return view('pages.history.show', compact('client', 'histories'));
-        }
+ 
    
+    public function showHistory($id)
+    {
+        $client = Client::findOrFail($id);
+    
+        $clientHistories = ClientHistory::where('client_id', $id)->orderBy('created_at', 'desc')->paginate(10);
+        $fileHistories = FileHistory::where('client_id', $id)->orderBy('created_at', 'desc')->paginate(10);
+        $addressHistories = AddressHistory::where('client_id', $id)->orderBy('created_at', 'desc')->paginate(10);
+        $passportHistories = PassportHistory::where('client_id', $id)->orderBy('created_at', 'desc')->paginate(10);
+        $companyHistories = CompanyHistory::where('client_id', $id)->orderBy('created_at', 'desc')->paginate(10);
+        $branchHistories = BranchHistory::where('client_id', $id)->orderBy('created_at', 'desc')->paginate(10);
+    
+        $historyTypes = [
+            'client' => $clientHistories,
+            'file' => $fileHistories,
+            'address' => $addressHistories,
+            'passport' => $passportHistories,
+            'company' => $companyHistories,
+            'branch' => $branchHistories,
+        ];
+    
+        return view('pages.history.show', compact('client', 'historyTypes'));
+    }
+    
 }
