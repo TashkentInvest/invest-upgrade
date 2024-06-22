@@ -52,7 +52,7 @@
                                         @php
                                             $previousHistory = null;
                                         @endphp
-                                        @foreach ($historyKey as $history)
+                                        @foreach ($$historyKey as $history)
                                             <tr>
                                                 <td>{{ $history->user_id ? App\Models\User::find($history->user_id)->name ?? 'Unknown User' : 'Unknown User' }}</td>
                                                 <td>
