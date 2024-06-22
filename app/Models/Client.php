@@ -63,7 +63,7 @@ class Client extends Model
 
     public function branchHistories()
     {
-        return $this->hasMany(BranchHistory::class);
+        return $this->hasMany(BranchHistory::class, 'client_id');
     }
 
     public function addressHistories()

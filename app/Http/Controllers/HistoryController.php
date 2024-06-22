@@ -87,28 +87,51 @@ class HistoryController extends Controller
     }
     
  
-   
     public function showHistory($id)
     {
         $client = Client::findOrFail($id);
     
-        $clientHistories = ClientHistory::where('client_id', $id)->orderBy('created_at', 'desc')->paginate(10);
-        $fileHistories = FileHistory::where('client_id', $id)->orderBy('created_at', 'desc')->paginate(10);
-        $addressHistories = AddressHistory::where('client_id', $id)->orderBy('created_at', 'desc')->paginate(10);
-        $passportHistories = PassportHistory::where('client_id', $id)->orderBy('created_at', 'desc')->paginate(10);
-        $companyHistories = CompanyHistory::where('client_id', $id)->orderBy('created_at', 'desc')->paginate(10);
-        $branchHistories = BranchHistory::where('client_id', $id)->orderBy('created_at', 'desc')->paginate(10);
+        $clientHistories = $client->clientHistories()->orderBy('created_at', 'desc')->paginate(10);
+        $fileHistories = $client->fileHistories()->orderBy('created_at', 'desc')->paginate(10);
+        $addressHistories = $client->addressHistories()->orderBy('created_at', 'desc')->paginate(10);
+        $passportHistories = $client->passportHistories()->orderBy('created_at', 'desc')->paginate(10);
+        $companyHistories = $client->companyHistories()->orderBy('created_at', 'desc')->paginate(10);
+        $branchHistories = $client->branchHistories()->orderBy('created_at', 'desc')->paginate(10);
     
-        $historyTypes = [
-            'client' => $clientHistories,
-            'file' => $fileHistories,
-            'address' => $addressHistories,
-            'passport' => $passportHistories,
-            'company' => $companyHistories,
-            'branch' => $branchHistories,
-        ];
-    
-        return view('pages.history.show', compact('client', 'historyTypes'));
+        return view('pages.history.show', compact(
+            'client',
+            'clientHistories',
+            'fileHistories',
+            'addressHistories',
+            'passportHistories',
+            'companyHistories',
+            'branchHistories'
+        ));
     }
+    
+    
+    // public function showHistory($id)
+    // {
+    //     $client = Client::findOrFail($id);
+    
+    //     $clientHistories = $client->clientHistories()->orderBy('created_at', 'desc')->paginate(10);
+    //     $fileHistories = $client->fileHistories()->orderBy('created_at', 'desc')->paginate(10);
+    //     $addressHistories = $client->addressHistories()->orderBy('created_at', 'desc')->paginate(10);
+    //     $passportHistories = $client->passportHistories()->orderBy('created_at', 'desc')->paginate(10);
+    //     $companyHistories = $client->companyHistories()->orderBy('created_at', 'desc')->paginate(10);
+    //     $branchHistories = $client->branchHistories()->orderBy('created_at', 'desc')->paginate(10);
+    
+    //     $historyTypes = [
+    //         'client' => $clientHistories,
+    //         'file' => $fileHistories,
+    //         'address' => $addressHistories,
+    //         'passport' => $passportHistories,
+    //         'company' => $companyHistories,
+    //         'branch' => $branchHistories,
+    //     ];
+    
+    //     return view('pages.history.show', compact('client', 'historyTypes'));
+    // }
+    
     
 }

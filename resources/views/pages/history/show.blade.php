@@ -28,46 +28,65 @@
                     <strong>@lang('Name'):</strong> {{ $client->first_name }} {{ $client->last_name }}
                 </div>
 
-                @foreach ($historyTypes as $type => $histories)
-                    @if (!$histories->isEmpty())
+                @foreach ([
+                    'clientHistories' => 'Client Histories',
+                    'fileHistories' => 'File Histories',
+                    'addressHistories' => 'Address Histories',
+                    'passportHistories' => 'Passport Histories',
+                    'companyHistories' => 'Company Histories',
+                    'branchHistories' => 'Branch Histories',
+                ] as $historyKey => $historyTitle)
+                    @if ($$historyKey->isNotEmpty())
                         <div class="mb-4">
-                            <h4>@lang(ucfirst($type) . ' Histories')</h4>
+                            <h4 class="mb-3 font-size-16">{{ $historyTitle }}</h4>
                             <div class="table-responsive">
-                                <table class="table table-bordered">
+                                <table class="table table-bordered table-striped">
                                     <thead>
                                         <tr>
-                                            <th>@lang('Changed By')</th>
-                                            <th>@lang(ucfirst($type))</th>
-                                            <th>@lang('Old Value')</th>
-                                            <th>@lang('Timestamp')</th>
+                                            <th style="width: 25%;">@lang('Changed By')</th>
+                                            <th style="width: 50%;">@lang('Old Value')</th>
+                                            <th style="width: 25%;">@lang('Timestamp')</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach ($histories as $history)
+                                        @php
+                                            $previousHistory = null;
+                                        @endphp
+                                        @foreach ($historyKey as $history)
                                             <tr>
+                                                <td>{{ $history->user_id ? App\Models\User::find($history->user_id)->name ?? 'Unknown User' : 'Unknown User' }}</td>
                                                 <td>
-                                                    {{-- Display user name if available, otherwise show 'Unknown User' --}}
-                                                    {{ $history->user_id ? App\Models\User::find($history->user_id)->name ?? 'Unknown User' : 'Unknown User' }}
-                                                </td>
-                                                <td>{{ $history->{$type . '_name'} }}</td>
-                                                <td>
-                                                    <ul>
-                                                        {{-- Display all attributes from $history --}}
+                                                    <ul class="list-unstyled mb-0">
                                                         @foreach ($history->getAttributes() as $key => $value)
-                                                            <li>{{ $key }}: {{ $value }}</li>
+                                                            @php
+                                                                $changedClass = '';
+                                                                if ($previousHistory && $previousHistory->$key !== $history->$key) {
+                                                                    $changedClass = 'font-weight-bold text-danger';
+                                                                }
+                                                            @endphp
+                                                            <li class="{{ $changedClass }}">
+                                                                <strong>{{ $key }}:</strong>
+                                                                {{ $value }}
+                                                            </li>
                                                         @endforeach
                                                     </ul>
                                                 </td>
-                                              
                                                 <td>{{ $history->created_at }}</td>
                                             </tr>
+                                            @php
+                                                $previousHistory = $history;
+                                            @endphp
                                         @endforeach
                                     </tbody>
                                 </table>
                                 {{-- Pagination links --}}
-                                {{ $histories->links() }}
+                                <div class="d-flex justify-content-center">
+                                    {{ $$historyKey->links() }}
+                                </div>
                             </div>
                         </div>
+                    @else
+                        <p class="text-muted">No {{ $historyTitle }} found.</p>
                     @endif
                 @endforeach
             </div>
@@ -76,8 +95,29 @@
 </div>
 
 <style>
-    .highlight-diff {
-        background-color: #ffdddd;
+    .table-responsive {
+        overflow-x: auto;
+    }
+
+    .table {
+        width: 100%;
+    }
+
+    .table-bordered th,
+    .table-bordered td {
+        border: 1px solid #dee2e6;
+    }
+
+    .table-striped tbody tr:nth-of-type(odd) {
+        background-color: rgba(0,0,0,.05);
+    }
+
+    .font-weight-bold {
+        font-weight: bold; 
+    }
+
+    .text-danger {
+        color: #dc3545; 
     }
 </style>
 

@@ -21,4 +21,5 @@ class CompanyHistory extends Model
         'minimum_wage',
         'event'
     ];
+    
 }
