@@ -75,6 +75,7 @@ class ClientController extends Controller
                 'mijoz_turi' => $request->get('mijoz_turi'),
                 'contact' => $request->get('contact'),
                 'client_description' => $request->get('client_description'),
+                'category_id' => $request->get('category_id',2),
             ]);
 
             $client->company()->create([
@@ -188,6 +189,8 @@ class ClientController extends Controller
                 'mijoz_turi' => $request->get('mijoz_turi'),
                 'contact' => $request->get('contact'),
                 'client_description' => $request->get('client_description'),
+                'category_id' => $request->get('category_id',2),
+
             ]);
 
             $client->company->update([

@@ -19,13 +19,14 @@ class Client extends Model
         'is_deleted',
         'status',
         'client_description',
+        'category_id'
     ];
 
     public function category()
     {
         return $this->belongsTo(Category::class);
     }
-    
+
     public function company()
     {
         return $this->hasOne(Company::class);

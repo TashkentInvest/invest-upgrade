@@ -247,7 +247,9 @@ telegram bot qilish kere zayavka qoldirish uchun
 
 toshkentinvest.uz ni copy qilib dashboardga ulash kere va bu katalog sayt boladi ichida news, blog, post, form , va bowqa malumotla boladi
 
+company history dan uniqe ni obtashash kere
 
+product add qvotganda fizikda stir chqsin
 ```
 
 

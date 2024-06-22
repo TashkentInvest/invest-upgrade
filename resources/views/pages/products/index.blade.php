@@ -243,11 +243,10 @@
                                 <th>@lang('global.id')</th>
                                 <th>@lang('global.client_name') || @lang('cruds.company.fields.company_name')</th>
                                 <th>@lang('cruds.client.fields.contact')</th>
-                                <th>@lang('cruds.company.fields.address')</th>
+                                <th style="width: 30%;">@lang('cruds.company.fields.address')</th>
                                 <th>@lang('cruds.company.fields.stir')</th>
-                                <th>cat</th>
+                                <th>Yo'nalish</th>
                                 <th>@lang('global.active')</th>
-                                <th style="width: 150px;">@lang('global.created_at')</th>
                                 <th style="width: 100px;">@lang('global.actions')</th>
                             </tr>
                         </thead>
@@ -281,7 +280,6 @@
                                             class="fas {{ $item->status === 1 ? 'fa-check-circle text-success' : 'fa-times-circle text-danger' }}"
                                             onclick="toggle_instock({{ $item->id }})"></i>
                                     </td>
-                                    <td> {{ $item->updated_at }} </td>
                                     <td class="text-center">
                                         <form action="{{ route('clientDestroy', $item->id) }}" method="post">
                                             @csrf

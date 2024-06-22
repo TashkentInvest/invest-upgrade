@@ -47,11 +47,7 @@ class CreateBranchesTable extends Migration
             $table->timestamps();
         });
 
-        Schema::table('branches', function (Blueprint $table) {
-            $table->string('apz_raqami')->nullable()->after('branch_type');
-            $table->date('apz_sanasi')->nullable()->after('apz_raqami');
-            $table->text('kengash')->nullable()->after('apz_sanasi');
-        });
+     
     }
     
 
@@ -62,9 +58,6 @@ class CreateBranchesTable extends Migration
      */
     public function down()
     {
-        Schema::table('branches', function (Blueprint $table) {
-            $table->dropColumn(['apz_raqami', 'apz_sanasi', 'kengash']);
-        });
         
         Schema::dropIfExists('branches');
     }

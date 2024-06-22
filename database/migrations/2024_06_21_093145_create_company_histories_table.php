@@ -23,7 +23,7 @@ class CreateCompanyHistoriesTable extends Migration
             $table->string('bank_code')->nullable();
             $table->string('bank_service')->nullable();
             $table->string('bank_account')->nullable();
-            $table->string('stir')->nullable()->unique();
+            $table->string('stir')->nullable();
             $table->string('oked')->nullable();
             $table->text('minimum_wage')->nullable();
             $table->string('event')->nullable();
