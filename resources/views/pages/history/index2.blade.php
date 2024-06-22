@@ -44,6 +44,7 @@
                                 <th scope="col">Company/th>
                                 <th scope="col">INN</th>
                                 <th scope="col">Contact</th>
+                                <th scope="col">Address</th>
                                 <th scope="col">Action</th>
                             </tr>
                         </thead>
@@ -59,6 +60,11 @@
                                 <td>{{ $client->company->stir }}</td>
                                 <td>{{ $client->last_name }}</td>
                                 <td>{{ $client->contact }}</td>
+                                @if ($client->mijoz_turi == 'fizik')
+                                    <td>{{ $client->address->home_address ?? '' }}</td>
+                                @else
+                                    <td>{{ $client->address->yuridik_address ?? '' }} </td>
+                                @endif
                                 <td>
                                     <a href="{{ route('history.show', $client->id) }}" class="btn btn-primary btn-sm">View Details</a>
                                 </td>

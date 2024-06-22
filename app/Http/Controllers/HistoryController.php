@@ -63,18 +63,29 @@ class HistoryController extends Controller
     //     return view('pages.history.index', compact('clients'));
     // }
     
-    
-
     public function index()
     {
-        // Fetch distinct client histories based on client_id
-        $clientHistories = Client::with('company')->orderBy('created_at', 'desc')->paginate(10); 
-
-            // dd($clientHistories);
-
+        // Fetch clients along with their related histories
+        $clientHistories = Client::with([
+            'passportHistories',
+            'fileHistories',
+            'companyHistories',
+            'branchHistories',
+            'addressHistories'
+        ])
+        ->where(function ($query) {
+            $query->whereHas('passportHistories')
+                ->orWhereHas('fileHistories')
+                ->orWhereHas('companyHistories')
+                ->orWhereHas('branchHistories')
+                ->orWhereHas('addressHistories');
+        })
+        ->orderBy('created_at', 'desc')
+        ->paginate(10); 
+    
         return view('pages.history.index2', compact('clientHistories'));
     }
-
+    
     public function show($id)
     {
         $clientHistory = ClientHistory::with([
