@@ -469,3 +469,8 @@ php artisan make:migration add_apz_columns_to_branches_table --table=branches
 ls -l storage
 
  ```
+
+ ## seed class
+ ```
+php artisan db:seed --class=Database\Seeders\init\CategorySeeder
+```
