@@ -33,7 +33,7 @@
                             <section>
 
                                 <div class="row">
-                                    <div class="col-12 col-lg-12 mb-2">
+                                    <div class="col-12 col-lg-6 mb-2">
                                         <label for="mijoz_turi" class="col-md-4 col-form-label">@lang('cruds.client.fields.mijoz_turi')</label>
                                         <select class="form-control" name="mijoz_turi" id="mijoz_turi">
                                             <option value="fizik">@lang('cruds.client.fields.mijoz_turi_fizik')</option>
@@ -41,6 +41,18 @@
                                         </select>
                                         @if ($errors->has('mijoz_turi'))
                                             <span class="error invalid-feedback">{{ $errors->first('mijoz_turi') }}</span>
+                                        @endif
+                                    </div>
+
+                                    <div class="col-12 col-lg-6 mb-2">
+                                        <label for="category_id" class="col-md-4 col-form-label">category_id</label>
+                                        <select class="form-control" name="category_id" id="category_id">
+                                            @foreach ($categories as $c)
+                                                <option value="{{$c->id}}">{{$c->name}}</option>
+                                            @endforeach
+                                        </select>
+                                        @if ($errors->has('category_id'))
+                                            <span class="error invalid-feedback">{{ $errors->first('category_id') }}</span>
                                         @endif
                                     </div>
                                 </div>

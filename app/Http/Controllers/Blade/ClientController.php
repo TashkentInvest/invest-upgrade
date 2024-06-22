@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Blade;
 
 use App\Http\Controllers\Controller;
 use App\Models\Branch;
+use App\Models\Category;
 use App\Models\Client;
 use App\Models\Company;
 use App\Models\File;
@@ -21,7 +22,7 @@ class ClientController extends Controller
         $clients = Client::deepFilters()->with(['company','branches','address','passport','files'])
         ->where('is_deleted', '!=', 1)->orderBy('id', 'desc')
         ->paginate(25);
-
+        
         return view('pages.products.index', compact('clients'));
     }
 
@@ -43,8 +44,9 @@ class ClientController extends Controller
 
     public function add()
     {
+        $categories = Category::get()->all();
         $regions = Regions::get()->all();
-        return view('pages.products.add', compact('regions'));
+        return view('pages.products.add', compact('regions','categories'));
     }
 
     public function create(Request $request)
@@ -149,6 +151,7 @@ class ClientController extends Controller
     public function edit($id)
     {
 
+        $categories = Category::get()->all();
         $client = Client::where('id', $id)
             ->with(['branches', 'files'])
             ->where('is_deleted', '!=', 1)
@@ -156,7 +159,7 @@ class ClientController extends Controller
 
         $files = $client ? $client->files : collect();
 
-        return view('pages.products.edit', compact('client', 'files'));
+        return view('pages.products.edit', compact('client', 'files','categories'));
     }
 
     public function update(Request $request, $id)
