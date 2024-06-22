@@ -224,6 +224,12 @@ history timestamp not works well
 
 optimize history queries
 
+categoryni modelda relation qlsh kere client blan
+
+client da with blan categoryni obchqsh kere
+
+product index ga categoryni obchqish kere
+
 ```
 
 ## New Tasks
