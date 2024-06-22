@@ -19,13 +19,16 @@ class ClientController extends Controller
 {
     public function index()
     {
-        $clients = Client::deepFilters()->with(['company','branches','address','passport','files'])
-        ->where('is_deleted', '!=', 1)->orderBy('id', 'desc')
-        ->paginate(25);
-        
-        return view('pages.products.index', compact('clients'));
+        $categories = Category::get()->all();
+        $clients = Client::deepFilters()
+            ->with(['category', 'company', 'branches', 'address', 'passport', 'files'])
+            ->where('is_deleted', '!=', 1)
+            ->orderByDesc('id')
+            ->paginate(25);
+    
+        return view('pages.products.index', compact('clients','categories'));
     }
-
+    
     public function show($id)
     {
         $client = Client::where('id', $id)

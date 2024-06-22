@@ -245,6 +245,7 @@
                                 <th>@lang('cruds.client.fields.contact')</th>
                                 <th>@lang('cruds.company.fields.address')</th>
                                 <th>@lang('cruds.company.fields.stir')</th>
+                                <th>cat</th>
                                 <th>@lang('global.active')</th>
                                 <th style="width: 150px;">@lang('global.created_at')</th>
                                 <th style="width: 100px;">@lang('global.actions')</th>
@@ -272,6 +273,8 @@
                                     @endif
 
                                     <td>{{ $item->company->stir ?? '' }} </td>
+                                        
+                                    <td>{{$item->category->name ?? ''}} </td>
 
                                     <td class="text-center">
                                         <i style="cursor: pointer; font-size: 16px;" id="program_{{ $item->id }}"

@@ -17,6 +17,10 @@ class CreateClientHistoriesTable extends Migration
             $table->id();
             $table->unsignedBigInteger('client_id');
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade'); 
+
+            $table->unsignedBigInteger('category_id')->nullable();
+            $table->foreign('category_id')->references('id')->on('categories');
+
             $table->string('event'); // 'created', 'updated', 'deleted'
             $table->enum('mijoz_turi', ['yuridik', 'fizik'])->nullable();
             $table->string('first_name')->nullable();

@@ -21,6 +21,11 @@ class Client extends Model
         'client_description',
     ];
 
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
+    }
+    
     public function company()
     {
         return $this->hasOne(Company::class);

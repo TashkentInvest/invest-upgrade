@@ -49,7 +49,6 @@
                                             <span class="error invalid-feedback">{{ $errors->first('mijoz_turi') }}</span>
                                         @endif
                                     </div>
-
                                     <div class="col-12 col-lg-6 mb-2">
                                         <label for="category_id">Category</label>
                                         <select class="form-control" name="category_id" id="category_id">
