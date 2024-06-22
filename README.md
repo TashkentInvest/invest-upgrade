@@ -482,3 +482,28 @@ ls -l storage
  ```
 php artisan db:seed --class=Database\Seeders\init\CategorySeeder
 ```
+```
+php artisan make:migration add_category_id_to_clients_table --table=clients
+
+ public function up()
+    {
+        Schema::table('clients', function (Blueprint $table) {
+            $table->unsignedBigInteger('category_id')->nullable()->after('id');
+            $table->foreign('category_id')->references('id')->on('categories');
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::table('clients', function (Blueprint $table) {
+            $table->dropForeign(['category_id']);
+            $table->dropColumn('category_id');
+        });
+    }
+
+```
