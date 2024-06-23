@@ -208,15 +208,21 @@ platejka pinned qlsh kere +++
 
 chat qlsh kere +++
 
+Transactionlani payed date blan solishtrib fix qilish kere +++
+
+ob serverga user_id relation qlsh kere +++
+
+categoryni modelda relation qlsh kere client blan +++
+
+client da with blan categoryni obchqsh kere +++
+
+product index ga categoryni obchqish kere +++
+
 blade clean qilish kere 
 
 remove accardion ochishi keremas agar bitta bosa
     
-Transactionlani payed date blan solishtrib fix qilish kere
-
 modal kada confirm bosaganda timer qoyish kere 
-
-ob serverga user_id relation qlsh kere
 
 history show dan realtion qb chqaxsh kere
 
@@ -224,18 +230,13 @@ history timestamp not works well
 
 optimize history queries
 
-categoryni modelda relation qlsh kere client blan +++
-
-client da with blan categoryni obchqsh kere
-
-product index ga categoryni obchqish kere
 
 ```
 
 ## New Tasks
 
 ```
-categorya qoshish kere = ['ruxsatnoma', 'Apz','Kengash'] seeder qlinsin tanlashda select  option blan chqsin 
+categorya qoshish kere = ['ruxsatnoma', 'Apz','Kengash'] seeder qlinsin tanlashda select  option blan chqsin +++
 
 Qurilish va Apz da yaratilingan voqt keremas created_at orniga contact tushadi & kontakt eski orniga nomer zayevlenya va tepadgi categorya tushadi 
 

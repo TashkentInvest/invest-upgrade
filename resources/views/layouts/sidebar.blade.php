@@ -159,7 +159,7 @@
 
                     <li class="{{ Request::is('chat*') ? 'mm-active' : '' }}">
                         <a href="{{ route('chat.index') }}"
-                            class=" waves-effect {{ Request::is('backup*') ? 'mm-active' : '' }}">
+                            class=" waves-effect {{ Request::is('chat*') ? 'mm-active' : '' }}">
                             <i class="bx bx-chat"></i>
                             <span>Chat</span>
                             {{-- <span class="badge rounded-pill bg-danger float-end">10</span> --}}
