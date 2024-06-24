@@ -359,9 +359,9 @@
                                 </style>
                                 
                                 <div class="row" style="align-items: center">
-                                    <div class="col-12 col-md-6 col-lg-6 col-xl-3 mb-2">
+                                    <div class="col-12 col-md-6 col-lg-6 col-xl-3 my-2">
                                         <div class="file-upload-card">
-                                            <label class="col-12 mt-2" for="file">File APZ</label>
+                                            <label class="col-12 mt-2" for="file"> Document</label>
                                             <input type="file" name="document[]" multiple>
                                             @if ($errors->has('document'))
                                                 <span class="error invalid-feedback">{{ $errors->first('document') }}</span>
@@ -369,9 +369,9 @@
                                         </div>
                                     </div>
                                 
-                                    <div class="col-12 col-md-6 col-lg-6 col-xl-3 mb-2">
+                                    <div class="col-12 col-md-6 col-lg-6 col-xl-3 my-2">
                                         <div class="file-upload-card">
-                                            <label class="col-12 mt-2" for="file">Platejka document</label>
+                                            <label class="col-12 mt-2" for="file">Paymnet</label>
                                             <input type="file" name="document_payment[]" multiple>
                                             @if ($errors->has('document_payment'))
                                                 <span class="error invalid-feedback">{{ $errors->first('document_payment') }}</span>
@@ -379,9 +379,9 @@
                                         </div>
                                     </div>
                                 
-                                    <div class="col-12 col-md-6 col-lg-6 col-xl-3 mb-2">
+                                    <div class="col-12 col-md-6 col-lg-6 col-xl-3 my-2">
                                         <div class="file-upload-card">
-                                            <label class="col-12 mt-2" for="file">Ruxsatnoma document</label>
+                                            <label class="col-12 mt-2" for="file">Ruxsatnoma</label>
                                             <input type="file" name="document_ruxsatnoma[]" multiple>
                                             @if ($errors->has('document_ruxsatnoma'))
                                                 <span class="error invalid-feedback">{{ $errors->first('document_ruxsatnoma') }}</span>
@@ -389,9 +389,9 @@
                                         </div>
                                     </div>
                                 
-                                    <div class="col-12 col-md-6 col-lg-6 col-xl-3 mb-2">
+                                    <div class="col-12 col-md-6 col-lg-6 col-xl-3 my-2">
                                         <div class="file-upload-card">
-                                            <label class="col-12 mt-2" for="file">Kengash document</label>
+                                            <label class="col-12 mt-2" for="file">Kengash</label>
                                             <input type="file" name="document_kengash[]" multiple>
                                             @if ($errors->has('document_kengash'))
                                                 <span class="error invalid-feedback">{{ $errors->first('document_kengash') }}</span>
