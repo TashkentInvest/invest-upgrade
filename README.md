@@ -220,19 +220,13 @@ product index ga categoryni obchqish kere +++
 
 constructions da obyektlani construction num blan ajratib qoyish kere +++
 
+product add qvotganda error bosa old value lani chqazb qoysh kere +++
+
 blade clean qilish kere 
 
 remove accardion ochishi keremas agar bitta bosa
-    
-modal kada confirm bosaganda timer qoyish kere 
-
-history show dan realtion qb chqaxsh kere
-
-history timestamp not works well
 
 optimize history queries
-
-product add qvotganda error bosa old value lani chqazb qoysh kere
 
 file lani clients lagamas branch laga ulash kere
 
