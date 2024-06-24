@@ -277,13 +277,94 @@
                             <ul>
                                 <h5>@lang('global.contract_details')</h5>
 
-                                @foreach ($files as $file)
+                                {{-- @foreach ($files as $file)
                                     <div class="py-1">
                                         <a target="_blank" class="py-2 my-2"
                                             href="{{ asset($file->path) }}">{{ $file->path }}</a>
 
                                     </div>
-                                @endforeach
+                                @endforeach --}}
+
+                                
+                                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+                                <style>
+                                    .file-upload-card {
+                                        border: 1px solid #ddd;
+                                        border-radius: 8px;
+                                        padding: 15px;
+                                        margin-bottom: 15px;
+                                    }
+                                
+                                    .file-list-item {
+                                        display: flex;
+                                        align-items: center;
+                                        padding: 8px 0;
+                                        border-bottom: 1px solid #ddd;
+                                    }
+                                
+                                    .file-list-item:last-child {
+                                        border-bottom: none;
+                                    }
+                                
+                                    .file-icon {
+                                        margin-right: 10px;
+                                        font-size: 1.2rem;
+                                    }
+                                
+                                    .file-label {
+                                        margin-left: 10px;
+                                        font-weight: bold;
+                                        color: #555;
+                                    }
+                                
+                                    .label-document {
+                                        color: #007bff;
+                                    }
+                                
+                                    .label-payment {
+                                        color: #28a745;
+                                    }
+                                
+                                    .label-ruxsatnoma {
+                                        color: #ffc107;
+                                    }
+                                
+                                    .label-kengash {
+                                        color: #dc3545;
+                                    }
+                                
+                                    .delete-checkbox {
+                                        margin-left: auto;
+                                    }
+                                </style>
+
+                                <div class="col-12 mt-4">
+                                    <h5>Uploaded Files</h5>
+                                    <div class="file-list">
+                                        @foreach ($files as $file)
+                                            <div class="file-list-item">
+                                                <i class="fas fa-file-alt file-icon"></i>
+                                                <a target="_blank" class="py-2 my-2" href="{{ asset($file->path) }}">
+                                                    {{ basename($file->path) }}
+                                                </a>
+                                                <span class="file-label {{ 
+                                                    strpos($file->path, 'documents/') !== false ? 'label-document' :
+                                                    (strpos($file->path, 'payment/') !== false ? 'label-document' :
+                                                    (strpos($file->path, 'ruxsatnoma/') !== false ? 'label-document' :
+                                                    (strpos($file->path, 'kengash/') !== false ? 'label-document' : '')))
+                                                }}">
+                                                    {{
+                                                        strpos($file->path, 'documents/') !== false ? 'Document' :
+                                                        (strpos($file->path, 'payment/') !== false ? 'Payment' :
+                                                        (strpos($file->path, 'ruxsatnoma/') !== false ? 'Ruxsatnoma' :
+                                                        (strpos($file->path, 'kengash/') !== false ? 'Kengash' : '')))
+                                                    }}
+                                                </span>
+                                            </div>
+                                        @endforeach
+                                    </div>
+                                </div>
+                                
                             </ul>
 
                         </tbody>
