@@ -245,6 +245,7 @@
                                 {{-- <th style="width: 20%;">@lang('cruds.company.fields.address')</th> --}}
                                 <th>@lang('cruds.company.fields.stir')</th>
                                 <th>@lang('global.ruxsatnoma_raqami')</th>
+                                <th>@lang('cruds.branches.fields.application_number')</th>
                                 <th>@lang('cruds.branches.fields.apz_number')</th>
                                 <th>Yo'nalish</th>
                                 <th>@lang('cruds.client.fields.contact')</th>
@@ -274,6 +275,15 @@
                                     @endif --}}
 
                                     <td>{{ $item->company->stir ?? '' }} </td>
+                                    <td>
+                                        @foreach ($item->branches as $b)
+                                            @isset($b->contract_apt)
+                                                <button type="button" class="btn btn-secondary my-1 d-flex btn-sm w-xs waves-effect waves-light">
+                                                    {{$b->contract_apt}} 
+                                                </button>
+                                            @endisset
+                                        @endforeach
+                                    </td>
                                         
 
                                     <td>
