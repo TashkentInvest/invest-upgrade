@@ -234,6 +234,8 @@ product add qvotganda error bosa old value lani chqazb qoysh kere
 
 constructions da obyektlani construction num blan ajratib qoyish kere
 
+file lani clients lagamas branch laga ulash kere
+
 ```
 
 ## New Tasks
