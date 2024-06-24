@@ -278,7 +278,10 @@
 
                                     <td>
                                         @foreach ($item->branches as $b)
-                                            {{$b->apz_raqami}}
+                                        <p class="border text-center font-bold">
+                                            
+                                            {{$b->apz_raqami}} 
+                                        </p>
                                         @endforeach
 
                                     </td>

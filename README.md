@@ -230,6 +230,9 @@ history timestamp not works well
 
 optimize history queries
 
+product add qvotganda error bosa old value lani chqazb qoysh kere
+
+constructions da obyektlani construction num blan ajratib qoyish kere
 
 ```
 
@@ -250,7 +253,7 @@ toshkentinvest.uz ni copy qilib dashboardga ulash kere va bu katalog sayt boladi
 
 company history dan uniqe ni obtashash kere
 
-product add qvotganda fizikda stir chqsin
+product add qvotganda fizikda stir chqsin & input type lanyam fix qilish kere
 ```
 
 
