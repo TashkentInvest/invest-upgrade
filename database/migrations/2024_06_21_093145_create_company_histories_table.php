@@ -28,7 +28,7 @@ class CreateCompanyHistoriesTable extends Migration
             $table->text('minimum_wage')->nullable();
             $table->string('event')->nullable();
 
-            $table->timestamps();
+            $table->timestamps();   
         });
     }
 
