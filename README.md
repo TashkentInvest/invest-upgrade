@@ -222,9 +222,9 @@ constructions da obyektlani construction num blan ajratib qoyish kere +++
 
 product add qvotganda error bosa old value lani chqazb qoysh kere +++
 
-blade clean qilish kere 
+remove accardion ochishi keremas agar bitta bosa +++
 
-remove accardion ochishi keremas agar bitta bosa
+blade clean qilish kere 
 
 optimize history queries
 

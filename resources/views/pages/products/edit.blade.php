@@ -760,9 +760,16 @@
                                     });
 
                                     $(document).on('click', '.removeAccordion', function() {
-                                        console.log('Remove Accordion button clicked');
-                                        $(this).closest('.accordion-item').remove();
+                                        var accordionItem = $('.accordion-item');
+                                        if (accordionItem.length == 1) {
+                                            alert('You cannot delete the last item.');
+                                        } else {
+                                            console.log('Remove Accordion button clicked');
+                                            $(this).closest('.accordion-item').remove();
+                                        }
                                     });
+
+
                                 });
 
                                 $(document).on('input change', '.branch_kubmetr, .minimum_wage, .percentage-input, .quarterly-input', function() {
