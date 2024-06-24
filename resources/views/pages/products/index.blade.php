@@ -242,7 +242,7 @@
                             <tr>
                                 <th>@lang('global.id')</th>
                                 <th>@lang('global.client_name') || @lang('cruds.company.fields.company_name')</th>
-                                <th style="width: 20%;">@lang('cruds.company.fields.address')</th>
+                                {{-- <th style="width: 20%;">@lang('cruds.company.fields.address')</th> --}}
                                 <th>@lang('cruds.company.fields.stir')</th>
                                 <th>@lang('global.ruxsatnoma_raqami')</th>
                                 <th>@lang('cruds.branches.fields.apz_number')</th>
@@ -266,12 +266,12 @@
                                         <td>{{ $item->company->company_name ?? '' }} </td>
                                         {{-- @dump($item->company_name) --}}
                                     @endif
-
+{{-- 
                                     @if ($item->mijoz_turi == 'fizik')
                                         <td>{{ $item->address->home_address ?? '' }}</td>
                                     @else
                                         <td>{{ $item->address->yuridik_address ?? '' }} </td>
-                                    @endif
+                                    @endif --}}
 
                                     <td>{{ $item->company->stir ?? '' }} </td>
                                         
