@@ -278,13 +278,25 @@
 
                                     <td>
                                         @foreach ($item->branches as $b)
-                                        <p class="border text-center font-bold">
-                                            
-                                            {{$b->apz_raqami}} 
-                                        </p>
+                                            @isset($b->apz_raqami)
+                                                <p class="border text-center font-bold styled-paragraph">
+                                                    {{$b->apz_raqami}} 
+                                                </p>
+                                            @endisset
                                         @endforeach
-
                                     </td>
+                                    
+                                    <style>
+                                        .styled-paragraph {
+                                            background-color: #f0f0f0;
+                                            color: #333;
+                                            padding: 10px;
+                                            margin: 5px 0;
+                                            border-radius: 5px;
+                                            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+                                        }
+                                    </style>
+                                    
                                     <td>{{ $item->contact ?? '---' }}</td>
 
                                     <td class="text-center">
