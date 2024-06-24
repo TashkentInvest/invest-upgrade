@@ -306,58 +306,135 @@
 
                                 </div>
 
-                                <div class="row" style="align-items: center ">
-                                  
-
+                                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+                                <style>
+                                    .file-upload-card {
+                                        border: 1px solid #ddd;
+                                        border-radius: 8px;
+                                        padding: 15px;
+                                        margin-bottom: 15px;
+                                    }
+                                
+                                    .file-list-item {
+                                        display: flex;
+                                        align-items: center;
+                                        padding: 8px 0;
+                                        border-bottom: 1px solid #ddd;
+                                    }
+                                
+                                    .file-list-item:last-child {
+                                        border-bottom: none;
+                                    }
+                                
+                                    .file-icon {
+                                        margin-right: 10px;
+                                        font-size: 1.2rem;
+                                    }
+                                
+                                    .file-label {
+                                        margin-left: 10px;
+                                        font-weight: bold;
+                                        color: #555;
+                                    }
+                                
+                                    .label-document {
+                                        color: #007bff;
+                                    }
+                                
+                                    .label-payment {
+                                        color: #28a745;
+                                    }
+                                
+                                    .label-ruxsatnoma {
+                                        color: #ffc107;
+                                    }
+                                
+                                    .label-kengash {
+                                        color: #dc3545;
+                                    }
+                                
+                                    .delete-checkbox {
+                                        margin-left: auto;
+                                    }
+                                </style>
+                                
+                                <div class="row" style="align-items: center">
                                     <div class="col-12 col-md-6 col-lg-6 col-xl-3 mb-2">
-                                        <label class="col-12 mt-2" for="file">File APZ</label>
-                                        <input type="file" name="document[]" multiple>
-                                        @if ($errors->has('document'))
-                                            <span class="error invalid-feedback">{{ $errors->first('document') }}</span>
-                                        @endif
+                                        <div class="file-upload-card">
+                                            <label class="col-12 mt-2" for="file">File APZ</label>
+                                            <input type="file" name="document[]" multiple>
+                                            @if ($errors->has('document'))
+                                                <span class="error invalid-feedback">{{ $errors->first('document') }}</span>
+                                            @endif
+                                        </div>
                                     </div>
-                                    
+                                
                                     <div class="col-12 col-md-6 col-lg-6 col-xl-3 mb-2">
-                                        <label class="col-12 mt-2" for="file">Platejka document</label>
-                                        <input type="file" name="document_payment[]" multiple>
-                                        @if ($errors->has('document_payment'))
-                                            <span class="error invalid-feedback">{{ $errors->first('document_payment') }}</span>
-                                        @endif
+                                        <div class="file-upload-card">
+                                            <label class="col-12 mt-2" for="file">Platejka document</label>
+                                            <input type="file" name="document_payment[]" multiple>
+                                            @if ($errors->has('document_payment'))
+                                                <span class="error invalid-feedback">{{ $errors->first('document_payment') }}</span>
+                                            @endif
+                                        </div>
                                     </div>
-
+                                
                                     <div class="col-12 col-md-6 col-lg-6 col-xl-3 mb-2">
-                                        <label class="col-12 mt-2" for="file">Ruxsatnoma document</label>
-                                        <input type="file" name="document_ruxsatnoma[]" multiple>
-                                        @if ($errors->has('document_ruxsatnoma'))
-                                            <span class="error invalid-feedback">{{ $errors->first('document_ruxsatnoma') }}</span>
-                                        @endif
+                                        <div class="file-upload-card">
+                                            <label class="col-12 mt-2" for="file">Ruxsatnoma document</label>
+                                            <input type="file" name="document_ruxsatnoma[]" multiple>
+                                            @if ($errors->has('document_ruxsatnoma'))
+                                                <span class="error invalid-feedback">{{ $errors->first('document_ruxsatnoma') }}</span>
+                                            @endif
+                                        </div>
                                     </div>
-
+                                
                                     <div class="col-12 col-md-6 col-lg-6 col-xl-3 mb-2">
-                                        <label class="col-12 mt-2" for="file">Kengash document</label>
-                                        <input type="file" name="document_kengash[]" multiple>
-                                        @if ($errors->has('document_kengash'))
-                                            <span class="error invalid-feedback">{{ $errors->first('document_kengash') }}</span>
-                                        @endif
+                                        <div class="file-upload-card">
+                                            <label class="col-12 mt-2" for="file">Kengash document</label>
+                                            <input type="file" name="document_kengash[]" multiple>
+                                            @if ($errors->has('document_kengash'))
+                                                <span class="error invalid-feedback">{{ $errors->first('document_kengash') }}</span>
+                                            @endif
+                                        </div>
                                     </div>
-                                    
-                                    <ul>
-
+                                </div>
+                                
+                                <div class="col-12 mt-4">
+                                    <h5>Uploaded Files</h5>
+                                    <div class="file-list">
                                         @foreach ($files as $file)
-                                            <div class="py-1">
-                                                <a target="_blank" class="py-2 my-2"
-                                                    href="{{ asset($file->path) }}">{{ $file->path }}</a>
+                                            <div class="file-list-item">
+                                                <i class="fas fa-file-alt file-icon"></i>
+                                                <a target="_blank" class="py-2 my-2" href="{{ asset($file->path) }}">
+                                                    {{ basename($file->path) }}
+                                                </a>
+                                                <span class="file-label {{ 
+                                                    strpos($file->path, 'documents/') !== false ? 'label-document' :
+                                                    (strpos($file->path, 'payment/') !== false ? 'label-document' :
+                                                    (strpos($file->path, 'ruxsatnoma/') !== false ? 'label-document' :
+                                                    (strpos($file->path, 'kengash/') !== false ? 'label-document' : '')))
+                                                }}">
+                                                    {{
+                                                        strpos($file->path, 'documents/') !== false ? 'Document' :
+                                                        (strpos($file->path, 'payment/') !== false ? 'Payment' :
+                                                        (strpos($file->path, 'ruxsatnoma/') !== false ? 'Ruxsatnoma' :
+                                                        (strpos($file->path, 'kengash/') !== false ? 'Kengash' : '')))
+                                                    }}
+                                                </span>
                                                 @can('client.delete')
-                                                    Delete
-                                                    <input type="checkbox" name="delete_files[]"
-                                                        value="{{ $file->id }}">
+                                                    <div class="delete-checkbox">
+                                                        <label>
+                                                            <input type="checkbox" name="delete_files[]" value="{{ $file->id }}">
+                                                            Delete
+                                                        </label>
+                                                    </div>
                                                 @endcan
                                             </div>
                                         @endforeach
-                                    </ul>
-
-                                   
+                                    </div>
                                 </div>
+                                
 
                                 <script>
                                     $(document).ready(function() {
