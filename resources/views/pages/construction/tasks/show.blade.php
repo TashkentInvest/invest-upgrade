@@ -107,7 +107,12 @@
                                 </tr>
 
                                 @foreach ($construction->branches as $b)
-                                    <!-- Branch Information -->
+                                        <tr>
+                                            <td colspan="3" class="text-center bg-secondary text-light">
+                                                <strong>@lang('global.contract_details') -
+                                                    {{ $b->contract_apt }}</strong></td>
+                                        </tr>
+
                                     <tr>
                                         <td><strong>@lang('cruds.branches.fields.apz_number')</strong></td>
                                         <td colspan="2">{{ $b->apz_raqami }}</td>
@@ -294,6 +299,11 @@
                                     @method('PUT')
                                     <div class="modal-body">
                                         @foreach ($construction->branches as $branchIndex => $b)
+                                        <tr>
+                                            <td colspan="3" class="text-center bg-secondary text-light">
+                                                <strong>@lang('global.contract_details') -
+                                                    {{ $b->contract_apt }}</strong></td>
+                                        </tr>
                                             <input type="hidden" name="accordions[{{ $branchIndex }}][id]"
                                                 value="{{ $b->id }}">
 
