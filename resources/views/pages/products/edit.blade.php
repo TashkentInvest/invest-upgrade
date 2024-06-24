@@ -309,7 +309,7 @@
                                 <div class="row" style="align-items: center ">
                                   
 
-                                    <div class="col-12 col-md-6 col-lg-6 col-xl-4 mb-2">
+                                    <div class="col-12 col-md-6 col-lg-6 col-xl-3 mb-2">
                                         <label class="col-12 mt-2" for="file">File APZ</label>
                                         <input type="file" name="document[]" multiple>
                                         @if ($errors->has('document'))
@@ -317,11 +317,27 @@
                                         @endif
                                     </div>
                                     
-                                    <div class="col-12 col-md-6 col-lg-6 col-xl-4 mb-2">
+                                    <div class="col-12 col-md-6 col-lg-6 col-xl-3 mb-2">
                                         <label class="col-12 mt-2" for="file">Platejka document</label>
                                         <input type="file" name="document_payment[]" multiple>
                                         @if ($errors->has('document_payment'))
                                             <span class="error invalid-feedback">{{ $errors->first('document_payment') }}</span>
+                                        @endif
+                                    </div>
+
+                                    <div class="col-12 col-md-6 col-lg-6 col-xl-3 mb-2">
+                                        <label class="col-12 mt-2" for="file">Ruxsatnoma document</label>
+                                        <input type="file" name="document_ruxsatnoma[]" multiple>
+                                        @if ($errors->has('document_ruxsatnoma'))
+                                            <span class="error invalid-feedback">{{ $errors->first('document_ruxsatnoma') }}</span>
+                                        @endif
+                                    </div>
+
+                                    <div class="col-12 col-md-6 col-lg-6 col-xl-3 mb-2">
+                                        <label class="col-12 mt-2" for="file">Kengash document</label>
+                                        <input type="file" name="document_kengash[]" multiple>
+                                        @if ($errors->has('document_kengash'))
+                                            <span class="error invalid-feedback">{{ $errors->first('document_kengash') }}</span>
                                         @endif
                                     </div>
                                     

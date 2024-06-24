@@ -254,6 +254,15 @@ class ClientController extends Controller
                 handleFileUpload($request->file('document_payment'), $client, 'payment');
             }
 
+            if ($request->hasFile('document_ruxsatnoma')) {
+                handleFileUpload($request->file('document_ruxsatnoma'), $client, 'ruxsatnoma');
+            }
+
+            if ($request->hasFile('document_kengash')) {
+                handleFileUpload($request->file('document_kengash'), $client, 'kengash');
+            }
+
+
 
             if ($request->has('delete_files')) {
                 foreach ($request->input('delete_files') as $fileId) {
