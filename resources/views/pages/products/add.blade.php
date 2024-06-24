@@ -280,17 +280,11 @@
                                         @endif
                                     </div>
 
-
-
-                                </div>
-
-                                <div class="row" style="align-items: center ">
-
                                     <div class="col-12 col-md-6 col-lg-6 col-xl-3 mb-2">
                                         <label for="client_description"
                                             class="col-md-6 col-form-label">@lang('cruds.client.fields.client_description')</label>
                                         <textarea id="textarea" name="client_description"
-                                            class="form-control {{ $errors->has('client_description') ? 'is-invalid' : '' }}" maxlength="225" rows="3"
+                                            class="form-control {{ $errors->has('client_description') ? 'is-invalid' : '' }}" maxlength="225" rows="1"
                                             placeholder="This textarea has a limit of 225 chars.">{{ old('client_description') }}</textarea>
                                         @if ($errors->has('client_description'))
                                             <span
@@ -298,23 +292,110 @@
                                         @endif
                                     </div>
 
-                                    <div class="col-12 col-md-6 col-lg-6 col-xl-3 mb-2">
-                                        <label for="file" class="col-md-4 col-form-label">File document</label>
-                                        <input type="file" name="document[]" multiple>
-                                        @if ($errors->has('document'))
-                                            <span class="error invalid-feedback">{{ $errors->first('document') }}</span>
-                                        @endif
-                                    </div>
 
-
-
-
-                                    <div class="col-12 col-md-6 col-lg-6 col-xl-3 mb-2">
+                                    <div class="col-12 col-md-6 col-lg-6 col-xl-3 mt-2">
                                         <label for="is_passport_id">Is passport ID?</label>
                                         <input type="checkbox" name="passport_type" id="is_passport_id" value="1">
                                     </div>
+
                                 </div>
 
+                               
+
+                                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+                                <style>
+                                    .file-upload-card {
+                                        border: 1px solid #ddd;
+                                        border-radius: 8px;
+                                        padding: 15px;
+                                        margin-bottom: 15px;
+                                    }
+                                
+                                    .file-list-item {
+                                        display: flex;
+                                        align-items: center;
+                                        padding: 8px 0;
+                                        border-bottom: 1px solid #ddd;
+                                    }
+                                
+                                    .file-list-item:last-child {
+                                        border-bottom: none;
+                                    }
+                                
+                                    .file-icon {
+                                        margin-right: 10px;
+                                        font-size: 1.2rem;
+                                    }
+                                
+                                    .file-label {
+                                        margin-left: 10px;
+                                        font-weight: bold;
+                                        color: #555;
+                                    }
+                                
+                                    .label-document {
+                                        color: #007bff;
+                                    }
+                                
+                                    .label-payment {
+                                        color: #28a745;
+                                    }
+                                
+                                    .label-ruxsatnoma {
+                                        color: #ffc107;
+                                    }
+                                
+                                    .label-kengash {
+                                        color: #dc3545;
+                                    }
+                                
+                                    .delete-checkbox {
+                                        margin-left: auto;
+                                    }
+                                </style>
+                                
+                                     
+                                <div class="row" style="align-items: center">
+                                    <div class="col-12 col-md-6 col-lg-6 col-xl-3 my-2">
+                                        <div class="file-upload-card">
+                                            <label class="col-12 mt-2" for="file"> Document</label>
+                                            <input type="file" name="document[]" multiple>
+                                            @if ($errors->has('document'))
+                                                <span class="error invalid-feedback">{{ $errors->first('document') }}</span>
+                                            @endif
+                                        </div>
+                                    </div>
+                                
+                                    <div class="col-12 col-md-6 col-lg-6 col-xl-3 my-2">
+                                        <div class="file-upload-card">
+                                            <label class="col-12 mt-2" for="file">Paymnet</label>
+                                            <input type="file" name="document_payment[]" multiple>
+                                            @if ($errors->has('document_payment'))
+                                                <span class="error invalid-feedback">{{ $errors->first('document_payment') }}</span>
+                                            @endif
+                                        </div>
+                                    </div>
+                                
+                                    <div class="col-12 col-md-6 col-lg-6 col-xl-3 my-2">
+                                        <div class="file-upload-card">
+                                            <label class="col-12 mt-2" for="file">Ruxsatnoma</label>
+                                            <input type="file" name="document_ruxsatnoma[]" multiple>
+                                            @if ($errors->has('document_ruxsatnoma'))
+                                                <span class="error invalid-feedback">{{ $errors->first('document_ruxsatnoma') }}</span>
+                                            @endif
+                                        </div>
+                                    </div>
+                                
+                                    <div class="col-12 col-md-6 col-lg-6 col-xl-3 my-2">
+                                        <div class="file-upload-card">
+                                            <label class="col-12 mt-2" for="file">Kengash</label>
+                                            <input type="file" name="document_kengash[]" multiple>
+                                            @if ($errors->has('document_kengash'))
+                                                <span class="error invalid-feedback">{{ $errors->first('document_kengash') }}</span>
+                                            @endif
+                                        </div>
+                                    </div>
+                                </div>
 
 
                                 <script>

@@ -245,7 +245,7 @@ Qurilish va Apz da yaratilingan voqt keremas created_at orniga contact tushadi &
 
 company history dan uniqe ni obtashash kere +++
 
-xar file uchun alohida input fields bo'lishi kere va alohida user friendly qlish kere with labels
+xar file uchun alohida input fields bo'lishi kere va alohida user friendly qlish kere with labels +++
 
 statistika qoshish kere 
 
