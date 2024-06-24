@@ -316,6 +316,8 @@
                                                         value="{{ old('accordions.' . $branchIndex . '.apz_sanasi', $b->apz_sanasi) }}"
                                                         placeholder="@lang('cruds.branches.fields.apz_date')">
                                                 </div>
+
+                                                @if(auth()->user()->roles[0]->name != 'Qurilish')
                                                 <div class="col-lg-6">
                                                     <div class="mb-3">
                                                         <label for="contract_apt">@lang('global.ruxsatnoma_raqami')</label>
@@ -333,6 +335,30 @@
                                                             value="{{ old('accordions.' . $branchIndex . '.contract_date', $b->contract_date) }}">
                                                     </div>
                                                 </div>
+
+                                                @else
+
+                                                <div class="col-lg-6">
+                                                    <div class="mb-3">
+                                                        <label for="contract_apt">@lang('global.ruxsatnoma_raqami')</label>
+                                                        <input type="text" class="form-control"
+                                                            name="accordions[{{ $branchIndex }}][contract_apt]"
+                                                            value="{{ old('accordions.' . $branchIndex . '.contract_apt', $b->contract_apt) }}"
+                                                            placeholder="@lang('global.ruxsatnoma_raqami')" disabled>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-6">
+                                                    <div class="mb-3">
+                                                        <label for="contract_date">@lang('global.sanasi')</label>
+                                                        <input class="form-control" type="date"
+                                                            name="accordions[{{ $branchIndex }}][contract_date]"
+                                                            value="{{ old('accordions.' . $branchIndex . '.contract_date', $b->contract_date) }}" disabled>
+                                                    </div>
+                                                </div>
+                                                @endif
+                                                
+
+
                                                 <div class="col-12">
                                                     <textarea class="w-100 my-3 form-control" name="accordions[{{ $branchIndex }}][kengash]" id=""
                                                         cols="30" rows="10" placeholder="@lang('cruds.branches.fields.kengash')">{{ old('accordions.' . $branchIndex . '.kengash', $b->kengash) }}</textarea>

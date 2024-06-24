@@ -242,11 +242,13 @@
                             <tr>
                                 <th>@lang('global.id')</th>
                                 <th>@lang('global.client_name') || @lang('cruds.company.fields.company_name')</th>
-                                <th>@lang('cruds.client.fields.contact')</th>
                                 <th style="width: 30%;">@lang('cruds.company.fields.address')</th>
                                 <th>@lang('cruds.company.fields.stir')</th>
                                 <th>Yo'nalish</th>
+                                <th>apz raqami</th>
+                                <th>@lang('cruds.client.fields.contact')</th>
                                 <th>@lang('global.active')</th>
+
                                 <th style="width: 100px;">@lang('global.actions')</th>
                             </tr>
                         </thead>
@@ -264,7 +266,6 @@
                                         {{-- @dump($item->company_name) --}}
                                     @endif
 
-                                    <td>{{ $item->contact ?? '---' }}</td>
                                     @if ($item->mijoz_turi == 'fizik')
                                         <td>{{ $item->address->home_address ?? '' }}</td>
                                     @else
@@ -275,11 +276,20 @@
                                         
                                     <td>{{$item->category->name ?? ''}} </td>
 
+                                    <td>
+                                        @foreach ($item->branches as $b)
+                                            {{$b->apz_raqami}}
+                                        @endforeach
+
+                                    </td>
+                                    <td>{{ $item->contact ?? '---' }}</td>
+
                                     <td class="text-center">
                                         <i style="cursor: pointer; font-size: 16px;" id="program_{{ $item->id }}"
                                             class="fas {{ $item->status === 1 ? 'fa-check-circle text-success' : 'fa-times-circle text-danger' }}"
                                             onclick="toggle_instock({{ $item->id }})"></i>
                                     </td>
+
                                     <td class="text-center">
                                         <form action="{{ route('clientDestroy', $item->id) }}" method="post">
                                             @csrf

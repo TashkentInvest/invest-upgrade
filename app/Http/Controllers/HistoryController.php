@@ -73,6 +73,7 @@ class HistoryController extends Controller
             'branchHistories',
             'addressHistories'
         ])
+        // ->where('is_deleted', '!=', 1)
         ->where(function ($query) {
             $query->whereHas('passportHistories')
                 ->orWhereHas('fileHistories')
