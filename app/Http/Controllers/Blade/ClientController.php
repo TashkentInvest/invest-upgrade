@@ -188,6 +188,7 @@ class ClientController extends Controller
     {
         $request->validate([
             // 'stir' => 'nullable|string|max:9|min:9|unique:clients,stir',
+            'stir' => 'nullable|string|max:9|min:9',
             'oked' => 'nullable|string|max:5|min:5',
             'bank_code' => 'nullable|string|max:5|min:5',
             'bank_account' => 'nullable|string|max:20|min:20',
