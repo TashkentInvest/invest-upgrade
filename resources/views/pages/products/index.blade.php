@@ -247,7 +247,7 @@
                                 <th>@lang('global.ruxsatnoma_raqami')</th>
                                 <th>@lang('cruds.branches.fields.application_number')</th>
                                 <th>@lang('cruds.branches.fields.apz_number')</th>
-                                <th>Yo'nalish</th>
+                                <th>@lang('global.category')</th>
                                 <th>@lang('cruds.client.fields.contact')</th>
                                 <th>@lang('global.active')</th>
 
