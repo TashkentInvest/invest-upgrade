@@ -241,7 +241,9 @@ constructions da obyektlani construction num blan ajratib qoyish kere
 ```
 categorya qoshish kere = ['ruxsatnoma', 'Apz','Kengash'] seeder qlinsin tanlashda select  option blan chqsin +++
 
-Qurilish va Apz da yaratilingan voqt keremas created_at orniga contact tushadi & kontakt eski orniga nomer zayevlenya va tepadgi categorya tushadi 
+Qurilish va Apz da yaratilingan voqt keremas created_at orniga contact tushadi & kontakt eski orniga nomer zayevlenya va tepadgi categorya tushadi +++
+
+company history dan uniqe ni obtashash kere +++
 
 xar file uchun alohida input fields bo'lishi kere va alohida user friendly qlish kere with labels
 
@@ -250,8 +252,6 @@ statistika qoshish kere
 telegram bot qilish kere zayavka qoldirish uchun 
 
 toshkentinvest.uz ni copy qilib dashboardga ulash kere va bu katalog sayt boladi ichida news, blog, post, form , va bowqa malumotla boladi
-
-company history dan uniqe ni obtashash kere
 
 product add qvotganda fizikda stir chqsin & input type lanyam fix qilish kere
 ```
