@@ -53,9 +53,11 @@
                                     <th>@lang('global.id')</th>
                                     <th>@lang('global.client_name') / @lang('cruds.company.fields.company_name')</th>
                                     <th>@lang('cruds.client.fields.contact')</th>
-                                    <th>@lang('cruds.company.fields.address')</th>
+                                    <th style="width: 20%;">@lang('cruds.company.fields.address')</th>
                                     <th>@lang('cruds.company.fields.stir')</th>
-                                    <th style="width: 150px;">@lang('global.created_at')</th>
+                                    <th>@lang('cruds.branches.fields.apz_number')</th>
+                                    <th>@lang('global.ruxsatnoma_raqami')</th>
+                                    <th>Yo'nalish</th>
                                     <th style="width: 100px;">@lang('global.actions')</th>
                                 </tr>
                             </thead>
@@ -80,7 +82,30 @@
 
                                         <td>{{ $item->company->stir }}</td>
 
-                                        <td>{{ $item->updated_at }}</td>
+                                     
+                                        <td>
+                                            @foreach ($item->branches as $b)
+                                                @isset($b->apz_raqami)
+                                                    <button type="button" class="btn btn-secondary my-1 d-flex btn-sm w-xs waves-effect waves-light">
+                                                        {{$b->apz_raqami}} 
+                                                    </button>
+                                                @endisset
+                                            @endforeach
+                                        </td>
+                                        
+                                        <td>
+                                            @foreach ($item->branches as $b)
+                                                @isset($b->application_number)
+                                                    <button type="button" class="btn btn-secondary my-1 d-flex btn-sm w-xs waves-effect waves-light">
+                                                        {{$b->application_number}} 
+                                                    </button>
+                                                @endisset
+                                            @endforeach
+                                        </td>
+                                        
+    
+                                        <td>{{$item->category->name ?? ''}} </td>
+
                                         <td class="text-center">
                                             <form action="{{ route('clientDestroy', $item->id) }}" method="post">
                                                 @csrf
