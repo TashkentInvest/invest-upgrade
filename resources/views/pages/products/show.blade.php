@@ -360,6 +360,9 @@
                                                         (strpos($file->path, 'kengash/') !== false ? 'Kengash' : '')))
                                                     }}
                                                 </span>
+                                                    <div class="delete-checkbox">
+                                                       {{$file->updated_at}}
+                                                    </div>
                                             </div>
                                         @endforeach
                                     </div>
