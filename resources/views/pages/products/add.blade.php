@@ -92,9 +92,9 @@
                                         <div class="col-12 col-lg-4 mb-2">
                                             <label for="oked" class="col-md-6 col-form-label">@lang('cruds.company.fields.oked')</label>
                                             <input class="form-control {{ $errors->has('oked') ? 'is-invalid' : '' }}"
-                                                type="text" name="oked" id="oked"
+                                                type="number" name="oked" id="oked"
                                                 placeholder="@lang('cruds.company.fields.oked')" value="{{ old('oked') }}"
-                                                maxlength="5">
+                                                minlength="5" maxlength="5">
                                             @if ($errors->has('oked'))
                                                 <span class="error invalid-feedback">{{ $errors->first('oked') }}</span>
                                             @endif
@@ -117,9 +117,9 @@
                                             <label for="bank_code"
                                                 class="col-md-6 col-form-label">@lang('cruds.company.fields.bank_code')</label>
                                             <input class="form-control {{ $errors->has('bank_code') ? 'is-invalid' : '' }}"
-                                                type="text" name="bank_code" max="5" id="bank_code"
+                                                type="number" name="bank_code" id="bank_code"
                                                 placeholder="@lang('cruds.company.fields.bank_code')" value="{{ old('bank_code') }}"
-                                                maxlength="5" name="bank_code" id="bank_code">
+                                                minlength="5" maxlength="5" name="bank_code" id="bank_code">
 
                                             @if ($errors->has('bank_code'))
                                                 <span
@@ -132,9 +132,9 @@
                                                 class="col-md-6 col-form-label">@lang('cruds.company.fields.bank_account')</label>
                                             <input
                                                 class="form-control {{ $errors->has('bank_account') ? 'is-invalid' : '' }}"
-                                                type="text" name="bank_account" max="5" id="bank_account"
+                                                type="number" name="bank_account" id="bank_account"
                                                 placeholder="@lang('cruds.company.fields.bank_account')" value="{{ old('bank_account') }}"
-                                                maxlength="20" name="bank_account" id="alloptions">
+                                                minlength="20" maxlength="20" name="bank_account" id="alloptions">
 
                                             @if ($errors->has('bank_account'))
                                                 <span
@@ -227,9 +227,9 @@
                                             <label for="stir"
                                                 class="col-md-6 col-form-label">@lang('cruds.company.fields.stir')</label>
                                             <input class="form-control {{ $errors->has('stir') ? 'is-invalid' : '' }}"
-                                                type="text" name="stir" id="stir"
+                                                type="number" name="stir" id="stir"
                                                 placeholder="@lang('cruds.company.fields.stir')" value="{{ old('stir') }}"
-                                                maxlength="9">
+                                                minlength="9" maxlength="9">
                                             @if ($errors->has('stir'))
                                                 <span class="error invalid-feedback">{{ $errors->first('stir') }}</span>
                                             @endif
@@ -246,7 +246,7 @@
                                                 class="form-control {{ $errors->has('passport_serial') ? 'is-invalid' : '' }}"
                                                 type="text" name="passport_serial" id="passport_serial"
                                                 placeholder="@lang('cruds.client.fields.passport_serial')" value="{{ old('passport_serial') }}"
-                                                maxlength="10">
+                                                minlength="9" maxlength="10">
                                             @if ($errors->has('passport_serial'))
                                                 <span
                                                     class="error invalid-feedback">{{ $errors->first('passport_serial') }}</span>
@@ -258,9 +258,9 @@
                                                 class="col-md-6 col-form-label">@lang('cruds.client.fields.passport_pinfl')</label>
                                             <input
                                                 class="form-control {{ $errors->has('passport_pinfl') ? 'is-invalid' : '' }}"
-                                                type="text" name="passport_pinfl" id="passport_pinfl"
+                                                type="number" name="passport_pinfl" id="passport_pinfl"
                                                 placeholder="@lang('cruds.client.fields.passport_pinfl')" value="{{ old('passport_pinfl') }}"
-                                                maxlength="14">
+                                                minlength="14" maxlength="14">
                                             @if ($errors->has('passport_pinfl'))
                                                 <span
                                                     class="error invalid-feedback">{{ $errors->first('passport_pinfl') }}</span>
@@ -310,7 +310,7 @@
                                             <label for="client_description"
                                                 class="col-md-6 col-form-label">@lang('cruds.client.fields.client_description')</label>
                                             <textarea id="textarea" name="client_description"
-                                                class="form-control {{ $errors->has('client_description') ? 'is-invalid' : '' }}" maxlength="225" rows="1"
+                                                class="form-control {{ $errors->has('client_description') ? 'is-invalid' : '' }}" rows="2"
                                                 placeholder="This textarea has a limit of 225 chars.">{{ old('client_description') }}</textarea>
                                             @if ($errors->has('client_description'))
                                                 <span

@@ -230,6 +230,8 @@ optimize history queries
 
 file lani clients lagamas branch laga ulash kere
 
+percentage ga butun son kiradgan qiliish kere 
+
 ```
 
 ## New Tasks
