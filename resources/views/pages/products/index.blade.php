@@ -242,10 +242,11 @@
                             <tr>
                                 <th>@lang('global.id')</th>
                                 <th>@lang('global.client_name') || @lang('cruds.company.fields.company_name')</th>
-                                <th style="width: 30%;">@lang('cruds.company.fields.address')</th>
+                                <th style="width: 20%;">@lang('cruds.company.fields.address')</th>
                                 <th>@lang('cruds.company.fields.stir')</th>
+                                <th>@lang('global.ruxsatnoma_raqami')</th>
+                                <th>@lang('cruds.branches.fields.apz_number')</th>
                                 <th>Yo'nalish</th>
-                                <th>apz raqami</th>
                                 <th>@lang('cruds.client.fields.contact')</th>
                                 <th>@lang('global.active')</th>
 
@@ -274,28 +275,32 @@
 
                                     <td>{{ $item->company->stir ?? '' }} </td>
                                         
-                                    <td>{{$item->category->name ?? ''}} </td>
 
                                     <td>
                                         @foreach ($item->branches as $b)
-                                            @isset($b->apz_raqami)
-                                                <p class="border text-center font-bold styled-paragraph">
-                                                    {{$b->apz_raqami}} 
-                                                </p>
+                                            @isset($b->application_number)
+                                                <button type="button" class="btn btn-secondary my-1 d-flex btn-sm w-xs waves-effect waves-light">
+                                                    {{$b->application_number}} 
+                                                </button>
                                             @endisset
                                         @endforeach
                                     </td>
                                     
-                                    <style>
-                                        .styled-paragraph {
-                                            background-color: #f0f0f0;
-                                            color: #333;
-                                            padding: 10px;
-                                            margin: 5px 0;
-                                            border-radius: 5px;
-                                            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
-                                        }
-                                    </style>
+                                    <td>
+                                        @foreach ($item->branches as $b)
+                                            @isset($b->apz_raqami)
+                                                <button type="button" class="btn btn-secondary my-1 d-flex btn-sm w-xs waves-effect waves-light">
+                                                    {{$b->apz_raqami}} 
+                                                </button>
+                                            @endisset
+                                        @endforeach
+                                    </td>
+                                    
+
+                                    <td>{{$item->category->name ?? ''}} </td>
+
+                                    
+                               
                                     
                                     <td>{{ $item->contact ?? '---' }}</td>
 
