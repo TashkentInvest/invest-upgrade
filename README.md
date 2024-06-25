@@ -236,8 +236,6 @@ file lani clients lagamas branch laga ulash kere
 
 percentage ga butun son kiradgan qiliish kere 
 
-product delete qganda full ochishi kere
-
 https://krt.mos.ru/ shunaqa qlsh kere locationlani
 
 ```
@@ -253,13 +251,14 @@ company history dan uniqe ni obtashash kere +++
 
 xar file uchun alohida input fields bo'lishi kere va alohida user friendly qlish kere with labels +++
 
+product add qvotganda fizikda stir chqsin & input type lanyam fix qilish kere +++
+
 statistika qoshish kere 
 
 telegram bot qilish kere zayavka qoldirish uchun 
 
 toshkentinvest.uz ni copy qilib dashboardga ulash kere va bu katalog sayt boladi ichida news, blog, post, form , va bowqa malumotla boladi
 
-product add qvotganda fizikda stir chqsin & input type lanyam fix qilish kere
 ```
 
 ## GJP Tasks
