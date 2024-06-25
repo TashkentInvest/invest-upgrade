@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Display KMZ Tracks on Google Map</title>
+    <title>Display KML/KMZ on Google Map</title>
     <style>
         #map {
             height: 600px;
@@ -12,16 +12,17 @@
 </head>
 <body>
     <div>
-        <input type="file" id="kmzFiles" accept=".kmz" multiple>
+        <input type="file" id="kmzFile" multiple accept=".kmz">
         <input type="file" id="kmlFile" accept=".kml">
         <button onclick="handleFiles()">Upload Files</button>
     </div>
     <div id="map"></div>
 
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBK9q-_OY2n8ZdRiBwNPb6nNyyamDWM7xc&libraries=drawing,geometry&callback=initMap" async defer></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBK9q-_OY2n8ZdRiBwNPb6nNyyamDWM7xc&callback=initMap" async defer></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.6.0/jszip.min.js"></script>
     <script>
         let map;
+        const colors = ['#FF0000', '#00FF00', '#0000FF', '#FFA500', '#800080', '#FFFF00', '#00FFFF', '#FFC0CB', '#008000', '#FF6347', '#7B68EE', '#D2691E'];
 
         function initMap() {
             map = new google.maps.Map(document.getElementById('map'), {
@@ -31,16 +32,16 @@
         }
 
         function handleFiles() {
-            const kmzFiles = document.getElementById('kmzFiles').files;
+            const kmzFile = document.getElementById('kmzFile').files[0];
             const kmlFile = document.getElementById('kmlFile').files[0];
 
-            if (!kmzFiles.length && !kmlFile) {
+            if (!kmzFile && !kmlFile) {
                 console.error("Please select at least one file.");
                 return;
             }
 
-            for (let i = 0; i < kmzFiles.length; i++) {
-                handleKMZFile(kmzFiles[i]);
+            if (kmzFile) {
+                handleKMZFile(kmzFile);
             }
 
             if (kmlFile) {
@@ -61,16 +62,18 @@
 
         function parseKMZ(kmzData) {
             JSZip.loadAsync(kmzData).then(function(zip) {
-                const kmlFile = Object.keys(zip.files).find(name => name.toLowerCase().endsWith('.kml'));
+                const kmlFiles = Object.keys(zip.files).filter(name => name.toLowerCase().endsWith('.kml'));
 
-                if (kmlFile) {
-                    zip.file(kmlFile).async("string").then(function(kmlData) {
-                        displayKMLonMap(kmlData, getRandomColor());
-                    }).catch(function(error) {
-                        console.error("Error reading KML from KMZ:", error);
+                if (kmlFiles.length > 0) {
+                    kmlFiles.forEach(function(kmlFileName, index) {
+                        zip.file(kmlFileName).async("string").then(function(kmlData) {
+                            displayKMLonMap(kmlData, index);
+                        }).catch(function(error) {
+                            console.error("Error reading KML from KMZ:", error);
+                        });
                     });
                 } else {
-                    console.error("No KML file found in the KMZ archive.");
+                    console.error("No KML files found in the KMZ archive.");
                 }
             }).catch(function(error) {
                 console.error("Error loading KMZ file:", error);
@@ -82,49 +85,43 @@
 
             kmlReader.onload = function(event) {
                 const kmlData = event.target.result;
-                displayKMLonMap(kmlData, getRandomColor());
+                displayKMLonMap(kmlData, 0); // Display as if it's a single KML file
             };
 
             kmlReader.readAsText(kmlFile);
         }
 
-        function displayKMLonMap(kmlData, fillColor) {
+        function displayKMLonMap(kmlData, index) {
             const parser = new DOMParser();
             const xmlDoc = parser.parseFromString(kmlData, "text/xml");
 
             const coordinates = xmlDoc.getElementsByTagName('coordinates');
             if (coordinates.length > 0) {
-                for (let i = 0; i < coordinates.length; i++) {
-                    const coords = coordinates[i].textContent.trim().split(' ');
-                    const path = [];
-                    for (let j = 0; j < coords.length; j++) {
-                        const [lng, lat] = coords[j].split(',');
+                const path = [];
+                for (let j = 0; j < coordinates.length; j++) {
+                    const coords = coordinates[j].textContent.trim().split(' ');
+                    for (let k = 0; k < coords.length; k++) {
+                        const [lng, lat] = coords[k].split(',');
                         path.push({ lat: parseFloat(lat), lng: parseFloat(lng) });
                     }
-
-                    const polygon = new google.maps.Polygon({
-                        paths: path,
-                        strokeColor: '#000000',
-                        strokeOpacity: 0.8,
-                        strokeWeight: 2,
-                        fillColor: fillColor,
-                        fillOpacity: 0.35,
-                        editable: false,
-                        map: map
-                    });
                 }
+
+                const colorIndex = index % colors.length;
+                const polygonColor = colors[colorIndex];
+
+                const polygon = new google.maps.Polygon({
+                    paths: path,
+                    strokeColor: '#000000',
+                    strokeOpacity: 0.8,
+                    strokeWeight: 2,
+                    fillColor: polygonColor,
+                    fillOpacity: 0.35,
+                    editable: false,
+                    map: map
+                });
             } else {
                 console.error("No coordinates found in the KML file.");
             }
-        }
-
-        function getRandomColor() {
-            const letters = '0123456789ABCDEF';
-            let color = '#';
-            for (let i = 0; i < 6; i++) {
-                color += letters[Math.floor(Math.random() * 16)];
-            }
-            return color;
         }
     </script>
 </body>
