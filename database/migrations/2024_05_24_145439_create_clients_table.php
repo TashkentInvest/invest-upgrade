@@ -47,6 +47,8 @@ class CreateClientsTable extends Migration
 
         Schema::create('clients', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('category_id')->nullable();
+            $table->foreign('category_id')->references('id')->on('categories');
             $table->enum('mijoz_turi', ['yuridik', 'fizik'])->nullable();
             $table->string('first_name')->nullable();
             $table->string('last_name')->nullable();
