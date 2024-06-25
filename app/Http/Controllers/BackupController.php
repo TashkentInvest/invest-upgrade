@@ -6,6 +6,9 @@ use App\Models\Client;
 use App\Models\Company;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\DB;
+
 
 class BackupController extends Controller
 {
@@ -86,38 +89,51 @@ class BackupController extends Controller
         $clients = Client::all();
     
         foreach ($clients as $client) {
-            $companyData = [
+            $clientExists = DB::table('clients')->where('id', $client->id)->exists();
+    
+            if (!$clientExists) {
+                // Log and skip if client does not exist
+                Log::warning('Client ID ' . $client->id . ' does not exist in the clients table. Skipping.');
+                continue;
+            }
+    
+            // Create company record
+            // $companyData = [
+            //     'client_id' => $client->id,
+            //     'company_name' => $client->company_name ?? null,
+            //     'raxbar' => $client->raxbar ?? null,
+            //     'bank_code' => $client->bank_code ?? null,
+            //     'bank_service' => $client->bank_service ?? null,
+            //     'bank_account' => $client->bank_account ?? null,
+            //     'stir' => $client->stir ?? null,
+            //     'oked' => $client->oked ?? null,
+            //     'minimum_wage' => $client->minimum_wage ?? null,
+            // ];
+            // Company::create($companyData);
+    
+            // Create passport record
+            $passportData = [
                 'client_id' => $client->id,
-                'company_name' => $client->company_name ?? null,
-                'raxbar' => $client->raxbar ?? null,
-                'bank_code' => $client->bank_code ?? null,
-                'bank_service' => $client->bank_service ?? null,
-                'bank_account' => $client->bank_account ?? null,
-                'stir' => $client->stir ?? null,
-                'oked' => $client->oked ?? null,
-                'minimum_wage' => $client->minimum_wage ?? null,
-            ];
-    
-            // Create a company record
-            Company::create($companyData);
-    
-            // Assuming similar create statements for passport and address relationships
-            $client->passport()->create([
+
                 'passport_serial' => $client->passport_serial ?? null,
                 'passport_pinfl' => $client->passport_pinfl ?? null,
                 'passport_date' => $client->passport_date ?? null,
                 'passport_location' => $client->passport_location ?? null,
                 'passport_type' => $client->passport_type ?? 0,
-            ]);
+            ];
+            $client->passport()->create($passportData);
     
-            $client->address()->create([
+            // Create address record
+            $addressData = [
+                'client_id' => $client->id,
+
                 'yuridik_address' => $client->yuridik_address ?? null,
                 'home_address' => $client->home_address ?? null,
                 'company_location' => $client->company_location ?? null,
-            ]);
+            ];
+            $client->address()->create($addressData);
         }
-        return redirect()->route('clientIndex')->with('success', 'successfully.');
-
-    }
     
+        return redirect()->route('clientIndex')->with('success', 'Successfully imported.');
+    }
 }

@@ -232,6 +232,8 @@ file lani clients lagamas branch laga ulash kere
 
 percentage ga butun son kiradgan qiliish kere 
 
+full backupni obturb localda mysql baza yasavolb columnlani toglab olib productionga qoysh kere
+
 ```
 
 ## New Tasks

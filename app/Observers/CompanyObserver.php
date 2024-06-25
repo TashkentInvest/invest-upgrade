@@ -65,7 +65,7 @@ class CompanyObserver
     protected function recordHistory(Company $company, $event)
     {
         CompanyHistory::create([
-            'client_id' => $company->id,
+            'client_id' => $company->client_id,
             'user_id' => auth()->user()->id,
             'event' => $event,
             'company_name' => $company->company_name,

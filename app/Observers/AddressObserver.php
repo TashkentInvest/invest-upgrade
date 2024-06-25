@@ -66,7 +66,7 @@ class AddressObserver
     protected function recordHistory(Address $address, $event)
     {
         AddressHistory::create([
-            'client_id' => $address->id,
+            'client_id' => $address->client_id,
             'user_id' => auth()->user()->id,
             'event' => $event,
             'yuridik_address' => $address->yuridik_address,
