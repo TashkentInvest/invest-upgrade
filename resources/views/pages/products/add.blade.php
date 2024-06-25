@@ -47,7 +47,7 @@
                                     </div>
 
                                         <div class="col-12 col-lg-6 mb-2">
-                                            <label for="category_id" class="col-md-4 col-form-label">category_id</label>
+                                            <label for="category_id" class="col-md-4 col-form-label">@lang('global.category')</label>
                                             <select class="form-control" name="category_id" id="category_id">
                                                 @foreach ($categories as $c)
                                                     <option value="{{ $c->id }}"

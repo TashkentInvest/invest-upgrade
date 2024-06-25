@@ -50,7 +50,7 @@
                                         @endif
                                     </div>
                                     <div class="col-12 col-lg-4 col-xl-4 mb-2">
-                                        <label for="category_id">Category</label>
+                                        <label for="category_id">@lang('global.category')</label>
                                         <select class="form-control" name="category_id" id="category_id">
                                             @foreach ($categories as $c)
                                                 <option value="{{ $c->id }}" {{ old('category_id', $client->category_id) == $c->id ? 'selected' : '' }}>
