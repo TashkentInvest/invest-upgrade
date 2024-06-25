@@ -315,7 +315,9 @@ class ClientController extends Controller
 
             $client->update([
                 'is_deleted' => 1,
+                'stir'=>null
             ]);
+            // $client->delete();
 
             return redirect()->route('clientIndex')->with('success', 'Client marked as deleted successfully');
         } catch (\Exception $e) {

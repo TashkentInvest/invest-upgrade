@@ -236,6 +236,9 @@ percentage ga butun son kiradgan qiliish kere
 
 full backupni obturb localda mysql baza yasavolb columnlani toglab olib productionga qoysh kere
 
+product delete qganda full ochishi kere
+
+https://krt.mos.ru/ shunaqa qlsh kere locationlani
 
 ```
 
