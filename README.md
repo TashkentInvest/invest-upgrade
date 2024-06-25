@@ -226,6 +226,8 @@ remove accardion ochishi keremas agar bitta bosa +++
 
 edit ga stir chqazb qoysh kere +++
 
+full backupni obturb localda mysql baza yasavolb columnlani toglab olib productionga qoysh kere +++
+
 blade clean qilish kere 
 
 optimize history queries
@@ -233,8 +235,6 @@ optimize history queries
 file lani clients lagamas branch laga ulash kere
 
 percentage ga butun son kiradgan qiliish kere 
-
-full backupni obturb localda mysql baza yasavolb columnlani toglab olib productionga qoysh kere
 
 product delete qganda full ochishi kere
 
@@ -260,6 +260,27 @@ telegram bot qilish kere zayavka qoldirish uchun
 toshkentinvest.uz ni copy qilib dashboardga ulash kere va bu katalog sayt boladi ichida news, blog, post, form , va bowqa malumotla boladi
 
 product add qvotganda fizikda stir chqsin & input type lanyam fix qilish kere
+```
+
+## GJP Tasks
+
+```
+Kmz fayldan location oqvolsh kere
+
+Gjp uchun alohida baza qlish kere
+
+Google dan api olib markers la qoyish kere rayonlaga 
+
+berilmoqchi bogan xamma dannini bazaga seed qilish kere
+
+maps_details = [
+    rayonlani ustiga bosganda:  obyektlani xajmi qurilgan uylarni va varcha narsalarni total counti kere boladi
+
+    obyektni ustiga bosganda:  aynan shuni xajmi chiqishi kere va uni ichidagi uylarning soni chqishi kere
+
+    obkyekt ichidagi markerni bosganda: aynan shu binoning xajmi info lari chqishi kere boladi
+]
+
 ```
 
 
