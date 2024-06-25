@@ -82,7 +82,7 @@
 
             kmlReader.onload = function(event) {
                 const kmlData = event.target.result;
-                displayKMLonMap(kmlData, getRandomColor());
+                displayKMLonMap(kmlData, '#FFFF00'); // Yellow color for KML files
             };
 
             kmlReader.readAsText(kmlFile);
