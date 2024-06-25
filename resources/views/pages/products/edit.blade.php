@@ -35,7 +35,7 @@
                             <section>
 
                                 <div class="row">
-                                    <div class="col-12 col-lg-6 mb-2">
+                                    <div class="col-12 col-lg-4 col-xl-4 mb-2">
                                         <label for="mijoz_turi" >@lang('cruds.client.fields.mijoz_turi')</label>
                                         <select class="form-control" name="mijoz_turi" id="mijoz_turi">
                                             <option value="fizik"
@@ -49,7 +49,7 @@
                                             <span class="error invalid-feedback">{{ $errors->first('mijoz_turi') }}</span>
                                         @endif
                                     </div>
-                                    <div class="col-12 col-lg-6 mb-2">
+                                    <div class="col-12 col-lg-4 col-xl-4 mb-2">
                                         <label for="category_id">Category</label>
                                         <select class="form-control" name="category_id" id="category_id">
                                             @foreach ($categories as $c)
@@ -60,6 +60,16 @@
                                         </select>
                                         @if ($errors->has('category_id'))
                                             <span class="error invalid-feedback">{{ $errors->first('category_id') }}</span>
+                                        @endif
+                                    </div>
+
+                                    <div class="col-12 col-md-6 col-lg-4 col-xl-4 mb-2">
+                                        <label for="stir" >@lang('cruds.company.fields.stir')</label>
+                                        <input class="form-control {{ $errors->has('stir') ? 'is-invalid' : '' }}"
+                                            type="number" name="stir" id="stir" placeholder="@lang('cruds.company.fields.stir')"
+                                            value="{{ old('stir', $client->company->stir) }}"  minlength="9" maxlength="9">
+                                        @if ($errors->has('stir'))
+                                            <span class="error invalid-feedback">{{ $errors->first('stir') }}</span>
                                         @endif
                                     </div>
                                     
@@ -90,16 +100,6 @@
 
 
                                     <div class="col-12 col-md-6 col-lg-4 col-xl-3 mb-2">
-                                        <label for="stir" >@lang('cruds.company.fields.stir')</label>
-                                        <input class="form-control {{ $errors->has('stir') ? 'is-invalid' : '' }}"
-                                            type="number" name="stir" id="stir" placeholder="@lang('cruds.company.fields.stir')"
-                                            value="{{ old('stir', $client->company->stir) }}"  minlength="9" maxlength="9">
-                                        @if ($errors->has('stir'))
-                                            <span class="error invalid-feedback">{{ $errors->first('stir') }}</span>
-                                        @endif
-                                    </div>
-
-                                    <div class="col-12 col-md-6 col-lg-4 col-xl-3 mb-2">
                                         <label for="oked" >@lang('cruds.company.fields.oked')</label>
                                         <input class="form-control {{ $errors->has('oked') ? 'is-invalid' : '' }}"
                                             type="number" name="oked" id="oked" placeholder="@lang('cruds.company.fields.oked')"
@@ -121,7 +121,7 @@
                                         @endif
                                     </div>
 
-                                    <div class="col-12 col-md-6 col-lg-4 col-xl-3 mb-2">
+                                    <div class="col-12 col-md-6 col-lg-4 col-xl-4 mb-2">
                                         <label for="bank_code" >@lang('cruds.company.fields.bank_code')</label>
                                         <input class="form-control {{ $errors->has('bank_code') ? 'is-invalid' : '' }}"
                                             type="number" name="bank_code" id="bank_code"
@@ -134,7 +134,7 @@
                                         @endif
                                     </div>
 
-                                    <div class="col-12 col-md-6 col-lg-4 col-xl-3 mb-2">
+                                    <div class="col-12 col-md-6 col-lg-4 col-xl-4 mb-2">
                                         <label for="bank_account"
                                             >@lang('cruds.company.fields.bank_account')</label>
                                         <input class="form-control {{ $errors->has('bank_account') ? 'is-invalid' : '' }}"
@@ -150,7 +150,7 @@
                                     </div>
 
 
-                                    <div class="col-12 col-md-6 col-lg-4 col-xl-3 mb-2">
+                                    <div class="col-12 col-md-6 col-lg-4 col-xl-4 mb-2">
                                         <label for="yuridik_address"
                                             >@lang('cruds.client.fields.yuridik_address')</label>
                                         <input

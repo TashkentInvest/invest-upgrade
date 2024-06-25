@@ -224,6 +224,8 @@ product add qvotganda error bosa old value lani chqazb qoysh kere +++
 
 remove accardion ochishi keremas agar bitta bosa +++
 
+edit ga stir chqazb qoysh kere +++
+
 blade clean qilish kere 
 
 optimize history queries
@@ -234,7 +236,6 @@ percentage ga butun son kiradgan qiliish kere
 
 full backupni obturb localda mysql baza yasavolb columnlani toglab olib productionga qoysh kere
 
-edit ga stir chqazb qoysh kere
 
 ```
 
