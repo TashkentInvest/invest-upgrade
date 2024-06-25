@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Interactive Google Map</title>
+    <style>
+        #map {
+            height: 600px;
+            width: 100%;
+        }
+
+        /* Modal styles */
+        .modal {
+            display: none; 
+            position: fixed;
+            z-index: 1; 
+            left: 0;
+            top: 0;
+            width: 100%; 
+            height: 100%; 
+            overflow: auto; 
+            background-color: rgb(0,0,0); 
+            background-color: rgba(0,0,0,0.4); 
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto; 
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%; 
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <input type="file" id="kmzFile" accept=".kmz">
+        <input type="file" id="kmlFile" accept=".kml">
+        <button onclick="handleFiles()">Upload Files</button>
+    </div>
+    <div id="map"></div>
+
+    <!-- Modal for displaying house details -->
+    <div id="houseModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h2 id="houseName"></h2>
+            <p id="houseDetails"></p>
+        </div>
+    </div>
+
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBK9q-_OY2n8ZdRiBwNPb6nNyyamDWM7xc&callback=initMap" async defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.6.0/jszip.min.js"></script>
+    <script>
+        let map;
+        let markers = [];
+
+        function initMap() {
+            map = new google.maps.Map(document.getElementById('map'), {
+                center: { lat: 41.2995, lng: 69.2401 },
+                zoom: 10
+            });
+
+            // Sample regions data
+            const regions = [
+                {
+                    name: 'Region 1',
+                    paths: [
+                        { lat: 41.2995, lng: 69.2401 },
+                        { lat: 41.3095, lng: 69.2501 },
+                        { lat: 41.3195, lng: 69.2401 },
+                        { lat: 41.2995, lng: 69.2301 }
+                    ],
+                    objects: [
+                        { id: 1, name: 'Building 1', position: { lat: 41.3045, lng: 69.2406 }, houses: [
+                            { id: 1, name: 'House 1-1', position: { lat: 41.3050, lng: 69.2410 }, details: 'Size: 100sqm, Price: $100,000' },
+                            { id: 2, name: 'House 1-2', position: { lat: 41.3051, lng: 69.2411 }, details: 'Size: 110sqm, Price: $110,000' }
+                        ] },
+                        { id: 2, name: 'Building 2', position: { lat: 41.3080, lng: 69.2450 }, houses: [
+                            { id: 3, name: 'House 2-1', position: { lat: 41.3085, lng: 69.2455 }, details: 'Size: 120sqm, Price: $120,000' },
+                            { id: 4, name: 'House 2-2', position: { lat: 41.3086, lng: 69.2456 }, details: 'Size: 130sqm, Price: $130,000' }
+                        ] }
+                    ]
+                },
+                {
+                    name: 'Region 2',
+                    paths: [
+                        { lat: 41.3200, lng: 69.2500 },
+                        { lat: 41.3300, lng: 69.2600 },
+                        { lat: 41.3400, lng: 69.2500 },
+                        { lat: 41.3200, lng: 69.2400 }
+                    ],
+                    objects: [
+                        { id: 3, name: 'Building 3', position: { lat: 41.3250, lng: 69.2550 }, houses: [
+                            { id: 5, name: 'House 3-1', position: { lat: 41.3255, lng: 69.2555 }, details: 'Size: 140sqm, Price: $140,000' },
+                            { id: 6, name: 'House 3-2', position: { lat: 41.3256, lng: 69.2556 }, details: 'Size: 150sqm, Price: $150,000' }
+                        ] },
+                        { id: 4, name: 'Building 4', position: { lat: 41.3280, lng: 69.2580 }, houses: [
+                            { id: 7, name: 'House 4-1', position: { lat: 41.3285, lng: 69.2585 }, details: 'Size: 160sqm, Price: $160,000' },
+                            { id: 8, name: 'House 4-2', position: { lat: 41.3286, lng: 69.2586 }, details: 'Size: 170sqm, Price: $170,000' }
+                        ] }
+                    ]
+                }
+            ];
+
+            // Display regions
+            regions.forEach(region => {
+                const polygon = new google.maps.Polygon({
+                    paths: region.paths,
+                    strokeColor: '#FF0000',
+                    strokeOpacity: 0.8,
+                    strokeWeight: 2,
+                    fillColor: '#FF0000',
+                    fillOpacity: 0.35,
+                    map: map
+                });
+
+                polygon.addListener('click', () => {
+                    showObjects(region);
+                });
+            });
+        }
+
+        function showObjects(region) {
+            map.fitBounds(new google.maps.LatLngBounds(
+                region.paths.reduce((bounds, coord) => {
+                    return bounds.extend(coord);
+                }, new google.maps.LatLngBounds())
+            ));
+
+            // Clear existing markers
+            clearMarkers();
+
+            region.objects.forEach(object => {
+                const marker = new google.maps.Marker({
+                    position: object.position,
+                    map: map,
+                    title: object.name
+                });
+
+                marker.addListener('click', () => {
+                    showHouses(object);
+                });
+
+                markers.push(marker);
+            });
+        }
+
+        function showHouses(object) {
+            map.setZoom(16);
+            map.setCenter(object.position);
+
+            // Clear existing markers
+            clearMarkers();
+
+            object.houses.forEach(house => {
+                const marker = new google.maps.Marker({
+                    position: house.position,
+                    map: map,
+                    title: house.name
+                });
+
+                marker.addListener('click', () => {
+                    showHouseDetails(house);
+                });
+
+                markers.push(marker);
+            });
+        }
+
+        function showHouseDetails(house) {
+            map.setCenter(house.position);
+            map.setZoom(18);
+
+            const modal = document.getElementById('houseModal');
+            document.getElementById('houseName').innerText = house.name;
+            document.getElementById('houseDetails').innerText = house.details;
+            modal.style.display = 'block';
+        }
+
+        function closeModal() {
+            document.getElementById('houseModal').style.display = 'none';
+        }
+
+        function clearMarkers() {
+            markers.forEach(marker => marker.setMap(null));
+            markers = [];
+        }
+
+        function handleFiles() {
+            const kmzFile = document.getElementById('kmzFile').files[0];
+            const kmlFile = document.getElementById('kmlFile').files[0];
+
+            if (!kmzFile && !kmlFile) {
+                console.error("Please select at least one file.");
+                return;
+            }
+
+            if (kmzFile) {
+                handleKMZFile(kmzFile);
+            }
+
+            if (kmlFile) {
+                handleKMLFile(kmlFile);
+            }
+        }
+
+        function handleKMZFile(kmzFile) {
+            const kmzReader = new FileReader();
+
+            kmzReader.onload = function(event) {
+                const kmzData = event.target.result;
+                parseKMZ(kmzData);
+            };
+
+            kmzReader.readAsArrayBuffer(kmzFile);
+        }
+
+        function parseKMZ(kmzData) {
+            JSZip.loadAsync(kmzData).then(function(zip) {
+                const kmlFile = Object.keys(zip.files).find(name => name.toLowerCase().endsWith('.kml'));
+
+                if (kmlFile) {
+                    zip.file(kmlFile).async("string").then(function(kmlData) {
+                        displayKMLonMap(kmlData);
+                    }).catch(function(error) {
+                        console.error("Error reading KML from KMZ:", error);
+                    });
+                } else {
+                    console.error("No KML file found in the KMZ archive.");
+                }
+            }).catch(function(error) {
+                console.error("Error loading KMZ file:", error);
+            });
+        }
+
+        function handleKMLFile(kmlFile) {
+            const kmlReader = new FileReader();
+
+            kmlReader.onload = function(event) {
+                const kmlData = event.target.result;
+                displayKMLonMap(kmlData);
+            };
+
+            kmlReader.readAsText(kmlFile);
+        }
+
+        function displayKMLonMap(kmlData) {
+            const parser = new DOMParser();
+            const xmlDoc = parser.parseFromString(kmlData, "text/xml");
+
+            const coordinates = xmlDoc.getElementsByTagName('coordinates');
+            if (coordinates.length > 0) {
+                for (let i = 0; i < coordinates.length; i++) {
+                    const coords = coordinates[i].textContent.trim().split(' ');
+                    const path = [];
+                    for (let j = 0; j < coords.length; j++) {
+                        const [lng, lat] = coords[j].split(',');
+                        path.push({ lat: parseFloat(lat), lng: parseFloat(lng) });
+                    }
+
+                    const polygon = new google.maps.Polygon({
+                        paths: path,
+                        strokeColor: '#FF0000',
+                        strokeOpacity: 0.8,
+                        strokeWeight: 2,
+                        fillColor: '#FF0000',
+                        fillOpacity: 0.35,
+                        editable: false,
+                        map: map
+                    });
+
+                    polygon.addListener('click', () => {
+                        // Placeholder for click event to show objects count
+                    });
+                }
+            } else {
+                console.error("No coordinates found in the KML file.");
+            }
+        }
+    </script>
+</body>
+</html>
