@@ -249,7 +249,7 @@
                                 <th>@lang('cruds.branches.fields.apz_number')</th>
                                 <th>@lang('global.category')</th>
                                 <th>@lang('cruds.client.fields.contact')</th>
-                                <th>Разрешено</th>
+                                <th>Одобрено</th>
 
                                 <th style="width: 100px;">@lang('global.actions')</th>
                             </tr>
@@ -259,59 +259,43 @@
                                 <tr>
                                     <td class="{{ $item->files->isNotEmpty() ? '' : 'bg-secondary text-light' }}">
                                         {{ $item->id }}</td>
-
                                     @if ($item->mijoz_turi == 'fizik')
                                         <td>{{ $item->last_name }} {{ $item->first_name }} {{ $item->father_name }}</td>
                                     @else
-                                        {{-- @dump($item) --}}
                                         <td>{{ $item->company->company_name ?? '' }} </td>
-                                        {{-- @dump($item->company_name) --}}
                                     @endif
-{{-- 
-                                    @if ($item->mijoz_turi == 'fizik')
-                                        <td>{{ $item->address->home_address ?? '' }}</td>
-                                    @else
-                                        <td>{{ $item->address->yuridik_address ?? '' }} </td>
-                                    @endif --}}
-
                                     <td>{{ $item->company->stir ?? '' }} </td>
                                     <td>
                                         @foreach ($item->branches as $b)
                                             @isset($b->contract_apt)
-                                                <button type="button" class="btn btn-secondary my-1 d-flex btn-sm w-xs waves-effect waves-light">
-                                                    {{$b->contract_apt}} 
+                                                <button type="button"
+                                                    class="btn btn-secondary my-1 d-flex btn-sm w-xs waves-effect waves-light">
+                                                    {{ $b->contract_apt }}
                                                 </button>
                                             @endisset
                                         @endforeach
                                     </td>
-                                        
-
                                     <td>
                                         @foreach ($item->branches as $b)
                                             @isset($b->application_number)
-                                                <button type="button" class="btn btn-secondary my-1 d-flex btn-sm w-xs waves-effect waves-light">
-                                                    {{$b->application_number}} 
+                                                <button type="button"
+                                                    class="btn btn-secondary my-1 d-flex btn-sm w-xs waves-effect waves-light">
+                                                    {{ $b->application_number }}
                                                 </button>
                                             @endisset
                                         @endforeach
                                     </td>
-                                    
                                     <td>
                                         @foreach ($item->branches as $b)
                                             @isset($b->apz_raqami)
-                                                <button type="button" class="btn btn-secondary my-1 d-flex btn-sm w-xs waves-effect waves-light">
-                                                    {{$b->apz_raqami}} 
+                                                <button type="button"
+                                                    class="btn btn-secondary my-1 d-flex btn-sm w-xs waves-effect waves-light">
+                                                    {{ $b->apz_raqami }}
                                                 </button>
                                             @endisset
                                         @endforeach
                                     </td>
-                                    
-
-                                    <td>{{$item->category->name ?? ''}} </td>
-
-                                    
-                               
-                                    
+                                    <td>{{ $item->category->name ?? '' }} </td>
                                     <td>{{ $item->contact ?? '---' }}</td>
 
                                     <td class="text-center">
@@ -319,31 +303,27 @@
                                             class="fas {{ $item->status === 1 ? 'fa-check-circle text-success' : 'fa-times-circle text-danger' }}"
                                             onclick="toggle_instock({{ $item->id }})"></i> --}}
 
-
-                                            <div class="d-flex align-items-center">
-                                                <div class="square-switch d-flex {{ auth()->user()->roles[0]->name != 'buyruq' ? 'disabled-switch' : '' }}">
-                                                    <input type="checkbox" 
-                                                           id="program_{{ $item->id }}" 
-                                                           switch="bool" 
-                                                           onclick="toggle_instock({{ $item->id }})" 
-                                                           {{ $item->status === 1 ? 'checked' : '' }} 
-                                                           {{ auth()->user()->roles[0]->name != 'buyruq' ? 'disabled' : '' }} />
-                                                    <label for="program_{{ $item->id }}" 
-                                                           class="mb-0 employee-switch-status px-2" 
-                                                           data-on-label="Да" 
-                                                           data-off-label="Нет"></label>
-                                                </div>
+                                        <div class="d-flex align-items-center">
+                                            <div
+                                                class="square-switch d-flex {{ auth()->user()->roles[0]->name != 'buyruq' ? 'disabled-switch' : '' }}">
+                                                <input type="checkbox" id="program_{{ $item->id }}" switch="bool"
+                                                    onclick="toggle_instock({{ $item->id }})"
+                                                    {{ $item->status === 1 ? 'checked' : '' }}
+                                                    {{ auth()->user()->roles[0]->name != 'buyruq' ? 'disabled' : '' }} />
+                                                <label for="program_{{ $item->id }}"
+                                                    class="mb-0 employee-switch-status px-2" data-on-label="Да"
+                                                    data-off-label="Нет"></label>
                                             </div>
-                                            
-                                            <style>
-                                                .square-switch.disabled-switch {
-                                                    opacity: 0.8; /* Adjust opacity as needed */
-                                                    filter: blur(1px); /* Apply blur effect */
-                                                    pointer-events: none; /* Disable pointer events */
-                                                }
-                                            </style>
-                                            
-                                            
+                                        </div>
+
+                                        <style>
+                                            .square-switch.disabled-switch {
+                                                filter: blur(1px);
+                                                pointer-events: none;
+                                            }
+                                        </style>
+
+
                                     </td>
 
                                     <td class="text-center">
@@ -368,14 +348,14 @@
                                                             <i class="bx bxs-trash" style="font-size: 16px;"></i>
                                                         </button>
                                                     </li>
-                                                
 
-                                                <li data-bs-toggle="tooltip" data-bs-placement="top"
-                                                    title="@lang('global.edit')">
-                                                    <a href="{{ route('clientEdit', $item->id) }}" class="btn btn-info">
-                                                        <i class="bx bxs-edit" style="font-size:16px;"></i>
-                                                    </a>
-                                                </li>
+
+                                                    <li data-bs-toggle="tooltip" data-bs-placement="top"
+                                                        title="@lang('global.edit')">
+                                                        <a href="{{ route('clientEdit', $item->id) }}" class="btn btn-info">
+                                                            <i class="bx bxs-edit" style="font-size:16px;"></i>
+                                                        </a>
+                                                    </li>
                                                 @endcan
 
                                                 <li data-bs-toggle="tooltip" data-bs-placement="top"
@@ -388,7 +368,8 @@
                                             </ul>
                                         </form>
                                         <!-- Modal -->
-                                        <div class="modal fade" style="text-align: left" id="exampleModal_{{ $item->id }}" tabindex="-1"
+                                        <div class="modal fade" style="text-align: left"
+                                            id="exampleModal_{{ $item->id }}" tabindex="-1"
                                             aria-labelledby="exampleModalLabel" aria-hidden="true">
                                             <div class="modal-dialog modal-dialog-scrollable modal-xl">
                                                 <div class="modal-content">
@@ -479,7 +460,6 @@
                                                                 </tr>
 
                                                                 @foreach ($item->branches as $b)
-                                                        
                                                                     <tr>
                                                                         <td><strong>@lang('global.ruxsatnoma_raqami')</strong></td>
                                                                         <td>{{ $b->contract_apt }}</td>
