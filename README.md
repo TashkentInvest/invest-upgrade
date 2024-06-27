@@ -537,3 +537,5 @@ php artisan make:migration add_category_id_to_clients_table --table=clients
     }
 
 ```
+
+php artisan db:seed --class=Database\\Seeders\\init\\ExelSeeder

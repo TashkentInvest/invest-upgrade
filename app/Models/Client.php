@@ -19,7 +19,8 @@ class Client extends Model
         'is_deleted',
         'status',
         'client_description',
-        'category_id'
+        'category_id',
+        'is_qonuniy'
     ];
 
     public function category()

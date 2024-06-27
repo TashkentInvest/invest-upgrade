@@ -29,7 +29,7 @@ class CreateClientHistoriesTable extends Migration
             $table->string('contact')->nullable();
             $table->boolean('is_deleted')->nullable();
             $table->integer('status')->nullable();
-            $table->string('client_description')->nullable();
+            $table->text('client_description')->nullable();
             $table->timestamps();
         });
     }

@@ -66,7 +66,7 @@ class CompanyObserver
     {
         CompanyHistory::create([
             'client_id' => $company->client_id,
-            'user_id' => auth()->user()->id,
+            'user_id' => auth()->user()->id ?? 1,
             'event' => $event,
             'company_name' => $company->company_name,
             'raxbar' => $company->raxbar,
