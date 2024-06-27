@@ -165,15 +165,17 @@
                         </a>
                     </li>
 
-                    <li class="{{ Request::is('chat*') ? 'mm-active' : '' }}">
-                        <a href="{{ route('chat.index') }}"
-                            class=" waves-effect {{ Request::is('chat*') ? 'mm-active' : '' }}">
-                            <i class="bx bx-chat"></i>
-                            <span>Chat</span>
-                            {{-- <span class="badge rounded-pill bg-danger float-end">10</span> --}}
-                        </a>
-                    </li>
+                 
                 @endcan
+
+                <li class="{{ Request::is('chat*') ? 'mm-active' : '' }}">
+                    <a href="{{ route('chat.index') }}"
+                        class=" waves-effect {{ Request::is('chat*') ? 'mm-active' : '' }}">
+                        <i class="bx bx-chat"></i>
+                        <span>Chat</span>
+                        {{-- <span class="badge rounded-pill bg-danger float-end">10</span> --}}
+                    </a>
+                </li>
 
                 <li class="menu-title">@lang('global.theme')</li>
                 <li class="">

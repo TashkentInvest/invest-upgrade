@@ -55,7 +55,7 @@ class CreateClientsTable extends Migration
             $table->string('father_name')->nullable();
             $table->string('contact')->nullable();
             $table->boolean('is_deleted')->default(0);
-            $table->integer('status')->default(1);
+            $table->integer('status')->default(0);
             $table->string('client_description')->nullable();
             $table->timestamps();
         

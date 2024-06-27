@@ -368,7 +368,7 @@
                                                             <i class="bx bxs-trash" style="font-size: 16px;"></i>
                                                         </button>
                                                     </li>
-                                                @endcan
+                                                
 
                                                 <li data-bs-toggle="tooltip" data-bs-placement="top"
                                                     title="@lang('global.edit')">
@@ -376,6 +376,7 @@
                                                         <i class="bx bxs-edit" style="font-size:16px;"></i>
                                                     </a>
                                                 </li>
+                                                @endcan
 
                                                 <li data-bs-toggle="tooltip" data-bs-placement="top"
                                                     title="@lang('global.view')">

@@ -52,13 +52,14 @@
                                         <form action="{{ route('clientDestroy', $client->id) }}" method="post">
                                             @csrf
                                             <ul class="list-unstyled hstack gap-1 mb-0">
+                                                @can('client.delete')
                                                 <li data-bs-toggle="tooltip" data-bs-placement="top"
                                                     title="@lang('global.edit')">
                                                     <a href="{{ route('clientEdit', $client->id) }}" class="btn btn-info">
                                                         <i class="bx bxs-edit" style="font-size:16px;"></i>
                                                     </a>
                                                 </li>
-                                                @can('client.delete')
+                                                
                                                     <input name="_method" type="hidden" value="DELETE">
                                                     <li data-bs-toggle="tooltip" data-bs-placement="top"
                                                         title="@lang('global.delete')">
