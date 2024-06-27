@@ -4,13 +4,13 @@
     <div class="row">
         <div class="col-12">
             <div class="page-title-box d-sm-flex align-items-center justify-content-between">
-                <h4 class="mb-sm-0 font-size-18">@lang('cruds.history.title')</h4>
+                <h4 class="mb-sm-0 font-size-18">@lang('cruds.history.title') - 103 </h4>
 
                 <div class="page-title-right">
                     <ol class="breadcrumb m-0">
                         <li class="breadcrumb-item"><a href="{{ route('home') }}" style="color: #007bff;">@lang('global.home')</a>
                         </li>
-                        <li class="breadcrumb-item active">@lang('cruds.history.title')</li>
+                        <li class="breadcrumb-item active">@lang('cruds.history.title') - 103 </li>
                     </ol>
                 </div>
             </div>
@@ -37,13 +37,13 @@
                     <table class="table table-striped table-bordered">
                         <thead class="thead-dark">
                             <tr>
-                                <th scope="col">ID</th>
-                                <th scope="col">User</th>
-                                <th scope="col">Company</th>
-                                <th scope="col">INN</th>
-                                <th scope="col">Contact</th>
-                                <th scope="col">Created at</th>
-                                <th>status</th>
+                                <th scope="col">@lang('global.id')</th>
+                                <th scope="col">@lang('cruds.user.title')</th>
+                                <th scope="col">@lang('cruds.company.title')</th>
+                                <th scope="col">@lang('cruds.company.fields.stir')</th>
+                                <th scope="col">@lang('global.contact')</th>
+                                <th scope="col">@lang('global.created_at')</th>
+                                <th>@lang('global.status')</th>
                             </tr>
                         </thead>
                         <tbody>

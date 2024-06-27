@@ -249,7 +249,7 @@
                                 <th>@lang('cruds.branches.fields.apz_number')</th>
                                 <th>@lang('global.category')</th>
                                 <th>@lang('cruds.client.fields.contact')</th>
-                                <th>@lang('global.active')</th>
+                                <th>Разрешено</th>
 
                                 <th style="width: 100px;">@lang('global.actions')</th>
                             </tr>
@@ -329,9 +329,9 @@
                                                            {{ $item->status === 1 ? 'checked' : '' }} 
                                                            {{ auth()->user()->roles[0]->name != 'buyruq' ? 'disabled' : '' }} />
                                                     <label for="program_{{ $item->id }}" 
-                                                           class="mb-0 employee-switch-status" 
-                                                           data-on-label="Dabro" 
-                                                           data-off-label="Net"></label>
+                                                           class="mb-0 employee-switch-status px-2" 
+                                                           data-on-label="Да" 
+                                                           data-off-label="Нет"></label>
                                                 </div>
                                             </div>
                                             
