@@ -37,7 +37,8 @@ class ClientController extends Controller
             ->with(['category', 'company', 'branches', 'address', 'passport', 'files'])
             ->where('is_deleted', '!=', 1)
             ->where('is_qonuniy', '=', 0)
-            ->orderByDesc('id')
+            ->orderBy('status', 'asc')
+
             ->paginate(25);
     
         return view('pages.products.apz_second', compact('clients','categories'));
