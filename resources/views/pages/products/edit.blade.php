@@ -157,7 +157,7 @@
                                             class="form-control {{ $errors->has('yuridik_address') ? 'is-invalid' : '' }}"
                                             type="text" name="yuridik_address" id="yuridik_address"
                                             placeholder="@lang('cruds.client.fields.yuridik_address')"
-                                            value="{{ old('yuridik_address', $client->address->yuridik_address) }}">
+                                            value="{{ old('yuridik_address', $client->address->yuridik_address ?? '') }}">
                                         @if ($errors->has('yuridik_address'))
                                             <span
                                                 class="error invalid-feedback">{{ $errors->first('yuridik_address') }}</span>
@@ -222,7 +222,7 @@
                                             class="form-control {{ $errors->has('passport_serial') ? 'is-invalid' : '' }}"
                                             type="text" name="passport_serial" id="passport_serial"
                                             placeholder="@lang('cruds.client.fields.passport_serial')"
-                                            value="{{ old('passport_serial', $client->passport->passport_serial) }}"
+                                            value="{{ old('passport_serial', $client->passport->passport_serial ?? '') }}"
                                             minlength="9" maxlength="10">
                                         @if ($errors->has('passport_serial'))
                                             <span
@@ -237,7 +237,7 @@
                                             class="form-control {{ $errors->has('passport_pinfl') ? 'is-invalid' : '' }}"
                                             type="number" name="passport_pinfl" id="passport_pinfl"
                                             placeholder="@lang('cruds.client.fields.passport_pinfl')"
-                                            value="{{ old('passport_pinfl', $client->passport->passport_pinfl) }}"
+                                            value="{{ old('passport_pinfl', $client->passport->passport_pinfl ?? '') }}"
                                             minlength="14" maxlength="14">
                                         @if ($errors->has('passport_pinfl'))
                                             <span
@@ -252,7 +252,7 @@
                                             class="form-control {{ $errors->has('passport_date') ? 'is-invalid' : '' }}"
                                             type="date" name="passport_date" id="passport_date"
                                             placeholder="@lang('cruds.client.fields.passport_date')"
-                                            value="{{ old('passport_date', $client->passport->passport_date) }}">
+                                            value="{{ old('passport_date', $client->passport->passport_date ?? '') }}">
                                         @if ($errors->has('passport_date'))
                                             <span
                                                 class="error invalid-feedback">{{ $errors->first('passport_date') }}</span>
@@ -266,7 +266,7 @@
                                             class="form-control {{ $errors->has('passport_location') ? 'is-invalid' : '' }}"
                                             type="text" name="passport_location" id="passport_location"
                                             placeholder="@lang('cruds.client.fields.passport_location')"
-                                            value="{{ old('passport_location', $client->passport->passport_location) }}">
+                                            value="{{ old('passport_location', $client->passport->passport_location ?? '') }}">
                                         @if ($errors->has('passport_location'))
                                             <span
                                                 class="error invalid-feedback">{{ $errors->first('passport_location') }}</span>
@@ -279,7 +279,7 @@
                                         <input class="form-control {{ $errors->has('home_address') ? 'is-invalid' : '' }}"
                                             type="text" name="home_address" id="home_address"
                                             placeholder="@lang('global.home_address')"
-                                            value="{{ old('home_address', $client->address->home_address) }}">
+                                            value="{{ old('home_address', $client->address->home_address ?? '') }}">
                                         @if ($errors->has('home_address'))
                                             <span
                                                 class="error invalid-feedback">{{ $errors->first('home_address') }}</span>
@@ -290,8 +290,8 @@
                                         <label for="client_description"
                                             >@lang('cruds.client.fields.client_description')</label>
                                         <textarea id="textarea" name="client_description"
-                                            class="form-control {{ $errors->has('client_description') ? 'is-invalid' : '' }}" rows="2"
-                                            placeholder="@lang('cruds.client.fields.client_description')">{{ old('client_description', $client->client_description) }}</textarea>
+                                            class="form-control {{ $errors->has('client_description') ? 'is-invalid' : '' }}" rows="3"
+                                            placeholder="@lang('cruds.client.fields.client_description')">{{ old('client_description', $client->client_description ?? '') }}</textarea>
                                         @if ($errors->has('client_description'))
                                             <span
                                                 class="error invalid-feedback">{{ $errors->first('client_description') }}</span>

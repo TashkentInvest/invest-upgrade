@@ -29,6 +29,19 @@ class ClientController extends Controller
     
         return view('pages.products.index', compact('clients','categories'));
     }
+
+    public function apz_second()
+    {
+        $categories = Category::get()->all();
+        $clients = Client::deepFilters()
+            ->with(['category', 'company', 'branches', 'address', 'passport', 'files'])
+            ->where('is_deleted', '!=', 1)
+            ->where('is_qonuniy', '=', 0)
+            ->orderByDesc('id')
+            ->paginate(25);
+    
+        return view('pages.products.apz_second', compact('clients','categories'));
+    }
     
     public function show($id)
     {

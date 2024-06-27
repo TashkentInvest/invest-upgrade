@@ -14,7 +14,7 @@ class AddIsQonuniyToClientsTable extends Migration
     public function up()
     {
         Schema::table('clients', function (Blueprint $table) {
-            $table->boolean('is_qonuniy')->default(false)->after('client_description');
+            $table->boolean('is_qonuniy')->default(true)->after('client_description');
         });
     }
 

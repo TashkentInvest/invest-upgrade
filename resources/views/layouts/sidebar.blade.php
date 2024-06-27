@@ -15,6 +15,14 @@
                             <span>@lang('cruds.branches.title')</span>
                         </a>
                     </li>
+
+                    <li class="{{ Request::is('apz-second*') ? 'mm-active' : '' }}">
+                        <a href="{{ route('apz.second') }}"
+                            class=" waves-effect {{ Request::is('apz-second*') ? 'mm-active' : '' }}">
+                            <i class="bx bx-map-alt"></i>
+                            <span>@lang('cruds.branches.title') 2</span>
+                        </a>
+                    </li>
                 @endcan
 
 

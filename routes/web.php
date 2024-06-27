@@ -52,6 +52,7 @@ Route::group(['middleware' => ['auth', 'checkUserRole']], function () {
     // Products
     Route::prefix('clients')->group(function () {
         Route::get('/', [ClientController::class, 'index'])->name('clientIndex');
+        
         Route::get('/data', [ClientController::class, 'getClientsData'])->name('clients.data');
         Route::get('/add', [ClientController::class, 'add'])->name('clientAdd');
         Route::get('/{id}', [ClientController::class, 'show'])->name('clientDetails');
@@ -61,6 +62,8 @@ Route::group(['middleware' => ['auth', 'checkUserRole']], function () {
         Route::match(['put', 'post'], 'product/{id}', [ClientController::class, 'update'])->name('clientUpdate');
         Route::post('/toggle-status/{id}', [ClientController::class, 'toggleclientActivation'])->name('clientActivation');
     });
+    Route::get('/apz-second', [ClientController::class, 'apz_second'])->name('apz.second');
+
     // Permissions
     Route::prefix('permissions')->group(function () {
         Route::get('/', [PermissionController::class, 'index'])->name('permissionIndex');
