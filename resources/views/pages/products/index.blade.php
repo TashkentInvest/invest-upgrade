@@ -315,9 +315,19 @@
                                     <td>{{ $item->contact ?? '---' }}</td>
 
                                     <td class="text-center">
-                                        <i style="cursor: pointer; font-size: 16px;" id="program_{{ $item->id }}"
+                                        {{-- <i style="cursor: pointer; font-size: 16px;" id="program_{{ $item->id }}"
                                             class="fas {{ $item->status === 1 ? 'fa-check-circle text-success' : 'fa-times-circle text-danger' }}"
-                                            onclick="toggle_instock({{ $item->id }})"></i>
+                                            onclick="toggle_instock({{ $item->id }})"></i> --}}
+
+                                            <div class="d-flex align-items-center">
+                                                <div class="square-switch d-flex">
+                                                    <input type="checkbox" id="program_{{ $item->id }}" switch="bool" 
+                                                        onclick="toggle_instock({{ $item->id }})" 
+                                                        {{ $item->status === 1 ? 'checked' : '' }} />
+                                                    <label for="program_{{ $item->id }}" class="mb-0 employee-switch-status" 
+                                                        data-on-label="Dabro" data-off-label="Net"></label>
+                                                </div>
+                                            </div>
                                     </td>
 
                                     <td class="text-center">

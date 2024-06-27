@@ -320,7 +320,7 @@ class ClientController extends Controller
             // $client->delete();
 
             return redirect()->route('clientIndex')->with('success', 'Client marked as deleted successfully');
-        } catch (\Exception $e) {Z
+        } catch (\Exception $e) {
             return redirect()->back()->with('error', 'An error occurred while marking the client as deleted: ' . $e->getMessage());
         }
     }
