@@ -10,4 +10,8 @@ class Confirm extends Model
     use HasFactory;
     protected $fillable = ['user_id', 'client_id', 'status'];
 
+    public function client()
+    {
+        return $this->belongsTo(Category::class);
+    }
 }

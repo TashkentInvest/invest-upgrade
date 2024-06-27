@@ -27,6 +27,12 @@ class Client extends Model
         return $this->belongsTo(Category::class);
     }
 
+    public function confirmations()
+    {
+        return $this->hasMany(Confirm::class);
+    }
+
+
     public function company()
     {
         return $this->hasOne(Company::class);

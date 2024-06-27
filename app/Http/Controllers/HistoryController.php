@@ -9,7 +9,7 @@ use App\Models\AddressHistory;
 use App\Models\PassportHistory;
 use App\Models\CompanyHistory;
 use App\Models\BranchHistory;
-
+use App\Models\Confirm;
 
 class HistoryController extends Controller
 {
@@ -86,8 +86,15 @@ class HistoryController extends Controller
     
         return view('pages.history.index', compact('clientHistories'));
     }
+
+    public function confirm()
+    {
+        $confirmations = Confirm::with('client')->orderBy('created_at', 'desc')->paginate(10);
+        return view('pages.history.confirm', ['confirmations' => $confirmations]);
+    }
     
- 
+    
+
     public function showHistory($id)
     {
         $client = Client::findOrFail($id);

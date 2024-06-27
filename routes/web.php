@@ -124,6 +124,7 @@ Route::group(['middleware' => ['auth', 'checkUserRole']], function () {
     
     // History
     Route::get('/history', [HistoryController::class, 'index'])->name('history.index');
+    Route::get('/history-confirm', [HistoryController::class, 'confirm'])->name('history.confirm');
     Route::get('/history/{id}', [HistoryController::class, 'showHistory'])->name('history.show');
 
 

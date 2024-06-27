@@ -26,6 +26,14 @@
                             <span>@lang('cruds.history.title')</span>
                         </a>
                     </li>
+
+                    <li class="{{ Request::is('history-confirm*') ? 'mm-active' : '' }}">
+                        <a href="{{ route('history.confirm') }}"
+                            class=" waves-effect {{ Request::is('history-confirm*') ? 'mm-active' : '' }}">
+                            <i class="bx bx-info-circle"></i>
+                            <span>@lang('cruds.history.title')</span>
+                        </a>
+                    </li>
                 @endcan
 
                 @can('backup.show')
