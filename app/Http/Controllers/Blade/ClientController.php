@@ -7,6 +7,7 @@ use App\Models\Branch;
 use App\Models\Category;
 use App\Models\Client;
 use App\Models\Company;
+use App\Models\Confirm;
 use App\Models\File;
 use Illuminate\Http\Request;
 use App\Models\Regions;
@@ -327,9 +328,17 @@ class ClientController extends Controller
 
     public function toggleclientActivation($id)
     {
-        $client = Client::where('id', $id)->first();
+        $client = Client::findOrFail($id);
         $client->status = $client->status === 1 ? 2 : 1;
         $client->save();
+    
+        // Log the change to the confirms table
+        Confirm::create([
+            'user_id' => auth()->user()->id,
+            'client_id' => $client->id,
+            'status' => $client->status
+        ]);
+    
         return [
             'is_active' => $client->status
         ];

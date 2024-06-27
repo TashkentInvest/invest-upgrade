@@ -8,4 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class Confirm extends Model
 {
     use HasFactory;
+    protected $fillable = ['user_id', 'client_id', 'status'];
+
 }
