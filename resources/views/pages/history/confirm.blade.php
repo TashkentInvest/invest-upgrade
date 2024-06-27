@@ -1,6 +1,3 @@
-
-
-
 @extends('layouts.admin')
 
 @section('content')
@@ -40,43 +37,35 @@
                     <table class="table table-striped table-bordered">
                         <thead class="thead-dark">
                             <tr>
-                                <th scope="col">User ID</th>
-                                <th scope="col">Client ID</th>
+                                <th scope="col">ID</th>
+                                <th scope="col">User</th>
                                 <th scope="col">Company</th>
                                 <th scope="col">INN</th>
                                 <th scope="col">Contact</th>
-                                <th scope="col">Address</th>
-                                <th scope="col">Action</th>
+                                <th scope="col">Updated at</th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach($confirmations as $item)
-                            <tr>
+                            <tr class="{{ $item->status == 1 ? 'table-success' : 'table-danger' }}">
                                 <td>{{ $item->id }}</td>
-                                @if ($item->mijoz_turi == 'fizik')
-                                    <td>{{ $item->last_name }} {{ $item->first_name }} {{ $item->father_name }}</td>
+                                <td>{{ $item->user->name }}</td> 
+                                @if ($item->client->type == 'fizik')
+                                    <td>{{ $item->client->last_name }} {{ $item->client->first_name }} {{ $item->client->father_name }}</td>
                                 @else
-                                    <td>{{ $item->client->company->company_name ?? '' }} </td>
+                                    <td>{{ $item->client->company->company_name ?? '' }}</td> 
                                 @endif
-                                <td>{{ $item->client }}</td>
-                                <td>{{ $item->last_name }}</td>
-                                <td>{{ $item->contact }}</td>
-                            
-                                <td>
-                                    <a href="{{ route('history.show', $item->id) }}" class="btn btn-primary btn-sm">View Details</a>
-                                </td>
+                                <td>{{ $item->client->company->stir ?? '' }}</td> 
+                                <td>{{ $item->client->contact }}</td> 
+                                <td>{{ $item->client->created_at }}</td> 
                             </tr>
                             @endforeach
                         </tbody>
                     </table>
                     <div class="d-flex">
-
                         {!! $confirmations->links() !!}
-
                     </div>
-
                 </div>
-
             </div>
         </div>
     </div>

@@ -86,13 +86,11 @@ class HistoryController extends Controller
     
         return view('pages.history.index', compact('clientHistories'));
     }
-
     public function confirm()
     {
-        $confirmations = Confirm::with('client')->orderBy('created_at', 'desc')->paginate(10);
+        $confirmations = Confirm::with('client', 'user')->orderBy('created_at', 'desc')->paginate(10);
         return view('pages.history.confirm', ['confirmations' => $confirmations]);
     }
-    
     
 
     public function showHistory($id)
