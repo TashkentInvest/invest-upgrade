@@ -319,15 +319,31 @@
                                             class="fas {{ $item->status === 1 ? 'fa-check-circle text-success' : 'fa-times-circle text-danger' }}"
                                             onclick="toggle_instock({{ $item->id }})"></i> --}}
 
+
                                             <div class="d-flex align-items-center">
-                                                <div class="square-switch d-flex">
-                                                    <input type="checkbox" id="program_{{ $item->id }}" switch="bool" 
-                                                        onclick="toggle_instock({{ $item->id }})" 
-                                                        {{ $item->status === 1 ? 'checked' : '' }} />
-                                                    <label for="program_{{ $item->id }}" class="mb-0 employee-switch-status" 
-                                                        data-on-label="Dabro" data-off-label="Net"></label>
+                                                <div class="square-switch d-flex {{ auth()->user()->roles[0]->name != 'buyruq' ? 'disabled-switch' : '' }}">
+                                                    <input type="checkbox" 
+                                                           id="program_{{ $item->id }}" 
+                                                           switch="bool" 
+                                                           onclick="toggle_instock({{ $item->id }})" 
+                                                           {{ $item->status === 1 ? 'checked' : '' }} 
+                                                           {{ auth()->user()->roles[0]->name != 'buyruq' ? 'disabled' : '' }} />
+                                                    <label for="program_{{ $item->id }}" 
+                                                           class="mb-0 employee-switch-status" 
+                                                           data-on-label="Dabro" 
+                                                           data-off-label="Net"></label>
                                                 </div>
                                             </div>
+                                            
+                                            <style>
+                                                .square-switch.disabled-switch {
+                                                    opacity: 0.8; /* Adjust opacity as needed */
+                                                    filter: blur(1px); /* Apply blur effect */
+                                                    pointer-events: none; /* Disable pointer events */
+                                                }
+                                            </style>
+                                            
+                                            
                                     </td>
 
                                     <td class="text-center">

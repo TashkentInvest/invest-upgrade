@@ -42,7 +42,7 @@
                                 <th scope="col">Company</th>
                                 <th scope="col">INN</th>
                                 <th scope="col">Contact</th>
-                                <th scope="col">Updated at</th>
+                                <th scope="col">Created at</th>
                                 <th>status</th>
                             </tr>
                         </thead>
@@ -50,8 +50,10 @@
                             @foreach ($confirmations as $item)
                                 <tr>
                                     <td>{{ $item->id }}</td>
-                                    <td>{{ $item->user->name }}</td>
-                                    @if ($item->client->type == 'fizik')
+                                    <td style="font-weight: bold; color: #007bff;">
+                                        {{ $item->user->name }} | <span style="font-weight: normal; color: #6c757d;">{{ $item->user->email }}</span>
+                                    </td>
+                                                                        @if ($item->client->type == 'fizik')
                                         <td>{{ $item->client->last_name }} {{ $item->client->first_name }}
                                             {{ $item->client->father_name }}</td>
                                     @else
@@ -59,7 +61,7 @@
                                     @endif
                                     <td>{{ $item->client->company->stir ?? '' }}</td>
                                     <td>{{ $item->client->contact }}</td>
-                                    <td>{{ $item->client->created_at }}</td>
+                                    <td>{{ $item->created_at }}</td>
                                     <td>
                                         <button
                                             class="btn btn-sm text-light rounded {{ $item->status == 1 ? 'bg-success' : 'bg-danger' }}">
