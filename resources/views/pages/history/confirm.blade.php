@@ -43,22 +43,30 @@
                                 <th scope="col">INN</th>
                                 <th scope="col">Contact</th>
                                 <th scope="col">Updated at</th>
+                                <th>status</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach($confirmations as $item)
-                            <tr class="{{ $item->status == 1 ? 'table-success' : 'table-danger' }}">
-                                <td>{{ $item->id }}</td>
-                                <td>{{ $item->user->name }}</td> 
-                                @if ($item->client->type == 'fizik')
-                                    <td>{{ $item->client->last_name }} {{ $item->client->first_name }} {{ $item->client->father_name }}</td>
-                                @else
-                                    <td>{{ $item->client->company->company_name ?? '' }}</td> 
-                                @endif
-                                <td>{{ $item->client->company->stir ?? '' }}</td> 
-                                <td>{{ $item->client->contact }}</td> 
-                                <td>{{ $item->client->created_at }}</td> 
-                            </tr>
+                            @foreach ($confirmations as $item)
+                                <tr>
+                                    <td>{{ $item->id }}</td>
+                                    <td>{{ $item->user->name }}</td>
+                                    @if ($item->client->type == 'fizik')
+                                        <td>{{ $item->client->last_name }} {{ $item->client->first_name }}
+                                            {{ $item->client->father_name }}</td>
+                                    @else
+                                        <td>{{ $item->client->company->company_name ?? '' }}</td>
+                                    @endif
+                                    <td>{{ $item->client->company->stir ?? '' }}</td>
+                                    <td>{{ $item->client->contact }}</td>
+                                    <td>{{ $item->client->created_at }}</td>
+                                    <td>
+                                        <button
+                                            class="btn btn-sm text-light rounded {{ $item->status == 1 ? 'bg-success' : 'bg-danger' }}">
+                                            {{ $item->status == 1 ? 'Confirmed' : 'Not confirmed' }}
+                                        </button>
+                                    </td>
+                                </tr>
                             @endforeach
                         </tbody>
                     </table>

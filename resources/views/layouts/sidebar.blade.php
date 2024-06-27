@@ -27,9 +27,9 @@
                         </a>
                     </li>
 
-                    <li class="{{ Request::is('history-confirm*') ? 'mm-active' : '' }}">
-                        <a href="{{ route('history.confirm') }}"
-                            class=" waves-effect {{ Request::is('history-confirm*') ? 'mm-active' : '' }}">
+                    <li class="{{ Request::is('request-confirm*') ? 'mm-active' : '' }}">
+                        <a href="{{ route('request.confirm') }}"
+                            class=" waves-effect {{ Request::is('request-confirm*') ? 'mm-active' : '' }}">
                             <i class="bx bx-info-circle"></i>
                             <span>@lang('cruds.history.title')</span>
                         </a>
