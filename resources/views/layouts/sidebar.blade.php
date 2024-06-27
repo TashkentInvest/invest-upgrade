@@ -31,7 +31,7 @@
                         <a href="{{ route('request.confirm') }}"
                             class=" waves-effect {{ Request::is('request-confirm*') ? 'mm-active' : '' }}">
                             <i class="bx bx-info-circle"></i>
-                            <span>@lang('cruds.history.title')</span>
+                            <span>@lang('cruds.history.title') 103</span>
                         </a>
                     </li>
                 @endcan
