@@ -68,12 +68,14 @@
                                                         </button>
                                                     </li>
                                                 @endcan
+                                                @if($client->status == 1)
                                                 <li data-bs-toggle="tooltip" data-bs-placement="top"
                                                     title="@lang('global.downloadFile')">
                                                     <a href="{{ route('word', $client->id) }}" class="btn btn-secondary">
                                                         <i class="bx bxs-download" style="font-size: 16px;"></i>
                                                     </a>
                                                 </li>
+                                                @endif
                                             </ul>
                                         </form>
                                     </td>
