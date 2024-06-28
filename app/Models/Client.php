@@ -23,6 +23,7 @@ class Client extends Model
         'is_qonuniy'
     ];
 
+
     public function category()
     {
         return $this->belongsTo(Category::class);

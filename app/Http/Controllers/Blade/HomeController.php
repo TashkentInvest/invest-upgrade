@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Blade;
 
 use App\Http\Controllers\Controller;
+use App\Models\Category;
+use App\Models\Client;
 use App\Models\Message;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Artisan;
@@ -25,11 +27,18 @@ class HomeController extends Controller
         }   
     }
 
-    public function statistics(){
-        $messages = Message::with('user')->orderBy('created_at', 'asc')->get();
+    public function statistics()
+{
+    $messages = Message::with('user')->orderBy('created_at', 'asc')->get();
+    $categories = ['Ruxsatnoma', 'Apz', 'Kengash'];
 
-        return view('pages.statistics',compact('messages'));
-    }
+    $categoryCounts = Category::whereIn('name', $categories)
+        ->withCount('clients')
+        ->get();
+    
+
+    return view('pages.statistics', compact('messages', 'categoryCounts'));
+}
 
     public function optimize()
     {

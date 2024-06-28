@@ -10,9 +10,9 @@ class Category extends Model
     use HasFactory;
     protected $fillable = ['name', 'status'];
 
-    public function client()
+    public function clients()
     {
-        return $this->hasOne(Client::class);
+        return $this->hasMany(Client::class);
     }
 
 }
