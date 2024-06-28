@@ -306,17 +306,7 @@
                                             @endif
                                         </div>
 
-                                        <div class="col-12 col-md-6 col-lg-6 col-xl-3 mb-2">
-                                            <label for="client_description"
-                                                class="col-md-6 col-form-label">@lang('cruds.client.fields.client_description')</label>
-                                            <textarea id="textarea" name="client_description"
-                                                class="form-control {{ $errors->has('client_description') ? 'is-invalid' : '' }}" rows="3"
-                                                placeholder="This textarea has a limit of 225 chars.">{{ old('client_description') }}</textarea>
-                                            @if ($errors->has('client_description'))
-                                                <span
-                                                    class="error invalid-feedback">{{ $errors->first('client_description') }}</span>
-                                            @endif
-                                        </div>
+                                     
 
 
                                         <div class="col-12 col-md-6 col-lg-6 col-xl-3 mt-2">
@@ -384,6 +374,17 @@
 
 
                                     <div class="row" style="align-items: center">
+                                        <div class="col-12 col-md-12 col-lg-12 col-xl-12 mb-2">
+                                            <label for="client_description"
+                                                class="col-md-6 col-form-label">@lang('cruds.client.fields.client_description')</label>
+                                            <textarea id="textarea" name="client_description"
+                                                class="form-control {{ $errors->has('client_description') ? 'is-invalid' : '' }}" rows="3"
+                                                placeholder="This textarea has a limit of 225 chars.">{{ old('client_description') }}</textarea>
+                                            @if ($errors->has('client_description'))
+                                                <span
+                                                    class="error invalid-feedback">{{ $errors->first('client_description') }}</span>
+                                            @endif
+                                        </div>
                                         <div class="col-12 col-md-6 col-lg-6 col-xl-3 my-2">
                                             <div class="file-upload-card">
                                                 <label class="col-12 mt-2" for="file"> Document</label>

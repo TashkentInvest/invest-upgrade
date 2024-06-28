@@ -30,38 +30,26 @@ class ClientController extends Controller
         return view('pages.products.index', compact('clients','categories'));
     }
 
+
+
     // public function index()
     // {
-    //     // Fetch all categories
     //     $categories = Category::all();
-        
-    //     // Subquery to count occurrences of company_name
-    //     $companiesWithCount = DB::table('companies')
-    //         ->select('client_id', 'company_name', DB::raw('COUNT(*) as name_count'))
-    //         ->groupBy('client_id', 'company_name');
     
-    //     // Fetch clients with associated data, filtering out deleted, and ordering by company name count
-    //     $clients = Client::with(['category', 'company', 'branches', 'address', 'passport', 'files'])
-    //         ->select('clients.id', 'companies.company_name', 'companies_count.name_count')
-    //         ->join('companies', 'companies.client_id', '=', 'clients.id')
-    //         ->leftJoinSub($companiesWithCount, 'companies_count', function ($join) {
-    //             $join->on('companies.client_id', '=', 'companies_count.client_id');
-    //             $join->on('companies.company_name', '=', 'companies_count.company_name');
+    //     $clients = Client::query()
+    //         ->select('clients.*')
+    //         ->leftJoin('companies AS c2', function ($join) {
+    //             $join->on('clients.id', '=', 'c2.client_id')
+    //                  ->whereRaw('c2.id = (SELECT id FROM companies WHERE client_id = clients.id LIMIT 1)');
     //         })
     //         ->where('clients.is_deleted', '!=', 1)
-    //         ->whereRaw('clients.id != companies.client_id') // Exclude rows where client.id equals companies.client_id
-    //         ->orderByDesc('companies_count.name_count')
+    //         ->orderByRaw('CASE WHEN c2.id IS NOT NULL THEN 1 ELSE 0 END DESC')
     //         ->orderByDesc('clients.id')
-    //         ->distinct() // Ensure distinct rows based on the selected columns
+    //         ->with(['category', 'company', 'branches', 'address', 'passport', 'files'])
     //         ->paginate(25);
     
-    //     // Return the view with clients and categories
     //     return view('pages.products.index', compact('clients', 'categories'));
     // }
-        
-    
-    
-
     public function apz_second()
     {
         $categories = Category::get()->all();
