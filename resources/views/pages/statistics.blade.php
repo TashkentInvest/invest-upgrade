@@ -31,12 +31,12 @@
                                         <div class="row">
                                             <div class="col-7">
                                                 <div class="text-primary p-3">
-                                                    <h5 class="text-primary">Welcome Back !</h5>
-                                                    <p>Skote Saas Dashboard</p>
-
+                                                    <h5 class="text-primary">Добро пожаловать обратно!</h5>
+                                                    <p>Панель управления Tashkent Invest</p>
+                                        
                                                     <ul class="ps-3 mb-0">
-                                                        <li class="py-1">7 + Layouts</li>
-                                                        <li class="py-1">Multiple apps</li>
+                                                        <li class="py-1">Статистика компании</li>
+                                                        <li class="py-1"><a target="_blank" href="https://toshkentinvest.uz/">Toshkentinvest.uz</a></li>
                                                     </ul>
                                                 </div>
                                             </div>
@@ -44,6 +44,7 @@
                                                 <img src="assets/images/profile-img.png" alt="" class="img-fluid">
                                             </div>
                                         </div>
+                                        
                                     </div>
                                 </div>
                             </div>
