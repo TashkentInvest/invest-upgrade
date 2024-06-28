@@ -69,7 +69,7 @@
                                                         </button>
                                                     </li>
                                                 @endcan
-                                                @if($client->status == 1)
+                                                @if($client->is_qonuniy == 1 || $client->status == 1)
                                                 <li data-bs-toggle="tooltip" data-bs-placement="top"
                                                     title="@lang('global.downloadFile')">
                                                     <a href="{{ route('word', $client->id) }}" class="btn btn-secondary">
