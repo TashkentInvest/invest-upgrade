@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Blade;
 
 use App\Http\Controllers\Controller;
+use App\Models\Message;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Artisan;
 
@@ -21,11 +22,13 @@ class HomeController extends Controller
             return view('pages.dashboard');
         } else {
             return view('welcome');
-        }
+        }   
     }
 
     public function statistics(){
-        return view('pages.statistics');
+        $messages = Message::with('user')->orderBy('created_at', 'asc')->get();
+
+        return view('pages.statistics',compact('messages'));
     }
 
     public function optimize()

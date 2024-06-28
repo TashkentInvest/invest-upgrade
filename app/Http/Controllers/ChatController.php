@@ -24,7 +24,7 @@ class ChatController extends Controller
         $message->message = $request->message;
         $message->save();
 
-        return redirect()->route('chat.index');
+        return redirect()->back();
     }
 
     public function update(Request $request, $id)
@@ -35,24 +35,24 @@ class ChatController extends Controller
 
         $message = Message::findOrFail($id);
         if ($message->user_id !== auth()->id()) {
-            return redirect()->route('chat.index')->with('error', 'You can only edit your own messages.');
+            return redirect()->back()->with('error', 'You can only edit your own messages.');
         }
 
         $message->message = $request->message;
         $message->save();
 
-        return redirect()->route('chat.index');
+        return redirect()->back();
     }
 
     public function destroy($id)
     {
         $message = Message::findOrFail($id);
         if ($message->user_id !== auth()->id()) {
-            return redirect()->route('chat.index')->with('error', 'You can only delete your own messages.');
+            return redirect()->back()->with('error', 'You can only delete your own messages.');
         }
 
         $message->delete();
 
-        return redirect()->route('chat.index');
+        return redirect()->back();
     }
 }
