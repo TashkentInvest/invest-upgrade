@@ -405,7 +405,12 @@
                                                                     </tr>
                                                                     <tr>
                                                                         <td><strong>@lang('cruds.client.fields.passport_date')</strong></td>
-                                                                        <td>{{ $item->passport->passport_date ? date('d-m-Y', strtotime($item->passport->passport_date)) : '' }}
+                                                                        <td>
+                                                                            @if($item->passport && $item->passport->passport_date)
+                                                                                {{ date('d-m-Y', strtotime($item->passport->passport_date)) }}
+                                                                            @else
+                                                                                <!-- Handle case where passport or passport_date is null -->
+                                                                            @endif
                                                                         </td>
                                                                     </tr>
                                                                     <tr>

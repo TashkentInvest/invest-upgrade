@@ -30,6 +30,38 @@ class ClientController extends Controller
         return view('pages.products.index', compact('clients','categories'));
     }
 
+    // public function index()
+    // {
+    //     // Fetch all categories
+    //     $categories = Category::all();
+        
+    //     // Subquery to count occurrences of company_name
+    //     $companiesWithCount = DB::table('companies')
+    //         ->select('client_id', 'company_name', DB::raw('COUNT(*) as name_count'))
+    //         ->groupBy('client_id', 'company_name');
+    
+    //     // Fetch clients with associated data, filtering out deleted, and ordering by company name count
+    //     $clients = Client::with(['category', 'company', 'branches', 'address', 'passport', 'files'])
+    //         ->select('clients.id', 'companies.company_name', 'companies_count.name_count')
+    //         ->join('companies', 'companies.client_id', '=', 'clients.id')
+    //         ->leftJoinSub($companiesWithCount, 'companies_count', function ($join) {
+    //             $join->on('companies.client_id', '=', 'companies_count.client_id');
+    //             $join->on('companies.company_name', '=', 'companies_count.company_name');
+    //         })
+    //         ->where('clients.is_deleted', '!=', 1)
+    //         ->whereRaw('clients.id != companies.client_id') // Exclude rows where client.id equals companies.client_id
+    //         ->orderByDesc('companies_count.name_count')
+    //         ->orderByDesc('clients.id')
+    //         ->distinct() // Ensure distinct rows based on the selected columns
+    //         ->paginate(25);
+    
+    //     // Return the view with clients and categories
+    //     return view('pages.products.index', compact('clients', 'categories'));
+    // }
+        
+    
+    
+
     public function apz_second()
     {
         $categories = Category::get()->all();
@@ -202,7 +234,6 @@ class ClientController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            // 'stir' => 'nullable|string|max:9|min:9|unique:clients,stir',
             'stir' => 'nullable|string|max:9|min:9',
             'oked' => 'nullable|string|max:5|min:5',
             'bank_code' => 'nullable|string|max:5|min:5',
@@ -210,12 +241,17 @@ class ClientController extends Controller
             'passport_serial' => 'nullable|string|max:10|min:9',
             'passport_pinfl' => 'nullable|string|max:14|min:14',
         ]);
-
+    
         DB::beginTransaction();
-
+    
         try {
-
             $client = Client::findOrFail($id);
+    
+            // Ensure client and associated company exist
+            if (!$client || !$client->company) {
+                throw new \Exception('Client or associated company not found.');
+            }
+    
             $client->update([
                 'first_name' => $request->get('first_name'),
                 'last_name' => $request->get('last_name'),
@@ -223,10 +259,9 @@ class ClientController extends Controller
                 'mijoz_turi' => $request->get('mijoz_turi'),
                 'contact' => $request->get('contact'),
                 'client_description' => $request->get('client_description'),
-                'category_id' => $request->get('category_id',2),
-
+                'category_id' => $request->get('category_id', 2),
             ]);
-
+    
             $client->company->update([
                 'company_name' => $request->get('company_name') ?? null,
                 'raxbar' => $request->get('raxbar') ?? null,
@@ -237,24 +272,31 @@ class ClientController extends Controller
                 'oked' => $request->get('oked') ?? null,
                 'minimum_wage' => $request->get('minimum_wage') ?? null,
             ]);
-
-            $client->passport->update([
-                'passport_serial' => $request->get('passport_serial') ?? null,
-                'passport_pinfl' => $request->get('passport_pinfl') ?? null,
-                'passport_date' => $request->get('passport_date') ?? null,
-                'passport_location' => $request->get('passport_location') ?? null,
-                'passport_type' => $request->get('passport_type') ?? 0,
-            ]);
-
-            $client->address->update([
-                'yuridik_address' => $request->get('yuridik_address') ?? null,
-                'home_address' => $request->get('home_address') ?? null,
-                'company_location' => $request->get('company_location') ?? null,
-            ]);
-
+    
+            // Update passport details
+            if ($client->passport) {
+                $client->passport->update([
+                    'passport_serial' => $request->get('passport_serial') ?? null,
+                    'passport_pinfl' => $request->get('passport_pinfl') ?? null,
+                    'passport_date' => $request->get('passport_date') ?? null,
+                    'passport_location' => $request->get('passport_location') ?? null,
+                    'passport_type' => $request->get('passport_type') ?? 0,
+                ]);
+            }
+    
+            // Update address details
+            if ($client->address) {
+                $client->address->update([
+                    'yuridik_address' => $request->get('yuridik_address') ?? null,
+                    'home_address' => $request->get('home_address') ?? null,
+                    'company_location' => $request->get('company_location') ?? null,
+                ]);
+            }
+    
+            // Update or create branches
             foreach ($request->accordions as $accordionData) {
                 $branch = Branch::find($accordionData['id']);
-
+    
                 if ($branch) {
                     $branch->update($accordionData);
                 } else {
@@ -263,7 +305,8 @@ class ClientController extends Controller
                     $branch->save();
                 }
             }
-
+    
+            // Handle file uploads
             function handleFileUpload($files, $client, $folder)
             {
                 foreach ($files as $file) {
@@ -272,32 +315,31 @@ class ClientController extends Controller
                     $date = date('Ymd_His');
                     $fileName = $originalName . '_' . $date . '.' . $extension;
                     $file->move(public_path('assets/' . $folder), $fileName);
-
+    
                     $fileModel = new File();
                     $fileModel->client_id = $client->id;
                     $fileModel->path = 'assets/' . $folder . '/' . $fileName;
                     $fileModel->save();
                 }
             }
-
+    
             if ($request->hasFile('document')) {
                 handleFileUpload($request->file('document'), $client, 'documents');
             }
-
+    
             if ($request->hasFile('document_payment')) {
                 handleFileUpload($request->file('document_payment'), $client, 'payment');
             }
-
+    
             if ($request->hasFile('document_ruxsatnoma')) {
                 handleFileUpload($request->file('document_ruxsatnoma'), $client, 'ruxsatnoma');
             }
-
+    
             if ($request->hasFile('document_kengash')) {
                 handleFileUpload($request->file('document_kengash'), $client, 'kengash');
             }
-
-
-
+    
+            // Delete files if requested
             if ($request->has('delete_files')) {
                 foreach ($request->input('delete_files') as $fileId) {
                     $file = File::find($fileId);
@@ -309,18 +351,19 @@ class ClientController extends Controller
                     }
                 }
             }
-
+    
             DB::commit();
-
+    
             $currentPage = $request->input('page', 1);
-
+    
             return redirect()->route('clientIndex', ['page' => $currentPage])->with('success', 'Product updated successfully');
         } catch (\Exception $e) {
             DB::rollback();
-
+    
             return redirect()->back()->with('error', 'An error occurred while updating the product: ' . $e->getMessage());
         }
     }
+    
 
 
     public function delete($id)
@@ -334,7 +377,7 @@ class ClientController extends Controller
             ]);
             // $client->delete();
 
-            return redirect()->route('clientIndex')->with('success', 'Client marked as deleted successfully');
+            return redirect()->back()->with('success', 'Client marked as deleted successfully');
         } catch (\Exception $e) {
             return redirect()->back()->with('error', 'An error occurred while marking the client as deleted: ' . $e->getMessage());
         }
