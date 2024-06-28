@@ -5,12 +5,12 @@
     <div class="row">
         <div class="col-12">
             <div class="page-title-box d-sm-flex align-items-center justify-content-between">
-                <h4 class="mb-sm-0 font-size-18">Saas</h4>
+                <h4 class="mb-sm-0 font-size-18">Dashboard</h4>
 
                 <div class="page-title-right">
                     <ol class="breadcrumb m-0">
                         <li class="breadcrumb-item"><a href="javascript: void(0);">Dashboards</a></li>
-                        <li class="breadcrumb-item active">Saas</li>
+                        <li class="breadcrumb-item active">Dashboard</li>
                     </ol>
                 </div>
 
@@ -102,21 +102,21 @@
                                 <div class="mt-4 d-flex justify-content-between">
                                     <p class="mb-2 text-truncate"><i class="mdi mdi-circle text-primary me-1"></i> Apz Olamaganlar
                                     </p>
-                                    <h5>0   </h5>
+                                    <h5>0</h5>
                                 </div>
                             </div>
                             <div class="col-12">
                                 <div class="mt-4 d-flex justify-content-between">
                                     <p class="mb-2 text-truncate"><i class="mdi mdi-circle text-success me-1"></i> Ariza bermaganlar
                                     </p>
-                                    <h5>0   </h5>
+                                    <h5>0</h5>
                                 </div>
                             </div>
                             <div class="col-12">
                                 <div class="mt-4 d-flex justify-content-between">
                                     <p class="mb-2 text-truncate"><i class="mdi mdi-circle text-danger me-1"></i> Kenashdan ruxsat olmaganlar
                                     </p>
-                                    <h5>0   </h5>
+                                    <h5>0</h5>
                                 </div>
                             </div>
                         </div>
@@ -251,7 +251,7 @@
     <!-- apexcharts -->
     <script src="{{ asset('assets/libs/apexcharts/apexcharts.min.js') }}"></script>
 
-    <!-- Saas dashboard init -->
+    <!-- saas dashboard init -->
     <script src="{{ asset('assets/js/pages/saas-dashboard.init.js') }}"></script>
 
 
