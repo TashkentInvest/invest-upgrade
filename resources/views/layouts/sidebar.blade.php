@@ -7,6 +7,18 @@
             <ul class="metismenu list-unstyled" id="side-menu">
                 <li class="menu-title">@lang('cruds.menu_top.menu')</li>
                 <!-- Branches -->
+                @can('statistics.show')
+
+                <li class="{{ Request::is('statistics*') ? 'mm-active' : '' }}">
+                    <a href="{{ route('statistics.show') }}"
+                        class=" waves-effect {{ Request::is('statistics*') ? 'mm-active' : '' }}">
+                        <i class="bx bx-home-circle"></i>
+
+                        <span>Statistics</span>
+                    </a>
+                </li>
+                @endcan
+
                 @can('apz.show')
                     <li class="{{ Request::is('product*') ? 'mm-active' : '' }}">
                         <a href="{{ route('clientIndex') }}"

@@ -4,7 +4,8 @@
     <div class="row">
         <div class="col-12">
             <div class="page-title-box d-sm-flex align-items-center justify-content-between">
-                <h4 class="mb-sm-0 font-size-18">@lang('cruds.branches.title') / <span class="font-small text-primary">{{$clients->total()}}</h4>
+                <h4 class="mb-sm-0 font-size-18">@lang('cruds.branches.title') / <span
+                        class="font-small text-primary">{{ $clients->total() }}</h4>
 
                 <div class="page-title-right">
                     <ol class="breadcrumb m-0">
@@ -322,8 +323,6 @@
                                                 pointer-events: none;
                                             }
                                         </style>
-
-
                                     </td>
 
                                     <td class="text-center">
@@ -348,7 +347,6 @@
                                                             <i class="bx bxs-trash" style="font-size: 16px;"></i>
                                                         </button>
                                                     </li>
-
 
                                                     <li data-bs-toggle="tooltip" data-bs-placement="top"
                                                         title="@lang('global.edit')">
@@ -406,7 +404,7 @@
                                                                     <tr>
                                                                         <td><strong>@lang('cruds.client.fields.passport_date')</strong></td>
                                                                         <td>
-                                                                            @if($item->passport && $item->passport->passport_date)
+                                                                            @if ($item->passport && $item->passport->passport_date)
                                                                                 {{ date('d-m-Y', strtotime($item->passport->passport_date)) }}
                                                                             @else
                                                                                 <!-- Handle case where passport or passport_date is null -->
@@ -543,7 +541,6 @@
                                                                     </tr>
                                                                 @endforeach
 
-
                                                                 <script>
                                                                     function formatNumberWithSpaces(number) {
                                                                         return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
@@ -582,7 +579,6 @@
                         </tbody>
                     </table>
                     <div class="d-flex">
-
                         {!! $clients->links() !!}
                     </div>
                 </div>

@@ -26,6 +26,7 @@ Route::get('/', function () {
 });
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
+Route::get('/statistics', [HomeController::class, 'statistics'])->name('statistics.show');
 // Web pages
 Route::group(['middleware' => ['auth', 'checkUserRole']], function () {
 

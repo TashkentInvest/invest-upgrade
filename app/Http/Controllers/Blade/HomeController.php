@@ -24,6 +24,10 @@ class HomeController extends Controller
         }
     }
 
+    public function statistics(){
+        return view('pages.statistics');
+    }
+
     public function optimize()
     {
         Artisan::call('cache:clear-optimize');
