@@ -14,7 +14,7 @@
                         class=" waves-effect {{ Request::is('statistics*') ? 'mm-active' : '' }}">
                         <i class="bx bx-home-circle"></i>
 
-                        <span>Statistics</span>
+                        <span>@lang('global.dashboard')</span>
                     </a>
                 </li>
                 @endcan

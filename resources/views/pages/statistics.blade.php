@@ -5,12 +5,12 @@
     <div class="row">
         <div class="col-12">
             <div class="page-title-box d-sm-flex align-items-center justify-content-between">
-                <h4 class="mb-sm-0 font-size-18">Dashboard</h4>
+                <h4 class="mb-sm-0 font-size-18">@lang('global.dashboard')</h4>
 
                 <div class="page-title-right">
                     <ol class="breadcrumb m-0">
-                        <li class="breadcrumb-item"><a href="javascript: void(0);">Dashboards</a></li>
-                        <li class="breadcrumb-item active">Dashboard</li>
+                        <li class="breadcrumb-item"><a href="javascript: void(0);">@lang('global.dashboard')</a></li>
+                        <li class="breadcrumb-item active">@lang('global.dashboard')</li>
                     </ol>
                 </div>
 
@@ -130,7 +130,7 @@
                 <div class="p-4 border-bottom">
                     <div class="row">
                         <div class="col-md-4 col-9">
-                            <h5 class="font-size-15 mb-1">Tashkent Invest Group</h5>
+                            <h5 class="font-size-15 mb-1">Ташкент Инвест Чат</h5>
                             <p class="text-muted mb-0"><i
                                     class="mdi mdi-circle text-success align-middle me-1"></i>@lang('global.active')</p>
                         </div>
