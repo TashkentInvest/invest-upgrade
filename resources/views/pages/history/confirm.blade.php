@@ -53,12 +53,13 @@
                                     <td style="font-weight: bold; color: #007bff;">
                                         {{ $item->user->name }} | <span style="font-weight: normal; color: #6c757d;">{{ $item->user->email }}</span>
                                     </td>
-                                                                        @if ($item->client->type == 'fizik')
-                                        <td>{{ $item->client->last_name }} {{ $item->client->first_name }}
-                                            {{ $item->client->father_name }}</td>
+
+                                    @if ($item->client->type == 'fizik')
+                                        <td>{{ $item->client->last_name }} {{ $item->client->first_name }} {{ $item->client->father_name }}</td>
                                     @else
                                         <td>{{ $item->client->company->company_name ?? '' }}</td>
                                     @endif
+                                    
                                     <td>{{ $item->client->company->stir ?? '' }}</td>
                                     <td>{{ $item->client->contact }}</td>
                                     <td>{{ $item->created_at }}</td>
