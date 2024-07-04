@@ -243,12 +243,12 @@
                         <thead>
                             <tr>
                                 <th>@lang('global.id')</th>
-                                <th>@lang('global.client_name') || @lang('cruds.company.fields.company_name')</th>
+                                <th style="width: 350px">@lang('global.client_name') || @lang('cruds.company.fields.company_name')</th>
                                 {{-- <th style="width: 20%;">@lang('cruds.company.fields.address')</th> --}}
                                 <th>@lang('cruds.company.fields.stir')</th>
                                 <th>@lang('global.ruxsatnoma_raqami')</th>
-                                <th>@lang('cruds.branches.fields.application_number')</th>
-                                <th>@lang('cruds.branches.fields.apz_number')</th>
+                                <th style="width: 400px">@lang('cruds.branches.fields.application_number')</th>
+                                {{-- <th>@lang('cruds.branches.fields.apz_number')</th> --}}
                                 <th>@lang('global.category')</th>
                                 <th>@lang('cruds.client.fields.contact')</th>
                                 <th>Одобрено</th>
@@ -287,7 +287,7 @@
                                             @endisset
                                         @endforeach
                                     </td>
-                                    <td>
+                                    {{-- <td>
                                         @foreach ($item->branches as $b)
                                             @isset($b->apz_raqami)
                                                 <button type="button"
@@ -296,9 +296,9 @@
                                                 </button>
                                             @endisset
                                         @endforeach
-                                    </td>
+                                    </td> --}}
                                     <td>{{ $item->category->name ?? '' }} </td>
-                                    <td>{{ $item->contact ?? '---' }}</td>
+                                    <td>{{ $item->contact ?? '' }}</td>
 
                                     <td class="text-center">
                                         {{-- <i style="cursor: pointer; font-size: 16px;" id="program_{{ $item->id }}"
