@@ -620,7 +620,7 @@
                                                                 <select class="form-control" name="accordions[0][zona]">
                                                                     <option value="">Zona</option>
                                                                     <option value="1">1-zona</option>
-                                                                    <option value="2">2-zona</option>
+                                                                    <option value="2">2-zona</option>   
                                                                     <option value="3">3-zona</option>
                                                                     <option value="4">4-zona</option>
                                                                     <option value="5">5-zona</option>
@@ -881,6 +881,7 @@
 
                                 </div>
                                 <!-- Confirm Details -->
+                                <button class="btn btn-success mt-3" type="submit">Save</button>
 
                         </div>
                     </form>
