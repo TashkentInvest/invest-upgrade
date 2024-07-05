@@ -87,6 +87,13 @@ class ClientController extends Controller
         return view('pages.products.add', compact('regions','categories'));
     }
 
+    public function client_create()
+    {
+        $categories = Category::get()->all();
+        $regions = Regions::get()->all();
+        return view('pages.products.client_create', compact('regions','categories'));
+    }
+
     public function create(Request $request)
     {
         $request->validate([

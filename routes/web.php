@@ -64,6 +64,7 @@ Route::group(['middleware' => ['auth', 'checkUserRole']], function () {
         Route::post('/toggle-status/{id}', [ClientController::class, 'toggleclientActivation'])->name('clientActivation');
     });
     Route::get('/apz-second', [ClientController::class, 'apz_second'])->name('apz.second');
+    Route::get('/client/create', [ClientController::class, 'client_create'])->name('clientDetails');
 
     // Permissions
     Route::prefix('permissions')->group(function () {
