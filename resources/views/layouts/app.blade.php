@@ -10,7 +10,7 @@
     <link href="{{ asset('assets/libs/datatables.net-bs4/css/dataTables.bootstrap4.min.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('assets/libs/datatables.net-buttons-bs4/css/buttons.bootstrap4.min.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('assets/libs/datatables.net-responsive-bs4/css/responsive.bootstrap4.min.css') }}" rel="stylesheet" type="text/css" />
-    <link href="{{ asset('assets/libs/select2/css/select2.min.css') }}" rel="stylesheet" type="text/css" />
+    {{-- <link href="{{ asset('assets/libs/select2/css/select2.min.css') }}" rel="stylesheet" type="text/css" /> --}}
     <link href="{{ asset('assets/css/bootstrap.min.css') }}" id="bootstrap-style" rel="stylesheet" type="text/css" />
     <link href="{{ asset('assets/css/icons.min.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('assets/css/app.min.css') }}" id="app-style" rel="stylesheet" type="text/css" />
@@ -22,7 +22,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     {{-- constructor --}}
-    <link href="{{asset('assets/libs/select2/css/select2.min.css')}}" rel="stylesheet" type="text/css" />
+    {{-- <link href="{{asset('assets/libs/select2/css/select2.min.css')}}" rel="stylesheet" type="text/css" /> --}}
     <link href="{{asset('assets/libs/bootstrap-datepicker/css/bootstrap-datepicker.min.css')}}" rel="stylesheet" type="text/css">
     <link href="{{asset('assets/libs/spectrum-colorpicker2/spectrum.min.css')}}" rel="stylesheet" type="text/css">
     <link href="{{asset('assets/libs/bootstrap-timepicker/css/bootstrap-timepicker.min.css')}}" rel="stylesheet" type="text/css">
@@ -31,13 +31,7 @@
     {{-- constructor end --}}
 
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-
-    <!-- Include Select2 CSS -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" rel="stylesheet">
-
-    <!-- Include Select2 JS -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
+   
 </head>
 <body>
     
@@ -60,7 +54,7 @@
     </div>
 
   {{-- constructor --}}
-  <script src="{{asset('assets/libs/select2/js/select2.min.js')}}"></script>
+  {{-- <script src="{{asset('assets/libs/select2/js/select2.min.js')}}"></script> --}}
   <script src="{{asset('assets/libs/bootstrap-datepicker/js/bootstrap-datepicker.min.js')}}"></script>
   <script src="{{asset('assets/libs/spectrum-colorpicker2/spectrum.min.js')}}"></script>
   {{-- constructor end--}}
@@ -73,7 +67,7 @@
   {{-- <script src="{{ asset('assets/libs/simplebar/simplebar.min.js') }}"></script> --}}
   {{-- <script src="{{ asset('assets/libs/node-waves/waves.min.js') }}"></script> --}}
   <!-- Select2 -->
-  <script src="{{ asset('assets/libs/select2/js/select2.min.js') }}"></script>
+  {{-- <script src="{{ asset('assets/libs/select2/js/select2.min.js') }}"></script> --}}
   <!-- Required datatable js -->
   <script src="{{ asset('assets/libs/datatables.net/js/jquery.dataTables.min.js') }}"></script>
   <script src="{{ asset('assets/libs/datatables.net-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
@@ -106,6 +100,7 @@
 
   <!-- dropzone plugin -->
   <script src="{{ asset('assets/libs/dropzone/min/dropzone.min.js') }}"></script>
+  
   
   {{-- <script src="{{ asset('assets/libs/sweetalert2/sweetalert2.min.js') }}"></script>  --}}
 

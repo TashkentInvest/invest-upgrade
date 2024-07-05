@@ -22,6 +22,15 @@
         }
     </style>
 
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+ <!-- Include Select2 CSS -->
+ <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" rel="stylesheet">
+
+ <!-- Include Select2 JS -->
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
+    
+
 
     <div class="row">
         <h3 class="text-center media_text">Архитектура-Режалаштириш Топшириғи берилгани учун белгиланган
@@ -601,10 +610,10 @@
                                                             </div>
                                                         </div>
 
-                                                        <div class="col-12 col-md-6 col-lg-6 col-xl-6">
+                                                        <div class="col-12 col-md-6">
                                                             <div class="mb-3">
                                                                 <label for="branch_location">@lang('cruds.company.fields.branch_location')</label>
-                                                                <select class="form-control" name="accordions[0][branch_location]" id="branch_location">
+                                                                <select class="form-control select2" name="accordions[0][branch_location]" id="branch_location">
                                                                     <option value="">@lang('cruds.company.fields.branch_location')</option>
                                                                     <option value="Metro bekatidan chiqish joyidan obyekt chegarasig‘acha 200 metr radius oralig‘i hududlardan boshqa hududlarda joylashgan loyihaviy binolar (inshootlar)" data-kt="0.6">
                                                                         Metro bekatidan chiqish joyidan obyekt chegarasig‘acha 200 metr radius oralig‘i hududlardan boshqa hududlarda joylashgan loyihaviy binolar (inshootlar)
@@ -618,11 +627,10 @@
                                                                 @enderror
                                                             </div>
                                                         </div>
-                                                        
-                                                        <div class="col-12 col-md-6 col-lg-6 col-xl-6">
+                                                        <div class="col-12 col-md-6">
                                                             <div class="mb-3">
                                                                 <label for="branch_type">@lang('global.loyiha_turi')</label>
-                                                                <select class="form-control" name="accordions[0][branch_type]" id="branch_type">
+                                                                <select class="form-control select2" name="accordions[0][branch_type]" id="branch_type">
                                                                     <option value="">@lang('global.loyiha_turi')</option>
                                                                     <option value="Alohida turgan xususiy ijtimoiy infratuzilma va turizm obyektlari" data-kt="0.5">
                                                                         Alohida turgan xususiy ijtimoiy infratuzilma va turizm obyektlari
@@ -645,11 +653,10 @@
                                                                 @enderror
                                                             </div>
                                                         </div>
-                                                        
-                                                        <div class="col-12 col-md-6 col-lg-6 col-xl-6">
+                                                        <div class="col-12 col-md-6">
                                                             <div class="mb-3">
                                                                 <label for="qurilish_turi">@lang('global.qurilish_turi')</label>
-                                                                <select class="form-control" name="accordions[0][qurilish_turi]" id="qurilish_turi">
+                                                                <select class="form-control select2" name="accordions[0][qurilish_turi]" id="qurilish_turi">
                                                                     <option value="">@lang('global.qurilish_turi')</option>
                                                                     <option value="Yangi kapital qurilish" data-kt="1">
                                                                         Yangi kapital qurilish
@@ -664,13 +671,15 @@
                                                                         Obyektni qurilish hajmini o‘zgartirmagan holda rekonstruksiya qilish
                                                                     </option>
                                                                 </select>
+                                                                @error('accordions.0.qurilish_turi')
+                                                                    <span class="error invalid-feedback">{{ $message }}</span>
+                                                                @enderror
                                                             </div>
                                                         </div>
-                                                        
-                                                        <div class="col-12 col-md-6 col-lg-6 col-xl-6">
+                                                        <div class="col-12 col-md-6">
                                                             <div class="mb-3">
                                                                 <label for="zona">@lang('global.zona')</label>
-                                                                <select id="zona" class="form-control" name="accordions[0][zona]">
+                                                                <select id="zona" class="form-control select2" name="accordions[0][zona]">
                                                                     <option value="">Zona</option>
                                                                     <option value="1" data-kt="1.40">1-zona</option>
                                                                     <option value="2" data-kt="1.25">2-zona</option>
@@ -683,52 +692,14 @@
                                                                 @enderror
                                                             </div>
                                                         </div>
-                                                        
-                                                        <div class="col-12 col-md-6 col-lg-6 col-xl-6">
+                                                        <div class="col-12">
                                                             <div class="mb-3">
                                                                 <label for="coefficient">@lang('global.coefficient')</label>
-                                                                <input type="number" step="0.01" class="form-control" id="coefficient" name="accordions[0][coefficient]" placeholder="@lang('global.coefficient')" value="{{ old('accordions.0.coefficient') }}" readonly disabled>
-                                                                @error('accordions.0.coefficient')
-                                                                    <span class="error invalid-feedback">{{ $message }}</span>
-                                                                @enderror
+                                                                <input type="text" class="form-control" id="coefficient" name="accordions[0][coefficient]" readonly>
                                                             </div>
                                                         </div>
-                                                        <script>
-                                                            document.addEventListener('DOMContentLoaded', function() {
-                                                                const selectElements = [
-                                                                    document.getElementById('qurilish_turi'),
-                                                                    document.getElementById('branch_type'),
-                                                                    document.getElementById('zona'),
-                                                                    document.getElementById('branch_location')
-                                                                ];
-                                                        
-                                                                const coefficientInput = document.getElementById('coefficient');
-                                                        
-                                                                function updateCoefficient() {
-                                                                    let totalCoefficient = 1;
-                                                                    console.log('Calculating coefficient...');
-                                                        
-                                                                    selectElements.forEach(select => {
-                                                                        const selectedOption = select.options[select.selectedIndex];
-                                                                        const ktValue = parseFloat(selectedOption.getAttribute('data-kt') || 0);
-                                                                        console.log(`Selected option for ${select.id}: ${selectedOption.value}, data-kt: ${ktValue}`);
-                                                                        totalCoefficient *= ktValue;
-                                                                    });
-                                                        
-                                                                    totalCoefficient = Math.max(0.50, Math.min(totalCoefficient, 2.00));
-                                                                    coefficientInput.value = totalCoefficient.toFixed(2);
-                                                        
-                                                                    console.log(`Total coefficient: ${totalCoefficient}`);
-                                                                }
-                                                        
-                                                                selectElements.forEach(select => {
-                                                                    select.addEventListener('change', updateCoefficient);
-                                                                });
-                                                        
-                                                                updateCoefficient();
-                                                            });
-                                                        </script>
-                                                        
+                                                      
+                                                     
 
                                                         <!-- End new fields -->
                                                     </div>
@@ -801,6 +772,24 @@
                                                                 var roundedValue = value.toFixed(5);
                                                                 inputField.value = roundedValue;
                                                             }
+                                                            
+                                                            var selectElements = document.querySelectorAll('.select2');
+
+                                                            selectElements.forEach(function(select) {
+                                                                select.addEventListener('change', function() {
+                                                                    var selectedOptions = select.selectedOptions;
+                                                                    var coefficient = 1;
+
+                                                                    for (var i = 0; i < selectedOptions.length; i++) {
+                                                                        var kt = parseFloat(selectedOptions[i].dataset.kt);
+                                                                        coefficient *= kt;
+                                                                    }
+
+                                                                    document.getElementById('coefficient').value = coefficient.toFixed(2);
+                                                                });
+                                                            });
+
+
                                                         </script>
 
                                                         <div class="col-12 col-md-6 col-lg-6 col-xl-4">
@@ -952,6 +941,7 @@
         </div>
         <!-- end col -->
     </div>
+
 @endsection
 
 @section('scripts')
