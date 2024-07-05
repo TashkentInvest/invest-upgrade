@@ -291,7 +291,7 @@ class ClientController extends Controller
                 'company_location' => $request->get('company_location') ?? null,
             ]);
 
-          dd($request);
+          
 
 
             foreach ($request->accordions as $accordion) {
@@ -332,6 +332,7 @@ class ClientController extends Controller
 
             return redirect()->back()->with('success', 'Client created successfully');
         } catch (\Exception $e) {
+            \Log::info($e);
             DB::rollback();
             return redirect()->back()->with('error', 'An error occurred while creating the client: ' . $e->getMessage());
         }
