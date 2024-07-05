@@ -291,7 +291,38 @@ class ClientController extends Controller
                 'company_location' => $request->get('company_location') ?? null,
             ]);
 
-          
+            function handleFileUploadProductQ($files, $client, $folder)
+            {
+                foreach ($files as $file) {
+                    $originalName = pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME);
+                    $extension = $file->getClientOriginalExtension();
+                    $date = date('Ymd_His');
+                    $fileName = $originalName . '_' . $date . '.' . $extension;
+                    $file->move(public_path('assets/' . $folder), $fileName);
+
+                    $fileModel = new File();
+                    $fileModel->client_id = $client->id;
+                    $fileModel->path = 'assets/' . $folder . '/' . $fileName;
+                    $fileModel->save();
+                }
+            }
+
+            if ($request->hasFile('document')) {
+                handleFileUploadProductQ($request->file('document'), $client, 'documents');
+            }
+
+            if ($request->hasFile('document_payment')) {
+                handleFileUploadProductQ($request->file('document_payment'), $client, 'payment');
+            }
+
+            if ($request->hasFile('document_ruxsatnoma')) {
+                handleFileUploadProductQ($request->file('document_ruxsatnoma'), $client, 'ruxsatnoma');
+            }
+
+            if ($request->hasFile('document_kengash')) {
+                handleFileUploadProductQ($request->file('document_kengash'), $client, 'kengash');
+            }
+
 
 
             foreach ($request->accordions as $accordion) {
@@ -324,15 +355,13 @@ class ClientController extends Controller
                     'qurilish_turi' => $accordion['qurilish_turi'] ?? null,
                     'coefficient' => $accordion['coefficient'] ?? null,
                     'zona' => $accordion['zona'] ?? null,
-                   
                 ]);
             }
 
             DB::commit();
 
-            return redirect()->back()->with('success', 'Client created successfully');
+            return redirect()->route('clientIndex')->with('success', 'Client created successfully');
         } catch (\Exception $e) {
-            \Log::info($e);
             DB::rollback();
             return redirect()->back()->with('error', 'An error occurred while creating the client: ' . $e->getMessage());
         }
