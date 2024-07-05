@@ -89,7 +89,7 @@
                                         @endif
                                     </div>
 
-                                    <div class="col-12 col-lg-3 mb-2">
+                                    <div class="col-12 col-lg-4 mb-2">
                                         <label for="bank_service" class="col-md-6 col-form-label">@lang('cruds.company.fields.bank_service')</label>
                                         <input class="form-control {{ $errors->has('bank_service') ? 'is-invalid' : '' }}"
                                             type="text" name="bank_service" id="bank_service"
@@ -100,7 +100,7 @@
                                         @endif
                                     </div>
 
-                                    <div class="col-12 col-lg-3 mb-2">
+                                    <div class="col-12 col-lg-4 mb-2">
                                         <label for="bank_code" class="col-md-6 col-form-label">@lang('cruds.company.fields.bank_code')</label>
                                         <input class="form-control {{ $errors->has('bank_code') ? 'is-invalid' : '' }}"
                                             type="number" name="bank_code" id="bank_code" placeholder="@lang('cruds.company.fields.bank_code')"
@@ -112,7 +112,7 @@
                                         @endif
                                     </div>
 
-                                    <div class="col-12 col-lg-3 mb-2">
+                                    <div class="col-12 col-lg-4 mb-2">
                                         <label for="bank_account" class="col-md-6 col-form-label">@lang('cruds.company.fields.bank_account')</label>
                                         <input class="form-control {{ $errors->has('bank_account') ? 'is-invalid' : '' }}"
                                             type="number" name="bank_account" id="bank_account"
@@ -126,7 +126,7 @@
                                     </div>
 
 
-                                    <div class="col-12 col-lg-3 mb-2">
+                                    <div class="col-12 col-lg-12 mb-2">
                                         <label for="yuridik_address"
                                             class="col-md-6 col-form-label">@lang('cruds.client.fields.yuridik_address')</label>
                                         <input
@@ -139,7 +139,7 @@
                                         @endif
                                     </div>
 
-                                    {{-- <div class="col-12 col-lg-3 mb-2">
+                                    {{-- <div class="col-12 col-lg-4 mb-2">
                                         <label for="yuridik_rekvizid"
                                             class="col-md-6 col-form-label">@lang('cruds.client.fields.yuridik_rekvizid')</label>
                                         <input
@@ -155,7 +155,7 @@
                                 </div>
 
                                 <div class="row">
-                                    <div class="col-12 col-md-6 col-lg-6 col-xl-3 mb-2">
+                                    <div class="col-12 col-md-6 col-lg-6 col-xl-4 mb-2">
                                         <label for="last_name" class="col-md-4 col-form-label">@lang('cruds.client.fields.last_name')</label>
                                         <input class="form-control {{ $errors->has('last_name') ? 'is-invalid' : '' }}"
                                             type="text" name="last_name" id="last_name"
@@ -165,7 +165,7 @@
                                         @endif
                                     </div>
 
-                                    <div class="col-12 col-md-6 col-lg-6 col-xl-3 mb-2">
+                                    <div class="col-12 col-md-6 col-lg-6 col-xl-4 mb-2">
                                         <label for="name" class="col-md-4 col-form-label">@lang('cruds.client.fields.name')</label>
                                         <input class="form-control {{ $errors->has('first_name') ? 'is-invalid' : '' }}"
                                             type="text" name="first_name" id="first_name"
@@ -175,7 +175,7 @@
                                         @endif
                                     </div>
 
-                                    <div class="col-12 col-md-4 col-lg-4 col-xl-2 mb-2">
+                                    <div class="col-12 col-md-4 col-lg-4 col-xl-4 mb-2">
                                         <label for="father_name"
                                             class="col-md-4 col-form-label">@lang('cruds.client.fields.father_name')</label>
                                         <input class="form-control {{ $errors->has('father_name') ? 'is-invalid' : '' }}"
@@ -187,7 +187,7 @@
                                         @endif
                                     </div>
 
-                                    <div class="col-12 col-md-4 col-lg-4 col-xl-2 mb-2">
+                                    <div class="col-12 col-md-4 col-lg-6 col-xl-6 mb-2">
                                         <label for="contact" class="col-md-4 col-form-label">@lang('cruds.client.fields.contact')</label>
                                         <input class="form-control {{ $errors->has('contact') ? 'is-invalid' : '' }}"
                                             type="text" name="contact" id="contact"
@@ -197,7 +197,7 @@
                                         @endif
                                     </div>
 
-                                    <div class="col-12 col-md-4 col-lg-4 col-xl-2 mb-2">
+                                    <div class="col-12 col-md-4 col-lg-6 col-xl-6 mb-2">
                                         <label for="stir" class="col-md-6 col-form-label">@lang('cruds.company.fields.stir')</label>
                                         <input class="form-control {{ $errors->has('stir') ? 'is-invalid' : '' }}"
                                             type="number" name="stir" id="stir"
@@ -207,6 +207,7 @@
                                             <span class="error invalid-feedback">{{ $errors->first('stir') }}</span>
                                         @endif
                                     </div>
+                                    
                                 </div>
                                 {{-- <input type="hidden" name="client_id" value="{{$client->id}}"> --}}
 
@@ -266,25 +267,9 @@
                                         @endif
                                     </div>
 
-                                    <div class="col-12 col-md-6 col-lg-6 col-xl-3 mb-2">
-                                        <label for="home_address"
-                                            class="col-md-6 col-form-label">@lang('global.home_address')</label>
-                                        <input class="form-control {{ $errors->has('home_address') ? 'is-invalid' : '' }}"
-                                            type="text" name="home_address" id="home_address"
-                                            placeholder="@lang('global.home_address')" value="{{ old('home_address') }}">
-                                        @if ($errors->has('home_address'))
-                                            <span
-                                                class="error invalid-feedback">{{ $errors->first('home_address') }}</span>
-                                        @endif
-                                    </div>
 
 
 
-
-                                    <div class="col-12 col-md-6 col-lg-6 col-xl-3 mt-2">
-                                        <label for="is_passport_id">Is passport ID?</label>
-                                        <input type="checkbox" name="passport_type" id="is_passport_id" value="1">
-                                    </div>
 
                                 </div>
 
@@ -325,7 +310,7 @@
                                             accordion.find('.accordion-button').attr('data-bs-target', '#' + newId);
                                             accordion.find('.accordion-header').attr('id', 'flush-heading' + accordionCount);
                                             accordion.find('.accordion-button').attr('aria-controls', newId);
-                                            accordion.find('.accordion-button').text('Accordion Item #' + accordionCount);
+                                            accordion.find('.accordion-button').text('Объект #' + accordionCount);
 
                                             accordion.find('input, select').each(function() {
                                                 let name = $(this).attr('name');
@@ -459,7 +444,7 @@
                                             <button class="accordion-button fw-medium collapsed" type="button"
                                                 data-bs-toggle="collapse" data-bs-target="#flush-collapseOne"
                                                 aria-expanded="false" aria-controls="flush-collapseOne">
-                                                Accordion Item #0
+                                                Объект #0
                                             </button>
                                         </h2>
                                         <div id="flush-collapseOne" class="accordion-collapse collapse show"
@@ -496,7 +481,7 @@
                                                     </div>
 
                                                     <div class="row">
-                                                        <div class="col-12 col-md-6 col-lg-6 col-xl-3">
+                                                        <div class="col-12 col-md-6 col-lg-6 col-xl-4">
                                                             <div class="mb-3">
                                                                 <label for="notification_num">@lang('cruds.branches.fields.notification_num')</label>
                                                                 <input type="text" class="form-control"
@@ -510,7 +495,7 @@
                                                                 @enderror
                                                             </div>
                                                         </div>
-                                                        <div class="col-12 col-md-6 col-lg-6 col-xl-3">
+                                                        <div class="col-12 col-md-6 col-lg-6 col-xl-4">
                                                             <div class="mb-3">
                                                                 <label for="notification_date">@lang('cruds.branches.fields.notification_date')</label>
                                                                 <input type="date" class="form-control"
@@ -523,7 +508,7 @@
                                                                 @enderror
                                                             </div>
                                                         </div>
-                                                        <div class="col-12 col-md-6 col-lg-6 col-xl-3">
+                                                        <div class="col-12 col-md-6 col-lg-6 col-xl-4">
                                                             <div class="mb-3">
                                                                 <label for="insurance_policy">@lang('cruds.branches.fields.insurance_policy')</label>
                                                                 <input type="text" class="form-control"
@@ -536,7 +521,7 @@
                                                                 @enderror
                                                             </div>
                                                         </div>
-                                                        <div class="col-12 col-md-6 col-lg-6 col-xl-3">
+                                                        <div class="col-12 col-md-6 col-lg-6 col-xl-4">
                                                             <div class="mb-3">
                                                                 <label for="bank_guarantee">@lang('cruds.branches.fields.bank_guarantee')</label>
                                                                 <input type="text" class="form-control"
@@ -594,7 +579,7 @@
                                                     </div>
 
                                                     <div class="row">
-                                                        <div class="col-12 col-md-6 col-lg-6 col-xl-3">
+                                                        <div class="col-12 col-md-6 col-lg-6 col-xl-4">
                                                             <div class="inner-repeater mb-4">
                                                                 <div data-repeater-list="inner-group" class="inner mb-3">
                                                                     <label
@@ -621,7 +606,7 @@
                                                             }
                                                         </script>
 
-                                                        <div class="col-12 col-md-6 col-lg-6 col-xl-3">
+                                                        <div class="col-12 col-md-6 col-lg-6 col-xl-4">
                                                             <div class="mb-3">
                                                                 <label for="branch_name">@lang('global.loyiha_nomi')</label>
                                                                 <input type="text" class="form-control"
@@ -634,7 +619,7 @@
                                                                 @enderror
                                                             </div>
                                                         </div>
-                                                        <div class="col-12 col-md-6 col-lg-6 col-xl-3">
+                                                        <div class="col-12 col-md-6 col-lg-6 col-xl-4">
                                                             <div class="mb-3">
                                                                 <label for="branch_type">@lang('global.loyiha_turi')</label>
                                                                 <input type="text" class="form-control"
@@ -647,7 +632,7 @@
                                                                 @enderror
                                                             </div>
                                                         </div>
-                                                        <div class="col-12 col-md-6 col-lg-6 col-xl-3">
+                                                        <div class="col-12 col-md-6 col-lg-6 col-xl-4">
                                                             <div class="mb-3">
                                                                 <label for="branch_location">@lang('cruds.company.fields.branch_location')</label>
                                                                 <input type="text" class="form-control"
@@ -692,7 +677,7 @@
                                                     </div>
 
                                                     <div class="row">
-                                                        <div class="col-12 col-md-6 col-lg-6 col-xl-3">
+                                                        <div class="col-12 col-md-6 col-lg-6 col-xl-4">
                                                             <div class="mb-3">
                                                                 <label>@lang('global.tolash_turlari')</label>
                                                                 <select class="form-select payment-type"
@@ -710,7 +695,7 @@
                                                                 @enderror
                                                             </div>
                                                         </div>
-                                                        <div class="col-12 col-md-6 col-lg-6 col-xl-3">
+                                                        <div class="col-12 col-md-6 col-lg-6 col-xl-4">
                                                             <div class="mb-3">
                                                                 <label for="percentage-input">@lang('global.bolib_tolash_foizi_oldindan')</label>
                                                                 <div class="input-group">
@@ -727,7 +712,7 @@
                                                                 @enderror
                                                             </div>
                                                         </div>
-                                                        <div class="col-12 col-md-6 col-lg-6 col-xl-3">
+                                                        <div class="col-12 col-md-6 col-lg-6 col-xl-4">
                                                             <div class="mb-3">
                                                                 <label for="quarterly-input">@lang('global.bolib_tolash_har_chorakda')</label>
                                                                 <input type="number" class="form-control quarterly-input"
@@ -740,7 +725,7 @@
                                                                 @enderror
                                                             </div>
                                                         </div>
-                                                        <div class="col-12 col-md-6 col-lg-6 col-xl-3">
+                                                        <div class="col-12 col-md-6 col-lg-6 col-xl-4">
                                                             <div class="mb-3">
                                                                 <label
                                                                     for="calculated-quarterly-payment">@lang('global.quarterly_payment')</label>
