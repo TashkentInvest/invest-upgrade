@@ -606,12 +606,12 @@
                                                             <div class="mb-3">
                                                                 <label for="zona">@lang('global.zona')</label>
                                                                 <select class="form-control" name="accordions[0][zona]">
-                                                                    <option value="">Select Zona</option>
-                                                                    <option value="1">1 - 1.40</option>
-                                                                    <option value="2">2 - 1.25</option>
-                                                                    <option value="3">3 - 1.00</option>
-                                                                    <option value="4">4 - 0.75</option>
-                                                                    <option value="5">5 - 0.50</option>
+                                                                    <option value="">Zona</option>
+                                                                    <option value="1">1-zona</option>
+                                                                    <option value="2">2-zona</option>
+                                                                    <option value="3">3-zona</option>
+                                                                    <option value="4">4-zona</option>
+                                                                    <option value="5">5-zona</option>
                                                                 </select>
                                                                 @error('accordions.0.zona')
                                                                 <span class="error invalid-feedback">{{ $message }}</span>
@@ -704,7 +704,7 @@
                                                                 @enderror
                                                             </div>
                                                         </div>
-                                                        <div class="col-12 col-md-6 col-lg-6 col-xl-4">
+                                                        {{-- <div class="col-12 col-md-6 col-lg-6 col-xl-4">
                                                             <div class="mb-3">
                                                                 <label for="branch_type">@lang('global.loyiha_turi')</label>
                                                                 <input type="text" class="form-control"
@@ -716,7 +716,35 @@
                                                                         class="error invalid-feedback">{{ $message }}</span>
                                                                 @enderror
                                                             </div>
+                                                        </div> --}}
+                                                        
+                                                        <div class="col-12 col-md-6 col-lg-6 col-xl-4">
+                                                            <div class="mb-3">
+                                                                <label for="branch_type">@lang('global.loyiha_turi')</label>
+                                                                <select class="form-control" name="accordions[0][branch_type]" id="branch_type">
+                                                                    <option value="">@lang('global.loyiha_turi')</option>
+                                                                    <option value="Alohida turgan xususiy ijtimoiy infratuzilma va turizm obyektlari">
+                                                                        Alohida turgan xususiy ijtimoiy infratuzilma va turizm obyektlari
+                                                                    </option>
+                                                                    <option value="Davlat ulushi 50 (ellik) foizdan ortiq bo‘lgan davlat va (yoki) munitsipal mulk negizida amalga oshiriladigan investitsiya loyihalari doirasidagi obyektlar">
+                                                                        Davlat ulushi 50 (ellik) foizdan ortiq bo‘lgan davlat va (yoki) munitsipal mulk negizida amalga oshiriladigan investitsiya loyihalari doirasidagi obyektlar
+                                                                    </option>
+                                                                    <option value="Ishlab chiqarish korxonalarining umumiy ovqatlanish joylari, sport-sog‘lomlashtirish zallari (xonalari), ofislar va turar joylarni qurish, renovatsiya va rekonstruksiya qilish uchun">
+                                                                        Ishlab chiqarish korxonalarining umumiy ovqatlanish joylari, sport-sog‘lomlashtirish zallari (xonalari), ofislar va turar joylarni qurish, renovatsiya va rekonstruksiya qilish uchun
+                                                                    </option>
+                                                                    <option value="Omborxonalarni har bir qavati uchun 2 (ikki) metr balandlikdan oshmagan oʻlchamda (omborxonalarining ma’muriy-xo‘jalik majmuasi sifadida foydalaniladigan, alohida turgan kapital binolar, shu jumladan, umumiy ovqatlanish joylari, sport-sog‘lomlashtirish zallari (xonalari), ofislar, turar joylar bundan mustasno)">
+                                                                        Omborxonalarni har bir qavati uchun 2 (ikki) metr balandlikdan oshmagan oʻlchamda (omborxonalarining ma’muriy-xo‘jalik majmuasi sifadida foydalaniladigan, alohida turgan kapital binolar, shu jumladan, umumiy ovqatlanish joylari, sport-sog‘lomlashtirish zallari (xonalari), ofislar, turar joylar bundan mustasno)
+                                                                    </option>
+                                                                    <option value="Mazkur bo‘limning 1–5-qatorlarida ko‘rsatilmagan boshqa obyektlar">
+                                                                        Mazkur bo‘limning 1–5-qatorlarida ko‘rsatilmagan boshqa obyektlar
+                                                                    </option>
+                                                                </select>
+                                                                @error('accordions.0.branch_type')
+                                                                    <span class="error invalid-feedback">{{ $message }}</span>
+                                                                @enderror
+                                                            </div>
                                                         </div>
+                                                        
                                                         <div class="col-12 col-md-6 col-lg-6 col-xl-4">
                                                             <div class="mb-3">
                                                                 <label for="branch_location">@lang('cruds.company.fields.branch_location')</label>
