@@ -756,19 +756,38 @@
                                                         <script>
                                                             var selectElements = document.querySelectorAll('.select2');
 
-                                                            selectElements.forEach(function(select) {
-                                                                select.addEventListener('change', function() {
-                                                                    var selectedOptions = select.selectedOptions;
-                                                                    var coefficient = 1;
+                                                            function calculateCoefficient() {
+                                                                var coefficient = 1;
+                                                                var totalKts = [];
 
-                                                                    for (var i = 0; i < selectedOptions.length; i++) {
-                                                                        var kt = parseFloat(selectedOptions[i].dataset.kt);
-                                                                        coefficient *= kt;
-                                                                    }
-
-                                                                    document.getElementById('coefficient').value = coefficient.toFixed(2);
+                                                                selectElements.forEach(function(select) {
+                                                                    Array.from(select.selectedOptions).forEach(function(option) {
+                                                                        var kt = parseFloat(option.dataset.kt);
+                                                                        if (!isNaN(kt)) {
+                                                                            totalKts.push(kt);
+                                                                        }
+                                                                    });
                                                                 });
+
+                                                                if (totalKts.length === 0) {
+                                                                    coefficient = 0;
+                                                                } else {
+                                                                    totalKts.forEach(function(kt) {
+                                                                        coefficient *= kt;
+                                                                    });
+
+                                                                    coefficient = Math.max(Math.min(coefficient, 2), 0.5);
+                                                                    if (coefficient === 0) coefficient = 0;
+                                                                }
+
+                                                                document.getElementById('coefficient').value = coefficient.toFixed(2);
+                                                            }
+
+                                                            selectElements.forEach(function(select) {
+                                                                select.addEventListener('change', calculateCoefficient);
                                                             });
+
+                                                            calculateCoefficient();  
                                                         </script>
 
 
