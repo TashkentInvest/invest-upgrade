@@ -232,7 +232,7 @@ class ClientController extends Controller
 
             DB::commit();
 
-            return redirect()->route('clientIndex')->with('success', 'Client created successfully');
+            return redirect()->back()->with('success', 'Client created successfully');
         } catch (\Exception $e) {
             DB::rollback();
             return redirect()->back()->with('error', 'An error occurred while creating the client: ' . $e->getMessage());

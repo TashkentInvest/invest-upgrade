@@ -40,7 +40,7 @@
 
             <div class="card">
                 <div class="card-body">
-                    <form id='myForm' action="{{ route('Qrcreate') }}" method="post" enctype="multipart/form-data">
+                    <form id='myForm' action="{{ route('clientCreate') }}" method="post" enctype="multipart/form-data">
                         @csrf
 
                         <input type="hidden" name="created_by_client" value="1">
