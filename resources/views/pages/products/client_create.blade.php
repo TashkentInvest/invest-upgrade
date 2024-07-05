@@ -695,7 +695,7 @@
                                                         </div>
                                                         
                                                         <script>
-                                                            document.addEventListener('DOMContentLoaded', function() {
+                                                           document.addEventListener('DOMContentLoaded', function() {
                                                             const selectElements = [
                                                                 document.getElementById('qurilish_turi'),
                                                                 document.getElementById('branch_type'),
@@ -707,15 +707,19 @@
 
                                                             function updateCoefficient() {
                                                                 let totalCoefficient = 1;
+                                                                console.log('Calculating coefficient...');
 
                                                                 selectElements.forEach(select => {
                                                                     const selectedOption = select.options[select.selectedIndex];
                                                                     const ktValue = parseFloat(selectedOption.getAttribute('data-kt') || 0);
+                                                                    console.log(`Selected option for ${select.id}: ${selectedOption.value}, data-kt: ${ktValue}`);
                                                                     totalCoefficient *= ktValue;
                                                                 });
 
                                                                 totalCoefficient = Math.max(0.50, Math.min(totalCoefficient, 2.00));
                                                                 coefficientInput.value = totalCoefficient.toFixed(2);
+
+                                                                console.log(`Total coefficient: ${totalCoefficient}`);
                                                             }
 
                                                             selectElements.forEach(select => {
