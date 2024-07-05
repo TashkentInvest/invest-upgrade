@@ -35,6 +35,14 @@
                             <span>@lang('cruds.branches.title') 2</span>
                         </a>
                     </li>
+
+                    <li class="{{ Request::is('client/confirm') ? 'mm-active' : '' }}">
+                        <a href="{{ route('clientFormConfirm') }}"
+                            class=" waves-effect {{ Request::is('client/confirm') ? 'mm-active' : '' }}">
+                            <i class="bx bx-map-alt"></i>
+                            <span>clientFormConfirm</span>
+                        </a>
+                    </li>
                 @endcan
 
 
@@ -184,8 +192,6 @@
                             <span>@lang('cruds.construction.title')</span>
                         </a>
                     </li>
-
-                 
                 @endcan
 
                 <li class="{{ Request::is('chat*') ? 'mm-active' : '' }}">

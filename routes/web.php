@@ -65,6 +65,7 @@ Route::group(['middleware' => ['auth', 'checkUserRole']], function () {
     });
     Route::get('/apz-second', [ClientController::class, 'apz_second'])->name('apz.second');
     Route::get('/client/create', [ClientController::class, 'client_create'])->name('clientFormCreate');
+    Route::get('/client/confirm', [ClientController::class, 'client_confirm'])->name('clientFormConfirm');
 
     // Permissions
     Route::prefix('permissions')->group(function () {
