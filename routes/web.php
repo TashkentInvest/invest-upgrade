@@ -25,6 +25,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/client/create', [ClientController::class, 'client_create'])->name('clientFormCreate');
+
+
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::get('/statistics', [HomeController::class, 'statistics'])->name('statistics.show');
 // Web pages
@@ -64,7 +67,6 @@ Route::group(['middleware' => ['auth', 'checkUserRole']], function () {
         Route::post('/toggle-status/{id}', [ClientController::class, 'toggleclientActivation'])->name('clientActivation');
     });
     Route::get('/apz-second', [ClientController::class, 'apz_second'])->name('apz.second');
-    Route::get('/client/create', [ClientController::class, 'client_create'])->name('clientFormCreate');
     Route::get('/client/confirm', [ClientController::class, 'client_confirm'])->name('clientFormConfirm');
 
     // Permissions
