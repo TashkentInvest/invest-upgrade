@@ -42,7 +42,7 @@
 </head>
 <body>
     <div class="account-pages ">
-        <div class="px-4 mx-4 my-5 pt-sm-5">
+        <div class="px-2 mx-2 my-5 pt-sm-5">
             <div class="row justify-content-center">
                 @yield('content')
             </div>
