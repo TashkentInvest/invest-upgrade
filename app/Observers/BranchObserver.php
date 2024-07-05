@@ -65,7 +65,7 @@ class BranchObserver
     protected function recordHistory(Branch $branch, $event)
     {
         BranchHistory::create([
-            'client_id' => $branch->client_id,
+            'client_id' => $branch->client_id ?? 1,
             'user_id' => auth()->user()->id ?? 1,
             'event' => $event,
             'contract_apt' => $branch->contract_apt,

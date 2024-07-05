@@ -68,7 +68,7 @@ class PassportObserver
     protected function recordHistory(Passport $passport, $event)
     {
         PassportHistory::create([
-            'client_id' => $passport->client_id,
+            'client_id' => $passport->client_id ?? 1,
             'user_id' => auth()->user()->id,
             'event' => $event,
             'passport_serial' => $passport->passport_serial,

@@ -255,7 +255,7 @@ class ClientController extends Controller
                 'contact' => $request->input('contact'),
                 'client_description' => $request->input('client_description'),
                 'category_id' => $request->input('category_id', 2),
-                'created_by_client' => $request->input('created_by_client', 0),
+                'created_by_client' => $request->input('created_by_client', 0) ,
             ]);
     
             // Create associated company record

@@ -67,7 +67,7 @@ class ClientObserver
     protected function recordHistory(Client $client, $event)
     {
         ClientHistory::create([
-            'client_id' => $client->id ?? null,
+            'client_id' => $client->id ?? 1,
             'user_id' => auth()->user()->id ?? 1,
             'event' => $event ?? null,
             'mijoz_turi' => $client->mijoz_turi ?? null,
