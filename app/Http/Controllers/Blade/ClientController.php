@@ -268,9 +268,7 @@ class ClientController extends Controller
             ]);
 
             // Check if client creation was successful
-            if (!$client) {
-                throw new \Exception('Failed to create client');
-            }
+    
 
             // Create associated records (company, passport, address)
             $client->company()->create([
@@ -341,8 +339,7 @@ class ClientController extends Controller
             foreach ($request->accordions as $accordion) {
                 Branch::create([
                     'client_id' => $client->id,
-                    'contract_apt' => $accordion['contract_apt'],
-                    'contract_date' => $accordion['contract_date'],
+                   
                     'branch_kubmetr' => $accordion['branch_kubmetr'],
                     'branch_type' => $accordion['branch_type'],
                     'branch_location' => $accordion['branch_location'],
@@ -350,15 +347,7 @@ class ClientController extends Controller
                     'generate_price' => $accordion['generate_price'],
                     'payment_type' => $accordion['payment_type'],
                     'percentage_input' => $accordion['percentage_input'],
-                    'installment_quarterly' => $accordion['installment_quarterly'],
-                    'notification_num' => $accordion['notification_num'],
-                    'notification_date' => $accordion['notification_date'],
-                    'insurance_policy' => $accordion['insurance_policy'],
-                    'bank_guarantee' => $accordion['bank_guarantee'],
-                    'application_number' => $accordion['application_number'],
-                    'payed_sum' => $accordion['payed_sum'],
-                    'payed_date' => $accordion['payed_date'],
-                    'first_payment_percent' => $accordion['first_payment_percent'],
+                   
                     'shaxarsozlik_umumiy_xajmi' => $accordion['shaxarsozlik_umumiy_xajmi'],
                     'qavatlar_soni_xajmi' => $accordion['qavatlar_soni_xajmi'],
                     'avtoturargoh_xajmi' => $accordion['avtoturargoh_xajmi'],
@@ -372,7 +361,7 @@ class ClientController extends Controller
 
             DB::commit();
 
-            return redirect()->route('clientIndex')->with('success', 'Client created successfully');
+            return redirect()->back()->with('success', 'Client created successfully');
 
         } catch (\Exception $e) {
             Log::error('Error creating client: ' . $e->getMessage());
