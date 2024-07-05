@@ -893,11 +893,12 @@
                                         </div>
                                     </div>
                                 </div>
+                                <button class="btn btn-success mt-3" type="submit">Save</button>
+
                                 <div id="addAccordion" class="btn btn-primary mt-3">Добавить объект
 
                                 </div>
                                 <!-- Confirm Details -->
-                                <button class="btn btn-success mt-3" type="submit">Save</button>
 
                         </div>
                     </form>
