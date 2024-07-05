@@ -585,18 +585,30 @@
                                                         <div class="col-12 col-md-6 col-lg-6 col-xl-6">
                                                             <div class="mb-3">
                                                                 <label for="qurilish_turi">@lang('global.qurilish_turi')</label>
-                                                                <textarea class="form-control" name="accordions[0][qurilish_turi]"
-                                                                    placeholder="@lang('global.qurilish_turi')">{{ old('accordions.0.qurilish_turi') }}</textarea>
-                                                                @error('accordions.0.qurilish_turi')
-                                                                <span class="error invalid-feedback">{{ $message }}</span>
-                                                                @enderror
+                                                                <select class="form-control" name="accordions[0][qurilish_turi]" id="qurilish_turi">
+                                                                    <option value="">@lang('global.qurilish_turi')</option>
+                                                                    <option value="Yangi kapital qurilish">
+                                                                        Yangi kapital qurilish
+                                                                    </option>
+                                                                    <option value="Obyektni rekonstruksiya qilish (koeffitsiyent obyetkga qo‘shilgan qurilish hajmiga hisoblanadi)">
+                                                                        Obyektni rekonstruksiya qilish (koeffitsiyent obyetkga qo‘shilgan qurilish hajmiga hisoblanadi)
+                                                                    </option>
+                                                                    <option value="O‘zbekiston Respublikasi Shaharsozlik kodeksiga muvofiq loyiha-smeta hujjatlari ekpertizasi talab etilmaydigan obyektlarini rekonstruksiya qilish">
+                                                                        O‘zbekiston Respublikasi Shaharsozlik kodeksiga muvofiq loyiha-smeta hujjatlari ekpertizasi talab etilmaydigan obyektlarini rekonstruksiya qilish
+                                                                    </option>
+                                                                    <option value="Obyektni qurilish hajmini o‘zgartirmagan holda rekonstruksiya qilish">
+                                                                        Obyektni qurilish hajmini o‘zgartirmagan holda rekonstruksiya qilish
+                                                                    </option>
+                                                                </select>
+
                                                             </div>
                                                         </div>
+                                                        
                                                         <div class="col-12 col-md-6 col-lg-6 col-xl-6">
                                                             <div class="mb-3">
                                                                 <label for="coefficient">@lang('global.coefficient')</label>
                                                                 <input type="number" step="0.01" class="form-control" name="accordions[0][coefficient]"
-                                                                    placeholder="@lang('global.coefficient')" value="{{ old('accordions.0.coefficient') }}">
+                                                                    placeholder="@lang('global.coefficient')" value="{{ old('accordions.0.coefficient') }}" readonly disabled>
                                                                 @error('accordions.0.coefficient')
                                                                 <span class="error invalid-feedback">{{ $message }}</span>
                                                                 @enderror
@@ -748,16 +760,21 @@
                                                         <div class="col-12 col-md-6 col-lg-6 col-xl-4">
                                                             <div class="mb-3">
                                                                 <label for="branch_location">@lang('cruds.company.fields.branch_location')</label>
-                                                                <input type="text" class="form-control"
-                                                                    name="accordions[0][branch_location]"
-                                                                    value="{{ old('accordions.0.branch_location') }}"
-                                                                    placeholder="@lang('cruds.company.fields.branch_location')">
+                                                                <select class="form-control" name="accordions[0][branch_location]" id="branch_location">
+                                                                    <option value="">@lang('global.select_branch_location')</option>
+                                                                    <option value="Metro bekatidan chiqish joyidan obyekt chegarasig‘acha 200 metr radius oralig‘i hududlardan boshqa hududlarda joylashgan loyihaviy binolar (inshootlar)">
+                                                                        Metro bekatidan chiqish joyidan obyekt chegarasig‘acha 200 metr radius oralig‘i hududlardan boshqa hududlarda joylashgan loyihaviy binolar (inshootlar)
+                                                                    </option>
+                                                                    <option value="Mazkur bo‘limning 1-qatorida ko‘rsatilmagan boshqa obyektlar">
+                                                                        Mazkur bo‘limning 1-qatorida ko‘rsatilmagan boshqa obyektlar
+                                                                    </option>
+                                                                </select>
                                                                 @error('accordions.0.branch_location')
-                                                                    <span
-                                                                        class="error invalid-feedback">{{ $message }}</span>
+                                                                <span class="error invalid-feedback">{{ $message }}</span>
                                                                 @enderror
                                                             </div>
                                                         </div>
+                                                        
                                                         <div class="col-12 col-md-6 col-lg-6 col-xl-4">
                                                             <div class="mb-3">
                                                                 <label
