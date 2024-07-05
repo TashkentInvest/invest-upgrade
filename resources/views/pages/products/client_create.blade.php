@@ -9,6 +9,9 @@
             color: var(--bs-gray-700);
             display: none !important;
         }
+        .accordion-body{
+            padding: 0 !important;
+        }
     </style>
 
 
@@ -398,21 +401,7 @@
                                         }
 
 
-                                        function updateQuarterlyPaymentSchedule(parentAccordion, quarterlyPayment, quarterlyCount) {
-                                            let quarterlyPaymentSchedule = parentAccordion.find('.quarterly-payment-schedule');
-                                            quarterlyPaymentSchedule.empty();
-                                            let totalQuarterlyPayment = 0;
-                                            for (let i = 1; i <= quarterlyCount; i++) {
-                                                quarterlyPaymentSchedule.append(
-                                                    `<tr>
-                                                    <td>Chorak ${i}</td>
-                                                    <td>${Math.round(quarterlyPayment)}</td>
-                                                </tr>`
-                                                );
-                                                totalQuarterlyPayment += quarterlyPayment;
-                                            }
-                                            parentAccordion.find('.total-quarterly-payment').text(Math.round(totalQuarterlyPayment));
-                                        }
+                                       
 
                                         $(document).on('change', '.payment-type', function() {
                                             let parentAccordion = $(this).closest('.accordion-body');
@@ -645,7 +634,7 @@
                                                                 @enderror
                                                             </div>
                                                         </div>
-                                                        <div class="col-lg-6">
+                                                        <div class="col-12 col-md-6 col-lg-6 col-xl-4">
                                                             <div class="mb-3">
                                                                 <label
                                                                     for="basicpill-card-verification-input">@lang('global.bazaviy_xisoblash_miqdori')</label>
@@ -660,7 +649,7 @@
                                                                 @enderror
                                                             </div>
                                                         </div>
-                                                        <div class="col-lg-6">
+                                                        <div class="col-12 col-md-6 col-lg-6 col-xl-4">
                                                             <div class="mb-3">
                                                                 <label
                                                                     for="basicpill-card-verification-input">@lang('global.jami_tolanishi_kerak')</label>
@@ -677,7 +666,7 @@
                                                     </div>
 
                                                     <div class="row">
-                                                        <div class="col-12 col-md-6 col-lg-6 col-xl-4">
+                                                        <div class="col-12 col-md-6 col-lg-6 col-xl-3">
                                                             <div class="mb-3">
                                                                 <label>@lang('global.tolash_turlari')</label>
                                                                 <select class="form-select payment-type"
@@ -695,7 +684,7 @@
                                                                 @enderror
                                                             </div>
                                                         </div>
-                                                        <div class="col-12 col-md-6 col-lg-6 col-xl-4">
+                                                        <div class="col-12 col-md-6 col-lg-6 col-xl-3">
                                                             <div class="mb-3">
                                                                 <label for="percentage-input">@lang('global.bolib_tolash_foizi_oldindan')</label>
                                                                 <div class="input-group">
@@ -712,7 +701,7 @@
                                                                 @enderror
                                                             </div>
                                                         </div>
-                                                        <div class="col-12 col-md-6 col-lg-6 col-xl-4">
+                                                        <div class="col-12 col-md-6 col-lg-6 col-xl-3">
                                                             <div class="mb-3">
                                                                 <label for="quarterly-input">@lang('global.bolib_tolash_har_chorakda')</label>
                                                                 <input type="number" class="form-control quarterly-input"
@@ -725,7 +714,7 @@
                                                                 @enderror
                                                             </div>
                                                         </div>
-                                                        <div class="col-12 col-md-6 col-lg-6 col-xl-4">
+                                                        <div class="col-12 col-md-6 col-lg-6 col-xl-3">
                                                             <div class="mb-3">
                                                                 <label
                                                                     for="calculated-quarterly-payment">@lang('global.quarterly_payment')</label>
@@ -741,32 +730,15 @@
                                                         </div>
                                                     </div>
 
-                                                    <div class="row">
-                                                        <div class="col-lg-12">
-                                                            <table class="table">
-                                                                <thead>
-                                                                    <tr>
-                                                                        <th>Chorak</th>
-                                                                        <th>To'lanadigan miqdor</th>
-                                                                    </tr>
-                                                                </thead>
-                                                                <tbody class="quarterly-payment-schedule">
-                                                                </tbody>
-                                                                <tfoot>
-                                                                    <tr>
-                                                                        <th>Jami</th>
-                                                                        <th class="total-quarterly-payment">0.00</th>
-                                                                    </tr>
-                                                                </tfoot>
-                                                            </table>
-                                                        </div>
-                                                    </div>
+                                                   
                                                 </main>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div id="addAccordion" class="btn btn-primary mt-3">Add Accordion</div>
+                                <div id="addAccordion" class="btn btn-primary mt-3">Добавить объект
+
+                                </div>
                                 <!-- Confirm Details -->
 
                         </div>
