@@ -693,44 +693,42 @@
                                                                 @enderror
                                                             </div>
                                                         </div>
-                                                        
                                                         <script>
-                                                           document.addEventListener('DOMContentLoaded', function() {
-                                                            const selectElements = [
-                                                                document.getElementById('qurilish_turi'),
-                                                                document.getElementById('branch_type'),
-                                                                document.getElementById('zona'),
-                                                                document.getElementById('branch_location')
-                                                            ];
-
-                                                            const coefficientInput = document.getElementById('coefficient');
-
-                                                            function updateCoefficient() {
-                                                                let totalCoefficient = 1;
-                                                                console.log('Calculating coefficient...');
-
+                                                            document.addEventListener('DOMContentLoaded', function() {
+                                                                const selectElements = [
+                                                                    document.getElementById('qurilish_turi'),
+                                                                    document.getElementById('branch_type'),
+                                                                    document.getElementById('zona'),
+                                                                    document.getElementById('branch_location')
+                                                                ];
+                                                        
+                                                                const coefficientInput = document.getElementById('coefficient');
+                                                        
+                                                                function updateCoefficient() {
+                                                                    let totalCoefficient = 1;
+                                                                    console.log('Calculating coefficient...');
+                                                        
+                                                                    selectElements.forEach(select => {
+                                                                        const selectedOption = select.options[select.selectedIndex];
+                                                                        const ktValue = parseFloat(selectedOption.getAttribute('data-kt') || 0);
+                                                                        console.log(`Selected option for ${select.id}: ${selectedOption.value}, data-kt: ${ktValue}`);
+                                                                        totalCoefficient *= ktValue;
+                                                                    });
+                                                        
+                                                                    totalCoefficient = Math.max(0.50, Math.min(totalCoefficient, 2.00));
+                                                                    coefficientInput.value = totalCoefficient.toFixed(2);
+                                                        
+                                                                    console.log(`Total coefficient: ${totalCoefficient}`);
+                                                                }
+                                                        
                                                                 selectElements.forEach(select => {
-                                                                    const selectedOption = select.options[select.selectedIndex];
-                                                                    const ktValue = parseFloat(selectedOption.getAttribute('data-kt') || 0);
-                                                                    console.log(`Selected option for ${select.id}: ${selectedOption.value}, data-kt: ${ktValue}`);
-                                                                    totalCoefficient *= ktValue;
+                                                                    select.addEventListener('change', updateCoefficient);
                                                                 });
-
-                                                                totalCoefficient = Math.max(0.50, Math.min(totalCoefficient, 2.00));
-                                                                coefficientInput.value = totalCoefficient.toFixed(2);
-
-                                                                console.log(`Total coefficient: ${totalCoefficient}`);
-                                                            }
-
-                                                            selectElements.forEach(select => {
-                                                                select.addEventListener('change', updateCoefficient);
+                                                        
+                                                                updateCoefficient();
                                                             });
-
-                                                            updateCoefficient();
-                                                        });
-
-    
                                                         </script>
+                                                        
 
                                                         <!-- End new fields -->
                                                     </div>
