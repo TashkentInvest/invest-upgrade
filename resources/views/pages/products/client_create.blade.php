@@ -456,35 +456,7 @@
                                             aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
                                             <div class="accordion-body text-muted">
                                                 <main class="main_of_objects">
-                                                    <div class="row">
-                                                        <div class="col-12 col-md-6 col-lg-6 col-xl-6">
-                                                            <div class="mb-3">
-                                                                <label for="contract_apt">@lang('global.ruxsatnoma_raqami')</label>
-                                                                <input type="text" class="form-control"
-                                                                    name="accordions[0][contract_apt]"
-                                                                    placeholder="@lang('global.ruxsatnoma_raqami')"
-                                                                    value="{{ old('accordions.0.contract_apt') }}">
-                                                                @error('accordions.0.contract_apt')
-                                                                    <span
-                                                                        class="error invalid-feedback">{{ $message }}</span>
-                                                                @enderror
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-12 col-md-6 col-lg-6 col-xl-6">
-                                                            <div class="mb-3">
-                                                                <label for="contract_date">@lang('global.sanasi')</label>
-                                                                <input class="form-control" type="date"
-                                                                    name="accordions[0][contract_date]"
-                                                                    value="{{ old('accordions.0.contract_date') }}">
-                                                                @error('accordions.0.contract_date')
-                                                                    <span
-                                                                        class="error invalid-feedback">{{ $message }}</span>
-                                                                @enderror
-                                                            </div>
-                                                        </div>
-
-                                                    </div>
-
+                                                   
                                                     <div class="row">
                                                         <div class="col-12 col-md-6 col-lg-6 col-xl-4">
                                                             <div class="mb-3">
@@ -500,45 +472,7 @@
                                                                 @enderror
                                                             </div>
                                                         </div>
-                                                        <div class="col-12 col-md-6 col-lg-6 col-xl-4">
-                                                            <div class="mb-3">
-                                                                <label for="notification_date">@lang('cruds.branches.fields.notification_date')</label>
-                                                                <input type="date" class="form-control"
-                                                                    name="accordions[0][notification_date]"
-                                                                    placeholder="@lang('cruds.branches.fields.notification_date')"
-                                                                    value="{{ old('accordions.0.notification_date') }}">
-                                                                @error('accordions.0.notification_date')
-                                                                    <span
-                                                                        class="error invalid-feedback">{{ $message }}</span>
-                                                                @enderror
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-12 col-md-6 col-lg-6 col-xl-4">
-                                                            <div class="mb-3">
-                                                                <label for="insurance_policy">@lang('cruds.branches.fields.insurance_policy')</label>
-                                                                <input type="text" class="form-control"
-                                                                    name="accordions[0][insurance_policy]"
-                                                                    placeholder="@lang('cruds.branches.fields.insurance_policy')"
-                                                                    value="{{ old('accordions.0.insurance_policy') }}">
-                                                                @error('accordions.0.insurance_policy')
-                                                                    <span
-                                                                        class="error invalid-feedback">{{ $message }}</span>
-                                                                @enderror
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-12 col-md-6 col-lg-6 col-xl-4">
-                                                            <div class="mb-3">
-                                                                <label for="bank_guarantee">@lang('cruds.branches.fields.bank_guarantee')</label>
-                                                                <input type="text" class="form-control"
-                                                                    name="accordions[0][bank_guarantee]"
-                                                                    placeholder="@lang('cruds.branches.fields.bank_guarantee')"
-                                                                    value="{{ old('accordions.0.bank_guarantee') }}">
-                                                                @error('accordions.0.bank_guarantee')
-                                                                    <span
-                                                                        class="error invalid-feedback">{{ $message }}</span>
-                                                                @enderror
-                                                            </div>
-                                                        </div>
+                                                   
 
 
                                                         <!-- New fields -->
@@ -795,46 +729,7 @@
                                                     </div>
 
                                                     <div class="row">
-                                                        <div class="col-12 col-md-6 col-lg-4 col-xl-4">
-                                                            <div class="mb-3">
-                                                                <label for="application_number">@lang('cruds.branches.fields.application_number')</label>
-                                                                <input type="text" class="form-control"
-                                                                    name="accordions[0][application_number]"
-                                                                    placeholder="@lang('cruds.branches.fields.application_number')"
-                                                                    value="{{ old('accordions.0.application_number') }}">
-                                                                @error('accordions.0.application_number')
-                                                                    <span
-                                                                        class="error invalid-feedback">{{ $message }}</span>
-                                                                @enderror
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-12 col-md-6 col-lg-4 col-xl-4">
-                                                            <div class="mb-3">
-                                                                <label for="payed_sum">@lang('cruds.branches.fields.payed_sum')</label>
-                                                                <input type="text" class="form-control"
-                                                                    name="accordions[0][payed_sum]"
-                                                                    placeholder="@lang('cruds.branches.fields.payed_sum')"
-                                                                    value="{{ old('accordions.0.payed_sum') }}">
-                                                                @error('accordions.0.payed_sum')
-                                                                    <span
-                                                                        class="error invalid-feedback">{{ $message }}</span>
-                                                                @enderror
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-12 col-md-12 col-lg-4 col-xl-4">
-                                                            <div class="mb-3">
-                                                                <label for="payed_date">@lang('cruds.branches.fields.payed_date')</label>
-                                                                <input type="date" class="form-control"
-                                                                    name="accordions[0][payed_date]"
-                                                                    placeholder="@lang('cruds.branches.fields.payed_date')"
-                                                                    value="{{ old('accordions.0.payed_date') }}">
-                                                                @error('accordions.0.payed_date')
-                                                                    <span
-                                                                        class="error invalid-feedback">{{ $message }}</span>
-                                                                @enderror
-                                                            </div>
-                                                        </div>
-                                                    </div>
+                                                     
 
                                                     <div class="row">
                                                         <div class="col-12 col-md-6 col-lg-6 col-xl-4">

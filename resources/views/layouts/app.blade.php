@@ -48,6 +48,33 @@
     <div class="account-pages ">
         <div class="px-2 mx-2 my-5 pt-sm-5">
             <div class="row justify-content-center">
+                <div class="dropdown d-inline-block">
+
+                    <button type="button" class="btn header-item waves-effect" data-bs-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">
+                        @if (session('locale') == 'uz')
+                            <img id="header-lang-img" src="{{ asset('assets/images/flags/uzbekistan.jpg') }}"
+                                alt="Header Language" height="16">
+                        @else
+                            <img id="header-lang-img" src="{{ asset('assets/images/flags/russia.jpg') }}"
+                                alt="Header Language" height="16">
+                        @endif
+                    </button>
+                    <div class="dropdown-menu dropdown-menu-end">
+                        <!-- item-->
+
+                        <a href="{{ route('changelang', 'ru') }}" class="dropdown-item notify-item language"
+                            data-lang="ru">
+                            <img src="{{ asset('assets/images/flags/russia.jpg') }}" alt="user-image"
+                                class="me-1" height="12"> <span class="align-middle">Русский</span>
+                        </a>
+                        <a href="{{ route('changelang', 'uz') }}" class="dropdown-item notify-item language"
+                            data-lang="uz">
+                            <img src="{{ asset('assets/images/flags/uzbekistan.jpg') }}" alt="user-image"
+                                class="me-1" height="12"> <span class="align-middle">O'zbekcha</span>
+                        </a>
+                    </div>
+                </div>
                 @yield('content')
             </div>
         </div>
