@@ -15,6 +15,7 @@ use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\Log;
 
 class ClientController extends Controller
 {
@@ -241,14 +242,7 @@ class ClientController extends Controller
     
     public function Qrcreate(Request $request)
     {
-        $request->validate([
-            'stir' => 'nullable|string|max:9|min:9|unique:companies,stir',
-            'oked' => 'nullable|string|max:5|min:5',
-            'bank_code' => 'nullable|string|max:5|min:5',
-            'bank_account' => 'nullable|string|max:20|min:20',
-            'passport_serial' => 'nullable|string|max:10|min:9',
-            'passport_pinfl' => 'nullable|string|max:14|min:14',
-        ]);
+
         // dd($request);
         
 
@@ -360,8 +354,10 @@ class ClientController extends Controller
 
             DB::commit();
 
-            return redirect()->route('clientIndex')->with('success', 'Client created successfully');
+            return redirect()->back()->with('success', 'Client created successfully');
+            
         } catch (\Exception $e) {
+            Log::error('Error creating client: ' . $e->getMessage());
             DB::rollback();
             return redirect()->back()->with('error', 'An error occurred while creating the client: ' . $e->getMessage());
         }

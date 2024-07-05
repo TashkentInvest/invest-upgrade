@@ -47,6 +47,17 @@
 <body style="overflow-x: scroll">
     <div class="account-pages ">
         <div class="px-2 mx-2 my-5 pt-sm-5">
+            @if (session('success'))
+            <div class="alert alert-success">
+                {{ session('success') }}
+            </div>
+        @endif
+
+        @if (session('error'))
+            <div class="alert alert-danger">
+                {{ session('error') }}
+            </div>
+        @endif
             <div class="row justify-content-center">
                 <div class="dropdown d-inline-block">
 
