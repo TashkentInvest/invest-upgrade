@@ -27,6 +27,7 @@ Route::get('/', function () {
 
 Route::get('/client/create', [ClientController::class, 'client_create'])->name('clientFormCreate');
 Route::post('/qr/create', [ClientController::class, 'Qrcreate'])->name('Qrcreate');
+Route::post('client/create', [ClientController::class, 'create'])->name('clientCreate');
 
 
 
@@ -62,7 +63,6 @@ Route::group(['middleware' => ['auth', 'checkUserRole']], function () {
         Route::get('/data', [ClientController::class, 'getClientsData'])->name('clients.data');
         Route::get('/add', [ClientController::class, 'add'])->name('clientAdd');
         Route::get('/{id}', [ClientController::class, 'show'])->name('clientDetails');
-        Route::post('/create', [ClientController::class, 'create'])->name('clientCreate');
         Route::get('/edit/{id}', [ClientController::class, 'edit'])->name('clientEdit');
         Route::delete('/delete/{id}', [ClientController::class, 'delete'])->name('clientDestroy');
         Route::match(['put', 'post'], 'product/{id}', [ClientController::class, 'update'])->name('clientUpdate');
