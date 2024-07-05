@@ -291,7 +291,7 @@ class ClientController extends Controller
                 'company_location' => $request->get('company_location') ?? null,
             ]);
 
-          
+          dd($request);
 
 
             foreach ($request->accordions as $accordion) {
