@@ -71,7 +71,7 @@ class ClientController extends Controller
             ->with(['category', 'company', 'branches', 'address', 'passport', 'files'])
             ->where('is_deleted', '!=', 1)
             ->where('created_by_client', '=', 1)
-            ->orderBy('status', 'desc')
+            ->orderBy('id', 'desc')
             ->paginate(25);
     
         return view('pages.products.apz_second', compact('clients','categories'));
@@ -330,7 +330,7 @@ class ClientController extends Controller
 
             DB::commit();
 
-            return redirect()->route('clientIndex')->with('success', 'Client created successfully');
+            return redirect()->back()->with('success', 'Client created successfully');
         } catch (\Exception $e) {
             DB::rollback();
             return redirect()->back()->with('error', 'An error occurred while creating the client: ' . $e->getMessage());
