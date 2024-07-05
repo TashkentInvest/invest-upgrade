@@ -40,7 +40,7 @@
 }
     </style>
 </head>
-<body>
+<body style="overflow-x: scroll">
     <div class="account-pages ">
         <div class="px-2 mx-2 my-5 pt-sm-5">
             <div class="row justify-content-center">
