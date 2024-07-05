@@ -32,6 +32,14 @@ class Branch extends Model
         'payed_sum',
         'payed_date',
         'first_payment_percent',
+        'shaxarsozlik_umumiy_xajmi',
+        'qavatlar_soni_xajmi',
+        'avtoturargoh_xajmi',
+        'qavat_xona_xajmi',
+        'umumiy_foydalanishdagi_xajmi',
+        'qurilish_turi',
+        'coefficient',
+        'zona'
     ];
 
 
