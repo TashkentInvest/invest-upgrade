@@ -761,7 +761,7 @@
                                                             <div class="mb-3">
                                                                 <label for="branch_location">@lang('cruds.company.fields.branch_location')</label>
                                                                 <select class="form-control" name="accordions[0][branch_location]" id="branch_location">
-                                                                    <option value="">@lang('global.select_branch_location')</option>
+                                                                    <option value="">@lang('cruds.company.fields.branch_location')</option>
                                                                     <option value="Metro bekatidan chiqish joyidan obyekt chegarasig‘acha 200 metr radius oralig‘i hududlardan boshqa hududlarda joylashgan loyihaviy binolar (inshootlar)">
                                                                         Metro bekatidan chiqish joyidan obyekt chegarasig‘acha 200 metr radius oralig‘i hududlardan boshqa hududlarda joylashgan loyihaviy binolar (inshootlar)
                                                                     </option>

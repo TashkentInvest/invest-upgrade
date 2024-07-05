@@ -363,7 +363,8 @@ class ClientController extends Controller
     
             $currentPage = $request->input('page', 1);
     
-            return redirect()->route('clientIndex', ['page' => $currentPage])->with('success', 'Product updated successfully');
+            return redirect()->back()->with('success', 'Product updated successfully');
+            // return redirect()->route('clientIndex', ['page' => $currentPage])->with('success', 'Product updated successfully');
         } catch (\Exception $e) {
             DB::rollback();
     
