@@ -200,6 +200,17 @@ class ClientController extends Controller
                     'payed_sum' => $accordion['payed_sum'] ?? null,
                     'payed_date' => $accordion['payed_date'] ?? null,
                     'first_payment_percent' => $accordion['first_payment_percent'] ?? null,
+
+                    'shaxarsozlik_umumiy_xajmi' => $accordion['shaxarsozlik_umumiy_xajmi'] ?? null,
+                    'qavatlar_soni_xajmi' => $accordion['qavatlar_soni_xajmi'] ?? null,
+                    'avtoturargoh_xajmi' => $accordion['avtoturargoh_xajmi'] ?? null,
+                    'qavat_xona_xajmi' => $accordion['qavat_xona_xajmi'] ?? null,
+                    'umumiy_foydalanishdagi_xajmi' => $accordion['umumiy_foydalanishdagi_xajmi'] ?? null,
+                    'qurilish_turi' => $accordion['qurilish_turi'] ?? null,
+                    'coefficient' => $accordion['coefficient'] ?? null,
+                    'zona' => $accordion['zona'] ?? null,
+                    'created_by_client' => $accordion['created_by_client'] ?? null,
+                    'confirmed_for_client' => $accordion['confirmed_for_client'] ?? null,
                 ]);
             }
 

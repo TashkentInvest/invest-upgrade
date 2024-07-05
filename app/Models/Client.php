@@ -20,7 +20,9 @@ class Client extends Model
         'status',
         'client_description',
         'category_id',
-        'is_qonuniy'
+        'is_qonuniy',
+        'created_by_client',
+        'confirmed_for_client'
     ];
 
 

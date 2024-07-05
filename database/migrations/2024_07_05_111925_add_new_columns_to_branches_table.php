@@ -22,8 +22,7 @@ class AddNewColumnsToBranchesTable extends Migration
             $table->text('qurilish_turi')->nullable();
             $table->decimal('coefficient', 8, 2)->nullable();
             $table->string('zona')->nullable();
-            $table->integer('created_by_client')->default(0);
-            $table->integer('confirmed_for_client')->default(0);
+
 
         });
     }
