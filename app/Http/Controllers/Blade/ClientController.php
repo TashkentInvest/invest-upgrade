@@ -67,15 +67,20 @@ class ClientController extends Controller
 
     public function client_confirm()
     {
-        $categories = Category::get()->all();
-        $clients = Client::deepFilters()
-            ->with(['category', 'company', 'branches', 'address', 'passport', 'files'])
-            ->where('is_deleted', '!=', 1)
-            ->where('created_by_client', '=', 1)
-            ->orderBy('id', 'desc')
-            ->paginate(25);
+        try {
+            $categories = Category::all();
+            $clients = Client::deepFilters()
+                ->with(['category', 'company', 'branches', 'address', 'passport', 'files'])
+                ->where('is_deleted', '!=', 1)
+                ->where('created_by_client', '=', 1)
+                ->orderBy('id', 'desc')
+                ->paginate(25);
     
-        return view('pages.products.apz_second', compact('clients','categories'));
+            return view('pages.products.apz_second', compact('clients', 'categories'));
+        } catch (\Exception $e) {
+            dd('Error in client_confirm: ' . $e->getMessage());
+            return redirect()->back()->with('error', 'An error occurred while fetching clients: ' . $e->getMessage());
+        }
     }
     
     
