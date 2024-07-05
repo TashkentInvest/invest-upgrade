@@ -240,135 +240,145 @@ class ClientController extends Controller
     }
 
     
+  
     public function Qrcreate(Request $request)
     {
         DB::beginTransaction();
-
-        try {
-            // Validate request data
-            $request->validate([
-                'stir' => 'nullable|string|max:9|min:9|unique:companies,stir',
-                'oked' => 'nullable|string|max:5|min:5',
-                'bank_code' => 'nullable|string|max:5|min:5',
-                'bank_account' => 'nullable|string|max:20|min:20',
-                'passport_serial' => 'nullable|string|max:10|min:9',
-                'passport_pinfl' => 'nullable|string|max:14|min:14',
-            ]);
-
-            // Create Client record
-            $client = Client::create([
-                'first_name' => $request->input('first_name'),
-                'last_name' => $request->input('last_name'),
-                'father_name' => $request->input('father_name'),
-                'mijoz_turi' => $request->input('mijoz_turi'),
-                'contact' => $request->input('contact'),
-                'client_description' => $request->input('client_description'),
-                'category_id' => $request->input('category_id', 2),
-                'created_by_client' => $request->input('created_by_client', 0),
-            ]);
-
-            // Check if client creation was successful
     
-
+        try {
+            // Create Client record
+            $client = $this->createClient($request);
+    
             // Create associated records (company, passport, address)
-            $client->company()->create([
-                'company_name' => $request->input('company_name'),
-                'raxbar' => $request->input('raxbar'),
-                'bank_code' => $request->input('bank_code'),
-                'bank_service' => $request->input('bank_service'),
-                'bank_account' => $request->input('bank_account'),
-                'stir' => $request->input('stir'),
-                'oked' => $request->input('oked'),
-                'minimum_wage' => $request->input('minimum_wage'),
-            ]);
-
-            $client->passport()->create([
-                'passport_serial' => $request->input('passport_serial'),
-                'passport_pinfl' => $request->input('passport_pinfl'),
-                'passport_date' => $request->input('passport_date'),
-                'passport_location' => $request->input('passport_location'),
-                'passport_type' => $request->input('passport_type', 0),
-            ]);
-
-            $client->address()->create([
-                'yuridik_address' => $request->input('yuridik_address'),
-                'home_address' => $request->input('home_address'),
-                'company_location' => $request->input('company_location'),
-            ]);
-
-            // Function to handle file uploads
-            function handleFileUploadProductQ($files, $client, $folder)
-            {
-                foreach ($files as $file) {
-                    try {
-                        $originalName = pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME);
-                        $extension = $file->getClientOriginalExtension();
-                        $date = date('Ymd_His');
-                        $fileName = $originalName . '_' . $date . '.' . $extension;
-                        $file->move(public_path('assets/' . $folder), $fileName);
-
-                        $fileModel = new File();
-                        $fileModel->client_id = $client->id;
-                        $fileModel->path = 'assets/' . $folder . '/' . $fileName;
-                        $fileModel->save();
-                    } catch (\Exception $e) {
-                        Log::error('Error uploading file: ' . $e->getMessage());
-                        throw $e; // Re-throw exception to trigger rollback
-                    }
-                }
-            }
-
-            // Process file uploads for different types of documents
-            if ($request->hasFile('document')) {
-                handleFileUploadProductQ($request->file('document'), $client, 'documents');
-            }
-
-            if ($request->hasFile('document_payment')) {
-                handleFileUploadProductQ($request->file('document_payment'), $client, 'payment');
-            }
-
-            if ($request->hasFile('document_ruxsatnoma')) {
-                handleFileUploadProductQ($request->file('document_ruxsatnoma'), $client, 'ruxsatnoma');
-            }
-
-            if ($request->hasFile('document_kengash')) {
-                handleFileUploadProductQ($request->file('document_kengash'), $client, 'kengash');
-            }
-
+            $this->createCompany($request, $client);
+            $this->createPassport($request, $client);
+            $this->createAddress($request, $client);
+    
+            // Handle file uploads
+            $this->handleFileUploads($request, $client);
+    
             // Create branches
-            foreach ($request->accordions as $accordion) {
-                Branch::create([
-                    'client_id' => $client->id,
-                   
-                    'branch_kubmetr' => $accordion['branch_kubmetr'],
-                    'branch_type' => $accordion['branch_type'],
-                    'branch_location' => $accordion['branch_location'],
-                    'branch_name' => $accordion['branch_name'],
-                    'generate_price' => $accordion['generate_price'],
-                    'payment_type' => $accordion['payment_type'],
-                    'percentage_input' => $accordion['percentage_input'],
-                   
-                    'shaxarsozlik_umumiy_xajmi' => $accordion['shaxarsozlik_umumiy_xajmi'],
-                    'qavatlar_soni_xajmi' => $accordion['qavatlar_soni_xajmi'],
-                    'avtoturargoh_xajmi' => $accordion['avtoturargoh_xajmi'],
-                    'qavat_xona_xajmi' => $accordion['qavat_xona_xajmi'],
-                    'umumiy_foydalanishdagi_xajmi' => $accordion['umumiy_foydalanishdagi_xajmi'],
-                    'qurilish_turi' => $accordion['qurilish_turi'],
-                    'coefficient' => $accordion['coefficient'],
-                    'zona' => $accordion['zona'],
-                ]);
-            }
-
+            $this->createBranches($request, $client);
+    
             DB::commit();
-
+    
             return redirect()->back()->with('success', 'Client created successfully');
-
         } catch (\Exception $e) {
             Log::error('Error creating client: ' . $e->getMessage());
             DB::rollback();
             return redirect()->back()->with('error', 'An error occurred while creating the client: ' . $e->getMessage());
         }
     }
+    
+    private function createClient($request)
+    {
+        return Client::create([
+            'first_name' => $request->input('first_name'),
+            'last_name' => $request->input('last_name'),
+            'father_name' => $request->input('father_name'),
+            'mijoz_turi' => $request->input('mijoz_turi'),
+            'contact' => $request->input('contact'),
+            'client_description' => $request->input('client_description'),
+            'category_id' => $request->input('category_id', 2),
+            'created_by_client' => $request->input('created_by_client', 0),
+        ]);
+    }
+    
+    private function createCompany($request, $client)
+    {
+        $client->company()->create([
+            'company_name' => $request->input('company_name'),
+            'raxbar' => $request->input('raxbar'),
+            'bank_code' => $request->input('bank_code'),
+            'bank_service' => $request->input('bank_service'),
+            'bank_account' => $request->input('bank_account'),
+            'stir' => $request->input('stir'),
+            'oked' => $request->input('oked'),
+            'minimum_wage' => $request->input('minimum_wage'),
+        ]);
+    }
+    
+    private function createPassport($request, $client)
+    {
+        $client->passport()->create([
+            'passport_serial' => $request->input('passport_serial'),
+            'passport_pinfl' => $request->input('passport_pinfl'),
+            'passport_date' => $request->input('passport_date'),
+            'passport_location' => $request->input('passport_location'),
+            'passport_type' => $request->input('passport_type', 0),
+        ]);
+    }
+    
+    private function createAddress($request, $client)
+    {
+        $client->address()->create([
+            'yuridik_address' => $request->input('yuridik_address'),
+            'home_address' => $request->input('home_address'),
+            'company_location' => $request->input('company_location'),
+        ]);
+    }
+    
+    private function handleFileUploads($request, $client)
+    {
+        $fileTypes = [
+            'document' => 'documents',
+            'document_payment' => 'payment',
+            'document_ruxsatnoma' => 'ruxsatnoma',
+            'document_kengash' => 'kengash'
+        ];
+    
+        foreach ($fileTypes as $fileType => $folder) {
+            if ($request->hasFile($fileType)) {
+                $this->handleFileUploadProductQ($request->file($fileType), $client, $folder);
+            }
+        }
+    }
+    
+    private function handleFileUploadProductQ($files, $client, $folder)
+    {
+        foreach ($files as $file) {
+            try {
+                $originalName = pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME);
+                $extension = $file->getClientOriginalExtension();
+                $date = date('Ymd_His');
+                $fileName = $originalName . '_' . $date . '.' . $extension;
+                $file->move(public_path('assets/' . $folder), $fileName);
+    
+                $fileModel = new File();
+                $fileModel->client_id = $client->id;
+                $fileModel->path = 'assets/' . $folder . '/' . $fileName;
+                $fileModel->save();
+            } catch (\Exception $e) {
+                Log::error('Error uploading file: ' . $e->getMessage());
+                throw $e; // Re-throw exception to trigger rollback
+            }
+        }
+    }
+    
+    private function createBranches($request, $client)
+    {
+        foreach ($request->accordions as $accordion) {
+            Branch::create([
+                'client_id' => $client->id,
+                'branch_kubmetr' => $accordion['branch_kubmetr'],
+                'branch_type' => $accordion['branch_type'],
+                'branch_location' => $accordion['branch_location'],
+                'branch_name' => $accordion['branch_name'],
+                'generate_price' => $accordion['generate_price'],
+                'payment_type' => $accordion['payment_type'],
+                'percentage_input' => $accordion['percentage_input'],
+                'shaxarsozlik_umumiy_xajmi' => $accordion['shaxarsozlik_umumiy_xajmi'],
+                'qavatlar_soni_xajmi' => $accordion['qavatlar_soni_xajmi'],
+                'avtoturargoh_xajmi' => $accordion['avtoturargoh_xajmi'],
+                'qavat_xona_xajmi' => $accordion['qavat_xona_xajmi'],
+                'umumiy_foydalanishdagi_xajmi' => $accordion['umumiy_foydalanishdagi_xajmi'],
+                'qurilish_turi' => $accordion['qurilish_turi'],
+                'coefficient' => $accordion['coefficient'],
+                'zona' => $accordion['zona'],
+            ]);
+        }
+    }
+    
 
     public function edit($id)
     {
