@@ -39,7 +39,9 @@ class Branch extends Model
         'umumiy_foydalanishdagi_xajmi',
         'qurilish_turi',
         'coefficient',
-        'zona'
+        'zona',
+        'created_by_client',
+        'confirmed_for_client'
     ];
 
 
