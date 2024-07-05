@@ -323,15 +323,14 @@
                                             accordion.find('.accordion-button').attr('aria-controls', newId);
                                             accordion.find('.accordion-button').text('Объект #' + accordionCount);
 
-                                            accordion.find('input, select').each(function() {
+                                            accordion.find('input, select, textarea').each(function() {
                                                 let name = $(this).attr('name');
                                                 if (name) {
                                                     let newName = name.replace(/\[0\]/, '[' + accordionCount + ']');
                                                     $(this).attr('name', newName);
                                                 }
                                                 $(this).val('');
-                                                $(this).attr('id', name + '-' +
-                                                    accordionCount);
+                                                $(this).attr('id', name + '-' + accordionCount);
                                             });
 
                                             let tableId = 'payment-table-' + accordionCount;
@@ -357,28 +356,21 @@
                                             accordion.find('.total-quarterly-payment').text('0.00');
                                         });
 
-                                        $(document).on('input change', '.branch_kubmetr, .minimum_wage, .percentage-input, .quarterly-input',
-                                            function() {
-                                                let parentAccordion = $(this).closest('.accordion-body');
-                                                calculateGeneratePrice(parentAccordion);
-                                            });
+                                        $(document).on('input change', '.branch_kubmetr, .minimum_wage, .percentage-input, .quarterly-input', function() {
+                                            let parentAccordion = $(this).closest('.accordion-body');
+                                            calculateGeneratePrice(parentAccordion);
+                                        });
 
                                         function calculateGeneratePrice(parentAccordion) {
                                             let companyKubmetr = parentAccordion.find('.branch_kubmetr').val();
                                             let minimumWage = parentAccordion.find('.minimum_wage').val();
                                             let generatePrice = companyKubmetr * minimumWage;
-                                            // parentAccordion.find('.generate_price').val(generatePrice.toFixed(2));
                                             parentAccordion.find('.generate_price').val(generatePrice);
-                                            // var formattedPrice = generatePrice.toLocaleString();
-                                            // parentAccordion.find('.generate_price').val(formattedPrice);
-
-
 
                                             let percentageInput = parseFloat(parentAccordion.find('.percentage-input').val());
                                             let quarterlyInput = parseInt(parentAccordion.find('.quarterly-input').val());
 
-                                            if (!isNaN(generatePrice) && !isNaN(percentageInput) && !isNaN(quarterlyInput) && quarterlyInput >
-                                                0) {
+                                            if (!isNaN(generatePrice) && !isNaN(percentageInput) && !isNaN(quarterlyInput) && quarterlyInput > 0) {
                                                 let z = (generatePrice * percentageInput) / 100;
                                                 let n = generatePrice - z;
                                                 let y = n / quarterlyInput;
@@ -394,22 +386,19 @@
                                             paymentSchedule.empty();
                                             let percentages = [0, 10, 20, 30, 40, 50];
                                             percentages.forEach(percentage => {
-                                                let z = Math.round((generatePrice * percentage) / 100); // Rounding z
+                                                let z = Math.round((generatePrice * percentage) / 100);
                                                 let n = generatePrice - z;
                                                 let quarterlyInput = parentAccordion.find('.quarterly-input').val();
                                                 let y = quarterlyInput ? Math.round((n / quarterlyInput)) : "N/A";
                                                 paymentSchedule.append(
                                                     `<tr>
-                                                    <td>${percentage}%</td>
-                                                    <td>${Math.round(z)}</td>
-                                                    <td>${y}</td>
-                                                </tr>`
+                                                        <td>${percentage}%</td>
+                                                        <td>${Math.round(z)}</td>
+                                                        <td>${y}</td>
+                                                    </tr>`
                                                 );
                                             });
                                         }
-
-
-                                       
 
                                         $(document).on('change', '.payment-type', function() {
                                             let parentAccordion = $(this).closest('.accordion-body');
@@ -434,6 +423,7 @@
                                         calculateGeneratePrice($('.accordion-item').first().find('.accordion-body'));
                                     });
                                 </script>
+
 
                                 <div class="accordion accordion-flush" id="accordionFlushExample">
                                     <div class="accordion-item">
@@ -531,6 +521,100 @@
                                                                 @enderror
                                                             </div>
                                                         </div>
+
+
+                                                            <!-- New fields -->
+                                                        <div class="col-12 col-md-6 col-lg-6 col-xl-6">
+                                                            <div class="mb-3">
+                                                                <label for="shaxarsozlik_umumiy_xajmi">@lang('global.shaxarsozlik_umumiy_xajmi')</label>
+                                                                <input type="text" class="form-control" name="accordions[0][shaxarsozlik_umumiy_xajmi]"
+                                                                    placeholder="@lang('global.shaxarsozlik_umumiy_xajmi')"
+                                                                    value="{{ old('accordions.0.shaxarsozlik_umumiy_xajmi') }}">
+                                                                @error('accordions.0.shaxarsozlik_umumiy_xajmi')
+                                                                <span class="error invalid-feedback">{{ $message }}</span>
+                                                                @enderror
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-12 col-md-6 col-lg-6 col-xl-6">
+                                                            <div class="mb-3">
+                                                                <label for="qavatlar_soni_xajmi">@lang('global.qavatlar_soni_xajmi')</label>
+                                                                <input type="text" class="form-control" name="accordions[0][qavatlar_soni_xajmi]"
+                                                                    placeholder="@lang('global.qavatlar_soni_xajmi')"
+                                                                    value="{{ old('accordions.0.qavatlar_soni_xajmi') }}">
+                                                                @error('accordions.0.qavatlar_soni_xajmi')
+                                                                <span class="error invalid-feedback">{{ $message }}</span>
+                                                                @enderror
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-12 col-md-6 col-lg-6 col-xl-6">
+                                                            <div class="mb-3">
+                                                                <label for="avtoturargoh_xajmi">@lang('global.avtoturargoh_xajmi')</label>
+                                                                <input type="text" class="form-control" name="accordions[0][avtoturargoh_xajmi]"
+                                                                    placeholder="@lang('global.avtoturargoh_xajmi')"
+                                                                    value="{{ old('accordions.0.avtoturargoh_xajmi') }}">
+                                                                @error('accordions.0.avtoturargoh_xajmi')
+                                                                <span class="error invalid-feedback">{{ $message }}</span>
+                                                                @enderror
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-12 col-md-6 col-lg-6 col-xl-6">
+                                                            <div class="mb-3">
+                                                                <label for="qavat_xona_xajmi">@lang('global.qavat_xona_xajmi')</label>
+                                                                <input type="text" class="form-control" name="accordions[0][qavat_xona_xajmi]"
+                                                                    placeholder="@lang('global.qavat_xona_xajmi')" value="{{ old('accordions.0.qavat_xona_xajmi') }}">
+                                                                @error('accordions.0.qavat_xona_xajmi')
+                                                                <span class="error invalid-feedback">{{ $message }}</span>
+                                                                @enderror
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-12 col-md-6 col-lg-6 col-xl-6">
+                                                            <div class="mb-3">
+                                                                <label for="umumiy_foydalanishdagi_xajmi">@lang('global.umumiy_foydalanishdagi_xajmi')</label>
+                                                                <input type="text" class="form-control" name="accordions[0][umumiy_foydalanishdagi_xajmi]"
+                                                                    placeholder="@lang('global.umumiy_foydalanishdagi_xajmi')"
+                                                                    value="{{ old('accordions.0.umumiy_foydalanishdagi_xajmi') }}">
+                                                                @error('accordions.0.umumiy_foydalanishdagi_xajmi')
+                                                                <span class="error invalid-feedback">{{ $message }}</span>
+                                                                @enderror
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-12 col-md-6 col-lg-6 col-xl-6">
+                                                            <div class="mb-3">
+                                                                <label for="qurilish_turi">@lang('global.qurilish_turi')</label>
+                                                                <textarea class="form-control" name="accordions[0][qurilish_turi]"
+                                                                    placeholder="@lang('global.qurilish_turi')">{{ old('accordions.0.qurilish_turi') }}</textarea>
+                                                                @error('accordions.0.qurilish_turi')
+                                                                <span class="error invalid-feedback">{{ $message }}</span>
+                                                                @enderror
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-12 col-md-6 col-lg-6 col-xl-6">
+                                                            <div class="mb-3">
+                                                                <label for="coefficient">@lang('global.coefficient')</label>
+                                                                <input type="number" step="0.01" class="form-control" name="accordions[0][coefficient]"
+                                                                    placeholder="@lang('global.coefficient')" value="{{ old('accordions.0.coefficient') }}">
+                                                                @error('accordions.0.coefficient')
+                                                                <span class="error invalid-feedback">{{ $message }}</span>
+                                                                @enderror
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-12 col-md-6 col-lg-6 col-xl-6">
+                                                            <div class="mb-3">
+                                                                <label for="zona">@lang('global.zona')</label>
+                                                                <select class="form-control" name="accordions[0][zona]">
+                                                                    <option value="">Select Zona</option>
+                                                                    <option value="1">1 - 1.40</option>
+                                                                    <option value="2">2 - 1.25</option>
+                                                                    <option value="3">3 - 1.00</option>
+                                                                    <option value="4">4 - 0.75</option>
+                                                                    <option value="5">5 - 0.50</option>
+                                                                </select>
+                                                                @error('accordions.0.zona')
+                                                                <span class="error invalid-feedback">{{ $message }}</span>
+                                                                @enderror
+                                                            </div>
+                                                        </div>
+                                                        <!-- End new fields -->
                                                     </div>
 
                                                     <div class="row">

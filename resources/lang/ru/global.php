@@ -414,7 +414,15 @@ return [
     'company_and_object_detail'=>'Информация о компании и объекте',
     'contract_details' => 'Детали договора',
     'old_values' => 'Предыдущие значения',
-    'new_values' => 'Новые значения'
+    'new_values' => 'Новые значения',
 
+    'shaxarsozlik_umumiy_xajmi' => 'Общий размер городской территории',
+    'qavatlar_soni_xajmi' => 'Количество этажей',
+    'avtoturargoh_xajmi' => 'Гараж для автомобилей (размер)',
+    'qavat_xona_xajmi' => 'Размер квартиры',
+    'umumiy_foydalanishdagi_xajmi' => 'Общее использование',
+    'qurilish_turi' => 'Тип строительства',
+    'zona' => 'Зона',
+    'coefficient' => 'Коэффициент',
 
 ];

@@ -402,8 +402,15 @@ return [
     'company_and_object_detail'=>'Kompanya va Obyekt bo\'yicha malumotlar',
     'contract_details' => 'Shartnoma Rekvizitlari',
     'old_values' => 'Oldingi qiymatlar',
-    'new_values' => 'Yangi qiymatlar'
+    'new_values' => 'Yangi qiymatlar',
 
+    'shaxarsozlik_umumiy_xajmi' => 'Shahar umumiy hududi hajmi',
+    'qavatlar_soni_xajmi' => 'Qavatlar soni',
+    'avtoturargoh_xajmi' => 'Avtoturargoh hajmi',
+    'qavat_xona_xajmi' => 'Qavat xonasi hajmi',
+    'umumiy_foydalanishdagi_xajmi' => 'Umumiy foydalanish',
+    'qurilish_turi' => 'Qurilish turi',
+    'zona' => 'Zona',
+    'coefficient' => 'Koeffitsient',
 
-    
 ];
