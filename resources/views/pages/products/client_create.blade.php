@@ -31,6 +31,8 @@
                     <form id='myForm' action="{{ route('clientCreate') }}" method="post" enctype="multipart/form-data">
                         @csrf
 
+                        <input type="hidden" name="created_by_client" value="1">
+
                         <div id="basic-example">
                             <h3>@lang('global.personal_informations')</h3>
                             <section>
@@ -185,6 +187,8 @@
                                             <span class="error invalid-feedback">{{ $errors->first('first_name') }}</span>
                                         @endif
                                     </div>
+
+                            
 
                                     <div class="col-12 col-md-4 col-lg-4 col-xl-4 mb-2">
                                         <label for="father_name"
