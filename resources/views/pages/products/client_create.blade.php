@@ -728,12 +728,26 @@
                                                                 @enderror
                                                             </div>
                                                         </div>
-                                                        <div class="col-12">
+                                                        <div class="col-12 col-md-6 col-lg-6 col-xl-6">
                                                             <div class="mb-3">
                                                                 <label for="coefficient">@lang('global.coefficient')</label>
                                                                 <input type="text" class="form-control"
                                                                     id="coefficient" name="accordions[0][coefficient]" 
                                                                     readonly disabled>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="col-12 col-md-6 col-lg-6 col-xl-6">
+                                                            <div class="mb-3">
+                                                                <label for="branch_name">@lang('global.loyiha_nomi')</label>
+                                                                <input type="text" class="form-control"
+                                                                    name="accordions[0][branch_name]"
+                                                                    value="{{ old('accordions.0.branch_name') }}"
+                                                                    placeholder="@lang('global.loyiha_nomi')">
+                                                                @error('accordions.0.branch_name')
+                                                                    <span
+                                                                        class="error invalid-feedback">{{ $message }}</span>
+                                                                @enderror
                                                             </div>
                                                         </div>
 
@@ -808,23 +822,7 @@
                                                                     inputField.value = roundedValue;
                                                                 }
 
-                                                
                                                             </script>
-
-                                                            <div class="col-12 col-md-6 col-lg-6 col-xl-3">
-                                                                <div class="mb-3">
-                                                                    <label for="branch_name">@lang('global.loyiha_nomi')</label>
-                                                                    <input type="text" class="form-control"
-                                                                        name="accordions[0][branch_name]"
-                                                                        value="{{ old('accordions.0.branch_name') }}"
-                                                                        placeholder="@lang('global.loyiha_nomi')">
-                                                                    @error('accordions.0.branch_name')
-                                                                        <span
-                                                                            class="error invalid-feedback">{{ $message }}</span>
-                                                                    @enderror
-                                                                </div>
-                                                            </div>
-
 
                                                             <div class="col-12 col-md-6 col-lg-6 col-xl-3">
                                                                 <div class="mb-3">
@@ -855,7 +853,25 @@
                                                                     @enderror
                                                                 </div>
                                                             </div>
+                                                            <div class="col-12 col-md-6 col-lg-6 col-xl-3">
+                                                                <div class="mb-3">
+                                                                    <label for="percentage-input">@lang('global.bolib_tolash_foizi_oldindan')</label>
+                                                                    <div class="input-group">
+                                                                        <input type="number"
+                                                                            class="form-control percentage-input"
+                                                                            name="accordions[0][percentage_input]"
+                                                                            value="{{ old('accordions.0.percentage_input') }}"
+                                                                            min="0" max="100">
+                                                                        <span class="input-group-text">%</span>
+                                                                    </div>
+                                                                    @error('accordions.0.percentage_input')
+                                                                        <span
+                                                                            class="error invalid-feedback">{{ $message }}</span>
+                                                                    @enderror
+                                                                </div>
+                                                            </div>
                                                         </div>
+                                                    
 
                                                         <div class="row">
                                                             <div class="col-12 col-md-6 col-lg-6 col-xl-3">
@@ -876,25 +892,9 @@
                                                                     @enderror
                                                                 </div>
                                                             </div>
-                                                            <div class="col-12 col-md-6 col-lg-6 col-xl-3">
-                                                                <div class="mb-3">
-                                                                    <label for="percentage-input">@lang('global.bolib_tolash_foizi_oldindan')</label>
-                                                                    <div class="input-group">
-                                                                        <input type="number"
-                                                                            class="form-control percentage-input"
-                                                                            name="accordions[0][percentage_input]"
-                                                                            value="{{ old('accordions.0.percentage_input') }}"
-                                                                            min="0" max="100">
-                                                                        <span class="input-group-text">%</span>
-                                                                    </div>
-                                                                    @error('accordions.0.percentage_input')
-                                                                        <span
-                                                                            class="error invalid-feedback">{{ $message }}</span>
-                                                                    @enderror
-                                                                </div>
-                                                            </div>
+                                                          
                                                             
-                                                        <div class="col-12 col-md-6 col-lg-6 col-xl-6">
+                                                        <div class="col-12 col-md-6 col-lg-6 col-xl-3">
                                                             <div class="mb-3">
                                                                 <label
                                                                     for="first_payment_percentpayment">@lang('cruds.branches.fields.first_payment_percent')</label>

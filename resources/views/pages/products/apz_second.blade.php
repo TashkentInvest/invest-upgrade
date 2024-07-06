@@ -4,8 +4,9 @@
     <div class="row">
         <div class="col-12">
             <div class="page-title-box d-sm-flex align-items-center justify-content-between">
-                <h4 class="mb-sm-0 font-size-18">@lang('cruds.branches.title') / <span
-                        class="font-small text-primary">{{ $clients->total() }}</h4>
+                <h4 class="mb-sm-0 font-size-18 beautiful-font">
+                    @lang('cruds.branches.title') / <span class="font-small text-primary">{{$clients->total()}}</span>
+                </h4>
 
                 <div class="page-title-right">
                     <ol class="breadcrumb m-0">
@@ -242,12 +243,12 @@
                         <thead>
                             <tr>
                                 <th>@lang('global.id')</th>
-                                <th>@lang('global.client_name') || @lang('cruds.company.fields.company_name')</th>
+                                <th style="width: 350px">@lang('global.client_name') || @lang('cruds.company.fields.company_name')</th>
                                 {{-- <th style="width: 20%;">@lang('cruds.company.fields.address')</th> --}}
                                 <th>@lang('cruds.company.fields.stir')</th>
                                 <th>@lang('global.ruxsatnoma_raqami')</th>
-                                <th>@lang('cruds.branches.fields.application_number')</th>
-                                <th>@lang('cruds.branches.fields.apz_number')</th>
+                                <th style="width: 400px">@lang('cruds.branches.fields.application_number')</th>
+                                {{-- <th>@lang('cruds.branches.fields.apz_number')</th> --}}
                                 <th>@lang('global.category')</th>
                                 <th>@lang('cruds.client.fields.contact')</th>
                                 <th>Одобрено</th>
@@ -286,7 +287,7 @@
                                             @endisset
                                         @endforeach
                                     </td>
-                                    <td>
+                                    {{-- <td>
                                         @foreach ($item->branches as $b)
                                             @isset($b->apz_raqami)
                                                 <button type="button"
@@ -295,9 +296,9 @@
                                                 </button>
                                             @endisset
                                         @endforeach
-                                    </td>
+                                    </td> --}}
                                     <td>{{ $item->category->name ?? '' }} </td>
-                                    <td>{{ $item->contact ?? '---' }}</td>
+                                    <td>{{ $item->contact ?? '' }}</td>
 
                                     <td class="text-center">
                                         {{-- <i style="cursor: pointer; font-size: 16px;" id="program_{{ $item->id }}"
@@ -323,6 +324,8 @@
                                                 pointer-events: none;
                                             }
                                         </style>
+
+
                                     </td>
 
                                     <td class="text-center">
@@ -347,6 +350,7 @@
                                                             <i class="bx bxs-trash" style="font-size: 16px;"></i>
                                                         </button>
                                                     </li>
+
 
                                                     <li data-bs-toggle="tooltip" data-bs-placement="top"
                                                         title="@lang('global.edit')">
@@ -404,13 +408,14 @@
                                                                     <tr>
                                                                         <td><strong>@lang('cruds.client.fields.passport_date')</strong></td>
                                                                         <td>
-                                                                            @if ($item->passport && $item->passport->passport_date)
+                                                                            @if($item->passport && $item->passport->passport_date)
                                                                                 {{ date('d-m-Y', strtotime($item->passport->passport_date)) }}
                                                                             @else
                                                                                 <!-- Handle case where passport or passport_date is null -->
                                                                             @endif
                                                                         </td>
                                                                     </tr>
+                                                                    
                                                                     <tr>
                                                                         <td><strong>@lang('cruds.client.fields.passport_location')</strong></td>
                                                                         <td>{{ $item->passport->passport_location ?? '' }}
@@ -519,6 +524,12 @@
                                                                         <td><strong>@lang('global.bolib_tolash_foizi_oldindan')</strong></td>
                                                                         <td>{{ $b->percentage_input }} %</td>
                                                                     </tr>
+
+                                                                    <tr>
+                                                                        <td><strong>@lang('cruds.branches.fields.first_payment_percent')</strong></td>
+                                                                        <td>{{ $b->first_payment_percent ?? '' }}</td>
+                                                                    </tr>
+
                                                                     <tr>
                                                                         <td><strong>@lang('cruds.branches.fields.notification_num')</strong></td>
                                                                         <td>{{ $b->notification_num }}</td>
@@ -540,6 +551,7 @@
                                                                         <td>{{ $b->installment_quarterly }}</td>
                                                                     </tr>
                                                                 @endforeach
+
 
                                                                 <script>
                                                                     function formatNumberWithSpaces(number) {
@@ -579,6 +591,7 @@
                         </tbody>
                     </table>
                     <div class="d-flex">
+
                         {!! $clients->links() !!}
                     </div>
                 </div>
