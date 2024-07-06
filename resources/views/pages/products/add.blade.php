@@ -759,6 +759,8 @@
                                                         </div>
 
                                                         <h5 class="text-center percent_total" id="percent_total">eee</h5>
+                                                        <input type="hidden" name="first_payment_percent" id="first_payment_percent">
+
                                                     </div>
 
                                                     <div class="row">
@@ -869,6 +871,8 @@
 
                                             parentAccordion.find('.percent_total').val(z.toFixed(2));
                                             document.getElementById('percent_total').innerHTML = z.toFixed(2); 
+                                            document.getElementById('first_payment_percent').value = z.toFixed(2); 
+
 
                                             updatePaymentSchedule(parentAccordion, generatePrice);
                                             updateQuarterlyPaymentSchedule(parentAccordion, y, quarterlyInput);
