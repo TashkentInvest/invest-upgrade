@@ -757,6 +757,8 @@
                                                                 @enderror
                                                             </div>
                                                         </div>
+
+                                                        <h5 class="text-center percent_total" id="percent_total">eee</h5>
                                                     </div>
 
                                                     <div class="row">
@@ -789,6 +791,8 @@
 
                             <script>
                                 $(document).ready(function() {
+                                    document.getElementById('percent_total').innerHTML = ''; 
+
                                     let accordionCount = 1;
 
                                     $('#addAccordion').on('click', function() {
@@ -829,6 +833,7 @@
                                         accordion.find('.percentage-input').val('0').prop('disabled', true);
                                         accordion.find('.quarterly-input').val('').prop('disabled', true);
                                         accordion.find('.calculated-quarterly-payment').val('');
+                                        accordion.find('.percent_total').val('');
                                         accordion.find('.payment-schedule').empty();
                                         accordion.find('.quarterly-payment-schedule').empty();
                                         accordion.find('.total-quarterly-payment').text('0.00');
@@ -849,17 +854,21 @@
                                         // var formattedPrice = generatePrice.toLocaleString();
                                         // parentAccordion.find('.generate_price').val(formattedPrice);
 
-
+                                        let percent_total = document.getElementById
 
                                         let percentageInput = parseFloat(parentAccordion.find('.percentage-input').val());
                                         let quarterlyInput = parseInt(parentAccordion.find('.quarterly-input').val());
 
-                                        if (!isNaN(generatePrice) && !isNaN(percentageInput) && !isNaN(quarterlyInput) && quarterlyInput >
-                                            0) {
+                                        // && !isNaN(percentageInput) && !isNaN(quarterlyInput) && quarterlyInput >
+                                            
+                                        if (!isNaN(generatePrice)) {
                                             let z = (generatePrice * percentageInput) / 100;
                                             let n = generatePrice - z;
                                             let y = n / quarterlyInput;
                                             parentAccordion.find('.calculated-quarterly-payment').val(y.toFixed(2));
+
+                                            parentAccordion.find('.percent_total').val(z.toFixed(2));
+                                            document.getElementById('percent_total').innerHTML = z.toFixed(2); 
 
                                             updatePaymentSchedule(parentAccordion, generatePrice);
                                             updateQuarterlyPaymentSchedule(parentAccordion, y, quarterlyInput);
