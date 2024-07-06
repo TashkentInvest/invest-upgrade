@@ -666,7 +666,7 @@
                                                             <div class="col-12 col-md-6 col-lg-6 col-xl-6 ">
                                                                 <div class="mb-3">
                                                                     <label>@lang('global.tolash_turlari')</label>
-                                                                    <select class="form-select payment-type"
+                                                                    <select class="form-select payment-type form-control"
                                                                         id="payment_type"
                                                                         name="accordions[{{ $branchIndex }}][payment_type]">
                                                                         <option value="pay_full"
