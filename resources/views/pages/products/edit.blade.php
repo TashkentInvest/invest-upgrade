@@ -783,7 +783,9 @@
                                     let minimumWage = parseFloat(parentAccordion.find('.minimum_wage').val()) || 0;
                                     let generatePrice = companyKubmetr * minimumWage;
                                     // parentAccordion.find('.generate_price').val(generatePrice.toFixed(2));
-                                    parentAccordion.find('.generate_price').val(generatePrice);
+                                    // parentAccordion.find('.generate_price').val(generatePrice);
+                                    parentAccordion.find('.generate_price').val(Math.floor(generatePrice));
+
 
                                     // var formattedPrice = generatePrice.toLocaleString();
                                     // parentAccordion.find('.generate_price').val(formattedPrice);

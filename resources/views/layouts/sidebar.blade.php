@@ -40,7 +40,7 @@
                         <a href="{{ route('clientFormConfirm') }}"
                             class=" waves-effect {{ Request::is('client/confirm') ? 'mm-active' : '' }}">
                             <i class="bx bx-map-alt"></i>
-                            <span>clientFormConfirm</span>
+                            <span>@lang('cruds.branches.title') Mobile</span>
                         </a>
                     </li>
                 @endcan
