@@ -323,7 +323,7 @@
                                         @endif
                                     </div>
 
-                                    <div class="col-12 col-md-6 col-lg-6 col-xl-6 mb-2">
+                                    <div class="col-12 col-md-6 col-lg-6 col-xl-12 mb-2">
                                         <label for="home_address"
                                             class="col-md-6 col-form-label">@lang('global.home_address')</label>
                                         <input
@@ -335,10 +335,6 @@
                                                 class="error invalid-feedback">{{ $errors->first('home_address') }}</span>
                                         @endif
                                     </div>
-
-
-
-
 
                                 </div>
 
@@ -500,7 +496,7 @@
                                                 <main class="main_of_objects">
                                                    
                                                     <div class="row">
-                                                        <div class="col-12 col-md-6 col-lg-6 col-xl-4">
+                                                        <div class="col-12 col-md-6 col-lg-6 col-xl-6">
                                                             <div class="mb-3">
                                                                 <label for="notification_num">@lang('cruds.branches.fields.notification_num')</label>
                                                                 <input type="text" class="form-control"
@@ -725,7 +721,7 @@
                                                                 <label for="coefficient">@lang('global.coefficient')</label>
                                                                 <input type="text" class="form-control"
                                                                     id="coefficient" name="accordions[0][coefficient]"
-                                                                    readonly>
+                                                                    readonly disabled>
                                                             </div>
                                                         </div>
 
@@ -770,22 +766,77 @@
                                                         <!-- End new fields -->
                                                     </div>
 
-                                                    <div class="row">
                                                      
 
-                                                    <div class="row">
-                                                        <div class="col-12 col-md-6 col-lg-6 col-xl-4">
-                                                            <div class="inner-repeater mb-4">
-                                                                <div data-repeater-list="inner-group" class="inner mb-3">
+                                                        <div class="row">
+                                                            <div class="col-12 col-md-6 col-lg-6 col-xl-3">
+                                                                <div class="inner-repeater mb-4">
+                                                                    <div data-repeater-list="inner-group" class="inner mb-3">
+                                                                        <label
+                                                                            for="basicpill-cardno-input">@lang('global.obyekt_boyicha_tolanishi_lozim')</label>
+                                                                        <input type="number" step="0.00001"
+                                                                            class="form-control branch_kubmetr"
+                                                                            placeholder="( m³ )"
+                                                                            name="accordions[0][branch_kubmetr]"
+                                                                            value="{{ old('accordions.0.branch_kubmetr') }}"
+                                                                            onchange="displayFiveDigitsAfterDecimal(this)">
+                                                                        @error('accordions.0.branch_kubmetr')
+                                                                            <span
+                                                                                class="error invalid-feedback">{{ $message }}</span>
+                                                                        @enderror
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                            <script>
+                                                                function displayFiveDigitsAfterDecimal(inputField) {
+                                                                    var value = parseFloat(inputField.value);
+                                                                    var roundedValue = value.toFixed(5);
+                                                                    inputField.value = roundedValue;
+                                                                }
+
+                                                
+                                                            </script>
+
+                                                            <div class="col-12 col-md-6 col-lg-6 col-xl-3">
+                                                                <div class="mb-3">
+                                                                    <label for="branch_name">@lang('global.loyiha_nomi')</label>
+                                                                    <input type="text" class="form-control"
+                                                                        name="accordions[0][branch_name]"
+                                                                        value="{{ old('accordions.0.branch_name') }}"
+                                                                        placeholder="@lang('global.loyiha_nomi')">
+                                                                    @error('accordions.0.branch_name')
+                                                                        <span
+                                                                            class="error invalid-feedback">{{ $message }}</span>
+                                                                    @enderror
+                                                                </div>
+                                                            </div>
+
+
+                                                            <div class="col-12 col-md-6 col-lg-6 col-xl-3">
+                                                                <div class="mb-3">
                                                                     <label
-                                                                        for="basicpill-cardno-input">@lang('global.obyekt_boyicha_tolanishi_lozim')</label>
-                                                                    <input type="number" step="0.00001"
-                                                                        class="form-control branch_kubmetr"
-                                                                        placeholder="( m³ )"
-                                                                        name="accordions[0][branch_kubmetr]"
-                                                                        value="{{ old('accordions.0.branch_kubmetr') }}"
-                                                                        onchange="displayFiveDigitsAfterDecimal(this)">
-                                                                    @error('accordions.0.branch_kubmetr')
+                                                                        for="basicpill-card-verification-input">@lang('global.bazaviy_xisoblash_miqdori')</label>
+                                                                    <input type="number" class="form-control minimum_wage"
+                                                                        placeholder="@lang('global.bazaviy_xisoblash_miqdori')"
+                                                                        value="{{ old('minimum_wage', '340000') }}"
+                                                                        name="minimum_wage">
+
+                                                                    @error('minimum_wage')
+                                                                        <span
+                                                                            class="error invalid-feedback">{{ $message }}</span>
+                                                                    @enderror
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-12 col-md-6 col-lg-6 col-xl-3">
+                                                                <div class="mb-3">
+                                                                    <label
+                                                                        for="basicpill-card-verification-input">@lang('global.jami_tolanishi_kerak')</label>
+                                                                    <input type="text" class="form-control generate_price"
+                                                                        name="accordions[0][generate_price]"
+                                                                        value="{{ old('accordions.0.generate_price') }}"
+                                                                        placeholder="@lang('global.jami_tolanishi_kerak')" readonly>
+                                                                    @error('accordions.0.generate_price')
                                                                         <span
                                                                             class="error invalid-feedback">{{ $message }}</span>
                                                                     @enderror
@@ -793,140 +844,70 @@
                                                             </div>
                                                         </div>
 
-                                                        <script>
-                                                            function displayFiveDigitsAfterDecimal(inputField) {
-                                                                var value = parseFloat(inputField.value);
-                                                                var roundedValue = value.toFixed(5);
-                                                                inputField.value = roundedValue;
-                                                            }
-
-                                            
-                                                        </script>
-
-                                                        <div class="col-12 col-md-6 col-lg-6 col-xl-4">
-                                                            <div class="mb-3">
-                                                                <label for="branch_name">@lang('global.loyiha_nomi')</label>
-                                                                <input type="text" class="form-control"
-                                                                    name="accordions[0][branch_name]"
-                                                                    value="{{ old('accordions.0.branch_name') }}"
-                                                                    placeholder="@lang('global.loyiha_nomi')">
-                                                                @error('accordions.0.branch_name')
-                                                                    <span
-                                                                        class="error invalid-feedback">{{ $message }}</span>
-                                                                @enderror
-                                                            </div>
-                                                        </div>
-                                                        {{-- <div class="col-12 col-md-6 col-lg-6 col-xl-4">
-                                                            <div class="mb-3">
-                                                                <label for="branch_type">@lang('global.loyiha_turi')</label>
-                                                                <input type="text" class="form-control"
-                                                                    name="accordions[0][branch_type]"
-                                                                    placeholder="@lang('global.loyiha_turi')"
-                                                                    value="{{ old('accordions.0.branch_type') }}">
-                                                                @error('accordions.0.branch_type')
-                                                                    <span
-                                                                        class="error invalid-feedback">{{ $message }}</span>
-                                                                @enderror
-                                                            </div>
-                                                        </div> --}}
-
-
-
-                                                        <div class="col-12 col-md-6 col-lg-6 col-xl-4">
-                                                            <div class="mb-3">
-                                                                <label
-                                                                    for="basicpill-card-verification-input">@lang('global.bazaviy_xisoblash_miqdori')</label>
-                                                                <input type="number" class="form-control minimum_wage"
-                                                                    placeholder="@lang('global.bazaviy_xisoblash_miqdori')"
-                                                                    value="{{ old('minimum_wage', '340000') }}"
-                                                                    name="minimum_wage">
-
-                                                                @error('minimum_wage')
-                                                                    <span
-                                                                        class="error invalid-feedback">{{ $message }}</span>
-                                                                @enderror
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-12 col-md-6 col-lg-6 col-xl-4">
-                                                            <div class="mb-3">
-                                                                <label
-                                                                    for="basicpill-card-verification-input">@lang('global.jami_tolanishi_kerak')</label>
-                                                                <input type="text" class="form-control generate_price"
-                                                                    name="accordions[0][generate_price]"
-                                                                    value="{{ old('accordions.0.generate_price') }}"
-                                                                    placeholder="@lang('global.jami_tolanishi_kerak')" readonly>
-                                                                @error('accordions.0.generate_price')
-                                                                    <span
-                                                                        class="error invalid-feedback">{{ $message }}</span>
-                                                                @enderror
-                                                            </div>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="row">
-                                                        <div class="col-12 col-md-6 col-lg-6 col-xl-3">
-                                                            <div class="mb-3">
-                                                                <label>@lang('global.tolash_turlari')</label>
-                                                                <select class="form-select payment-type"
-                                                                    name="accordions[0][payment_type]">
-                                                                    <option value="pay_full"
-                                                                        {{ old('accordions.0.payment_type') == 'pay_full' ? 'selected' : '' }}>
-                                                                        @lang('global.toliq_xajimda_tolash')</option>
-                                                                    <option value="pay_bolib"
-                                                                        {{ old('accordions.0.payment_type') == 'pay_bolib' ? 'selected' : '' }}>
-                                                                        @lang('global.bolib_tolash')</option>
-                                                                </select>
-                                                                @error('accordions.0.payment_type')
-                                                                    <span
-                                                                        class="error invalid-feedback">{{ $message }}</span>
-                                                                @enderror
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-12 col-md-6 col-lg-6 col-xl-3">
-                                                            <div class="mb-3">
-                                                                <label for="percentage-input">@lang('global.bolib_tolash_foizi_oldindan')</label>
-                                                                <div class="input-group">
-                                                                    <input type="number"
-                                                                        class="form-control percentage-input"
-                                                                        name="accordions[0][percentage_input]"
-                                                                        value="{{ old('accordions.0.percentage_input') }}"
-                                                                        min="0" max="100">
-                                                                    <span class="input-group-text">%</span>
+                                                        <div class="row">
+                                                            <div class="col-12 col-md-6 col-lg-6 col-xl-3">
+                                                                <div class="mb-3">
+                                                                    <label>@lang('global.tolash_turlari')</label>
+                                                                    <select class="form-select payment-type form-control"
+                                                                        name="accordions[0][payment_type]">
+                                                                        <option value="pay_full"
+                                                                            {{ old('accordions.0.payment_type') == 'pay_full' ? 'selected' : '' }}>
+                                                                            @lang('global.toliq_xajimda_tolash')</option>
+                                                                        <option value="pay_bolib"
+                                                                            {{ old('accordions.0.payment_type') == 'pay_bolib' ? 'selected' : '' }}>
+                                                                            @lang('global.bolib_tolash')</option>
+                                                                    </select>
+                                                                    @error('accordions.0.payment_type')
+                                                                        <span
+                                                                            class="error invalid-feedback">{{ $message }}</span>
+                                                                    @enderror
                                                                 </div>
-                                                                @error('accordions.0.percentage_input')
-                                                                    <span
-                                                                        class="error invalid-feedback">{{ $message }}</span>
-                                                                @enderror
+                                                            </div>
+                                                            <div class="col-12 col-md-6 col-lg-6 col-xl-3">
+                                                                <div class="mb-3">
+                                                                    <label for="percentage-input">@lang('global.bolib_tolash_foizi_oldindan')</label>
+                                                                    <div class="input-group">
+                                                                        <input type="number"
+                                                                            class="form-control percentage-input"
+                                                                            name="accordions[0][percentage_input]"
+                                                                            value="{{ old('accordions.0.percentage_input') }}"
+                                                                            min="0" max="100">
+                                                                        <span class="input-group-text">%</span>
+                                                                    </div>
+                                                                    @error('accordions.0.percentage_input')
+                                                                        <span
+                                                                            class="error invalid-feedback">{{ $message }}</span>
+                                                                    @enderror
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-12 col-md-6 col-lg-6 col-xl-3">
+                                                                <div class="mb-3">
+                                                                    <label for="quarterly-input">@lang('global.bolib_tolash_har_chorakda')</label>
+                                                                    <input type="number" class="form-control quarterly-input"
+                                                                        name="accordions[0][installment_quarterly]"
+                                                                        value="{{ old('accordions.0.installment_quarterly') }}"
+                                                                        placeholder="@lang('global.bolib_tolash_har_chorakda')" disabled>
+                                                                    @error('accordions.0.installment_quarterly')
+                                                                        <span
+                                                                            class="error invalid-feedback">{{ $message }}</span>
+                                                                    @enderror
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-12 col-md-6 col-lg-6 col-xl-3">
+                                                                <div class="mb-3">
+                                                                    <label
+                                                                        for="calculated-quarterly-payment">@lang('global.quarterly_payment')</label>
+                                                                    <input type="text"
+                                                                        class="form-control calculated-quarterly-payment"
+                                                                        value="{{ old('accordions.0.calculated_quarterly_payment') }}"
+                                                                        placeholder="@lang('global.quarterly_payment')" readonly>
+                                                                    @error('accordions.0.calculated_quarterly_payment')
+                                                                        <span
+                                                                            class="error invalid-feedback">{{ $message }}</span>
+                                                                    @enderror
+                                                                </div>
                                                             </div>
                                                         </div>
-                                                        <div class="col-12 col-md-6 col-lg-6 col-xl-3">
-                                                            <div class="mb-3">
-                                                                <label for="quarterly-input">@lang('global.bolib_tolash_har_chorakda')</label>
-                                                                <input type="number" class="form-control quarterly-input"
-                                                                    name="accordions[0][installment_quarterly]"
-                                                                    value="{{ old('accordions.0.installment_quarterly') }}"
-                                                                    placeholder="@lang('global.bolib_tolash_har_chorakda')" disabled>
-                                                                @error('accordions.0.installment_quarterly')
-                                                                    <span
-                                                                        class="error invalid-feedback">{{ $message }}</span>
-                                                                @enderror
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-12 col-md-6 col-lg-6 col-xl-3">
-                                                            <div class="mb-3">
-                                                                <label
-                                                                    for="calculated-quarterly-payment">@lang('global.quarterly_payment')</label>
-                                                                <input type="text"
-                                                                    class="form-control calculated-quarterly-payment"
-                                                                    value="{{ old('accordions.0.calculated_quarterly_payment') }}"
-                                                                    placeholder="@lang('global.quarterly_payment')" readonly>
-                                                                @error('accordions.0.calculated_quarterly_payment')
-                                                                    <span
-                                                                        class="error invalid-feedback">{{ $message }}</span>
-                                                                @enderror
-                                                            </div>
-                                                        </div>
-                                                    </div>
 
 
 
