@@ -111,7 +111,7 @@ return [
     'debitor'                                => 'Debitor',
     'month'                                => 'Oy',
     'no'                                   => 'Yo\'q',
-    'pleaseSelect'                         => 'Iltimos tanlang',
+    'pleaseSelect'                         => 'Tilni tanlang',
     'register'                             => 'Ro\'yxatdan o\'tish',
     'remember_me'                          => 'Meni eslab qolish',
     'reset_password'                       => 'Parolni tiklash',
@@ -201,7 +201,7 @@ return [
     'campaign'                             => 'Kampaniya',
     'campaigns'                            => 'Kampaniyalar',
     'categories'                           => 'Kategoriyalar',
-    'category'                             => 'Turkum',
+    'category'                             => 'Turi',
     'category_name'                        => 'Turkum nomi',
     'change_notifications_field_1_label'   => 'Foydalanuvchiga elektron pochta orqali xabar yuboring',
     'change_notifications_field_2_label'   => 'CRUD-ga kirish paytida',
@@ -410,7 +410,9 @@ return [
     'qavat_xona_xajmi' => ' Binoning texnik qavatlari, inshootlari va xonalari qismi umumiy hajmi',
     'umumiy_foydalanishdagi_xajmi' => 'turar joy binosining umumiy foydalanishdagi qismi umumiy hajmi',
     'qurilish_turi' => 'Qurilish turi',
-    'zona' => 'Zona',
+    'zona' => 'Hududiy zona',
     'coefficient' => 'Koeffitsient',
+    'client_title' => 'Arxitektura-Rejalashtirish Topshirigʼi berilgani uchun belgilangan qoʼshimcha yigʼim toʼlovini amalga oshirish uchun Toshkent Invest Kompaniyasi bilan Shartnoma tuzishga kerak boʼlgan maʼlumotlar:',
+    'add_object' => 'Obyekt Qo\'shish'
 
 ];

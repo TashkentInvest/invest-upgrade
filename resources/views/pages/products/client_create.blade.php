@@ -46,18 +46,21 @@
 
 
     <div class="row">
-        <h3 class="text-center media_text">Arxitektura-Rejalashtirish Topshirigʼi berilgani uchun belgilangan qoʼshimcha yigʼim toʼlovini amalga oshirish uchun Toshkent Invest Kompaniyasi bilan Shartnoma tuzishga kerak boʼlgan maʼlumotlar:</h3>
+        <h3 class="text-center media_text">@lang('global.client_title')</h3>
             <div class="m-auto d-flex justify-content-center text-center my-2">
                 @if (session('locale') == 'uz')
-
+                
                 <a href="{{ route('changelang', 'ru') }}" class="dropdown-item notify-item language"
-                    data-lang="ru">
+                data-lang="ru">
+                @lang('global.pleaseSelect'): 
                     <img src="{{ asset('assets/images/flags/russia.jpg') }}" alt="user-image"
                         class="me-1" height="12"> <span class="align-middle">Русский</span>
                 </a>
                 @else
                 <a href="{{ route('changelang', 'uz') }}" class="dropdown-item notify-item language"
                     data-lang="uz">
+                @lang('global.pleaseSelect'): 
+                    
                     <img src="{{ asset('assets/images/flags/uzbekistan.jpg') }}" alt="user-image"
                         class="me-1" height="12"> <span class="align-middle">O'zbekcha</span>
                 </a>
@@ -76,42 +79,15 @@
                             <h3>@lang('global.personal_informations')</h3>
                             <section>
 
-                                <style>
-                                    /* Custom styles for select elements */
-                                    .custom-select {
-                                        position: relative;
-                                    }
-                            
-                                    .custom-select select {
-                                        appearance: none;
-                                        -webkit-appearance: none;
-                                        -moz-appearance: none;
-                                        padding-right: 30px;
-                                    }
-                            
-                                    .custom-select::after {
-                                        content: '\f078'; /* FontAwesome unicode for down arrow */
-                                        font-family: 'Font Awesome 5 Free';
-                                        font-weight: 900;
-                                        position: absolute;
-                                        top: 50%;
-                                        right: 10px;
-                                        pointer-events: none;
-                                        transform: translateY(-50%);
-                                    }
-                                </style>
-
                                 <div class="row">
                                     <div class="col-12 col-lg-6 mb-2">
                                         <label for="mijoz_turi" class="col-md-4 col-form-label">@lang('cruds.client.fields.mijoz_turi')</label>
-                                        <div class="custom-select">
-                                            <select class="form-control" name="mijoz_turi" id="mijoz_turi">
+                                            <select class="form-control form-select" name="mijoz_turi" id="mijoz_turi">
                                                 <option value="fizik" {{ old('mijoz_turi') == 'fizik' ? 'selected' : '' }}>
                                                     @lang('cruds.client.fields.mijoz_turi_fizik')</option>
                                                 <option value="yuridik" {{ old('mijoz_turi') == 'yuridik' ? 'selected' : '' }}>
                                                     @lang('cruds.client.fields.mijoz_turi_yuridik')</option>
                                             </select>
-                                        </div>
                                         @error('mijoz_turi')
                                             <span class="error invalid-feedback">{{ $message }}</span>
                                         @enderror
@@ -119,14 +95,12 @@
 
                                     <div class="col-12 col-lg-6 mb-2">
                                         <label for="category_id" class="col-md-4 col-form-label">@lang('global.category')</label>
-                                        <div class="custom-select">
-                                            <select class="form-control" name="category_id" id="category_id">
+                                            <select class="form-control form-select" name="category_id" id="category_id">
                                                 @foreach ($categories as $c)
                                                     <option value="{{ $c->id }}" {{ old('category_id') == $c->id ? 'selected' : '' }}>
                                                         {{ $c->name }}</option>
                                                 @endforeach
                                             </select>
-                                        </div>
                                         @error('category_id')
                                             <span class="error invalid-feedback">{{ $message }}</span>
                                         @enderror
@@ -611,7 +585,7 @@
                                                         <div class="col-12 col-md-6">
                                                             <div class="mb-3">
                                                                 <label for="branch_location">@lang('cruds.company.fields.branch_location')</label>
-                                                                <select class="form-control select2"
+                                                                <select class="form-control select2 form-select"
                                                                     name="accordions[0][branch_location]"
                                                                     id="branch_location">
                                                                     <option value="">@lang('cruds.company.fields.branch_location')</option>
@@ -639,7 +613,7 @@
                                                         <div class="col-12 col-md-6">
                                                             <div class="mb-3">
                                                                 <label for="branch_type">@lang('global.loyiha_turi')</label>
-                                                                <select class="form-control select2"
+                                                                <select class="form-control select2 form-select"
                                                                     name="accordions[0][branch_type]" id="branch_type">
                                                                     <option value="">@lang('global.loyiha_turi')</option>
                                                                     <option
@@ -691,7 +665,7 @@
                                                         <div class="col-12 col-md-6">
                                                             <div class="mb-3">
                                                                 <label for="qurilish_turi">@lang('global.qurilish_turi')</label>
-                                                                <select class="form-control select2"
+                                                                <select class="form-control select2 form-select"
                                                                     name="accordions[0][qurilish_turi]"
                                                                     id="qurilish_turi">
                                                                     <option value="">@lang('global.qurilish_turi')</option>
@@ -727,7 +701,7 @@
                                                         <div class="col-12 col-md-6">
                                                             <div class="mb-3">
                                                                 <label for="zona">@lang('global.zona')</label>
-                                                                <select id="zona" class="form-control select2"
+                                                                <select id="zona" class="form-control select2 form-select"
                                                                     name="accordions[0][zona]">
                                                                     <option value="">Zona</option>
                                                                     <option value="1" data-kt="1.40">1-zona</option>
@@ -746,7 +720,7 @@
                                                             <div class="mb-3">
                                                                 <label for="coefficient">@lang('global.coefficient')</label>
                                                                 <input type="text" class="form-control"
-                                                                    id="coefficient" name="accordions[0][coefficient]"
+                                                                    id="coefficient" name="accordions[0][coefficient]" 
                                                                     readonly disabled>
                                                             </div>
                                                         </div>
@@ -943,14 +917,17 @@
                                         </div>
                                     </div>
                                 </div>
-                                <button class="btn btn-success mt-3" type="submit">Save</button>
 
-                                <div id="addAccordion" class="btn btn-primary mt-3">Добавить объект
+                                <div id="addAccordion" class="btn btn-success mt-3">@lang('global.add_object') +
 
                                 </div>
+
+
                                 <!-- Confirm Details -->
 
                         </div>
+                        <button class="btn btn-primary mt-3" type="submit">@lang('global.save')</button>
+
                     </form>
 
                 </div>
