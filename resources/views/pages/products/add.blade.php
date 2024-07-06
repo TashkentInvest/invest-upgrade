@@ -876,20 +876,29 @@
                                         let quarterlyInput = parseInt(parentAccordion.find('.quarterly-input').val());
 
                                         // && !isNaN(percentageInput) && !isNaN(quarterlyInput) && quarterlyInput >
-                                            
                                         if (!isNaN(generatePrice)) {
                                             let z = (generatePrice * percentageInput) / 100;
                                             let n = generatePrice - z;
                                             let y = n / quarterlyInput;
-                                            parentAccordion.find('.calculated-quarterly-payment').val(y.toFixed(2));
 
-                                       
-                                            document.getElementById('first_payment_percent').value = z.toFixed(2); 
+                                            if (!isNaN(percentageInput)) {
+                                                document.getElementById('first_payment_percent').value = z.toFixed(2);
+                                            } else {
+                                                document.getElementById('first_payment_percent').value = '';
+                                            }
 
+                                            if (!isNaN(percentageInput) && !isNaN(quarterlyInput) && quarterlyInput > 0) {
+                                                parentAccordion.find('.calculated-quarterly-payment').val(y.toFixed(2));
+                                                updateQuarterlyPaymentSchedule(parentAccordion, y, quarterlyInput);
+                                            } else {
+                                                parentAccordion.find('.calculated-quarterly-payment').val('');
+                                                updateQuarterlyPaymentSchedule(parentAccordion, '', '');
+                                            }
 
                                             updatePaymentSchedule(parentAccordion, generatePrice);
-                                            updateQuarterlyPaymentSchedule(parentAccordion, y, quarterlyInput);
                                         }
+
+
                                     }
 
                                     function updatePaymentSchedule(parentAccordion, generatePrice) {
