@@ -306,9 +306,6 @@
                                             @endif
                                         </div>
 
-                                     
-
-
                                         <div class="col-12 col-md-6 col-lg-6 col-xl-3 mt-2">
                                             <label for="is_passport_id">Is passport ID?</label>
                                             <input type="checkbox" name="passport_type" id="is_passport_id"
@@ -599,7 +596,48 @@
                                                     </div>
 
                                                     <div class="row">
-                                                        <div class="col-12 col-md-6 col-lg-6 col-xl-3">
+                                                    
+
+                                                        <div class="col-12 col-md-6 col-lg-6 col-xl-4">
+                                                            <div class="mb-3">
+                                                                <label for="branch_name">@lang('global.loyiha_nomi')</label>
+                                                                <input type="text" class="form-control"
+                                                                    name="accordions[0][branch_name]"
+                                                                    value="{{ old('accordions.0.branch_name') }}"
+                                                                    placeholder="@lang('global.loyiha_nomi')">
+                                                                @error('accordions.0.branch_name')
+                                                                    <span
+                                                                        class="error invalid-feedback">{{ $message }}</span>
+                                                                @enderror
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-12 col-md-6 col-lg-6 col-xl-4">
+                                                            <div class="mb-3">
+                                                                <label for="branch_type">@lang('global.loyiha_turi')</label>
+                                                                <input type="text" class="form-control"
+                                                                    name="accordions[0][branch_type]"
+                                                                    placeholder="@lang('global.loyiha_turi')"
+                                                                    value="{{ old('accordions.0.branch_type') }}">
+                                                                @error('accordions.0.branch_type')
+                                                                    <span
+                                                                        class="error invalid-feedback">{{ $message }}</span>
+                                                                @enderror
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-12 col-md-6 col-lg-6 col-xl-4">
+                                                            <div class="mb-3">
+                                                                <label for="branch_location">@lang('cruds.company.fields.branch_location')</label>
+                                                                <input type="text" class="form-control"
+                                                                    name="accordions[0][branch_location]"
+                                                                    value="{{ old('accordions.0.branch_location') }}"
+                                                                    placeholder="@lang('cruds.company.fields.branch_location')">
+                                                                @error('accordions.0.branch_location')
+                                                                    <span
+                                                                        class="error invalid-feedback">{{ $message }}</span>
+                                                                @enderror
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-12 col-md-6 col-lg-4 col-xl-4">
                                                             <div class="inner-repeater mb-4">
                                                                 <div data-repeater-list="inner-group" class="inner mb-3">
                                                                     <label
@@ -625,47 +663,7 @@
                                                                 inputField.value = roundedValue;
                                                             }
                                                         </script>
-
-                                                        <div class="col-12 col-md-6 col-lg-6 col-xl-3">
-                                                            <div class="mb-3">
-                                                                <label for="branch_name">@lang('global.loyiha_nomi')</label>
-                                                                <input type="text" class="form-control"
-                                                                    name="accordions[0][branch_name]"
-                                                                    value="{{ old('accordions.0.branch_name') }}"
-                                                                    placeholder="@lang('global.loyiha_nomi')">
-                                                                @error('accordions.0.branch_name')
-                                                                    <span
-                                                                        class="error invalid-feedback">{{ $message }}</span>
-                                                                @enderror
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-12 col-md-6 col-lg-6 col-xl-3">
-                                                            <div class="mb-3">
-                                                                <label for="branch_type">@lang('global.loyiha_turi')</label>
-                                                                <input type="text" class="form-control"
-                                                                    name="accordions[0][branch_type]"
-                                                                    placeholder="@lang('global.loyiha_turi')"
-                                                                    value="{{ old('accordions.0.branch_type') }}">
-                                                                @error('accordions.0.branch_type')
-                                                                    <span
-                                                                        class="error invalid-feedback">{{ $message }}</span>
-                                                                @enderror
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-12 col-md-6 col-lg-6 col-xl-3">
-                                                            <div class="mb-3">
-                                                                <label for="branch_location">@lang('cruds.company.fields.branch_location')</label>
-                                                                <input type="text" class="form-control"
-                                                                    name="accordions[0][branch_location]"
-                                                                    value="{{ old('accordions.0.branch_location') }}"
-                                                                    placeholder="@lang('cruds.company.fields.branch_location')">
-                                                                @error('accordions.0.branch_location')
-                                                                    <span
-                                                                        class="error invalid-feedback">{{ $message }}</span>
-                                                                @enderror
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-lg-6">
+                                                        <div class="col-12 col-md-6 col-lg-4 col-xl-4">
                                                             <div class="mb-3">
                                                                 <label
                                                                     for="basicpill-card-verification-input">@lang('global.bazaviy_xisoblash_miqdori')</label>
@@ -680,7 +678,7 @@
                                                                 @enderror
                                                             </div>
                                                         </div>
-                                                        <div class="col-lg-6">
+                                                        <div class="col-12 col-md-6 col-lg-4 col-xl-4">
                                                             <div class="mb-3">
                                                                 <label
                                                                     for="basicpill-card-verification-input">@lang('global.jami_tolanishi_kerak')</label>
