@@ -124,7 +124,7 @@ class ClientController extends Controller
             'passport_serial' => 'nullable|string|max:10|min:9',
             'passport_pinfl' => 'nullable|string|max:14|min:14',
         ]);
-        dd($request);   
+        // dd($request);   
         
 
         DB::beginTransaction();
@@ -221,6 +221,7 @@ class ClientController extends Controller
                     'payed_sum' => $accordion['payed_sum'] ?? null,
                     'payed_date' => $accordion['payed_date'] ?? null,
                     'first_payment_percent' => $accordion['first_payment_percent'] ?? null,
+                    
 
                     'shaxarsozlik_umumiy_xajmi' => $accordion['shaxarsozlik_umumiy_xajmi'] ?? null,
                     'qavatlar_soni_xajmi' => $accordion['qavatlar_soni_xajmi'] ?? null,
@@ -237,7 +238,7 @@ class ClientController extends Controller
 
             DB::commit();
 
-            return redirect()->back()->with('success', 'Client created successfully');
+        return redirect()->route('clientIndex')->with('success', 'Client created successfully');
         } catch (\Exception $e) {
             DB::rollback();
             return redirect()->back()->with('error', 'An error occurred while creating the client: ' . $e->getMessage());

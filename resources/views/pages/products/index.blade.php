@@ -524,6 +524,12 @@
                                                                         <td><strong>@lang('global.bolib_tolash_foizi_oldindan')</strong></td>
                                                                         <td>{{ $b->percentage_input }} %</td>
                                                                     </tr>
+
+                                                                    <tr>
+                                                                        <td><strong>@lang('cruds.branches.fields.first_payment_percent')</strong></td>
+                                                                        <td>{{ $b->first_payment_percent ?? '' }}</td>
+                                                                    </tr>
+
                                                                     <tr>
                                                                         <td><strong>@lang('cruds.branches.fields.notification_num')</strong></td>
                                                                         <td>{{ $b->notification_num }}</td>

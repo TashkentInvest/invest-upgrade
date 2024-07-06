@@ -200,7 +200,7 @@
 
                                         <div class="col-12 col-md-4 col-lg-4 col-xl-2 mb-2">
                                             <label for="father_name"
-                                                class="col-md-4 col-form-label">@lang('cruds.client.fields.father_name')</label>
+                                                class="col-md-6 my-2">@lang('cruds.client.fields.father_name')</label>
                                             <input
                                                 class="form-control {{ $errors->has('father_name') ? 'is-invalid' : '' }}"
                                                 type="text" name="father_name" id="father_name"
@@ -293,7 +293,7 @@
                                             @endif
                                         </div>
 
-                                        <div class="col-12 col-md-6 col-lg-6 col-xl-3 mb-2">
+                                        <div class="col-12 col-md-6 col-lg-6 col-xl-6 mb-2">
                                             <label for="home_address"
                                                 class="col-md-6 col-form-label">@lang('global.home_address')</label>
                                             <input
@@ -698,7 +698,7 @@
                                                         <div class="col-12 col-md-6 col-lg-6 col-xl-4">
                                                             <div class="mb-3">
                                                                 <label>@lang('global.tolash_turlari')</label>
-                                                                <select class="form-select payment-type"
+                                                                <select class="form-select payment-type form-control"
                                                                     name="accordions[0][payment_type]">
                                                                     <option value="pay_full"
                                                                         {{ old('accordions.0.payment_type') == 'pay_full' ? 'selected' : '' }}>
@@ -752,7 +752,7 @@
                                                              
                                                                 <input type="text" class="form-control" name="accordions[0][first_payment_percent]" 
                                                                 value="{{ old('accordions.0.first_payment_percent') }}"
-                                                                readonly disabled
+                                                                readonly
                                                                 id="first_payment_percent">
 
                                                                 @error('accordions.0.first_payment_percent')
