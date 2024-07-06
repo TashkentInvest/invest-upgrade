@@ -425,16 +425,28 @@
                                             let percentageInput = parseFloat(parentAccordion.find('.percentage-input').val());
                                             let quarterlyInput = parseInt(parentAccordion.find('.quarterly-input').val());
 
-                                            if (!isNaN(generatePrice) && !isNaN(percentageInput) && !isNaN(quarterlyInput) && quarterlyInput >
-                                                0) {
-                                                let z = (generatePrice * percentageInput) / 100;
-                                                let n = generatePrice - z;
-                                                let y = n / quarterlyInput;
-                                                parentAccordion.find('.calculated-quarterly-payment').val(y.toFixed(2));
+                                            if (!isNaN(generatePrice)) {
+                                            let z = (generatePrice * percentageInput) / 100;
+                                            let n = generatePrice - z;
+                                            let y = n / quarterlyInput;
+
+                                            if (!isNaN(percentageInput)) {
+                                                    document.getElementById('first_payment_percent').value = z.toFixed(2);
+                                                } else {
+                                                    document.getElementById('first_payment_percent').value = '';
+                                                }
+
+                                                if (!isNaN(percentageInput) && !isNaN(quarterlyInput) && quarterlyInput > 0) {
+                                                    parentAccordion.find('.calculated-quarterly-payment').val(y.toFixed(2));
+                                                    updateQuarterlyPaymentSchedule(parentAccordion, y, quarterlyInput);
+                                                } else {
+                                                    parentAccordion.find('.calculated-quarterly-payment').val('');
+                                                    updateQuarterlyPaymentSchedule(parentAccordion, '', '');
+                                                }
 
                                                 updatePaymentSchedule(parentAccordion, generatePrice);
-                                                updateQuarterlyPaymentSchedule(parentAccordion, y, quarterlyInput);
                                             }
+
                                         }
 
                                         function updatePaymentSchedule(parentAccordion, generatePrice) {
@@ -881,6 +893,23 @@
                                                                     @enderror
                                                                 </div>
                                                             </div>
+                                                            
+                                                        <div class="col-12 col-md-6 col-lg-6 col-xl-6">
+                                                            <div class="mb-3">
+                                                                <label
+                                                                    for="first_payment_percentpayment">@lang('cruds.branches.fields.first_payment_percent')</label>
+                                                             
+                                                                <input type="text" class="form-control" name="accordions[0][first_payment_percent]" 
+                                                                value="{{ old('accordions.0.first_payment_percent') }}"
+                                                                readonly
+                                                                id="first_payment_percent">
+
+                                                                @error('accordions.0.first_payment_percent')
+                                                                    <span
+                                                                        class="error invalid-feedback">{{ $message }}</span>
+                                                                @enderror
+                                                            </div>
+                                                        </div>
                                                             <div class="col-12 col-md-6 col-lg-6 col-xl-3">
                                                                 <div class="mb-3">
                                                                     <label for="quarterly-input">@lang('global.bolib_tolash_har_chorakda')</label>
