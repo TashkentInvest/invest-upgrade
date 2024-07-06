@@ -14,6 +14,19 @@
             padding: 0 !important;
         }
 
+        .form-control {
+            width: 100%;
+            padding: 0.75rem !important;
+            font-size: 1rem;
+            line-height: 1.5;
+            color: #495057;
+            background-color: #fff;
+            background-clip: padding-box;
+            border: 1px solid #ced4da;
+            border-radius: 0.25rem;
+            transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+        }
+
         @media(max-width: 774px) {
             .media_text {
                 font-size: 15px;
