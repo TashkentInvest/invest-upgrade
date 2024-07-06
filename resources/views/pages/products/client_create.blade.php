@@ -36,6 +36,22 @@
         <h3 class="text-center media_text">Архитектура-Режалаштириш Топшириғи берилгани учун белгиланган
             қўшимча йиғим тўловини амалга ошириш учун Тошкент Инвест Компанияси билан Шартнома тузишга керак бўлган
             маълумотлар:</h3>
+            <div class="m-auto d-flex justify-content-center text-center my-2">
+                @if (session('locale') == 'uz')
+
+                <a href="{{ route('changelang', 'ru') }}" class="dropdown-item notify-item language"
+                    data-lang="ru">
+                    <img src="{{ asset('assets/images/flags/russia.jpg') }}" alt="user-image"
+                        class="me-1" height="12"> <span class="align-middle">Русский</span>
+                </a>
+                @else
+                <a href="{{ route('changelang', 'uz') }}" class="dropdown-item notify-item language"
+                    data-lang="uz">
+                    <img src="{{ asset('assets/images/flags/uzbekistan.jpg') }}" alt="user-image"
+                        class="me-1" height="12"> <span class="align-middle">O'zbekcha</span>
+                </a>
+                @endif
+            </div>
         <div class="col-lg-12">
 
             <div class="card">
