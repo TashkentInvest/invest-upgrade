@@ -725,11 +725,11 @@
 
                                                         <script>
                                                             var selectElements = document.querySelectorAll('.select2');
-
+                                                        
                                                             function calculateCoefficient() {
                                                                 var coefficient = 1;
                                                                 var totalKts = [];
-
+                                                        
                                                                 selectElements.forEach(function(select) {
                                                                     Array.from(select.selectedOptions).forEach(function(option) {
                                                                         var kt = parseFloat(option.dataset.kt);
@@ -738,29 +738,30 @@
                                                                         }
                                                                     });
                                                                 });
-
-                                                                if (totalKts.length === 0) {
+                                                        
+                                                                if (totalKts.includes(0)) {
+                                                                    coefficient = 0;
+                                                                } else if (totalKts.length === 0) {
                                                                     coefficient = 0;
                                                                 } else {
                                                                     totalKts.forEach(function(kt) {
                                                                         coefficient *= kt;
                                                                     });
-
+                                                        
                                                                     coefficient = Math.max(Math.min(coefficient, 2), 0.5);
                                                                     if (coefficient === 0) coefficient = 0;
                                                                 }
-
+                                                        
                                                                 document.getElementById('coefficient').value = coefficient.toFixed(2);
                                                             }
-
+                                                        
                                                             selectElements.forEach(function(select) {
                                                                 select.addEventListener('change', calculateCoefficient);
                                                             });
-
-                                                            calculateCoefficient();  
+                                                        
+                                                            calculateCoefficient();
                                                         </script>
-
-
+                                                        
                                                         <!-- End new fields -->
                                                     </div>
 
