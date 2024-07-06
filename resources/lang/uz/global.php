@@ -173,7 +173,7 @@ return [
     'action_id'                            => 'Amal identifikatori',
     'action_model'                         => 'Harakat modeli',
     'address'                              => 'Manzil',
-    'home_address'                              => 'Uy manzil',
+    'home_address'                              => 'Shahar (Viloyat), Tuman, Ko\'cha, Uy',
     'administrator_can_create_other_users' => 'Administrator (boshqa foydalanuvchilarni yaratishi mumkin)',
     'aggregate_function_use'               => 'Foydalanish uchun yig\'iladigan funktsiya',
     'all'                                  => 'Hammasi',

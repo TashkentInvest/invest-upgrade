@@ -246,7 +246,7 @@ return [
                 'bank_service' => 'Bank nomi',
                 'bank_code' => 'Bank ko\'di',
                 'bank_account' => 'Bank hisob raqami',
-                'stir' => 'INN',
+                'stir' => 'STIR',
                 'oked' => 'OKED'
             ]
             ],

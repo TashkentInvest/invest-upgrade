@@ -46,9 +46,7 @@
 
 
     <div class="row">
-        <h3 class="text-center media_text">Архитектура-Режалаштириш Топшириғи берилгани учун белгиланган
-            қўшимча йиғим тўловини амалга ошириш учун Тошкент Инвест Компанияси билан Шартнома тузишга керак бўлган
-            маълумотлар:</h3>
+        <h3 class="text-center media_text">Arxitektura-Rejalashtirish Topshirigʼi berilgani uchun belgilangan qoʼshimcha yigʼim toʼlovini amalga oshirish uchun Toshkent Invest Kompaniyasi bilan Shartnoma tuzishga kerak boʼlgan maʼlumotlar:</h3>
             <div class="m-auto d-flex justify-content-center text-center my-2">
                 @if (session('locale') == 'uz')
 
