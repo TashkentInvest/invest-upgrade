@@ -138,7 +138,7 @@
                 </div>
 
                 <div>
-                    <div id="chat-conversation" class="chat-conversation p-3" style="height: 500px; overflow-y: auto;">
+                    <div id="chat-conversation" class="chat-conversation p-3" style="height: 350px; overflow-y: auto;">
                         <ul class="list-unstyled mb-0" data-simplebar>
                             @php
                                 $lastDate = null;

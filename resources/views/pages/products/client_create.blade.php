@@ -40,7 +40,7 @@
 
             <div class="card">
                 <div class="card-body">
-                    <form id='myForm' action="{{ route('clientCreate') }}" method="post" enctype="multipart/form-data">
+                    <form id='myForm' action="{{ route('Qrcreate') }}" method="post" enctype="multipart/form-data">
                         @csrf
 
                         <input type="hidden" name="created_by_client" value="1">
@@ -291,6 +291,19 @@
                                         @if ($errors->has('passport_location'))
                                             <span
                                                 class="error invalid-feedback">{{ $errors->first('passport_location') }}</span>
+                                        @endif
+                                    </div>
+
+                                    <div class="col-12 col-md-6 col-lg-6 col-xl-6 mb-2">
+                                        <label for="home_address"
+                                            class="col-md-6 col-form-label">@lang('global.home_address')</label>
+                                        <input
+                                            class="form-control {{ $errors->has('home_address') ? 'is-invalid' : '' }}"
+                                            type="text" name="home_address" id="home_address"
+                                            placeholder="@lang('global.home_address')" value="{{ old('home_address') }}">
+                                        @if ($errors->has('home_address'))
+                                            <span
+                                                class="error invalid-feedback">{{ $errors->first('home_address') }}</span>
                                         @endif
                                     </div>
 
