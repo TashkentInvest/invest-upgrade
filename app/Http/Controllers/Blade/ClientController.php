@@ -124,7 +124,7 @@ class ClientController extends Controller
             'passport_serial' => 'nullable|string|max:10|min:9',
             'passport_pinfl' => 'nullable|string|max:14|min:14',
         ]);
-        // dd($request);
+        dd($request);   
         
 
         DB::beginTransaction();

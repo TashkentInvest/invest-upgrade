@@ -695,7 +695,7 @@
                                                     </div>
 
                                                     <div class="row">
-                                                        <div class="col-12 col-md-6 col-lg-6 col-xl-3">
+                                                        <div class="col-12 col-md-6 col-lg-6 col-xl-4">
                                                             <div class="mb-3">
                                                                 <label>@lang('global.tolash_turlari')</label>
                                                                 <select class="form-select payment-type"
@@ -713,7 +713,7 @@
                                                                 @enderror
                                                             </div>
                                                         </div>
-                                                        <div class="col-12 col-md-6 col-lg-6 col-xl-3">
+                                                        <div class="col-12 col-md-6 col-lg-6 col-xl-4">
                                                             <div class="mb-3">
                                                                 <label for="percentage-input">@lang('global.bolib_tolash_foizi_oldindan')</label>
                                                                 <div class="input-group">
@@ -730,7 +730,7 @@
                                                                 @enderror
                                                             </div>
                                                         </div>
-                                                        <div class="col-12 col-md-6 col-lg-6 col-xl-3">
+                                                        <div class="col-12 col-md-6 col-lg-6 col-xl-4">
                                                             <div class="mb-3">
                                                                 <label for="quarterly-input">@lang('global.bolib_tolash_har_chorakda')</label>
                                                                 <input type="number" class="form-control quarterly-input"
@@ -743,23 +743,39 @@
                                                                 @enderror
                                                             </div>
                                                         </div>
-                                                        <div class="col-12 col-md-6 col-lg-6 col-xl-3">
+                                                      
+
+                                                        <div class="col-12 col-md-6 col-lg-6 col-xl-6">
                                                             <div class="mb-3">
                                                                 <label
-                                                                    for="calculated-quarterly-payment">@lang('global.quarterly_payment')</label>
-                                                                <input type="text"
-                                                                    class="form-control calculated-quarterly-payment"
-                                                                    value="{{ old('accordions.0.calculated_quarterly_payment') }}"
-                                                                    placeholder="@lang('global.quarterly_payment')" readonly>
-                                                                @error('accordions.0.calculated_quarterly_payment')
+                                                                    for="first_payment_percentpayment">@lang('cruds.branches.fields.first_payment_percent')</label>
+                                                             
+                                                                <input type="text" class="form-control" name="accordions[0][first_payment_percent]" 
+                                                                value="{{ old('accordions.0.first_payment_percent') }}"
+                                                                readonly disabled
+                                                                id="first_payment_percent">
+
+                                                                @error('accordions.0.first_payment_percent')
                                                                     <span
                                                                         class="error invalid-feedback">{{ $message }}</span>
                                                                 @enderror
                                                             </div>
                                                         </div>
 
-                                                        <h5 class="text-center percent_total" id="percent_total">eee</h5>
-                                                        <input type="hidden" name="first_payment_percent" id="first_payment_percent">
+                                                        <div class="col-12 col-md-6 col-lg-6 col-xl-6">
+                                                            <div class="mb-3">
+                                                                <label
+                                                                    for="calculated-quarterly-payment">@lang('global.quarterly_payment')</label>
+                                                                <input type="text"
+                                                                    class="form-control calculated-quarterly-payment"
+                                                                    value="{{ old('accordions.0.calculated_quarterly_payment') }}"
+                                                                    placeholder="@lang('global.quarterly_payment')" readonly disabled>
+                                                                @error('accordions.0.calculated_quarterly_payment')
+                                                                    <span
+                                                                        class="error invalid-feedback">{{ $message }}</span>
+                                                                @enderror
+                                                            </div>
+                                                        </div>
 
                                                     </div>
 
@@ -793,7 +809,6 @@
 
                             <script>
                                 $(document).ready(function() {
-                                    document.getElementById('percent_total').innerHTML = ''; 
 
                                     let accordionCount = 1;
 
@@ -835,11 +850,11 @@
                                         accordion.find('.percentage-input').val('0').prop('disabled', true);
                                         accordion.find('.quarterly-input').val('').prop('disabled', true);
                                         accordion.find('.calculated-quarterly-payment').val('');
-                                        accordion.find('.percent_total').val('');
                                         accordion.find('.payment-schedule').empty();
                                         accordion.find('.quarterly-payment-schedule').empty();
                                         accordion.find('.total-quarterly-payment').text('0.00');
                                     });
+
 
                                     $(document).on('input change', '.branch_kubmetr, .minimum_wage, .percentage-input, .quarterly-input',
                                         function() {
@@ -856,7 +871,6 @@
                                         // var formattedPrice = generatePrice.toLocaleString();
                                         // parentAccordion.find('.generate_price').val(formattedPrice);
 
-                                        let percent_total = document.getElementById
 
                                         let percentageInput = parseFloat(parentAccordion.find('.percentage-input').val());
                                         let quarterlyInput = parseInt(parentAccordion.find('.quarterly-input').val());
@@ -869,8 +883,7 @@
                                             let y = n / quarterlyInput;
                                             parentAccordion.find('.calculated-quarterly-payment').val(y.toFixed(2));
 
-                                            parentAccordion.find('.percent_total').val(z.toFixed(2));
-                                            document.getElementById('percent_total').innerHTML = z.toFixed(2); 
+                                       
                                             document.getElementById('first_payment_percent').value = z.toFixed(2); 
 
 
