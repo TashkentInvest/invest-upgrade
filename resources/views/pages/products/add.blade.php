@@ -35,7 +35,7 @@
                                 <div class="row">
                                     <div class="col-12 col-lg-6 mb-2">
                                         <label for="mijoz_turi" class="col-md-4 col-form-label">@lang('cruds.client.fields.mijoz_turi')</label>
-                                        <select class="form-control" name="mijoz_turi" id="mijoz_turi">
+                                        <select class="form-control form-select" name="mijoz_turi" id="mijoz_turi">
                                             <option value="fizik" {{ old('mijoz_turi') == 'fizik' ? 'selected' : '' }}>
                                                 @lang('cruds.client.fields.mijoz_turi_fizik')</option>
                                             <option value="yuridik" {{ old('mijoz_turi') == 'yuridik' ? 'selected' : '' }}>
@@ -48,7 +48,7 @@
 
                                         <div class="col-12 col-lg-6 mb-2">
                                             <label for="category_id" class="col-md-4 col-form-label">@lang('global.category')</label>
-                                            <select class="form-control" name="category_id" id="category_id">
+                                            <select class="form-control form-select" name="category_id" id="category_id">
                                                 @foreach ($categories as $c)
                                                     <option value="{{ $c->id }}"
                                                         {{ old('category_id') == $c->id ? 'selected' : '' }}>
@@ -611,32 +611,274 @@
                                                                 @enderror
                                                             </div>
                                                         </div>
-                                                        <div class="col-12 col-md-6 col-lg-6 col-xl-4">
+                                                           <!-- New fields -->
+                                                           <div class="col-12 col-md-6 col-lg-6 col-xl-6">
                                                             <div class="mb-3">
-                                                                <label for="branch_type">@lang('global.loyiha_turi')</label>
+                                                                <label
+                                                                    for="shaxarsozlik_umumiy_xajmi">@lang('global.shaxarsozlik_umumiy_xajmi')</label>
                                                                 <input type="text" class="form-control"
-                                                                    name="accordions[0][branch_type]"
-                                                                    placeholder="@lang('global.loyiha_turi')"
-                                                                    value="{{ old('accordions.0.branch_type') }}">
-                                                                @error('accordions.0.branch_type')
+                                                                    name="accordions[0][shaxarsozlik_umumiy_xajmi]"
+                                                                    placeholder="@lang('global.shaxarsozlik_umumiy_xajmi')"
+                                                                    value="{{ old('accordions.0.shaxarsozlik_umumiy_xajmi') }}">
+                                                                @error('accordions.0.shaxarsozlik_umumiy_xajmi')
                                                                     <span
                                                                         class="error invalid-feedback">{{ $message }}</span>
                                                                 @enderror
                                                             </div>
                                                         </div>
-                                                        <div class="col-12 col-md-6 col-lg-6 col-xl-4">
+                                                        <div class="col-12 col-md-6 col-lg-6 col-xl-6">
+                                                            <div class="mb-3">
+                                                                <label for="qavatlar_soni_xajmi">@lang('global.qavatlar_soni_xajmi')</label>
+                                                                <input type="text" class="form-control"
+                                                                    name="accordions[0][qavatlar_soni_xajmi]"
+                                                                    placeholder="@lang('global.qavatlar_soni_xajmi')"
+                                                                    value="{{ old('accordions.0.qavatlar_soni_xajmi') }}">
+                                                                @error('accordions.0.qavatlar_soni_xajmi')
+                                                                    <span
+                                                                        class="error invalid-feedback">{{ $message }}</span>
+                                                                @enderror
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-12 col-md-6 col-lg-6 col-xl-6">
+                                                            <div class="mb-3">
+                                                                <label for="avtoturargoh_xajmi">@lang('global.avtoturargoh_xajmi')</label>
+                                                                <input type="text" class="form-control"
+                                                                    name="accordions[0][avtoturargoh_xajmi]"
+                                                                    placeholder="@lang('global.avtoturargoh_xajmi')"
+                                                                    value="{{ old('accordions.0.avtoturargoh_xajmi') }}">
+                                                                @error('accordions.0.avtoturargoh_xajmi')
+                                                                    <span
+                                                                        class="error invalid-feedback">{{ $message }}</span>
+                                                                @enderror
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-12 col-md-6 col-lg-6 col-xl-6">
+                                                            <div class="mb-3">
+                                                                <label for="qavat_xona_xajmi">@lang('global.qavat_xona_xajmi')</label>
+                                                                <input type="text" class="form-control"
+                                                                    name="accordions[0][qavat_xona_xajmi]"
+                                                                    placeholder="@lang('global.qavat_xona_xajmi')"
+                                                                    value="{{ old('accordions.0.qavat_xona_xajmi') }}">
+                                                                @error('accordions.0.qavat_xona_xajmi')
+                                                                    <span
+                                                                        class="error invalid-feedback">{{ $message }}</span>
+                                                                @enderror
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-12 col-md-6 col-lg-6 col-xl-6">
+                                                            <div class="mb-3">
+                                                                <label
+                                                                    for="umumiy_foydalanishdagi_xajmi">@lang('global.umumiy_foydalanishdagi_xajmi')</label>
+                                                                <input type="text" class="form-control"
+                                                                    name="accordions[0][umumiy_foydalanishdagi_xajmi]"
+                                                                    placeholder="@lang('global.umumiy_foydalanishdagi_xajmi')"
+                                                                    value="{{ old('accordions.0.umumiy_foydalanishdagi_xajmi') }}">
+                                                                @error('accordions.0.umumiy_foydalanishdagi_xajmi')
+                                                                    <span
+                                                                        class="error invalid-feedback">{{ $message }}</span>
+                                                                @enderror
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="col-12 col-md-6">
                                                             <div class="mb-3">
                                                                 <label for="branch_location">@lang('cruds.company.fields.branch_location')</label>
-                                                                <input type="text" class="form-control"
+                                                                <select class="form-control form_kof2 form-select"
                                                                     name="accordions[0][branch_location]"
-                                                                    value="{{ old('accordions.0.branch_location') }}"
-                                                                    placeholder="@lang('cruds.company.fields.branch_location')">
+                                                                    id="branch_location">
+                                                                    <option value="">@lang('cruds.company.fields.branch_location')</option>
+                                                                    <option
+                                                                        value="Metro bekatidan chiqish joyidan obyekt chegarasig‘acha 200 metr radius oralig‘i hududlardan boshqa hududlarda joylashgan loyihaviy binolar (inshootlar)"
+                                                                        data-kt="0.6">
+                                                                        Metro bekatidan chiqish joyidan obyekt
+                                                                        chegarasig‘acha 200 metr radius oralig‘i hududlardan
+                                                                        boshqa hududlarda joylashgan loyihaviy binolar
+                                                                        (inshootlar)
+                                                                    </option>
+                                                                    <option
+                                                                        value="Mazkur bo‘limning 1-qatorida ko‘rsatilmagan boshqa obyektlar"
+                                                                        data-kt="1">
+                                                                        Mazkur bo‘limning 1-qatorida ko‘rsatilmagan boshqa
+                                                                        obyektlar
+                                                                    </option>
+                                                                </select>
                                                                 @error('accordions.0.branch_location')
                                                                     <span
                                                                         class="error invalid-feedback">{{ $message }}</span>
                                                                 @enderror
                                                             </div>
                                                         </div>
+                                                        <div class="col-12 col-md-6">
+                                                            <div class="mb-3">
+                                                                <label for="branch_type">@lang('global.loyiha_turi')</label>
+                                                                <select class="form-control form_kof2 form-select"
+                                                                    name="accordions[0][branch_type]" id="branch_type">
+                                                                    <option value="">@lang('global.loyiha_turi')</option>
+                                                                    <option
+                                                                        value="Alohida turgan xususiy ijtimoiy infratuzilma va turizm obyektlari"
+                                                                        data-kt="0.5">
+                                                                        Alohida turgan xususiy ijtimoiy infratuzilma va
+                                                                        turizm obyektlari
+                                                                    </option>
+                                                                    <option
+                                                                        value="Davlat ulushi 50 (ellik) foizdan ortiq bo‘lgan davlat va (yoki) munitsipal mulk negizida amalga oshiriladigan investitsiya loyihalari doirasidagi obyektlar"
+                                                                        data-kt="0.5">
+                                                                        Davlat ulushi 50 (ellik) foizdan ortiq bo‘lgan
+                                                                        davlat va (yoki) munitsipal mulk negizida amalga
+                                                                        oshiriladigan investitsiya loyihalari doirasidagi
+                                                                        obyektlar
+                                                                    </option>
+                                                                    <option
+                                                                        value="Ishlab chiqarish korxonalarining umumiy ovqatlanish joylari, sport-sog‘lomlashtirish zallari (xonalari), ofislar va turar joylarni qurish, renovatsiya va rekonstruksiya qilish uchun"
+                                                                        data-kt="0.5">
+                                                                        Ishlab chiqarish korxonalarining umumiy ovqatlanish
+                                                                        joylari, sport-sog‘lomlashtirish zallari (xonalari),
+                                                                        ofislar va turar joylarni qurish, renovatsiya va
+                                                                        rekonstruksiya qilish uchun
+                                                                    </option>
+                                                                    <option
+                                                                        value="Omborxonalarni har bir qavati uchun 2 (ikki) metr balandlikdan oshmagan oʻlchamda (omborxonalarining ma’muriy-xo‘jalik majmuasi sifadida foydalaniladigan, alohida turgan kapital binolar, shu jumladan, umumiy ovqatlanish joylari, sport-sog‘lomlashtirish zallari (xonalari), ofislar, turar joylar bundan mustasno)"
+                                                                        data-kt="0.5">
+                                                                        Omborxonalarni har bir qavati uchun 2 (ikki) metr
+                                                                        balandlikdan oshmagan oʻlchamda (omborxonalarining
+                                                                        ma’muriy-xo‘jalik majmuasi sifadida
+                                                                        foydalaniladigan, alohida turgan kapital binolar,
+                                                                        shu jumladan, umumiy ovqatlanish joylari,
+                                                                        sport-sog‘lomlashtirish zallari (xonalari), ofislar,
+                                                                        turar joylar bundan mustasno)
+                                                                    </option>
+                                                                    <option
+                                                                        value="Mazkur bo‘limning 1–5-qatorlarida ko‘rsatilmagan boshqa obyektlar"
+                                                                        data-kt="1">
+                                                                        Mazkur bo‘limning 1–5-qatorlarida ko‘rsatilmagan
+                                                                        boshqa obyektlar
+                                                                    </option>
+                                                                </select>
+                                                                @error('accordions.0.branch_type')
+                                                                    <span
+                                                                        class="error invalid-feedback">{{ $message }}</span>
+                                                                @enderror
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-12 col-md-6">
+                                                            <div class="mb-3">
+                                                                <label for="qurilish_turi">@lang('global.qurilish_turi')</label>
+                                                                <select class="form-control form_kof2 form-select"
+                                                                    name="accordions[0][qurilish_turi]"
+                                                                    id="qurilish_turi">
+                                                                    <option value="">@lang('global.qurilish_turi')</option>
+                                                                    <option value="Yangi kapital qurilish" data-kt="1">
+                                                                        Yangi kapital qurilish
+                                                                    </option>
+                                                                    <option
+                                                                        value="Obyektni rekonstruksiya qilish (koeffitsiyent obyetkga qo‘shilgan qurilish hajmiga hisoblanadi)"
+                                                                        data-kt="1">
+                                                                        Obyektni rekonstruksiya qilish (koeffitsiyent
+                                                                        obyetkga qo‘shilgan qurilish hajmiga hisoblanadi)
+                                                                    </option>
+                                                                    <option
+                                                                        value="O‘zbekiston Respublikasi Shaharsozlik kodeksiga muvofiq loyiha-smeta hujjatlari ekpertizasi talab etilmaydigan obyektlarini rekonstruksiya qilish"
+                                                                        data-kt="0">
+                                                                        O‘zbekiston Respublikasi Shaharsozlik kodeksiga
+                                                                        muvofiq loyiha-smeta hujjatlari ekpertizasi talab
+                                                                        etilmaydigan obyektlarini rekonstruksiya qilish
+                                                                    </option>
+                                                                    <option
+                                                                        value="Obyektni qurilish hajmini o‘zgartirmagan holda rekonstruksiya qilish"
+                                                                        data-kt="0">
+                                                                        Obyektni qurilish hajmini o‘zgartirmagan holda
+                                                                        rekonstruksiya qilish
+                                                                    </option>
+                                                                </select>
+                                                                @error('accordions.0.qurilish_turi')
+                                                                    <span
+                                                                        class="error invalid-feedback">{{ $message }}</span>
+                                                                @enderror
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-12 col-md-6">
+                                                            <div class="mb-3">
+                                                                <label for="zona">@lang('global.zona')</label>
+                                                                <select id="zona" class="form-control form_kof2"
+                                                                    name="accordions[0][zona]">
+                                                                    <option value="">Zona</option>
+                                                                    <option value="1" data-kt="1.40">1-zona</option>
+                                                                    <option value="2" data-kt="1.25">2-zona</option>
+                                                                    <option value="3" data-kt="1.00">3-zona</option>
+                                                                    <option value="4" data-kt="0.75">4-zona</option>
+                                                                    <option value="5" data-kt="0.50">5-zona</option>
+                                                                </select>
+
+                                                                
+                                                                @error('accordions.0.zona')
+                                                                    <span
+                                                                        class="error invalid-feedback">{{ $message }}</span>
+                                                                @enderror
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-12 col-md-6 col-lg-6 col-xl-6">
+                                                            <div class="mb-3">
+                                                                <label for="coefficient">@lang('global.coefficient')</label>
+                                                                <input type="text" class="form-control"
+                                                                    id="coefficient" name="accordions[0][coefficient]" 
+                                                                    readonly disabled>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="col-12 col-md-6 col-lg-6 col-xl-6">
+                                                            <div class="mb-3">
+                                                                <label for="branch_name">@lang('global.loyiha_nomi')</label>
+                                                                <input type="text" class="form-control"
+                                                                    name="accordions[0][branch_name]"
+                                                                    value="{{ old('accordions.0.branch_name') }}"
+                                                                    placeholder="@lang('global.loyiha_nomi')">
+                                                                @error('accordions.0.branch_name')
+                                                                    <span
+                                                                        class="error invalid-feedback">{{ $message }}</span>
+                                                                @enderror
+                                                            </div>
+                                                        </div>
+
+                                                        <script>
+                                                            var selectElements = document.querySelectorAll('.form_kof2');
+                                                        
+                                                            function calculateCoefficient() {
+                                                                var coefficient = 1;
+                                                                var totalKts = [];
+                                                        
+                                                                selectElements.forEach(function(select) {
+                                                                    Array.from(select.selectedOptions).forEach(function(option) {
+                                                                        var kt = parseFloat(option.dataset.kt);
+                                                                        if (!isNaN(kt)) {
+                                                                            totalKts.push(kt);
+                                                                        }
+                                                                    });
+                                                                });
+                                                        
+                                                                if (totalKts.includes(0)) {
+                                                                    coefficient = 0;
+                                                                } else if (totalKts.length === 0) {
+                                                                    coefficient = 0;
+                                                                } else {
+                                                                    totalKts.forEach(function(kt) {
+                                                                        coefficient *= kt;
+                                                                    });
+                                                        
+                                                                    coefficient = Math.max(Math.min(coefficient, 2), 0.5);
+                                                                    if (coefficient === 0) coefficient = 0;
+                                                                }
+                                                        
+                                                                document.getElementById('coefficient').value = coefficient.toFixed(2);
+                                                            }
+                                                        
+                                                            selectElements.forEach(function(select) {
+                                                                select.addEventListener('change', calculateCoefficient);
+                                                            });
+                                                        
+                                                            calculateCoefficient();
+                                                        </script>
+                                                        
+                                                        <!-- End new fields -->
                                                         <div class="col-12 col-md-6 col-lg-4 col-xl-4">
                                                             <div class="inner-repeater mb-4">
                                                                 <div data-repeater-list="inner-group" class="inner mb-3">
@@ -698,7 +940,7 @@
                                                         <div class="col-12 col-md-6 col-lg-6 col-xl-4">
                                                             <div class="mb-3">
                                                                 <label>@lang('global.tolash_turlari')</label>
-                                                                <select class="form-select payment-type form-control"
+                                                                <select class="payment-type form-control form-select"
                                                                     name="accordions[0][payment_type]">
                                                                     <option value="pay_full"
                                                                         {{ old('accordions.0.payment_type') == 'pay_full' ? 'selected' : '' }}>

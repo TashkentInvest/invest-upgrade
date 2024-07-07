@@ -27,7 +27,7 @@
     <link href="{{asset('assets/libs/bootstrap-touchspin/jquery.bootstrap-touchspin.min.css')}}" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="{{asset('assets/libs/@chenfengyuan/datepicker/datepicker.min.css')}}">
     {{-- constructor end --}}
-
+    
 
     @yield('styles')
 </head>
