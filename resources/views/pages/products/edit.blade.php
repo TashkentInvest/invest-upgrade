@@ -36,7 +36,7 @@
 
                                 <div class="row">
                                     <div class="col-12 col-lg-4 col-xl-4 mb-2">
-                                        <label for="mijoz_turi" >@lang('cruds.client.fields.mijoz_turi')</label>
+                                        <label for="mijoz_turi">@lang('cruds.client.fields.mijoz_turi')</label>
                                         <select class="form-control" name="mijoz_turi" id="mijoz_turi">
                                             <option value="fizik"
                                                 {{ old('mijoz_turi', $client->mijoz_turi) == 'fizik' ? 'selected' : '' }}>
@@ -53,7 +53,8 @@
                                         <label for="category_id">@lang('global.category')</label>
                                         <select class="form-control" name="category_id" id="category_id">
                                             @foreach ($categories as $c)
-                                                <option value="{{ $c->id }}" {{ old('category_id', $client->category_id) == $c->id ? 'selected' : '' }}>
+                                                <option value="{{ $c->id }}"
+                                                    {{ old('category_id', $client->category_id) == $c->id ? 'selected' : '' }}>
                                                     {{ $c->name }}
                                                 </option>
                                             @endforeach
@@ -64,15 +65,16 @@
                                     </div>
 
                                     <div class="col-12 col-md-6 col-lg-4 col-xl-4 mb-2">
-                                        <label for="stir" >@lang('cruds.company.fields.stir')</label>
+                                        <label for="stir">@lang('cruds.company.fields.stir')</label>
                                         <input class="form-control {{ $errors->has('stir') ? 'is-invalid' : '' }}"
                                             type="number" name="stir" id="stir" placeholder="@lang('cruds.company.fields.stir')"
-                                            value="{{ old('stir', $client->company->stir) }}"  minlength="9" maxlength="9">
+                                            value="{{ old('stir', $client->company->stir) }}" minlength="9"
+                                            maxlength="9">
                                         @if ($errors->has('stir'))
                                             <span class="error invalid-feedback">{{ $errors->first('stir') }}</span>
                                         @endif
                                     </div>
-                                    
+
                                 </div>
 
 
@@ -88,7 +90,7 @@
                                     </div>
 
                                     <div class="col-12 col-md-6 col-lg-4 col-xl-3 mb-2">
-                                        <label for="raxbar" >@lang('cruds.company.fields.raxbar') -
+                                        <label for="raxbar">@lang('cruds.company.fields.raxbar') -
                                             @lang('global.client_name')</label>
                                         <input class="form-control {{ $errors->has('raxbar') ? 'is-invalid' : '' }}"
                                             type="text" name="raxbar" id="raxbar" placeholder="@lang('cruds.company.fields.raxbar')"
@@ -100,17 +102,18 @@
 
 
                                     <div class="col-12 col-md-6 col-lg-4 col-xl-3 mb-2">
-                                        <label for="oked" >@lang('cruds.company.fields.oked')</label>
+                                        <label for="oked">@lang('cruds.company.fields.oked')</label>
                                         <input class="form-control {{ $errors->has('oked') ? 'is-invalid' : '' }}"
                                             type="number" name="oked" id="oked" placeholder="@lang('cruds.company.fields.oked')"
-                                            value="{{ old('oked', $client->company->oked) }}" minlength="5" maxlength="5">
+                                            value="{{ old('oked', $client->company->oked) }}" minlength="5"
+                                            maxlength="5">
                                         @if ($errors->has('oked'))
                                             <span class="error invalid-feedback">{{ $errors->first('oked') }}</span>
                                         @endif
                                     </div>
 
                                     <div class="col-12 col-md-6 col-lg-4 col-xl-3 mb-2">
-                                        <label for="bank_service" >@lang('cruds.company.fields.bank_service')</label>
+                                        <label for="bank_service">@lang('cruds.company.fields.bank_service')</label>
                                         <input class="form-control {{ $errors->has('bank_service') ? 'is-invalid' : '' }}"
                                             type="text" name="bank_service" id="bank_service"
                                             placeholder="@lang('cruds.company.fields.bank_service')"
@@ -122,12 +125,11 @@
                                     </div>
 
                                     <div class="col-12 col-md-6 col-lg-4 col-xl-4 mb-2">
-                                        <label for="bank_code" >@lang('cruds.company.fields.bank_code')</label>
+                                        <label for="bank_code">@lang('cruds.company.fields.bank_code')</label>
                                         <input class="form-control {{ $errors->has('bank_code') ? 'is-invalid' : '' }}"
-                                            type="number" name="bank_code" id="bank_code"
-                                            placeholder="@lang('cruds.company.fields.bank_code')"
-                                            value="{{ old('bank_code', $client->company->bank_code) }}" minlength="5" maxlength="5"
-                                            name="bank_code" id="bank_code">
+                                            type="number" name="bank_code" id="bank_code" placeholder="@lang('cruds.company.fields.bank_code')"
+                                            value="{{ old('bank_code', $client->company->bank_code) }}" minlength="5"
+                                            maxlength="5" name="bank_code" id="bank_code">
 
                                         @if ($errors->has('bank_code'))
                                             <span class="error invalid-feedback">{{ $errors->first('bank_code') }}</span>
@@ -135,8 +137,7 @@
                                     </div>
 
                                     <div class="col-12 col-md-6 col-lg-4 col-xl-4 mb-2">
-                                        <label for="bank_account"
-                                            >@lang('cruds.company.fields.bank_account')</label>
+                                        <label for="bank_account">@lang('cruds.company.fields.bank_account')</label>
                                         <input class="form-control {{ $errors->has('bank_account') ? 'is-invalid' : '' }}"
                                             type="number" name="bank_account" id="bank_account"
                                             placeholder="@lang('cruds.company.fields.bank_account')"
@@ -151,8 +152,7 @@
 
 
                                     <div class="col-12 col-md-6 col-lg-4 col-xl-4 mb-2">
-                                        <label for="yuridik_address"
-                                            >@lang('cruds.client.fields.yuridik_address')</label>
+                                        <label for="yuridik_address">@lang('cruds.client.fields.yuridik_address')</label>
                                         <input
                                             class="form-control {{ $errors->has('yuridik_address') ? 'is-invalid' : '' }}"
                                             type="text" name="yuridik_address" id="yuridik_address"
@@ -167,7 +167,7 @@
 
                                 <div class="row">
                                     <div class="col-12 col-md-6 col-lg-6 col-xl-3 mb-2">
-                                        <label for="last_name" >@lang('cruds.client.fields.last_name')</label>
+                                        <label for="last_name">@lang('cruds.client.fields.last_name')</label>
                                         <input class="form-control {{ $errors->has('last_name') ? 'is-invalid' : '' }}"
                                             type="text" name="last_name" id="last_name"
                                             placeholder="@lang('cruds.client.fields.last_name')"
@@ -178,7 +178,7 @@
                                     </div>
 
                                     <div class="col-12 col-md-6 col-lg-6 col-xl-3 mb-2">
-                                        <label for="name" >@lang('cruds.client.fields.name')</label>
+                                        <label for="name">@lang('cruds.client.fields.name')</label>
                                         <input class="form-control {{ $errors->has('first_name') ? 'is-invalid' : '' }}"
                                             type="text" name="first_name" id="first_name"
                                             placeholder="@lang('cruds.client.fields.first_name')"
@@ -189,8 +189,7 @@
                                     </div>
 
                                     <div class="col-12 col-md-6 col-lg-6 col-xl-3 mb-2">
-                                        <label for="father_name"
-                                            >@lang('cruds.client.fields.father_name')</label>
+                                        <label for="father_name">@lang('cruds.client.fields.father_name')</label>
                                         <input class="form-control {{ $errors->has('father_name') ? 'is-invalid' : '' }}"
                                             type="text" name="father_name" id="father_name"
                                             placeholder="@lang('cruds.client.fields.father_name')"
@@ -202,7 +201,7 @@
                                     </div>
 
                                     <div class="col-12 col-md-6 col-lg-6 col-xl-3 mb-2">
-                                        <label for="contact" >@lang('cruds.client.fields.contact')</label>
+                                        <label for="contact">@lang('cruds.client.fields.contact')</label>
                                         <input class="form-control {{ $errors->has('contact') ? 'is-invalid' : '' }}"
                                             type="text" name="contact" id="contact"
                                             placeholder="@lang('cruds.client.fields.contact')"
@@ -216,8 +215,7 @@
                                 <div class="row" id="make_hide">
 
                                     <div class="col-12 col-md-6 col-lg-6 col-xl-3 mb-2">
-                                        <label for="passport_serial"
-                                            >@lang('cruds.client.fields.passport_serial')</label>
+                                        <label for="passport_serial">@lang('cruds.client.fields.passport_serial')</label>
                                         <input
                                             class="form-control {{ $errors->has('passport_serial') ? 'is-invalid' : '' }}"
                                             type="text" name="passport_serial" id="passport_serial"
@@ -231,8 +229,7 @@
                                     </div>
 
                                     <div class="col-12 col-md-6 col-lg-6 col-xl-3 mb-2">
-                                        <label for="passport_pinfl"
-                                            >@lang('cruds.client.fields.passport_pinfl')</label>
+                                        <label for="passport_pinfl">@lang('cruds.client.fields.passport_pinfl')</label>
                                         <input
                                             class="form-control {{ $errors->has('passport_pinfl') ? 'is-invalid' : '' }}"
                                             type="number" name="passport_pinfl" id="passport_pinfl"
@@ -246,8 +243,7 @@
                                     </div>
 
                                     <div class="col-12 col-md-6 col-lg-6 col-xl-3 mb-2">
-                                        <label for="passport_date"
-                                            >@lang('cruds.client.fields.passport_date')</label>
+                                        <label for="passport_date">@lang('cruds.client.fields.passport_date')</label>
                                         <input
                                             class="form-control {{ $errors->has('passport_date') ? 'is-invalid' : '' }}"
                                             type="date" name="passport_date" id="passport_date"
@@ -260,8 +256,7 @@
                                     </div>
 
                                     <div class="col-12 col-md-6 col-lg-6 col-xl-3 mb-2">
-                                        <label for="passport_location"
-                                            >@lang('cruds.client.fields.passport_location')</label>
+                                        <label for="passport_location">@lang('cruds.client.fields.passport_location')</label>
                                         <input
                                             class="form-control {{ $errors->has('passport_location') ? 'is-invalid' : '' }}"
                                             type="text" name="passport_location" id="passport_location"
@@ -274,8 +269,7 @@
                                     </div>
 
                                     <div class="col-12 col-md-6 col-lg-6 col-xl-3 mb-2">
-                                        <label for="home_address"
-                                            >@lang('global.home_address')</label>
+                                        <label for="home_address">@lang('global.home_address')</label>
                                         <input class="form-control {{ $errors->has('home_address') ? 'is-invalid' : '' }}"
                                             type="text" name="home_address" id="home_address"
                                             placeholder="@lang('global.home_address')"
@@ -288,14 +282,15 @@
 
 
                                     <div class="col-12 col-md-6 col-lg-6 col-xl-3 mb-2">
-                                        <label for="is_passport_id" >Is passport
+                                        <label for="is_passport_id">Is passport
                                             ID?</label>
                                         <input type="checkbox" name="passport_type" id="is_passport_id" value="1">
                                     </div>
 
                                 </div>
 
-                                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+                                <link rel="stylesheet"
+                                    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
                                 <style>
                                     .file-upload-card {
                                         border: 1px solid #ddd;
@@ -303,54 +298,53 @@
                                         padding: 15px;
                                         margin-bottom: 15px;
                                     }
-                                
+
                                     .file-list-item {
                                         display: flex;
                                         align-items: center;
                                         padding: 8px 0;
                                         border-bottom: 1px solid #ddd;
                                     }
-                                
+
                                     .file-list-item:last-child {
                                         border-bottom: none;
                                     }
-                                
+
                                     .file-icon {
                                         margin-right: 10px;
                                         font-size: 1.2rem;
                                     }
-                                
+
                                     .file-label {
                                         margin-left: 10px;
                                         font-weight: bold;
                                         color: #555;
                                     }
-                                
+
                                     .label-document {
                                         color: #007bff;
                                     }
-                                
+
                                     .label-payment {
                                         color: #28a745;
                                     }
-                                
+
                                     .label-ruxsatnoma {
                                         color: #ffc107;
                                     }
-                                
+
                                     .label-kengash {
                                         color: #dc3545;
                                     }
-                                
+
                                     .delete-checkbox {
                                         margin-left: auto;
                                     }
                                 </style>
-                                
+
                                 <div class="row" style="align-items: center">
                                     <div class="col-12 col-md-12 col-lg-12 col-xl-12 mb-2">
-                                        <label for="client_description"
-                                            >@lang('cruds.client.fields.client_description')</label>
+                                        <label for="client_description">@lang('cruds.client.fields.client_description')</label>
                                         <textarea id="textarea" name="client_description"
                                             class="form-control {{ $errors->has('client_description') ? 'is-invalid' : '' }}" rows="3"
                                             placeholder="@lang('cruds.client.fields.client_description')">{{ old('client_description', $client->client_description ?? '') }}</textarea>
@@ -365,42 +359,46 @@
                                             <label class="col-12 mt-2" for="file"> Document</label>
                                             <input type="file" name="document[]" multiple>
                                             @if ($errors->has('document'))
-                                                <span class="error invalid-feedback">{{ $errors->first('document') }}</span>
+                                                <span
+                                                    class="error invalid-feedback">{{ $errors->first('document') }}</span>
                                             @endif
                                         </div>
                                     </div>
-                                
+
                                     <div class="col-12 col-md-6 col-lg-6 col-xl-3 my-2">
                                         <div class="file-upload-card">
                                             <label class="col-12 mt-2" for="file">Paymnet</label>
                                             <input type="file" name="document_payment[]" multiple>
                                             @if ($errors->has('document_payment'))
-                                                <span class="error invalid-feedback">{{ $errors->first('document_payment') }}</span>
+                                                <span
+                                                    class="error invalid-feedback">{{ $errors->first('document_payment') }}</span>
                                             @endif
                                         </div>
                                     </div>
-                                
+
                                     <div class="col-12 col-md-6 col-lg-6 col-xl-3 my-2">
                                         <div class="file-upload-card">
                                             <label class="col-12 mt-2" for="file">Ruxsatnoma</label>
                                             <input type="file" name="document_ruxsatnoma[]" multiple>
                                             @if ($errors->has('document_ruxsatnoma'))
-                                                <span class="error invalid-feedback">{{ $errors->first('document_ruxsatnoma') }}</span>
+                                                <span
+                                                    class="error invalid-feedback">{{ $errors->first('document_ruxsatnoma') }}</span>
                                             @endif
                                         </div>
                                     </div>
-                                
+
                                     <div class="col-12 col-md-6 col-lg-6 col-xl-3 my-2">
                                         <div class="file-upload-card">
                                             <label class="col-12 mt-2" for="file">Kengash</label>
                                             <input type="file" name="document_kengash[]" multiple>
                                             @if ($errors->has('document_kengash'))
-                                                <span class="error invalid-feedback">{{ $errors->first('document_kengash') }}</span>
+                                                <span
+                                                    class="error invalid-feedback">{{ $errors->first('document_kengash') }}</span>
                                             @endif
                                         </div>
                                     </div>
                                 </div>
-                                
+
                                 <div class="col-12 mt-4">
                                     <h5>Uploaded Files</h5>
                                     <div class="file-list">
@@ -410,23 +408,31 @@
                                                 <a target="_blank" class="py-2 my-2" href="{{ asset($file->path) }}">
                                                     {{ basename($file->path) }}
                                                 </a>
-                                                <span class="file-label {{ 
-                                                    strpos($file->path, 'documents/') !== false ? 'label-document' :
-                                                    (strpos($file->path, 'payment/') !== false ? 'label-document' :
-                                                    (strpos($file->path, 'ruxsatnoma/') !== false ? 'label-document' :
-                                                    (strpos($file->path, 'kengash/') !== false ? 'label-document' : '')))
-                                                }}">
-                                                    {{
-                                                        strpos($file->path, 'documents/') !== false ? 'Document' :
-                                                        (strpos($file->path, 'payment/') !== false ? 'Payment' :
-                                                        (strpos($file->path, 'ruxsatnoma/') !== false ? 'Ruxsatnoma' :
-                                                        (strpos($file->path, 'kengash/') !== false ? 'Kengash' : '')))
-                                                    }}
+                                                <span
+                                                    class="file-label {{ strpos($file->path, 'documents/') !== false
+                                                        ? 'label-document'
+                                                        : (strpos($file->path, 'payment/') !== false
+                                                            ? 'label-document'
+                                                            : (strpos($file->path, 'ruxsatnoma/') !== false
+                                                                ? 'label-document'
+                                                                : (strpos($file->path, 'kengash/') !== false
+                                                                    ? 'label-document'
+                                                                    : ''))) }}">
+                                                    {{ strpos($file->path, 'documents/') !== false
+                                                        ? 'Document'
+                                                        : (strpos($file->path, 'payment/') !== false
+                                                            ? 'Payment'
+                                                            : (strpos($file->path, 'ruxsatnoma/') !== false
+                                                                ? 'Ruxsatnoma'
+                                                                : (strpos($file->path, 'kengash/') !== false
+                                                                    ? 'Kengash'
+                                                                    : ''))) }}
                                                 </span>
                                                 @can('client.delete')
                                                     <div class="delete-checkbox">
                                                         <label>
-                                                            <input type="checkbox" name="delete_files[]" value="{{ $file->id }}">
+                                                            <input type="checkbox" name="delete_files[]"
+                                                                value="{{ $file->id }}">
                                                             Delete
                                                         </label>
                                                     </div>
@@ -435,7 +441,7 @@
                                         @endforeach
                                     </div>
                                 </div>
-                                
+
 
                                 <script>
                                     $(document).ready(function() {
@@ -462,7 +468,7 @@
                                 </script>
 
                             </section>
-                            
+
 
                             <h3>@lang('global.object')</h3>
                             <section>
@@ -583,25 +589,226 @@
                                                         <div class="row">
 
 
-                                                            <div class="col-12 col-md-6 col-lg-6 col-xl-6 ">
+                                                            <!-- New fields -->
+                                                            <div class="col-12 col-md-6 col-lg-6 col-xl-6">
                                                                 <div class="mb-3">
-                                                                    <label for="branch_type">@lang('global.loyiha_turi')</label>
+                                                                    <label for="shaxarsozlik_umumiy_xajmi">@lang('global.shaxarsozlik_umumiy_xajmi')</label>
                                                                     <input type="text" class="form-control"
-                                                                        name="accordions[{{ $branchIndex }}][branch_type]"
-                                                                        value="{{ old('accordions.' . $branchIndex . '.branch_type', $b->branch_type) }}"
-                                                                        placeholder="@lang('global.loyiha_turi')">
+                                                                           name="accordions[0][shaxarsozlik_umumiy_xajmi]"
+                                                                           placeholder="@lang('global.shaxarsozlik_umumiy_xajmi')"
+                                                                           value="{{ old('accordions.0.shaxarsozlik_umumiy_xajmi', $b->shaxarsozlik_umumiy_xajmi ?? '') }}">
+                                                                    @error('accordions.0.shaxarsozlik_umumiy_xajmi')
+                                                                        <span class="error invalid-feedback">{{ $message }}</span>
+                                                                    @enderror
                                                                 </div>
                                                             </div>
-
-                                                            <div class="col-12 col-md-6 col-lg-6 col-xl-6 ">
+                                                            
+                                                            <div class="col-12 col-md-6 col-lg-6 col-xl-6">
+                                                                <div class="mb-3">
+                                                                    <label for="qavatlar_soni_xajmi">@lang('global.qavatlar_soni_xajmi')</label>
+                                                                    <input type="text" class="form-control"
+                                                                           name="accordions[0][qavatlar_soni_xajmi]"
+                                                                           placeholder="@lang('global.qavatlar_soni_xajmi')"
+                                                                           value="{{ old('accordions.0.qavatlar_soni_xajmi', $b->qavatlar_soni_xajmi ?? '') }}">
+                                                                    @error('accordions.0.qavatlar_soni_xajmi')
+                                                                        <span class="error invalid-feedback">{{ $message }}</span>
+                                                                    @enderror
+                                                                </div>
+                                                            </div>
+                                                            
+                                                            <div class="col-12 col-md-6 col-lg-6 col-xl-6">
+                                                                <div class="mb-3">
+                                                                    <label for="avtoturargoh_xajmi">@lang('global.avtoturargoh_xajmi')</label>
+                                                                    <input type="text" class="form-control"
+                                                                           name="accordions[0][avtoturargoh_xajmi]"
+                                                                           placeholder="@lang('global.avtoturargoh_xajmi')"
+                                                                           value="{{ old('accordions.0.avtoturargoh_xajmi', $b->avtoturargoh_xajmi ?? '') }}">
+                                                                    @error('accordions.0.avtoturargoh_xajmi')
+                                                                        <span class="error invalid-feedback">{{ $message }}</span>
+                                                                    @enderror
+                                                                </div>
+                                                            </div>
+                                                            
+                                                            <div class="col-12 col-md-6 col-lg-6 col-xl-6">
+                                                                <div class="mb-3">
+                                                                    <label for="qavat_xona_xajmi">@lang('global.qavat_xona_xajmi')</label>
+                                                                    <input type="text" class="form-control"
+                                                                           name="accordions[0][qavat_xona_xajmi]"
+                                                                           placeholder="@lang('global.qavat_xona_xajmi')"
+                                                                           value="{{ old('accordions.0.qavat_xona_xajmi', $b->qavat_xona_xajmi ?? '') }}">
+                                                                    @error('accordions.0.qavat_xona_xajmi')
+                                                                        <span class="error invalid-feedback">{{ $message }}</span>
+                                                                    @enderror
+                                                                </div>
+                                                            </div>
+                                                            
+                                                            <div class="col-12 col-md-6 col-lg-6 col-xl-6">
+                                                                <div class="mb-3">
+                                                                    <label for="umumiy_foydalanishdagi_xajmi">@lang('global.umumiy_foydalanishdagi_xajmi')</label>
+                                                                    <input type="text" class="form-control"
+                                                                           name="accordions[0][umumiy_foydalanishdagi_xajmi]"
+                                                                           placeholder="@lang('global.umumiy_foydalanishdagi_xajmi')"
+                                                                           value="{{ old('accordions.0.umumiy_foydalanishdagi_xajmi', $b->umumiy_foydalanishdagi_xajmi ?? '') }}">
+                                                                    @error('accordions.0.umumiy_foydalanishdagi_xajmi')
+                                                                        <span class="error invalid-feedback">{{ $message }}</span>
+                                                                    @enderror
+                                                                </div>
+                                                            </div>
+                                                            
+                                                            <div class="col-12 col-md-6">
                                                                 <div class="mb-3">
                                                                     <label for="branch_location">@lang('cruds.company.fields.branch_location')</label>
-                                                                    <input type="text" class="form-control"
-                                                                        name="accordions[{{ $branchIndex }}][branch_location]"
-                                                                        value="{{ old('accordions.' . $branchIndex . '.branch_location', $b->branch_location) }}"
-                                                                        placeholder="@lang('cruds.company.fields.branch_location')">
+                                                                    <select class="form-control form_kof2 form-select"
+                                                                            name="accordions[0][branch_location]" id="branch_location">
+                                                                        <option value="">@lang('cruds.company.fields.branch_location')</option>
+                                                                        <option value="Metro bekatidan chiqish joyidan obyekt chegarasig‘acha 200 metr radius oralig‘i hududlardan boshqa hududlarda joylashgan loyihaviy binolar (inshootlar)"
+                                                                                {{ old('accordions.0.branch_location', $b->branch_location ?? '') == 'Metro bekatidan chiqish joyidan obyekt chegarasig‘acha 200 metr radius oralig‘i hududlardan boshqa hududlarda joylashgan loyihaviy binolar (inshootlar)' ? 'selected' : '' }}>
+                                                                            Metro bekatidan chiqish joyidan obyekt chegarasig‘acha 200 metr radius oralig‘i hududlardan boshqa hududlarda joylashgan loyihaviy binolar (inshootlar)
+                                                                        </option>
+                                                                        <option value="Mazkur bo‘limning 1-qatorida ko‘rsatilmagan boshqa obyektlar"
+                                                                                {{ old('accordions.0.branch_location', $b->branch_location ?? '') == 'Mazkur bo‘limning 1-qatorida ko‘rsatilmagan boshqa obyektlar' ? 'selected' : '' }}>
+                                                                            Mazkur bo‘limning 1-qatorida ko‘rsatilmagan boshqa obyektlar
+                                                                        </option>
+                                                                    </select>
+                                                                    @error('accordions.0.branch_location')
+                                                                        <span class="error invalid-feedback">{{ $message }}</span>
+                                                                    @enderror
                                                                 </div>
                                                             </div>
+                                                            
+                                                            <div class="col-12 col-md-6">
+                                                                <div class="mb-3">
+                                                                    <label for="branch_type">@lang('global.loyiha_turi')</label>
+                                                                    <select class="form-control form_kof2 form-select"
+                                                                            name="accordions[0][branch_type]" id="branch_type">
+                                                                        <option value="">@lang('global.loyiha_turi')</option>
+                                                                        <option value="Alohida turgan xususiy ijtimoiy infratuzilma va turizm obyektlari"
+                                                                                {{ old('accordions.0.branch_type', $b->branch_type ?? '') == 'Alohida turgan xususiy ijtimoiy infratuzilma va turizm obyektlari' ? 'selected' : '' }}>
+                                                                            Alohida turgan xususiy ijtimoiy infratuzilma va turizm obyektlari
+                                                                        </option>
+                                                                        <option value="Davlat ulushi 50 (ellik) foizdan ortiq bo‘lgan davlat va (yoki) munitsipal mulk negizida amalga oshiriladigan investitsiya loyihalari doirasidagi obyektlar"
+                                                                                {{ old('accordions.0.branch_type', $b->branch_type ?? '') == 'Davlat ulushi 50 (ellik) foizdan ortiq bo‘lgan davlat va (yoki) munitsipal mulk negizida amalga oshiriladigan investitsiya loyihalari doirasidagi obyektlar' ? 'selected' : '' }}>
+                                                                            Davlat ulushi 50 (ellik) foizdan ortiq bo‘lgan davlat va (yoki) munitsipal mulk negizida amalga oshiriladigan investitsiya loyihalari doirasidagi obyektlar
+                                                                        </option>
+                                                                        <option value="Ishlab chiqarish korxonalarining umumiy ovqatlanish joylari, sport-sog‘lomlashtirish zallari (xonalari), ofislar va turar joylarni qurish, renovatsiya va rekonstruksiya qilish uchun"
+                                                                                {{ old('accordions.0.branch_type', $b->branch_type ?? '') == 'Ishlab chiqarish korxonalarining umumiy ovqatlanish joylari, sport-sog‘lomlashtirish zallari (xonalari), ofislar va turar joylarni qurish, renovatsiya va rekonstruksiya qilish uchun' ? 'selected' : '' }}>
+                                                                            Ishlab chiqarish korxonalarining umumiy ovqatlanish joylari, sport-sog‘lomlashtirish zallari (xonalari), ofislar va turar joylarni qurish, renovatsiya va rekonstruksiya qilish uchun
+                                                                        </option>
+                                                                        <option value="Omborxonalarni har bir qavati uchun 2 (ikki) metr balandlikdan oshmagan oʻlchamda (omborxonalarining ma’muriy-xo‘jalik majmuasi sifadida foydalaniladigan, alohida turgan kapital binolar, shu jumladan, umumiy ovqatlanish joylari, sport-sog‘lomlashtirish zallari (xonalari), ofislar, turar joylar bundan mustasno)"
+                                                                                {{ old('accordions.0.branch_type', $b->branch_type ?? '') == 'Omborxonalarni har bir qavati uchun 2 (ikki) metr balandlikdan oshmagan oʻlchamda (omborxonalarining ma’muriy-xo‘jalik majmuasi sifadida foydalaniladigan, alohida turgan kapital binolar, shu jumladan, umumiy ovqatlanish joylari, sport-sog‘lomlashtirish zallari (xonalari), ofislar, turar joylar bundan mustasno)' ? 'selected' : '' }}>
+                                                                            Omborxonalarni har bir qavati uchun 2 (ikki) metr balandlikdan oshmagan oʻlchamda (omborxonalarining ma’muriy-xo‘jalik majmuasi sifadida foydalaniladigan, alohida turgan kapital binolar, shu jumladan, umumiy ovqatlanish joylari, sport-sog‘lomlashtirish zallari (xonalari), ofislar, turar joylar bundan mustasno)
+                                                                        </option>
+                                                                    </select>
+                                                                    @error('accordions.0.branch_type')
+                                                                        <span class="error invalid-feedback">{{ $message }}</span>
+                                                                    @enderror
+                                                                </div>
+                                                            </div>
+                                                            
+                                                            <div class="col-12 col-md-6">
+                                                                <div class="mb-3">
+                                                                    <label for="qurilish_turi">@lang('global.qurilish_turi')</label>
+                                                                    <select class="form-control form_kof2 form-select"
+                                                                            name="accordions[0][qurilish_turi]"
+                                                                            id="qurilish_turi">
+                                                                        <option value="">@lang('global.qurilish_turi')</option>
+                                                                        <option value="Yangi kapital qurilish"
+                                                                                {{ old('accordions.0.qurilish_turi', $b->qurilish_turi ?? '') == 'Yangi kapital qurilish' ? 'selected' : '' }}>
+                                                                            Yangi kapital qurilish
+                                                                        </option>
+                                                                        <option value="Obyektni rekonstruksiya qilish (koeffitsiyent obyetkga qo‘shilgan qurilish hajmiga hisoblanadi)"
+                                                                                {{ old('accordions.0.qurilish_turi', $b->qurilish_turi ?? '') == 'Obyektni rekonstruksiya qilish (koeffitsiyent obyetkga qo‘shilgan qurilish hajmiga hisoblanadi)' ? 'selected' : '' }}>
+                                                                            Obyektni rekonstruksiya qilish (koeffitsiyent obyetkga qo‘shilgan qurilish hajmiga hisoblanadi)
+                                                                        </option>
+                                                                        <option value="O‘zbekiston Respublikasi Shaharsozlik kodeksiga muvofiq loyiha-smeta hujjatlari ekpertizasi talab etilmaydigan obyektlarini rekonstruksiya qilish"
+                                                                                {{ old('accordions.0.qurilish_turi', $b->qurilish_turi ?? '') == 'O‘zbekiston Respublikasi Shaharsozlik kodeksiga muvofiq loyiha-smeta hujjatlari ekpertizasi talab etilmaydigan obyektlarini rekonstruksiya qilish' ? 'selected' : '' }}>
+                                                                            O‘zbekiston Respublikasi Shaharsozlik kodeksiga muvofiq loyiha-smeta hujjatlari ekpertizasi talab etilmaydigan obyektlarini rekonstruksiya qilish
+                                                                        </option>
+                                                                        <option value="Obyektni qurilish hajmini o‘zgartirmagan holda rekonstruksiya qilish"
+                                                                                {{ old('accordions.0.qurilish_turi', $b->qurilish_turi ?? '') == 'Obyektni qurilish hajmini o‘zgartirmagan holda rekonstruksiya qilish' ? 'selected' : '' }}>
+                                                                            Obyektni qurilish hajmini o‘zgartirmagan holda rekonstruksiya qilish
+                                                                        </option>
+                                                                    </select>
+                                                                    @error('accordions.0.qurilish_turi')
+                                                                        <span class="error invalid-feedback">{{ $message }}</span>
+                                                                    @enderror
+                                                                </div>
+                                                            </div>
+                                                            
+                                                            <div class="col-12 col-md-6">
+                                                                <div class="mb-3">
+                                                                    <label for="zona">@lang('global.zona')</label>
+                                                                    <select id="zona" class="form-control form_kof2"
+                                                                            name="accordions[0][zona]">
+                                                                        <option value="">Zona</option>
+                                                                        <option value="1"
+                                                                                {{ old('accordions.0.zona', $b->zona ?? '') == '1' ? 'selected' : '' }}>
+                                                                            1-zona
+                                                                        </option>
+                                                                        <option value="2"
+                                                                                {{ old('accordions.0.zona', $b->zona ?? '') == '2' ? 'selected' : '' }}>
+                                                                            2-zona
+                                                                        </option>
+                                                                        <option value="3"
+                                                                                {{ old('accordions.0.zona', $b->zona ?? '') == '3' ? 'selected' : '' }}>
+                                                                            3-zona
+                                                                        </option>
+                                                                        <option value="4"
+                                                                                {{ old('accordions.0.zona', $b->zona ?? '') == '4' ? 'selected' : '' }}>
+                                                                            4-zona
+                                                                        </option>
+                                                                        <option value="5"
+                                                                                {{ old('accordions.0.zona', $b->zona ?? '') == '5' ? 'selected' : '' }}>
+                                                                            5-zona
+                                                                        </option>
+                                                                    </select>
+                                                                    @error('accordions.0.zona')
+                                                                        <span class="error invalid-feedback">{{ $message }}</span>
+                                                                    @enderror
+                                                                </div>
+                                                            </div>
+                                                            
+
+                                                            <script>
+                                                                var selectElements = document.querySelectorAll('.form_kof2');
+
+                                                                function calculateCoefficient() {
+                                                                    var coefficient = 1;
+                                                                    var totalKts = [];
+
+                                                                    selectElements.forEach(function(select) {
+                                                                        Array.from(select.selectedOptions).forEach(function(option) {
+                                                                            var kt = parseFloat(option.dataset.kt);
+                                                                            if (!isNaN(kt)) {
+                                                                                totalKts.push(kt);
+                                                                            }
+                                                                        });
+                                                                    });
+
+                                                                    if (totalKts.includes(0)) {
+                                                                        coefficient = 0;
+                                                                    } else if (totalKts.length === 0) {
+                                                                        coefficient = 0;
+                                                                    } else {
+                                                                        totalKts.forEach(function(kt) {
+                                                                            coefficient *= kt;
+                                                                        });
+
+                                                                        coefficient = Math.max(Math.min(coefficient, 2), 0.5);
+                                                                        if (coefficient === 0) coefficient = 0;
+                                                                    }
+
+                                                                    document.getElementById('coefficient').value = coefficient.toFixed(2);
+                                                                }
+
+                                                                selectElements.forEach(function(select) {
+                                                                    select.addEventListener('change', calculateCoefficient);
+                                                                });
+
+                                                                calculateCoefficient();
+                                                            </script>
+
+                                                            <!-- End new fields -->
                                                             <div class="col-12 col-md-6 col-lg-6 col-xl-6 ">
                                                                 <div class="inner-repeater mb-4">
                                                                     <div data-repeater-list="inner-group"
