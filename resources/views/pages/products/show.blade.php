@@ -204,6 +204,38 @@
                                     <td>@lang('cruds.company.fields.branch_location')</td>
                                     <td colspan="2">{{ $b->branch_location ?? ''}}</td>
                                 </tr>
+                                <tr>
+                                    <td>@lang('global.shaxarsozlik_umumiy_xajmi')</td>
+                                    <td colspan="2">{{ $b->shaxarsozlik_umumiy_xajmi }}</td>
+                                </tr>
+                                <tr>
+                                    <td>@lang('global.qavatlar_soni_xajmi')</td>
+                                    <td colspan="2">{{ $b->qavatlar_soni_xajmi }}</td>
+                                </tr>
+                                <tr>
+                                    <td>@lang('global.avtoturargoh_xajmi')</td>
+                                    <td colspan="2">{{ $b->avtoturargoh_xajmi }}</td>
+                                </tr>
+                                <tr>
+                                    <td>@lang('global.qavat_xona_xajmi')</td>
+                                    <td colspan="2">{{ $b->qavat_xona_xajmi }}</td>
+                                </tr>
+                                <tr>
+                                    <td>@lang('global.umumiy_foydalanishdagi_xajmi')</td>
+                                    <td colspan="2">{{ $b->umumiy_foydalanishdagi_xajmi }}</td>
+                                </tr>
+                                <tr>
+                                    <td>@lang('global.qurilish_turi')</td>
+                                    <td colspan="2">{{ $b->qurilish_turi }}</td>
+                                </tr>
+                                <tr>
+                                    <td>@lang('global.coefficient')</td>
+                                    <td colspan="2">{{ $b->coefficient }}</td>
+                                </tr>
+                                <tr>
+                                    <td>@lang('global.zona')</td>
+                                    <td colspan="2">{{ $b->zona }}</td>
+                                </tr>
 
                                 <tr>
                                     <td>@lang('global.obyekt_boyicha_tolanishi_lozim') ( m³ )</td>
