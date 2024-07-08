@@ -408,7 +408,7 @@
                                             accordion.find('.total-quarterly-payment').text('0.00');
                                         });
 
-                                        $(document).on('input change', '.branch_kubmetr, .minimum_wage, .percentage-input, .quarterly-input',
+                                        $(document).on('input change', '.branch_kubmetr, .shaxarsozlik_umumiy_xajmi, .qavatlar_soni_xajmi, .avtoturargoh_xajmi, .umumiy_foydalanishdagi_xajmi, .qavat_xona_xajmi,  .minimum_wage, .percentage-input, .quarterly-input',
                                             function() {
                                                 let parentAccordion = $(this).closest('.accordion-body');
                                                 calculateGeneratePrice(parentAccordion);
