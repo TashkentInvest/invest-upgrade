@@ -549,7 +549,7 @@
                                                                                     0   
                                                                                 )
                                                                             }} *
-                                                                            (
+                                                                            ((
                                                                             {{
                                                                                 number_format(
                                                                                     (float) ($b->shaxarsozlik_umumiy_xajmi ?? 0),
@@ -582,7 +582,7 @@
                                                                                     2
                                                                                 )
                                                                             }}
-                                                                            ) *
+                                                                            )) *
                                                                             {{
                                                                                 number_format(
                                                                                     (float) ($b->coefficient ?? 1),
