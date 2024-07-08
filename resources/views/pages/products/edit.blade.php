@@ -788,7 +788,7 @@
                                                                     if (totalKts.includes(0)) {
                                                                         coefficient = 0;
                                                                     } else if (totalKts.length === 0) {
-                                                                        coefficient = 0;
+                                                                        coefficient = 1;
                                                                     } else {
                                                                         totalKts.forEach(function(kt) {
                                                                             coefficient *= kt;
