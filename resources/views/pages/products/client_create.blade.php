@@ -360,7 +360,7 @@
                                     });
                                 </script>
 
-
+                                    
                                 <script>
                                     $(document).ready(function() {
                                         let accordionCount = 1;
@@ -524,8 +524,24 @@
                                             calculateGeneratePrice(parentAccordion);
                                         });
                                     
-                                        // Store the original value of minimum wage
+                                        // Event listener for coefficient changes
+                                        $(document).on('input change', '.coefficient', function() {
+                                            let parentAccordion = $(this).closest('.accordion-body');
+                                            let newCoefficient = parseFloat($(this).val()) || 1;
+                                            let originalCoefficient = $(this).data('original-value') || 1;
+                                    
+                                            if (newCoefficient !== originalCoefficient) {
+                                                calculateGeneratePrice(parentAccordion);
+                                                $(this).data('original-value', newCoefficient);
+                                            }
+                                        });
+                                    
+                                        // Store the original value of minimum wage and coefficient
                                         $('.minimum_wage').each(function() {
+                                            $(this).data('original-value', $(this).val());
+                                        });
+                                    
+                                        $('.coefficient').each(function() {
                                             $(this).data('original-value', $(this).val());
                                         });
                                     
@@ -873,14 +889,11 @@
                                                                 <label for="basicpill-card-verification-input">@lang('global.bazaviy_xisoblash_miqdori')</label>
                                                                 <input type="number" class="form-control minimum_wage"
                                                                     placeholder="@lang('global.bazaviy_xisoblash_miqdori')"
-                                                                    value="{{ old('minimum_wage', '340000') }}"
-                                                                    name="minimum_wage"
-                                                                    id="minimum_wage">
-                                                                @error('minimum_wage')
-                                                                    <span class="error invalid-feedback">{{ $message }}</span>
-                                                                @enderror
+                                                                    data-original-value="{{ $data->bazaviy_xisoblash_miqdori ?? 0 }}"
+                                                                    value="{{ $data->bazaviy_xisoblash_miqdori ?? 0 }}" />
                                                             </div>
                                                         </div>
+
 
                                                         <div class="col-12 col-md-6 col-lg-6 col-xl-3">
                                                             <div class="mb-3">
