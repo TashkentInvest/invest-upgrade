@@ -732,8 +732,8 @@
                                                             <div class="mb-3">
                                                                 <label for="coefficient">@lang('global.coefficient')</label>
                                                                 <input type="text" class="form-control"
-                                                                    id="coefficient" name="accordions[0][coefficient]" 
-                                                                    readonly disabled>
+                                                                    id="coefficient" name="accordions[0][coefficient]"
+                                                                    readonly>
                                                             </div>
                                                         </div>
 

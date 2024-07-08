@@ -298,7 +298,7 @@ class ClientController extends Controller
                 'home_address' => $request->get('home_address') ?? null,
                 'company_location' => $request->get('company_location') ?? null,
             ]);
-
+            // dd($request);
 
             foreach ($request->accordions as $accordion) {
                 Branch::create([
