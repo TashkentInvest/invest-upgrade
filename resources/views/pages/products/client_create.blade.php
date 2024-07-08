@@ -361,7 +361,6 @@
                                 </script>
 
 
-
                                 <script>
                                     $(document).ready(function() {
                                         let accordionCount = 1;
@@ -408,26 +407,28 @@
                                             accordion.find('.total-quarterly-payment').text('0.00');
                                         });
 
-                                        $(document).on('input change', '.branch_kubmetr, .shaxarsozlik_umumiy_xajmi, .qavatlar_soni_xajmi, .avtoturargoh_xajmi, .umumiy_foydalanishdagi_xajmi, .qavat_xona_xajmi,  .minimum_wage, .percentage-input, .quarterly-input',
+                                        $(document).on('input change', '.branch_kubmetr, .shaxarsozlik_umumiy_xajmi, .qavatlar_soni_xajmi, .avtoturargoh_xajmi, .umumiy_foydalanishdagi_xajmi, .qavat_xona_xajmi, .minimum_wage, .percentage-input, .quarterly-input',
                                             function() {
                                                 let parentAccordion = $(this).closest('.accordion-body');
                                                 calculateGeneratePrice(parentAccordion);
                                             });
 
                                         function calculateGeneratePrice(parentAccordion) {
-                                            let companyKubmetr = parentAccordion.find('.branch_kubmetr').val();
-                                            let minimumWage = parentAccordion.find('.minimum_wage').val();
-                                            let shaxarsozlik_umumiy_xajmi = parentAccordion.find('.shaxarsozlik_umumiy_xajmi').val();
-                                            let qavatlar_soni_xajmi = parentAccordion.find('.qavatlar_soni_xajmi').val();
-                                            let avtoturargoh_xajmi = parentAccordion.find('.avtoturargoh_xajmi').val();
-                                            let qavat_xona_xajmi = parentAccordion.find('.qavat_xona_xajmi').val();
-                                            
-                                            let umumiy_foydalanishdagi_xajmi = parentAccordion.find('.umumiy_foydalanishdagi_xajmi').val();
-                                            let generatePrice = companyKubmetr * minimumWage;
-                                            parentAccordion.find('.generate_price').val(generatePrice);
+                                            let shaxarsozlik_umumiy_xajmi = parseFloat(parentAccordion.find('.shaxarsozlik_umumiy_xajmi').val()) || 0;
+                                            let qavatlar_soni_xajmi = parseFloat(parentAccordion.find('.qavatlar_soni_xajmi').val()) || 0;
+                                            let avtoturargoh_xajmi = parseFloat(parentAccordion.find('.avtoturargoh_xajmi').val()) || 0;
+                                            let umumiy_foydalanishdagi_xajmi = parseFloat(parentAccordion.find('.umumiy_foydalanishdagi_xajmi').val()) || 0;
+                                            let qavat_xona_xajmi = parseFloat(parentAccordion.find('.qavat_xona_xajmi').val()) || 0;
 
-                                            let percentageInput = parseFloat(parentAccordion.find('.percentage-input').val());
-                                            let quarterlyInput = parseInt(parentAccordion.find('.quarterly-input').val());
+                                            let companyKubmetr = (shaxarsozlik_umumiy_xajmi + qavatlar_soni_xajmi) - (avtoturargoh_xajmi + umumiy_foydalanishdagi_xajmi + qavat_xona_xajmi);
+                                            parentAccordion.find('.branch_kubmetr').val(companyKubmetr.toFixed(2));
+
+                                            let minimumWage = parseFloat(parentAccordion.find('.minimum_wage').val()) || 0;
+                                            let generatePrice = companyKubmetr * minimumWage;
+                                            parentAccordion.find('.generate_price').val(generatePrice.toFixed(2));
+
+                                            let percentageInput = parseFloat(parentAccordion.find('.percentage-input').val()) || 0;
+                                            let quarterlyInput = parseInt(parentAccordion.find('.quarterly-input').val()) || 0;
 
                                             if (!isNaN(generatePrice)) {
                                                 let z = (generatePrice * percentageInput) / 100;
@@ -435,9 +436,9 @@
                                                 let y = n / quarterlyInput;
 
                                                 if (!isNaN(percentageInput)) {
-                                                    document.getElementById('first_payment_percent').value = z.toFixed(2);
+                                                    parentAccordion.find('.first_payment_percent').val(z.toFixed(2));
                                                 } else {
-                                                    document.getElementById('first_payment_percent').value = '';
+                                                    parentAccordion.find('.first_payment_percent').val('');
                                                 }
 
                                                 if (!isNaN(percentageInput) && !isNaN(quarterlyInput) && quarterlyInput > 0) {
@@ -450,7 +451,6 @@
 
                                                 updatePaymentSchedule(parentAccordion, generatePrice);
                                             }
-
                                         }
 
                                         function updatePaymentSchedule(parentAccordion, generatePrice) {
@@ -470,6 +470,21 @@
                                                     </tr>`
                                                 );
                                             });
+                                        }
+
+                                        function updateQuarterlyPaymentSchedule(parentAccordion, quarterlyPayment, quarterlyInput) {
+                                            let quarterlySchedule = parentAccordion.find('.quarterly-payment-schedule');
+                                            quarterlySchedule.empty();
+                                            if (quarterlyPayment && quarterlyInput) {
+                                                for (let i = 1; i <= quarterlyInput; i++) {
+                                                    quarterlySchedule.append(
+                                                        `<tr>
+                                                            <td>${i}</td>
+                                                            <td>${quarterlyPayment.toFixed(2)}</td>
+                                                        </tr>`
+                                                    );
+                                                }
+                                            }
                                         }
 
                                         $(document).on('change', '.payment-type', function() {
@@ -811,7 +826,7 @@
                                                                         placeholder="( m³ )"
                                                                         name="accordions[0][branch_kubmetr]"
                                                                         value="{{ old('accordions.0.branch_kubmetr') }}"
-                                                                        onchange="displayFiveDigitsAfterDecimal(this)">
+                                                                        onchange="displayFiveDigitsAfterDecimal(this)" readonly>
                                                                     @error('accordions.0.branch_kubmetr')
                                                                         <span
                                                                             class="error invalid-feedback">{{ $message }}</span>
