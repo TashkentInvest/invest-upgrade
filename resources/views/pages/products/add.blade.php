@@ -968,20 +968,15 @@
 
                                                         <div class="col-12 col-md-6 col-lg-6 col-xl-6">
                                                             <div class="mb-3">
-                                                                <label
-                                                                    for="first_payment_percentpayment">@lang('cruds.branches.fields.first_payment_percent')</label>
-
-                                                                <input type="text" class="form-control"
-                                                                    name="accordions[0][first_payment_percent]"
-                                                                    value="{{ old('accordions.0.first_payment_percent') }}"
-                                                                    readonly id="first_payment_percent">
-
+                                                                <label for="first_payment_percent">@lang('cruds.branches.fields.first_payment_percent')</label>
+                                                                <input type="text" class="form-control" name="accordions[0][first_payment_percent]"
+                                                                    value="{{ old('accordions.0.first_payment_percent') }}" readonly id="first_payment_percent_input">
                                                                 @error('accordions.0.first_payment_percent')
-                                                                    <span
-                                                                        class="error invalid-feedback">{{ $message }}</span>
+                                                                    <span class="error invalid-feedback">{{ $message }}</span>
                                                                 @enderror
                                                             </div>
                                                         </div>
+                                                        
 
                                                         <div class="col-12 col-md-6 col-lg-6 col-xl-6">
                                                             <div class="mb-3">
@@ -1030,9 +1025,8 @@
 
                             <script>
                                 $(document).ready(function() {
-
                                     let accordionCount = 1;
-
+                        
                                     $('#addAccordion').on('click', function() {
                                         let accordion = $('.accordion-item').first().clone();
                                         let newId = 'flush-collapse' + accordionCount;
@@ -1041,7 +1035,7 @@
                                         accordion.find('.accordion-header').attr('id', 'flush-heading' + accordionCount);
                                         accordion.find('.accordion-button').attr('aria-controls', newId);
                                         accordion.find('.accordion-button').text('Accordion Item #' + accordionCount);
-
+                        
                                         accordion.find('input, select').each(function() {
                                             let name = $(this).attr('name');
                                             if (name) {
@@ -1049,23 +1043,22 @@
                                                 $(this).attr('name', newName);
                                             }
                                             $(this).val('');
-                                            $(this).attr('id', name + '-' +
-                                                accordionCount);
+                                            $(this).attr('id', name + '-' + accordionCount);
                                         });
-
+                        
                                         let tableId = 'payment-table-' + accordionCount;
                                         let scheduleId = 'payment-schedule-' + accordionCount;
                                         let quarterlyTableId = 'quarterly-table-' + accordionCount;
                                         let quarterlyScheduleId = 'quarterly-schedule-' + accordionCount;
-
+                        
                                         accordion.find('.payment-table').attr('id', tableId);
                                         accordion.find('.payment-schedule').attr('id', scheduleId);
                                         accordion.find('.quarterly-table').attr('id', quarterlyTableId);
                                         accordion.find('.quarterly-payment-schedule').attr('id', quarterlyScheduleId);
-
+                        
                                         accordion.appendTo('#accordionFlushExample');
                                         accordionCount++;
-
+                        
                                         accordion.find('.generate_price').val('');
                                         accordion.find('.payment-type').val('pay_full').trigger('change');
                                         accordion.find('.percentage-input').val('0').prop('disabled', true);
@@ -1075,39 +1068,33 @@
                                         accordion.find('.quarterly-payment-schedule').empty();
                                         accordion.find('.total-quarterly-payment').text('0.00');
                                     });
-
-
-                                    $(document).on('input change', '.branch_kubmetr, .minimum_wage, .percentage-input, .quarterly-input',
-                                        function() {
-                                            let parentAccordion = $(this).closest('.accordion-body');
-                                            calculateGeneratePrice(parentAccordion);
-                                        });
-
+                        
+                        
+                                    $(document).on('input change', '.branch_kubmetr, .minimum_wage, .percentage-input, .quarterly-input', function() {
+                                        let parentAccordion = $(this).closest('.accordion-body');
+                                        calculateGeneratePrice(parentAccordion);
+                                    });
+                        
                                     function calculateGeneratePrice(parentAccordion) {
                                         let companyKubmetr = parentAccordion.find('.branch_kubmetr').val();
                                         let minimumWage = parentAccordion.find('.minimum_wage').val();
                                         let generatePrice = companyKubmetr * minimumWage;
-                                        // parentAccordion.find('.generate_price').val(generatePrice.toFixed(2));
-                                        parentAccordion.find('.generate_price').val(generatePrice);
-                                        // var formattedPrice = generatePrice.toLocaleString();
-                                        // parentAccordion.find('.generate_price').val(formattedPrice);
-
-
+                                        parentAccordion.find('.generate_price').val(generatePrice.toFixed(2));
+                        
                                         let percentageInput = parseFloat(parentAccordion.find('.percentage-input').val());
                                         let quarterlyInput = parseInt(parentAccordion.find('.quarterly-input').val());
-
-                                        // && !isNaN(percentageInput) && !isNaN(quarterlyInput) && quarterlyInput >
+                        
                                         if (!isNaN(generatePrice)) {
                                             let z = (generatePrice * percentageInput) / 100;
                                             let n = generatePrice - z;
-                                            let y = n / quarterlyInput;
-
+                                            let y = quarterlyInput > 0 ? n / quarterlyInput : 0;
+                        
                                             if (!isNaN(percentageInput)) {
-                                                document.getElementById('first_payment_percent').value = z.toFixed(2);
+                                                parentAccordion.find('.first_payment_percent').val(z.toFixed(2));
                                             } else {
-                                                document.getElementById('first_payment_percent').value = '';
+                                                parentAccordion.find('.first_payment_percent').val('');
                                             }
-
+                        
                                             if (!isNaN(percentageInput) && !isNaN(quarterlyInput) && quarterlyInput > 0) {
                                                 parentAccordion.find('.calculated-quarterly-payment').val(y.toFixed(2));
                                                 updateQuarterlyPaymentSchedule(parentAccordion, y, quarterlyInput);
@@ -1115,13 +1102,11 @@
                                                 parentAccordion.find('.calculated-quarterly-payment').val('');
                                                 updateQuarterlyPaymentSchedule(parentAccordion, '', '');
                                             }
-
+                        
                                             updatePaymentSchedule(parentAccordion, generatePrice);
                                         }
-
-
                                     }
-
+                        
                                     function updatePaymentSchedule(parentAccordion, generatePrice) {
                                         let paymentSchedule = parentAccordion.find('.payment-schedule');
                                         paymentSchedule.empty();
@@ -1140,8 +1125,7 @@
                                             );
                                         });
                                     }
-
-
+                        
                                     function updateQuarterlyPaymentSchedule(parentAccordion, quarterlyPayment, quarterlyCount) {
                                         let quarterlyPaymentSchedule = parentAccordion.find('.quarterly-payment-schedule');
                                         quarterlyPaymentSchedule.empty();
@@ -1157,13 +1141,13 @@
                                         }
                                         parentAccordion.find('.total-quarterly-payment').text(Math.round(totalQuarterlyPayment));
                                     }
-
+                        
                                     $(document).on('change', '.payment-type', function() {
                                         let parentAccordion = $(this).closest('.accordion-body');
                                         let paymentType = $(this).val();
                                         let percentageInput = parentAccordion.find('.percentage-input');
                                         let quarterlyInput = parentAccordion.find('.quarterly-input');
-
+                        
                                         if (paymentType === 'pay_full') {
                                             percentageInput.val(100).prop('disabled', true);
                                             quarterlyInput.val('').prop('disabled', true);
@@ -1174,10 +1158,10 @@
                                             percentageInput.prop('disabled', false);
                                             quarterlyInput.prop('disabled', false);
                                         }
-
+                        
                                         calculateGeneratePrice(parentAccordion);
                                     });
-
+                        
                                     calculateGeneratePrice($('.accordion-item').first().find('.accordion-body'));
                                 });
                             </script>
