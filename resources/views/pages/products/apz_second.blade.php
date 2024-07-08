@@ -492,6 +492,40 @@
                                                                         <td><strong>@lang('cruds.company.fields.branch_location')</strong></td>
                                                                         <td>{{ $b->branch_location }}</td>
                                                                     </tr>
+
+                                                                    <tr>
+                                                                        <td><strong>@lang('global.shaxarsozlik_umumiy_xajmi')</strong></td>
+                                                                        <td>{{ $b->shaxarsozlik_umumiy_xajmi }}</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td><strong>@lang('global.qavatlar_soni_xajmi')</strong></td>
+                                                                        <td>{{ $b->qavatlar_soni_xajmi }}</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td><strong>@lang('global.avtoturargoh_xajmi')</strong></td>
+                                                                        <td>{{ $b->avtoturargoh_xajmi }}</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td><strong>@lang('global.qavat_xona_xajmi')</strong></td>
+                                                                        <td>{{ $b->qavat_xona_xajmi }}</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td><strong>@lang('global.umumiy_foydalanishdagi_xajmi')</strong></td>
+                                                                        <td>{{ $b->umumiy_foydalanishdagi_xajmi }}</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td><strong>@lang('global.qurilish_turi')</strong></td>
+                                                                        <td>{{ $b->qurilish_turi }}</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td><strong>@lang('global.coefficient')</strong></td>
+                                                                        <td>{{ $b->coefficient }}</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td><strong>@lang('global.zona')</strong></td>
+                                                                        <td>{{ $b->zona }}</td>
+                                                                    </tr>
+                                                                    
                                                                     <tr>
                                                                         <td><strong>@lang('global.obyekt_boyicha_tolanishi_lozim')</strong></td>
                                                                         <td>{{ number_format($b->branch_kubmetr, 1) }}</td>
