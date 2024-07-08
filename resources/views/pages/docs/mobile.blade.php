@@ -116,19 +116,7 @@
                             </tr>
 
                             @foreach ($client->branches as $b)
-                                <tr>
-                                    <td colspan="3" class="text-center bg-secondary text-light">
-                                        <strong>@lang('global.contract_details') - {{ $b->contract_apt }}</strong>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>@lang('global.ruxsatnoma_raqami')</td>
-                                    <td colspan="2">{{ $b->contract_apt ?? '' }}</td>
-                                </tr>
-                                <tr>
-                                    <td>@lang('global.created_at')</td>
-                                    <td colspan="2">{{ $b->contract_date ?? '' }}</td>
-                                </tr>
+                                
                                 <tr>
                                     <td>@lang('cruds.branches.fields.application_number')</td>
                                     <td colspan="2">{{ $b->application_number ?? '' }}</td>
@@ -149,7 +137,51 @@
                                     <td>@lang('global.shaxarsozlik_umumiy_xajmi')</td>
                                     <td colspan="2">{{ $b->shaxarsozlik_umumiy_xajmi }}</td>
                                 </tr>
-                                <!-- Add more rows as needed -->
+                                <tr>
+                                    <td>@lang('global.qavatlar_soni_xajmi')</td>
+                                    <td colspan="2">{{ $b->qavatlar_soni_xajmi }}</td>
+                                </tr>
+                                <tr>
+                                    <td>@lang('global.avtoturargoh_xajmi')</td>
+                                    <td colspan="2">{{ $b->avtoturargoh_xajmi }}</td>
+                                </tr>
+                                <tr>
+                                    <td>@lang('global.qavat_xona_xajmi')</td>
+                                    <td colspan="2">{{ $b->qavat_xona_xajmi }}</td>
+                                </tr>
+                                <tr>
+                                    <td>@lang('global.umumiy_foydalanishdagi_xajmi')</td>
+                                    <td colspan="2">{{ $b->umumiy_foydalanishdagi_xajmi }}</td>
+                                </tr>
+                                <tr>
+                                    <td>@lang('global.qurilish_turi')</td>
+                                    <td colspan="2">{{ $b->qurilish_turi }}</td>
+                                </tr>
+                                <tr>
+                                    <td>@lang('global.coefficient')</td>
+                                    <td colspan="2">{{ $b->coefficient }}</td>
+                                </tr>
+                                <tr>
+                                    <td>@lang('global.zona')</td>
+                                    <td colspan="2">{{ $b->zona }}</td>
+                                </tr>
+
+                                <tr>
+                                    <td>@lang('global.obyekt_boyicha_tolanishi_lozim') ( m³ )</td>
+                                    <td colspan="2">{{ number_format($b->branch_kubmetr, 1) ?? ''}}</td>
+                                </tr>
+                                <tr>
+                                    <td>@lang('global.jami_tolanishi_kerak')</td>
+                                    <td colspan="2" class="formatted-number">{{ $b->generate_price ?? ''}}</td>
+                                </tr>
+
+
+
+                                <tr>
+                                    <td>@lang('global.bolib_tolash_foizi_oldindan')</td>
+                                    <td colspan="2">{{ $b->percentage_input }}%</td>
+                                </tr>
+                               
                             @endforeach
                         </tbody>
                     </table>
