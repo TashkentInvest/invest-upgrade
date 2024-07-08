@@ -245,7 +245,11 @@ class ClientController extends Controller
         }
     }
 
-    
+    private function calculateCoefficient($Bh, $Hyu, $Ha, $Ht, $coefficient)
+    {
+        $Ti = $Bh * (($Hyu) - ($Ha + $Ht)) * $coefficient;
+        return $Ti;
+    }
   
     public function Qrcreate(Request $request)
     {

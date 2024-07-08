@@ -1,0 +1,41 @@
+// private function calculateCoefficient($Bh, $Hb, $Hyu, $Ha, $Ht, $Hu, $Kt, $Ko, $Kz, $Kj)
+// {
+//     $Ti = $Bh * (($Hb + $Hyu) - ($Ha + $Ht + $Hu)) * ($Kt * $Ko * $Kz * $Kj);
+//     return $Ti;
+// }
+
+// public function calculate(Request $request)
+// {
+//     // Validate the incoming request
+//     $validated = $request->validate([
+//         'Bh' => 'required|numeric',
+//         'Hb' => 'required|numeric',
+//         'Hyu' => 'required|numeric',
+//         'Ha' => 'required|numeric',
+//         'Ht' => 'required|numeric',
+//         'Hu' => 'required|numeric',
+//         'Kt' => 'required|numeric',
+//         'Ko' => 'required|numeric',
+//         'Kz' => 'required|numeric',
+//         'Kj' => 'required|numeric',
+//     ]);
+
+//     // Extract the validated data
+//     $Bh = $validated['Bh'];
+//     $Hb = $validated['Hb'];
+//     $Hyu = $validated['Hyu'];
+//     $Ha = $validated['Ha'];
+//     $Ht = $validated['Ht'];
+//     $Hu = $validated['Hu'];
+//     $Kt = $validated['Kt'];
+//     $Ko = $validated['Ko'];
+//     $Kz = $validated['Kz'];
+//     $Kj = $validated['Kj'];
+
+//     // Calculate the coefficient
+//     $coefficient = $this->calculateCoefficient($Bh, $Hb, $Hyu, $Ha, $Ht, $Hu, $Kt, $Ko, $Kz, $Kj);
+
+//     // Return or use the coefficient as needed
+//     return response()->json(['coefficient' => $coefficient]);
+// }
+
