@@ -536,6 +536,63 @@
                                                                             {{ $b->generate_price }}</td>
                                                                     </tr>
                                                                     <tr>
+                                                                        <td><strong>Formula</strong></td>
+                                                                        <td class="formatted-number">
+                                                                            {{ $b->calculated_Ti ?? '' }}
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td><strong>Calculation</strong></td>
+                                                                        <td>
+                                                                            {{
+                                                                                number_format(
+                                                                                    (float) ($b->client->company->minimum_wage ?? 340000),
+                                                                                    2
+                                                                                )
+                                                                            }} *
+                                                                            (
+                                                                            {{
+                                                                                number_format(
+                                                                                    (float) ($b->shaxarsozlik_umumiy_xajmi ?? 0),
+                                                                                    2
+                                                                                )
+                                                                            }} +
+                                                                            {{
+                                                                                number_format(
+                                                                                    (float) ($b->qavatlar_soni_xajmi ?? 0),
+                                                                                    2
+                                                                                )
+                                                                            }}
+                                                                            ) -
+                                                                            (
+                                                                            {{
+                                                                                number_format(
+                                                                                    (float) ($b->avtoturargoh_xajmi ?? 0),
+                                                                                    2
+                                                                                )
+                                                                            }} +
+                                                                            {{
+                                                                                number_format(
+                                                                                    (float) ($b->qavat_xona_xajmi ?? 0),
+                                                                                    2
+                                                                                )
+                                                                            }} +
+                                                                            {{
+                                                                                number_format(
+                                                                                    (float) ($b->umumiy_foydalanishdagi_xajmi ?? 0),
+                                                                                    2
+                                                                                )
+                                                                            }}
+                                                                            ) *
+                                                                            {{
+                                                                                number_format(
+                                                                                    (float) ($b->coefficient ?? 1),
+                                                                                    2
+                                                                                )
+                                                                            }}
+                                                                        </td>
+                                                                    </tr>
+                                                                    
+                                                                    <tr>
                                                                         <td><strong>@lang('global.bolib_tolash')</strong></td>
                                                                         <td>
                                                                             @if ($b->payment_type == 'pay_bolib')
