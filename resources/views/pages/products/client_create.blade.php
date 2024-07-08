@@ -409,6 +409,9 @@
                                             accordion.find('.payment-schedule').empty();
                                             accordion.find('.quarterly-payment-schedule').empty();
                                             accordion.find('.total-quarterly-payment').text('0.00');
+                                    
+                                            // Initial calculation for the new accordion item
+                                            calculateGeneratePrice(accordion.find('.accordion-body'));
                                         });
                                     
                                         // Function to calculate and update prices
@@ -494,7 +497,7 @@
                                         }
                                     
                                         // Event listener for input changes
-                                        $(document).on('input change', '.branch_kubmetr, .shaxarsozlik_umumiy_xajmi, .qavatlar_soni_xajmi, .avtoturargoh_xajmi, .umumiy_foydalanishdagi_xajmi, .qavat_xona_xajmi, .minimum_wage, .percentage-input, .quarterly-input',
+                                        $(document).on('input change', '.branch_kubmetr, .shaxarsozlik_umumiy_xajmi, .qavatlar_soni_xajmi, .avtoturargoh_xajmi, .umumiy_foydalanishdagi_xajmi, .qavat_xona_xajmi, .minimum_wage, .percentage-input, .quarterly-input, .branch_location, .branch_type, .qurilish_turi, .zona',
                                             function() {
                                                 let parentAccordion = $(this).closest('.accordion-body');
                                                 calculateGeneratePrice(parentAccordion);
@@ -522,12 +525,16 @@
                                         });
                                     
                                         // Store the original value of minimum wage
-                                        $('.minimum_wage').data('original-value', $('.minimum_wage').val());
+                                        $('.minimum_wage').each(function() {
+                                            $(this).data('original-value', $(this).val());
+                                        });
                                     
                                         // Initial calculation for the first accordion item
                                         calculateGeneratePrice($('.accordion-item').first().find('.accordion-body'));
                                     });
                                     </script>
+    
+    
     
 
                                 <div class="accordion accordion-flush" id="accordionFlushExample">
@@ -863,20 +870,18 @@
 
                                                         <div class="col-12 col-md-6 col-lg-6 col-xl-3">
                                                             <div class="mb-3">
-                                                                <label
-                                                                    for="basicpill-card-verification-input">@lang('global.bazaviy_xisoblash_miqdori')</label>
+                                                                <label for="basicpill-card-verification-input">@lang('global.bazaviy_xisoblash_miqdori')</label>
                                                                 <input type="number" class="form-control minimum_wage"
                                                                     placeholder="@lang('global.bazaviy_xisoblash_miqdori')"
                                                                     value="{{ old('minimum_wage', '340000') }}"
                                                                     name="minimum_wage"
                                                                     id="minimum_wage">
-
                                                                 @error('minimum_wage')
-                                                                    <span
-                                                                        class="error invalid-feedback">{{ $message }}</span>
+                                                                    <span class="error invalid-feedback">{{ $message }}</span>
                                                                 @enderror
                                                             </div>
                                                         </div>
+
                                                         <div class="col-12 col-md-6 col-lg-6 col-xl-3">
                                                             <div class="mb-3">
                                                                 <label
