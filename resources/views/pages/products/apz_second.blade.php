@@ -546,7 +546,7 @@
                                                                             {{
                                                                                 number_format(
                                                                                     (float) ($b->client->company->minimum_wage ?? 340000),
-                                                                                    2
+                                                                                    0   
                                                                                 )
                                                                             }} *
                                                                             (
