@@ -528,7 +528,7 @@
                                                             <div class="mb-3">
                                                                 <label
                                                                     for="shaxarsozlik_umumiy_xajmi">@lang('global.shaxarsozlik_umumiy_xajmi')</label>
-                                                                <input type="text" class="form-control"
+                                                                <input type="number" class="form-control"
                                                                     name="accordions[0][shaxarsozlik_umumiy_xajmi]"
                                                                     placeholder="@lang('global.shaxarsozlik_umumiy_xajmi')"
                                                                     value="{{ old('accordions.0.shaxarsozlik_umumiy_xajmi') }}">
@@ -541,7 +541,7 @@
                                                         <div class="col-12 col-md-6 col-lg-6 col-xl-6">
                                                             <div class="mb-3">
                                                                 <label for="qavatlar_soni_xajmi">@lang('global.qavatlar_soni_xajmi')</label>
-                                                                <input type="text" class="form-control"
+                                                                <input type="number" class="form-control"
                                                                     name="accordions[0][qavatlar_soni_xajmi]"
                                                                     placeholder="@lang('global.qavatlar_soni_xajmi')"
                                                                     value="{{ old('accordions.0.qavatlar_soni_xajmi') }}">
@@ -554,7 +554,7 @@
                                                         <div class="col-12 col-md-6 col-lg-6 col-xl-6">
                                                             <div class="mb-3">
                                                                 <label for="avtoturargoh_xajmi">@lang('global.avtoturargoh_xajmi')</label>
-                                                                <input type="text" class="form-control"
+                                                                <input type="number" class="form-control"
                                                                     name="accordions[0][avtoturargoh_xajmi]"
                                                                     placeholder="@lang('global.avtoturargoh_xajmi')"
                                                                     value="{{ old('accordions.0.avtoturargoh_xajmi') }}">
@@ -567,7 +567,7 @@
                                                         <div class="col-12 col-md-6 col-lg-6 col-xl-6">
                                                             <div class="mb-3">
                                                                 <label for="qavat_xona_xajmi">@lang('global.qavat_xona_xajmi')</label>
-                                                                <input type="text" class="form-control"
+                                                                <input type="number" class="form-control"
                                                                     name="accordions[0][qavat_xona_xajmi]"
                                                                     placeholder="@lang('global.qavat_xona_xajmi')"
                                                                     value="{{ old('accordions.0.qavat_xona_xajmi') }}">
@@ -581,7 +581,7 @@
                                                             <div class="mb-3">
                                                                 <label
                                                                     for="umumiy_foydalanishdagi_xajmi">@lang('global.umumiy_foydalanishdagi_xajmi')</label>
-                                                                <input type="text" class="form-control"
+                                                                <input type="number" class="form-control"
                                                                     name="accordions[0][umumiy_foydalanishdagi_xajmi]"
                                                                     placeholder="@lang('global.umumiy_foydalanishdagi_xajmi')"
                                                                     value="{{ old('accordions.0.umumiy_foydalanishdagi_xajmi') }}">

@@ -75,28 +75,44 @@ class ClientController extends Controller
                 ->where('created_by_client', '=', 1)
                 ->orderBy('id', 'desc')
                 ->paginate(25);
-
-            foreach ($clients as $client) {
-                foreach ($client->branches as $branch) {
-                    $Bh = $client->company->minimum_wage ?? 0;
-                    $Hb = $branch->Hb ?? 0;
-                    $Hyu = $branch->qavatlar_soni_xajmi ?? 0;
-                    $Ha = $branch->avtoturargoh_xajmi ?? 0;
-                    $Ht = $branch->qavat_xona_xajmi ?? 0;
-                    $coefficient = $branch->coefficient ?? 1;
-
-                    $Ti = $Bh * (($Hb + $Hyu) - ($Ha + $Ht)) * $coefficient;
-
-                    $branch->calculated_Ti = $Ti;
-                }
-            }
-
+    
+            // Calculate Ti for each client's branches
+            // foreach ($clients as $client) {
+            //     foreach ($client->branches as $branch) {
+            //         $Bh = (float)($client->company->minimum_wage ?? 340000); // Default to 340,000
+            //         $Hb = (float)($branch->shaxarsozlik_umumiy_xajmi ?? 0);
+            //         $Hyu = (float)($branch->umumiy_foydalanishdagi_xajmi ?? 0);
+            //         $Ha = (float)($branch->avtoturargoh_xajmi ?? 0);
+            //         $Ht = (float)($branch->qavat_xona_xajmi ?? 0);
+            //         $Hu = (float)($branch->umumiy_foydalanishdagi_xajmi ?? 0); 
+            //         $coefficient = (float)($branch->coefficient ?? 1);
+    
+            //         // Calculate Ti (generate_price)
+            //         $Ti = $Bh * (($Hb + $Hyu) - ($Ha + $Ht + $Hu)) * $coefficient;
+    
+            //         // Log the intermediate values
+            //         Log::info('Bh: ' . $Bh);
+            //         Log::info('Hb: ' . $Hb);
+            //         Log::info('Hyu: ' . $Hyu);
+            //         Log::info('Ha: ' . $Ha);
+            //         Log::info('Ht: ' . $Ht);
+            //         Log::info('Hu: ' . $Hu);
+            //         Log::info('Coefficient: ' . $coefficient);
+            //         Log::info('Calculated Ti: ' . $Ti);
+            //         Log::info('----------------------------- ');
+    
+            //         // Store the calculated Ti in a temporary attribute
+            //         $branch->calculated_Ti = $Ti;
+            //     }
+            // }
+    
             return view('pages.products.apz_second', compact('clients', 'categories'));
         } catch (\Exception $e) {
-            dd('Error in client_confirm: ' . $e->getMessage());
+            Log::error('Error in client_confirm: ' . $e->getMessage());
             return redirect()->back()->with('error', 'An error occurred while fetching clients: ' . $e->getMessage());
         }
     }
+    
 
     
     public function show($id)

@@ -536,6 +536,12 @@
                                                                             {{ $b->generate_price }}</td>
                                                                     </tr>
                                                                     <tr>
+                                                                        <td><strong>Formula</strong></td>
+                                                                        <td class="formatted-number">
+                                                                            {{ $b->calculated_Ti ?? '' }}
+                                                                    </tr>
+
+                                                                    <tr>
                                                                         <td><strong>@lang('global.bolib_tolash')</strong></td>
                                                                         <td>
                                                                             @if ($b->payment_type == 'pay_bolib')
