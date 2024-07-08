@@ -417,6 +417,12 @@
                                         function calculateGeneratePrice(parentAccordion) {
                                             let companyKubmetr = parentAccordion.find('.branch_kubmetr').val();
                                             let minimumWage = parentAccordion.find('.minimum_wage').val();
+                                            let shaxarsozlik_umumiy_xajmi = parentAccordion.find('.shaxarsozlik_umumiy_xajmi').val();
+                                            let qavatlar_soni_xajmi = parentAccordion.find('.qavatlar_soni_xajmi').val();
+                                            let avtoturargoh_xajmi = parentAccordion.find('.avtoturargoh_xajmi').val();
+                                            let qavat_xona_xajmi = parentAccordion.find('.qavat_xona_xajmi').val();
+                                            
+                                            let umumiy_foydalanishdagi_xajmi = parentAccordion.find('.umumiy_foydalanishdagi_xajmi').val();
                                             let generatePrice = companyKubmetr * minimumWage;
                                             parentAccordion.find('.generate_price').val(generatePrice);
 
@@ -528,7 +534,7 @@
                                                             <div class="mb-3">
                                                                 <label
                                                                     for="shaxarsozlik_umumiy_xajmi">@lang('global.shaxarsozlik_umumiy_xajmi')</label>
-                                                                <input type="number" class="form-control"
+                                                                <input type="number" class="form-control shaxarsozlik_umumiy_xajmi"
                                                                     name="accordions[0][shaxarsozlik_umumiy_xajmi]"
                                                                     placeholder="@lang('global.shaxarsozlik_umumiy_xajmi')"
                                                                     value="{{ old('accordions.0.shaxarsozlik_umumiy_xajmi') }}">
@@ -541,7 +547,7 @@
                                                         <div class="col-12 col-md-6 col-lg-6 col-xl-6">
                                                             <div class="mb-3">
                                                                 <label for="qavatlar_soni_xajmi">@lang('global.qavatlar_soni_xajmi')</label>
-                                                                <input type="number" class="form-control"
+                                                                <input type="number" class="form-control qavatlar_soni_xajmi"
                                                                     name="accordions[0][qavatlar_soni_xajmi]"
                                                                     placeholder="@lang('global.qavatlar_soni_xajmi')"
                                                                     value="{{ old('accordions.0.qavatlar_soni_xajmi') }}">
@@ -554,7 +560,7 @@
                                                         <div class="col-12 col-md-6 col-lg-6 col-xl-6">
                                                             <div class="mb-3">
                                                                 <label for="avtoturargoh_xajmi">@lang('global.avtoturargoh_xajmi')</label>
-                                                                <input type="number" class="form-control"
+                                                                <input type="number" class="form-control avtoturargoh_xajmi"
                                                                     name="accordions[0][avtoturargoh_xajmi]"
                                                                     placeholder="@lang('global.avtoturargoh_xajmi')"
                                                                     value="{{ old('accordions.0.avtoturargoh_xajmi') }}">
@@ -567,7 +573,7 @@
                                                         <div class="col-12 col-md-6 col-lg-6 col-xl-6">
                                                             <div class="mb-3">
                                                                 <label for="qavat_xona_xajmi">@lang('global.qavat_xona_xajmi')</label>
-                                                                <input type="number" class="form-control"
+                                                                <input type="number" class="form-control qavat_xona_xajmi"
                                                                     name="accordions[0][qavat_xona_xajmi]"
                                                                     placeholder="@lang('global.qavat_xona_xajmi')"
                                                                     value="{{ old('accordions.0.qavat_xona_xajmi') }}">
@@ -581,7 +587,7 @@
                                                             <div class="mb-3">
                                                                 <label
                                                                     for="umumiy_foydalanishdagi_xajmi">@lang('global.umumiy_foydalanishdagi_xajmi')</label>
-                                                                <input type="number" class="form-control"
+                                                                <input type="number" class="form-control umumiy_foydalanishdagi_xajmi"
                                                                     name="accordions[0][umumiy_foydalanishdagi_xajmi]"
                                                                     placeholder="@lang('global.umumiy_foydalanishdagi_xajmi')"
                                                                     value="{{ old('accordions.0.umumiy_foydalanishdagi_xajmi') }}">
