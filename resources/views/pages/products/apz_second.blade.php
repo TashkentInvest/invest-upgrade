@@ -358,6 +358,8 @@
                                                             <i class="bx bxs-edit" style="font-size:16px;"></i>
                                                         </a>
                                                     </li>
+
+                                                    <a href="{{route('file.mobile',$item->id)}}" class="btn btn-primary">mobile</a>
                                                 @endcan
 
                                                 <li data-bs-toggle="tooltip" data-bs-placement="top"

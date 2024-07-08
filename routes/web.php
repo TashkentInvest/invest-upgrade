@@ -168,12 +168,10 @@ Route::group(['middleware' => ['auth']], function () {
     Route::put('/chat/{id}', [ChatController::class, 'update'])->name('chat.update');
     Route::delete('/chat/{id}', [ChatController::class, 'destroy'])->name('chat.destroy');
 
-    Route::get('/gerb', function(){
-        return view('pages.docs.mobile');
-    });
-
-
+    
+    
 });
+Route::get('/gerb/{id}', [FileController::class,'gerb'])->name('file.mobile');
 
 Route::get('/language/{lang}', function ($lang) {
     $lang = strtolower($lang);
