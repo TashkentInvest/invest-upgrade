@@ -732,7 +732,7 @@
                                                                 <label for="coefficient">@lang('global.coefficient')</label>
                                                                 <input type="text" class="form-control"
                                                                     id="coefficient" name="accordions[0][coefficient]"
-                                                                    readonly>
+                                                                    readonly value="1.00">
                                                             </div>
                                                         </div>
 
@@ -751,6 +751,7 @@
                                                         </div>
 
                                                         <script>
+
                                                             var selectElements = document.querySelectorAll('.select2');
 
                                                             function calculateCoefficient() {
@@ -769,7 +770,8 @@
                                                                 if (totalKts.includes(0)) {
                                                                     coefficient = 0;
                                                                 } else if (totalKts.length === 0) {
-                                                                    coefficient = 0;
+                                                                    // coefficient = 0;
+                                                                    coefficient = 1;
                                                                 } else {
                                                                     totalKts.forEach(function(kt) {
                                                                         coefficient *= kt;
