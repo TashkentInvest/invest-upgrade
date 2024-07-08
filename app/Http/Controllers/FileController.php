@@ -113,15 +113,19 @@ class FileController extends Controller
         return view('pages.exel.select_columns');
     }
 
-    public function gerb($id)
-    {
-        // dd($id);
+    public function gerb($id){
+        $headers = array(
+            'Content-type' => 'text/html',
+            'Content-Disposition'=>'attachement; Filename=mydoc.doc'
+        );
+    
         $client = Client::where('id', $id)
-            ->with(['company', 'branches', 'address', 'passport'])
-            ->get()->first();
+        ->with(['company', 'branches', 'address', 'passport'])
+        ->first();
 
-
-            return view('pages.docs.mobile', compact('client'));
-      
+        
+    
+        return Response::make(view('pages.docs.mobile', compact('client')), 200, $headers);
     }
+
 }
