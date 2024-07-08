@@ -82,7 +82,7 @@ class ClientController extends Controller
                     // Step 1: Retrieve and set default values
                     $Bh = (float)($client->company->minimum_wage ?? 340000); // Default to 340,000
                     $Hb = (float)($branch->shaxarsozlik_umumiy_xajmi ?? 0);
-                    $Hyu = (float)($branch->umumiy_foydalanishdagi_xajmi ?? 0);
+                    $Hyu = (float)($branch->qavatlar_soni_xajmi ?? 0);
                     $Ha = (float)($branch->avtoturargoh_xajmi ?? 0);
                     $Ht = (float)($branch->qavat_xona_xajmi ?? 0);
                     $Hu = (float)($branch->umumiy_foydalanishdagi_xajmi ?? 0); 
