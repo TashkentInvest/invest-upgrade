@@ -1229,7 +1229,7 @@
                                                                             class="form-control quarterly-input"
                                                                             name="accordions[{{ $branchIndex }}][quarterly_input]"
                                                                             value="{{ old('accordions.' . $branchIndex . '.quarterly_input', $b->quarterly_input) }}"
-                                                                            min="0">
+                                                                            min="0" step="0.01">
                                                                         <span class="input-group-text"></span>
                                                                     </div>
                                                                 </div>
@@ -1245,7 +1245,7 @@
                                                                         <input type="number"
                                                                             class="form-control calculated-quarterly-payment"
                                                                             name="accordions[{{ $branchIndex }}][calculated_quarterly_payment]"
-                                                                            value="{{ old('accordions.' . $branchIndex . '.calculated_quarterly_payment', $b->calculated_quarterly_payment) }}"
+                                                                            value="{{ old('accordions.' . $branchIndex . '.calculated_quarterly_payment', $b->calculated_quarterly_payment) }}" step="0.01"
                                                                             min="0">
                                                                         <span class="input-group-text"></span>
                                                                     </div>
