@@ -1076,7 +1076,7 @@
                                                         </script>
                                                 
                                                         <!-- End new fields -->
-                                                        <div class="col-12 col-md-6 col-lg-6 col-xl-6">
+                                                        <div class="col-12 col-md-6 col-lg-6 col-xl-3">
                                                             <div class="inner-repeater mb-4">
                                                                 <div data-repeater-list="inner-group" class="inner mb-3">
                                                                     <label
@@ -1243,148 +1243,7 @@
                                 <div id="addAccordion" class="btn btn-primary mt-3">Add Accordion</div>
                             </section>
 
-                            <script>
-                                $(document).ready(function() {
-                                    let accordionCount = 1;
-                        
-                                    $('#addAccordion').on('click', function() {
-                                        let accordion = $('.accordion-item').first().clone();
-                                        let newId = 'flush-collapse' + accordionCount;
-                                        accordion.find('.accordion-collapse').attr('id', newId);
-                                        accordion.find('.accordion-button').attr('data-bs-target', '#' + newId);
-                                        accordion.find('.accordion-header').attr('id', 'flush-heading' + accordionCount);
-                                        accordion.find('.accordion-button').attr('aria-controls', newId);
-                                        accordion.find('.accordion-button').text('Accordion Item #' + accordionCount);
-                        
-                                        accordion.find('input, select').each(function() {
-                                            let name = $(this).attr('name');
-                                            if (name) {
-                                                let newName = name.replace(/\[0\]/, '[' + accordionCount + ']');
-                                                $(this).attr('name', newName);
-                                            }
-                                            $(this).val('');
-                                            $(this).attr('id', name + '-' + accordionCount);
-                                        });
-                        
-                                        let tableId = 'payment-table-' + accordionCount;
-                                        let scheduleId = 'payment-schedule-' + accordionCount;
-                                        let quarterlyTableId = 'quarterly-table-' + accordionCount;
-                                        let quarterlyScheduleId = 'quarterly-schedule-' + accordionCount;
-                        
-                                        accordion.find('.payment-table').attr('id', tableId);
-                                        accordion.find('.payment-schedule').attr('id', scheduleId);
-                                        accordion.find('.quarterly-table').attr('id', quarterlyTableId);
-                                        accordion.find('.quarterly-payment-schedule').attr('id', quarterlyScheduleId);
-                        
-                                        accordion.appendTo('#accordionFlushExample');
-                                        accordionCount++;
-                        
-                                        accordion.find('.generate_price').val('');
-                                        accordion.find('.payment-type').val('pay_full').trigger('change');
-                                        accordion.find('.percentage-input').val('0').prop('disabled', true);
-                                        accordion.find('.quarterly-input').val('').prop('disabled', true);
-                                        accordion.find('.calculated-quarterly-payment').val('');
-                                        accordion.find('.payment-schedule').empty();
-                                        accordion.find('.quarterly-payment-schedule').empty();
-                                        accordion.find('.total-quarterly-payment').text('0.00');
-                                    });
-                        
-                        
-                                    $(document).on('input change', '.branch_kubmetr, .minimum_wage, .percentage-input, .quarterly-input', function() {
-                                        let parentAccordion = $(this).closest('.accordion-body');
-                                        calculateGeneratePrice(parentAccordion);
-                                    });
-                        
-                                    function calculateGeneratePrice(parentAccordion) {
-                                        let companyKubmetr = parentAccordion.find('.branch_kubmetr').val();
-                                        let minimumWage = parentAccordion.find('.minimum_wage').val();
-                                        let generatePrice = companyKubmetr * minimumWage;
-                                        parentAccordion.find('.generate_price').val(generatePrice.toFixed(2));
-                        
-                                        let percentageInput = parseFloat(parentAccordion.find('.percentage-input').val());
-                                        let quarterlyInput = parseInt(parentAccordion.find('.quarterly-input').val());
-                        
-                                        if (!isNaN(generatePrice)) {
-                                            let z = (generatePrice * percentageInput) / 100;
-                                            let n = generatePrice - z;
-                                            let y = quarterlyInput > 0 ? n / quarterlyInput : 0;
-                        
-                                            if (!isNaN(percentageInput)) {
-                                                parentAccordion.find('.first_payment_percent').val(z.toFixed(2));
-                                            } else {
-                                                parentAccordion.find('.first_payment_percent').val('');
-                                            }
-                        
-                                            if (!isNaN(percentageInput) && !isNaN(quarterlyInput) && quarterlyInput > 0) {
-                                                parentAccordion.find('.calculated-quarterly-payment').val(y.toFixed(2));
-                                                updateQuarterlyPaymentSchedule(parentAccordion, y, quarterlyInput);
-                                            } else {
-                                                parentAccordion.find('.calculated-quarterly-payment').val('');
-                                                updateQuarterlyPaymentSchedule(parentAccordion, '', '');
-                                            }
-                        
-                                            updatePaymentSchedule(parentAccordion, generatePrice);
-                                        }
-                                    }
-                        
-                                    function updatePaymentSchedule(parentAccordion, generatePrice) {
-                                        let paymentSchedule = parentAccordion.find('.payment-schedule');
-                                        paymentSchedule.empty();
-                                        let percentages = [0, 10, 20, 30, 40, 50];
-                                        percentages.forEach(percentage => {
-                                            let z = Math.round((generatePrice * percentage) / 100); // Rounding z
-                                            let n = generatePrice - z;
-                                            let quarterlyInput = parentAccordion.find('.quarterly-input').val();
-                                            let y = quarterlyInput ? Math.round((n / quarterlyInput)) : "N/A";
-                                            paymentSchedule.append(
-                                                `<tr>
-                                                    <td>${percentage}%</td>
-                                                    <td>${Math.round(z)}</td>
-                                                    <td>${y}</td>
-                                                </tr>`
-                                            );
-                                        });
-                                    }
-                        
-                                    function updateQuarterlyPaymentSchedule(parentAccordion, quarterlyPayment, quarterlyCount) {
-                                        let quarterlyPaymentSchedule = parentAccordion.find('.quarterly-payment-schedule');
-                                        quarterlyPaymentSchedule.empty();
-                                        let totalQuarterlyPayment = 0;
-                                        for (let i = 1; i <= quarterlyCount; i++) {
-                                            quarterlyPaymentSchedule.append(
-                                                `<tr>
-                                                    <td>Chorak ${i}</td>
-                                                    <td>${Math.round(quarterlyPayment)}</td>
-                                                </tr>`
-                                            );
-                                            totalQuarterlyPayment += quarterlyPayment;
-                                        }
-                                        parentAccordion.find('.total-quarterly-payment').text(Math.round(totalQuarterlyPayment));
-                                    }
-                        
-                                    $(document).on('change', '.payment-type', function() {
-                                        let parentAccordion = $(this).closest('.accordion-body');
-                                        let paymentType = $(this).val();
-                                        let percentageInput = parentAccordion.find('.percentage-input');
-                                        let quarterlyInput = parentAccordion.find('.quarterly-input');
-                        
-                                        if (paymentType === 'pay_full') {
-                                            percentageInput.val(100).prop('disabled', true);
-                                            quarterlyInput.val('').prop('disabled', true);
-                                            parentAccordion.find('.calculated-quarterly-payment').val('N/A');
-                                            parentAccordion.find('.payment-schedule').empty();
-                                            parentAccordion.find('.quarterly-payment-schedule').empty();
-                                        } else {
-                                            percentageInput.prop('disabled', false);
-                                            quarterlyInput.prop('disabled', false);
-                                        }
-                        
-                                        calculateGeneratePrice(parentAccordion);
-                                    });
-                        
-                                    calculateGeneratePrice($('.accordion-item').first().find('.accordion-body'));
-                                });
-                            </script>
+                          
                             <!-- Confirm Details -->
                             <h3>@lang('global.confirmation')</h3>
 
