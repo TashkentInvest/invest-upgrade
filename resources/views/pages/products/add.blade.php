@@ -659,6 +659,21 @@
                                                             </div>
                                                         </div>
 
+                                                        <div class="col-12 col-md-6 col-lg-6 col-xl-6">
+                                                            <div class="mb-3">
+                                                                <label
+                                                                    for="branch_location">@lang('cruds.company.fields.branch_location')</label>
+                                                                <input type="text" class="form-control"
+                                                                    name="accordions[0][branch_location]"
+                                                                    placeholder="@lang('cruds.company.fields.branch_location')"
+                                                                    value="{{ old('accordions.0.branch_location') }}">
+                                                                @error('accordions.0.branch_location')
+                                                                    <span
+                                                                        class="error invalid-feedback">{{ $message }}</span>
+                                                                @enderror
+                                                            </div>
+                                                        </div>
+{{-- 
                                                         <div class="col-12 col-md-6">
                                                             <div class="mb-3">
                                                                 <label for="branch_location">@lang('cruds.company.fields.branch_location')</label>
@@ -686,7 +701,7 @@
                                                                         class="error invalid-feedback">{{ $message }}</span>
                                                                 @enderror
                                                             </div>
-                                                        </div>
+                                                        </div> --}}
                                                         <div class="col-12 col-md-6">
                                                             <div class="mb-3">
                                                                 <label for="branch_type">@lang('global.loyiha_turi')</label>

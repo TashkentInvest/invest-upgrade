@@ -654,8 +654,25 @@
                                                                     @enderror
                                                                 </div>
                                                             </div>
+
+                                                            <div class="col-12 col-md-6 col-lg-6 col-xl-6 ">
+                                                                <div class="inner-repeater mb-4">
+                                                                    <div data-repeater-list="inner-group"
+                                                                        class="inner mb-3">
+                                                                        <label
+                                                                            for="basicpill-cardno-input">@lang('cruds.company.fields.branch_location')</label>
+                                                                        <input type="number"
+                                                                            class="form-control branch_location"
+                                                                            step="0.00001" placeholder="( m³ )"
+                                                                            value="{{ old('accordions.' . $branchIndex . '.branch_location', $b->branch_location) }}"
+                                                                            name="accordions[{{ $branchIndex }}][branch_location]"
+                                                                            onchange="displayFiveDigitsAfterDecimal(this)">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
                                                             
-                                                            <div class="col-12 col-md-6">
+                                                            {{-- <div class="col-12 col-md-6">
                                                                 <div class="mb-3">
                                                                     <label for="branch_location">@lang('cruds.company.fields.branch_location')</label>
                                                                     <select class="form-control form_kof2 form-select"
@@ -674,7 +691,7 @@
                                                                         <span class="error invalid-feedback">{{ $message }}</span>
                                                                     @enderror
                                                                 </div>
-                                                            </div>
+                                                            </div> --}}
                                                             
                                                             <div class="col-12 col-md-6">
                                                                 <div class="mb-3">
