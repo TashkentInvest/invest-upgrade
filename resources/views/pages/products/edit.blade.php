@@ -592,19 +592,19 @@
                                                             <!-- New fields -->
                                                             <div class="col-12 col-md-6 col-lg-6 col-xl-6">
                                                                 <div class="mb-3">
-                                                                    <label
-                                                                        for="shaxarsozlik_umumiy_xajmi">@lang('global.shaxarsozlik_umumiy_xajmi')</label>
-                                                                    <input type="number"
-                                                                        class="form-control shaxarsozlik_umumiy_xajmi"
-                                                                        name="accordions[0][shaxarsozlik_umumiy_xajmi]"
-                                                                        placeholder="@lang('global.shaxarsozlik_umumiy_xajmi')"
-                                                                        value="{{ old('accordions.0.shaxarsozlik_umumiy_xajmi') }}">
+                                                                    <label for="shaxarsozlik_umumiy_xajmi">@lang('global.shaxarsozlik_umumiy_xajmi')</label>
+                                                                    <input type="number" 
+                                                                           class="form-control shaxarsozlik_umumiy_xajmi" 
+                                                                           name="accordions[0][shaxarsozlik_umumiy_xajmi]" 
+                                                                           placeholder="@lang('global.shaxarsozlik_umumiy_xajmi')" 
+                                                                           value="{{ old('accordions.' . $branchIndex . '.shaxarsozlik_umumiy_xajmi', $b->shaxarsozlik_umumiy_xajmi) }}" 
+                                                                           step="0.01">
                                                                     @error('accordions.0.shaxarsozlik_umumiy_xajmi')
-                                                                        <span
-                                                                            class="error invalid-feedback">{{ $message }}</span>
+                                                                        <span class="error invalid-feedback">{{ $message }}</span>
                                                                     @enderror
                                                                 </div>
                                                             </div>
+                                                            
                                                             <div class="col-12 col-md-6 col-lg-6 col-xl-6">
                                                                 <div class="mb-3">
                                                                     <label
@@ -613,7 +613,8 @@
                                                                         class="form-control qavatlar_soni_xajmi"
                                                                         name="accordions[0][qavatlar_soni_xajmi]"
                                                                         placeholder="@lang('global.qavatlar_soni_xajmi')"
-                                                                        value="{{ old('accordions.0.qavatlar_soni_xajmi') }}">
+                                                                        value="{{ old('accordions.' . $branchIndex . '.qavatlar_soni_xajmi', $b->qavatlar_soni_xajmi) }}" 
+                                                                        step="0.01">
                                                                     @error('accordions.0.qavatlar_soni_xajmi')
                                                                         <span
                                                                             class="error invalid-feedback">{{ $message }}</span>
@@ -628,7 +629,8 @@
                                                                         class="form-control avtoturargoh_xajmi"
                                                                         name="accordions[0][avtoturargoh_xajmi]"
                                                                         placeholder="@lang('global.avtoturargoh_xajmi')"
-                                                                        value="{{ old('accordions.0.avtoturargoh_xajmi') }}">
+                                                                        value="{{ old('accordions.' . $branchIndex . '.avtoturargoh_xajmi', $b->avtoturargoh_xajmi) }}" 
+                                                                        step="0.01">
                                                                     @error('accordions.0.avtoturargoh_xajmi')
                                                                         <span
                                                                             class="error invalid-feedback">{{ $message }}</span>
@@ -643,7 +645,8 @@
                                                                         class="form-control qavat_xona_xajmi"
                                                                         name="accordions[0][qavat_xona_xajmi]"
                                                                         placeholder="@lang('global.qavat_xona_xajmi')"
-                                                                        value="{{ old('accordions.0.qavat_xona_xajmi') }}">
+                                                                        value="{{ old('accordions.' . $branchIndex . '.qavat_xona_xajmi', $b->qavat_xona_xajmi) }}" 
+                                                                        step="0.01">
                                                                     @error('accordions.0.qavat_xona_xajmi')
                                                                         <span
                                                                             class="error invalid-feedback">{{ $message }}</span>
@@ -658,7 +661,8 @@
                                                                         class="form-control umumiy_foydalanishdagi_xajmi"
                                                                         name="accordions[0][umumiy_foydalanishdagi_xajmi]"
                                                                         placeholder="@lang('global.umumiy_foydalanishdagi_xajmi')"
-                                                                        value="{{ old('accordions.0.umumiy_foydalanishdagi_xajmi') }}">
+                                                                        value="{{ old('accordions.' . $branchIndex . '.umumiy_foydalanishdagi_xajmi', $b->umumiy_foydalanishdagi_xajmi) }}" 
+                                                                        step="0.01">
                                                                     @error('accordions.0.umumiy_foydalanishdagi_xajmi')
                                                                         <span
                                                                             class="error invalid-feedback">{{ $message }}</span>
@@ -673,7 +677,8 @@
                                                                         class="form-control branch_location"
                                                                         name="accordions[0][branch_location]"
                                                                         placeholder="@lang('cruds.company.fields.branch_location')"
-                                                                        value="{{ old('accordions.0.branch_location') }}">
+                                                                        value="{{ old('accordions.' . $branchIndex . '.branch_location', $b->branch_location) }}" 
+                                                                        step="0.01">
                                                                     @error('accordions.0.branch_location')
                                                                         <span
                                                                             class="error invalid-feedback">{{ $message }}</span>
@@ -840,7 +845,7 @@
                                                                     <label for="coefficient">@lang('global.coefficient')</label>
                                                                     <input type="text" class="form-control coefficient"
                                                                         id="coefficient" name="accordions[0][coefficient]"
-                                                                        readonly value="1.00">
+                                                                        value="{{ old('accordions.' . $branchIndex . '.coefficient', $b->coefficient) }}" readonly>
                                                                 </div>
                                                             </div>
 
@@ -849,7 +854,7 @@
                                                                     <label for="branch_name">@lang('global.loyiha_nomi')</label>
                                                                     <input type="text" class="form-control"
                                                                         name="accordions[0][branch_name]"
-                                                                        value="{{ old('accordions.0.branch_name') }}"
+                                                                        value="{{ old('accordions.' . $branchIndex . '.branch_name', $b->branch_name) }}" 
                                                                         placeholder="@lang('global.loyiha_nomi')">
                                                                     @error('accordions.0.branch_name')
                                                                         <span
