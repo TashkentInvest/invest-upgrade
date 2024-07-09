@@ -686,27 +686,27 @@
                                                                     let avtoturargoh_xajmi = parseFloat(parentAccordion.find('.avtoturargoh_xajmi').val()) || 0;
                                                                     let umumiy_foydalanishdagi_xajmi = parseFloat(parentAccordion.find('.umumiy_foydalanishdagi_xajmi').val()) || 0;
                                                                     let qavat_xona_xajmi = parseFloat(parentAccordion.find('.qavat_xona_xajmi').val()) || 0;
-                                                            
+
                                                                     let companyKubmetr = (shaxarsozlik_umumiy_xajmi + qavatlar_soni_xajmi) - (avtoturargoh_xajmi + umumiy_foydalanishdagi_xajmi + qavat_xona_xajmi);
                                                                     parentAccordion.find('.branch_kubmetr').val(companyKubmetr.toFixed(2));
-                                                            
+
                                                                     let minimumWage = parseFloat(parentAccordion.find('.minimum_wage').val()) || 340000; // Default or original value
                                                                     let coefficient = parseFloat(parentAccordion.find('.coefficient').val()) || 1;
-                                                            
+
                                                                     let adjustedMinimumWage = minimumWage * coefficient;
                                                                     parentAccordion.find('.minimum_wage').val(adjustedMinimumWage.toFixed(2));
-                                                            
+
                                                                     let generatePrice = companyKubmetr * adjustedMinimumWage;
                                                                     parentAccordion.find('.generate_price').val(generatePrice.toFixed(2));
-                                                            
+
                                                                     let percentageInput = parseFloat(parentAccordion.find('.percentage-input').val()) || 0;
                                                                     let quarterlyInput = parseInt(parentAccordion.find('.quarterly-input').val()) || 0;
-                                                            
+
                                                                     // Separate the calculation for first_payment_percent
                                                                     if (!isNaN(generatePrice)) {
                                                                         let z = (generatePrice * percentageInput) / 100;
                                                                         parentAccordion.find('.first_payment_percent').val(z.toFixed(2));
-                                                            
+
                                                                         if (!isNaN(percentageInput) && !isNaN(quarterlyInput) && quarterlyInput > 0) {
                                                                             let n = generatePrice - z;
                                                                             let y = n / quarterlyInput;
@@ -716,7 +716,7 @@
                                                                             parentAccordion.find('.calculated-quarterly-payment').val('');
                                                                             updateQuarterlyPaymentSchedule(parentAccordion, '', '');
                                                                         }
-                                                            
+
                                                                         updatePaymentSchedule(parentAccordion, generatePrice);
                                                                     }
                                                                 }
@@ -850,12 +850,14 @@
                                                             
                                                                 if (!isNaN(generatePrice)) {
                                                                     let z = (generatePrice * percentageInput) / 100;
+                                                                    console.log(z);
                                                                     parentAccordion.find('.first_payment_percent').val(z.toFixed(2));
                                                                 } else {
                                                                     parentAccordion.find('.first_payment_percent').val('');
                                                                 }
                                                             }
                                                             </script>
+                                                            
                                                             
                                                 
                                                         <!-- End new fields -->
@@ -958,20 +960,17 @@
 
                                                         <div class="col-12 col-md-6 col-lg-6 col-xl-3">
                                                             <div class="mb-3">
-                                                                <label
-                                                                    for="first_payment_percentpayment">@lang('cruds.branches.fields.first_payment_percent')</label>
-
-                                                                <input type="text" class="form-control"
-                                                                    name="accordions[0][first_payment_percent]"
-                                                                    value="{{ old('accordions.0.first_payment_percent') }}"
-                                                                    readonly id="first_payment_percent">
-
+                                                                <label for="first_payment_percent_0">@lang('cruds.branches.fields.first_payment_percent')</label>
+                                                                <input type="text" class="form-control first_payment_percent" 
+                                                                       name="accordions[0][first_payment_percent]"
+                                                                       value="{{ old('accordions.0.first_payment_percent') }}"
+                                                                       id="first_payment_percent_0">
                                                                 @error('accordions.0.first_payment_percent')
-                                                                    <span
-                                                                        class="error invalid-feedback">{{ $message }}</span>
+                                                                    <span class="error invalid-feedback">{{ $message }}</span>
                                                                 @enderror
                                                             </div>
                                                         </div>
+                                                        
                                                         <div class="col-12 col-md-6 col-lg-6 col-xl-3">
                                                             <div class="mb-3">
                                                                 <label for="quarterly-input">@lang('global.bolib_tolash_har_chorakda')</label>
