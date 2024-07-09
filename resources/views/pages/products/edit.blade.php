@@ -1051,6 +1051,10 @@
                                                         </script>
                                                 
                                                         <!-- End new fields -->
+
+                                                
+
+                                                      
                                                             <div class="col-12 col-md-6 col-lg-6 col-xl-6 ">
                                                                 <div class="inner-repeater mb-4">
                                                                     <div data-repeater-list="inner-group"
@@ -1142,6 +1146,22 @@
                                                                 </div>
                                                             </div>
                                                             <div class="col-12 col-md-6 col-lg-6 col-xl-6 ">
+                                                                <div class="inner-repeater mb-4">
+                                                                    <div data-repeater-list="inner-group"
+                                                                        class="inner mb-3">
+                                                                        <label
+                                                                            for="basicpill-cardno-input">@lang('cruds.branches.fields.first_payment_percent') </label>
+                                                                        <input type="number"
+                                                                            class="form-control first_payment_percent"
+                                                                            step="0.00001" placeholder="( m³ )"
+                                                                            value="{{ old('accordions.' . $branchIndex . '.first_payment_percent', $b->first_payment_percent) }}"
+                                                                            name="accordions[{{ $branchIndex }}][first_payment_percent]"
+                                                                            onchange="displayFiveDigitsAfterDecimal(this)">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            
+                                                            <div class="col-12 col-md-6 col-lg-6 col-xl-6 ">
                                                                 <div class="mb-3">
                                                                     <label for="quarterly-input">@lang('global.bolib_tolash_har_chorakda')</label>
                                                                     <div class="input-group">
@@ -1154,6 +1174,24 @@
                                                                     </div>
                                                                 </div>
                                                             </div>
+
+                                                            {{--  --}}
+                                                                           
+                                                            <div class="col-12 col-md-6 col-lg-6 col-xl-6 ">
+                                                                <div class="mb-3">
+                                                                    <label for="calculated-quarterly-payment">@lang('global.quarterly_payment')</label>
+                                                                    <div class="input-group">
+                                                                        <input type="number"
+                                                                            class="form-control calculated-quarterly-payment"
+                                                                            name="accordions[{{ $branchIndex }}][calculated_quarterly_payment]"
+                                                                            value="{{ old('accordions.' . $branchIndex . '.calculated_quarterly_payment', $b->calculated_quarterly_payment) }}"
+                                                                            min="0">
+                                                                        <span class="input-group-text"></span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+
                                                         </div>
 
                                                     </main>
