@@ -693,7 +693,8 @@
                                                                     let minimumWage = parseFloat(parentAccordion.find('.minimum_wage').val()) || 340000; // Default or original value
                                                                     let coefficient = parseFloat(parentAccordion.find('.coefficient').val()) || 1;
 
-                                                                    let adjustedMinimumWage = minimumWage * coefficient;
+                                                                    let adjustedMinimumWage = 340000 * coefficient;
+                                                                    // let adjustedMinimumWage = minimumWage * coefficient;
                                                                     parentAccordion.find('.minimum_wage').val(adjustedMinimumWage.toFixed(2));
 
                                                                     let generatePrice = companyKubmetr * adjustedMinimumWage;
