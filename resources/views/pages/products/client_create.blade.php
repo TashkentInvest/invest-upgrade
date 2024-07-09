@@ -840,6 +840,13 @@
                                                                         totalKts.forEach(function(kt) {
                                                                             coefficient *= kt;
                                                                         });
+
+                                                                        // Apply the limits
+                                                                        if (coefficient < 0.50) {
+                                                                            coefficient = 0.50;
+                                                                        } else if (coefficient > 2.00) {
+                                                                            coefficient = 2.00;
+                                                                        }
                                                                     }
 
                                                                     document.querySelectorAll('.coefficient').forEach(function(coefficientInput) {
@@ -850,6 +857,7 @@
                                                                         calculateGeneratePrice($(parentAccordion));
                                                                     });
                                                                 }
+
 
                                                                 $('.select2').on('change', calculateCoefficient);
 
