@@ -758,16 +758,35 @@
     }
 
     // Event listener for input changes
-    $(document).on('input change', '.branch_kubmetr, .minimum_wage, .shaxarsozlik_umumiy_xajmi, .qavatlar_soni_xajmi, .avtoturargoh_xajmi, .umumiy_foydalanishdagi_xajmi, .qavat_xona_xajmi, .quarterly-input, .branch_location, .branch_type, .qurilish_turi, .zona',
+    $(document).on('input change', '.branch_kubmetr, .minimum_wage, .shaxarsozlik_umumiy_xajmi, .qavatlar_soni_xajmi, .avtoturargoh_xajmi, .umumiy_foydalanishdagi_xajmi, .qavat_xona_xajmi, .branch_location, .branch_type, .qurilish_turi, .zona',
         function() {
             let parentAccordion = $(this).closest('.accordion-body');
             calculateGeneratePrice(parentAccordion);
         });
 
     // Event listener for percentage-input changes
-    $(document).on('input change', '.percentage-input, .quarterly-input', function() {
+    $(document).on('input change', '.percentage-input', function() {
         let parentAccordion = $(this).closest('.accordion-body');
         calculateGeneratePrice(parentAccordion);
+    });
+
+    // Event listener for quarterly-input changes
+    $(document).on('input change', '.quarterly-input', function() {
+        let parentAccordion = $(this).closest('.accordion-body');
+        let quarterlyInput = parseInt($(this).val()) || 0;
+        let generatePrice = parseFloat(parentAccordion.find('.generate_price').val()) || 0;
+        let percentageInput = parseFloat(parentAccordion.find('.percentage-input').val()) || 0;
+        let z = (generatePrice * percentageInput) / 100;
+
+        if (!isNaN(generatePrice) && !isNaN(percentageInput) && quarterlyInput > 0) {
+            let n = generatePrice - z;
+            let y = n / quarterlyInput;
+            parentAccordion.find('.calculated-quarterly-payment').val(y.toFixed(2));
+            updateQuarterlyPaymentSchedule(parentAccordion, y, quarterlyInput);
+        } else {
+            parentAccordion.find('.calculated-quarterly-payment').val('');
+            updateQuarterlyPaymentSchedule(parentAccordion, '', '');
+        }
     });
 
     // Event listener for payment type changes
