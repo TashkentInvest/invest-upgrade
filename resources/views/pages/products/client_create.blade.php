@@ -467,13 +467,28 @@
                                                             </div>
                                                         </div>
 
+                                                        <div class="col-12 col-md-6 col-lg-12 col-xl-12">
+                                                            <div class="mb-3">
+                                                                <label
+                                                                    for="branch_location">@lang('cruds.company.fields.branch_location')</label>
+                                                                <input type="text" class="form-control branch_location"
+                                                                    name="accordions[0][branch_location]"
+                                                                    placeholder="@lang('cruds.company.fields.branch_location')"
+                                                                    value="{{ old('accordions.0.branch_location') }}">
+                                                                @error('accordions.0.branch_location')
+                                                                    <span
+                                                                        class="error invalid-feedback">{{ $message }}</span>
+                                                                @enderror
+                                                            </div>
+                                                        </div>
+
                                                         <div class="col-12 col-md-6">
                                                             <div class="mb-3">
-                                                                <label for="branch_location">@lang('cruds.company.fields.branch_location')</label>
+                                                                <label for="obyekt_joylashuvi">Obyektning joylashuvi</label>
                                                                 <select class="form-control select2 form-select"
-                                                                    name="accordions[0][branch_location]"
-                                                                    id="branch_location">
-                                                                    <option value="">@lang('cruds.company.fields.branch_location')</option>
+                                                                    name="accordions[0][obyekt_joylashuvi]"
+                                                                    id="obyekt_joylashuvi">
+                                                                    <option value="">Obyektning joylashuvi</option>
                                                                     <option
                                                                         value="Metro bekatidan chiqish joyidan obyekt chegarasig‘acha 200 metr radius oralig‘i hududlardan boshqa hududlarda joylashgan loyihaviy binolar (inshootlar)"
                                                                         data-kt="0.6">
@@ -489,12 +504,13 @@
                                                                         obyektlar
                                                                     </option>
                                                                 </select>
-                                                                @error('accordions.0.branch_location')
+                                                                @error('accordions.0.obyekt_joylashuvi')
                                                                     <span
                                                                         class="error invalid-feedback">{{ $message }}</span>
                                                                 @enderror
                                                             </div>
                                                         </div>
+
                                                         <div class="col-12 col-md-6">
                                                             <div class="mb-3">
                                                                 <label for="branch_type">@lang('global.loyiha_turi')</label>
@@ -759,7 +775,7 @@
                                                                 }
 
                                                                 // Event listener for input changes
-                                                                $(document).on('input change', '.branch_kubmetr, .minimum_wage, .shaxarsozlik_umumiy_xajmi, .qavatlar_soni_xajmi, .avtoturargoh_xajmi, .umumiy_foydalanishdagi_xajmi, .qavat_xona_xajmi, .branch_location, .branch_type, .qurilish_turi, .zona',
+                                                                $(document).on('input change', '.branch_kubmetr, .minimum_wage, .shaxarsozlik_umumiy_xajmi, .qavatlar_soni_xajmi, .avtoturargoh_xajmi, .umumiy_foydalanishdagi_xajmi, .qavat_xona_xajmi, .obyekt_joylashuvi, .branch_type, .qurilish_turi, .zona',
                                                                     function() {
                                                                         let parentAccordion = $(this).closest('.accordion-body');
                                                                         calculateGeneratePrice(parentAccordion);

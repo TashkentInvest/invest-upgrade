@@ -239,7 +239,7 @@ return [
                 'company_name' => 'Kompaniya nomi',
                 'raxbar' => 'Lavozim',
                 'company_location' => 'Kompaniya joylashuvi',
-                'branch_location' => 'Obyekt joylashuvi',
+                'branch_location' => 'Obyekt manzili',
 
                 'branch_type' => 'Obyekt turi',
 
