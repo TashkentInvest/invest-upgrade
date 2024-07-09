@@ -5,7 +5,7 @@
         <div class="col-12">
             <div class="page-title-box d-sm-flex align-items-center justify-content-between">
                 <h4 class="mb-sm-0 font-size-18 beautiful-font">
-                    @lang('cruds.branches.title') / <span class="font-small text-primary">{{$clients->total()}}</span>
+                    @lang('cruds.branches.title') / <span class="font-small text-primary">{{ $clients->total() }}</span>
                 </h4>
 
                 <div class="page-title-right">
@@ -359,7 +359,8 @@
                                                         </a>
                                                     </li>
 
-                                                    <a href="{{route('file.mobile',$item->id)}}" class="btn btn-primary">mobile</a>
+                                                    <a href="{{ route('file.mobile', $item->id) }}"
+                                                        class="btn btn-primary">mobile</a>
                                                 @endcan
 
                                                 <li data-bs-toggle="tooltip" data-bs-placement="top"
@@ -410,14 +411,14 @@
                                                                     <tr>
                                                                         <td><strong>@lang('cruds.client.fields.passport_date')</strong></td>
                                                                         <td>
-                                                                            @if($item->passport && $item->passport->passport_date)
+                                                                            @if ($item->passport && $item->passport->passport_date)
                                                                                 {{ date('d-m-Y', strtotime($item->passport->passport_date)) }}
                                                                             @else
                                                                                 <!-- Handle case where passport or passport_date is null -->
                                                                             @endif
                                                                         </td>
                                                                     </tr>
-                                                                    
+
                                                                     <tr>
                                                                         <td><strong>@lang('cruds.client.fields.passport_location')</strong></td>
                                                                         <td>{{ $item->passport->passport_location ?? '' }}
@@ -527,7 +528,7 @@
                                                                         <td><strong>@lang('global.zona')</strong></td>
                                                                         <td>{{ $b->zona }}</td>
                                                                     </tr>
-                                                                    
+
                                                                     <tr>
                                                                         <td><strong>@lang('global.obyekt_boyicha_tolanishi_lozim')</strong></td>
                                                                         <td>{{ number_format($b->branch_kubmetr, 1) }}</td>
@@ -545,55 +546,25 @@
                                                                     <tr>
                                                                         <td><strong>Calculation</strong></td>
                                                                         <td>
-                                                                            {{
-                                                                                number_format(
-                                                                                    (float) ($b->client->company->minimum_wage ?? 340000),
-                                                                                    0   
-                                                                                )
-                                                                            }} *
+                                                                            {{ number_format((float) ($b->client->company->minimum_wage ?? 340000), 0) }}
+                                                                            *
                                                                             ((
-                                                                            {{
-                                                                                number_format(
-                                                                                    (float) ($b->shaxarsozlik_umumiy_xajmi ?? 0),
-                                                                                    2
-                                                                                )
-                                                                            }} +
-                                                                            {{
-                                                                                number_format(
-                                                                                    (float) ($b->qavatlar_soni_xajmi ?? 0),
-                                                                                    2
-                                                                                )
-                                                                            }}
+                                                                            {{ number_format((float) ($b->shaxarsozlik_umumiy_xajmi ?? 0), 2) }}
+                                                                            +
+                                                                            {{ number_format((float) ($b->qavatlar_soni_xajmi ?? 0), 2) }}
                                                                             ) -
                                                                             (
-                                                                            {{
-                                                                                number_format(
-                                                                                    (float) ($b->avtoturargoh_xajmi ?? 0),
-                                                                                    2
-                                                                                )
-                                                                            }} +
-                                                                            {{
-                                                                                number_format(
-                                                                                    (float) ($b->qavat_xona_xajmi ?? 0),
-                                                                                    2
-                                                                                )
-                                                                            }} +
-                                                                            {{
-                                                                                number_format(
-                                                                                    (float) ($b->umumiy_foydalanishdagi_xajmi ?? 0),
-                                                                                    2
-                                                                                )
-                                                                            }}
-                                                                            )) *
-                                                                            {{
-                                                                                number_format(
-                                                                                    (float) ($b->coefficient ?? 1),
-                                                                                    2
-                                                                                )
-                                                                            }}
+                                                                            {{ number_format((float) ($b->avtoturargoh_xajmi ?? 0), 2) }}
+                                                                            +
+                                                                            {{ number_format((float) ($b->qavat_xona_xajmi ?? 0), 2) }}
+                                                                            +
+                                                                            {{ number_format((float) ($b->umumiy_foydalanishdagi_xajmi ?? 0), 2) }}
+                                                                            ))
+                                                                            *
+                                                                            {{ number_format((float) ($b->coefficient ?? 1), 2) }}
                                                                         </td>
                                                                     </tr>
-                                                                    
+
                                                                     <tr>
                                                                         <td><strong>@lang('global.bolib_tolash')</strong></td>
                                                                         <td>

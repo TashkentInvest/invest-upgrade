@@ -286,7 +286,7 @@ maps_details = [
 ```
 branch ga obyektning joylashuvi ni qoshish kere +++
 
-product edit ni fix qilish kere kafetsient scriptlari bilan
+product edit ni fix qilish kere kafetsient scriptlari bilan +++
 
 product add ni fix qilish kere kafetsient scriptlari bilan +++
 
