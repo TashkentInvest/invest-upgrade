@@ -599,7 +599,7 @@
                                                                     class="form-control shaxarsozlik_umumiy_xajmi"
                                                                     name="accordions[0][shaxarsozlik_umumiy_xajmi]"
                                                                     placeholder="@lang('global.shaxarsozlik_umumiy_xajmi')"
-                                                                    value="{{ old('accordions.0.shaxarsozlik_umumiy_xajmi') }}">
+                                                                    value="{{ old('accordions.0.shaxarsozlik_umumiy_xajmi') }}" step="0.01">
                                                                 @error('accordions.0.shaxarsozlik_umumiy_xajmi')
                                                                     <span
                                                                         class="error invalid-feedback">{{ $message }}</span>
@@ -613,7 +613,7 @@
                                                                     class="form-control qavatlar_soni_xajmi"
                                                                     name="accordions[0][qavatlar_soni_xajmi]"
                                                                     placeholder="@lang('global.qavatlar_soni_xajmi')"
-                                                                    value="{{ old('accordions.0.qavatlar_soni_xajmi') }}">
+                                                                    value="{{ old('accordions.0.qavatlar_soni_xajmi') }}" step="0.01">
                                                                 @error('accordions.0.qavatlar_soni_xajmi')
                                                                     <span
                                                                         class="error invalid-feedback">{{ $message }}</span>
@@ -627,7 +627,7 @@
                                                                     class="form-control avtoturargoh_xajmi"
                                                                     name="accordions[0][avtoturargoh_xajmi]"
                                                                     placeholder="@lang('global.avtoturargoh_xajmi')"
-                                                                    value="{{ old('accordions.0.avtoturargoh_xajmi') }}">
+                                                                    value="{{ old('accordions.0.avtoturargoh_xajmi') }}" step="0.01"> 
                                                                 @error('accordions.0.avtoturargoh_xajmi')
                                                                     <span
                                                                         class="error invalid-feedback">{{ $message }}</span>
@@ -641,7 +641,7 @@
                                                                     class="form-control qavat_xona_xajmi"
                                                                     name="accordions[0][qavat_xona_xajmi]"
                                                                     placeholder="@lang('global.qavat_xona_xajmi')"
-                                                                    value="{{ old('accordions.0.qavat_xona_xajmi') }}">
+                                                                    value="{{ old('accordions.0.qavat_xona_xajmi') }}" step="0.01">
                                                                 @error('accordions.0.qavat_xona_xajmi')
                                                                     <span
                                                                         class="error invalid-feedback">{{ $message }}</span>
@@ -656,7 +656,7 @@
                                                                     class="form-control umumiy_foydalanishdagi_xajmi"
                                                                     name="accordions[0][umumiy_foydalanishdagi_xajmi]"
                                                                     placeholder="@lang('global.umumiy_foydalanishdagi_xajmi')"
-                                                                    value="{{ old('accordions.0.umumiy_foydalanishdagi_xajmi') }}">
+                                                                    value="{{ old('accordions.0.umumiy_foydalanishdagi_xajmi') }}" step="0.01">
                                                                 @error('accordions.0.umumiy_foydalanishdagi_xajmi')
                                                                     <span
                                                                         class="error invalid-feedback">{{ $message }}</span>
@@ -1117,7 +1117,7 @@
                                                                     for="basicpill-card-verification-input">@lang('global.bazaviy_xisoblash_miqdori')</label>
                                                                 <input type="number" class="form-control minimum_wage"
                                                                     placeholder="@lang('global.bazaviy_xisoblash_miqdori')"
-                                                                    value="{{ old('minimum_wage', '340000') }}"
+                                                                    value="{{ old('minimum_wage', '340000') }}" step="0.01"
                                                                     name="minimum_wage">
 
                                                                 @error('minimum_wage')
@@ -1169,7 +1169,7 @@
                                                                         class="form-control percentage-input"
                                                                         name="accordions[0][percentage_input]"
                                                                         value="{{ old('accordions.0.percentage_input') }}"
-                                                                        min="0" max="100">
+                                                                        min="0" max="100" step="0.01">
                                                                     <span class="input-group-text">%</span>
                                                                 </div>
                                                                 @error('accordions.0.percentage_input')
@@ -1184,7 +1184,7 @@
                                                                 <input type="number" class="form-control quarterly-input"
                                                                     name="accordions[0][installment_quarterly]"
                                                                     value="{{ old('accordions.0.installment_quarterly') }}"
-                                                                    placeholder="@lang('global.bolib_tolash_har_chorakda')" disabled>
+                                                                    placeholder="@lang('global.bolib_tolash_har_chorakda')" disabled step="0.01">
                                                                 @error('accordions.0.installment_quarterly')
                                                                     <span
                                                                         class="error invalid-feedback">{{ $message }}</span>
