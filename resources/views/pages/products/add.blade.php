@@ -577,7 +577,7 @@
                                                     <div class="row">
 
 
-                                                        <div class="col-12 col-md-6 col-lg-6 col-xl-4">
+                                                        <div class="col-12 col-md-6 col-lg-6 col-xl-6">
                                                             <div class="mb-3">
                                                                 <label for="branch_name">@lang('global.loyiha_nomi')</label>
                                                                 <input type="text" class="form-control"
@@ -590,12 +590,12 @@
                                                                 @enderror
                                                             </div>
                                                         </div>
-                                                        <!-- New fields -->
-                                                        <div class="col-12 col-md-6 col-lg-6 col-xl-6">
+                                                         <!-- New fields -->
+                                                         <div class="col-12 col-md-6 col-lg-6 col-xl-6">
                                                             <div class="mb-3">
                                                                 <label
                                                                     for="shaxarsozlik_umumiy_xajmi">@lang('global.shaxarsozlik_umumiy_xajmi')</label>
-                                                                <input type="text" class="form-control"
+                                                                <input type="number" class="form-control shaxarsozlik_umumiy_xajmi"
                                                                     name="accordions[0][shaxarsozlik_umumiy_xajmi]"
                                                                     placeholder="@lang('global.shaxarsozlik_umumiy_xajmi')"
                                                                     value="{{ old('accordions.0.shaxarsozlik_umumiy_xajmi') }}">
@@ -608,7 +608,7 @@
                                                         <div class="col-12 col-md-6 col-lg-6 col-xl-6">
                                                             <div class="mb-3">
                                                                 <label for="qavatlar_soni_xajmi">@lang('global.qavatlar_soni_xajmi')</label>
-                                                                <input type="text" class="form-control"
+                                                                <input type="number" class="form-control qavatlar_soni_xajmi"
                                                                     name="accordions[0][qavatlar_soni_xajmi]"
                                                                     placeholder="@lang('global.qavatlar_soni_xajmi')"
                                                                     value="{{ old('accordions.0.qavatlar_soni_xajmi') }}">
@@ -621,7 +621,7 @@
                                                         <div class="col-12 col-md-6 col-lg-6 col-xl-6">
                                                             <div class="mb-3">
                                                                 <label for="avtoturargoh_xajmi">@lang('global.avtoturargoh_xajmi')</label>
-                                                                <input type="text" class="form-control"
+                                                                <input type="number" class="form-control avtoturargoh_xajmi"
                                                                     name="accordions[0][avtoturargoh_xajmi]"
                                                                     placeholder="@lang('global.avtoturargoh_xajmi')"
                                                                     value="{{ old('accordions.0.avtoturargoh_xajmi') }}">
@@ -634,7 +634,7 @@
                                                         <div class="col-12 col-md-6 col-lg-6 col-xl-6">
                                                             <div class="mb-3">
                                                                 <label for="qavat_xona_xajmi">@lang('global.qavat_xona_xajmi')</label>
-                                                                <input type="text" class="form-control"
+                                                                <input type="number" class="form-control qavat_xona_xajmi"
                                                                     name="accordions[0][qavat_xona_xajmi]"
                                                                     placeholder="@lang('global.qavat_xona_xajmi')"
                                                                     value="{{ old('accordions.0.qavat_xona_xajmi') }}">
@@ -648,7 +648,7 @@
                                                             <div class="mb-3">
                                                                 <label
                                                                     for="umumiy_foydalanishdagi_xajmi">@lang('global.umumiy_foydalanishdagi_xajmi')</label>
-                                                                <input type="text" class="form-control"
+                                                                <input type="number" class="form-control umumiy_foydalanishdagi_xajmi"
                                                                     name="accordions[0][umumiy_foydalanishdagi_xajmi]"
                                                                     placeholder="@lang('global.umumiy_foydalanishdagi_xajmi')"
                                                                     value="{{ old('accordions.0.umumiy_foydalanishdagi_xajmi') }}">
@@ -659,11 +659,11 @@
                                                             </div>
                                                         </div>
 
-                                                        <div class="col-12 col-md-6 col-lg-6 col-xl-6">
+                                                        <div class="col-12 col-md-6 col-lg-12 col-xl-12">
                                                             <div class="mb-3">
                                                                 <label
                                                                     for="branch_location">@lang('cruds.company.fields.branch_location')</label>
-                                                                <input type="text" class="form-control"
+                                                                <input type="text" class="form-control branch_location"
                                                                     name="accordions[0][branch_location]"
                                                                     placeholder="@lang('cruds.company.fields.branch_location')"
                                                                     value="{{ old('accordions.0.branch_location') }}">
@@ -673,14 +673,14 @@
                                                                 @enderror
                                                             </div>
                                                         </div>
-{{-- 
+
                                                         <div class="col-12 col-md-6">
                                                             <div class="mb-3">
-                                                                <label for="branch_location">@lang('cruds.company.fields.branch_location')</label>
-                                                                <select class="form-control form_kof2 form-select"
-                                                                    name="accordions[0][branch_location]"
-                                                                    id="branch_location">
-                                                                    <option value="">@lang('cruds.company.fields.branch_location')</option>
+                                                                <label for="obyekt_joylashuvi">Obyektning joylashuvi</label>
+                                                                <select class="form-control form_select_cof form-select"
+                                                                    name="accordions[0][obyekt_joylashuvi]"
+                                                                    id="obyekt_joylashuvi">
+                                                                    <option value="">Obyektning joylashuvi</option>
                                                                     <option
                                                                         value="Metro bekatidan chiqish joyidan obyekt chegarasig‘acha 200 metr radius oralig‘i hududlardan boshqa hududlarda joylashgan loyihaviy binolar (inshootlar)"
                                                                         data-kt="0.6">
@@ -696,16 +696,17 @@
                                                                         obyektlar
                                                                     </option>
                                                                 </select>
-                                                                @error('accordions.0.branch_location')
+                                                                @error('accordions.0.obyekt_joylashuvi')
                                                                     <span
                                                                         class="error invalid-feedback">{{ $message }}</span>
                                                                 @enderror
                                                             </div>
-                                                        </div> --}}
+                                                        </div>
+
                                                         <div class="col-12 col-md-6">
                                                             <div class="mb-3">
                                                                 <label for="branch_type">@lang('global.loyiha_turi')</label>
-                                                                <select class="form-control form_kof2 form-select"
+                                                                <select class="form-control form_select_cof form-select"
                                                                     name="accordions[0][branch_type]" id="branch_type">
                                                                     <option value="">@lang('global.loyiha_turi')</option>
                                                                     <option
@@ -757,7 +758,7 @@
                                                         <div class="col-12 col-md-6">
                                                             <div class="mb-3">
                                                                 <label for="qurilish_turi">@lang('global.qurilish_turi')</label>
-                                                                <select class="form-control form_kof2 form-select"
+                                                                <select class="form-control form_select_cof form-select"
                                                                     name="accordions[0][qurilish_turi]"
                                                                     id="qurilish_turi">
                                                                     <option value="">@lang('global.qurilish_turi')</option>
@@ -793,7 +794,8 @@
                                                         <div class="col-12 col-md-6">
                                                             <div class="mb-3">
                                                                 <label for="zona">@lang('global.zona')</label>
-                                                                <select id="zona" class="form-control form_kof2"
+                                                                <select id="zona"
+                                                                    class="form-control form_select_cof form-select"
                                                                     name="accordions[0][zona]">
                                                                     <option value="">Zona</option>
                                                                     <option value="1" data-kt="1.40">1-zona</option>
@@ -802,8 +804,6 @@
                                                                     <option value="4" data-kt="0.75">4-zona</option>
                                                                     <option value="5" data-kt="0.50">5-zona</option>
                                                                 </select>
-
-
                                                                 @error('accordions.0.zona')
                                                                     <span
                                                                         class="error invalid-feedback">{{ $message }}</span>
@@ -813,9 +813,9 @@
                                                         <div class="col-12 col-md-6 col-lg-6 col-xl-6">
                                                             <div class="mb-3">
                                                                 <label for="coefficient">@lang('global.coefficient')</label>
-                                                                <input type="text" class="form-control"
+                                                                <input type="text" class="form-control coefficient"
                                                                     id="coefficient" name="accordions[0][coefficient]"
-                                                                    readonly>
+                                                                    readonly value="1.00">
                                                             </div>
                                                         </div>
 
@@ -833,47 +833,250 @@
                                                             </div>
                                                         </div>
 
+
                                                         <script>
-                                                            var selectElements = document.querySelectorAll('.form_kof2');
+                                                            $(document).ready(function() {
+                                                                let accordionCount = 1;
 
-                                                            function calculateCoefficient() {
-                                                                var coefficient = 1;
-                                                                var totalKts = [];
+                                                                // Function to add a new accordion item
+                                                                $('#addAccordion').on('click', function() {
+                                                                    let accordion = $('.accordion-item').first().clone();
+                                                                    let newId = 'flush-collapse' + accordionCount;
+                                                                    accordion.find('.accordion-collapse').attr('id', newId);
+                                                                    accordion.find('.accordion-button').attr('data-bs-target', '#' + newId);
+                                                                    accordion.find('.accordion-header').attr('id', 'flush-heading' + accordionCount);
+                                                                    accordion.find('.accordion-button').attr('aria-controls', newId);
+                                                                    accordion.find('.accordion-button').text('Объект #' + accordionCount);
 
-                                                                selectElements.forEach(function(select) {
-                                                                    Array.from(select.selectedOptions).forEach(function(option) {
-                                                                        var kt = parseFloat(option.dataset.kt);
-                                                                        if (!isNaN(kt)) {
-                                                                            totalKts.push(kt);
+                                                                    // Update input, select, and textarea names and ids
+                                                                    accordion.find('input, select, textarea').each(function() {
+                                                                        let name = $(this).attr('name');
+                                                                        if (name) {
+                                                                            let newName = name.replace(/\[0\]/, '[' + accordionCount + ']');
+                                                                            $(this).attr('name', newName);
                                                                         }
+                                                                        $(this).val('');
+                                                                        $(this).attr('id', name + '-' + accordionCount);
                                                                     });
+
+                                                                    // Update table and schedule ids
+                                                                    let tableId = 'payment-table-' + accordionCount;
+                                                                    let scheduleId = 'payment-schedule-' + accordionCount;
+                                                                    let quarterlyTableId = 'quarterly-table-' + accordionCount;
+                                                                    let quarterlyScheduleId = 'quarterly-schedule-' + accordionCount;
+
+                                                                    accordion.find('.payment-table').attr('id', tableId);
+                                                                    accordion.find('.payment-schedule').attr('id', scheduleId);
+                                                                    accordion.find('.quarterly-table').attr('id', quarterlyTableId);
+                                                                    accordion.find('.quarterly-payment-schedule').attr('id', quarterlyScheduleId);
+
+                                                                    accordion.appendTo('#accordionFlushExample');
+                                                                    accordionCount++;
+
+                                                                    // Reset values and trigger changes
+                                                                    accordion.find('.generate_price').val('');
+                                                                    accordion.find('.payment-type').val('pay_full').trigger('change');
+                                                                    accordion.find('.percentage-input').val('0').prop('disabled', true);
+                                                                    accordion.find('.quarterly-input').val('').prop('disabled', true);
+                                                                    accordion.find('.calculated-quarterly-payment').val('');
+                                                                    accordion.find('.payment-schedule').empty();
+                                                                    accordion.find('.quarterly-payment-schedule').empty();
+                                                                    accordion.find('.total-quarterly-payment').text('0.00');
+
+                                                                    // Initial calculation for the new accordion item
+                                                                    calculateGeneratePrice(accordion.find('.accordion-body'));
                                                                 });
 
-                                                                if (totalKts.includes(0)) {
-                                                                    coefficient = 0;
-                                                                } else if (totalKts.length === 0) {
-                                                                    coefficient = 1;
-                                                                } else {
-                                                                    totalKts.forEach(function(kt) {
-                                                                        coefficient *= kt;
-                                                                    });
+                                                                // Function to calculate and update prices
+                                                                function calculateGeneratePrice(parentAccordion) {
+                                                                    let shaxarsozlik_umumiy_xajmi = parseFloat(parentAccordion.find('.shaxarsozlik_umumiy_xajmi').val()) || 0;
+                                                                    let qavatlar_soni_xajmi = parseFloat(parentAccordion.find('.qavatlar_soni_xajmi').val()) || 0;
+                                                                    let avtoturargoh_xajmi = parseFloat(parentAccordion.find('.avtoturargoh_xajmi').val()) || 0;
+                                                                    let umumiy_foydalanishdagi_xajmi = parseFloat(parentAccordion.find('.umumiy_foydalanishdagi_xajmi').val()) || 0;
+                                                                    let qavat_xona_xajmi = parseFloat(parentAccordion.find('.qavat_xona_xajmi').val()) || 0;
 
-                                                                    coefficient = Math.max(Math.min(coefficient, 2), 0.5);
-                                                                    if (coefficient === 0) coefficient = 0;
+                                                                    let companyKubmetr = (shaxarsozlik_umumiy_xajmi + qavatlar_soni_xajmi) - (avtoturargoh_xajmi + umumiy_foydalanishdagi_xajmi + qavat_xona_xajmi);
+                                                                    parentAccordion.find('.branch_kubmetr').val(companyKubmetr.toFixed(2));
+
+                                                                    let minimumWage = parseFloat(parentAccordion.find('.minimum_wage').val()) || 340000; // Default or original value
+                                                                    let coefficient = parseFloat(parentAccordion.find('.coefficient').val()) || 1;
+
+                                                                    let adjustedMinimumWage = 340000 * coefficient;
+                                                                    // let adjustedMinimumWage = minimumWage * coefficient;
+                                                                    parentAccordion.find('.minimum_wage').val(adjustedMinimumWage.toFixed(2));
+
+                                                                    let generatePrice = companyKubmetr * adjustedMinimumWage;
+                                                                    parentAccordion.find('.generate_price').val(generatePrice.toFixed(2));
+
+                                                                    let percentageInput = parseFloat(parentAccordion.find('.percentage-input').val()) || 0;
+                                                                    let quarterlyInput = parseInt(parentAccordion.find('.quarterly-input').val()) || 0;
+
+                                                                    // Separate the calculation for first_payment_percent
+                                                                    if (!isNaN(generatePrice)) {
+                                                                        let z = (generatePrice * percentageInput) / 100;
+                                                                        parentAccordion.find('.first_payment_percent').val(z.toFixed(2));
+
+                                                                        if (!isNaN(percentageInput) && !isNaN(quarterlyInput) && quarterlyInput > 0) {
+                                                                            let n = generatePrice - z;
+                                                                            let y = n / quarterlyInput;
+                                                                            parentAccordion.find('.calculated-quarterly-payment').val(y.toFixed(2));
+                                                                            updateQuarterlyPaymentSchedule(parentAccordion, y, quarterlyInput);
+                                                                        } else {
+                                                                            parentAccordion.find('.calculated-quarterly-payment').val('');
+                                                                            updateQuarterlyPaymentSchedule(parentAccordion, '', '');
+                                                                        }
+
+                                                                        updatePaymentSchedule(parentAccordion, generatePrice);
+                                                                    }
                                                                 }
 
-                                                                document.getElementById('coefficient').value = coefficient.toFixed(2);
-                                                            }
+                                                                // Function to update payment schedule
+                                                                function updatePaymentSchedule(parentAccordion, generatePrice) {
+                                                                    let paymentSchedule = parentAccordion.find('.payment-schedule');
+                                                                    paymentSchedule.empty();
+                                                                    let percentages = [0, 10, 20, 30, 40, 50];
+                                                                    percentages.forEach(percentage => {
+                                                                        let z = Math.round((generatePrice * percentage) / 100);
+                                                                        let n = generatePrice - z;
+                                                                        let quarterlyInput = parentAccordion.find('.quarterly-input').val();
+                                                                        let y = quarterlyInput ? Math.round((n / quarterlyInput)) : "N/A";
+                                                                        paymentSchedule.append(
+                                                                            `<tr>
+                                                                                <td>${percentage}%</td>
+                                                                                <td>${Math.round(z)}</td>
+                                                                                <td>${y}</td>
+                                                                            </tr>`
+                                                                        );
+                                                                    });
+                                                                }
 
-                                                            selectElements.forEach(function(select) {
-                                                                select.addEventListener('change', calculateCoefficient);
+                                                                // Function to update quarterly payment schedule
+                                                                function updateQuarterlyPaymentSchedule(parentAccordion, quarterlyPayment, quarterlyInput) {
+                                                                    let quarterlySchedule = parentAccordion.find('.quarterly-payment-schedule');
+                                                                    quarterlySchedule.empty();
+                                                                    if (quarterlyPayment && quarterlyInput) {
+                                                                        for (let i = 1; i <= quarterlyInput; i++) {
+                                                                            quarterlySchedule.append(
+                                                                                `<tr>
+                                                                                    <td>${i}</td>
+                                                                                    <td>${quarterlyPayment.toFixed(2)}</td>
+                                                                                </tr>`
+                                                                            );
+                                                                        }
+                                                                    }
+                                                                }
+
+                                                                // Event listener for input changes
+                                                                $(document).on('input change', '.branch_kubmetr, .minimum_wage, .shaxarsozlik_umumiy_xajmi, .qavatlar_soni_xajmi, .avtoturargoh_xajmi, .umumiy_foydalanishdagi_xajmi, .qavat_xona_xajmi, .obyekt_joylashuvi, .branch_type, .qurilish_turi, .zona',
+                                                                    function() {
+                                                                        let parentAccordion = $(this).closest('.accordion-body');
+                                                                        calculateGeneratePrice(parentAccordion);
+                                                                    });
+
+                                                                // Event listener for percentage-input changes
+                                                                $(document).on('input change', '.percentage-input', function() {
+                                                                    let parentAccordion = $(this).closest('.accordion-body');
+                                                                    calculateGeneratePrice(parentAccordion);
+                                                                });
+
+                                                                // Event listener for quarterly-input changes
+                                                                $(document).on('input change', '.quarterly-input', function() {
+                                                                    let parentAccordion = $(this).closest('.accordion-body');
+                                                                    let quarterlyInput = parseInt($(this).val()) || 0;
+                                                                    let generatePrice = parseFloat(parentAccordion.find('.generate_price').val()) || 0;
+                                                                    let percentageInput = parseFloat(parentAccordion.find('.percentage-input').val()) || 0;
+                                                                    let z = (generatePrice * percentageInput) / 100;
+
+                                                                    if (!isNaN(generatePrice) && !isNaN(percentageInput) && quarterlyInput > 0) {
+                                                                        let n = generatePrice - z;
+                                                                        let y = n / quarterlyInput;
+                                                                        parentAccordion.find('.calculated-quarterly-payment').val(y.toFixed(2));
+                                                                        updateQuarterlyPaymentSchedule(parentAccordion, y, quarterlyInput);
+                                                                    } else {
+                                                                        parentAccordion.find('.calculated-quarterly-payment').val('');
+                                                                        updateQuarterlyPaymentSchedule(parentAccordion, '', '');
+                                                                    }
+                                                                });
+
+                                                                // Event listener for payment type changes
+                                                                $(document).on('change', '.payment-type', function() {
+                                                                    let parentAccordion = $(this).closest('.accordion-body');
+                                                                    let paymentType = $(this).val();
+                                                                    let percentageInput = parentAccordion.find('.percentage-input');
+                                                                    let quarterlyInput = parentAccordion.find('.quarterly-input');
+
+                                                                    if (paymentType === 'pay_full') {
+                                                                        percentageInput.val(100).prop('disabled', true);
+                                                                        quarterlyInput.val('').prop('disabled', true);
+                                                                        parentAccordion.find('.calculated-quarterly-payment').val('N/A');
+                                                                        parentAccordion.find('.payment-schedule').empty();
+                                                                        parentAccordion.find('.quarterly-payment-schedule').empty();
+                                                                    } else {
+                                                                        percentageInput.prop('disabled', false);
+                                                                        quarterlyInput.prop('disabled', false);
+                                                                    }
+
+                                                                    calculateGeneratePrice(parentAccordion);
+                                                                });
+
+                                                                // Event listener for coefficient changes
+                                                                $(document).on('input change', '.coefficient', function() {
+                                                                    let parentAccordion = $(this).closest('.accordion-body');
+                                                                    calculateGeneratePrice(parentAccordion);
+                                                                });
+
+                                                                // Function to calculate the coefficient and update it in the accordion items
+                                                                function calculateCoefficient() {
+                                                                    var coefficient = 1;
+                                                                    var totalKts = [];
+                                                                    var selectElements = document.querySelectorAll('.form_select_cof');
+
+                                                                    selectElements.forEach(function(select) {
+                                                                        Array.from(select.selectedOptions).forEach(function(option) {
+                                                                            var kt = parseFloat(option.dataset.kt);
+                                                                            if (!isNaN(kt)) {
+                                                                                totalKts.push(kt);
+                                                                            }
+                                                                        });
+                                                                    });
+
+                                                                    if (totalKts.includes(0)) {
+                                                                        coefficient = 0;
+                                                                    } else if (totalKts.length === 0) {
+                                                                        coefficient = 1;
+                                                                    } else {
+                                                                        totalKts.forEach(function(kt) {
+                                                                            coefficient *= kt;
+                                                                        });
+
+                                                                        // Apply the limits
+                                                                        if (coefficient < 0.50) {
+                                                                            coefficient = 0.50;
+                                                                        } else if (coefficient > 2.00) {
+                                                                            coefficient = 2.00;
+                                                                        }
+                                                                    }
+
+                                                                    document.querySelectorAll('.coefficient').forEach(function(coefficientInput) {
+                                                                        coefficientInput.value = coefficient.toFixed(2);
+                                                                    });
+
+                                                                    document.querySelectorAll('.accordion-body').forEach(function(parentAccordion) {
+                                                                        calculateGeneratePrice($(parentAccordion));
+                                                                    });
+                                                                }
+
+
+                                                                $('.form_select_cof').on('change', calculateCoefficient);
+
+                                                                // Initial coefficient calculation
+                                                                calculateCoefficient();
                                                             });
 
-                                                            calculateCoefficient();
                                                         </script>
-
+                                                
                                                         <!-- End new fields -->
-                                                        <div class="col-12 col-md-6 col-lg-4 col-xl-4">
+                                                        <div class="col-12 col-md-6 col-lg-6 col-xl-6">
                                                             <div class="inner-repeater mb-4">
                                                                 <div data-repeater-list="inner-group" class="inner mb-3">
                                                                     <label
@@ -983,9 +1186,11 @@
 
                                                         <div class="col-12 col-md-6 col-lg-6 col-xl-6">
                                                             <div class="mb-3">
-                                                                <label for="first_payment_percent">@lang('cruds.branches.fields.first_payment_percent')</label>
-                                                                <input type="text" class="form-control" name="accordions[0][first_payment_percent]"
-                                                                    value="{{ old('accordions.0.first_payment_percent') }}" readonly id="first_payment_percent_input">
+                                                                <label for="first_payment_percent_0">@lang('cruds.branches.fields.first_payment_percent')</label>
+                                                                <input type="text" class="form-control first_payment_percent" 
+                                                                       name="accordions[0][first_payment_percent]"
+                                                                       value="{{ old('accordions.0.first_payment_percent') }}"
+                                                                       id="first_payment_percent_0">
                                                                 @error('accordions.0.first_payment_percent')
                                                                     <span class="error invalid-feedback">{{ $message }}</span>
                                                                 @enderror
