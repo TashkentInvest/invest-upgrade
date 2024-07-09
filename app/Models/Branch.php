@@ -40,7 +40,8 @@ class Branch extends Model
         'umumiy_foydalanishdagi_xajmi',
         'qurilish_turi',
         'coefficient',
-        'zona'
+        'zona',
+        'obyekt_joylashuvi'
     
     ];
 

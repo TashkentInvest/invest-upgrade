@@ -284,7 +284,7 @@ maps_details = [
 
 ## Client mobile
 ```
-branch ga obyektning manzili ni qoshish kere
+branch ga obyektning joylashuvi ni qoshish kere +++
 
 product edit ni fix qilish kere kafetsient scriptlari bilan
 
