@@ -282,6 +282,16 @@ maps_details = [
 
 ```
 
+## Client mobile
+```
+branch ga obyektning manzili ni qoshish kere
+
+product edit ni fix qilish kere kafetsient scriptlari bilan
+
+product add ni fix qilish kere kafetsient scriptlari bilan
+
+```
+
 
 <a href="https://wordtohtml.net/">https://wordtohtml.net/</a>
 
