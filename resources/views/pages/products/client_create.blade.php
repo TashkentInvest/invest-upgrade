@@ -43,6 +43,7 @@
     <!-- Include Select2 JS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/3.3.4/jquery.inputmask.bundle.min.js"></script>
 
 
     <div class="row">
@@ -233,7 +234,7 @@
 
                                     <div class="col-12 col-md-4 col-lg-6 col-xl-6 mb-2">
                                         <label for="contact" class="col-md-4 col-form-label">@lang('cruds.client.fields.contact')</label>
-                                        <input class="form-control {{ $errors->has('contact') ? 'is-invalid' : '' }}"
+                                        <input class="form-control phone2 {{ $errors->has('contact') ? 'is-invalid' : '' }}"
                                             type="text" name="contact" id="contact"
                                             placeholder="+998 (--) --- -- --" value="{{ old('contact') }}">
                                         @if ($errors->has('contact'))
@@ -241,6 +242,10 @@
                                         @endif
                                     </div>
 
+                                    <script>
+                                        $('.phone2').inputmask('+998 (99) 999-99-99');
+
+                                    </script>
 
 
 
