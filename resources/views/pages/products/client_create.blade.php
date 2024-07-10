@@ -90,7 +90,7 @@
                                         @enderror
                                     </div>
 
-                            
+
                                 </div>
 
                                 <div class="row" id="make_show" style="display: none;">
@@ -143,9 +143,9 @@
                                     <div class="col-12 col-lg-4 mb-2">
                                         <label for="bank_code" class="col-md-6 col-form-label">@lang('cruds.company.fields.bank_code')</label>
                                         <input class="form-control {{ $errors->has('bank_code') ? 'is-invalid' : '' }}"
-                                            type="number" name="bank_code" id="bank_code"
-                                            placeholder="@lang('cruds.company.fields.bank_code')" value="{{ old('bank_code') }}"
-                                            minlength="5" maxlength="5" name="bank_code" id="bank_code">
+                                            type="number" name="bank_code" id="bank_code" placeholder="@lang('cruds.company.fields.bank_code')"
+                                            value="{{ old('bank_code') }}" minlength="5" maxlength="5" name="bank_code"
+                                            id="bank_code">
 
                                         @if ($errors->has('bank_code'))
                                             <span class="error invalid-feedback">{{ $errors->first('bank_code') }}</span>
@@ -230,15 +230,19 @@
                                         @endif
                                     </div>
 
+
                                     <div class="col-12 col-md-4 col-lg-6 col-xl-6 mb-2">
                                         <label for="contact" class="col-md-4 col-form-label">@lang('cruds.client.fields.contact')</label>
-                                        <input class="form-control {{ $errors->has('contact') ? 'is-invalid' : '' }}"
-                                            type="text" name="contact" id="contact"
-                                            placeholder="+998 (--) --- -- --" value="{{ old('contact') }}">
+                                        <input class="form-control {{ $errors->has('contact') ? 'is-invalid' : '' }}" 
+                                            type="text" name="contact" id="contact" 
+                                            placeholder="+998 (--) --- -- --" value="{{ old('contact') }}" >
                                         @if ($errors->has('contact'))
                                             <span class="error invalid-feedback">{{ $errors->first('contact') }}</span>
                                         @endif
                                     </div>
+
+
+                                    
 
                                     <div class="col-12 col-md-4 col-lg-6 col-xl-6 mb-2">
                                         <label for="stir" class="col-md-6 col-form-label">@lang('cruds.company.fields.stir')</label>
@@ -691,7 +695,7 @@
                                                                 // Function to calculate and update prices
                                                                 function calculateGeneratePrice(parentAccordion) {
                                                                     let shaxarsozlik_umumiy_xajmi = parseFloat(parentAccordion.find('.shaxarsozlik_umumiy_xajmi')
-                                                                    .val()) || 0;
+                                                                        .val()) || 0;
                                                                     let qavatlar_soni_xajmi = parseFloat(parentAccordion.find('.qavatlar_soni_xajmi').val()) || 0;
                                                                     let avtoturargoh_xajmi = parseFloat(parentAccordion.find('.avtoturargoh_xajmi').val()) || 0;
                                                                     let umumiy_foydalanishdagi_xajmi = parseFloat(parentAccordion.find('.umumiy_foydalanishdagi_xajmi')
@@ -703,7 +707,7 @@
                                                                     parentAccordion.find('.branch_kubmetr').val(companyKubmetr.toFixed(2));
 
                                                                     let minimumWage = parseFloat(parentAccordion.find('.minimum_wage').val()) ||
-                                                                    340000; // Default or original value
+                                                                        340000; // Default or original value
                                                                     let coefficient = parseFloat(parentAccordion.find('.coefficient').val()) || 1;
 
                                                                     let adjustedMinimumWage = 340000 * coefficient;

@@ -312,7 +312,7 @@ class ClientController extends Controller
             'passport_pinfl' => 'nullable|string|max:14|min:14',
             'first_name' => 'required|string',
             'last_name' => 'required|string',
-            'contact' => 'required',
+            'contact' => 'required|int',
         ]);
         // dd($request);
         

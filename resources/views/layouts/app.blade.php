@@ -111,9 +111,9 @@
   <script src="{{ asset('assets/libs/bootstrap-datepicker/js/bootstrap-datepicker.min.js') }}"></script>
 
   <!-- dropzone plugin -->
-  <script src="{{ asset('assets/libs/dropzone/min/dropzone.min.js') }}"></script>
-  
-  
+  <script src="{{ asset('assets/libs/dropzone/min/dropzone.min.js') }}"></script>    
+
+
   {{-- <script src="{{ asset('assets/libs/sweetalert2/sweetalert2.min.js') }}"></script>  --}}
 
   <script>
