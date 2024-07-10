@@ -1084,7 +1084,7 @@
                                                             });
                                                         </script>
 
-                                                        <!-- End new fields -->
+                                                    <!-- End new fields -->
                                                         <div class="col-12 col-md-6 col-lg-6 col-xl-3">
                                                             <div class="inner-repeater mb-4">
                                                                 <div data-repeater-list="inner-group" class="inner mb-3">
