@@ -47,6 +47,7 @@
 
 
     <div class="row">
+        <h2 style="color: red;text-align: center">@lang('global.info_text')</h2>
         <h3 class="text-center media_text">@lang('global.client_title')</h3>
         <div class="m-auto d-flex justify-content-center text-center my-2">
             @if (session('locale') == 'uz')
@@ -996,14 +997,16 @@
                                     </div>
                                 </div>
                             </div>
-                        
 
-                        <div id="addAccordion" class="btn btn-success mt-3">@lang('global.add_object') +
+                            
+                            
+                            <div id="addAccordion" class="btn btn-success mt-3">@lang('global.add_object') +
                         </div>
                         
                         <!-- Confirm Details -->
                     </div>
                     <button class="btn btn-primary mt-3" type="submit">@lang('global.save')</button>
+                    <h4 class="text-center">Taklif va e'tirozlar uchun <a target="_blank" href="https://t.me/tashinvestcom">Telegram</a></h4>
 
                 </form>
 
