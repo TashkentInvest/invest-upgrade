@@ -94,7 +94,7 @@ return [
             'mijoz_turi_fizik'                     => 'Физическое лицо',
             'passport_date'                     => 'Дата выдачи',
             'passport_location'                     => 'Местоположение выдачи',
-            'mijoz_turi'                     => 'Статус',
+            'mijoz_turi'                     => 'Вид лица',
             'client_description'       => 'Описание клиента',
 
             'name_helper'              => ' ',
