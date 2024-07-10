@@ -310,6 +310,8 @@ class ClientController extends Controller
             'bank_account' => 'nullable|string|max:20|min:20',
             'passport_serial' => 'nullable|string|max:10|min:9',
             'passport_pinfl' => 'nullable|string|max:14|min:14',
+            'first_name' => 'required|string',
+            'last_name' => 'required|string',
         ]);
         // dd($request);
         
