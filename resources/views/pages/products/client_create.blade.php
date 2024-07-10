@@ -258,8 +258,10 @@
                                 </div>
                                 {{-- <input type="hidden" name="client_id" value="{{$client->id}}"> --}}
 
-                                <div class="row" id="make_hide">
-
+                                    
+                                </div>
+                                <div class="row" id="make_hide" style="border: 1px solid rgba(0, 0, 0, 0.39); border-radius:20px; padding:10px">
+                                    <h3>Shaxsni tasdiqlash malumotlari</h3>
                                     <div class="col-12 col-md-6 col-lg-6 col-xl-3 mb-2">
                                         <label for="passport_serial"
                                             class="col-md-6 col-form-label">@lang('cruds.client.fields.passport_serial')</label>
@@ -316,7 +318,7 @@
 
                                     <div class="col-12 col-md-6 col-lg-6 col-xl-12 mb-2">
                                         <label for="home_address"
-                                            class="col-md-6 col-form-label">@lang('global.home_address')</label>
+                                            class="col-md-6 col-form-label">@lang('global.home_address_title')</label>
                                         <input class="form-control {{ $errors->has('home_address') ? 'is-invalid' : '' }}"
                                             type="text" name="home_address" id="home_address"
                                             placeholder="@lang('global.home_address')" value="{{ old('home_address') }}">
