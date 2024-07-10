@@ -234,7 +234,7 @@
                                         <label for="contact" class="col-md-4 col-form-label">@lang('cruds.client.fields.contact')</label>
                                         <input class="form-control {{ $errors->has('contact') ? 'is-invalid' : '' }}"
                                             type="text" name="contact" id="contact"
-                                            placeholder="@lang('cruds.client.fields.contact')" value="{{ old('contact') }}">
+                                            placeholder="+998 (--) --- -- --" value="{{ old('contact') }}">
                                         @if ($errors->has('contact'))
                                             <span class="error invalid-feedback">{{ $errors->first('contact') }}</span>
                                         @endif

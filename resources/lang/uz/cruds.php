@@ -84,10 +84,8 @@ return [
             'first_name'               => 'Ism',
             'last_name'                => 'Familiya',
             'father_name'              => 'Otasining ismi',
-            'contact'                  => 'Kontakt',
-
+            'contact'                  => 'Aloqa uchun telefon',
             'client_description'       => 'Mijoz Tafsilotlari',
-          
             'yuridik_address'          => 'Yuridik manzil',
             'yuridik_rekvizid'         => 'Xisob raqam',
             'mijoz_turi_yuridik'       => 'Yuridik shaxs',
