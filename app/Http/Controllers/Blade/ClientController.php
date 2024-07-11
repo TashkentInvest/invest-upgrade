@@ -311,17 +311,60 @@ class ClientController extends Controller
   
     public function Qrcreate(Request $request)
     {
-        $request->validate([
-            'stir' => 'nullable|string|max:9|min:9|unique:companies,stir',
-            'oked' => 'nullable|string|max:5|min:5',
-            'bank_code' => 'nullable|string|max:5|min:5',
-            'bank_account' => 'nullable|string|max:20|min:20',
-            'passport_serial' => 'nullable|string|max:10|min:9',
-            'passport_pinfl' => 'nullable|string|max:14|min:14',
+        // $request->validate([
+        //     'stir' => 'nullable|string|max:9|min:9|unique:companies,stir',
+        //     'oked' => 'nullable|string|max:5|min:5',
+        //     'bank_code' => 'nullable|string|max:5|min:5',
+        //     'bank_account' => 'nullable|string|max:20|min:20',
+        //     'passport_serial' => 'nullable|string|max:10|min:9',
+        //     'passport_pinfl' => 'nullable|string|max:14|min:14',
+        //     'first_name' => 'required|string',
+        //     'last_name' => 'required|string',
+        //     'contact' => 'required|string',
+        // ]);
+
+        $rules = [
             'first_name' => 'required|string',
             'last_name' => 'required|string',
             'contact' => 'required|string',
-        ]);
+            'obyekt_joylashuvi'=>'required',
+            'branch_location'=>'required',
+            'branch_type'=>'required',
+            'qurilish_turi'=>'required',
+            'branch_type'=>'required',
+            'zona'=>'required',
+            'branch_name'=>'required',
+        ];
+    
+        if ($request->has('stir')) {
+            $rules['stir'] = 'required|string|max:9|min:9|unique:companies,stir';
+        }
+    
+        if ($request->has('oked')) {
+            $rules['oked'] = 'nullable|string|max:5|min:5';
+        }
+    
+        if ($request->has('bank_code')) {
+            $rules['bank_code'] = 'nullable|string|max:5|min:5';
+        }
+    
+        if ($request->has('bank_account')) {
+            $rules['bank_account'] = 'nullable|string|max:20|min:20';
+        }
+    
+        if ($request->has('passport_serial')) {
+            $rules['passport_serial'] = 'nullable|string|max:10|min:9';
+        }
+    
+        if ($request->has('passport_pinfl')) {
+            $rules['passport_pinfl'] = 'nullable|string|max:14|min:14';
+        }
+        if ($request->has('obyekt_joylashuvi')) {
+            $rules['obyekt_joylashuvi'] = 'required';
+        }
+
+    
+        $request->validate($rules);
         // dd($request);
         
 
