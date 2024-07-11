@@ -11,31 +11,27 @@
             font-size: 14px;
             line-height: 1.6;
             margin: 0;
-            padding: 10px;
+            padding: 5px;
         }
 
         table {
             width: 100%;
             border-collapse: collapse;
-            margin-top: 10px;
+            margin-top: 4px;
         }
 
         th, td {
-            padding: 6px;
+            padding: 2px 4px;
             border: 1px solid #ddd;
             font-size: 13px;
         }
 
         .card-header {
             text-align: center;
-            padding-bottom: 10px;
-            border-bottom: 1px solid #ddd;
-        }
-
-        .card-title {
-            margin: 0;
-            font-size: 20px;
+            padding-bottom: 5px;
+            font-size: 14px;
             font-weight: bold;
+            padding: 0;
         }
 
         .bold {

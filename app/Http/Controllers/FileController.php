@@ -127,5 +127,13 @@ class FileController extends Controller
     
         return Response::make(view('pages.docs.mobile', compact('client')), 200, $headers);
     }
+    // public function gerb($id){
+    //       $client = Client::where('id', $id)
+    //     ->with(['company', 'branches', 'address', 'passport'])
+    //     ->first();
+        
+    
+    //     return view('pages.docs.mobile', compact('client'));
+    // }
 
 }
