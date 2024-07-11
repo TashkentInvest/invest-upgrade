@@ -395,11 +395,12 @@ class ClientController extends Controller
 
             DB::commit();
 
-            return redirect()->back()->with('success', 'Client created successfully');
+            return response()->json(['success' => true]); // Return success response
         } catch (\Exception $e) {
             DB::rollback();
-            return redirect()->back()->with('error', 'An error occurred while creating the client: ' . $e->getMessage());
+            return response()->json(['error' => $e->getMessage()], 500); // Return exception message with status code 500
         }
+    
     }
     
     public function edit($id)

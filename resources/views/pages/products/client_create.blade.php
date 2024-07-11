@@ -773,7 +773,11 @@
                             $('#myForm').submit(function(event) {
                                 event.preventDefault();
                     
+                                // Get CSRF token from the page's meta tags
+                                let csrfToken = $('meta[name="csrf-token"]').attr('content');
+                    
                                 let formData = new FormData(this);
+                                formData.append('_token', csrfToken); // Append CSRF token to FormData
                     
                                 $.ajax({
                                     url: $(this).attr('action'),
@@ -781,15 +785,17 @@
                                     data: formData,
                                     processData: false,
                                     contentType: false,
+                                    headers: {
+                                        'X-CSRF-TOKEN': csrfToken // Include CSRF token in headers
+                                    },
                                     success: function(response) {
-                                        if(response.success) {
+                                        if (response.success) {
                                             Swal.fire({
                                                 icon: 'success',
                                                 title: 'Success!',
                                                 text: 'Client created successfully',
                                             }).then(function() {
-                                                // Optionally, redirect or update the UI
-                                                window.location.reload(); // Example: reload page
+                                                window.location.reload(); // Optionally, redirect or update the UI
                                             });
                                         } else {
                                             Swal.fire({
@@ -800,7 +806,7 @@
                                         }
                                     },
                                     error: function(response) {
-                                        if(response.status === 422) {
+                                        if (response.status === 422) {
                                             let errors = response.responseJSON.errors;
                     
                                             // Clear previous errors (if any)
@@ -832,6 +838,7 @@
                             });
                         });
                     </script>
+                    
                     
 
                 </div>
