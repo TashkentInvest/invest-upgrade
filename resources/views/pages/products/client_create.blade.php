@@ -43,7 +43,10 @@
             .table>tbody {
             text-align: left !important;
             font-size: 12px !important;
-        }
+            }
+            tbody, td, tfoot, th, thead, tr {
+                width: 100px !important;
+            }
 
         }
     </style>
@@ -830,6 +833,32 @@
                                                     <tr><th>Home Address</th><td>${formData.get('home_address')}</td></tr>
                                                     <tr><th>Company Location</th><td>${formData.get('company_location')}</td></tr>
                                                     <tr><th>Accordions</th><td>${JSON.stringify(formData.getAll('accordions'))}</td></tr>
+                                                    <!-- New Fields -->
+                                                    <tr><th>Shaxarsozlik Umumiy Xajmi</th><td>${formData.get('accordions[0][shaxarsozlik_umumiy_xajmi]')}</td></tr>
+                                                    <tr><th>Qavatlar Soni Xajmi</th><td>${formData.get('accordions[0][qavatlar_soni_xajmi]')}</td></tr>
+                                                    <tr><th>Avtoturargoh Xajmi</th><td>${formData.get('accordions[0][avtoturargoh_xajmi]')}</td></tr>
+                                                    <tr><th>Qavat Xona Xajmi</th><td>${formData.get('accordions[0][qavat_xona_xajmi]')}</td></tr>
+                                                    <tr><th>Umumiy Foydalanishdagi Xajmi</th><td>${formData.get('accordions[0][umumiy_foydalanishdagi_xajmi]')}</td></tr>
+                                                    <tr><th>Qurilish Turi</th><td>${formData.get('accordions[0][qurilish_turi]')}</td></tr>
+                                                    <tr><th>Coefficient</th><td>${formData.get('accordions[0][coefficient]')}</td></tr>
+                                                    <tr><th>Zona</th><td>${formData.get('accordions[0][zona]')}</td></tr>
+                                                    <tr><th>Contract Apt</th><td>${formData.get('accordions[0][contract_apt]')}</td></tr>
+                                                    <tr><th>Contract Date</th><td>${formData.get('accordions[0][contract_date]')}</td></tr>
+                                                    <tr><th>Branch Kubmetr</th><td>${formData.get('accordions[0][branch_kubmetr]')}</td></tr>
+                                                    <tr><th>Branch Type</th><td>${formData.get('accordions[0][branch_type]')}</td></tr>
+                                                    <tr><th>Branch Location</th><td>${formData.get('accordions[0][branch_location]')}</td></tr>
+                                                    <tr><th>Obyekt Joylashuvi</th><td>${formData.get('accordions[0][obyekt_joylashuvi]')}</td></tr>
+                                                    <tr><th>Branch Name</th><td>${formData.get('accordions[0][branch_name]')}</td></tr>
+                                                    <tr><th>Generate Price</th><td>${formData.get('accordions[0][generate_price]')}</td></tr>
+                                                    <tr><th>Payment Type</th><td>${formData.get('accordions[0][payment_type]')}</td></tr>
+                                                    <tr><th>Percentage Input</th><td>${formData.get('accordions[0][percentage_input]')}</td></tr>
+                                                    <tr><th>Installment Quarterly</th><td>${formData.get('accordions[0][installment_quarterly]')}</td></tr>
+                                                    <tr><th>Notification Number</th><td>${formData.get('accordions[0][notification_num]')}</td></tr>
+                                                    <tr><th>Notification Date</th><td>${formData.get('accordions[0][notification_date]')}</td></tr>
+                                           
+                                                    <tr><th>Application Number</th><td>${formData.get('accordions[0][application_number]')}</td></tr>
+                                            
+                                                    <tr><th>First Payment Percent</th><td>${formData.get('accordions[0][first_payment_percent]')}</td></tr>
                                                 </tbody>
                                             </table>
                                         `;
@@ -901,9 +930,7 @@
                             });
                         });
                     </script>
-                    
-                    
-                    
+                     
                     
 
                 </div>
