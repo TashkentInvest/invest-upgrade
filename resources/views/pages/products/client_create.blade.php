@@ -767,6 +767,72 @@
                                 href="https://t.me/tashinvestcom">Telegram</a></h4>
 
                     </form>
+                    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+                    <script>
+                        $(document).ready(function() {
+                            $('#myForm').submit(function(event) {
+                                event.preventDefault();
+                    
+                                let formData = new FormData(this);
+                    
+                                $.ajax({
+                                    url: $(this).attr('action'),
+                                    method: $(this).attr('method'),
+                                    data: formData,
+                                    processData: false,
+                                    contentType: false,
+                                    success: function(response) {
+                                        if(response.success) {
+                                            Swal.fire({
+                                                icon: 'success',
+                                                title: 'Success!',
+                                                text: 'Client created successfully',
+                                            }).then(function() {
+                                                // Optionally, redirect or update the UI
+                                                window.location.reload(); // Example: reload page
+                                            });
+                                        } else {
+                                            Swal.fire({
+                                                icon: 'error',
+                                                title: 'Error!',
+                                                text: 'An error occurred while creating the client',
+                                            });
+                                        }
+                                    },
+                                    error: function(response) {
+                                        if(response.status === 422) {
+                                            let errors = response.responseJSON.errors;
+                    
+                                            // Clear previous errors (if any)
+                                            $('.error').text('');
+                    
+                                            // Display validation errors using SweetAlert2
+                                            for (let field in errors) {
+                                                let errorMessage = errors[field][0];
+                                                Swal.fire({
+                                                    icon: 'error',
+                                                    title: 'Validation Error!',
+                                                    text: errorMessage,
+                                                });
+                                            }
+                                        } else {
+                                            // For other error statuses (e.g., 500, 404, etc.)
+                                            let errorMessage = 'An unexpected error occurred. Please try again later.';
+                                            if (response.responseJSON && response.responseJSON.message) {
+                                                errorMessage = response.responseJSON.message;
+                                            }
+                                            Swal.fire({
+                                                icon: 'error',
+                                                title: 'Error!',
+                                                text: errorMessage,
+                                            });
+                                        }
+                                    }
+                                });
+                            });
+                        });
+                    </script>
+                    
 
                 </div>
                 <!-- end card body -->
@@ -778,7 +844,10 @@
     </div>
 @endsection
 
+
 @section('scripts')
+
+
     <script src="{{ asset('assets/libs/jquery/jquery.min.js') }}"></script>
     {{-- <script src="{{ asset('assets/libs/node-waves/waves.min.js') }}"></script> --}}
     <script src="{{ asset('assets/libs/jquery-steps/build/jquery.steps.min.js') }}"></script>
