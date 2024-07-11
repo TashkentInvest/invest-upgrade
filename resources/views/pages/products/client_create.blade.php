@@ -950,8 +950,8 @@
                                             title: 'Success!',
                                             html: html,
                                             showCancelButton: true,
-                                            confirmButtonText: 'Confirm',
-                                            cancelButtonText: 'Cancel',
+                                            confirmButtonText: 'Tasdiqlash',
+                                            cancelButtonText: 'Ortga',
                                             customClass: {
                                                 popup: 'swal2-xl'
                                             },
@@ -960,16 +960,16 @@
                                                 if (response.success) {
                                                     Swal.fire({
                                                         icon: 'success',
-                                                        title: 'Data Saved!',
-                                                        text: 'All information has been saved successfully.',
+                                                        title: 'Malumot Saqlandi!',
+                                                        text: 'Barcha ma\'lumotlar muvaffaqiyatli saqlandi.',
                                                     }).then(function() {
                                                         window.location.reload();
                                                     });
                                                 } else {
                                                     Swal.fire({
                                                         icon: 'error',
-                                                        title: 'Error!',
-                                                        text: 'An error occurred while saving the data.',
+                                                        title: 'Xatolik!',
+                                                        text: 'Maʼlumotlarni saqlashda xatolik yuz berdi.',
                                                     });
                                                 }
                                             }
@@ -987,18 +987,18 @@
 
                                             Swal.fire({
                                                 icon: 'error',
-                                                title: 'Validation Error!',
+                                                title: 'Tasdiqlash xatosi!',
                                                 html: errorMessage,
                                             });
                                         } else {
                                             let errorMessage =
-                                                'An unexpected error occurred. Please try again later.';
+                                                'Kutilmagan xatolik yuz berdi. Iltimos keyinroq qayta urinib ko\'ring.';
                                             if (response.responseJSON && response.responseJSON.message) {
                                                 errorMessage = response.responseJSON.message;
                                             }
                                             Swal.fire({
                                                 icon: 'error',
-                                                title: 'Error!',
+                                                title: 'Xatolik!',
                                                 text: errorMessage,
                                             });
                                         }
