@@ -42,7 +42,7 @@
             }
             .table>tbody {
             text-align: left !important;
-            font-size: 12px !important;
+            font-size: 12px !important; 
             }
             tbody, td, tfoot, th, thead, tr {
                 width: 100px !important;
