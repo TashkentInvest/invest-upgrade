@@ -27,8 +27,8 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="text-center mb-5">
-                            <h1 class="display-2 fw-medium">{{ $status }}</h1>
-                            <h4 class="text-uppercase">{{ $message }}</h4>
+                            <h1 class="display-2 fw-medium">500</h1>
+                            <h4 class="text-uppercase">Server Error</h4>
                             <div class="mt-5 text-center">
                                 <a class="btn btn-primary waves-effect waves-light" href="{{ route('home') }}">@lang('global.home')</a>
                             </div>

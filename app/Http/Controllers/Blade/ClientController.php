@@ -149,7 +149,7 @@ class ClientController extends Controller
         if ($client) {
             return view('pages.products.show', compact('client', 'files'));
         } else {
-            return response()->view('errors.custom', ['status' => 404, 'message' => 'Applicant Not found'], 404);
+            return response()->view('errors.404', ['status' => 404, 'message' => 'Applicant Not found'], 404);
         }
     }
 
