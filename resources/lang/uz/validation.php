@@ -66,20 +66,22 @@ return [
         'string'  => 'The :attribute must be less than or equal :value characters.',
         'array'   => 'The :attribute must not have more than :value items.',
     ],
-    'max'                            => [
-        'numeric' => 'The :attribute may not be greater than :max.',
-        'file'    => 'The :attribute may not be greater than :max kilobytes.',
-        'string'  => 'The :attribute may not be greater than :max characters.',
-        'array'   => 'The :attribute may not have more than :max items.',
+    'max' => [
+        'numeric' => '":attribute" :max dan katta bo\'lishi mumkin emas.',
+        'file'    => '":attribute" :max kilobaytdan katta bo\'lishi mumkin emas.',
+        'string'  => '":attribute" :max belgidan ko\'p bo\'lishi mumkin emas.',
+        'array'   => '":attribute" :max narsadan ortiq bo\'lishi mumkin emas.',
     ],
+
     'mimes'                          => 'The :attribute must be a file of type: :values.',
     'mimetypes'                      => 'The :attribute must be a file of type: :values.',
-    'min'                            => [
-        'numeric' => 'The :attribute must be at least :min.',
-        'file'    => 'The :attribute must be at least :min kilobytes.',
-        'string'  => 'The :attribute must be at least :min characters.',
-        'array'   => 'The :attribute must have at least :min items.',
+    'min' => [
+        'numeric' => '":attribute" kamida :min bo\'lishi kerak.',
+        'file'    => '":attribute" kamida :min kilobayt bo\'lishi kerak.',
+        'string'  => '":attribute" kamida :min belgidan iborat bo\'lishi kerak.',
+        'array'   => '":attribute" kamida :min narsadan iborat bo\'lishi kerak.',
     ],
+
     'not_in'                         => 'The selected :attribute is invalid.',
     'not_regex'                      => 'The :attribute format is invalid.',
     'numeric'                        => 'The :attribute must be a number.',
