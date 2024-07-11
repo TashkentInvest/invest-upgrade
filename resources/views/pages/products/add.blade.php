@@ -404,6 +404,28 @@
                                             @endif
                                         </div>
                                     </div>
+
+                                    <div class="col-12 col-md-6 col-lg-6 col-xl-3 my-2">
+                                        <div class="file-upload-card">
+                                            <label class="col-12 mt-2" for="file"> Loyiha xujjati</label>
+                                            <input type="file" name="loyiha_xujjati[]" multiple>
+                                            @if ($errors->has('loyiha_xujjati'))
+                                                <span
+                                                    class="error invalid-feedback">{{ $errors->first('loyiha_xujjati') }}</span>
+                                            @endif
+                                        </div>
+                                    </div>
+
+                                    <div class="col-12 col-md-6 col-lg-6 col-xl-3 my-2">
+                                        <div class="file-upload-card">
+                                            <label class="col-12 mt-2" for="file">Qurilish xajmi xaqida ma'lumot</label>
+                                            <input type="file" name="qurilish_xajmi[]" multiple>
+                                            @if ($errors->has('qurilish_xajmi'))
+                                                <span
+                                                    class="error invalid-feedback">{{ $errors->first('qurilish_xajmi') }}</span>
+                                            @endif
+                                        </div>
+                                    </div>
                                 </div>
 
 

@@ -776,6 +776,85 @@
                                                     </div>
                                                 </div>
                                             </div>
+
+                                            {{-- file start --}}
+                                            
+                                <div class="row" style="align-items: center">
+                                  
+                                <link rel="stylesheet"
+                                href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+                            <style>
+                                .file-upload-card {
+                                    border: 1px solid #ddd;
+                                    border-radius: 8px;
+                                    padding: 15px;
+                                    margin-bottom: 15px;
+                                }
+
+                                .file-list-item {
+                                    display: flex;
+                                    align-items: center;
+                                    padding: 8px 0;
+                                    border-bottom: 1px solid #ddd;
+                                }
+
+                                .file-list-item:last-child {
+                                    border-bottom: none;
+                                }
+
+                                .file-icon {
+                                    margin-right: 10px;
+                                    font-size: 1.2rem;
+                                }
+
+                                .file-label {
+                                    margin-left: 10px;
+                                    font-weight: bold;
+                                    color: #555;
+                                }
+
+                                .label-document {
+                                    color: #007bff;
+                                }
+
+                                .label-payment {
+                                    color: #28a745;
+                                }
+
+                                .label-ruxsatnoma {
+                                    color: #ffc107;
+                                }
+
+                                .label-kengash {
+                                    color: #dc3545;
+                                }
+
+                                .delete-checkbox {
+                                    margin-left: auto;
+                                }
+                            </style>
+                                    <div class="col-12 col-md-6 col-lg-6 col-xl-3 my-2">
+                                        <div class="file-upload-card">
+                                            <label class="col-12 mt-2" for="file"> Loyiha xujjati</label>
+                                            <input type="file" name="loyiha_xujjati[]" multiple>
+                                            @if ($errors->has('loyiha_xujjati'))
+                                                <span
+                                                    class="error invalid-feedback">{{ $errors->first('loyiha_xujjati') }}</span>
+                                            @endif
+                                        </div>
+                                    </div>
+
+                                    <div class="col-12 col-md-6 col-lg-6 col-xl-3 my-2">
+                                        <div class="file-upload-card">
+                                            <label class="col-12 mt-2" for="file">Qurilish xajmi xaqida ma'lumot</label>
+                                            <input type="file" name="qurilish_xajmi[]" multiple>
+                                            @if ($errors->has('qurilish_xajmi'))
+                                                <span
+                                                    class="error invalid-feedback">{{ $errors->first('qurilish_xajmi') }}</span>
+                                            @endif
+                                        </div>
+                                    </div>
+                                </div>
                                         </main>
                                     </div>
                                 </div>

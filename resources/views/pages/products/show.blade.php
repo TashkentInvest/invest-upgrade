@@ -386,7 +386,7 @@
                                                     {{ basename($file->path) }}
                                                 </a>
                                                 <span
-                                                    class="file-label {{ strpos($file->path, 'documents/') !== false
+                                                    class="file-label {{ strpos($file->path, 'qurilish_xajmi/') !== false
                                                         ? 'label-document'
                                                         : (strpos($file->path, 'payment/') !== false
                                                             ? 'label-document'
@@ -395,15 +395,26 @@
                                                                 : (strpos($file->path, 'kengash/') !== false
                                                                     ? 'label-document'
                                                                     : ''))) }}">
-                                                    {{ strpos($file->path, 'documents/') !== false
-                                                        ? 'Document'
-                                                        : (strpos($file->path, 'payment/') !== false
-                                                            ? 'Payment'
-                                                            : (strpos($file->path, 'ruxsatnoma/') !== false
-                                                                ? 'Ruxsatnoma'
-                                                                : (strpos($file->path, 'kengash/') !== false
-                                                                    ? 'Kengash'
-                                                                    : ''))) }}
+                                                    {{ 
+                                                    
+                                                   strpos($file->path, 'documents/') !== false
+                                                    ? 'Document'
+                                                    : (strpos($file->path, 'payment/') !== false
+                                                        ? 'Payment'
+                                                        : (strpos($file->path, 'ruxsatnoma/') !== false
+                                                            ? 'Ruxsatnoma'
+                                                            : (strpos($file->path, 'kengash/') !== false
+                                                                ? 'Kengash'
+                                                                : (strpos($file->path, 'loyiha_xujjati/') !== false
+                                                                    ? 'Loyiha Xujjati'
+                                                                    : (strpos($file->path, 'qurilish_xajmi/') !== false
+                                                                        ? 'Qurilish Xajmi'
+                                                                        : '')))))
+                                                    
+                                                    }}
+
+                                                
+                                                  
                                                 </span>
                                                 <div class="delete-checkbox">
                                                     {{ $file->updated_at }}

@@ -250,6 +250,14 @@ class ClientController extends Controller
             if ($request->hasFile('document_kengash')) {
                 handleFileUploadProduct($request->file('document_kengash'), $client, 'kengash');
             }
+            if ($request->hasFile('loyiha_xujjati')) {
+                handleFileUploadProduct($request->file('loyiha_xujjati'), $client, 'loyiha_xujjati');
+            }
+
+            if ($request->hasFile('qurilish_xajmi')) {
+                handleFileUploadProduct($request->file('qurilish_xajmi'), $client, 'qurilish_xajmi');
+            }
+
 
 
 
@@ -356,6 +364,31 @@ class ClientController extends Controller
                 'company_location' => $request->get('company_location') ?? null,
             ]);
             // dd($request);
+
+            function handleFileUploadProductQr($files, $client, $folder)
+            {
+                foreach ($files as $file) {
+                    $originalName = pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME);
+                    $extension = $file->getClientOriginalExtension();
+                    $date = date('Ymd_His');
+                    $fileName = $originalName . '_' . $date . '.' . $extension;
+                    $file->move(public_path('assets/' . $folder), $fileName);
+
+                    $fileModel = new File();
+                    $fileModel->client_id = $client->id;
+                    $fileModel->path = 'assets/' . $folder . '/' . $fileName;
+                    $fileModel->save();
+                }
+            }
+
+            if ($request->hasFile('loyiha_xujjati')) {
+                handleFileUploadProductQr($request->file('loyiha_xujjati'), $client, 'loyiha_xujjati');
+            }
+
+            if ($request->hasFile('qurilish_xajmi')) {
+                handleFileUploadProductQr($request->file('qurilish_xajmi'), $client, 'qurilish_xajmi');
+            }
+
 
             foreach ($request->accordions as $accordion) {
                 Branch::create([
@@ -524,6 +557,14 @@ class ClientController extends Controller
             if ($request->hasFile('document_kengash')) {
                 handleFileUpload($request->file('document_kengash'), $client, 'kengash');
             }
+            if ($request->hasFile('loyiha_xujjati')) {
+                handleFileUpload($request->file('loyiha_xujjati'), $client, 'loyiha_xujjati');
+            }
+
+            if ($request->hasFile('qurilish_xajmi')) {
+                handleFileUpload($request->file('qurilish_xajmi'), $client, 'qurilish_xajmi');
+            }
+
     
             // Delete files if requested
             if ($request->has('delete_files')) {
