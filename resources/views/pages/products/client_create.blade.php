@@ -79,7 +79,7 @@
                             <section>
 
                                 <div class="row">
-                                    <div class="col-12 col-lg-12 mb-2">
+                                    <div class="col-12 col-lg-6 mb-2">
                                         <label for="mijoz_turi" class="col-md-4 col-form-label">@lang('cruds.client.fields.mijoz_turi')</label>
                                         <select class="form-control form-select" name="mijoz_turi" id="mijoz_turi">
                                             <option value="fizik" {{ old('mijoz_turi') == 'fizik' ? 'selected' : '' }}>
@@ -88,6 +88,21 @@
                                                 @lang('cruds.client.fields.mijoz_turi_yuridik')</option>
                                         </select>
                                         @error('mijoz_turi')
+                                            <span class="error invalid-feedback">{{ $message }}</span>
+                                        @enderror
+                                    </div>
+
+                                 
+                                    <div class="col-12 col-lg-6 mb-2">
+                                        <label for="category_id" class="col-md-4 col-form-label">@lang('global.category')</label>
+                                        <select class="form-control form-select" name="category_id" id="category_id">
+                                            @foreach ($categories as $c)
+                                                <option value="{{ $c->id }}"
+                                                    {{ old('category_id') == $c->id ? 'selected' : '' }}>
+                                                    {{ $c->name }}</option>
+                                            @endforeach
+                                        </select>
+                                        @error('category_id')
                                             <span class="error invalid-feedback">{{ $message }}</span>
                                         @enderror
                                     </div>
@@ -1000,8 +1015,7 @@
 
                             
                             
-                            <div id="addAccordion" class="btn btn-success mt-3">@lang('global.add_object') +
-                        </div>
+                            {{-- <div id="addAccordion" class="btn btn-success mt-3">@lang('global.add_object') + </div> --}}
                         
                         <!-- Confirm Details -->
                     </div>
