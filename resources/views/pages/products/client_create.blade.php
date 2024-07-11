@@ -783,154 +783,149 @@
                                 href="https://t.me/tashinvestcom">Telegram</a></h4>
 
                     </form>
+                    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
                     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
                     <script>
-                        $(document).ready(function() {
-                            $('#myForm').submit(function(event) {
-                                event.preventDefault();
+                    $(document).ready(function() {
+                        $('#myForm').submit(function(event) {
+                            event.preventDefault();
                     
-                                // Get CSRF token from the page's meta tags
-                                let csrfToken = $('meta[name="csrf-token"]').attr('content');
+                            let csrfToken = $('meta[name="csrf-token"]').attr('content');
+                            let formData = new FormData(this);
+                            formData.append('_token', csrfToken);
                     
-                                let formData = new FormData(this);
-                                formData.append('_token', csrfToken); // Append CSRF token to FormData
+                            $.ajax({
+                                url: $(this).attr('action'),
+                                method: $(this).attr('method'),
+                                data: formData,
+                                processData: false,
+                                contentType: false,
+                                headers: {
+                                    'X-CSRF-TOKEN': csrfToken
+                                },
+                                success: function(response) {
+                                    let html = `
+                                    <table class="table">
+                                        <tbody>
+                                            <tr><th>First Name</th><td>${formData.get('first_name')}</td></tr>
+                                            <tr><th>Last Name</th><td>${formData.get('last_name')}</td></tr>
+                                            <tr><th>Father's Name</th><td>${formData.get('father_name')}</td></tr>
+                                            <tr><th>Contact</th><td>${formData.get('contact')}</td></tr>
+                                            <tr><th>Client Description</th><td>${formData.get('client_description')}</td></tr>
+                                            <tr><th>Category ID</th><td>${formData.get('category_id')}</td></tr>
+                                    `;
                     
-                                $.ajax({
-                                    url: $(this).attr('action'),
-                                    method: $(this).attr('method'),
-                                    data: formData,
-                                    processData: false,
-                                    contentType: false,
-                                    headers: {
-                                        'X-CSRF-TOKEN': csrfToken // Include CSRF token in headers
-                                    },
-                                    success: function(response) {
-                                        // Construct HTML for success message with submitted data
-                                        let html = `
-                                            <table class="table">
-                                                <tbody>
-                                                    <tr><th>First Name</th><td>${formData.get('first_name')}</td></tr>
-                                                    <tr><th>Last Name</th><td>${formData.get('last_name')}</td></tr>
-                                                    <tr><th>Father's Name</th><td>${formData.get('father_name')}</td></tr>
-                                                    <tr><th>Contact</th><td>${formData.get('contact')}</td></tr>
-                                                    <tr><th>Client Description</th><td>${formData.get('client_description')}</td></tr>
-                                                    <tr><th>Category ID</th><td>${formData.get('category_id')}</td></tr>
-                                                    <tr><th>Created By Client</th><td>${formData.get('created_by_client')}</td></tr>
-                                                    <tr><th>Company Name</th><td>${formData.get('company_name')}</td></tr>
-                                                    <tr><th>Raxbar</th><td>${formData.get('raxbar')}</td></tr>
-                                                    <tr><th>Bank Code</th><td>${formData.get('bank_code')}</td></tr>
-                                                    <tr><th>Bank Service</th><td>${formData.get('bank_service')}</td></tr>
-                                                    <tr><th>Bank Account</th><td>${formData.get('bank_account')}</td></tr>
-                                                    <tr><th>STIR</th><td>${formData.get('stir')}</td></tr>
-                                                    <tr><th>OKED</th><td>${formData.get('oked')}</td></tr>
-                                                    <tr><th>Minimum Wage</th><td>${formData.get('minimum_wage')}</td></tr>
-                                                    <tr><th>Passport Serial</th><td>${formData.get('passport_serial')}</td></tr>
-                                                    <tr><th>Passport PINFL</th><td>${formData.get('passport_pinfl')}</td></tr>
-                                                    <tr><th>Passport Date</th><td>${formData.get('passport_date')}</td></tr>
-                                                    <tr><th>Passport Location</th><td>${formData.get('passport_location')}</td></tr>
-                                                    <tr><th>Passport Type</th><td>${formData.get('passport_type')}</td></tr>
-                                                    <tr><th>Yuridik Address</th><td>${formData.get('yuridik_address')}</td></tr>
-                                                    <tr><th>Home Address</th><td>${formData.get('home_address')}</td></tr>
-                                                    <tr><th>Company Location</th><td>${formData.get('company_location')}</td></tr>
-                                                    <tr><th>Accordions</th><td>${JSON.stringify(formData.getAll('accordions'))}</td></tr>
-                                                    <!-- New Fields -->
-                                                    <tr><th>Shaxarsozlik Umumiy Xajmi</th><td>${formData.get('accordions[0][shaxarsozlik_umumiy_xajmi]')}</td></tr>
-                                                    <tr><th>Qavatlar Soni Xajmi</th><td>${formData.get('accordions[0][qavatlar_soni_xajmi]')}</td></tr>
-                                                    <tr><th>Avtoturargoh Xajmi</th><td>${formData.get('accordions[0][avtoturargoh_xajmi]')}</td></tr>
-                                                    <tr><th>Qavat Xona Xajmi</th><td>${formData.get('accordions[0][qavat_xona_xajmi]')}</td></tr>
-                                                    <tr><th>Umumiy Foydalanishdagi Xajmi</th><td>${formData.get('accordions[0][umumiy_foydalanishdagi_xajmi]')}</td></tr>
-                                                    <tr><th>Qurilish Turi</th><td>${formData.get('accordions[0][qurilish_turi]')}</td></tr>
-                                                    <tr><th>Coefficient</th><td>${formData.get('accordions[0][coefficient]')}</td></tr>
-                                                    <tr><th>Zona</th><td>${formData.get('accordions[0][zona]')}</td></tr>
-                                                    <tr><th>Contract Apt</th><td>${formData.get('accordions[0][contract_apt]')}</td></tr>
-                                                    <tr><th>Contract Date</th><td>${formData.get('accordions[0][contract_date]')}</td></tr>
-                                                    <tr><th>Branch Kubmetr</th><td>${formData.get('accordions[0][branch_kubmetr]')}</td></tr>
-                                                    <tr><th>Branch Type</th><td>${formData.get('accordions[0][branch_type]')}</td></tr>
-                                                    <tr><th>Branch Location</th><td>${formData.get('accordions[0][branch_location]')}</td></tr>
-                                                    <tr><th>Obyekt Joylashuvi</th><td>${formData.get('accordions[0][obyekt_joylashuvi]')}</td></tr>
-                                                    <tr><th>Branch Name</th><td>${formData.get('accordions[0][branch_name]')}</td></tr>
-                                                    <tr><th>Generate Price</th><td>${formData.get('accordions[0][generate_price]')}</td></tr>
-                                                    <tr><th>Payment Type</th><td>${formData.get('accordions[0][payment_type]')}</td></tr>
-                                                    <tr><th>Percentage Input</th><td>${formData.get('accordions[0][percentage_input]')}</td></tr>
-                                                    <tr><th>Installment Quarterly</th><td>${formData.get('accordions[0][installment_quarterly]')}</td></tr>
-                                                    <tr><th>Notification Number</th><td>${formData.get('accordions[0][notification_num]')}</td></tr>
-                                                    <tr><th>Notification Date</th><td>${formData.get('accordions[0][notification_date]')}</td></tr>
-                                           
-                                                    <tr><th>Application Number</th><td>${formData.get('accordions[0][application_number]')}</td></tr>
-                                            
-                                                    <tr><th>First Payment Percent</th><td>${formData.get('accordions[0][first_payment_percent]')}</td></tr>
-                                                </tbody>
-                                            </table>
+                                    if (formData.get('mijoz_turi') === 'fizik') {
+                                        html += `
+                                            <tr><th>Passport Serial</th><td>${formData.get('passport_serial')}</td></tr>
+                                            <tr><th>Passport PINFL</th><td>${formData.get('passport_pinfl')}</td></tr>
+                                            <tr><th>Passport Date</th><td>${formData.get('passport_date')}</td></tr>
+                                            <tr><th>Passport Location</th><td>${formData.get('passport_location')}</td></tr>
+                                            <tr><th>Passport Type</th><td>${formData.get('passport_type')}</td></tr>
+                                            <tr><th>Home Address</th><td>${formData.get('home_address')}</td></tr>
                                         `;
-                    
-                                        Swal.fire({
-                                            icon: 'success',
-                                            title: 'Success!',
-                                            html: html,
-                                            showCancelButton: true,
-                                            confirmButtonText: 'Confirm',
-                                            cancelButtonText: 'Cancel',
-                                            customClass: {
-                                                popup: 'swal2-xl', // Apply XL size class
-                                            },
-                                        }).then(function(result) {
-                                            if (result.isConfirmed) {
-                                                // After confirmation, show another alert based on server response
-                                                if (response.success) {
-                                                    Swal.fire({
-                                                        icon: 'success',
-                                                        title: 'Data Saved!',
-                                                        text: 'All information has been saved successfully.',
-                                                    }).then(function() {
-                                                        window.location.reload(); // Example: reload page
-                                                    });
-                                                } else {
-                                                    Swal.fire({
-                                                        icon: 'error',
-                                                        title: 'Error!',
-                                                        text: 'An error occurred while saving the data.',
-                                                    });
-                                                }
-                                            }
-                                        });
+                                    } else {
+                                        html += `
+                                            <tr><th>Created By Client</th><td>${formData.get('created_by_client')}</td></tr>
+                                            <tr><th>Company Name</th><td>${formData.get('company_name')}</td></
+                                            <tr><th>Raxbar</th><td>${formData.get('raxbar')}</td></tr>
+                                            <tr><th>Bank Code</th><td>${formData.get('bank_code')}</td></tr>
+                                            <tr><th>Bank Service</th><td>${formData.get('bank_service')}</td></tr>
+                                            <tr><th>Bank Account</th><td>${formData.get('bank_account')}</td></tr>
+                                            <tr><th>STIR</th><td>${formData.get('stir')}</td></tr>
+                                            <tr><th>OKED</th><td>${formData.get('oked')}</td></tr>
+                                            <tr><th>Yuridik Address</th><td>${formData.get('yuridik_address')}</td></tr>
+                                            <tr><th>Company Location</th><td>${formData.get('company_location')}</td></tr>
+                                        `;
+                                    }               
+                                    html += `
+                                        <tr><th>Shaxarsozlik Umumiy Xajmi</th><td>${formData.get('accordions[0][shaxarsozlik_umumiy_xajmi]')}</td></tr>
+                                        <tr><th>Qavatlar Soni Xajmi</th><td>${formData.get('accordions[0][qavatlar_soni_xajmi]')}</td></tr>
+                                        <tr><th>Avtoturargoh Xajmi</th><td>${formData.get('accordions[0][avtoturargoh_xajmi]')}</td></tr>
+                                        <tr><th>Qavat Xona Xajmi</th><td>${formData.get('accordions[0][qavat_xona_xajmi]')}</td></tr>
+                                        <tr><th>Umumiy Foydalanishdagi Xajmi</th><td>${formData.get('accordions[0][umumiy_foydalanishdagi_xajmi]')}</td></tr>
+                                        <tr><th>Qurilish Turi</th><td>${formData.get('accordions[0][qurilish_turi]')}</td></tr>
+                                        <tr><th>Coefficient</th><td>${formData.get('accordions[0][coefficient]')}</td></tr>
+                                        <tr><th>Zona</th><td>${formData.get('accordions[0][zona]')}</td></tr>
+                                        <tr><th>Contract Apt</th><td>${formData.get('accordions[0][contract_apt]')}</td></tr>
+                                        <tr><th>Contract Date</th><td>${formData.get('accordions[0][contract_date]')}</td></tr>
+                                        <tr><th>Branch Kubmetr</th><td>${formData.get('accordions[0][branch_kubmetr]')}</td></tr>
+                                        <tr><th>Branch Type</th><td>${formData.get('accordions[0][branch_type]')}</td></tr>
+                                        <tr><th>Branch Location</th><td>${formData.get('accordions[0][branch_location]')}</td></tr>
+                                        <tr><th>Obyekt Joylashuvi</th><td>${formData.get('accordions[0][obyekt_joylashuvi]')}</td></tr>
+                                        <tr><th>Branch Name</th><td>${formData.get('accordions[0][branch_name]')}</td></tr>
+                                        <tr><th>Generate Price</th><td>${formData.get('accordions[0][generate_price]')}</td></tr>
+                                        <tr><th>Payment Type</th><td>${formData.get('accordions[0][payment_type]')}</td></tr>
+                                        <tr><th>Percentage Input</th><td>${formData.get('accordions[0][percentage_input]')}</td></tr>
+                                        <tr><th>Installment Quarterly</th><td>${formData.get('accordions[0][installment_quarterly]')}</td></tr>
+                                        <tr><th>Notification Number</th><td>${formData.get('accordions[0][notification_num]')}</td></tr>
+                                        <tr><th>Notification Date</th><td>${formData.get('accordions[0][notification_date]')}</td></tr>
+                                        <tr><th>Application Number</th><td>${formData.get('accordions[0][application_number]')}</td></tr>
+                                        <tr><th>First Payment Percent</th><td>${formData.get('accordions[0][first_payment_percent]')}</td></tr>
+                                    `;
+
+                                    html += '</tbody></table>';
+                                    Swal.fire({
+                                    icon: 'success',
+                                    title: 'Success!',
+                                    html: html,
+                                    showCancelButton: true,
+                                    confirmButtonText: 'Confirm',
+                                    cancelButtonText: 'Cancel',
+                                    customClass: {
+                                        popup: 'swal2-xl'
                                     },
-                                    error: function(response) {
-                                        if (response.status === 422) {
-                                            let errors = response.responseJSON.errors;
-                    
-                                            // Clear previous errors (if any)
-                                            $('.error').text('');
-                    
-                                            // Display validation errors using SweetAlert2
-                                            let errorMessage = '<ul>';
-                                            for (let field in errors) {
-                                                errorMessage += `<li>${errors[field][0]}</li>`;
-                                            }
-                                            errorMessage += '</ul>';
-                    
+                                }).then(function(result) {
+                                    if (result.isConfirmed) {
+                                        if (response.success) {
                                             Swal.fire({
-                                                icon: 'error',
-                                                title: 'Validation Error!',
-                                                html: errorMessage,
+                                                icon: 'success',
+                                                title: 'Data Saved!',
+                                                text: 'All information has been saved successfully.',
+                                            }).then(function() {
+                                                window.location.reload();
                                             });
                                         } else {
-                                            // For other error statuses (e.g., 500, 404, etc.)
-                                            let errorMessage = 'An unexpected error occurred. Please try again later.';
-                                            if (response.responseJSON && response.responseJSON.message) {
-                                                errorMessage = response.responseJSON.message;
-                                            }
                                             Swal.fire({
                                                 icon: 'error',
                                                 title: 'Error!',
-                                                text: errorMessage,
+                                                text: 'An error occurred while saving the data.',
                                             });
                                         }
                                     }
                                 });
-                            });
+                            },
+                            error: function(response) {
+                                if (response.status === 422) {
+                                    let errors = response.responseJSON.errors;
+
+                                    let errorMessage = '<ul>';
+                                    for (let field in errors) {
+                                        errorMessage += `<li>${errors[field][0]}</li>`;
+                                    }
+                                    errorMessage += '</ul>';
+
+                                    Swal.fire({
+                                        icon: 'error',
+                                        title: 'Validation Error!',
+                                        html: errorMessage,
+                                    });
+                                } else {
+                                    let errorMessage = 'An unexpected error occurred. Please try again later.';
+                                    if (response.responseJSON && response.responseJSON.message) {
+                                        errorMessage = response.responseJSON.message;
+                                    }
+                                    Swal.fire({
+                                        icon: 'error',
+                                        title: 'Error!',
+                                        text: errorMessage,
+                                    });
+                                }
+                            }
                         });
-                    </script>
-                     
+                    });
+                });
+                </script>
                     
 
                 </div>
