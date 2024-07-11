@@ -929,7 +929,7 @@
                                         <tr><th>Qavat Xona Xajmi</th><td>${formData.get('accordions[0][qavat_xona_xajmi]')}</td></tr>
                                         <tr><th>Umumiy Foydalanishdagi Xajmi</th><td>${formData.get('accordions[0][umumiy_foydalanishdagi_xajmi]')}</td></tr>
                                         <tr><th>Qurilish Turi</th><td>${formData.get('accordions[0][qurilish_turi]')}</td></tr>
-                                        <tr><th>Coefficient</th><td>${formData.get('accordions[0][coefficient]')}</td></tr>
+                                        <tr><th>Koeffitsient</th><td>${formData.get('accordions[0][coefficient]')}</td></tr>
                                         <tr><th>Zona</th><td>${formData.get('accordions[0][zona]')}</td></tr>
                                         <tr><th>Obyekt xajmi</th><td>${formData.get('accordions[0][branch_kubmetr]')}</td></tr>
                                         <tr><th>Obyekt turi</th><td>${formData.get('accordions[0][branch_type]')}</td></tr>
@@ -950,7 +950,7 @@
                                             title: 'Success!',
                                             html: html,
                                             showCancelButton: true,
-                                            confirmButtonText: 'Tasdiqlash',
+                                            confirmButtonText: 'Yuborish',
                                             cancelButtonText: 'Ortga',
                                             customClass: {
                                                 popup: 'swal2-xl'

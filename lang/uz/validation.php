@@ -125,7 +125,9 @@ return [
     'prohibited_unless' => 'The :attribute field is prohibited unless :other is in :values.',
     'prohibits' => 'The :attribute field prohibits :other from being present.',
     'regex' => 'The :attribute field format is invalid.',
-    'required' => ':attribute maydoni kiritilishi zarur.',
+    // 'required' => ':attribute maydoni kiritilishi zarur.',
+    'required' => ':attribute maydoni talab qilinadi.',
+
     'required_array_keys' => 'The :attribute field must contain entries for: :values.',
     'required_if' => 'The :attribute field is required when :other is :value.',
     'required_if_accepted' => 'The :attribute field is required when :other is accepted.',
@@ -161,6 +163,27 @@ return [
     | specify a specific custom language line for a given attribute rule.
     |
     */
+
+    'attributes' => [
+        'first_name' => 'Ism',
+        'last_name' => 'Familya',
+        'father_name' => 'Otasining ismi',
+        'contact' => 'Kontakt',
+        'passport_serial' => 'Passport Seria',
+        'passport_pinfl' => 'Passport PINFL',
+        'passport_date' => 'Passport Sana',
+        'passport_location' => 'Passport Manzil',
+        'home_address' => 'Doimiy roʻyxatda turish manzil',
+        'company_name' => 'Kompaniya nomi',
+        'raxbar' => 'Raxbar',
+        'bank_code' => 'Bank Code',
+        'bank_service' => 'Bank Service',
+        'bank_account' => 'Bank Account',
+        'stir' => 'STIR',
+        'oked' => 'OKED',
+        'yuridik_address' => 'Yuridik manzil',
+        'company_location' => 'Kompaniya joylashuvi',
+    ],
 
     'custom' => [
         'attribute-name' => [
