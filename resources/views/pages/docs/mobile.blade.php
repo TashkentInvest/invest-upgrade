@@ -176,7 +176,28 @@
                         </tr>
                     @endforeach
                 </tbody>
+
+
+              
             </table>
+
+            <table style="width: 100%; text-align: center; font-family: 'Arial', sans-serif;">
+                <tr>
+                    <td style="width: 50%; padding: 10px; border:none;">
+                        <div style="font-size: 1.2em; margin-bottom: 5px;">
+                            ___________________
+                        </div>
+                        <p style="font-weight: bold; color: #333; margin: 0;">ismi</p>
+                    </td>
+                    <td style="width: 50%; padding: 10px; border:none;">
+                        <div style="font-size: 1.2em; margin-bottom: 5px;">
+                            ___________________
+                        </div>
+                        <p style="font-weight: bold; color: #333; margin: 0;">imzo</p>
+                    </td>
+                </tr>
+            </table>
+            
         </div>
     </div>
 </body>
