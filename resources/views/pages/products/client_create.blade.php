@@ -2,6 +2,11 @@
 
 @section('content')
     <style>
+        .swal2-xl {
+            width: 800px; /* Adjust width as needed */
+            max-width: 90%; /* Ensure it's responsive */
+        }
+
         .wizard .steps .current a,
         .wizard .steps .current a:active,
         .wizard .steps .current a:hover {
@@ -27,11 +32,19 @@
             transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
         }
 
+     
+
+
         @media(max-width: 774px) {
             .media_text {
                 font-size: 15px;
                 font-weight: bold
             }
+            .table>tbody {
+            text-align: left !important;
+            font-size: 12px !important;
+        }
+
         }
     </style>
 
@@ -828,6 +841,9 @@
                                             showCancelButton: true,
                                             confirmButtonText: 'Confirm',
                                             cancelButtonText: 'Cancel',
+                                            customClass: {
+                                                popup: 'swal2-xl', // Apply XL size class
+                                            },
                                         }).then(function(result) {
                                             if (result.isConfirmed) {
                                                 // After confirmation, show another alert based on server response
@@ -885,6 +901,7 @@
                             });
                         });
                     </script>
+                    
                     
                     
                     
