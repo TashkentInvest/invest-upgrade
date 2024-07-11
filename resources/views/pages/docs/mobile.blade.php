@@ -51,8 +51,11 @@
 <body>
     <div class="card">
         <div class="card-header">
-            <h3 class="card-title">Quruvchi va qurilish obyekti bo'yicha malumotlar</h3>
+            <h3 class="card-title">Quruvchi va qurilish obyekti bo'yicha malumotlar 
+                <span style="float: right;">{{$client->updated_at->format('d-m-Y')}} Yil</span>
+            </h3>
         </div>
+        
         <div class="card-body">
             <table>
                 <tbody>
@@ -181,22 +184,51 @@
               
             </table>
 
+            @if ($client->mijoz_turi != 'fizik')
+
             <table style="width: 100%; text-align: center; font-family: 'Arial', sans-serif;">
                 <tr>
                     <td style="width: 50%; padding: 10px; border:none;">
                         <div style="font-size: 1.2em; margin-bottom: 5px;">
                             ___________________
                         </div>
-                        <p style="font-weight: bold; color: #333; margin: 0;">ismi</p>
+                        <p style="font-weight: bold; color: #333; margin: 0;">Imzo</p>
                     </td>
                     <td style="width: 50%; padding: 10px; border:none;">
                         <div style="font-size: 1.2em; margin-bottom: 5px;">
                             ___________________
                         </div>
-                        <p style="font-weight: bold; color: #333; margin: 0;">imzo</p>
+                        <p style="font-weight: bold; color: #333; margin: 0;">F.I.O</p>
                     </td>
                 </tr>
             </table>
+            @else
+
+            <table style="width: 100%; text-align: center; font-family: 'Arial', sans-serif;">
+                <tr>
+                    <td style="width: 33%; padding: 10px; border:none;">
+                        <div style="font-size: 1.2em; margin-bottom: 5px;">
+                            ___________________
+                        </div>
+                        <p style="font-weight: bold; color: #333; margin: 0;">Nomi</p>
+                    </td>
+
+                    <td style="width: 33%; padding: 10px; border:none;">
+                        <div style="font-size: 1.2em; margin-bottom: 5px;">
+                            ___________________
+                        </div>
+                        <p style="font-weight: bold; color: #333; margin: 0;">Imzo</p>
+                    </td>
+
+                    <td style="width: 33%; padding: 10px; border:none;">
+                        <div style="font-size: 1.2em; margin-bottom: 5px;">
+                            ___________________
+                        </div>
+                        <p style="font-weight: bold; color: #333; margin: 0;">F.I.O</p>
+                    </td>
+                </tr>
+            </table>
+            @endif
             
         </div>
     </div>
