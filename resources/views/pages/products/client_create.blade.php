@@ -789,21 +789,65 @@
                                         'X-CSRF-TOKEN': csrfToken // Include CSRF token in headers
                                     },
                                     success: function(response) {
-                                        if (response.success) {
-                                            Swal.fire({
-                                                icon: 'success',
-                                                title: 'Success!',
-                                                text: 'Client created successfully',
-                                            }).then(function() {
-                                                window.location.reload(); // Optionally, redirect or update the UI
-                                            });
-                                        } else {
-                                            Swal.fire({
-                                                icon: 'error',
-                                                title: 'Error!',
-                                                text: 'An error occurred while creating the client',
-                                            });
-                                        }
+                                        // Construct HTML for success message with submitted data
+                                        let html = `
+                                            <table class="table">
+                                                <tbody>
+                                                    <tr><th>First Name</th><td>${formData.get('first_name')}</td></tr>
+                                                    <tr><th>Last Name</th><td>${formData.get('last_name')}</td></tr>
+                                                    <tr><th>Father's Name</th><td>${formData.get('father_name')}</td></tr>
+                                                    <tr><th>Contact</th><td>${formData.get('contact')}</td></tr>
+                                                    <tr><th>Client Description</th><td>${formData.get('client_description')}</td></tr>
+                                                    <tr><th>Category ID</th><td>${formData.get('category_id')}</td></tr>
+                                                    <tr><th>Created By Client</th><td>${formData.get('created_by_client')}</td></tr>
+                                                    <tr><th>Company Name</th><td>${formData.get('company_name')}</td></tr>
+                                                    <tr><th>Raxbar</th><td>${formData.get('raxbar')}</td></tr>
+                                                    <tr><th>Bank Code</th><td>${formData.get('bank_code')}</td></tr>
+                                                    <tr><th>Bank Service</th><td>${formData.get('bank_service')}</td></tr>
+                                                    <tr><th>Bank Account</th><td>${formData.get('bank_account')}</td></tr>
+                                                    <tr><th>STIR</th><td>${formData.get('stir')}</td></tr>
+                                                    <tr><th>OKED</th><td>${formData.get('oked')}</td></tr>
+                                                    <tr><th>Minimum Wage</th><td>${formData.get('minimum_wage')}</td></tr>
+                                                    <tr><th>Passport Serial</th><td>${formData.get('passport_serial')}</td></tr>
+                                                    <tr><th>Passport PINFL</th><td>${formData.get('passport_pinfl')}</td></tr>
+                                                    <tr><th>Passport Date</th><td>${formData.get('passport_date')}</td></tr>
+                                                    <tr><th>Passport Location</th><td>${formData.get('passport_location')}</td></tr>
+                                                    <tr><th>Passport Type</th><td>${formData.get('passport_type')}</td></tr>
+                                                    <tr><th>Yuridik Address</th><td>${formData.get('yuridik_address')}</td></tr>
+                                                    <tr><th>Home Address</th><td>${formData.get('home_address')}</td></tr>
+                                                    <tr><th>Company Location</th><td>${formData.get('company_location')}</td></tr>
+                                                    <tr><th>Accordions</th><td>${JSON.stringify(formData.getAll('accordions'))}</td></tr>
+                                                </tbody>
+                                            </table>
+                                        `;
+                    
+                                        Swal.fire({
+                                            icon: 'success',
+                                            title: 'Success!',
+                                            html: html,
+                                            showCancelButton: true,
+                                            confirmButtonText: 'Confirm',
+                                            cancelButtonText: 'Cancel',
+                                        }).then(function(result) {
+                                            if (result.isConfirmed) {
+                                                // After confirmation, show another alert based on server response
+                                                if (response.success) {
+                                                    Swal.fire({
+                                                        icon: 'success',
+                                                        title: 'Data Saved!',
+                                                        text: 'All information has been saved successfully.',
+                                                    }).then(function() {
+                                                        window.location.reload(); // Example: reload page
+                                                    });
+                                                } else {
+                                                    Swal.fire({
+                                                        icon: 'error',
+                                                        title: 'Error!',
+                                                        text: 'An error occurred while saving the data.',
+                                                    });
+                                                }
+                                            }
+                                        });
                                     },
                                     error: function(response) {
                                         if (response.status === 422) {
@@ -813,14 +857,17 @@
                                             $('.error').text('');
                     
                                             // Display validation errors using SweetAlert2
+                                            let errorMessage = '<ul>';
                                             for (let field in errors) {
-                                                let errorMessage = errors[field][0];
-                                                Swal.fire({
-                                                    icon: 'error',
-                                                    title: 'Validation Error!',
-                                                    text: errorMessage,
-                                                });
+                                                errorMessage += `<li>${errors[field][0]}</li>`;
                                             }
+                                            errorMessage += '</ul>';
+                    
+                                            Swal.fire({
+                                                icon: 'error',
+                                                title: 'Validation Error!',
+                                                html: errorMessage,
+                                            });
                                         } else {
                                             // For other error statuses (e.g., 500, 404, etc.)
                                             let errorMessage = 'An unexpected error occurred. Please try again later.';
@@ -838,6 +885,7 @@
                             });
                         });
                     </script>
+                    
                     
                     
 
