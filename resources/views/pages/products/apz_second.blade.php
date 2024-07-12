@@ -247,7 +247,7 @@
                                 {{-- <th style="width: 20%;">@lang('cruds.company.fields.address')</th> --}}
                                 <th>@lang('cruds.company.fields.stir')</th>
                                 <th>@lang('global.ruxsatnoma_raqami')</th>
-                                <th style="width: 400px">@lang('cruds.branches.fields.application_number')</th>
+                                <th style="width: 250px">@lang('cruds.branches.fields.application_number')</th>
                                 {{-- <th>@lang('cruds.branches.fields.apz_number')</th> --}}
                                 <th>@lang('global.category')</th>
                                 <th>@lang('cruds.client.fields.contact')</th>

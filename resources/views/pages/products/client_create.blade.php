@@ -203,7 +203,7 @@
                                         <input
                                             class="form-control phone2 {{ $errors->has('contact') ? 'is-invalid' : '' }}"
                                             type="text" name="contact" id="contact"
-                                            placeholder="+998 (--) --- -- --" value="{{ old('contact') }}">
+                                            placeholder="+998 (__) ___-__-__" value="{{ old('contact') }}">
                                         @if ($errors->has('contact'))
                                             <span class="error invalid-feedback">{{ $errors->first('contact') }}</span>
                                         @endif
