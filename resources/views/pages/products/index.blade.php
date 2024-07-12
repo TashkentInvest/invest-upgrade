@@ -358,6 +358,13 @@
                                                             <i class="bx bxs-edit" style="font-size:16px;"></i>
                                                         </a>
                                                     </li>
+
+                                                    {{-- <li data-bs-toggle="tooltip" data-bs-placement="top"
+                                                    title="Dop">
+                                                    <a href="{{ route('dopShow', $item->id) }}" class="btn btn-secondary">
+                                                        <i class="bx bxs-edit" style="font-size:16px;"></i>
+                                                    </a> --}}
+                                                </li>
                                                 @endcan
 
                                                 <li data-bs-toggle="tooltip" data-bs-placement="top"

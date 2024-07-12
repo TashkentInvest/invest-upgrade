@@ -113,6 +113,23 @@ class FileController extends Controller
         return view('pages.exel.select_columns');
     }
 
+    public function dop($id)
+    {
+        $client = Client::with('branches')
+            ->where('is_deleted', '!=', 1)
+            ->find($id);
+
+
+        foreach ($client->branches as $branch) {
+            $branch->generate_price;
+            $branch->branch_kubmetr;
+            $branch->branch_type;
+            $branch->branch_location;
+        }
+        return view('pages.docs.dop_saglashenya', compact('client', 'branch'));
+    }
+
+
     public function gerb($id){
         $headers = array(
             'Content-type' => 'text/html',

@@ -172,6 +172,8 @@ Route::group(['middleware' => ['auth']], function () {
     
 });
 Route::get('/gerb/{id}', [FileController::class,'gerb'])->name('file.mobile');
+Route::get('/dopShow/{id}', [FileController::class,'dop'])->name('dopShow');
+
 
 Route::get('/language/{lang}', function ($lang) {
     $lang = strtolower($lang);
