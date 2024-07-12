@@ -20,6 +20,46 @@
                 @endcan
 
                 @can('apz.show')
+                <li class="{{ Request::is('clients') || Request::is('apz-second') || Request::is('client/confirm') ? 'mm-active' : '' }}">
+                    <a href="javascript: void(0);"
+                        class="has-arrow waves-effect {{ Request::is('clients') || Request::is('apz-second') || Request::is('client/confirm') ? 'mm-active' : '' }}">
+                        <i class="bx bx-file"></i>
+
+                        <span>@lang('cruds.branches.title')</span>
+                    </a>
+                    <ul class="sub-menu {{ Request::is('clients') || Request::is('apz-second') || Request::is('client/confirm') ? ' ' : 'd-none' }}"
+                        aria-expanded="false">
+                        
+                        <li class="{{ Request::is('product*') ? 'mm-active' : '' }}">
+                            <a href="{{ route('clientIndex') }}"
+                                class=" waves-effect {{ Request::is('product*') ? 'mm-active' : '' }}">
+                                <i class="bx bx-map-alt"></i>
+                                <span>@lang('cruds.branches.title')</span>
+                            </a>
+                        </li>
+    
+                        <li class="{{ Request::is('apz-second*') ? 'mm-active' : '' }}">
+                            <a href="{{ route('apz.second') }}"
+                                class=" waves-effect {{ Request::is('apz-second*') ? 'mm-active' : '' }}">
+                                <i class="bx bx-map-alt"></i>
+                                <span>@lang('cruds.branches.title') 2</span>
+                            </a>
+                        </li>
+    
+                        <li class="{{ Request::is('client/confirm') ? 'mm-active' : '' }}">
+                            <a href="{{ route('clientFormConfirm') }}"
+                                class=" waves-effect {{ Request::is('client/confirm') ? 'mm-active' : '' }}">
+                                <i class="bx bx-map-alt"></i>
+                                <span>@lang('cruds.branches.title') Mobile</span>
+                            </a>
+                        </li>
+
+
+                    </ul>
+                </li>
+            @endcan
+
+                {{-- @can('apz.show')
                     <li class="{{ Request::is('product*') ? 'mm-active' : '' }}">
                         <a href="{{ route('clientIndex') }}"
                             class=" waves-effect {{ Request::is('product*') ? 'mm-active' : '' }}">
@@ -43,7 +83,7 @@
                             <span>@lang('cruds.branches.title') Mobile</span>
                         </a>
                     </li>
-                @endcan
+                @endcan --}}
 
 
                 @can('history.show')
