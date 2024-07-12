@@ -415,6 +415,9 @@ return [
     'coefficient' => 'Koeffitsient',
     'client_title' => 'Arxitektura-Rejalashtirish Topshirigʼi berilgani uchun belgilangan qoʼshimcha yigʼim toʼlovini amalga oshirish uchun Toshkent Invest Kompaniyasi bilan Shartnoma tuzishga kerak boʼlgan maʼlumotlar:',
     'add_object' => 'Obyekt Qo\'shish',
-    'info_text' => 'Tizim test rejimida ishlamoqda!'
+    'delete_object' => 'Obyekt o\'chirish',
+
+    'info_text' => 'Tizim test rejimida ishlamoqda!',
+    'uploaded_files' => 'Yuklangan fayllar',
 
 ];

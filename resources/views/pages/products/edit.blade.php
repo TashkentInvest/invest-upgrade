@@ -422,7 +422,7 @@
                                 </div>
 
                                 <div class="col-12 mt-4">
-                                    <h5>Uploaded Files</h5>
+                                    <h5>@lang('global.uploaded_files')</h5>
                                     <div class="file-list">
                                         @foreach ($files as $file)
                                             <div class="file-list-item">
@@ -1315,15 +1315,14 @@
 
                                                     </main>
                                                     <button type="button"
-                                                        class="removeAccordion btn btn-danger mt-3">Remove</button>
+                                                        class="removeAccordion btn btn-danger mt-3">@lang('global.delete_object')</button>
 
                                                 </div>
                                             </div>
                                         </div>
                                     @endforeach
                                 </div>
-                                <button id="addAccordion" type="button" class="btn btn-primary text-light ">Add
-                                    Accordion</button>
+                                <button id="addAccordion" type="button" class="btn btn-primary text-light ">@lang('global.add_object')</button>
                             </section>
 
                             {{-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> --}}

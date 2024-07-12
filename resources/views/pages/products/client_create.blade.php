@@ -43,7 +43,6 @@
             padding: 5px 0 !important;
         }
 
-
         @media(max-width: 774px) {
             .media_text {
                 font-size: 15px;
@@ -76,9 +75,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/3.3.4/jquery.inputmask.bundle.min.js"></script>
-
-    
-
 
     <div class="row">
         <h2 style="color: red;text-align: center">@lang('global.info_text')</h2>

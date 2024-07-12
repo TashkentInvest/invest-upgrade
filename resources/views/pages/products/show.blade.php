@@ -377,7 +377,7 @@
                                 </style>
 
                                 <div class="col-12 mt-4">
-                                    <h5>Uploaded Files</h5>
+                                    <h5>@lang('global.uploaded_files')</h5>
                                     <div class="file-list">
                                         @foreach ($files as $file)
                                             <div class="file-list-item">
