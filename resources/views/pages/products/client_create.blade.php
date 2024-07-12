@@ -768,27 +768,45 @@
                                     margin-left: auto;
                                 }
                             </style>
-                                    <div class="col-12 col-md-6 col-lg-6 col-xl-3 my-2">
-                                        <div class="file-upload-card">
-                                            <label class="col-12 mt-2" for="file"> Loyiha xujjati</label>
-                                            <input type="file" name="loyiha_xujjati[]" multiple>
-                                            @if ($errors->has('loyiha_xujjati'))
-                                                <span
-                                                    class="error invalid-feedback">{{ $errors->first('loyiha_xujjati') }}</span>
-                                            @endif
-                                        </div>
-                                    </div>
+                               <div class="col-12 col-md-6 col-lg-6 col-xl-3 my-2">
+                                <div class="file-upload-card">
+                                    <label class="col-12 mt-2" for="file">Loyiha xujjati</label>
+                                    <input type="file" name="loyiha_xujjati[]" multiple id="loyiha_xujjati" accept=".pdf,.doc,.docx,.xls,.xlsx,.png,.jpeg,.jpg" onchange="validateFileSize(this)">
+                                    @if ($errors->has('loyiha_xujjati'))
+                                        <span class="error invalid-feedback">{{ $errors->first('loyiha_xujjati') }}</span>
+                                    @endif
+                                </div>
+                            </div>
+                            
+                            <div class="col-12 col-md-6 col-lg-6 col-xl-3 my-2">
+                                <div class="file-upload-card">
+                                    <label class="col-12 mt-2" for="file">Qurilish xajmi xaqida ma'lumot</label>
+                                    <input type="file" name="qurilish_xajmi[]" multiple id="qurilish_xajmi" accept=".pdf,.doc,.docx,.xls,.xlsx,.png,.jpeg,.jpg" onchange="validateFileSize(this)">
+                                    @if ($errors->has('qurilish_xajmi'))
+                                        <span class="error invalid-feedback">{{ $errors->first('qurilish_xajmi') }}</span>
+                                    @endif
+                                </div>
+                            </div>
+                            
+                            <script>
+                                function validateFileSize(input) {
+                                    const maxFileSize = 5 * 1024 * 1024; 
+                                    for (let i = 0; i < input.files.length; i++) {
+                                        if (input.files[i].size > maxFileSize) {
+                                            Swal.fire({
+                                                icon: 'error',
+                                                title: 'Oops...',
+                                                text: 'Fayl hajmi 5 MB dan kam bo\'lishi kerak.'
+                                            });
+                                            input.value = ''; 
+                                            return false;
+                                        }
+                                    }
+                                    return true;
+                                }
 
-                                    <div class="col-12 col-md-6 col-lg-6 col-xl-3 my-2">
-                                        <div class="file-upload-card">
-                                            <label class="col-12 mt-2" for="file">Qurilish xajmi xaqida ma'lumot</label>
-                                            <input type="file" name="qurilish_xajmi[]" multiple>
-                                            @if ($errors->has('qurilish_xajmi'))
-                                                <span
-                                                    class="error invalid-feedback">{{ $errors->first('qurilish_xajmi') }}</span>
-                                            @endif
-                                        </div>
-                                    </div>
+                            </script>
+                            
                                 </div>
                                         </main>
                                     </div>

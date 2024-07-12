@@ -333,6 +333,8 @@ class ClientController extends Controller
             'qurilish_turi'=>'required',
             'zona'=>'required',
             'branch_name'=>'required',
+            'loyiha_xujjati' => 'required|max:5120',
+            'qurilish_xajmi' => 'required|max:5120',
         ];
     
         if ($request->has('stir')) {
@@ -362,8 +364,12 @@ class ClientController extends Controller
             $rules['obyekt_joylashuvi'] = 'required';
         }
 
+        $messages = [
+            'loyiha_xujjati.*.max' => 'Loyiha xujjati must be less than 5MB',
+            'qurilish_xajmi.*.max' => 'Qurilish xajmi must be less than 5MB',
+        ];
     
-        $request->validate($rules);
+        $request->validate($rules ,$messages);
         // dd($request);
         
 
