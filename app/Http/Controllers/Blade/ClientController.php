@@ -331,7 +331,6 @@ class ClientController extends Controller
             'branch_location'=>'required',
             'branch_type'=>'required',
             'qurilish_turi'=>'required',
-            'branch_type'=>'required',
             'zona'=>'required',
             'branch_name'=>'required',
         ];
