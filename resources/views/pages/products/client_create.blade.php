@@ -34,7 +34,14 @@
             transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
         }
 
+        div:where(.swal2-container) .swal2-html-container {
+            text-align: left !important;
+            
+        }
 
+        .error_message{
+            padding: 5px 0 !important;
+        }
 
 
         @media(max-width: 774px) {
@@ -934,9 +941,9 @@
                                                 let errors = response.responseJSON.errors;
 
                                                 // Prepare error message as HTML list
-                                                let errorMessage = '<ul>';
+                                                let errorMessage = '<ul clas">';
                                                 for (let field in errors) {
-                                                    errorMessage += `<li>${errors[field][0]}</li>`;
+                                                    errorMessage += `<li class="error_message">${errors[field][0]}</li>`;
                                                 }
                                                 errorMessage += '</ul>';
 
