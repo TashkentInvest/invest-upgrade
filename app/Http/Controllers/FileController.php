@@ -115,9 +115,15 @@ class FileController extends Controller
         $yurikFullView = 'pages.docs.full_pay.yurik_litso';
 
         foreach ($client->branches as $branch) {
-            $branch->generate_price;
-            $branch->branch_kubmetr_text = $this->transformToText($branch->branch_kubmetr);
             $branch->branch_kubmetr;
+            if ($this->isValidValue($branch->branch_kubmetr)) {
+                $branch->branch_kubmetr_text = $this->transformToText($branch->branch_kubmetr);
+            }
+
+            $branch->generate_price;
+            if ($this->isValidValue($branch->generate_price)) {
+                $branch->generate_price_text = $this->transformToText($branch->generate_price);
+            }
             $branch->branch_type;
             $branch->branch_location;
 
