@@ -28,7 +28,7 @@ Route::get('/', function () {
 
 Route::get('/client/create', [ClientController::class, 'client_create'])->name('clientFormCreate');
 Route::post('/qr/create', [ClientController::class, 'Qrcreate'])->name('Qrcreate');
-Route::get('/number-to-text', [NumberToTextController::class, 'convert']);
+Route::get('/number-to+-text', [NumberToTextController::class, 'convert']);
 
 
 

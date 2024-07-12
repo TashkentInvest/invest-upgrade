@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Validator;
 
 class ClientController extends Controller
 {
@@ -311,69 +312,75 @@ class ClientController extends Controller
   
     public function Qrcreate(Request $request)
     {
-        // $request->validate([
-        //     'stir' => 'nullable|string|max:9|min:9|unique:companies,stir',
-        //     'oked' => 'nullable|string|max:5|min:5',
-        //     'bank_code' => 'nullable|string|max:5|min:5',
-        //     'bank_account' => 'nullable|string|max:20|min:20',
-        //     'passport_serial' => 'nullable|string|max:10|min:9',
-        //     'passport_pinfl' => 'nullable|string|max:14|min:14',
-        //     'first_name' => 'required|string',
-        //     'last_name' => 'required|string',
-        //     'contact' => 'required|string',
-        // ]);
+        Log::info($request);
 
-        $rules = [
+        $validatedData = $request->validate([
+            'oked' => 'nullable|string|max:5|min:5',
+            'bank_code' => 'nullable|string|max:5|min:5',
+            'bank_account' => 'nullable|string|max:20|min:20',
+            'passport_serial' => 'nullable|string|max:10|min:9',
+            'passport_pinfl' => 'nullable|string|max:14|min:14',
             'first_name' => 'required|string',
             'last_name' => 'required|string',
             'contact' => 'required|string',
-            'obyekt_joylashuvi'=>'nullable',
-            'branch_location'=>'nullable',
-            'branch_type'=>'nullable',
-            'qurilish_turi'=>'nullable',
-            'zona'=>'nullable',
-            'branch_name'=>'nullable',
-            'loyiha_xujjati' => 'nullable|max:5120',
-            'qurilish_xajmi' => 'nullable|max:5120',
-        ];
-    
-        if ($request->has('stir')) {
-            $rules['stir'] = 'required|string|max:9|min:9';
-            // $rules['stir'] = 'required|string|max:9|min:9|unique:companies,stir';
-        }
-    
-        if ($request->has('oked')) {
-            $rules['oked'] = 'nullable|string|max:5|min:5';
-        }
-    
-        if ($request->has('bank_code')) {
-            $rules['bank_code'] = 'nullable|string|max:5|min:5';
-        }
-    
-        if ($request->has('bank_account')) {
-            $rules['bank_account'] = 'nullable|string|max:20|min:20';
-        }
-    
-        if ($request->has('passport_serial')) {
-            $rules['passport_serial'] = 'nullable|string|max:10|min:9';
-        }
-    
-        if ($request->has('passport_pinfl')) {
-            $rules['passport_pinfl'] = 'nullable|string|max:14|min:14';
-        }
-        if ($request->has('obyekt_joylashuvi')) {
-            $rules['obyekt_joylashuvi'] = 'required';
-        }
-
+            'stir' => 'required|string|max:9|min:9',
+            'loyiha_xujjati' => 'required|max:5120',
+            'qurilish_xajmi' => 'required|max:5120'
+        ]);
+        
         $messages = [
             'loyiha_xujjati.*.max' => 'Loyiha xujjati must be less than 5MB',
             'qurilish_xajmi.*.max' => 'Qurilish xajmi must be less than 5MB',
         ];
-    
-        $request->validate($rules ,$messages);
-        // dd($request);
         
+        foreach ($request->accordions as $accordion) {
+            Log::info($accordion);
+        
+            $accordionRules = [
+                'obyekt_joylashuvi' => 'required',
+                'branch_location' => 'required',
+                'branch_type' => 'required',
+                'qurilish_turi' => 'required',
+                'zona' => 'required',
+                'branch_name' => 'required',
+                'shaxarsozlik_umumiy_xajmi' => 'required',
+                'qavatlar_soni_xajmi' => 'nullable',
+                'avtoturargoh_xajmi' => 'nullable',
+                'qavat_xona_xajmi' => 'nullable',
+                'umumiy_foydalanishdagi_xajmi' => 'nullable',
 
+            ];
+        
+            if (isset($accordion['oked'])) {
+                $accordionRules['oked'] = 'required|string|max:5|min:5';
+            }
+        
+            if (isset($accordion['bank_code'])) {
+                $accordionRules['bank_code'] = 'required|string|max:5|min:5';
+            }
+        
+            if (isset($accordion['bank_account'])) {
+                $accordionRules['bank_account'] = 'required|string|max:20|min:20';
+            }
+        
+            if (isset($accordion['passport_serial'])) {
+                $accordionRules['passport_serial'] = 'required|string|max:10|min:9';
+            }
+        
+            if (isset($accordion['passport_pinfl'])) {
+                $accordionRules['passport_pinfl'] = 'required|string|max:14|min:14';
+            }
+        
+            if (isset($accordion['obyekt_joylashuvi'])) {
+                $accordionRules['obyekt_joylashuvi'] = 'required';
+            }
+        
+            // Validate each accordion
+            Validator::make($accordion, $accordionRules, $messages)->validate();
+        }
+        
+        
+        
         DB::beginTransaction();
 
         try {

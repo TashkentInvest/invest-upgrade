@@ -141,5 +141,9 @@ return [
         'oked' => 'OKED',
         'yuridik_address' => 'Yuridik manzil',
         'company_location' => 'Kompaniya joylashuvi',
+        'branch_location' => 'Obyekt manzili',
+        'branch_name' => 'Obyekt nomi',
+        'branch_type' => 'Obyekt turi',
+
     ],
 ];
