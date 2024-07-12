@@ -327,14 +327,14 @@ class ClientController extends Controller
             'first_name' => 'required|string',
             'last_name' => 'required|string',
             'contact' => 'required|string',
-            'obyekt_joylashuvi'=>'required',
-            'branch_location'=>'required',
-            'branch_type'=>'required',
-            'qurilish_turi'=>'required',
-            'zona'=>'required',
-            'branch_name'=>'required',
-            'loyiha_xujjati' => 'required|max:5120',
-            'qurilish_xajmi' => 'required|max:5120',
+            'obyekt_joylashuvi'=>'nullable',
+            'branch_location'=>'nullable',
+            'branch_type'=>'nullable',
+            'qurilish_turi'=>'nullable',
+            'zona'=>'nullable',
+            'branch_name'=>'nullable',
+            'loyiha_xujjati' => 'nullable|max:5120',
+            'qurilish_xajmi' => 'nullable|max:5120',
         ];
     
         if ($request->has('stir')) {
