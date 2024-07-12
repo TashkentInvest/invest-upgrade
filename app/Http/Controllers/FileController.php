@@ -90,6 +90,8 @@ class FileController extends Controller
         return response()->download($zipFileName)->deleteFileAfterSend(true);
     }
 
+    
+
     public function downloadFullTableData($startDate = null, $endDate = null)
     {
         $fileName = 'АПЗ_РАҚАМ' . '_' . now()->format('Y-m-d') . '.xls';

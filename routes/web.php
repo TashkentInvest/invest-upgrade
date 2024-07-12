@@ -15,6 +15,7 @@ use App\Http\Controllers\ConstructionController;
 use App\Http\Controllers\FileController;
 use App\Http\Controllers\HistoryController;
 use App\Http\Controllers\ImportController;
+use App\Http\Controllers\NumberToTextController;
 use App\Http\Controllers\TransactionController;
 
 // Default laravel auth routes
@@ -27,6 +28,7 @@ Route::get('/', function () {
 
 Route::get('/client/create', [ClientController::class, 'client_create'])->name('clientFormCreate');
 Route::post('/qr/create', [ClientController::class, 'Qrcreate'])->name('Qrcreate');
+Route::get('/number-to-text', [NumberToTextController::class, 'convert']);
 
 
 
