@@ -1292,7 +1292,7 @@
                                                 <h5>@lang('global.confirmation')</h5>
                                                 <p class="text-muted">Barcha kiritgan malumotlaringiz to'grimi ? </p>
 
-                                                <button type="submit" class="btn btn-primary">Send</button>
+                                                <button type="submit" class="btn btn-primary">@lang('global.send')</button>
                                             </div>
                                         </div>
                                     </div>
