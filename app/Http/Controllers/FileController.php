@@ -116,13 +116,13 @@ class FileController extends Controller
 
         foreach ($client->branches as $branch) {
             $branch->branch_kubmetr;
-            if ($this->isValidValue($branch->branch_kubmetr)) {
-                $branch->branch_kubmetr_text = $this->transformToText($branch->branch_kubmetr);
+            if ($this->isValidValue(number_format($branch->branch_kubmetr, 0, '', ''))) {
+                $branch->branch_kubmetr_text = $this->transformToText(floor($branch->branch_kubmetr));
             }
 
-            $branch->generate_price;
-            if ($this->isValidValue($branch->generate_price)) {
-                $branch->generate_price_text = $this->transformToText($branch->generate_price);
+            $branch->generate_price; 
+            if ($this->isValidValue(number_format($branch->generate_price, 0, '', ''))) {
+                $branch->generate_price_text = $this->transformToText(floor($branch->generate_price));
             }
             $branch->branch_type;
             $branch->branch_location;
@@ -181,15 +181,37 @@ class FileController extends Controller
         return view('pages.number_to_text', compact('text'));
     }
 
+    // private function isValidValue($value)
+    // {
+    //     if ($value == '0' || (preg_match("/^-{0,1}[1-9]{1,1}[0-9]{1,9}(?:\.\d{1,2})?$/", $value, $matcher) && abs($matcher[0]) <= 2147483647)) {
+    //         return true;
+    //     }
+    //     return false;
+    // }
     private function isValidValue($value)
     {
-        if ($value == '0' || (preg_match("/^-{0,1}[1-9]{1,1}[0-9]{1,9}$/", $value, $matcher) && abs($matcher[0]) <= 2147483647)) {
+        if ($value == '0' || (preg_match("/^-{0,1}\d+(\.\d{1,2})?$/", $value, $matcher) && abs($matcher[0]) <= 2147483647)) {
             return true;
         }
         return false;
     }
 
+
     private function transformToText($value)
+    {
+        $parts = explode('.', $value);
+        $integerPart = $parts[0];
+        $decimalPart = isset($parts[1]) ? $parts[1] : null;
+
+        $integerText = $this->convertIntegerToText($integerPart);
+        if ($decimalPart !== null) {
+            $decimalText = $this->convertIntegerToText($decimalPart);
+            return $integerText . ' бутун ' . $decimalText;
+        }
+        return $integerText;
+    }
+
+    private function convertIntegerToText($value)
     {
         $tempValue = $this->prepareValue($value);
         if ($tempValue[1] == 0) {
@@ -222,7 +244,7 @@ class FileController extends Controller
         $value = str_replace(" ", "", $value);
         $number = array();
         if ($value[0] == '-') {
-            $number[] = 'minus';
+            $number[] = 'минус';
             $number[] = intval(substr($value, 1));
         } else {
             $number[] = '';
