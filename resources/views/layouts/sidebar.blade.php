@@ -20,19 +20,19 @@
                 @endcan
 
                 @can('apz.show')
-                    <li class="{{ Request::is('clients') || Request::is('apz-second') || Request::is('client/confirm') ? 'mm-active' : '' }}">
+                    <li class="{{ Request::is('clients*') || Request::is('apz-second') || Request::is('client/confirm') ? 'mm-active' : '' }}">
                         <a href="javascript: void(0);"
-                            class="has-arrow waves-effect {{ Request::is('clients') || Request::is('apz-second') || Request::is('client/confirm') ? 'mm-active' : '' }}">
+                            class="has-arrow waves-effect {{ Request::is('clients*') || Request::is('apz-second') || Request::is('client/confirm') ? 'mm-active' : '' }}">
                             <i class="bx bx-file"></i>
 
                             <span>@lang('cruds.branches.title')</span>
                         </a>
-                        <ul class="sub-menu {{ Request::is('clients') || Request::is('apz-second') || Request::is('client/confirm') ? ' ' : 'd-none' }}"
+                        <ul class="sub-menu {{ Request::is('clients*') || Request::is('apz-second') || Request::is('client/confirm') ? ' ' : 'd-none' }}"
                             aria-expanded="false">
                             
-                            <li class="{{ Request::is('product*') ? 'mm-active' : '' }}">
+                            <li class="{{ Request::is('clients*') ? 'mm-active' : '' }}">
                                 <a href="{{ route('clientIndex') }}"
-                                    class=" waves-effect {{ Request::is('product*') ? 'mm-active' : '' }}">
+                                    class=" waves-effect {{ Request::is('clients*') ? 'mm-active' : '' }}">
                                     <i class="bx bx-map-alt"></i>
                                     <span>@lang('cruds.branches.title')</span>
                                 </a>
