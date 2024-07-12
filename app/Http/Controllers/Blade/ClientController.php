@@ -338,7 +338,8 @@ class ClientController extends Controller
         ];
     
         if ($request->has('stir')) {
-            $rules['stir'] = 'required|string|max:9|min:9|unique:companies,stir';
+            $rules['stir'] = 'required|string|max:9|min:9';
+            // $rules['stir'] = 'required|string|max:9|min:9|unique:companies,stir';
         }
     
         if ($request->has('oked')) {
