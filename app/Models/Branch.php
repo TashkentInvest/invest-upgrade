@@ -41,7 +41,8 @@ class Branch extends Model
         'qurilish_turi',
         'coefficient',
         'zona',
-        'obyekt_joylashuvi'
+        'obyekt_joylashuvi',
+        'branch_type_text'
     
     ];
 

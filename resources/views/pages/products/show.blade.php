@@ -194,13 +194,18 @@
 
                                 <tr>
                                     <td>@lang('global.loyiha_nomi')</td>
-                                    <td colspan="2">{{ $b->branch_type ?? '' }}</td>
+                                    <td colspan="2">{{ $b->branch_name ?? '' }}</td>
                                 </tr>
 
 
                                 <tr>
                                     <td>@lang('cruds.company.fields.branch_type')</td>
                                     <td colspan="2">{{ $b->branch_type ?? '' }}</td>
+                                </tr>
+
+                                <tr>
+                                    <td>@lang('cruds.company.fields.branch_type') text</td>
+                                    <td colspan="2">{{ $b->branch_type_text ?? '' }}</td>
                                 </tr>
                                 <tr>
                                     <td>@lang('cruds.company.fields.branch_location')</td>

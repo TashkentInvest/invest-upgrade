@@ -269,6 +269,7 @@ class ClientController extends Controller
                     'contract_date' => $accordion['contract_date'] ?? null,
                     'branch_kubmetr' => $accordion['branch_kubmetr'] ?? null,
                     'branch_type' => $accordion['branch_type'] ?? null,
+                    'branch_type_text' => $accordion['branch_type_text'] ?? null,
                     'branch_location' => $accordion['branch_location'] ?? null,
                     'obyekt_joylashuvi' => $accordion['obyekt_joylashuvi'] ?? null,
                     'branch_name' => $accordion['branch_name'] ?? null,
@@ -639,8 +640,8 @@ class ClientController extends Controller
     
             $currentPage = $request->input('page', 1);
     
-            return redirect()->back()->with('success', 'Product updated successfully');
-            // return redirect()->route('clientIndex', ['page' => $currentPage])->with('success', 'Product updated successfully');
+            // return redirect()->back()->with('success', 'Product updated successfully');
+            return redirect()->route('clientIndex', ['page' => $currentPage])->with('success', 'Product updated successfully');
         } catch (\Exception $e) {
             DB::rollback();
     

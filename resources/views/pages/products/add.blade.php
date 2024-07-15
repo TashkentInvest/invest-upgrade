@@ -700,6 +700,20 @@
                                                             </div>
                                                         </div>
 
+                                                        <div class="col-12 col-md-6 col-lg-12 col-xl-12">
+                                                            <div class="mb-3">
+                                                                <label for="branch_type_text">@lang('cruds.company.fields.branch_type') text</label>
+                                                                <input type="text" class="form-control branch_type_text"
+                                                                    name="accordions[0][branch_type_text]"
+                                                                    placeholder="@lang('cruds.company.fields.branch_type') text"
+                                                                    value="{{ old('accordions.0.branch_type_text') }}">
+                                                                @error('accordions.0.branch_type_text')
+                                                                    <span
+                                                                        class="error invalid-feedback">{{ $message }}</span>
+                                                                @enderror
+                                                            </div>
+                                                        </div>
+
                                                         <div class="col-12 col-md-6">
                                                             <div class="mb-3">
                                                                 <label for="obyekt_joylashuvi">Obyektning

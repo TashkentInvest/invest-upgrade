@@ -496,6 +496,10 @@
                                                                         <td>{{ $b->branch_type }}</td>
                                                                     </tr>
                                                                     <tr>
+                                                                        <td><strong>@lang('cruds.company.fields.branch_type') text</strong></td>
+                                                                        <td>{{ $b->branch_type_text }}</td>
+                                                                    </tr>
+                                                                    <tr>
                                                                         <td><strong>@lang('cruds.company.fields.branch_location')</strong></td>
                                                                         <td>{{ $b->branch_location }}</td>
                                                                     </tr>
