@@ -125,6 +125,7 @@ class FileController extends Controller
                 $branch->generate_price_text = $this->transformToText(floor($branch->generate_price));
             }
             $branch->branch_type;
+            $branch->branch_type_text;
             $branch->branch_location;
 
             // Ensure valid filenames with identifiers
