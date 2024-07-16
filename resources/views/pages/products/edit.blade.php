@@ -540,7 +540,7 @@
                                                 <div class="accordion-body text-muted">
                                                     <main class="main_of_objects">
                                                         <div class="row">
-                                                            <div class="col-12 col-md-6 col-lg-6 col-xl-6">
+                                                            <div class="col-12 col-md-6 col-lg-3 col-xl-3">
                                                                 <div class="mb-3">
                                                                     <label for="contract_apt">@lang('global.ruxsatnoma_raqami')</label>
                                                                     <input type="text" class="form-control"
@@ -549,7 +549,7 @@
                                                                         placeholder="@lang('global.ruxsatnoma_raqami')">
                                                                 </div>
                                                             </div>
-                                                            <div class="col-12 col-md-6 col-lg-6 col-xl-6">
+                                                            <div class="col-12 col-md-6 col-lg-3 col-xl-3">
                                                                 <div class="mb-3">
                                                                     <label for="contract_date">@lang('global.sanasi')</label>
                                                                     <input class="form-control" type="date"
@@ -558,29 +558,7 @@
 
                                                                 </div>
                                                             </div>
-                                                        </div>
-                                                        <div class="row">
-                                                            <div class="col-12 col-md-6 col-lg-6 col-xl-3">
-                                                                <div class="mb-3">
-                                                                    <label
-                                                                        for="notification_num">@lang('cruds.branches.fields.notification_num')</label>
-                                                                    <input type="text" class="form-control"
-                                                                        name="accordions[{{ $branchIndex }}][notification_num]"
-                                                                        value="{{ old('accordions.' . $branchIndex . '.notification_num', $b->notification_num) }}"
-                                                                        placeholder="@lang('cruds.branches.fields.notification_num')">
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-12 col-md-6 col-lg-6 col-xl-3">
-                                                                <div class="mb-3">
-                                                                    <label
-                                                                        for="notification_date">@lang('cruds.branches.fields.notification_date')</label>
-                                                                    <input type="date" class="form-control"
-                                                                        name="accordions[{{ $branchIndex }}][notification_date]"
-                                                                        value="{{ old('accordions.' . $branchIndex . '.notification_date', $b->notification_date) }}"
-                                                                        placeholder="@lang('cruds.branches.fields.notification_date')">
-                                                                </div>
-                                                            </div>
-                                                            
+
                                                             <div class="col-12 col-md-6 col-lg-6 col-xl-3">
                                                                 <div class="mb-3">
                                                                     <label
@@ -601,7 +579,57 @@
                                                                 </div>
                                                             </div>
 
-                                                            <div class="col-12 col-md-6 col-lg-6 col-xl-6">
+                                                            <div class="col-12 col-md-6 col-lg-3 col-xl-3 ">
+                                                                <div class="mb-3">
+                                                                    <label
+                                                                        for="application_number">@lang('cruds.branches.fields.application_number')</label>
+                                                                    <input type="text" class="form-control"
+                                                                        name="accordions[{{ $branchIndex }}][application_number]"
+                                                                        value="{{ old('accordions.' . $branchIndex . '.application_number', $b->application_number) }}"
+                                                                        placeholder="@lang('cruds.branches.fields.application_number')">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-12 col-md-6 col-lg-3 col-xl-3 ">
+                                                                <div class="mb-3">
+    
+                                                                    <label
+                                                                        for="payedSum_{{ $branchIndex }}">@lang('cruds.branches.fields.payed_sum')</label>
+                                                                    <input type="text" class="form-control payedSum"
+                                                                        id="payedSum_{{ $branchIndex }}"
+                                                                        name="accordions[{{ $branchIndex }}][payed_sum]"
+                                                                        value="{{ old('accordions.' . $branchIndex . '.payed_sum', $b->payed_sum) }}"
+                                                                        placeholder="@lang('cruds.branches.fields.payed_sum')">
+    
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-12 col-md-6 col-lg-6 col-xl-3">
+                                                                <div class="mb-3">
+                                                                    <label
+                                                                        for="notification_num">@lang('cruds.branches.fields.notification_num')</label>
+                                                                    <input type="text" class="form-control"
+                                                                        name="accordions[{{ $branchIndex }}][notification_num]"
+                                                                        value="{{ old('accordions.' . $branchIndex . '.notification_num', $b->notification_num) }}"
+                                                                        placeholder="@lang('cruds.branches.fields.notification_num')">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-12 col-md-6 col-lg-6 col-xl-3">
+                                                                <div class="mb-3">
+                                                                    <label
+                                                                        for="notification_date">@lang('cruds.branches.fields.notification_date')</label>
+                                                                    <input type="date" class="form-control"
+                                                                        name="accordions[{{ $branchIndex }}][notification_date]"
+                                                                        value="{{ old('accordions.' . $branchIndex . '.notification_date', $b->notification_date) }}"
+                                                                        placeholder="@lang('cruds.branches.fields.notification_date')">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                           
+                                                      
+                                                        <div class="row">
+                                                           
+                                                         
+
+                                                            <div class="col-12 col-md-6 col-lg-3 col-xl-3">
                                                                 <label for="projectname"
                                                                     class="col-form-label">@lang('cruds.branches.fields.apz_number')</label>
                                                                 <input id="projectname"
@@ -610,7 +638,7 @@
                                                                     value="{{ old('accordions.' . $branchIndex . '.apz_raqami', $b->apz_raqami) }}"
                                                                     placeholder="@lang('cruds.branches.fields.apz_number')">
                                                             </div>
-                                                            <div class="col-12 col-md-6 col-lg-6 col-xl-6">
+                                                            <div class="col-12 col-md-6 col-lg-3 col-xl-3">
                                                                 <label for="projectname"
                                                                     class="col-form-label">@lang('cruds.branches.fields.apz_date')</label>
                                                                 <input id="projectname"
@@ -622,7 +650,7 @@
 
                                                             {{-- kengash --}}
 
-                                                            <div class="col-12 col-md-6 col-lg-6 col-xl-6">
+                                                            <div class="col-12 col-md-6 col-lg-3 col-xl-3">
                                                                 <label for="projectname"
                                                                     class="col-form-label">Kengash_raqami</label>
                                                                 <input id="projectname"
@@ -631,7 +659,7 @@
                                                                     value="{{ old('accordions.' . $branchIndex . '.kengash_raqami', $b->kengash_raqami) }}"
                                                                     placeholder="kengash_raqami">
                                                             </div>
-                                                            <div class="col-12 col-md-6 col-lg-6 col-xl-6">
+                                                            <div class="col-12 col-md-6 col-lg-3 col-xl-3">
                                                                 <label for="projectname"
                                                                     class="col-form-label">kengash_sanasi</label>
                                                                 <input id="projectname"
@@ -641,30 +669,8 @@
                                                                     placeholder="Kengash_sanasi">
                                                             </div>
             
-                                                            <div class="col-12 col-md-6 col-lg-6 col-xl-6 ">
-                                                                <div class="mb-3">
-                                                                    <label
-                                                                        for="application_number">@lang('cruds.branches.fields.application_number')</label>
-                                                                    <input type="text" class="form-control"
-                                                                        name="accordions[{{ $branchIndex }}][application_number]"
-                                                                        value="{{ old('accordions.' . $branchIndex . '.application_number', $b->application_number) }}"
-                                                                        placeholder="@lang('cruds.branches.fields.application_number')">
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-12 col-md-6 col-lg-6 col-xl-6 ">
-                                                                <div class="mb-3">
-
-                                                                    <label
-                                                                        for="payedSum_{{ $branchIndex }}">@lang('cruds.branches.fields.payed_sum')</label>
-                                                                    <input type="text" class="form-control payedSum"
-                                                                        id="payedSum_{{ $branchIndex }}"
-                                                                        name="accordions[{{ $branchIndex }}][payed_sum]"
-                                                                        value="{{ old('accordions.' . $branchIndex . '.payed_sum', $b->payed_sum) }}"
-                                                                        placeholder="@lang('cruds.branches.fields.payed_sum')">
-
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-12 col-md-12 col-lg-12 col-xl-12 ">
+                                                          
+                                                            <div class="col-12 col-md-12 col-lg-6 col-xl-6 ">
                                                                 <div class="mb-3">
                                                                     <label for="payed_date">@lang('cruds.branches.fields.payed_date')</label>
                                                                     <input type="date" class="form-control"
@@ -674,7 +680,7 @@
                                                                 </div>
                                                             </div>
 
-                                                            <div class="col-12 col-md-12 col-lg-12 col-xl-12 ">
+                                                            <div class="col-12 col-md-12 col-lg-6 col-xl-6 ">
                                                                 <div class="mb-3">
                                                                     <label for="branch_type_text">@lang('cruds.company.fields.branch_type') text</label>
                                                                     <input type="text" class="form-control"
