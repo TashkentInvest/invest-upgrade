@@ -269,6 +269,20 @@
                                     </div>
 
                                     <div class="col-12 col-md-6 col-lg-6 col-xl-3 mb-2">
+                                        <label for="birth_date">Tugilgan sanasi</label>
+                                        <input
+                                            class="form-control {{ $errors->has('birth_date') ? 'is-invalid' : '' }}"
+                                            type="text" name="birth_date" id="birth_date"
+                                            placeholder="Tugilgan sanasi"
+                                            value="{{ old('birth_date', $client->birth_date ?? '') }}"
+                                            minlength="9" maxlength="10">
+                                        @if ($errors->has('birth_date'))
+                                            <span
+                                                class="error invalid-feedback">{{ $errors->first('birth_date') }}</span>
+                                        @endif
+                                    </div>
+
+                                    <div class="col-12 col-md-6 col-lg-6 col-xl-3 mb-2">
                                         <label for="home_address">@lang('global.home_address')</label>
                                         <input class="form-control {{ $errors->has('home_address') ? 'is-invalid' : '' }}"
                                             type="text" name="home_address" id="home_address"

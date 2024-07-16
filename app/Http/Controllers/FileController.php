@@ -100,7 +100,8 @@ class FileController extends Controller
             'company_location',
             'bank_code',
             'stir',
-            'oked'
+            'oked',
+            'birth_date'
         ];
 
         foreach ($clientAttributes as $attribute) {

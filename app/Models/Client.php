@@ -22,7 +22,8 @@ class Client extends Model
         'category_id',
         'is_qonuniy',
         'created_by_client',
-        'confirmed_for_client'
+        'confirmed_for_client',
+        'birth_date'
     ];
 
 

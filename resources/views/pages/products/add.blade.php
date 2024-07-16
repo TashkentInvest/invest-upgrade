@@ -275,6 +275,19 @@
                                     </div>
 
                                     <div class="col-12 col-md-6 col-lg-6 col-xl-6 mb-2">
+                                        <label for="birth_date"
+                                            class="col-md-6 col-form-label">Tugilgan sanasi</label>
+                                        <input class="form-control {{ $errors->has('birth_date') ? 'is-invalid' : '' }}"
+                                            type="date" name="birth_date" id="birth_date"
+                                            placeholder="Tug'ilgan sanasi" value="{{ old('birth_date') }}">
+                                        @if ($errors->has('birth_date'))
+                                            <span
+                                                class="error invalid-feedback">{{ $errors->first('birth_date') }}</span>
+                                        @endif
+                                    </div>
+
+
+                                    <div class="col-12 col-md-6 col-lg-6 col-xl-6 mb-2">
                                         <label for="home_address"
                                             class="col-md-6 col-form-label">@lang('global.home_address')</label>
                                         <input class="form-control {{ $errors->has('home_address') ? 'is-invalid' : '' }}"
@@ -1307,6 +1320,14 @@
                                                 <p class="text-muted">Barcha kiritgan malumotlaringiz to'grimi ? </p>
 
                                                 <button type="submit" class="btn btn-primary">@lang('global.send')</button>
+
+                                                <script>
+                                                    $(document).ready(function() {
+                                                        $(document).on('submit', 'form', function() {
+                                                            $('button').attr('disabled', 'disabled');
+                                                        });
+                                                    });
+                                                </script>
                                             </div>
                                         </div>
                                     </div>

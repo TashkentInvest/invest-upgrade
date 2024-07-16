@@ -401,7 +401,17 @@
                                                                     <td><strong>@lang('cruds.client.fields.contact')</strong></td>
                                                                     <td>{{ $item->contact }}</td>
                                                                 </tr>
+                                                                
                                                                 @if ($item->mijoz_turi == 'fizik')
+                                                                    <tr>
+                                                                        <td><strong>Tugilgan sanasi</strong></td>
+                                                                        <td>
+                                                                            {{-- {{ $item->birth_date ?? '' }} --}}
+                                                                            {{ $item->birth_date}}
+                                                                        </td>
+                                                                      
+                                                                    </tr>
+
                                                                     <tr>
                                                                         <td><strong>@lang('cruds.client.fields.passport_serial')</strong></td>
                                                                         <td>{{ $item->passport->passport_serial ?? '' }}
@@ -437,6 +447,7 @@
                                                                         <td><strong>@lang('global.home_address')</strong></td>
                                                                         <td>{{ $item->address->home_address ?? '' }}</td>
                                                                     </tr>
+                                                                   
                                                                 @else
                                                                     <tr>
                                                                         <td><strong>@lang('cruds.company.fields.company_name')</strong></td>

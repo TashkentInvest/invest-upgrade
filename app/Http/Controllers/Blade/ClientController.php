@@ -165,6 +165,7 @@ class ClientController extends Controller
                 'father_name' => $request->get('father_name'),
                 'mijoz_turi' => $request->get('mijoz_turi'),
                 'contact' => $request->get('contact'),
+                'birth_date' => $request->get('birth_date'),
                 'client_description' => $request->get('client_description'),
                 'category_id' => $request->get('category_id',2),
                 'created_by_client' => $request->get('created_by_client', 0),
@@ -366,6 +367,8 @@ class ClientController extends Controller
                 'father_name' => $request->get('father_name'),
                 'mijoz_turi' => $request->get('mijoz_turi'),
                 'contact' => $request->get('contact'),
+                'birth_date' => $request->get('birth_date'),
+
                 'client_description' => $request->get('client_description'),
                 'category_id' => $request->get('category_id',2),
                 'created_by_client' => $request->get('created_by_client', 0),
@@ -509,6 +512,8 @@ class ClientController extends Controller
                 'father_name' => $request->get('father_name'),
                 'mijoz_turi' => $request->get('mijoz_turi'),
                 'contact' => $request->get('contact'),
+                'birth_date' => $request->get('birth_date'),
+
                 'client_description' => $request->get('client_description'),
                 'category_id' => $request->get('category_id', 2)
             ]);
