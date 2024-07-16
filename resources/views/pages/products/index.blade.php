@@ -487,6 +487,30 @@
                                                                         <td><strong>@lang('cruds.branches.fields.application_number')</strong></td>
                                                                         <td>{{ $b->application_number }}</td>
                                                                     </tr>
+
+                                                                    {{--  --}}
+                                                                    <tr>
+                                                                        <td><strong>@lang('cruds.branches.fields.apz_number')</strong></td>
+                                                                        <td>{{ $b->apz_raqami }}</td>
+                                                                    </tr>
+
+                                                                    <tr>
+                                                                        <td><strong>@lang('cruds.branches.fields.apz_date')</strong></td>
+                                                                        <td>{{ $b->apz_sanasi }}</td>
+                                                                    </tr>
+                                                                    
+                                                                    <tr>
+                                                                        <td><strong>Kengash_raqami</strong></td>
+                                                                        <td>{{ $b->apz_raqami }}</td>
+                                                                    </tr>
+
+                                                                    <tr>
+                                                                        <td><strong>Kengash_sanasi</strong></td>
+                                                                        <td>{{ $b->apz_sanasi }}</td>
+                                                                    </tr>
+                                                                    
+
+                                                                    {{--  --}}
                                                                     <tr>
                                                                         <td><strong>@lang('global.loyiha_nomi')</strong></td>
                                                                         <td>{{ $b->branch_name }}</td>
