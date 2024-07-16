@@ -8,6 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class Client extends Model
 {
     use HasFactory;
+
+    protected $casts = [
+        'birth_date' => 'date',
+    ];
     protected $table = 'clients';
 
     protected $fillable = [

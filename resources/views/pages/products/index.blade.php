@@ -407,9 +407,14 @@
                                                                         <td><strong>Tugilgan sanasi</strong></td>
                                                                         <td>
                                                                             {{-- {{ $item->birth_date ?? '' }} --}}
-                                                                            {{ $item->birth_date}}
+                                                                            {{ optional($item->birth_date)->format('d/m/Y') }}
+                                                                            {{-- {{ $item->birth_date->format('d/m/Y') }} --}}
+
+
                                                                         </td>
                                                                       
+                                                                  
+                                                                        
                                                                     </tr>
 
                                                                     <tr>
