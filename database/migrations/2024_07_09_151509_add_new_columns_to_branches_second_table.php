@@ -15,6 +15,8 @@ class AddNewColumnsToBranchesSecondTable extends Migration
     {
         Schema::table('branches', function (Blueprint $table) {
             $table->text('obyekt_joylashuvi')->nullable();
+            $table->text('branch_type_text')->nullable();
+
             
         });
     }
@@ -28,6 +30,7 @@ class AddNewColumnsToBranchesSecondTable extends Migration
     {
         Schema::table('branches', function (Blueprint $table) {
             $table->dropColumn('obyekt_joylashuvi');
+            $table->dropColumn('branch_type_text');
             
         });
     }

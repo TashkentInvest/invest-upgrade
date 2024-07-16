@@ -161,7 +161,7 @@ return [
             'open_with_google_maps' => 'Google Xarita orqali oching',
 
             'notification_num' => 'Ruxsatnoma raqami',
-            'notification_date' => 'Bildirishnoma sanasi',
+            'notification_date' => 'Ruxsatnoma sanasi',
             'insurance_policy' => 'Sugʻurta polisi',
             'bank_guarantee' => 'Bank kafolati',
             'application_number' => 'Ariza raqami',

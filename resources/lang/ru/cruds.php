@@ -164,7 +164,7 @@ return [
             'open_with_google_maps' => 'Открыть в Google Картах',
 
             'notification_num' => 'Номер разрешения',
-            'notification_date' => 'Дата уведомления',
+            'notification_date' => 'Дата разрешения',
             'insurance_policy' => 'Страховой полис',
             'bank_guarantee' => 'Банковская гарантия',
             'application_number' => 'Номер заявки',

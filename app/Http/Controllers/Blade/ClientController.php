@@ -89,41 +89,16 @@ class ClientController extends Controller
                     $Hu = (float)($branch->umumiy_foydalanishdagi_xajmi ?? 0); 
                     $coefficient = (float)($branch->coefficient ?? 1);
             
-                    // Logging initial values
-                    // Log::info('Initial values for client ' . $client->id . ', branch ' . $branch->id . ':');
-                    // Log::info('Bh: ' . $Bh);
-                    // Log::info('Hb: ' . $Hb);
-                    // Log::info('Hyu: ' . $Hyu);
-                    // Log::info('Ha: ' . $Ha);
-                    // Log::info('Ht: ' . $Ht);
-                    // Log::info('Hu: ' . $Hu);
-                    // Log::info('Coefficient: ' . $coefficient);
-
-                    // $Bh: 340000;  
-                    // $Hb: 2000;  
-                    // $Hyu: 300;  
-                    // $Ha: 499;  
-                    // $Ht: 320;  
-                    // $Hu: 300;  
-                    // $Coefficient: 0.5;  
-
-                    // $Hb + $Hyu = 2300;
-                    // $Ha + $Ht + $Hu = 1119;
-                    // 2300-1119=1181;
-                    // 340000*1181 = 401.540000;
-                    // 401.540000 * 0.5 = 200770000
-
-                    // Step 2: Calculate Ti (generate_price)
+                  
                     $Ti = $Bh * (($Hb + $Hyu) - ($Ha + $Ht + $Hu)) * $coefficient;
             
-                    // Logging intermediate calculations
-                    // Log::info('Intermediate values for client ' . $client->id . ', branch ' . $branch->id . ':');
-                    // Log::info('Bh * (Hb + Hyu): ' . ($Bh * ($Hb + $Hyu)));
-                    // Log::info('Ha + Ht + Hu: ' . ($Ha + $Ht + $Hu));
-                    // Log::info('Calculated Ti: ' . $Ti);
-                    // Log::info('----------------------------- ');
+                 
+                    Log::info('Intermediate values for client ' . $client->id . ', branch ' . $branch->id . ':');
+                    Log::info('Bh * (Hb + Hyu): ' . ($Bh * ($Hb + $Hyu)));
+                    Log::info('Ha + Ht + Hu: ' . ($Ha + $Ht + $Hu));
+                    Log::info('Calculated Ti: ' . $Ti);
+                    Log::info('----------------------------- ');
             
-                    // Step 3: Store the calculated Ti in a temporary attribute
                     $branch->calculated_Ti = $Ti;
                 }
             }

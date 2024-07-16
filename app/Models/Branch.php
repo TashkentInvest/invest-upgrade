@@ -42,7 +42,10 @@ class Branch extends Model
         'coefficient',
         'zona',
         'obyekt_joylashuvi',
-        'branch_type_text'
+        'branch_type_text',
+
+        'kengash_raqami',
+        'kengash_sanasi'
     
     ];
 

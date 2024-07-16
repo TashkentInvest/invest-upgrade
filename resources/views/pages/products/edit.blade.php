@@ -166,7 +166,7 @@
                                 </div>
 
                                 <div class="row">
-                                    <div class="col-12 col-md-6 col-lg-6 col-xl-3 mb-2">
+                                    <div class="col-12 col-md-6 col-lg-6 col-xl-6">
                                         <label for="last_name">@lang('cruds.client.fields.last_name')</label>
                                         <input class="form-control {{ $errors->has('last_name') ? 'is-invalid' : '' }}"
                                             type="text" name="last_name" id="last_name"
@@ -177,7 +177,7 @@
                                         @endif
                                     </div>
 
-                                    <div class="col-12 col-md-6 col-lg-6 col-xl-3 mb-2">
+                                    <div class="col-12 col-md-6 col-lg-6 col-xl-6">
                                         <label for="name">@lang('cruds.client.fields.name')</label>
                                         <input class="form-control {{ $errors->has('first_name') ? 'is-invalid' : '' }}"
                                             type="text" name="first_name" id="first_name"
@@ -560,6 +560,7 @@
                                                                         placeholder="@lang('cruds.branches.fields.notification_date')">
                                                                 </div>
                                                             </div>
+                                                            
                                                             <div class="col-12 col-md-6 col-lg-6 col-xl-3">
                                                                 <div class="mb-3">
                                                                     <label
@@ -579,6 +580,47 @@
                                                                         placeholder="@lang('cruds.branches.fields.bank_guarantee')">
                                                                 </div>
                                                             </div>
+
+                                                            <div class="col-12 col-md-6 col-lg-6 col-xl-6">
+                                                                <label for="projectname"
+                                                                    class="col-form-label">@lang('cruds.branches.fields.apz_number')</label>
+                                                                <input id="projectname"
+                                                                    name="accordions[{{ $branchIndex }}][apz_raqami]" type="text"
+                                                                    class="form-control"
+                                                                    value="{{ old('accordions.' . $branchIndex . '.apz_raqami', $b->apz_raqami) }}"
+                                                                    placeholder="@lang('cruds.branches.fields.apz_number')">
+                                                            </div>
+                                                            <div class="col-12 col-md-6 col-lg-6 col-xl-6">
+                                                                <label for="projectname"
+                                                                    class="col-form-label">@lang('cruds.branches.fields.apz_date')</label>
+                                                                <input id="projectname"
+                                                                    name="accordions[{{ $branchIndex }}][apz_sanasi]" type="date"
+                                                                    class="form-control"
+                                                                    value="{{ old('accordions.' . $branchIndex . '.apz_sanasi', $b->apz_sanasi) }}"
+                                                                    placeholder="@lang('cruds.branches.fields.apz_date')">
+                                                            </div>
+
+                                                            {{-- kengash --}}
+
+                                                            <div class="col-12 col-md-6 col-lg-6 col-xl-6">
+                                                                <label for="projectname"
+                                                                    class="col-form-label">Kengash_raqami</label>
+                                                                <input id="projectname"
+                                                                    name="accordions[{{ $branchIndex }}][kengash_raqami]" type="text"
+                                                                    class="form-control"
+                                                                    value="{{ old('accordions.' . $branchIndex . '.kengash_raqami', $b->kengash_raqami) }}"
+                                                                    placeholder="kengash_raqami">
+                                                            </div>
+                                                            <div class="col-12 col-md-6 col-lg-6 col-xl-6">
+                                                                <label for="projectname"
+                                                                    class="col-form-label">kengash_sanasi</label>
+                                                                <input id="projectname"
+                                                                    name="accordions[{{ $branchIndex }}][apz_sanasi]" type="date"
+                                                                    class="form-control"
+                                                                    value="{{ old('accordions.' . $branchIndex . '.kengash_sanasi', $b->kengash_sanasi) }}"
+                                                                    placeholder="Kengash_sanasi">
+                                                            </div>
+            
                                                             <div class="col-12 col-md-6 col-lg-6 col-xl-6 ">
                                                                 <div class="mb-3">
                                                                     <label
