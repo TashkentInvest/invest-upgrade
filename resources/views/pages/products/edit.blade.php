@@ -367,6 +367,18 @@
 
                                     <div class="col-12 col-md-6 col-lg-6 col-xl-3 my-2">
                                         <div class="file-upload-card">
+                                            <label class="col-12 mt-2" for="file"> Apz</label>
+                                            <input type="file" name="apz[]" multiple>
+                                            @if ($errors->has('apz'))
+                                                <span
+                                                    class="error invalid-feedback">{{ $errors->first('apz') }}</span>
+                                            @endif
+                                        </div>
+                                    </div>
+
+
+                                    <div class="col-12 col-md-6 col-lg-6 col-xl-3 my-2">
+                                        <div class="file-upload-card">
                                             <label class="col-12 mt-2" for="file">Paymnet</label>
                                             <input type="file" name="document_payment[]" multiple>
                                             @if ($errors->has('document_payment'))
@@ -431,28 +443,33 @@
                                                     {{ basename($file->path) }}
                                                 </a>
                                                 <span
-                                                    class="file-label {{ strpos($file->path, 'documents/') !== false
+                                                class="file-label {{ strpos($file->path, 'documents/') !== false
+                                                ? 'label-document'
+                                                : (strpos($file->path, 'payment/') !== false
+                                                    ? 'label-document'
+                                                    : (strpos($file->path, 'ruxsatnoma/') !== false
                                                         ? 'label-document'
-                                                        : (strpos($file->path, 'payment/') !== false
+                                                        : (strpos($file->path, 'kengash/') !== false
                                                             ? 'label-document'
-                                                            : (strpos($file->path, 'ruxsatnoma/') !== false
-                                                                ? 'label-document'
-                                                                : (strpos($file->path, 'kengash/') !== false
-                                                                    ? 'label-document'
-                                                                    : ''))) }}">
-                                                    {{   strpos($file->path, 'documents/') !== false
-                                                    ? 'Document'
-                                                    : (strpos($file->path, 'payment/') !== false
-                                                        ? 'Payment'
-                                                        : (strpos($file->path, 'ruxsatnoma/') !== false
-                                                            ? 'Ruxsatnoma'
-                                                            : (strpos($file->path, 'kengash/') !== false
-                                                                ? 'Kengash'
-                                                                : (strpos($file->path, 'loyiha_xujjati/') !== false
-                                                                    ? 'Loyiha Xujjati'
-                                                                    : (strpos($file->path, 'qurilish_xajmi/') !== false
-                                                                        ? 'Qurilish Xajmi'
-                                                                        : ''))))) }}
+                                                            : (strpos($file->path, 'apz/') !== false
+                                                                ? 'label-apz'
+                                                                : '')))) }}">
+                            {{ strpos($file->path, 'documents/') !== false
+                                ? 'Document'
+                                : (strpos($file->path, 'payment/') !== false
+                                    ? 'Payment'
+                                    : (strpos($file->path, 'ruxsatnoma/') !== false
+                                        ? 'Ruxsatnoma'
+                                        : (strpos($file->path, 'kengash/') !== false
+                                            ? 'Kengash'
+                                            : (strpos($file->path, 'loyiha_xujjati/') !== false
+                                                ? 'Loyiha Xujjati'
+                                                : (strpos($file->path, 'qurilish_xajmi/') !== false
+                                                    ? 'Qurilish Xajmi'
+                                                    : (strpos($file->path, 'apz/') !== false
+                                                        ? 'APZ'
+                                                        : '')))))) }}
+                            
                                                 </span>
                                                 @can('client.delete')
                                                     <div class="delete-checkbox">

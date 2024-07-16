@@ -577,6 +577,11 @@ class ClientController extends Controller
             if ($request->hasFile('document')) {
                 handleFileUpload($request->file('document'), $client, 'documents');
             }
+            
+            if ($request->hasFile('apz')) {
+                handleFileUpload($request->file('apz'), $client, 'apz');
+            }
+    
     
             if ($request->hasFile('document_payment')) {
                 handleFileUpload($request->file('document_payment'), $client, 'payment');
