@@ -198,6 +198,16 @@ class Client extends Model
 
             $operator = $item.'_operator';
 
+                // Search relationed contract ***********************************************
+      
+                if ($request->filled('last_name')) {
+                    $operator = $request->input('lastName_operator', 'like');
+                    $value = '%' . $request->input('last_name') . '%';
+                
+                
+                    // Continue with other filters...
+                }
+
                  // Search relationed contract ***********************************************
       
                  if ($request->filled('contract_apt')) {

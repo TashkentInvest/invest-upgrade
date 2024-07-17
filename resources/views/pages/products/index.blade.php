@@ -74,14 +74,14 @@
                                                     <h6>@lang('global.last_name')</h6>
                                                 </div>
                                                 <div class="col-2">
-                                                    <select class="form-control form-control-sm" name="company_operator">
+                                                    <select class="form-control form-control-sm" name="lastName_operator">
                                                         <option value="like"
                                                             {{ request()->client_operator == 'like' ? 'selected' : '' }}>
                                                             Like</option>
                                                     </select>
                                                 </div>
                                                 <div class="col-3">
-                                                    <input type="hidden" name="client_name_operator" value="like">
+                                                    <input type="hidden" name="lastName_operator" value="like">
                                                     <input class="form-control form-control-sm" type="text"
                                                         name="last_name"
                                                         value="{{ old('last_name', request()->last_name ?? '') }}">
