@@ -66,28 +66,22 @@
                                                         value="{{ old('contract_apt', request()->contract_apt ?? '') }}">
                                                 </div>
                                             </div>
-
-
-                                            <!-- Company Search -->
+                                            <!-- Last Name Search -->
                                             <div class="form-group row align-items-center my-2">
                                                 <div class="col-3">
                                                     <h6>@lang('global.last_name')</h6>
                                                 </div>
                                                 <div class="col-2">
-                                                    <select class="form-control form-control-sm" name="lastName_operator">
-                                                        <option value="like"
-                                                            {{ request()->client_operator == 'like' ? 'selected' : '' }}>
-                                                            Like</option>
+                                                    <select class="form-control form-control-sm" name="last_operator">
+                                                        <option value="like" {{ request()->last_operator == 'like' ? 'selected' : '' }}>Like</option>
                                                     </select>
                                                 </div>
                                                 <div class="col-3">
-                                                    <input type="hidden" name="lastName_operator" value="like">
-                                                    <input class="form-control form-control-sm" type="text"
-                                                        name="last_name"
+                                                    <input class="form-control form-control-sm" type="text" name="last_name"
                                                         value="{{ old('last_name', request()->last_name ?? '') }}">
                                                 </div>
                                             </div>
-
+                                            
                                             
 
                                             <!-- Company Search -->

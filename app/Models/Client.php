@@ -181,157 +181,89 @@ class Client extends Model
     // }
     
 
-    public static function deepFilters(){
-
-        $tiyin = [
-        ];
-
+    public static function deepFilters()
+    {
         $obj = new self();
         $request = request();
-
-        $query = self::where('id','!=','0');
-
+        $query = self::query();
+    
         foreach ($obj->fillable as $item) {
-
-            // dump($item);
-          
-
-            $operator = $item.'_operator';
-
-                // Search relationed contract ***********************************************
-      
-                if ($request->filled('last_name')) {
-                    $operator = $request->input('lastName_operator', 'like');
-                    $value = '%' . $request->input('last_name') . '%';
-                
-                
-                    // Continue with other filters...
+            if ($request->filled($item)) {
+                $operator = $request->input($item . '_operator', 'like');
+                $value = $request->input($item);
+    
+                if ($operator == 'like') {
+                    $value = '%' . $value . '%';
                 }
-
-                 // Search relationed contract ***********************************************
-      
-                 if ($request->filled('contract_apt')) {
-                    $operator = $request->input('contract_operator', 'like');
-                    $value = '%' . $request->input('contract_apt') . '%';
-                
-                    $query->whereHas('branches', function ($query) use ($operator, $value) {
-                        $query->where('contract_apt', $operator, $value);
-                    });
-                
-                    // Continue with other filters...
-                }
-
-            // Search relationed company ***********************************************
-      
+    
+                $query->where($item, $operator, $value);
+            }
+    
+            $operator = $item . '_operator';
+    
+            // Additional filters for related models
+            // Search related contract
+            if ($request->filled('contract_apt')) {
+                $operator = $request->input('contract_operator', 'like');
+                $value = '%' . $request->input('contract_apt') . '%';
+    
+                $query->whereHas('branches', function ($query) use ($operator, $value) {
+                    $query->where('contract_apt', $operator, $value);
+                });
+            }
+    
+            // Search related company
             if ($request->filled('company_name')) {
                 $operator = $request->input('company_operator', 'like');
                 $value = '%' . $request->input('company_name') . '%';
-            
+    
                 $query->whereHas('company', function ($query) use ($operator, $value) {
                     $query->where('company_name', $operator, $value);
                 });
-            
-                // Continue with other filters...
             }
-            
-         
-            // END Search relationed company ***********************************************
-
-            // Search relationed category ***********************************************
+    
+            // Search related category
             if ($request->filled('stir')) {
                 $operator = $request->input('stir_operator', 'like');
                 $value = '%' . $request->input('stir') . '%';
-        
+    
                 $query->whereHas('company', function ($q) use ($operator, $value) {
                     $q->where('stir', $operator, $value);
                 });
-        
-                continue; 
             }
-
-                   // Passport serial
+    
+            // Passport serial
             if ($request->filled('passport_serial')) {
                 $operator = $request->input('passport_operator', 'like');
                 $value = '%' . $request->input('passport_serial') . '%';
-        
+    
                 $query->whereHas('passport', function ($query) use ($operator, $value) {
                     $query->where('passport_serial', $operator, $value);
                 });
-
-                continue; 
-
             }
-
-            
+    
             // Passport pinfl
             if ($request->filled('passport_pinfl')) {
                 $operator = $request->input('passport_operator', 'like');
                 $value = '%' . $request->input('passport_pinfl') . '%';
-        
+    
                 $query->whereHas('passport', function ($query) use ($operator, $value) {
                     $query->where('passport_pinfl', $operator, $value);
                 });
-
-                continue; 
-
-            }
-        
-
-
-            // END Search relationed category ***********************************************
-
-      
-
-            if ($request->has($item) && $request->$item != '')
-            {
-
-               
-                if (isset($tiyin[$item])){
-                    $select = $request->$item * 100;
-                    $select_pair = $request->{$item.'_pair'} * 100;
-                }else{
-                    $select = $request->$item;
-                    $select_pair = $request->{$item.'_pair'};
-                }
-                //set value for query
-                if ($request->has($operator) && $request->$operator != '')
-                {
-                    if (strtolower($request->$operator) == 'between' && $request->has($item.'_pair') && $request->{$item.'_pair'} != '')
-                    {
-                        $value = [
-                            $select,
-                            $select_pair];
-
-                        $query->whereBetween($item,$value);
-                    }
-                    elseif (strtolower($request->$operator) == 'wherein')
-                    {
-                        $value = explode(',',str_replace(' ','',$select));
-                        $query->whereIn($item,$value);
-                    }
-                    elseif (strtolower($request->$operator) == 'like')
-                    {
-                        if (strpos($select,'%') === false)
-                            $query->where($item,'like','%'.$select.'%');
-                        else
-                            $query->where($item,'like',$select);
-                    }
-                    else
-                    {
-                        $query->where($item,$request->$operator,$select);
-                    }
-                }
-                else
-                {
-                    $query->where($item,$select);
-                }
             }
         }
-
+    
+        // Search related last_name
+        if ($request->filled('last_name')) {
+            $operator = $request->input('last_operator', 'like');
+            $value = '%' . $request->input('last_name') . '%';
+            $query->where('last_name', $operator, $value);
+        }
+    
         return $query;
     }
-
-
+    
+    
 
     public function creditTransactions()
     {
