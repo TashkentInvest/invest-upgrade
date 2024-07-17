@@ -20,6 +20,7 @@ class Branch extends Model
         'payment_type',
         'percentage_input',
         'installment_quarterly',
+        
         'branch_kubmetr',
         'branch_location',
         'branch_type',

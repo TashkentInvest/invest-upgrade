@@ -1061,7 +1061,7 @@
                                                                         accordion.find('.generate_price').val('');
                                                                         accordion.find('.payment-type').val('pay_full').trigger('change');
                                                                         accordion.find('.percentage-input').val('0').prop('disabled', true);
-                                                                        accordion.find('.quarterly-input').val('').prop('disabled', true);
+                                                                        // accordion.find('.quarterly-input').val('').prop('disabled', true);
                                                                         accordion.find('.calculated-quarterly-payment').val('');
                                                                         accordion.find('.payment-schedule').empty();
                                                                         accordion.find('.quarterly-payment-schedule').empty();
@@ -1381,15 +1381,16 @@
                                                                     <div class="input-group">
                                                                         <input type="number"
                                                                             class="form-control quarterly-input"
-                                                                            name="accordions[{{ $branchIndex }}][quarterly_input]"
-                                                                            value="{{ old('accordions.' . $branchIndex . '.quarterly_input', $b->quarterly_input) }}"
+                                                                            name="accordions[{{ $branchIndex }}][installment_quarterly]"
+                                                                            value="{{ old('accordions.' . $branchIndex . '.installment_quarterly', $b->installment_quarterly) }}"
                                                                             min="0" step="0.01">
                                                                         <span class="input-group-text"></span>
                                                                     </div>
                                                                 </div>
                                                             </div>
 
-                                                            {{--  --}}
+                                                     
+
 
                                                             <div class="col-12 col-md-6 col-lg-6 col-xl-6 ">
                                                                 <div class="mb-3">
