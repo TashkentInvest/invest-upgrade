@@ -1293,7 +1293,7 @@
                                                             </script>
 
 
-                                                            <div class="col-12 col-md-6 col-lg-6 col-xl-6 ">
+                                                            {{-- <div class="col-12 col-md-6 col-lg-6 col-xl-6 ">
                                                                 <div class="inner-repeater mb-4">
                                                                     <div data-repeater-list="inner-group"
                                                                         class="inner mb-3">
@@ -1306,7 +1306,7 @@
                                                                             name="accordions[{{ $branchIndex }}][branch_name]">
                                                                     </div>
                                                                 </div>
-                                                            </div>
+                                                            </div> --}}
 
                                                             <div class="col-12 col-md-6 col-lg-6 col-xl-6 ">
                                                                 <div class="mb-3">

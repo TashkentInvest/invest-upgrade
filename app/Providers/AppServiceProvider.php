@@ -44,7 +44,7 @@ class AppServiceProvider extends ServiceProvider
             Company::observe(CompanyObserver::class);
             Branch::observe(BranchObserver::class);
         }
-            
+        
         // Laravel Pagination use Bootstrap
         Paginator::useBootstrap();
         // \Debugbar::disable();
