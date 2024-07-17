@@ -359,6 +359,9 @@
                                                         </a>
                                                     </li>
 
+                                                    <a href="{{ route('file.mobile', $item->id) }}"
+                                                        class="btn btn-primary">mobile</a>
+
                                                     {{-- <li data-bs-toggle="tooltip" data-bs-placement="top"
                                                     title="Dop">
                                                     <a href="{{ route('dopShow', $item->id) }}" class="btn btn-secondary">
