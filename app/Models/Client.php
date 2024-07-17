@@ -198,6 +198,19 @@ class Client extends Model
 
             $operator = $item.'_operator';
 
+                 // Search relationed contract ***********************************************
+      
+                 if ($request->filled('contract_apt')) {
+                    $operator = $request->input('contract_operator', 'like');
+                    $value = '%' . $request->input('contract_apt') . '%';
+                
+                    $query->whereHas('branches', function ($query) use ($operator, $value) {
+                        $query->where('contract_apt', $operator, $value);
+                    });
+                
+                    // Continue with other filters...
+                }
+
             // Search relationed company ***********************************************
       
             if ($request->filled('company_name')) {

@@ -595,16 +595,6 @@
 
                                                             <div class="col-12 col-md-6 col-lg-3 col-xl-3 ">
                                                                 <div class="mb-3">
-                                                                    <label
-                                                                        for="application_number">@lang('cruds.branches.fields.application_number')</label>
-                                                                    <input type="text" class="form-control"
-                                                                        name="accordions[{{ $branchIndex }}][application_number]"
-                                                                        value="{{ old('accordions.' . $branchIndex . '.application_number', $b->application_number) }}"
-                                                                        placeholder="@lang('cruds.branches.fields.application_number')">
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-12 col-md-6 col-lg-3 col-xl-3 ">
-                                                                <div class="mb-3">
     
                                                                     <label
                                                                         for="payedSum_{{ $branchIndex }}">@lang('cruds.branches.fields.payed_sum')</label>
@@ -616,7 +606,30 @@
     
                                                                 </div>
                                                             </div>
-                                                            <div class="col-12 col-md-6 col-lg-6 col-xl-3">
+
+                                                            <div class="col-12 col-md-6 col-lg-3 col-xl-3 ">
+                                                                <div class="mb-3">
+                                                                    <label for="payed_date">@lang('cruds.branches.fields.payed_date')</label>
+                                                                    <input type="date" class="form-control"
+                                                                        name="accordions[{{ $branchIndex }}][payed_date]"
+                                                                        value="{{ old('accordions.' . $branchIndex . '.payed_date', $b->payed_date) }}"
+                                                                        placeholder="@lang('cruds.branches.fields.payed_date')">
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="col-12 col-md-6 col-lg-6 col-xl-6 ">
+                                                                <div class="mb-3">
+                                                                    <label
+                                                                        for="application_number">@lang('cruds.branches.fields.application_number')</label>
+                                                                    <input type="text" class="form-control"
+                                                                        name="accordions[{{ $branchIndex }}][application_number]"
+                                                                        value="{{ old('accordions.' . $branchIndex . '.application_number', $b->application_number) }}"
+                                                                        placeholder="@lang('cruds.branches.fields.application_number')">
+                                                                </div>
+                                                            </div>
+                                                       
+
+                                                            <div class="col-12 col-md-6 col-lg-6 col-xl-6">
                                                                 <div class="mb-3">
                                                                     <label
                                                                         for="notification_num">@lang('cruds.branches.fields.notification_num')</label>
@@ -626,7 +639,7 @@
                                                                         placeholder="@lang('cruds.branches.fields.notification_num')">
                                                                 </div>
                                                             </div>
-                                                            <div class="col-12 col-md-6 col-lg-6 col-xl-3">
+                                                            <div class="col-12 col-md-6 col-lg-6 col-xl-6">
                                                                 <div class="mb-3">
                                                                     <label
                                                                         for="notification_date">@lang('cruds.branches.fields.notification_date')</label>
@@ -684,16 +697,7 @@
                                                             </div>
             
                                                           
-                                                            <div class="col-12 col-md-12 col-lg-6 col-xl-6 ">
-                                                                <div class="mb-3">
-                                                                    <label for="payed_date">@lang('cruds.branches.fields.payed_date')</label>
-                                                                    <input type="date" class="form-control"
-                                                                        name="accordions[{{ $branchIndex }}][payed_date]"
-                                                                        value="{{ old('accordions.' . $branchIndex . '.payed_date', $b->payed_date) }}"
-                                                                        placeholder="@lang('cruds.branches.fields.payed_date')">
-                                                                </div>
-                                                            </div>
-
+                                                       
                                                             <div class="col-12 col-md-12 col-lg-6 col-xl-6 ">
                                                                 <div class="mb-3">
                                                                     <label for="branch_type_text">@lang('cruds.company.fields.branch_type') text</label>

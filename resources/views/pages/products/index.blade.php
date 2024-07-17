@@ -48,6 +48,26 @@
                                         <div class="modal-body">
 
 
+                                            <div class="form-group row align-items-center my-2">
+                                                <div class="col-3">
+                                                    <h6>@lang('global.ruxsatnoma_raqami')</h6>
+                                                </div>
+                                                <div class="col-2">
+                                                    <select class="form-control form-control-sm" name="contract_operator">
+                                                        <option value="like"
+                                                            {{ request()->client_operator == 'like' ? 'selected' : '' }}>
+                                                            Like</option>
+                                                    </select>
+                                                </div>
+                                                <div class="col-3">
+                                                    <input type="hidden" name="client_name_operator" value="like">
+                                                    <input class="form-control form-control-sm" type="text"
+                                                        name="contract_apt"
+                                                        value="{{ old('contract_apt', request()->contract_apt ?? '') }}">
+                                                </div>
+                                            </div>
+
+
                                             <!-- Company Search -->
                                             <div class="form-group row align-items-center my-2">
                                                 <div class="col-3">
@@ -67,6 +87,8 @@
                                                         value="{{ old('last_name', request()->last_name ?? '') }}">
                                                 </div>
                                             </div>
+
+                                            
 
                                             <!-- Company Search -->
                                             <div class="form-group row align-items-center my-2">
