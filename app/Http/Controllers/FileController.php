@@ -22,12 +22,28 @@ class FileController extends Controller
         //     'Content-Disposition'=>'attachement; Filename=mydoc.doc'
         // );
     
+       
         $client = Client::where('id', $id)
         ->with(['company', 'branches', 'address', 'passport'])
         ->first();
 
+        foreach ($client->branches as $branch) {
+            $branch->branch_kubmetr;
+            if ($this->isValidValue(number_format($branch->branch_kubmetr, 0, '', ''))) {
+                $branch->branch_kubmetr_text = $this->transformToText(floor($branch->branch_kubmetr));
+            }
+
+            $branch->generate_price; 
+            if ($this->isValidValue(number_format($branch->generate_price, 0, '', ''))) {
+                $branch->generate_price_text = $this->transformToText(floor($branch->generate_price));
+            }
+            $branch->branch_type;
+            $branch->branch_type_text;
+            $branch->branch_location;
+        }
+
         
-    return view('pages.docs.bolib_pay.fizik_bolib_new', compact('client'));
+    return view('pages.docs.bolib_pay.fizik_bolib_new', compact('client', 'branch'));
         // return Response::make(view('pages.docs.mobile', compact('client')), 200, $headers);
     }
     public function downloadFullTableData($startDate = null, $endDate = null)
