@@ -16,6 +16,20 @@ use Carbon\Carbon;
 class FileController extends Controller
 {
 
+    public function test($id){
+        // $headers = array(
+        //     'Content-type' => 'text/html',
+        //     'Content-Disposition'=>'attachement; Filename=mydoc.doc'
+        // );
+    
+        $client = Client::where('id', $id)
+        ->with(['company', 'branches', 'address', 'passport'])
+        ->first();
+
+        
+    return view('pages.docs.bolib_pay.fizik_bolib_new', compact('client'));
+        // return Response::make(view('pages.docs.mobile', compact('client')), 200, $headers);
+    }
     public function downloadFullTableData($startDate = null, $endDate = null)
     {
         $fileName = 'АПЗ_РАҚАМ' . '_' . now()->format('Y-m-d') . '.xls';

@@ -272,7 +272,7 @@
                                         <label for="birth_date">Tugilgan sanasi</label>
                                         <input
                                             class="form-control {{ $errors->has('birth_date') ? 'is-invalid' : '' }}"
-                                            type="text" name="birth_date" id="birth_date"
+                                            type="date" name="birth_date" id="birth_date"
                                             placeholder="Tugilgan sanasi"
                                             value="{{ old('birth_date', $client->birth_date ?? '') }}"
                                             minlength="9" maxlength="10">
