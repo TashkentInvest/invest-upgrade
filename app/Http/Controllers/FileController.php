@@ -43,7 +43,7 @@ class FileController extends Controller
         }
 
         
-    return view('pages.docs.full_pay.fizik_full_new', compact('client', 'branch'));
+    return view('pages.docs.bolib_pay.yurikjon', compact('client', 'branch'));
         // return Response::make(view('pages.docs.mobile', compact('client')), 200, $headers);
     }
     public function downloadFullTableData($startDate = null, $endDate = null)
