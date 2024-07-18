@@ -145,6 +145,11 @@ class FileController extends Controller
         $yurikBolibView = 'pages.docs.bolib_pay.yurik_litso';
         $yurikFullView = 'pages.docs.full_pay.yurik_litso';
 
+        // $fizikBolibView = 'pages.docs.bolib_pay.fizik_bolib_new';
+        // $fizikFullView = 'pages.docs.full_pay.fizik_full_new';
+        // $yurikBolibView = 'pages.docs.bolib_pay.yurik_bolib_new';
+        // $yurikFullView = 'pages.docs.full_pay.yurik_full_new';
+
         foreach ($client->branches as $branch) {
             $branch->branch_kubmetr;
             if ($this->isValidValue(number_format($branch->branch_kubmetr, 0, '', ''))) {
