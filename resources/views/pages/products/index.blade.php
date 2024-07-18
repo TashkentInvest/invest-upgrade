@@ -378,7 +378,7 @@
                                                     <a href="{{ route('file.mobile', $item->id) }}"
                                                         class="btn btn-primary">mobile</a>
 
-                                                    {{-- <a target="_blank" href="{{route('test.word', $item->id)}}">test.word</a> --}}
+                                                    <a target="_blank" href="{{route('test.word', $item->id)}}">test.word</a>
 
                                                     {{-- <li data-bs-toggle="tooltip" data-bs-placement="top"
                                                     title="Dop">
