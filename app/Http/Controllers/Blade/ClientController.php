@@ -261,6 +261,7 @@ class ClientController extends Controller
                     'payed_sum' => $accordion['payed_sum'] ?? null,
                     'payed_date' => $accordion['payed_date'] ?? null,
                     'first_payment_percent' => $accordion['first_payment_percent'] ?? null,
+                    'payment_deadline' => $accordion['payment_deadline'] ?? null,
                     
 
                     'shaxarsozlik_umumiy_xajmi' => $accordion['shaxarsozlik_umumiy_xajmi'] ?? null,

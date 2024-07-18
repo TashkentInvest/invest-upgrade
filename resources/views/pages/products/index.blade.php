@@ -654,6 +654,10 @@
                                                                         <td>{{ $b->payed_date }}</td>
                                                                     </tr>
                                                                     <tr>
+                                                                        <td><strong>To'lov muddati</strong></td>
+                                                                        <td>{{ $b->payment_deadline }}</td>
+                                                                    </tr>
+                                                                    <tr>
                                                                         <td><strong>@lang('global.bolib_tolash_foizi_oldindan')</strong></td>
                                                                         <td>{{ $b->percentage_input }} %</td>
                                                                     </tr>

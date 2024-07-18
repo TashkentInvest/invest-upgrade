@@ -593,7 +593,7 @@
                                                                 </div>
                                                             </div>
 
-                                                            <div class="col-12 col-md-6 col-lg-3 col-xl-3 ">
+                                                            <div class="col-12 col-md-6 col-lg-4 col-xl-4 ">
                                                                 <div class="mb-3">
     
                                                                     <label
@@ -607,13 +607,23 @@
                                                                 </div>
                                                             </div>
 
-                                                            <div class="col-12 col-md-6 col-lg-3 col-xl-3 ">
+                                                            <div class="col-12 col-md-6 col-lg-4 col-xl-4 ">
                                                                 <div class="mb-3">
                                                                     <label for="payed_date">@lang('cruds.branches.fields.payed_date')</label>
                                                                     <input type="date" class="form-control"
                                                                         name="accordions[{{ $branchIndex }}][payed_date]"
                                                                         value="{{ old('accordions.' . $branchIndex . '.payed_date', $b->payed_date) }}"
                                                                         placeholder="@lang('cruds.branches.fields.payed_date')">
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="col-12 col-md-6 col-lg-4 col-xl-4 ">
+                                                                <div class="mb-3">
+                                                                    <label for="payment_deadline">To'lov muddati</label>
+                                                                    <input type="date" class="form-control"
+                                                                        name="accordions[{{ $branchIndex }}][payment_deadline]"
+                                                                        value="{{ old('accordions.' . $branchIndex . '.payment_deadline', $b->payment_deadline) }}"
+                                                                        placeholder="To'lov muddati">
                                                                 </div>
                                                             </div>
 

@@ -46,7 +46,9 @@ class Branch extends Model
         'branch_type_text',
 
         'kengash_raqami',
-        'kengash_sanasi'
+        'kengash_sanasi',
+
+        'payment_deadline'
     
     ];
 
