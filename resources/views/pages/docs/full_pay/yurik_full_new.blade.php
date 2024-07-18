@@ -1,3 +1,13 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
 <div>
     <p style="margin-top:0pt; margin-bottom:0pt; text-align:center;"><strong>Архитектура-режалаштириш топшириғи берилгани учун белгиланган</strong><br><strong>қўшимча йиғим тўловини амалга ошириш тўғрисидаги</strong></p>
     <p style="margin-top:0pt; margin-bottom:0pt; text-align:center;"><strong>АРТ-_________/24-сонли шартнома</strong></p>
@@ -152,3 +162,6 @@
     </table>
     <p style="margin-top:0pt; margin-bottom:0pt; text-align:center;"><strong>&nbsp;</strong></p>
 </div>
+
+</body>
+</html>
