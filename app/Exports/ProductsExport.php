@@ -105,8 +105,14 @@ class ProductsExport implements FromCollection, WithHeadings, WithColumnFormatti
             'apz_count' => DB::raw('0 AS apz_count'),
         ];
 
-        return array_intersect_key($columns, array_flip($this->selectedColumns)) + ['clients.id' => 'clients.id AS client_id'];
+        $selected = array_intersect_key($columns, array_flip($this->selectedColumns));
+        $selected['clients.id'] = 'clients.id AS client_id';
+
+        \Log::info('Selected Columns: ' . json_encode($selected));
+
+        return $selected;
     }
+
 
     protected function getFileCount($clientId, $path)
     {
@@ -148,10 +154,15 @@ class ProductsExport implements FromCollection, WithHeadings, WithColumnFormatti
             'apz_count' => 'Количество APZ',
         ];
 
-        return array_values(array_intersect_key($headings, array_flip($this->selectedColumns)));
+        $selectedHeadings = array_intersect_key($headings, array_flip($this->selectedColumns));
+        $selectedHeadings['clients.id'] = 'ID клиента';
+
+        \Log::info('Column Headings: ' . json_encode($selectedHeadings));
+
+        return array_values($selectedHeadings);
     }
 
-
+    
     public function columnFormats(): array
     {
         $alphabet = range('A', 'Z');
@@ -161,6 +172,8 @@ class ProductsExport implements FromCollection, WithHeadings, WithColumnFormatti
             $columnIndex = $this->getColumnLetter($index);
             $formats[$columnIndex] = '@';
         }
+
+        \Log::info('Column Formats: ' . json_encode($formats));
 
         return $formats;
     }
