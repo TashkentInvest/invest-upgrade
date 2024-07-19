@@ -60,13 +60,13 @@
         <table class="table">
             <thead>
                 <tr>
-                    <th>To'lov</th>
+                    {{-- <th>To'lov</th> --}}
                     <th>Birinchi to'lov</th>
                 </tr>
             </thead>
             <tbody>
                     <tr>
-                        <td>{{ $quarter }}</td>
+                        {{-- <td>{{ $quarter }}</td> --}}
                         <td>{{ number_format($branch->first_payment_percent, 2) }}</td>
                     </tr>
             </tbody>
