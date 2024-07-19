@@ -64,22 +64,22 @@ class Branch extends Model
         $firstPaymentPercent = $this->first_payment_percent;
         $installmentQuarterly = $this->installment_quarterly;
     
-        Log::info('Calculating installments', [
-            'first_payment_percent' => $firstPaymentPercent,
-            'installment_quarterly' => $installmentQuarterly
-        ]);
+        // Log::info('Calculating installments', [
+        //     'first_payment_percent' => $firstPaymentPercent,
+        //     'installment_quarterly' => $installmentQuarterly
+        // ]);
     
         if ($firstPaymentPercent && $installmentQuarterly) {
             $payments = $this->payments()->orderBy('payment_date')->get();
             $totalPayments = $payments->sum('amount');
     
-            Log::info('Total payments', ['total_payments' => $totalPayments]);
+            // Log::info('Total payments', ['total_payments' => $totalPayments]);
     
             $amountAfterFirstPayment = $totalPayments - ($totalPayments * ($firstPaymentPercent / 100));
-            Log::info('Amount after first payment', ['amount_after_first_payment' => $amountAfterFirstPayment]);
+            // Log::info('Amount after first payment', ['amount_after_first_payment' => $amountAfterFirstPayment]);
     
             $quarterlyInstallment = $amountAfterFirstPayment / $installmentQuarterly;
-            Log::info('Quarterly installment amount', ['quarterly_installment' => $quarterlyInstallment]);
+            // Log::info('Quarterly installment amount', ['quarterly_installment' => $quarterlyInstallment]);
     
             $installments = [];
     
@@ -106,7 +106,7 @@ class Branch extends Model
                 }
             }
     
-            Log::info('Installments breakdown', ['installments' => $installments]);
+            // Log::info('Installments breakdown', ['installments' => $installments]);
     
             return $installments;
         }
