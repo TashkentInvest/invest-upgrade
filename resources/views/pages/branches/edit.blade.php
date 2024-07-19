@@ -8,7 +8,7 @@
     <form action="{{ route('payment.update', $payment->id) }}" method="POST">
         @csrf
         @method('PUT')
-        {{-- <input type="hidden" name="branch_id" value="{{ $branch->id }}"> --}}
+        <input type="hidden" name="branch_id" value="{{ $branch->id }}">
 
         <div class="form-group">
             <label for="amount">Miqdor</label>

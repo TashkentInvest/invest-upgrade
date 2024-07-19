@@ -102,40 +102,38 @@
 
         <!-- Installments Table Card -->
         @foreach($installments as $year => $quarters)
-            <div class="card">
-                <h3>Yil: {{ $year }}</h3>
-                <table class="table">
-                    <thead>
+        <div class="card" style="margin-bottom: 20px; padding: 20px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+            <h3>Yil: {{ $year }}</h3>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th style="width: 30%;">Chorak</th>
+                        <th style="width: 40%;">To'lov Miqdori</th>
+                        <th style="width: 50%;">Izoh</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach($quarters as $quarter => $data)
                         <tr>
-                            <th>Chorak</th>
-                            <th>To'lov Miqdori</th>
-                            <th>Izoh</th>
-                            {{-- <th>Details</th> --}}
+                            <td>{{ $quarter }}</td>
+                            <td>{{ number_format($data['total'], 2) }} UZS</td>
+                            <td>
+                                @if(!empty($data['comments']))
+                                    <ul style="list-style: none; padding: 0; margin: 0;">
+                                        @foreach($data['comments'] as $comment)
+                                            <li>{{ $comment }}</li>
+                                        @endforeach
+                                    </ul>
+                                @else
+                                    <p>No comments</p>
+                                @endif
+                            </td>
                         </tr>
-                    </thead>
-                    <tbody>
-                        @foreach($quarters as $quarter => $data)
-                            <tr>
-                                <td>{{ $quarter }}</td>
-                                <td>{{ number_format($data['total'], 2) }} UZS</td>
-                                <td>
-                                    @if(!empty($data['comments']))
-                                        <ul style="list-style: none; padding: 0; margin: 0;">
-                                            @foreach($data['comments'] as $comment)
-                                                <li>{{ $comment }}</li>
-                                            @endforeach
-                                        </ul>
-                                    @else
-                                        <p>No comments</p>
-                                    @endif
-                                </td>
-                             
-                            </tr>
-                        @endforeach
-                    </tbody>
-                </table>
-            </div>
-        @endforeach
+                    @endforeach
+                </tbody>
+            </table>
+        </div>
+    @endforeach
 
     @else
         <div class="alert-custom">

@@ -703,14 +703,7 @@ class ClientController extends Controller
 
         return view('pages.branches.create', compact('branch_id'));
     }
-    public function payment_edit($id)
-    {
-        $payment = Payment::findOrFail($id);
 
-        // Log::info('Opening payment creation form', ['branch_id' => $branch_id]);
-
-        return view('pages.branches.edit', compact('payment'));
-    }
 
     public function payment_store(Request $request)
     {
@@ -754,6 +747,14 @@ class ClientController extends Controller
         }
     }
 
+    public function payment_edit($id)
+    {
+        $payment = Payment::findOrFail($id);
+        $branch = Branch::findOrFail($payment->branch_id);
+    
+        return view('pages.branches.edit', compact('payment', 'branch'));
+    }
+    
     public function payment_update(Request $request, $id)
     {
         $validatedData = $request->validate([
@@ -762,13 +763,14 @@ class ClientController extends Controller
             'payment_date' => 'required|date',
             'comment' => 'nullable|string',
         ]);
-
+    
         $payment = Payment::findOrFail($id);
         $payment->update($validatedData);
-
+    
         return redirect()->route('branches.installments', $validatedData['branch_id'])
-                        ->with('success', 'To\'lov muvaffaqiyatli yangilandi');
+                         ->with('success', 'To\'lov muvaffaqiyatli yangilandi');
     }
+    
 
 
 }
