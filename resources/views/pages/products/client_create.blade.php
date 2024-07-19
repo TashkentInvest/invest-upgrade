@@ -969,11 +969,11 @@
                                             <tr><th>Passport PINFL</th><td>${formData.get('passport_pinfl')}</td></tr>
                                             <tr><th>Passport Sana</th><td>${formData.get('passport_date')}</td></tr>
                                             <tr><th>Passport Manzil</th><td>${formData.get('passport_location')}</td></tr>
-                                            <tr><th>Doimiy ro\'yxatda turish manzil</th><td>${formData.get('home_address')}</td></tr>
+                                            <tr><th>Doimiy ro'yxatda turish manzil</th><td>${formData.get('home_address')}</td></tr>
                                         `;
                                         } else {
                                             html += `
-                                            <tr><th>Kopmaniya nomi'</th><td>${formData.get('company_name')}</td>
+                                            <tr><th>Kopmaniya nomi</th><td>${formData.get('company_name')}</td></tr>
                                             <tr><th>Raxbar</th><td>${formData.get('raxbar')}</td></tr>
                                             <tr><th>Bank Code</th><td>${formData.get('bank_code')}</td></tr>
                                             <tr><th>Bank Service</th><td>${formData.get('bank_service')}</td></tr>
@@ -999,11 +999,11 @@
                                         <tr><th>Obyekt joylashuvi</th><td>${formData.get('accordions[0][obyekt_joylashuvi]')}</td></tr>
                                         <tr><th>Obyekt nomi</th><td>${formData.get('accordions[0][branch_name]')}</td></tr>
                                         <tr><th>Generate Price</th><td>${formData.get('accordions[0][generate_price]')}</td></tr>
-                                        <tr><th>To\'lov turi</th><td>${formData.get('accordions[0][payment_type]')}</td></tr>
+                                        <tr><th>To'lov turi</th><td>${formData.get('accordions[0][payment_type]')}</td></tr>
                                         <tr><th>Foiz</th><td>${formData.get('accordions[0][percentage_input]')}</td></tr>
                                         <tr><th>Ruxsatnoma raqami</th><td>${formData.get('accordions[0][notification_num]')}</td></tr>
                                         <tr><th>Ruxsatnoma sanasi</th><td>${formData.get('accordions[0][notification_date]')}</td></tr>
-                                        <tr><th>Birinchi toʻlov foizi</th><td>${formData.get('accordions[0][first_payment_percent]')}</td></tr>
+                                        <tr><th>Birinchi to'lov foizi</th><td>${formData.get('accordions[0][first_payment_percent]')}</td></tr>
                                     `;
                     
                                         html += '</tbody></table>';
