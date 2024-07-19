@@ -171,10 +171,22 @@
                             </tr>
 
                             @foreach ($client->branches as $b)
+                     
+                           
+
                                 <tr>
                                     <td colspan="3" class="text-center bg-secondary text-light">
                                         <strong>@lang('global.contract_details') -
                                             {{ $b->contract_apt }}</strong>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        
+                                    </td>
+                                    <td colspan="2">
+                                        <a class="btn btn-primary" href="{{route('branches.installments', $b->id)}}">Payment Grafik</a>
+    
                                     </td>
                                 </tr>
 

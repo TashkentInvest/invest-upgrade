@@ -2,8 +2,10 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Log;
 
 class Branch extends Model
 {
@@ -51,6 +53,75 @@ class Branch extends Model
         'payment_deadline'
     
     ];
+
+    public function payments()
+    {
+        return $this->hasMany(Payment::class);
+    }
+
+    public function calculateInstallments()
+    {
+        $firstPaymentPercent = $this->first_payment_percent;
+        $installmentQuarterly = $this->installment_quarterly;
+
+        Log::info('Calculating installments', [
+            'first_payment_percent' => $firstPaymentPercent,
+            'installment_quarterly' => $installmentQuarterly
+        ]);
+
+        if ($firstPaymentPercent && $installmentQuarterly) {
+            $payments = $this->payments()->orderBy('payment_date')->get();
+            $totalPayments = $payments->sum('amount');
+
+            Log::info('Total payments', ['total_payments' => $totalPayments]);
+
+            $amountAfterFirstPayment = $totalPayments - ($totalPayments * ($firstPaymentPercent / 100));
+            Log::info('Amount after first payment', ['amount_after_first_payment' => $amountAfterFirstPayment]);
+
+            $quarterlyInstallment = $amountAfterFirstPayment / $installmentQuarterly;
+            Log::info('Quarterly installment amount', ['quarterly_installment' => $quarterlyInstallment]);
+
+            $installments = [];
+
+            foreach ($payments as $payment) {
+                $paymentDate = Carbon::parse($payment->payment_date);
+                $year = $paymentDate->year;
+                $quarter = $this->getQuarter($paymentDate);
+
+                if (!isset($installments[$year])) {
+                    $installments[$year] = [];
+                }
+
+                if (!isset($installments[$year][$quarter])) {
+                    $installments[$year][$quarter] = 0;
+                }
+
+                $installments[$year][$quarter] += $payment->amount;
+            }
+
+            Log::info('Installments breakdown', ['installments' => $installments]);
+
+            return $installments;
+        }
+
+        return null;
+    }
+
+    private function getQuarter(Carbon $date)
+    {
+        $quarter = ceil($date->month / 3);
+
+        switch ($quarter) {
+            case 1:
+                return 'I - квартал';
+            case 2:
+                return 'II - квартал';
+            case 3:
+                return 'III - квартал';
+            case 4:
+                return 'IV - квартал';
+        }
+    }
 
 
     public function client()

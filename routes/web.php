@@ -72,6 +72,11 @@ Route::group(['middleware' => ['auth', 'checkUserRole']], function () {
     });
     Route::get('/apz-second', [ClientController::class, 'apz_second'])->name('apz.second');
     Route::get('/client/confirm', [ClientController::class, 'client_confirm'])->name('clientFormConfirm');
+    // payment start
+    Route::get('/branches/{id}/installments', [ClientController::class, 'showInstallments'])->name('branches.installments');
+    Route::get('/payments/create/{branch_id}', [ClientController::class, 'payment_create'])->name('payments.create');
+    Route::post('/payments', [ClientController::class, 'payment_store'])->name('payments.store');
+    // payment end
 
     // Permissions
     Route::prefix('permissions')->group(function () {

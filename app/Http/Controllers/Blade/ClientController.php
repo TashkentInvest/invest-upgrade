@@ -9,6 +9,7 @@ use App\Models\Client;
 use App\Models\Company;
 use App\Models\Confirm;
 use App\Models\File;
+use App\Models\Payment;
 use Illuminate\Http\Request;
 use App\Models\Regions;
 use Carbon\Carbon;
@@ -670,5 +671,63 @@ class ClientController extends Controller
         return [
             'is_active' => $client->status
         ];
+    }
+
+    // payment start
+    public function showInstallments($id)
+    {
+        Log::info('Fetching installments for branch', ['branch_id' => $id]);
+
+        $branch = Branch::with('payments')->findOrFail($id);
+
+        if (!$branch) {
+            Log::error('Branch not found', ['branch_id' => $id]);
+            abort(404, 'Branch not found');
+        }
+
+        $installments = $branch->calculateInstallments();
+
+        Log::info('Installments calculated', [
+            'branch_id' => $id,
+            'installments' => $installments
+        ]);
+
+        return view('pages.branches.installments', compact('branch', 'installments'));
+    }
+
+    public function payment_create(Request $request)
+    {
+        $branch_id = $request->branch_id;
+
+        Log::info('Opening payment creation form', ['branch_id' => $branch_id]);
+
+        return view('pages.branches.create', compact('branch_id'));
+    }
+
+    public function payment_store(Request $request)
+    {
+        $validatedData = $request->validate([
+            'branch_id' => 'required|exists:branches,id',
+            'amount' => 'required|numeric',
+            'payment_date' => 'required|date',
+            'comment' => 'nullable|string',
+        ]);
+
+        Log::info('Storing new payment', [
+            'branch_id' => $validatedData['branch_id'],
+            'amount' => $validatedData['amount'],
+            'payment_date' => $validatedData['payment_date'],
+            'comment' => $validatedData['comment']
+        ]);
+
+        Payment::create($validatedData);
+
+        Log::info('Payment stored successfully', [
+            'branch_id' => $validatedData['branch_id'],
+            'amount' => $validatedData['amount']
+        ]);
+
+        return redirect()->route('branches.installments', $validatedData['branch_id'])
+                         ->with('success', 'To\'lov muvaffaqiyatli qo\'shildi');
     }
 }
