@@ -29,6 +29,7 @@
                             <th>Chorak</th>
                             <th>To'lov Miqdori</th>
                             <th>Izoh</th>
+                            <th>Details</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -36,7 +37,6 @@
                             <tr>
                                 <td>{{ $quarter }}</td>
                                 <td>{{ number_format($data['total'], 2) }} UZS</td>
-
                                 <td>
                                     @if(!empty($data['comments']))
                                         <ul class="list-unstyled mb-0">
@@ -48,7 +48,43 @@
                                         <p class="text-muted mb-0">No comments</p>
                                     @endif
                                 </td>
+                                <td>
+                                    <!-- Button trigger modal -->
+                                    <button type="button" class="btn btn-info btn-sm" data-bs-toggle="modal" data-bs-target="#detailsModal_{{$year}}_{{ $quarter[0] }}">
+                                        View Details
+                                    </button>
+                                </td>
                             </tr>
+
+                            <!-- Modal -->
+                            <div class="modal fade" id="detailsModal_{{$year}}_{{ $quarter[0] }}" tabindex="-1" aria-labelledby="detailsModalLabel" aria-hidden="true">
+                                <div class="modal-dialog modal-lg">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="detailsModalLabel">To'lov Detallari (Yil: {{ $year }}, Chorak: {{ $quarter }})</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <h4>To'lov Miqdori: {{ number_format($data['total'], 2) }} UZS</h4>
+                                            <p><strong>Izohlar:</strong></p>
+                                            @if(!empty($data['comments']))
+                                                <ul>
+                                                    @foreach($data['comments'] as $comment)
+                                                        <li>{{ $comment }}</li>
+                                                    @endforeach
+                                                </ul>
+                                            @else
+                                                <p>No comments</p>
+                                            @endif
+                                            <p><strong>Additional Details:</strong></p>
+                                            <!-- Add any additional details here -->
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         @endforeach
                     </tbody>
                 </table>
