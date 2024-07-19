@@ -42,9 +42,13 @@ class ProductsExport implements FromCollection, WithHeadings, WithColumnFormatti
                 $query->whereBetween('clients.updated_at', [$this->startDate, $this->endDate]);
             }
 
+            \Log::info('SQL Query: ' . $query->toSql());
+            \Log::info('Bindings: ' . json_encode($query->getBindings()));
+
             $collection = $query->get();
 
-            // Process the collection to add file counts
+            \Log::info('Fetched Collection: ' . json_encode($collection));
+
             $collection->each(function ($item) {
                 $item->document_count = $this->getFileCount($item->client_id, 'documents/');
                 $item->payment_count = $this->getFileCount($item->client_id, 'payment/');
@@ -55,6 +59,8 @@ class ProductsExport implements FromCollection, WithHeadings, WithColumnFormatti
                 $item->apz_count = $this->getFileCount($item->client_id, 'apz/');
             });
 
+            $collection = $collection->unique('client_id');
+
             return $collection->map(function ($item) {
                 return (array) $item;
             });
@@ -63,6 +69,7 @@ class ProductsExport implements FromCollection, WithHeadings, WithColumnFormatti
             return collect([]);
         }
     }
+
 
     protected function buildSelectColumns()
     {
@@ -132,7 +139,6 @@ class ProductsExport implements FromCollection, WithHeadings, WithColumnFormatti
             'bank_guarantee' => 'Банковская гарантия',
             'contact' => 'Контакты',
             'note' => 'Примечание',
-            // New headings for file counts
             'document_count' => 'Количество документов',
             'payment_count' => 'Количество платежей',
             'ruxsatnoma_count' => 'Количество разрешений',
@@ -144,6 +150,7 @@ class ProductsExport implements FromCollection, WithHeadings, WithColumnFormatti
 
         return array_values(array_intersect_key($headings, array_flip($this->selectedColumns)));
     }
+
 
     public function columnFormats(): array
     {
