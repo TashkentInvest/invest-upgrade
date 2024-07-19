@@ -932,17 +932,18 @@
                                 href="https://t.me/tashinvestcom">Telegram</a></h4>
 
                     </form>
+                    <meta name="csrf-token" content="{{ csrf_token() }}">
+
                     <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
                     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
                     <script>
                         $(document).ready(function() {
                             $('#myForm').submit(function(event) {
                                 event.preventDefault();
-
+                    
                                 let csrfToken = $('meta[name="csrf-token"]').attr('content');
                                 let formData = new FormData(this);
-                                formData.append('_token', csrfToken);
-
+                    
                                 $.ajax({
                                     url: $(this).attr('action'),
                                     method: $(this).attr('method'),
@@ -961,124 +962,122 @@
                                                 <tr><th>Otasining ismi</th><td>${formData.get('father_name')}</td></tr>
                                                 <tr><th>Kontakt</th><td>${formData.get('contact')}</td></tr>
                                         `;
-
-                                            if (formData.get('mijoz_turi') === 'fizik') {
-                                                html += `
-                                                <tr><th>Passport Seria</th><td>${formData.get('passport_serial')}</td></tr>
-                                                <tr><th>Passport PINFL</th><td>${formData.get('passport_pinfl')}</td></tr>
-                                                <tr><th>Passport Sana</th><td>${formData.get('passport_date')}</td></tr>
-                                                <tr><th>Passport Manzil</th><td>${formData.get('passport_location')}</td></tr>
-                                                <tr><th>Doimiy ro\'yxatda turish manzil</th><td>${formData.get('home_address')}</td></tr>
-                                            `;
-                                            } else {
-                                                html += `
-                                                <tr><th>Kopmaniya nomi'</th><td>${formData.get('company_name')}</td></
-                                                <tr><th>Raxbar</th><td>${formData.get('raxbar')}</td></tr>
-                                                <tr><th>Bank Code</th><td>${formData.get('bank_code')}</td></tr>
-                                                <tr><th>Bank Service</th><td>${formData.get('bank_service')}</td></tr>
-                                                <tr><th>Bank Account</th><td>${formData.get('bank_account')}</td></tr>
-                                                <tr><th>STIR</th><td>${formData.get('stir')}</td></tr>
-                                                <tr><th>OKED</th><td>${formData.get('oked')}</td></tr>
-                                                <tr><th>Yuridik manzil</th><td>${formData.get('yuridik_address')}</td></tr>
-                                                <tr><th>Kompaniya joylashuvi</th><td>${formData.get('company_location')}</td></tr>
-                                            `;
-                                            }
+                    
+                                        if (formData.get('mijoz_turi') === 'fizik') {
                                             html += `
-                                            <tr><th>Shaxarsozlik Umumiy Xajmi</th><td>${formData.get('accordions[0][shaxarsozlik_umumiy_xajmi]')}</td></tr>
-                                            <tr><th>Qavatlar Soni Xajmi</th><td>${formData.get('accordions[0][qavatlar_soni_xajmi]')}</td></tr>
-                                            <tr><th>Avtoturargoh Xajmi</th><td>${formData.get('accordions[0][avtoturargoh_xajmi]')}</td></tr>
-                                            <tr><th>Qavat Xona Xajmi</th><td>${formData.get('accordions[0][qavat_xona_xajmi]')}</td></tr>
-                                            <tr><th>Umumiy Foydalanishdagi Xajmi</th><td>${formData.get('accordions[0][umumiy_foydalanishdagi_xajmi]')}</td></tr>
-                                            <tr><th>Qurilish Turi</th><td>${formData.get('accordions[0][qurilish_turi]')}</td></tr>
-                                            <tr><th>Koeffitsient</th><td>${formData.get('accordions[0][coefficient]')}</td></tr>
-                                            <tr><th>Zona</th><td>${formData.get('accordions[0][zona]')}</td></tr>
-                                            <tr><th>Obyekt xajmi</th><td>${formData.get('accordions[0][branch_kubmetr]')}</td></tr>
-                                            <tr><th>Obyekt turi</th><td>${formData.get('accordions[0][branch_type]')}</td></tr>
-                                            <tr><th>Obyekt manzili</th><td>${formData.get('accordions[0][branch_location]')}</td></tr>
-                                            <tr><th>Obyekt joylashuvi</th><td>${formData.get('accordions[0][obyekt_joylashuvi]')}</td></tr>
-                                            <tr><th>Obyekt nomi</th><td>${formData.get('accordions[0][branch_name]')}</td></tr>
-                                            <tr><th>Generate Price</th><td>${formData.get('accordions[0][generate_price]')}</td></tr>
-                                            <tr><th>To\'lov turi</th><td>${formData.get('accordions[0][payment_type]')}</td></tr>
-                                            <tr><th>Foiz</th><td>${formData.get('accordions[0][percentage_input]')}</td></tr>
-                                            <tr><th>Ruxsatnoma raqami</th><td>${formData.get('accordions[0][notification_num]')}</td></tr>
-                                            <tr><th>Ruxsatnoma sanasi</th><td>${formData.get('accordions[0][notification_date]')}</td></tr>
-                                            <tr><th>Birinchi toʻlov foizi</th><td>${formData.get('accordions[0][first_payment_percent]')}</td></tr>
+                                            <tr><th>Passport Seria</th><td>${formData.get('passport_serial')}</td></tr>
+                                            <tr><th>Passport PINFL</th><td>${formData.get('passport_pinfl')}</td></tr>
+                                            <tr><th>Passport Sana</th><td>${formData.get('passport_date')}</td></tr>
+                                            <tr><th>Passport Manzil</th><td>${formData.get('passport_location')}</td></tr>
+                                            <tr><th>Doimiy ro\'yxatda turish manzil</th><td>${formData.get('home_address')}</td></tr>
                                         `;
-
-                                            html += '</tbody></table>';
+                                        } else {
+                                            html += `
+                                            <tr><th>Kopmaniya nomi'</th><td>${formData.get('company_name')}</td></
+                                            <tr><th>Raxbar</th><td>${formData.get('raxbar')}</td></tr>
+                                            <tr><th>Bank Code</th><td>${formData.get('bank_code')}</td></tr>
+                                            <tr><th>Bank Service</th><td>${formData.get('bank_service')}</td></tr>
+                                            <tr><th>Bank Account</th><td>${formData.get('bank_account')}</td></tr>
+                                            <tr><th>STIR</th><td>${formData.get('stir')}</td></tr>
+                                            <tr><th>OKED</th><td>${formData.get('oked')}</td></tr>
+                                            <tr><th>Yuridik manzil</th><td>${formData.get('yuridik_address')}</td></tr>
+                                            <tr><th>Kompaniya joylashuvi</th><td>${formData.get('company_location')}</td></tr>
+                                        `;
+                                        }
+                                        html += `
+                                        <tr><th>Shaxarsozlik Umumiy Xajmi</th><td>${formData.get('accordions[0][shaxarsozlik_umumiy_xajmi]')}</td></tr>
+                                        <tr><th>Qavatlar Soni Xajmi</th><td>${formData.get('accordions[0][qavatlar_soni_xajmi]')}</td></tr>
+                                        <tr><th>Avtoturargoh Xajmi</th><td>${formData.get('accordions[0][avtoturargoh_xajmi]')}</td></tr>
+                                        <tr><th>Qavat Xona Xajmi</th><td>${formData.get('accordions[0][qavat_xona_xajmi]')}</td></tr>
+                                        <tr><th>Umumiy Foydalanishdagi Xajmi</th><td>${formData.get('accordions[0][umumiy_foydalanishdagi_xajmi]')}</td></tr>
+                                        <tr><th>Qurilish Turi</th><td>${formData.get('accordions[0][qurilish_turi]')}</td></tr>
+                                        <tr><th>Koeffitsient</th><td>${formData.get('accordions[0][coefficient]')}</td></tr>
+                                        <tr><th>Zona</th><td>${formData.get('accordions[0][zona]')}</td></tr>
+                                        <tr><th>Obyekt xajmi</th><td>${formData.get('accordions[0][branch_kubmetr]')}</td></tr>
+                                        <tr><th>Obyekt turi</th><td>${formData.get('accordions[0][branch_type]')}</td></tr>
+                                        <tr><th>Obyekt manzili</th><td>${formData.get('accordions[0][branch_location]')}</td></tr>
+                                        <tr><th>Obyekt joylashuvi</th><td>${formData.get('accordions[0][obyekt_joylashuvi]')}</td></tr>
+                                        <tr><th>Obyekt nomi</th><td>${formData.get('accordions[0][branch_name]')}</td></tr>
+                                        <tr><th>Generate Price</th><td>${formData.get('accordions[0][generate_price]')}</td></tr>
+                                        <tr><th>To\'lov turi</th><td>${formData.get('accordions[0][payment_type]')}</td></tr>
+                                        <tr><th>Foiz</th><td>${formData.get('accordions[0][percentage_input]')}</td></tr>
+                                        <tr><th>Ruxsatnoma raqami</th><td>${formData.get('accordions[0][notification_num]')}</td></tr>
+                                        <tr><th>Ruxsatnoma sanasi</th><td>${formData.get('accordions[0][notification_date]')}</td></tr>
+                                        <tr><th>Birinchi toʻlov foizi</th><td>${formData.get('accordions[0][first_payment_percent]')}</td></tr>
+                                    `;
+                    
+                                        html += '</tbody></table>';
+                                        Swal.fire({
+                                            icon: 'success',
+                                            title: 'Success!',
+                                            html: html,
+                                            showCancelButton: true,
+                                            confirmButtonText: 'Yuborish',
+                                            cancelButtonText: 'Ortga',
+                                            customClass: {
+                                                popup: 'swal2-xl'
+                                            },
+                                        }).then(function(result) {
+                                            if (result.isConfirmed) {
+                                                if (response.success) {
+                                                    Swal.fire({
+                                                        icon: 'success',
+                                                        title: 'Malumot Saqlandi!',
+                                                        text: 'Barcha ma\'lumotlar muvaffaqiyatli saqlandi.',
+                                                    }).then(function() {
+                                                        window.location.reload();
+                                                    });
+                                                } else {
+                                                    Swal.fire({
+                                                        icon: 'error',
+                                                        title: 'Xatolik!',
+                                                        text: 'Maʼlumotlarni saqlashda xatolik yuz berdi.',
+                                                    });
+                                                }
+                                            }
+                                        });
+                                    },
+                    
+                                    error: function(response) {
+                                        if (response.status === 422) {
+                                            let errors = response.responseJSON.errors;
+                    
+                                            // Prepare error message as HTML list
+                                            let errorMessage = '<ul class="error_list">';
+                                            for (let field in errors) {
+                                                errorMessage += `<li class="error_message">${errors[field][0]}</li>`;
+                                            }
+                                            errorMessage += '</ul>';
+                    
+                                            // Display errors in a Swal.fire modal
                                             Swal.fire({
-                                                icon: 'success',
-                                                title: 'Success!',
-                                                html: html,
-                                                showCancelButton: true,
-                                                confirmButtonText: 'Yuborish',
-                                                cancelButtonText: 'Ortga',
+                                                icon: 'error',
+                                                title: 'Tasdiqlash xatosi!',
+                                                html: errorMessage,
                                                 customClass: {
-                                                    popup: 'swal2-xl'
-                                                },
-                                            }).then(function(result) {
-                                                if (result.isConfirmed) {
-                                                    if (response.success) {
-                                                        Swal.fire({
-                                                            icon: 'success',
-                                                            title: 'Malumot Saqlandi!',
-                                                            text: 'Barcha ma\'lumotlar muvaffaqiyatli saqlandi.',
-                                                        }).then(function() {
-                                                            window.location.reload();
-                                                        });
-                                                    } else {
-                                                        Swal.fire({
-                                                            icon: 'error',
-                                                            title: 'Xatolik!',
-                                                            text: 'Maʼlumotlarni saqlashda xatolik yuz berdi.',
-                                                        });
-                                                    }
+                                                    popup: 'swal2-xl' // Optional: Apply custom styling
                                                 }
                                             });
-                                        },
-
-                                        error: function(response) {
-                                            if (response.status === 422) {
-                                                let errors = response.responseJSON.errors;
-
-                                                // Prepare error message as HTML list
-                                                let errorMessage = '<ul clas">';
-                                                for (let field in errors) {
-                                                    errorMessage += `<li class="error_message">${errors[field][0]}</li>`;
-                                                }
-                                                errorMessage += '</ul>';
-
-                                                // Display errors in a Swal.fire modal
-                                                Swal.fire({
-                                                    icon: 'error',
-                                                    title: 'Tasdiqlash xatosi!',
-                                                    html: errorMessage,
-                                                    customClass: {
-                                                        popup: 'swal2-xl' // Optional: Apply custom styling
-                                                    }
-                                                });
-                                            } else {
-                                                // Handle other types of errors
-                                                let errorMessage = 'Kutilmagan xatolik yuz berdi. Iltimos keyinroq qayta urinib ko\'ring.';
-                                                if (response.responseJSON && response.responseJSON.message) {
-                                                    errorMessage = response.responseJSON.message;
-                                                }
-                                                
-                                                // Display generic error message
-                                                Swal.fire({
-                                                    icon: 'error',
-                                                    title: 'Xatolik!',
-                                                    text: errorMessage
-                                                });
+                                        } else {
+                                            // Handle other types of errors
+                                            let errorMessage = 'Kutilmagan xatolik yuz berdi. Iltimos keyinroq qayta urinib ko\'ring.';
+                                            if (response.responseJSON && response.responseJSON.message) {
+                                                errorMessage = response.responseJSON.message;
                                             }
+                                            
+                                            // Display generic error message
+                                            Swal.fire({
+                                                icon: 'error',
+                                                title: 'Xatolik!',
+                                                text: errorMessage
+                                            });
+                                        }
                                     }
-                                    
-
                                 });
                             });
                         });
                     </script>
-
+                    
 
                 </div>
                 <!-- end card body -->
