@@ -49,8 +49,28 @@
                 </tbody>
             </table>
         @endforeach
-    @else
+
+        @else
+        
         <p>Not found</p>
-    @endif
+        @endif
+
+        <h3 class="text-center">Umumiy Obyekt xaqida malumotlar</h3>
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>To'lov</th>
+                    <th>Birinchi to'lov</th>
+                </tr>
+            </thead>
+            <tbody>
+                    <tr>
+                        <td>{{ $quarter }}</td>
+                        <td>{{ number_format($branch->first_payment_percent, 2) }}</td>
+                    </tr>
+            </tbody>
+        </table>
+
 </div>
 @endsection
