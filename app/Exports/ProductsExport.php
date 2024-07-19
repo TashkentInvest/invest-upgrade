@@ -29,7 +29,8 @@ class ProductsExport implements FromCollection, WithHeadings, WithColumnFormatti
                 ->join('companies', 'clients.id', '=', 'companies.client_id')
                 ->join('branches', 'clients.id', '=', 'branches.client_id')
                 ->join('addresses', 'clients.id', '=', 'addresses.client_id')
-                ->select($this->buildSelectColumns());
+                ->select($this->buildSelectColumns())
+                ->distinct();  // Add distinct to ensure unique results
 
             $query->where('clients.is_deleted', '!=', 1);
 
