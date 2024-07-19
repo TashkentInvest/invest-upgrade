@@ -68,15 +68,16 @@ class FileController extends Controller
 
 
    
-public function downloadExcel(Request $request)
-{
-    $columns = $request->input('columns', []);
-    $id = $request->input('id', null);
-    $startDate = $request->input('startDate', null);
-    $endDate = $request->input('endDate', null);
 
-    return Excel::download(new ProductsExport($id, $startDate, $endDate, $columns), 'products.xlsx');
-}
+    public function downloadExcel(Request $request)
+    {
+        $columns = $request->input('columns', []);
+        $id = $request->input('id', null);
+        $startDate = $request->input('startDate', null);
+        $endDate = $request->input('endDate', null);
+    
+        return Excel::download(new ProductsExport($id, $startDate, $endDate, $columns), 'products.xlsx');
+    }
 
     // public function downloadExcel(Request $request)
     // {

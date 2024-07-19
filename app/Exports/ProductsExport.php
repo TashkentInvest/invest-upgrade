@@ -148,12 +148,24 @@ class ProductsExport implements FromCollection, WithHeadings, WithColumnFormatti
     public function columnFormats(): array
     {
         $alphabet = range('A', 'Z');
-        $selectedFormats = [];
+        $formats = [];
 
         foreach (array_keys($this->selectedColumns) as $index => $column) {
-            $selectedFormats[$alphabet[$index]] = '@';
+            $columnIndex = $this->getColumnLetter($index);
+            $formats[$columnIndex] = '@';
         }
 
-        return $selectedFormats;
+        return $formats;
     }
+
+    protected function getColumnLetter($index)
+    {
+        $letters = '';
+        while ($index >= 0) {
+            $letters = chr(($index % 26) + 65) . $letters;
+            $index = intval($index / 26) - 1;
+        }
+        return $letters;
+    }
+
 }
