@@ -11,6 +11,11 @@ class Branch extends Model
 {
     use HasFactory;
 
+    protected $casts = [
+        'payed_date' => 'date',
+        'payment_deadline' => 'date',
+    ];
+
     protected $fillable = [
         'client_id',
         'contract_apt',

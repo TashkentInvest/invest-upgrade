@@ -1,10 +1,10 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
-    <h1>To'lov Choraklari</h1>
-    <h2>{{ $branch->branch_name }}</h2>
-    <a href="{{ route('payments.create', ['branch_id' => $branch->id]) }}" class="btn btn-primary mb-3">Yangi To'lov Qo'shish</a>
+<div class="container px-4 my-5">
+    <h1 class="mb-4 text-info">To'lov Choraklari</h1>
+    <h2 class="mb-4">{{ $branch->branch_name }}</h2>
+    <a href="{{ route('payments.create', ['branch_id' => $branch->id]) }}" class="btn btn-success mb-4">Yangi To'lov Qo'shish</a>
 
     @if($installments)
         @php
@@ -16,61 +16,78 @@
             }
         @endphp
 
-        <h3>Jami To'lov Miqdori: {{ number_format($totalSum, 2) }}</h3>
+        <div class="alert alert-primary mb-4">
+            <h3 class="mb-0">Jami To'langan Miqdor: {{ number_format($totalSum, 2) }} UZS</h3>
+        </div>
 
         @foreach($installments as $year => $quarters)
-            <h3>Yil: {{ $year }}</h3>
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th>Chorak</th>
-                        <th>To'lov Miqdori</th>
-                        <th>Izoh</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach($quarters as $quarter => $data)
+            <h3 class="mb-3 text-success">Yil: {{ $year }}</h3>
+            <div class="table-responsive mb-4">
+                <table class="table table-bordered table-hover">
+                    <thead class="table-light">
                         <tr>
-                            <td>{{ $quarter }}</td>
-                            <td>{{ number_format($data['total'], 2) }}</td>
-                            <td>
-                                @if(!empty($data['comments']))
-                                    <ul>
-                                        @foreach($data['comments'] as $comment)
-                                            <li>{{ $comment }}</li>
-                                        @endforeach
-                                    </ul>
-                                @else
-                                    <p>No comments</p>
-                                @endif
-                            </td>
+                            <th>Chorak</th>
+                            <th>To'lov Miqdori</th>
+                            <th>Izoh</th>
                         </tr>
-                    @endforeach
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                        @foreach($quarters as $quarter => $data)
+                            <tr>
+                                <td>{{ $quarter }}</td>
+                                <td>{{ number_format($data['total'], 2) }} UZS</td>
+
+                                <td>
+                                    @if(!empty($data['comments']))
+                                        <ul class="list-unstyled mb-0">
+                                            @foreach($data['comments'] as $comment)
+                                                <li><i class="bi bi-chat-text"></i> {{ $comment }}</li>
+                                            @endforeach
+                                        </ul>
+                                    @else
+                                        <p class="text-muted mb-0">No comments</p>
+                                    @endif
+                                </td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
         @endforeach
 
-        @else
-        
-        <p>Not found</p>
-        @endif
+    @else
+        <div class="alert alert-warning">
+            <p class="mb-0">Not found</p>
+        </div>
+    @endif
 
-        <h3 class="text-center">Umumiy Obyekt xaqida malumotlar</h3>
+    <h3 class="text-center text-info mb-4">Umumiy Obyekt xaqida malumotlar</h3>
 
-        <table class="table">
-            <thead>
+    <div class="table-responsive">
+        <table class="table table-bordered table-hover">
+            <thead class="table-light">
                 <tr>
-                    {{-- <th>To'lov</th> --}}
+                    <th>To'lov Foizi</th>
+                    <th>To'lov Choraki</th>
+                    <th>To'lov Summasi</th>
                     <th>Birinchi to'lov</th>
+                    <th>Chorak bo'yicha to'landigan summa</th>
+                    <th>To'lagan sana</th>
+                    <th>To'lovni tugatishi kerak bo'lgan sana</th>
                 </tr>
             </thead>
             <tbody>
-                    <tr>
-                        {{-- <td>{{ $quarter }}</td> --}}
-                        <td>{{ number_format($branch->first_payment_percent, 2) }}</td>
-                    </tr>
+                <tr>
+                    <td>{{ $branch->percentage_input }}%</td>
+                    <td>{{ $branch->installment_quarterly }}</td>
+                    <td>{{ number_format($branch->generate_price, 2) }} UZS</td>
+                    <td>{{ number_format($branch->first_payment_percent, 2) }} UZS</td>
+                    <td>{{ number_format($branch->generate_price - $branch->first_payment_percent, 2) }} UZS</td>
+                    <td>{{ $branch->payed_date ? $branch->payed_date->format('d-m-Y') : 'N/A' }}</td>
+                    <td>{{ $branch->payment_deadline ? $branch->payment_deadline->format('d-m-Y') : 'N/A' }}</td>
+                </tr>
             </tbody>
         </table>
-
+    </div>
 </div>
 @endsection
