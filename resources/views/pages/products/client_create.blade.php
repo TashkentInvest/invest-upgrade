@@ -973,7 +973,7 @@
                                         `;
                                         } else {
                                             html += `
-                                            <tr><th>Kopmaniya nomi'</th><td>${formData.get('company_name')}</td></
+                                            <tr><th>Kopmaniya nomi'</th><td>${formData.get('company_name')}</td>
                                             <tr><th>Raxbar</th><td>${formData.get('raxbar')}</td></tr>
                                             <tr><th>Bank Code</th><td>${formData.get('bank_code')}</td></tr>
                                             <tr><th>Bank Service</th><td>${formData.get('bank_service')}</td></tr>
