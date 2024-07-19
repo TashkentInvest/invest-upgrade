@@ -13,6 +13,7 @@ use App\Models\Category;
 use Carbon\Carbon;
 
 
+
 class FileController extends Controller
 {
 
@@ -58,12 +59,35 @@ class FileController extends Controller
 
         return Excel::download(new ProductsExport($id, $startDate, $endDate), $fileName);
     }
-    public function downloadExcel(Request $request)
-    {
-        $columns = $request->input('columns', []);
+    // public function downloadExcel(Request $request)
+    // {
+    //     $columns = $request->input('columns', []);
 
-        return Excel::download(new ProductsExport(null, null, null, $columns), 'products.xlsx');
-    }
+    //     return Excel::download(new ProductsExport(null, null, null, $columns), 'products.xlsx');
+    // }
+
+
+   
+public function downloadExcel(Request $request)
+{
+    $columns = $request->input('columns', []);
+    $id = $request->input('id', null);
+    $startDate = $request->input('startDate', null);
+    $endDate = $request->input('endDate', null);
+
+    return Excel::download(new ProductsExport($id, $startDate, $endDate, $columns), 'products.xlsx');
+}
+
+    // public function downloadExcel(Request $request)
+    // {
+    //     $columns = $request->input('columns', []);
+    //     $id = $request->input('id', null);
+    //     $startDate = $request->input('startDate', null);
+    //     $endDate = $request->input('endDate', null);
+
+    //     return (new ProductsExport($id, $startDate, $endDate, $columns))->download('products.xlsx');
+    // }
+
     public function showColumnSelectionForm()
     {
         return view('pages.exel.select_columns');

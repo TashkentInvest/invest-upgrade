@@ -30,7 +30,7 @@ class ProductsExport implements FromCollection, WithHeadings, WithColumnFormatti
                 ->join('branches', 'clients.id', '=', 'branches.client_id')
                 ->join('addresses', 'clients.id', '=', 'addresses.client_id')
                 ->select($this->buildSelectColumns())
-                ->distinct();  // Add distinct to ensure unique results
+                ->distinct();
 
             $query->where('clients.is_deleted', '!=', 1);
 
@@ -44,9 +44,15 @@ class ProductsExport implements FromCollection, WithHeadings, WithColumnFormatti
 
             $collection = $query->get();
 
-            // Remove the 'number' attribute
+            // Process the collection to add file counts
             $collection->each(function ($item) {
-                unset($item->number);
+                $item->document_count = $this->getFileCount($item->client_id, 'documents/');
+                $item->payment_count = $this->getFileCount($item->client_id, 'payment/');
+                $item->ruxsatnoma_count = $this->getFileCount($item->client_id, 'ruxsatnoma/');
+                $item->kengash_count = $this->getFileCount($item->client_id, 'kengash/');
+                $item->loyiha_xujjati_count = $this->getFileCount($item->client_id, 'loyiha_xujjati/');
+                $item->qurilish_xajmi_count = $this->getFileCount($item->client_id, 'qurilish_xajmi/');
+                $item->apz_count = $this->getFileCount($item->client_id, 'apz/');
             });
 
             return $collection->map(function ($item) {
@@ -61,6 +67,7 @@ class ProductsExport implements FromCollection, WithHeadings, WithColumnFormatti
     protected function buildSelectColumns()
     {
         $columns = [
+            'clients.id' => 'clients.id AS client_id',
             'application_number' => 'branches.application_number AS application_number',
             'contract_number' => 'branches.contract_apt AS contract_number',
             'contract_date' => 'branches.contract_date AS contract_date',
@@ -80,16 +87,31 @@ class ProductsExport implements FromCollection, WithHeadings, WithColumnFormatti
             'insurance_policy' => 'branches.insurance_policy AS insurance_policy',
             'bank_guarantee' => 'branches.bank_guarantee AS bank_guarantee',
             'contact' => 'clients.contact AS contact',
-            'note' => 'clients.client_description AS note'
+            'note' => 'clients.client_description AS note',
+            // New columns for file counts
+            'document_count' => DB::raw('0 AS document_count'),
+            'payment_count' => DB::raw('0 AS payment_count'),
+            'ruxsatnoma_count' => DB::raw('0 AS ruxsatnoma_count'),
+            'kengash_count' => DB::raw('0 AS kengash_count'),
+            'loyiha_xujjati_count' => DB::raw('0 AS loyiha_xujjati_count'),
+            'qurilish_xajmi_count' => DB::raw('0 AS qurilish_xajmi_count'),
+            'apz_count' => DB::raw('0 AS apz_count'),
         ];
-    
-        return array_intersect_key($columns, array_flip($this->selectedColumns));
+
+        return array_intersect_key($columns, array_flip($this->selectedColumns)) + ['clients.id' => 'clients.id AS client_id'];
     }
-    
+
+    protected function getFileCount($clientId, $path)
+    {
+        return DB::table('files')
+            ->where('client_id', $clientId)
+            ->where('path', 'LIKE', '%' . $path . '%')
+            ->count();
+    }
+
     public function headings(): array
     {
         $headings = [
-            'number' => '№',
             'application_number' => 'Номер заявления',
             'contract_number' => '№ договора',
             'contract_date' => 'Дата договора',
@@ -109,7 +131,15 @@ class ProductsExport implements FromCollection, WithHeadings, WithColumnFormatti
             'insurance_policy' => 'Страховой полис',
             'bank_guarantee' => 'Банковская гарантия',
             'contact' => 'Контакты',
-            'note' => 'Примечание'
+            'note' => 'Примечание',
+            // New headings for file counts
+            'document_count' => 'Количество документов',
+            'payment_count' => 'Количество платежей',
+            'ruxsatnoma_count' => 'Количество разрешений',
+            'kengash_count' => 'Количество кенгашей',
+            'loyiha_xujjati_count' => 'Количество проектов',
+            'qurilish_xajmi_count' => 'Количество строительных объемов',
+            'apz_count' => 'Количество APZ',
         ];
 
         return array_values(array_intersect_key($headings, array_flip($this->selectedColumns)));
@@ -117,26 +147,6 @@ class ProductsExport implements FromCollection, WithHeadings, WithColumnFormatti
 
     public function columnFormats(): array
     {
-        $formats = [
-            'A' => '@',
-            'B' => '@',
-            'C' => '@',
-            'D' => '@',
-            'E' => '@',
-            'F' => '@',
-            'G' => '@',
-            'H' => '@',
-            'I' => '@',
-            'J' => '@',
-            'K' => '@',
-            'L' => '@',
-            'M' => '@',
-            'N' => '@',
-            'O' => '@',
-            'P' => '@',
-            'Q' => '@'
-        ];
-
         $alphabet = range('A', 'Z');
         $selectedFormats = [];
 

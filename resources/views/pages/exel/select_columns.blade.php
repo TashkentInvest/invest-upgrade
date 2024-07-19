@@ -11,7 +11,6 @@
         <div class="form-group">
             @php
                 $columns = [
-                    // 'number' => '№',
                     'application_number' => 'Номер заявления',
                     'contract_number' => '№ договора',
                     'contract_date' => 'Дата договора',
@@ -31,7 +30,15 @@
                     'insurance_policy' => 'Страховой полис',
                     'bank_guarantee' => 'Банковская гарантия',
                     'contact' => 'Контакты',
-                    'note' => 'Примечание'
+                    'note' => 'Примечание',
+                    // New columns for file counts
+                    'document_count' => 'Количество документов',
+                    'payment_count' => 'Количество платежей',
+                    'ruxsatnoma_count' => 'Количество разрешений',
+                    'kengash_count' => 'Количество кенгашей',
+                    'loyiha_xujjati_count' => 'Количество проектов',
+                    'qurilish_xajmi_count' => 'Количество строительных объемов',
+                    'apz_count' => 'Количество APZ',
                 ];
             @endphp
             @foreach($columns as $key => $value)
@@ -44,8 +51,6 @@
             @endforeach
         </div>
         <div class="d-flex justify-content-between">
-
-
             <button type="submit" class="btn btn-primary">@lang('global.downloadFile')</button>
             <a href="{{route('clientIndex')}}" class="btn btn-primary">@lang('global.home')</a>
         </div>
