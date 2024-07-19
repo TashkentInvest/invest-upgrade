@@ -73,10 +73,17 @@ Route::group(['middleware' => ['auth', 'checkUserRole']], function () {
     Route::get('/apz-second', [ClientController::class, 'apz_second'])->name('apz.second');
     Route::get('/client/confirm', [ClientController::class, 'client_confirm'])->name('clientFormConfirm');
     // payment start
+// 
     Route::get('/branches/{id}/installments', [ClientController::class, 'showInstallments'])->name('branches.installments');
     Route::get('/payments/create/{branch_id}', [ClientController::class, 'payment_create'])->name('payments.create');
     Route::post('/payments', [ClientController::class, 'payment_store'])->name('payments.store');
-    Route::get('/payment/show/{id}', [ClientController::class, 'payment_show'])->name('payment.show');
+    Route::get('/payment/{id}/edit', [ClientController::class, 'payment_edit'])->name('payments.edit');
+    Route::get('/payment/{id}', [ClientController::class, 'branch_show'])->name('payment.show');
+    Route::put('/payment/{id}/update', [ClientController::class, 'payment_update'])->name('payment.update');
+    Route::delete('/payment/{id}', [ClientController::class, 'payment_delete'])->name('paymentDestroy');
+
+
+
     // payment end
 
     // Permissions

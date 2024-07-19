@@ -703,6 +703,14 @@ class ClientController extends Controller
 
         return view('pages.branches.create', compact('branch_id'));
     }
+    public function payment_edit($id)
+    {
+        $payment = Payment::findOrFail($id);
+
+        // Log::info('Opening payment creation form', ['branch_id' => $branch_id]);
+
+        return view('pages.branches.edit', compact('payment'));
+    }
 
     public function payment_store(Request $request)
     {
@@ -713,12 +721,6 @@ class ClientController extends Controller
             'comment' => 'nullable|string',
         ]);
 
-        // Log::info('Storing new payment', [
-        //     'branch_id' => $validatedData['branch_id'],
-        //     'amount' => $validatedData['amount'],
-        //     'payment_date' => $validatedData['payment_date'],
-        //     'comment' => $validatedData['comment']
-        // ]);
 
         Payment::create($validatedData);
 
@@ -731,11 +733,42 @@ class ClientController extends Controller
                          ->with('success', 'To\'lov muvaffaqiyatli qo\'shildi');
     }
 
-    public function payment_show($id)
+    public function branch_show($id)
     {
 
         $branch = Branch::with('payments')->findOrFail($id);
 
         return view('pages.branches.payment-show', compact('branch'));
     }
+    
+    public function payment_delete($id)
+    {
+        try {
+            $payment = Payment::where('id', $id)->firstOrFail();
+
+            $payment->delete();
+
+            return redirect()->back()->with('success', 'Client marked as deleted successfully');
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', 'An error occurred while marking the client as deleted: ' . $e->getMessage());
+        }
+    }
+
+    public function payment_update(Request $request, $id)
+    {
+        $validatedData = $request->validate([
+            'branch_id' => 'required|exists:branches,id',
+            'amount' => 'required|numeric',
+            'payment_date' => 'required|date',
+            'comment' => 'nullable|string',
+        ]);
+
+        $payment = Payment::findOrFail($id);
+        $payment->update($validatedData);
+
+        return redirect()->route('branches.installments', $validatedData['branch_id'])
+                        ->with('success', 'To\'lov muvaffaqiyatli yangilandi');
+    }
+
+
 }

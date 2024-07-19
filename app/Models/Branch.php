@@ -14,6 +14,7 @@ class Branch extends Model
     protected $casts = [
         'payed_date' => 'date',
         'payment_deadline' => 'date',
+        'generate_price'=>'float'
     ];
 
     protected $fillable = [
