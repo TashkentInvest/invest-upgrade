@@ -53,6 +53,9 @@
                                     <button type="button" class="btn btn-info btn-sm" data-bs-toggle="modal" data-bs-target="#detailsModal_{{$year}}_{{ $quarter[0] }}">
                                         View Details
                                     </button>
+
+                                    <!-- Link to the payment details -->
+                                 
                                 </td>
                             </tr>
 
@@ -77,6 +80,9 @@
                                                 <p>No comments</p>
                                             @endif
                                             <p><strong>Additional Details:</strong></p>
+                                            {{-- {{$branch->payments}} --}}
+                                               
+                                        
                                             <!-- Add any additional details here -->
                                         </div>
                                         <div class="modal-footer">
@@ -110,6 +116,7 @@
                     <th>Chorak bo'yicha to'landigan summa</th>
                     <th>To'lagan sana</th>
                     <th>To'lovni tugatishi kerak bo'lgan sana</th>
+                    <th>Barcha Ma'lumotlar</th>
                 </tr>
             </thead>
             <tbody>
@@ -121,6 +128,11 @@
                     <td>{{ number_format($branch->generate_price - $branch->first_payment_percent, 2) }} UZS</td>
                     <td>{{ $branch->payed_date ? $branch->payed_date->format('d-m-Y') : 'N/A' }}</td>
                     <td>{{ $branch->payment_deadline ? $branch->payment_deadline->format('d-m-Y') : 'N/A' }}</td>
+                    <td>
+                        <a href="{{ route('payment.show', $branch->id) }}" class="btn btn-info btn-sm">
+                            Show
+                        </a>
+                    </td>
                 </tr>
             </tbody>
         </table>

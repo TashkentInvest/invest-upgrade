@@ -8,7 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Payment extends Model
 {
     use HasFactory;
-
+    protected $casts = [
+        'payment_date' => 'date',
+    ];
     protected $fillable = [
         'branch_id', 'amount', 'payment_date','comment'
     ];

@@ -76,6 +76,7 @@ Route::group(['middleware' => ['auth', 'checkUserRole']], function () {
     Route::get('/branches/{id}/installments', [ClientController::class, 'showInstallments'])->name('branches.installments');
     Route::get('/payments/create/{branch_id}', [ClientController::class, 'payment_create'])->name('payments.create');
     Route::post('/payments', [ClientController::class, 'payment_store'])->name('payments.store');
+    Route::get('/payment/show/{id}', [ClientController::class, 'payment_show'])->name('payment.show');
     // payment end
 
     // Permissions

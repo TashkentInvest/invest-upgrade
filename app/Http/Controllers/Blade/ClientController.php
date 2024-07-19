@@ -730,4 +730,12 @@ class ClientController extends Controller
         return redirect()->route('branches.installments', $validatedData['branch_id'])
                          ->with('success', 'To\'lov muvaffaqiyatli qo\'shildi');
     }
+
+    public function payment_show($id)
+    {
+
+        $branch = Branch::with('payments')->findOrFail($id);
+
+        return view('pages.branches.payment-show', compact('branch'));
+    }
 }
