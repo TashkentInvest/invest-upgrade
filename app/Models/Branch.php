@@ -63,50 +63,57 @@ class Branch extends Model
     {
         $firstPaymentPercent = $this->first_payment_percent;
         $installmentQuarterly = $this->installment_quarterly;
-
+    
         Log::info('Calculating installments', [
             'first_payment_percent' => $firstPaymentPercent,
             'installment_quarterly' => $installmentQuarterly
         ]);
-
+    
         if ($firstPaymentPercent && $installmentQuarterly) {
             $payments = $this->payments()->orderBy('payment_date')->get();
             $totalPayments = $payments->sum('amount');
-
+    
             Log::info('Total payments', ['total_payments' => $totalPayments]);
-
+    
             $amountAfterFirstPayment = $totalPayments - ($totalPayments * ($firstPaymentPercent / 100));
             Log::info('Amount after first payment', ['amount_after_first_payment' => $amountAfterFirstPayment]);
-
+    
             $quarterlyInstallment = $amountAfterFirstPayment / $installmentQuarterly;
             Log::info('Quarterly installment amount', ['quarterly_installment' => $quarterlyInstallment]);
-
+    
             $installments = [];
-
+    
             foreach ($payments as $payment) {
                 $paymentDate = Carbon::parse($payment->payment_date);
                 $year = $paymentDate->year;
                 $quarter = $this->getQuarter($paymentDate);
-
+    
                 if (!isset($installments[$year])) {
                     $installments[$year] = [];
                 }
-
+    
                 if (!isset($installments[$year][$quarter])) {
-                    $installments[$year][$quarter] = 0;
+                    $installments[$year][$quarter] = [
+                        'total' => 0,
+                        'comments' => []
+                    ];
                 }
-
-                $installments[$year][$quarter] += $payment->amount;
+    
+                $installments[$year][$quarter]['total'] += $payment->amount;
+    
+                if (!empty($payment->comment)) {
+                    $installments[$year][$quarter]['comments'][] = $payment->comment;
+                }
             }
-
+    
             Log::info('Installments breakdown', ['installments' => $installments]);
-
+    
             return $installments;
         }
-
+    
         return null;
     }
-
+    
     private function getQuarter(Carbon $date)
     {
         $quarter = ceil($date->month / 3);
