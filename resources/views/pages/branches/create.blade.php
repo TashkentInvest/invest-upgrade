@@ -23,7 +23,7 @@
             <input type="text" name="comment" id="comment" class="form-control">
         </div>
 
-        <button type="submit" class="btn btn-primary">Saqlash</button>
+        <button type="submit" class="btn btn-primary my-2">Saqlash</button>
     </form>
 </div>
 @endsection

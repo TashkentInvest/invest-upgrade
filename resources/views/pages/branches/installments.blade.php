@@ -13,8 +13,8 @@
             padding: 0;
         }
         .container {
-            max-width: 1000px;
-            margin: 20px auto;
+            max-width: 1800px;
+            margin: 50px auto;
             padding: 20px;
             background-color: #ffffff;
             border-radius: 4px;
@@ -45,6 +45,16 @@
             border-radius: 4px;
             margin-bottom: 20px;
             border: 1px solid #ccc;
+        }
+        .card {
+            background-color: #ffffff;
+            border-radius: 4px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            padding: 20px;
+        }
+        .card h3 {
+            margin-top: 0;
         }
         .table {
             width: 100%;
@@ -89,87 +99,83 @@
             <h3>Jami To'langan Miqdor: {{ number_format($totalSum, 2) }} UZS</h3>
         </div>
 
-        <!-- Installments Table -->
+        <!-- Installments Table Card -->
         @foreach($installments as $year => $quarters)
-            <h3>Yil: {{ $year }}</h3>
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th>Chorak</th>
-                        <th>To'lov Miqdori</th>
-                        <th>Izoh</th>
-                        <th>Details</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach($quarters as $quarter => $data)
+            <div class="card">
+                <h3>Yil: {{ $year }}</h3>
+                <table class="table">
+                    <thead>
                         <tr>
-                            <td>{{ $quarter }}</td>
-                            <td>{{ number_format($data['total'], 2) }} UZS</td>
-                            <td>
-                                @if(!empty($data['comments']))
-                                    <ul style="list-style: none; padding: 0; margin: 0;">
-                                        @foreach($data['comments'] as $comment)
-                                            <li>{{ $comment }}</li>
-                                        @endforeach
-                                    </ul>
-                                @else
-                                    <p>No comments</p>
-                                @endif
-                            </td>
-                            <td>
-                                <!-- Button trigger modal -->
-                                <button type="button" class="btn-custom" data-bs-toggle="modal" data-bs-target="#detailsModal_{{$year}}_{{ $quarter[0] }}">
-                                    View Details
-                                </button>
-                            </td>
+                            <th>Chorak</th>
+                            <th>To'lov Miqdori</th>
+                            <th>Izoh</th>
+                            {{-- <th>Details</th> --}}
                         </tr>
-
-                      
-                    @endforeach
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                        @foreach($quarters as $quarter => $data)
+                            <tr>
+                                <td>{{ $quarter }}</td>
+                                <td>{{ number_format($data['total'], 2) }} UZS</td>
+                                <td>
+                                    @if(!empty($data['comments']))
+                                        <ul style="list-style: none; padding: 0; margin: 0;">
+                                            @foreach($data['comments'] as $comment)
+                                                <li>{{ $comment }}</li>
+                                            @endforeach
+                                        </ul>
+                                    @else
+                                        <p>No comments</p>
+                                    @endif
+                                </td>
+                             
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
         @endforeach
 
     @else
         <div class="alert-custom">
-            <p class="mb-0">Not found</p>
+            <p class="mb-0">Afsuski topilmadi</p>
         </div>
     @endif
 
-    <!-- General Object Information -->
-    <h3>Umumiy Obyekt xaqida malumotlar</h3>
-
-    <table class="table">
-        <thead>
-            <tr>
-                <th>To'lov Foizi</th>
-                <th>To'lov Choraki</th>
-                <th>To'lov Summasi</th>
-                <th>Birinchi to'lov</th>
-                <th>Chorak bo'yicha to'landigan summa</th>
-                <th>To'lagan sana</th>
-                <th>To'lovni tugatishi kerak bo'lgan sana</th>
-                <th>Barcha Ma'lumotlar</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>{{ $branch->percentage_input }}%</td>
-                <td>{{ $branch->installment_quarterly }}</td>
-                <td>{{ number_format($branch->generate_price, 2) }} UZS</td>
-                <td>{{ number_format($branch->first_payment_percent, 2) }} UZS</td>
-                <td>{{ number_format($branch->generate_price - $branch->first_payment_percent, 2) }} UZS</td>
-                <td>{{ $branch->payed_date ? $branch->payed_date->format('d-m-Y') : 'N/A' }}</td>
-                <td>{{ $branch->payment_deadline ? $branch->payment_deadline->format('d-m-Y') : 'N/A' }}</td>
-                <td>
-                    <a href="{{ route('payment.show', $branch->id) }}" class="btn-custom">
-                        Show
-                    </a>
-                </td>
-            </tr>
-        </tbody>
-    </table>
+    <!-- General Object Information Card -->
+    <div class="card">
+        <h3>Umumiy Obyekt xaqida malumotlar</h3>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>To'lov Foizi</th>
+                    <th>To'lov Choraki</th>
+                    <th>To'lov Summasi</th>
+                    <th>Birinchi to'lov</th>
+                    <th>Chorak bo'yicha to'landigan summa</th>
+                    <th>To'lagan sana</th>
+                    <th>To'lovni tugatishi kerak bo'lgan sana</th>
+                    <th>Barcha Ma'lumotlar</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>{{ $branch->percentage_input }}%</td>
+                    <td>{{ $branch->installment_quarterly }}</td>
+                    <td>{{ number_format($branch->generate_price, 2) }} UZS</td>
+                    <td>{{ number_format($branch->first_payment_percent, 2) }} UZS</td>
+                    <td>{{ number_format($branch->generate_price - $branch->first_payment_percent, 2) }} UZS</td>
+                    <td>{{ $branch->payed_date ? $branch->payed_date->format('d-m-Y') : 'N/A' }}</td>
+                    <td>{{ $branch->payment_deadline ? $branch->payment_deadline->format('d-m-Y') : 'N/A' }}</td>
+                    <td>
+                        <a href="{{ route('payment.show', $branch->id) }}" class="btn-custom">
+                            Batafsil
+                        </a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 </div>
 
 <!-- Include Bootstrap JS (optional) -->
