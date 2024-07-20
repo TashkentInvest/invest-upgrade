@@ -102,28 +102,32 @@
     </table>
 
     <h2>Deleted Data</h2>
-    <table>
-        <thead>
-            <tr>
-                @foreach ($deletedClients->first()->getAttributes() as $key => $value)
-                    <th>{{ $key }}</th>
-                @endforeach
-                <th>Deleted At</th>
-                <th>Details</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach ($deletedClients as $client)
+    @if ($deletedClients->isNotEmpty())
+        <table>
+            <thead>
                 <tr>
-                    @foreach ($client->getAttributes() as $key => $value)
-                        <td>{{ $value }}</td>
+                    @foreach ($deletedClients->first()->getAttributes() as $key => $value)
+                        <th>{{ $key }}</th>
                     @endforeach
-                    <td>{{ $client->deleted_at }}</td>
-                    <td><span class="detail-link" onclick="showDetails({{ $client->id }})">Details</span></td>
+                    <th>Deleted At</th>
+                    <th>Details</th>
                 </tr>
-            @endforeach
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+                @foreach ($deletedClients as $client)
+                    <tr>
+                        @foreach ($client->getAttributes() as $key => $value)
+                            <td>{{ $value }}</td>
+                        @endforeach
+                        <td>{{ $client->deleted_at }}</td>
+                        <td><span class="detail-link" onclick="showDetails({{ $client->id }})">Details</span></td>
+                    </tr>
+                @endforeach
+            </tbody>
+        </table>
+    @else
+        <p>No deleted clients found.</p>
+    @endif
 </div>
 
 <div id="detailsModal" class="modal">
