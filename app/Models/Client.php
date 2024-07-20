@@ -5,11 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Venturecraft\Revisionable\RevisionableTrait;
+use Illuminate\Database\Eloquent\SoftDeletes;
+
 
 
 class Client extends Model
 {
-    use HasFactory, RevisionableTrait;
+    use HasFactory, SoftDeletes, RevisionableTrait;
 
     protected $casts = [
         'birth_date' => 'date',
@@ -31,7 +33,10 @@ class Client extends Model
         'confirmed_for_client',
         'birth_date'
     ];
-
+    protected $revisionCreationsEnabled = true; // Enable revision creation
+    protected $revisionFormattedFields = [
+        'deleted_at' => 'isEmpty:is present',
+    ];
 
     public function category()
     {

@@ -153,6 +153,8 @@ Route::group(['middleware' => ['auth', 'checkUserRole']], function () {
     Route::get('/request-confirm', [HistoryController::class, 'confirm'])->name('request.confirm');
     Route::get('/history/{id}', [HistoryController::class, 'showHistory'])->name('history.show');
     Route::get('/revisions', [RevisionController::class, 'index'])->name('revisions.index');
+    Route::get('/revisions/client/{id}', [RevisionController::class, 'clientDetails']);
+
 
 
 

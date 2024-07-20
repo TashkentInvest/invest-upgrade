@@ -7,11 +7,12 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Log;
 use Venturecraft\Revisionable\RevisionableTrait;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 
 class Branch extends Model
 {
-    use HasFactory, RevisionableTrait;
+    use HasFactory, SoftDeletes, RevisionableTrait;
 
 
     protected $casts = [

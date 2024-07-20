@@ -642,13 +642,7 @@ class ClientController extends Controller
     {
         try {
             $client = Client::where('id', $id)->firstOrFail();
-
-            // $client->update([
-            //     'is_deleted' => 1,
-            //     'stir'=>null
-            // ]);
-            $client->delete();
-
+            $client->delete(); // Soft delete the client
             return redirect()->back()->with('success', 'Client marked as deleted successfully');
         } catch (\Exception $e) {
             return redirect()->back()->with('error', 'An error occurred while marking the client as deleted: ' . $e->getMessage());
