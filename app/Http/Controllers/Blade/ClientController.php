@@ -643,11 +643,11 @@ class ClientController extends Controller
         try {
             $client = Client::where('id', $id)->firstOrFail();
 
-            $client->update([
-                'is_deleted' => 1,
-                'stir'=>null
-            ]);
-            // $client->delete();
+            // $client->update([
+            //     'is_deleted' => 1,
+            //     'stir'=>null
+            // ]);
+            $client->delete();
 
             return redirect()->back()->with('success', 'Client marked as deleted successfully');
         } catch (\Exception $e) {

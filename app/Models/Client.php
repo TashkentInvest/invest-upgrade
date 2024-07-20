@@ -4,10 +4,12 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Venturecraft\Revisionable\RevisionableTrait;
+
 
 class Client extends Model
 {
-    use HasFactory;
+    use HasFactory, RevisionableTrait;
 
     protected $casts = [
         'birth_date' => 'date',

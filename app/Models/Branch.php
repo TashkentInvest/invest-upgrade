@@ -6,10 +6,13 @@ use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Log;
+use Venturecraft\Revisionable\RevisionableTrait;
+
 
 class Branch extends Model
 {
-    use HasFactory;
+    use HasFactory, RevisionableTrait;
+
 
     protected $casts = [
         'payed_date' => 'date',

@@ -16,6 +16,7 @@ use App\Http\Controllers\FileController;
 use App\Http\Controllers\HistoryController;
 use App\Http\Controllers\ImportController;
 use App\Http\Controllers\NumberToTextController;
+use App\Http\Controllers\RevisionController;
 use App\Http\Controllers\TransactionController;
 
 // Default laravel auth routes
@@ -151,6 +152,8 @@ Route::group(['middleware' => ['auth', 'checkUserRole']], function () {
     Route::get('/history', [HistoryController::class, 'index'])->name('history.index');
     Route::get('/request-confirm', [HistoryController::class, 'confirm'])->name('request.confirm');
     Route::get('/history/{id}', [HistoryController::class, 'showHistory'])->name('history.show');
+    Route::get('/revisions', [RevisionController::class, 'index'])->name('revisions.index');
+
 
 
 
