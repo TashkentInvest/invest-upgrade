@@ -276,7 +276,12 @@
                             @foreach ($clients as $item)
                                 <tr>
                                     <td class="{{ $item->files->isNotEmpty() ? '' : 'bg-secondary text-light' }}">
-                                        {{ $item->id }}</td>
+                                        @if($item->created_by_client == 0)
+                                        {{ $item->id }}
+                                        @else
+                                        {{ $item->id }} 📲
+                                        @endif
+                                    </td>
                                     @if ($item->mijoz_turi == 'fizik')
                                         <td>{{ $item->last_name }} {{ $item->first_name }} {{ $item->father_name }}</td>
                                     @else
