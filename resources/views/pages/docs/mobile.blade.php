@@ -123,7 +123,7 @@
                         </tr>
                         <tr>
                             <td class="bold">@lang('global.loyiha_nomi'):</td>
-                            <td>{{ $b->branch_type ?? '' }}</td>
+                            <td>{{ $b->branch_name ?? '' }}</td>
                         </tr>
                         <tr>
                             <td class="bold">@lang('cruds.company.fields.branch_type'):</td>
