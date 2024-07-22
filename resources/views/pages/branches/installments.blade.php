@@ -97,7 +97,8 @@
 
         <div class="alert-custom">
             <h3>Jami To'langan Miqdor: {{ number_format($totalSum, 2) }} UZS</h3>
-            <h3>Qolgan to'lashi kereak: {{ number_format(($branch->generate_price - $branch->first_payment_percent) - $totalSum, 2) }} UZS</h3>
+            {{-- <h3>Qolgan to'lashi kereak: {{ number_format(($branch->generate_price - $branch->first_payment_percent) - $totalSum, 2) }} UZS</h3> --}}
+            <h3>Qolgan to'lashi kereak: {{ number_format(($branch->generate_price ) - $totalSum, 2) }} UZS</h3>
         </div>
 
         <!-- Installments Table Card -->
