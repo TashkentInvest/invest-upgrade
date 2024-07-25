@@ -83,7 +83,7 @@ class FileController extends Controller
         }
 
         
-    return view('pages.docs.bolib_pay.yurik_bolib_new', compact('client', 'branch'));
+    return view('pages.docs.full_pay.yurik_full_new', compact('client', 'branch'));
         // return Response::make(view('pages.docs.mobile', compact('client')), 200, $headers);
     }
     public function downloadFullTableData($startDate = null, $endDate = null)
@@ -224,6 +224,38 @@ class FileController extends Controller
                 $branch->generate_price_text = $this->transformToText(floor($branch->generate_price));
             }else{
                 $branch->generate_price_text = $this->transformToText(floor($branch->generate_price));
+            }
+
+            $branch->percentage_input;
+            if ($this->isValidValue(number_format($branch->percentage_input, 0, '', ''))) {
+                $branch->percentage_input_text = $this->transformToText(floor($branch->percentage_input));
+            }else{
+                $branch->percentage_input_text = $this->transformToText(floor($branch->percentage_input));
+
+            }
+
+            $branch->first_payment_percent;
+            if ($this->isValidValue(number_format($branch->first_payment_percent, 0, '', ''))) {
+                $branch->first_payment_percent_text = $this->transformToText(floor($branch->first_payment_percent));
+            }else{
+                $branch->first_payment_percent_text = $this->transformToText(floor($branch->first_payment_percent));
+
+            }
+
+            $branch->qolgan_foiz = (100 - $branch->percentage_input);
+            if ($this->isValidValue(number_format($branch->qolgan_foiz, 0, '', ''))) {
+                $branch->qolgan_foiz_text = $this->transformToText(floor($branch->qolgan_foiz));
+            }else{
+                $branch->qolgan_foiz_text = $this->transformToText(floor($branch->qolgan_foiz));
+
+            }
+
+            $branch->qolgan_tolov = ($branch->generate_price - $branch->first_payment_percent);
+            if ($this->isValidValue(number_format($branch->qolgan_tolov, 0, '', ''))) {
+                $branch->qolgan_tolov_text = $this->transformToText(floor($branch->qolgan_tolov));
+            }else{
+                $branch->qolgan_tolov_text = $this->transformToText(floor($branch->qolgan_tolov));
+
             }
             $branch->branch_type;
             $branch->branch_type_text;
