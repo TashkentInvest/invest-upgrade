@@ -568,10 +568,10 @@
                                                                     <label for="contract_date">@lang('global.sanasi')</label>
                                                                     <input class="form-control" type="date"
                                                                         name="accordions[{{ $branchIndex }}][contract_date]"
-                                                                        value="{{ old('accordions.' . $branchIndex . '.contract_date', $b->contract_date) }}">
-
+                                                                        value="{{ old('accordions.' . $branchIndex . '.contract_date', optional($b->contract_date)->format('Y-m-d')) }}">
                                                                 </div>
                                                             </div>
+                                                            
 
                                                             <div class="col-12 col-md-6 col-lg-6 col-xl-3">
                                                                 <div class="mb-3">
@@ -607,25 +607,26 @@
                                                                 </div>
                                                             </div>
 
-                                                            <div class="col-12 col-md-6 col-lg-4 col-xl-4 ">
+                                                            <div class="col-12 col-md-6 col-lg-4 col-xl-4">
                                                                 <div class="mb-3">
                                                                     <label for="payed_date">@lang('cruds.branches.fields.payed_date')</label>
                                                                     <input type="date" class="form-control"
                                                                         name="accordions[{{ $branchIndex }}][payed_date]"
-                                                                        value="{{ old('accordions.' . $branchIndex . '.payed_date', $b->payed_date) }}"
+                                                                        value="{{ old('accordions.' . $branchIndex . '.payed_date', optional($b->payed_date)->format('Y-m-d')) }}"
                                                                         placeholder="@lang('cruds.branches.fields.payed_date')">
                                                                 </div>
                                                             </div>
-
-                                                            <div class="col-12 col-md-6 col-lg-4 col-xl-4 ">
+                                                            
+                                                            <div class="col-12 col-md-6 col-lg-4 col-xl-4">
                                                                 <div class="mb-3">
-                                                                    <label for="payment_deadline">To'lov muddati</label>
+                                                                    <label for="payment_deadline">@lang('global.payment_deadline')</label>
                                                                     <input type="date" class="form-control"
                                                                         name="accordions[{{ $branchIndex }}][payment_deadline]"
-                                                                        value="{{ old('accordions.' . $branchIndex . '.payment_deadline', $b->payment_deadline) }}"
-                                                                        placeholder="To'lov muddati">
+                                                                        value="{{ old('accordions.' . $branchIndex . '.payment_deadline', optional($b->payment_deadline)->format('Y-m-d')) }}"
+                                                                        placeholder="@lang('global.payment_deadline')">
                                                                 </div>
                                                             </div>
+                                                            
 
                                                             <div class="col-12 col-md-6 col-lg-6 col-xl-6 ">
                                                                 <div class="mb-3">
