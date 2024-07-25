@@ -22,6 +22,8 @@ class Branch extends Model
         'generate_price'=>'float'
     ];
 
+
+
     protected $fillable = [
         'client_id',
         'contract_apt',
