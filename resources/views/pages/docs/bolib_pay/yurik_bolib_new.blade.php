@@ -155,8 +155,9 @@
                         <p style="margin-top:0pt; margin-bottom:0pt; font-size:12pt;"><strong>&nbsp;</strong></p>
                         <p style="margin-top:0pt; margin-bottom:0pt; font-size:12pt;"><strong>&nbsp;</strong></p>
                         <p style="margin-top:0pt; margin-bottom:0pt; font-size:12pt;"><strong>&nbsp;</strong></p>
+                        <p style="margin-top:0pt; margin-bottom:0pt; font-size:12pt;"><strong>&nbsp;</strong></p>
                     </div>
-                    <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; font-size:12pt;"><strong>{{$client->company->company_name}} МЧЖ директори {{$client->last_name}} {{$client->first_name}} {{$client->father_name}}</strong></p>
+                    <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; font-size:12pt;"><strong>{{$client->last_name}} {{$client->first_name}} {{$client->father_name}}</strong></p>
                 </td>
             </tr>
         </tbody>
