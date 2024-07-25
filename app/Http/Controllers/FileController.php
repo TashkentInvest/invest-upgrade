@@ -32,11 +32,17 @@ class FileController extends Controller
             $branch->branch_kubmetr;
             if ($this->isValidValue(number_format($branch->branch_kubmetr, 0, '', ''))) {
                 $branch->branch_kubmetr_text = $this->transformToText(floor($branch->branch_kubmetr));
+            }else{
+                $branch->branch_kubmetr_text = $this->transformToText(floor($branch->branch_kubmetr));
+
             }
 
             $branch->generate_price; 
             if ($this->isValidValue(number_format($branch->generate_price, 0, '', ''))) {
                 $branch->generate_price_text = $this->transformToText(floor($branch->generate_price));
+            }else{
+                $branch->generate_price_text = $this->transformToText(floor($branch->generate_price));
+
             }
             $branch->branch_type;
             $branch->branch_type_text;
