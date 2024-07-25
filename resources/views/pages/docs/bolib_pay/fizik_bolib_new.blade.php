@@ -9,9 +9,13 @@
 <body>
 <div>
     <p style="margin-top:0pt; margin-bottom:0pt; text-align:center;"><strong>Архитектура-режалаштириш топшириғи берилгани учун белгиланган</strong><br><strong>қўшимча йиғим тўловини амалга ошириш тўғрисидаги</strong></p>
-    <p style="margin-top:0pt; margin-bottom:0pt; text-align:center;"><strong>АРТ-</strong><strong>&nbsp;</strong><strong>&nbsp;</strong><strong>&nbsp;</strong><strong>&nbsp;</strong><strong>&nbsp;</strong><strong>/24-сонли шартнома</strong></p>
+    <p style="margin-top:0pt; margin-bottom:0pt; text-align:center;"><strong>АРТ-{{$branch->contract_apt}}/24-сонли шартнома</strong></p>
+    <div class="card-header">
+        <p class="card-title">Тошкент шахри 
+            <span style="float: right;">{{$branch->contract_date->format('d-m-y') ?? ''}} Йил</span>
+        </p>
+    </div>
     <p style="margin-top:0pt; margin-bottom:0pt; text-align:center;">&nbsp;</p>
-    <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify;">Тошкент шаҳри&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2024-йил&nbsp;&ldquo;__&rdquo; ___</p>
     <p style="margin-top:0pt; margin-bottom:0pt; text-indent:35.45pt; text-align:center;"><strong>&nbsp;</strong></p>
     <p style="margin-top:0pt; margin-bottom:0pt; text-indent:35.45pt; text-align:justify;">&ldquo;Тошкент Инвест компанияси&rdquo; акциядорлик жамияти (кейинги ўринларда &mdash; Компания) номидан Устав асосида иш юритувчи Компания Бошқарув раиси в.б. Шакиров Бахром Аскаралиевич бир тарафдан, фуқаро&nbsp;{{$client->last_name}} {{$client->first_name}} {{$client->father_name}} (Паспорт/ID Карта: {{$client->passport->passport_serial ?? ''}}, {{$client->passport->passport_date ?? ''}} йил берилган, &nbsp;кейинги ўринларда &mdash; Инвестор), иккинчи тарафдан, биргаликда Тарафлар, алоҳида эса Тараф деб номланувчилар мазкур шартномани Ўзбекистон Республикаси Президентининг 2023 йил 26 июлдаги ПҚ-236-сон &ldquo;Тошкент шаҳрида давлат ва тадбиркорлик субъектлари ўртасида ўзаро манфаатли ҳамкорлик асосида инвестиция лойиҳаларини амалга ошириш ва шаҳар инфратузилмасини яхшилаш бўйича ҳуқуқий экспериментни ўтказиш чора-тадбирлари тўғрисида&rdquo;ги қарори, Вазирлар Махкамасининг 2024 йил 25 мартдаги 149-сон қарори билан тасдиқланган Тошкент шаҳрида муҳандислик-коммуникация тармоқлари ва транспорт инфратузилмасини яратиш харажатларининг бир қисмини шаҳарсозлик фаолияти объектини қуриш ёки реконструкция қилишни лойиҳалаштириш учун архитектура-режалаштириш топшириғини ишлаб чиқиш бўйича тўлов қийматига киритиш тартиби тўғрисидаги низом асосида қуйидагилар ҳақида имзоладилар:</p>
     <p style="margin-top:6pt; margin-bottom:0pt; text-align:center;"><strong>I.</strong><strong>&nbsp;</strong><strong>Шартнома предмети</strong></p>
