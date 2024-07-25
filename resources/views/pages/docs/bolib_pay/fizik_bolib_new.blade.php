@@ -9,10 +9,10 @@
 <body>
 <div>
     <p style="margin-top:0pt; margin-bottom:0pt; text-align:center;"><strong>Архитектура-режалаштириш топшириғи берилгани учун белгиланган</strong><br><strong>қўшимча йиғим тўловини амалга ошириш тўғрисидаги</strong></p>
-    <p style="margin-top:0pt; margin-bottom:0pt; text-align:center;"><strong>АРТ-{{$branch->contract_apt}}/24-сонли шартнома</strong></p>
+    <p style="margin-top:0pt; margin-bottom:0pt; text-align:center;"><strong>АРТ-{{$branch->contract_apt ?? ''}}/24-сонли шартнома</strong></p>
     <div class="card-header">
         <p class="card-title">Тошкент шахри 
-            <span style="float: right;">{{$branch->contract_date->format('d-m-y') ?? ''}} Йил</span>
+            <span style="float: right;">{{$branch->contract_date ? $branch->contract_date->format('d-m-y') : '__-__-2024'}} Йил</span>
         </p>
     </div>
     <p style="margin-top:0pt; margin-bottom:0pt; text-align:center;">&nbsp;</p>
