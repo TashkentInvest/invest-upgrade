@@ -59,6 +59,24 @@ class FileController extends Controller
                 $branch->first_payment_percent_text = $this->transformToText(floor($branch->first_payment_percent));
 
             }
+
+            $branch->qolgan_foiz = (100 - $branch->percentage_input);
+            if ($this->isValidValue(number_format($branch->qolgan_foiz, 0, '', ''))) {
+                $branch->qolgan_foiz_text = $this->transformToText(floor($branch->qolgan_foiz));
+            }else{
+                $branch->qolgan_foiz_text = $this->transformToText(floor($branch->qolgan_foiz));
+
+            }
+
+            $branch->qolgan_tolov = ($branch->generate_price - $branch->first_payment_percent);
+            if ($this->isValidValue(number_format($branch->qolgan_tolov, 0, '', ''))) {
+                $branch->qolgan_tolov_text = $this->transformToText(floor($branch->qolgan_tolov));
+            }else{
+                $branch->qolgan_tolov_text = $this->transformToText(floor($branch->qolgan_tolov));
+
+            }
+
+
             $branch->branch_type;
             $branch->branch_type_text;
             $branch->branch_location;
