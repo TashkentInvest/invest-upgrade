@@ -44,6 +44,21 @@ class FileController extends Controller
                 $branch->generate_price_text = $this->transformToText(floor($branch->generate_price));
 
             }
+            $branch->percentage_input;
+            if ($this->isValidValue(number_format($branch->percentage_input, 0, '', ''))) {
+                $branch->percentage_input_text = $this->transformToText(floor($branch->percentage_input));
+            }else{
+                $branch->percentage_input_text = $this->transformToText(floor($branch->percentage_input));
+
+            }
+
+            $branch->first_payment_percent;
+            if ($this->isValidValue(number_format($branch->first_payment_percent, 0, '', ''))) {
+                $branch->first_payment_percent_text = $this->transformToText(floor($branch->first_payment_percent));
+            }else{
+                $branch->first_payment_percent_text = $this->transformToText(floor($branch->first_payment_percent));
+
+            }
             $branch->branch_type;
             $branch->branch_type_text;
             $branch->branch_location;
