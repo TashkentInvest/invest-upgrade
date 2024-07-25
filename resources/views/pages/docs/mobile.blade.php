@@ -127,7 +127,7 @@
                         </tr>
                         <tr>
                             <td class="bold">@lang('cruds.company.fields.branch_type'):</td>
-                            <td>{{ $b->branch_type ?? '' }}</td>
+                            <td>{{ $b->branch_type_text ?? '' }}</td>
                         </tr>
                         <tr>
                             <td class="bold">@lang('cruds.company.fields.branch_location'):</td>
