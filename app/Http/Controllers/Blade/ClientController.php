@@ -10,6 +10,7 @@ use App\Models\Company;
 use App\Models\Confirm;
 use App\Models\File;
 use App\Models\Payment;
+use App\Rules\UzbekName;
 use Illuminate\Http\Request;
 use App\Models\Regions;
 use Carbon\Carbon;
@@ -111,9 +112,6 @@ class ClientController extends Controller
             return redirect()->back()->with('error', 'An error occurred while fetching clients: ' . $e->getMessage());
         }
     }
-    
-
-    
     public function show($id)
     {
         $client = Client::where('id', $id)
@@ -146,6 +144,8 @@ class ClientController extends Controller
 
     public function create(Request $request)
     {
+
+        
         $request->validate([
             'stir' => 'nullable|string|max:9|min:9|unique:companies,stir',
             'oked' => 'nullable|string|max:5|min:5',
@@ -153,6 +153,10 @@ class ClientController extends Controller
             'bank_account' => 'nullable|string|max:20|min:20',
             'passport_serial' => 'nullable|string|max:10|min:9',
             'passport_pinfl' => 'nullable|string|max:14|min:14',
+            
+            'last_name' => ['required', 'string', 'max:255', new UzbekName],
+            'first_name' => ['required', 'string', 'max:255', new UzbekName],
+            'father_name' => ['nullable', 'string', 'max:255', new UzbekName],
         ]);
         // dd($request);   
         
@@ -287,8 +291,7 @@ class ClientController extends Controller
         }
     }
 
-   
-  
+
     public function Qrcreate(Request $request)
     {
         Log::info($request);
@@ -299,12 +302,13 @@ class ClientController extends Controller
             'bank_account' => 'nullable|string|max:20|min:20',
             'passport_serial' => 'nullable|string|max:10|min:9',
             'passport_pinfl' => 'nullable|string|max:14|min:14',
-            'first_name' => 'required|string',
-            'last_name' => 'required|string',
             'contact' => 'required|string',
             'stir' => 'required|string|max:9|min:9',
             'loyiha_xujjati' => 'required|max:5120',
-            'qurilish_xajmi' => 'required|max:5120'
+            'qurilish_xajmi' => 'required|max:5120',
+            'last_name' => ['required', 'string', 'max:255', new UzbekName],
+            'first_name' => ['required', 'string', 'max:255', new UzbekName],
+            'father_name' => ['nullable', 'string', 'max:255', new UzbekName],
         ]);
         
         $messages = [
@@ -496,6 +500,9 @@ class ClientController extends Controller
             'bank_account' => 'nullable|string|max:20|min:20',
             'passport_serial' => 'nullable|string|max:10|min:9',
             'passport_pinfl' => 'nullable|string|max:14|min:14',
+            'last_name' => ['required', 'string', 'max:255', new UzbekName],
+            'first_name' => ['required', 'string', 'max:255', new UzbekName],
+            'father_name' => ['nullable', 'string', 'max:255', new UzbekName],
         ]);
     
         DB::beginTransaction();

@@ -381,7 +381,7 @@
                                                     </li>
 
                                                     <a href="{{ route('file.mobile', $item->id) }}"
-                                                        class="btn btn-primary">mobile _</a>
+                                                        class="btn btn-primary">mobile</a>
 
                                                     {{-- <a href="{{route('test.word', $item->id)}}">test.word</a> --}}
 
