@@ -12,7 +12,9 @@ class UzbekName implements Rule
      * @return void
      */
 
-     protected $pattern = '/^[a-zçğııjklnmopqrstuvwxyzə\s]+$/iu';
+    //  protected $pattern = '/^[a-zçğııjklnmopqrstuvwxyzə\s]+$/iu';
+     protected $pattern = "/^[a-zçğııjklnmopqrstuvwxyzə'\\s]+$/iu";
+
 
     public function __construct()
     {
