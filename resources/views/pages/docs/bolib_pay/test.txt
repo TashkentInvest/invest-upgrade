@@ -1,0 +1,13 @@
+{{$client->address->yuridik_address ?? ''}}
+{{$client->company->bank_account ?? ''}}
+{{$client->company->bank_code ?? ''}}
+{{$client->company->bank_service ?? ''}}
+{{$client->company->stir ?? ''}}
+{{$client->company->oked ?? ''}}
+{{$client->contact ?? ''}}
+{{$client->passport->passport_serial ?? ''}}
+{{$client->passport->passport_date ?? ''}}
+{{$client->passport->passport_pinfl ?? ''}}
+{{$client->contact}}
+{{$client->company->stir}}
+{{$client->address->home_address ?? ''}}
