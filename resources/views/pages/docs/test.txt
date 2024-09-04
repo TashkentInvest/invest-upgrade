@@ -12,6 +12,14 @@
 {{$client->company->stir}}
 {{$client->address->home_address ?? ''}}
 
+    <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:12pt;"><strong><span style="font-family:'Times New Roman';">Манзил:</span></strong><span style="font-family:'Times New Roman';">&nbsp; {{$client->address->yuridik_address ?? ''}}</span></p>
+                        <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:12pt;"><strong><span style="font-family:'Times New Roman';">Ҳисобварақ:</span></strong><span style="font-family:'Times New Roman';">&nbsp; {{$client->company->bank_account ?? ''}}</span></p>
+                        <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:12pt;"><strong><span style="font-family:'Times New Roman';">Банк коди:&nbsp;</span></strong><span style="font-family:'Times New Roman';">{{$client->company->bank_code ?? ''}}</span></p>
+                        <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:12pt;"><strong><span style="font-family:'Times New Roman';">Банк номи:&nbsp;</span></strong><span style="font-family:'Times New Roman';">{{$client->company->bank_service ?? ''}}</span></p>
+                        <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:12pt;"><strong><span style="font-family:'Times New Roman';">СТИР:</span></strong><span style="font-family:'Times New Roman';">&nbsp;{{$client->company->stir ?? ''}}</span></p>
+                        <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:12pt;"><strong><span style="font-family:'Times New Roman';">ОКЭД:</span></strong><span style="font-family:'Times New Roman';">&nbsp;{{$client->company->oked ?? ''}}</span></p>
+                        <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:12pt;"><strong><span style="font-family:'Times New Roman';">Телефон:&nbsp;</span></strong><span style="font-family:'Times New Roman';">{{$client->contact ?? ''}}</span></p>
+
 
  <table cellspacing="0" cellpadding="0" style="width:496.15pt; border-collapse:collapse;">
         <tbody>
@@ -46,6 +54,16 @@
                         <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:12pt;"><strong>Телефон:</strong><strong>&nbsp;</strong>{{$client->contact}}</p>
                         <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:12pt;"><strong>СТИР:</strong>&nbsp;{{$client->company->stir}}</p>
                         <p style="margin-top:0pt; margin-bottom:0pt; font-size:12pt;"><strong>Яшаш манзили:</strong><strong>&nbsp;</strong>{{$client->address->home_address ?? ''}}<strong>&nbsp;</strong></p>
+
+                        
+                        <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:12pt;"><strong><span style="background-color:#ffff00;">Манзил:</span></strong><span style="background-color:#ffff00;">&nbsp;</span><span style="background-color:#ffff00;">{{$client->address->yuridik_address ?? ''}} {{$client->address->home_address ?? ''}};</span></p>
+                        <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:12pt;"><strong><span style="background-color:#ffff00;">СТИР/ЖШШИР:</span></strong><span style="background-color:#ffff00;">&nbsp;</span><span style="background-color:#ffff00;">{{$client->company->stir ?? ''}} {{$client->passport->passport_pinfl ?? ''}}</span></p>
+                        <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:12pt;"><strong><span style="background-color:#ffff00;">ОКЭД:</span></strong><span style="background-color:#ffff00;">{{$client->company->oked ?? ''}};</span></p>
+                        <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:12pt;"><strong><span style="background-color:#ffff00;">Ҳисобрақам:</span></strong><span style="background-color:#ffff00;">&nbsp;</span><span style="background-color:#ffff00;">{{$client->company->bank_account ?? ''}};</span></p>
+                        <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:12pt;"><strong><span style="background-color:#ffff00;">Банк коди:</span></strong><strong><span style="background-color:#ffff00;">{{$client->company->bank_code ?? ''}};</span></strong></p>
+                        <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:12pt;"><strong><span style="background-color:#ffff00;">Банк номи:</span></strong><strong><span style="background-color:#ffff00;">{{$client->company->bank_service ?? ''}};</span></strong></p>
+                        <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:12pt;"><strong><span style="background-color:#ffff00;">Телефон:</span></strong><strong><span style="background-color:#ffff00;">&nbsp;</span></strong><span style="background-color:#ffff00;">{{$client->contact}}</span></p>
+
                         <p style="margin-top:0pt; margin-bottom:0pt; font-size:12pt;"><strong>&nbsp;</strong></p>
                         <p style="margin-top:0pt; margin-bottom:0pt; font-size:12pt;"><strong>&nbsp;</strong></p>
                         <p style="margin-top:0pt; margin-bottom:0pt; font-size:12pt;"><strong>&nbsp;</strong></p>
@@ -59,3 +77,9 @@
             </tr>
         </tbody>
     </table>
+
+     <p style="margin-top:0pt; margin-bottom:0pt; text-indent:35.45pt; text-align:justify;"><span style="background-color:#ffff00;">2.3. Тўлов амалга оширишда &ldquo;тўлов мақсади&rdquo; қуйидаги маълумотларни белгиланган тартибда киритиш орқали амалга оширилади:</span></p>
+     <p style="margin-top:0pt; margin-bottom:0pt; text-indent:35.45pt; text-align:justify;"><span style="background-color:#ffff00;">- Инвесторнинг СТИР/ЖШШИР ёки паспорт серияси ва рақами {{$client->company->stir ?? ''}} {{$client->passport->passport_pinfl ?? ''}}</span></p>
+     <p style="margin-top:0pt; margin-bottom:0pt; text-indent:35.45pt; text-align:justify;"><span style="background-color:#ffff00;">- Тузилган шартнома рақами {{$branch->contract_apt ?? ''}}</span></p>
+     <p style="margin-top:0pt; margin-bottom:0pt; text-indent:35.45pt; text-align:justify;"><span style="background-color:#ffff00;">- Шартнома санаси {{$branch->contract_date ? $branch->contract_date->format('d-m-y') : '__-__-2024'}}</span></p>
+     <p style="margin-top:0pt; margin-bottom:0pt; text-indent:35.45pt; text-align:justify;"><span style="background-color:#ffff00;">- Лойиҳавий бино (иншоот) жойлашган тумани;</span></p>
