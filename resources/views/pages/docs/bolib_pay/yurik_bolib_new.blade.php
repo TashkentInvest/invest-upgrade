@@ -131,50 +131,60 @@
     <p style="margin-top:0.75pt; margin-bottom:0pt; text-indent:34.5pt; text-align:justify; background-color:#ffffff;">11.2.&nbsp;Мазкур шартномадаги барча қоидалар Тарафлар учун имзоланган санадан бошлаб мажбурийдир.</p>
     <p style="margin-top:0pt; margin-bottom:0pt; text-indent:28.35pt; text-align:justify;">&nbsp;</p>
     <p style="margin-top:0pt; margin-bottom:0pt; text-align:center;"><strong>&nbsp;</strong></p>
-    <p style="margin-top:0pt; margin-bottom:0pt; text-align:center;"><strong>XII.</strong><strong>&nbsp;</strong><strong>Тарафларнинг банк реквизитлари ва имзолари:</strong></p>
+    <p style="margin-top:0pt; margin-bottom:0pt; text-align:center;"><strong><span style="background-color:#ffff00;">XII.</span></strong><strong><span style="background-color:#ffff00;">&nbsp;</span></strong><strong><span style="background-color:#ffff00;">Тарафларнинг банк реквизитлари ва имзолари:</span></strong></p>
     <table cellspacing="0" cellpadding="0" style="width:496.15pt; border-collapse:collapse;">
         <tbody>
             <tr style="height:44.9pt;">
-                <td style="width:237.3pt; padding-right:5.65pt; padding-left:5.65pt; vertical-align:top;">
-                    <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; font-size:12pt;"><strong>&nbsp;</strong></p>
-                    <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; font-size:12pt;"><strong>КОМПАНИЯ</strong><strong>&nbsp;</strong></p>
-                    <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; font-size:12pt;"><strong>(Жамғарма банк реквизитлари)</strong></p>
-                    <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:12pt;"><strong>Ҳисобварақ:</strong> (Сўмда) 22626000900101163001</p>
-                    <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:12pt;">АҚШ долларида: 22626840600101163001</p>
-                    <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:12pt;">EVROда: 22626978100101163001</p>
-                    <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:12pt;">Россия RUBLида: 22626643300101163001</p>
-                    <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:12pt;"><strong>Жамғарма СТИР:</strong> 201623064</p>
-                    <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:12pt;"><strong>Банк СТИР:</strong> 200547792</p>
-                    <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:12pt;"><strong>Банк коди: (МФО)</strong> 00433</p>
-                    <p style="margin-top:0pt; margin-bottom:0pt; font-size:12pt;"><strong>Банк номи:</strong> &ldquo;Микрокредитбанк&rdquo; АТБ</p>
-                    <p style="margin-top:0pt; margin-bottom:0pt; font-size:12pt;"><strong>Хизмат кўрсатувчи банк таркибий бўлинмаси:</strong> Тошкент шаҳар бошқармаси Тошкент шаҳар банк хизматлари офиси</p>
-                    <div style="border-bottom-style:solid; border-bottom-width:1.5pt; clear:both;">
-                        <p style="margin-top:0pt; margin-bottom:0pt; font-size:12pt;">&nbsp;</p>
-                        <p style="margin-top:0pt; margin-bottom:0pt; font-size:12pt;">&nbsp;</p>
+                <td style="width:226pt; padding-right:5.65pt; padding-left:5.65pt; vertical-align:top;">
+                    <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; font-size:12pt;"><strong><span style="background-color:#ffff00;">&nbsp;</span></strong></p>
+                    <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; font-size:12pt;"><strong><span style="background-color:#ffff00;">КОМПАНИЯ</span></strong><strong><span style="background-color:#ffff00;">&nbsp;</span></strong></p>
+                    <p style="margin-top:0pt; margin-right:30pt; margin-bottom:0pt; text-align:justify; font-size:12pt;"><strong>&nbsp;</strong></p>
+                    <p style="margin-top:0pt; margin-right:30pt; margin-bottom:0pt; text-align:justify; font-size:12pt;"><strong><span style="background-color:#ffff00;">Манзил</span></strong><span style="background-color:#ffff00;">: Тошкент шаҳар, Чилонзор тумани, Бешйоғоч МФЙ, Ислом Каримов кўчаси, 51 уй&nbsp;</span></p>
+                    <p style="margin-top:0pt; margin-right:30pt; margin-bottom:0pt; text-align:justify; font-size:12pt;"><strong><span style="background-color:#ffff00;">Телефон:</span></strong><span style="background-color:#ffff00;">&nbsp;(+998) 71</span><span style="background-color:#ffff00;">&nbsp;</span><span style="background-color:#ffff00;">210</span><span style="background-color:#ffff00;">&nbsp;</span><span style="background-color:#ffff00;">02</span><span style="background-color:#ffff00;">&nbsp;</span><span style="background-color:#ffff00;">61&nbsp;</span></p>
+                    <p style="margin-top:0pt; margin-right:30pt; margin-bottom:0pt; text-align:justify; font-size:12pt;"><strong><span style="background-color:#ffff00;">СТИР:&nbsp;</span></strong><span style="background-color:#ffff00;">310731897&nbsp;</span></p>
+                    <p style="margin-top:0pt; margin-right:30pt; margin-bottom:0pt; font-size:12pt;"><strong>&nbsp;</strong></p>
+                    <p style="margin-top:0pt; margin-right:30pt; margin-bottom:0pt; font-size:12pt;"><strong><span style="background-color:#ffff00;">Банк номи:</span></strong><span style="background-color:#ffff00;">&nbsp;&ldquo;Микрокредитбанк&rdquo; АТБ</span></p>
+                    <p style="margin-top:0pt; margin-right:30pt; margin-bottom:0pt; font-size:12pt;"><strong><span style="background-color:#ffff00;">Хизмат кўрсатувчи банк таркибий бўлинмаси:</span></strong><span style="background-color:#ffff00;">&nbsp;Тошкент шаҳар бошқармаси Тошкент шаҳар банк хизматлари офиси</span></p>
+                    <p style="margin-top:0pt; margin-right:30pt; margin-bottom:0pt; text-align:justify; font-size:12pt;"><strong><span style="background-color:#ffff00;">Банк СТИР:</span></strong><span style="background-color:#ffff00;">&nbsp;200547792</span></p>
+                    <p style="margin-top:0pt; margin-right:30pt; margin-bottom:0pt; text-align:justify; font-size:12pt;"><strong><span style="background-color:#ffff00;">Банк коди: (МФО)</span></strong><span style="background-color:#ffff00;">&nbsp;00433</span></p>
+                    <div style="border-bottom-style:solid; border-bottom-width:1.5pt;">
+                        <p style="margin-top:0pt; margin-right:30pt; margin-bottom:0pt; font-size:12pt;">&nbsp;</p>
+                        <p style="margin-top:0pt; margin-right:30pt; margin-bottom:0pt; font-size:12pt;">&nbsp;</p>
+                        <p style="margin-top:0pt; margin-right:30pt; margin-bottom:0pt; font-size:12pt;"><span style="background-color:#ffff00;">&nbsp;</span></p>
                     </div>
-                    <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; font-size:12pt;"><strong>Shakirov Baxrom Askaraliyevich</strong></p>
+                    <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; font-size:12pt;"><strong><span style="background-color:#ffff00;">Shakirov Baxrom Askaraliyevich</span></strong></p>
                 </td>
-                <td style="width:237.25pt; padding-right:5.65pt; padding-left:5.65pt; vertical-align:top;">
-                    <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; font-size:12pt;"><strong>&nbsp;</strong></p>
-                    <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; font-size:12pt;"><strong>ИНВЕСТОР</strong></p>
-                    <div style="border-bottom-style:solid; border-bottom-width:1.5pt; clear:both;">
-                        <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:12pt;"><strong><span style="font-family:'Times New Roman';">Манзил:</span></strong><span style="font-family:'Times New Roman';">&nbsp; {{$client->address->yuridik_address ?? ''}}</span></p>
-                        <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:12pt;"><strong><span style="font-family:'Times New Roman';">Ҳисобварақ:</span></strong><span style="font-family:'Times New Roman';">&nbsp; {{$client->company->bank_account ?? ''}}</span></p>
-                        <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:12pt;"><strong><span style="font-family:'Times New Roman';">Банк коди:&nbsp;</span></strong><span style="font-family:'Times New Roman';">{{$client->company->bank_code ?? ''}}</span></p>
-                        <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:12pt;"><strong><span style="font-family:'Times New Roman';">Банк номи:&nbsp;</span></strong><span style="font-family:'Times New Roman';">{{$client->company->bank_service ?? ''}}</span></p>
-                        <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:12pt;"><strong><span style="font-family:'Times New Roman';">СТИР:</span></strong><span style="font-family:'Times New Roman';">&nbsp;{{$client->company->stir ?? ''}}</span></p>
-                        <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:12pt;"><strong><span style="font-family:'Times New Roman';">ОКЭД:</span></strong><span style="font-family:'Times New Roman';">&nbsp;{{$client->company->oked ?? ''}}</span></p>
-                        <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:12pt;"><strong><span style="font-family:'Times New Roman';">Телефон:&nbsp;</span></strong><span style="font-family:'Times New Roman';">{{$client->contact ?? ''}}</span></p>
-                    
+                <td style="width:225.95pt; padding-right:5.65pt; padding-left:5.65pt; vertical-align:top;">
+                    <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; font-size:12pt;"><strong><span style="background-color:#ffff00;">&nbsp;</span></strong></p>
+                    <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; font-size:12pt;"><strong><span style="background-color:#ffff00;">ИНВЕСТОР</span></strong></p>
+                    <div style="border-bottom-style:solid; border-bottom-width:1.5pt;">
+                        <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:12pt;"><strong>&nbsp;</strong></p>
+                        <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:12pt;"><strong><span style="background-color:#ffff00;">Манзил:</span></strong><span style="background-color:#ffff00;">&nbsp;</span><span style="background-color:#ffff00;">&nbsp;</span></p>
+                        <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:12pt;"><strong><span style="background-color:#ffff00;">СТИР:</span></strong><span style="background-color:#ffff00;">&nbsp;</span><span style="background-color:#ffff00;">497013095</span></p>
+                        <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:12pt;"><strong><span style="background-color:#ffff00;">ОКЭД:</span></strong><span style="background-color:#ffff00;">&nbsp;</span></p>
+                        <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:12pt;"><strong><span style="background-color:#ffff00;">Ҳисобрақам:</span></strong><span style="background-color:#ffff00;">&nbsp;</span><span style="background-color:#ffff00;">&nbsp;</span></p>
+                        <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:12pt;"><strong><span style="background-color:#ffff00;">Банк коди:</span></strong><strong><span style="background-color:#ffff00;">&nbsp;</span></strong></p>
+                        <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:12pt;"><strong><span style="background-color:#ffff00;">Банк номи:</span></strong><strong><span style="background-color:#ffff00;">&nbsp;</span></strong></p>
+                        <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:12pt;"><strong><span style="background-color:#ffff00;">Телефон:</span></strong><strong><span style="background-color:#ffff00;">&nbsp;</span></strong><span style="background-color:#ffff00;">974034455</span></p>
+                        <p style="margin-top:0pt; margin-bottom:0pt; font-size:12pt;"><strong><span style="background-color:#ffff00;">&nbsp;</span></strong></p>
+                        <p style="margin-top:0pt; margin-bottom:0pt; font-size:12pt;"><strong><span style="background-color:#ffff00;">&nbsp;</span></strong></p>
+                        <p style="margin-top:0pt; margin-bottom:0pt; font-size:12pt;"><strong><span style="background-color:#ffff00;">&nbsp;</span></strong></p>
+                        <p style="margin-top:0pt; margin-bottom:0pt; font-size:12pt;"><strong><span style="background-color:#ffff00;">&nbsp;</span></strong><strong><span style="background-color:#ffff00;">&nbsp;</span></strong></p>
                         <p style="margin-top:0pt; margin-bottom:0pt; font-size:12pt;"><strong>&nbsp;</strong></p>
                         <p style="margin-top:0pt; margin-bottom:0pt; font-size:12pt;"><strong>&nbsp;</strong></p>
-                        <p style="margin-top:0pt; margin-bottom:0pt; font-size:12pt;"><strong>&nbsp;</strong></p>
-                        <p style="margin-top:0pt; margin-bottom:0pt; font-size:12pt;"><strong>&nbsp;</strong></p>
-                        <p style="margin-top:0pt; margin-bottom:0pt; font-size:12pt;"><strong>&nbsp;</strong></p>
-                        <p style="margin-top:0pt; margin-bottom:0pt; font-size:12pt;"><strong>&nbsp;</strong></p>
-                        <p style="margin-top:0pt; margin-bottom:0pt; font-size:12pt;"><strong>&nbsp;</strong></p>
+                        <p style="margin-top:0pt; margin-bottom:0pt; font-size:12pt;">&nbsp;</p>
+                        <p style="margin-top:0pt; margin-bottom:0pt; font-size:12pt;"><strong><span style="background-color:#ffff00;">&nbsp;</span></strong></p>
+                        <p style="margin-top:0pt; margin-bottom:0pt; font-size:12pt;"><strong><span style="background-color:#ffff00;">&nbsp;</span></strong></p>
                     </div>
-                    <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; font-size:12pt;"><strong>{{$client->last_name}} {{$client->first_name}} {{$client->father_name}}</strong></p>
+                    <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; font-size:12pt;"><strong><span style="background-color:#ffff00;">Sirojiddinov Shoxrux Shuxratovich</span></strong></p>
+                </td>
+            </tr>
+            <tr style="height:44.9pt;">
+                <td style="width:226pt; padding-right:5.65pt; padding-left:5.65pt; vertical-align:top;">
+                    <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; font-size:12pt;"><strong>&nbsp;</strong></p>
+                </td>
+                <td style="width:225.95pt; padding-right:5.65pt; padding-left:5.65pt; vertical-align:top;">
+                    <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; font-size:12pt;"><strong>&nbsp;</strong></p>
                 </td>
             </tr>
         </tbody>

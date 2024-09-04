@@ -1,0 +1,61 @@
+{{$client->address->yuridik_address ?? ''}}
+{{$client->company->bank_account ?? ''}}
+{{$client->company->bank_code ?? ''}}
+{{$client->company->bank_service ?? ''}}
+{{$client->company->stir ?? ''}}
+{{$client->company->oked ?? ''}}
+{{$client->contact ?? ''}}
+{{$client->passport->passport_serial ?? ''}}
+{{$client->passport->passport_date ?? ''}}
+{{$client->passport->passport_pinfl ?? ''}}
+{{$client->contact}}
+{{$client->company->stir}}
+{{$client->address->home_address ?? ''}}
+
+
+ <table cellspacing="0" cellpadding="0" style="width:496.15pt; border-collapse:collapse;">
+        <tbody>
+            <tr style="height:44.9pt;">
+                <td style="width:237.3pt; padding-right:5.65pt; padding-left:5.65pt; vertical-align:top;">
+                    <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; font-size:12pt;"><strong>&nbsp;</strong></p>
+                    <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; font-size:12pt;"><strong>КОМПАНИЯ</strong><strong>&nbsp;</strong></p>
+                    <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; font-size:12pt;"><strong>(Жамғарма банк реквизитлари)</strong></p>
+                    <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:12pt;"><strong>Ҳисобварақ:</strong> (Сўмда) 22626000900101163001</p>
+                    <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:12pt;">АҚШ долларида: 22626840600101163001</p>
+                    <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:12pt;">EVROда: 22626978100101163001</p>
+                    <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:12pt;">Россия RUBLида: 22626643300101163001</p>
+                    <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:12pt;"><strong>Жамғарма СТИР:</strong> 201623064</p>
+                    <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:12pt;"><strong>Банк СТИР:</strong> 200547792</p>
+                    <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:12pt;"><strong>Банк коди: (МФО)</strong> 00433</p>
+                    <p style="margin-top:0pt; margin-bottom:0pt; font-size:12pt;"><strong>Банк номи:</strong> &ldquo;Микрокредитбанк&rdquo; АТБ</p>
+                    <p style="margin-top:0pt; margin-bottom:0pt; font-size:12pt;"><strong>Хизмат кўрсатувчи банк таркибий бўлинмаси:</strong> Тошкент шаҳар бошқармаси Тошкент шаҳар банк хизматлари офиси</p>
+                    <div style="border-bottom-style:solid; border-bottom-width:1.5pt; clear:both;">
+                        <p style="margin-top:0pt; margin-bottom:0pt; font-size:12pt;">&nbsp;</p>
+                        <p style="margin-top:0pt; margin-bottom:0pt; font-size:12pt;">&nbsp;</p>
+                    </div>
+                    <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; font-size:12pt;"><strong>Shakirov Baxrom Askaraliyevich</strong></p>
+                </td>
+                <td style="width:237.25pt; padding-right:5.65pt; padding-left:5.65pt; vertical-align:top;">
+                    <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; font-size:12pt;"><strong>&nbsp;</strong></p>
+                    <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; font-size:12pt;"><strong>ИНВЕСТОР</strong></p>
+                    <div style="border-bottom-style:solid; border-bottom-width:1.5pt; clear:both;">
+                        <p style="margin-top:0pt; margin-bottom:0pt; font-size:12pt;"><strong>&nbsp;</strong></p>
+                        <p style="margin-top:0pt; margin-bottom:0pt; font-size:12pt;"><strong>Паспорт/ID Карта:</strong><strong>&nbsp;</strong>{{$client->passport->passport_serial ?? ''}};</p>
+                        <p style="margin-top:0pt; margin-bottom:0pt; font-size:12pt;"><strong>Берилган санаси:&nbsp;</strong>.{{$client->passport->passport_date ?? ''}} й.;<strong>&nbsp;</strong></p>
+                        <p style="margin-top:0pt; margin-bottom:0pt; font-size:12pt;"><strong>ЖШШИР:</strong><strong>&nbsp;</strong>{{$client->passport->passport_pinfl ?? ''}}</p>
+                        <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:12pt;"><strong>Телефон:</strong><strong>&nbsp;</strong>{{$client->contact}}</p>
+                        <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:12pt;"><strong>СТИР:</strong>&nbsp;{{$client->company->stir}}</p>
+                        <p style="margin-top:0pt; margin-bottom:0pt; font-size:12pt;"><strong>Яшаш манзили:</strong><strong>&nbsp;</strong>{{$client->address->home_address ?? ''}}<strong>&nbsp;</strong></p>
+                        <p style="margin-top:0pt; margin-bottom:0pt; font-size:12pt;"><strong>&nbsp;</strong></p>
+                        <p style="margin-top:0pt; margin-bottom:0pt; font-size:12pt;"><strong>&nbsp;</strong></p>
+                        <p style="margin-top:0pt; margin-bottom:0pt; font-size:12pt;"><strong>&nbsp;</strong></p>
+                        <p style="margin-top:0pt; margin-bottom:0pt; font-size:12pt;"><strong>&nbsp;</strong></p>
+                        <p style="margin-top:0pt; margin-bottom:0pt; font-size:12pt;"><strong>&nbsp;</strong></p>
+                        <p style="margin-top:0pt; margin-bottom:0pt; font-size:12pt;"><strong>&nbsp;</strong></p>
+                        <p style="margin-top:0pt; margin-bottom:0pt; font-size:12pt;"><strong>&nbsp;</strong></p>
+                    </div>
+                    <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; font-size:12pt;"><strong>{{$client->last_name}} {{$client->first_name}} {{$client->father_name}}</strong></p>
+                </td>
+            </tr>
+        </tbody>
+    </table>
