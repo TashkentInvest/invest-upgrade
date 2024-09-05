@@ -135,7 +135,7 @@
                     <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; font-size:12pt;"><strong><span>&nbsp;</span></strong></p>
                     <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; font-size:12pt;"><strong><span>КОМПАНИЯ</span></strong><strong><span>&nbsp;</span></strong></p>
                     <p style="margin-top:0pt; margin-right:30pt; margin-bottom:0pt; text-align:justify; font-size:12pt;"><strong>&nbsp;</strong></p>
-                    <p style="margin-top:0pt; margin-right:30pt; margin-bottom:0pt; text-align:justify; font-size:12pt;"><strong><span>Манзил</span></strong><span>: Тошкент шаҳар, Чилонзор тумани, Бешйоғоч МФЙ, Ислом Каримов кўчаси, 51 уй&nbsp;</span></p>
+                    <p style="margin-top:0pt; margin-right:30pt; margin-bottom:0pt; text-align:justify; font-size:12pt;"><strong><span>Манзил</span></strong><span>: Тошкент шаҳар, Чилонзор тумани, Бешёғоч МФЙ, Ислом Каримов кўчаси, 51 уй&nbsp;</span></p>
                     <p style="margin-top:0pt; margin-right:30pt; margin-bottom:0pt; text-align:justify; font-size:12pt;"><strong><span>Телефон:</span></strong><span>&nbsp;(+998) 71</span><span>&nbsp;</span><span>210</span><span>&nbsp;</span><span>02</span><span>&nbsp;</span><span>61&nbsp;</span></p>
                     <p style="margin-top:0pt; margin-right:30pt; margin-bottom:0pt; text-align:justify; font-size:12pt;"><strong><span>СТИР:&nbsp;</span></strong><span>310731897&nbsp;</span></p>
                     <p style="margin-top:0pt; margin-right:30pt; margin-bottom:0pt; font-size:12pt;"><strong>&nbsp;</strong></p>
