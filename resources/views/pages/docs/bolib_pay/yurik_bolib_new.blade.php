@@ -39,7 +39,23 @@
      <p style="margin-top:0pt; margin-bottom:0pt; text-indent:35.45pt; text-align:justify;"><span>- Инвесторнинг СТИР/ЖШШИР ёки паспорт серияси ва рақами {{$client->company->stir ?? ''}} / {{$client->passport->passport_pinfl ?? ''}}</span></p>
      <p style="margin-top:0pt; margin-bottom:0pt; text-indent:35.45pt; text-align:justify;"><span>- Тузилган шартнома рақами {{$branch->contract_apt ?? ''}};</span></p>
      <p style="margin-top:0pt; margin-bottom:0pt; text-indent:35.45pt; text-align:justify;"><span>- Шартнома санаси {{$branch->contract_date ? $branch->contract_date->format('d-m-y') : '__-__-2024'}};</span></p>
-     <p style="margin-top:0pt; margin-bottom:0pt; text-indent:35.45pt; text-align:justify;"><span>- Лойиҳавий бино (иншоот) жойлашган тумани;</span></p>
+     @php
+        $regions = [
+            '01' => 'Учтепа',
+            '02' => 'Бектемир',
+            '03' => 'Чилонзор',
+            '04' => 'Яшнобод',
+            '05' => 'Яккасарой',
+            '06' => 'Сергели',
+            '07' => 'Юнусабод',
+            '08' => 'Олмазор',
+            '09' => 'Мирзо Улуғбек',
+            '10' => 'Шайхонтахур',
+            '11' => 'Миробад',
+            '12' => 'Янгихаёт',
+        ];
+    @endphp
+     <p style="margin-top:0pt; margin-bottom:0pt; text-indent:35.45pt; text-align:justify;"><span>- Лойиҳавий бино (иншоот) жойлашган тумани {{ $regions[$branch->region] ?? 'Mavjud emas' }};</span></p>
     {{-- end --}}
     <p style="margin-top:0pt; margin-bottom:0pt; text-indent:35.45pt; text-align:justify;">2.4.&nbsp;Инвестор йиғим миқдорини бўлиб-бўлиб Жамғарма ҳисоб рақамига ўтказиш йўли билан мазкур шартнома имзоланган санадан бошлаб 3 (уч) иш кунидан кечиктирмаган ҳолда тўлашни амалга оширишни инобатга олган ҳолда мазкур шартномани имзолайди. Бунда:</p>
     <p style="margin-top:0pt; margin-bottom:0pt; text-indent:35.45pt; text-align:justify;">&ndash;&nbsp;йиғимнинг {{$branch->percentage_input ?? '__'}} ({{$branch->percentage_input_text ?? '__ __ __'}}) фоизи {{$branch->first_payment_percent ? number_format($branch->first_payment_percent, 2, '.', ' ') : '___'}} ({{$branch->first_payment_percent_text ?? '__ __ __'}})&nbsp;сўм миқдоридаги олдиндан тўловни мазкур шартнома имзоланган санадан бошлаб 3 (уч) иш кунидан кечиктирмаган ҳолда амалга оширади;</p>
