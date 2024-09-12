@@ -902,6 +902,28 @@
                                                             </div>
                                                         </div>
 
+                                                        <div class="col-12 col-md-6 col-lg-6 col-xl-6">
+                                                            <div class="mb-3">
+                                                                <label for="region">Tuman</label>
+                                                                <select name="accordions[0][region]" id="region" class="form-select" required>
+                                                                    <option value="">Tumanni tanlang</option>
+                                                                    <option value="01" {{ old('accordions.0.region') == '01' ? 'selected' : '' }}>Учтепинский</option>
+                                                                    <option value="02" {{ old('accordions.0.region') == '02' ? 'selected' : '' }}>Бектемирский</option>
+                                                                    <option value="03" {{ old('accordions.0.region') == '03' ? 'selected' : '' }}>Чиланзарский</option>
+                                                                    <option value="04" {{ old('accordions.0.region') == '04' ? 'selected' : '' }}>Яшнабадский</option>
+                                                                    <option value="05" {{ old('accordions.0.region') == '05' ? 'selected' : '' }}>Яккасарайский</option>
+                                                                    <option value="06" {{ old('accordions.0.region') == '06' ? 'selected' : '' }}>Сергелийский</option>
+                                                                    <option value="07" {{ old('accordions.0.region') == '07' ? 'selected' : '' }}>Юнусабадский</option>
+                                                                    <option value="08" {{ old('accordions.0.region') == '08' ? 'selected' : '' }}>Олмазарский</option>
+                                                                    <option value="09" {{ old('accordions.0.region') == '09' ? 'selected' : '' }}>Мирзо Улугбекский</option>
+                                                                    <option value="10" {{ old('accordions.0.region') == '10' ? 'selected' : '' }}>Шайхантахурский</option>
+                                                                    <option value="11" {{ old('accordions.0.region') == '11' ? 'selected' : '' }}>Мирабадский</option>
+                                                                    <option value="12" {{ old('accordions.0.region') == '12' ? 'selected' : '' }}>Янгихаётский</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                      
+
 
                                                         <script>
                                                             $(document).ready(function() {

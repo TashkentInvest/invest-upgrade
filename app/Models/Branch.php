@@ -63,7 +63,9 @@ class Branch extends Model
         'kengash_raqami',
         'kengash_sanasi',
 
-        'payment_deadline'
+        'payment_deadline',
+
+        'region'
     
     ];
 

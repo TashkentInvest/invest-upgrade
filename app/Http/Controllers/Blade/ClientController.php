@@ -279,6 +279,9 @@ class ClientController extends Controller
                     'zona' => $accordion['zona'] ?? null,
                     'created_by_client' => $accordion['created_by_client'] ?? null,
                     'confirmed_for_client' => $accordion['confirmed_for_client'] ?? null,
+
+                    'region' => $accordion['region'] ?? null,
+
                 ]);
             }
 
@@ -464,6 +467,9 @@ class ClientController extends Controller
                     'zona' => $accordion['zona'] ?? null,
                     'created_by_client' => $accordion['created_by_client'] ?? null,
                     'confirmed_for_client' => $accordion['confirmed_for_client'] ?? null,
+
+                    'region' => $accordion['region'] ?? null,
+
                 ]);
             }
 

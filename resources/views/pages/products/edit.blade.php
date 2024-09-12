@@ -1028,6 +1028,25 @@
                                                                 </div>
                                                             </div>
 
+                                                            <div class="col-12 col-md-6 col-lg-6 col-xl-6">
+                                                                <div class="mb-3">
+                                                                    <label for="region">Tuman</label>
+                                                                    <select name="accordions[{{ $branchIndex }}][region]" id="region_{{ $branchIndex }}" class="form-select">
+                                                                        <option value="01" {{ old('accordions.' . $branchIndex . '.region') == '01' ? 'selected' : '' }}>Учтепинский</option>
+                                                                        <option value="02" {{ old('accordions.' . $branchIndex . '.region') == '02' ? 'selected' : '' }}>Бектемирский</option>
+                                                                        <option value="03" {{ old('accordions.' . $branchIndex . '.region') == '03' ? 'selected' : '' }}>Чиланзарский</option>
+                                                                        <option value="04" {{ old('accordions.' . $branchIndex . '.region') == '04' ? 'selected' : '' }}>Яшнабадский</option>
+                                                                        <option value="05" {{ old('accordions.' . $branchIndex . '.region') == '05' ? 'selected' : '' }}>Яккасарайский</option>
+                                                                        <option value="06" {{ old('accordions.' . $branchIndex . '.region') == '06' ? 'selected' : '' }}>Сергелийский</option>
+                                                                        <option value="07" {{ old('accordions.' . $branchIndex . '.region') == '07' ? 'selected' : '' }}>Юнусабадский</option>
+                                                                        <option value="08" {{ old('accordions.' . $branchIndex . '.region') == '08' ? 'selected' : '' }}>Олмазарский</option>
+                                                                        <option value="09" {{ old('accordions.' . $branchIndex . '.region') == '09' ? 'selected' : '' }}>Мирзо Улугбекский</option>
+                                                                        <option value="10" {{ old('accordions.' . $branchIndex . '.region') == '10' ? 'selected' : '' }}>Шайхантахурский</option>
+                                                                        <option value="11" {{ old('accordions.' . $branchIndex . '.region') == '11' ? 'selected' : '' }}>Мирабадский</option>
+                                                                        <option value="12" {{ old('accordions.' . $branchIndex . '.region') == '12' ? 'selected' : '' }}>Янгихаётский</option>
+                                                                    </select>
+                                                                </div>
+                                                            </div>
 
                                                             <script>
                                                                 $(document).ready(function() {
