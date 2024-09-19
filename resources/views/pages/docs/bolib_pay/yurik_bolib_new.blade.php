@@ -13,8 +13,8 @@
     <p style="margin-top:0pt; margin-bottom:0pt; text-align:center;"><strong>АРТ-{{$branch->contract_apt ?? ''}}-сонли шартнома</strong></p>
     <div class="card-header">
         <p class="card-title">Тошкент шахри 
-            <span style="float: right;">{{$branch->contract_date ? $branch->contract_date->format('d-m-y') : '__-__-2024'}} Йил</span>
-        </p>
+            <span style="display: inline-block; width: 300px; color: #ffffff; opacity: 0;">dghgfhgfhgfhgfhgfhgfhgfhgfhfghhgfhgfhfghgfhgfhgfhgfhgfdfgd</span>
+            <span style="float: right;">{{$branch->contract_date ? $branch->contract_date->format('d-m-y') : '__-__-2024'}} Йил</span>        </p>
     </div>
     <p style="margin-top:0pt; margin-bottom:0pt; text-align:center;">&nbsp;</p>
     <p style="margin-top:0pt; margin-bottom:0pt; text-indent:35.45pt; text-align:center;"><strong>&nbsp;</strong></p>

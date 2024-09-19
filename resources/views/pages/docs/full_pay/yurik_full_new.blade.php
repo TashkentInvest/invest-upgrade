@@ -14,8 +14,8 @@
     <p style="margin-top:0pt; margin-bottom:0pt; text-align:center;"><strong>АРТ-{{$branch->contract_apt ?? ''}}-сонли шартнома</strong></p>
     <div class="card-header">
         <p class="card-title">Тошкент шахри 
-            <span style="float: right;">{{$branch->contract_date ? $branch->contract_date->format('d-m-y') : '__-__-2024'}} Йил</span>
-        </p>
+            <span style="display: inline-block; width: 300px; color: #ffffff; opacity: 0;">dghgfhgfhgfhgfhgfhgfhgfhgfhfghhgfhgfhfghgfhgfhgfhgfhgfdfgd</span>
+            <span style="float: right;">{{$branch->contract_date ? $branch->contract_date->format('d-m-y') : '__-__-2024'}} Йил</span>        </p>
     </div>
     <p style="margin-top:0pt; margin-bottom:0pt; text-align:center;">&nbsp;</p>
     <p style="margin-top:0pt; margin-bottom:0pt; text-indent:35.45pt; text-align:justify;">&ldquo;Тошкент Инвест компанияси&rdquo; акциядорлик жамияти (кейинги ўринларда &mdash; Компания) номидан Устав асосида иш юритувчи Компания Бошқарув раиси в.б. Shakirov Baxrom Askaraliyevich бир тарафдан, <span>{{$client->company->company_name}} (кейинги ўринларда &mdash; Инвестор)</span> номидан Устав асосида иш юритувчи <span>{{$client->company->raxbar}} {{$client->last_name}} {{$client->first_name}} {{$client->father_name}} </span> иккинчи тарафдан, биргаликда Тарафлар, алоҳида эса Тараф деб номланувчилар мазкур шартномани Ўзбекистон Республикаси Президентининг 2023 йил 26 июлдаги ПҚ-236-сон &ldquo;Тошкент шаҳрида давлат ва тадбиркорлик субъектлари ўртасида ўзаро манфаатли ҳамкорлик асосида инвестиция лойиҳаларини амалга ошириш ва шаҳар инфратузилмасини яхшилаш бўйича ҳуқуқий экспериментни ўтказиш чора-тадбирлари тўғрисида&rdquo;ги қарори, Вазирлар Махкамасининг 2024 йил 25 мартдаги 149-сон қарори билан тасдиқланган Тошкент шаҳрида муҳандислик-коммуникация тармоқлари ва транспорт инфратузилмасини яратиш харажатларининг бир қисмини шаҳарсозлик фаолияти объектини қуриш ёки реконструкция қилишни лойиҳалаштириш учун архитектура-режалаштириш топшириғини ишлаб чиқиш бўйича тўлов қийматига киритиш тартиби тўғрисидаги низом асосида қуйидагилар ҳақида имзоладилар:</p>

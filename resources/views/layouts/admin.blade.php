@@ -32,6 +32,7 @@
     @yield('styles')
 </head>
 
+
 <body data-sidebar="{{ auth()->user()->theme()['sidebar'] ?? '' }}" data-layout-mode="{{ auth()->user()->theme()['body'] ?? '' }}">
 
     <div id="preloader">

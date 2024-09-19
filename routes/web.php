@@ -206,3 +206,6 @@ Route::get('/language/{lang}', function ($lang) {
     }
     return redirect()->back();
 })->name('changelang');
+
+
+Route::get('testing/{id}', [FileController::class, 'testtttt']);

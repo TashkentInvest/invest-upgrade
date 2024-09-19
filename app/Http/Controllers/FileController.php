@@ -17,6 +17,78 @@ use Carbon\Carbon;
 class FileController extends Controller
 {
 
+    public function testtttt($id){
+        // $headers = array(
+        //     'Content-type' => 'text/html',
+        //     'Content-Disposition'=>'attachement; Filename=mydoc.doc'
+        // );
+    
+       
+        $client = Client::where('id', $id)
+        ->with(['company', 'branches', 'address', 'passport'])
+        ->first();
+
+        foreach ($client->branches as $branch) {
+            $branch->branch_kubmetr;
+            if ($this->isValidValue(number_format($branch->branch_kubmetr, 0, '', ''))) {
+                $branch->branch_kubmetr_text = $this->transformToText(floor($branch->branch_kubmetr));
+            }else{
+                $branch->branch_kubmetr_text = $this->transformToText(floor($branch->branch_kubmetr));
+
+            }
+
+            $branch->generate_price; 
+            if ($this->isValidValue(number_format($branch->generate_price, 0, '', ''))) {
+                $branch->generate_price_text = $this->transformToText(floor($branch->generate_price));
+            }else{
+                $branch->generate_price_text = $this->transformToText(floor($branch->generate_price));
+
+            }
+            $branch->percentage_input;
+            if ($this->isValidValue(number_format($branch->percentage_input, 0, '', ''))) {
+                $branch->percentage_input_text = $this->transformToText(floor($branch->percentage_input));
+            }else{
+                $branch->percentage_input_text = $this->transformToText(floor($branch->percentage_input));
+
+            }
+
+            $branch->first_payment_percent;
+            if ($this->isValidValue(number_format($branch->first_payment_percent, 0, '', ''))) {
+                $branch->first_payment_percent_text = $this->transformToText(floor($branch->first_payment_percent));
+            }else{
+                $branch->first_payment_percent_text = $this->transformToText(floor($branch->first_payment_percent));
+
+            }
+
+            $branch->qolgan_foiz = (100 - $branch->percentage_input);
+            if ($this->isValidValue(number_format($branch->qolgan_foiz, 0, '', ''))) {
+                $branch->qolgan_foiz_text = $this->transformToText(floor($branch->qolgan_foiz));
+            }else{
+                $branch->qolgan_foiz_text = $this->transformToText(floor($branch->qolgan_foiz));
+
+            }
+
+            $branch->qolgan_tolov = ($branch->generate_price - $branch->first_payment_percent);
+            if ($this->isValidValue(number_format($branch->qolgan_tolov, 0, '', ''))) {
+                $branch->qolgan_tolov_text = $this->transformToText(floor($branch->qolgan_tolov));
+            }else{
+                $branch->qolgan_tolov_text = $this->transformToText(floor($branch->qolgan_tolov));
+
+            }
+
+
+            $branch->branch_type;
+            $branch->branch_type_text;
+            $branch->branch_location;
+        }
+
+        
+    return view('pages.docs.full_pay.yurik_full_new', compact('client', 'branch'));
+        // return Response::make(view('pages.docs.mobile', compact('client')), 200, $headers);
+    }
+
+
+
     public function test($id){
         // $headers = array(
         //     'Content-type' => 'text/html',
