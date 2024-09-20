@@ -6,15 +6,8 @@ use Illuminate\Contracts\Validation\Rule;
 
 class UzbekName implements Rule
 {
-    /**
-     * Create a new rule instance.
-     *
-     * @return void
-     */
-
-    //  protected $pattern = '/^[a-zçğııjklnmopqrstuvwxyzə\s]+$/iu';
-     protected $pattern = "/^[a-zçğııjklnmopqrstuvwxyzə'\\s]+$/iu";
-
+    // Updated pattern to allow ', ", and ’
+    protected $pattern = "/^[a-zçğııjklnmopqrstuvwxyzə'\"’\\s]+$/iu";
 
     public function __construct()
     {
@@ -31,7 +24,6 @@ class UzbekName implements Rule
     public function passes($attribute, $value)
     {
         return preg_match($this->pattern, $value);
-
     }
 
     /**
