@@ -420,7 +420,7 @@
                                                             <tbody style="font-size: 1.2em;"> <!-- Larger font size -->
 
                                                                 <tr>
-                                                                    <td><strong>@lang('global.fio')</strong></td>
+                                                                    <td><strong>Sana</strong></td>
                                                                     <td>{{ $item->created_at ?? '' }}</td>
                                                                 </tr>
                                                                 <tr>
