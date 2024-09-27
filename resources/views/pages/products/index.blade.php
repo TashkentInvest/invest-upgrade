@@ -418,6 +418,11 @@
                                                     <div class="modal-body">
                                                         <table class="table table-striped">
                                                             <tbody style="font-size: 1.2em;"> <!-- Larger font size -->
+
+                                                                <tr>
+                                                                    <td><strong>@lang('global.fio')</strong></td>
+                                                                    <td>{{ $item->created_at ?? '' }}</td>
+                                                                </tr>
                                                                 <tr>
                                                                     <td><strong>@lang('global.fio')</strong></td>
                                                                     <td>{{ $item->last_name }} {{ $item->first_name }}
