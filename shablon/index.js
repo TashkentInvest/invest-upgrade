@@ -1,5 +1,5 @@
 let companyKubmetr = 1
-let minimumWage = 340000
+let minimumWage = 375000
 let generatePrice = companyKubmetr * minimumWage;
 
 let percentageInput = 20

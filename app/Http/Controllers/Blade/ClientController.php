@@ -83,7 +83,7 @@ class ClientController extends Controller
             foreach ($clients as $client) {
                 foreach ($client->branches as $branch) {
                     // Step 1: Retrieve and set default values
-                    $Bh = (float)($client->company->minimum_wage ?? 340000); // Default to 340,000
+                    $Bh = (float)($client->company->minimum_wage ?? 375000); // Default to 340,000
                     $Hb = (float)($branch->shaxarsozlik_umumiy_xajmi ?? 0);
                     $Hyu = (float)($branch->qavatlar_soni_xajmi ?? 0);
                     $Ha = (float)($branch->avtoturargoh_xajmi ?? 0);

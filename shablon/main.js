@@ -1,4 +1,4 @@
-// let a = 340000
+// let a = 375000
 // console.log('a: ', a)
 // let b = (a * 20) / 100;
 // console.log('b: ',b)

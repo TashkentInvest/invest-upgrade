@@ -625,7 +625,7 @@
                                                                     <tr>
                                                                         <td><strong>Calculation</strong></td>
                                                                         <td>
-                                                                            {{ number_format((float) ($b->client->company->minimum_wage ?? 340000), 0) }}
+                                                                            {{ number_format((float) ($b->client->company->minimum_wage ?? 375000), 0) }}
                                                                             *
                                                                             ((
                                                                             {{ number_format((float) ($b->shaxarsozlik_umumiy_xajmi ?? 0), 2) }}

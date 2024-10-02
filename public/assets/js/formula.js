@@ -65,10 +65,10 @@ $(document).ready(function() {
         parentAccordion.find('.branch_kubmetr').val(companyKubmetr.toFixed(2));
 
         let minimumWage = parseFloat(parentAccordion.find('.minimum_wage').val()) ||
-            340000; // Default or original value
+            375000; // Default or original value
         let coefficient = parseFloat(parentAccordion.find('.coefficient').val()) || 1;
 
-        let adjustedMinimumWage = 340000 * coefficient;
+        let adjustedMinimumWage = 375000 * coefficient;
         // let adjustedMinimumWage = minimumWage * coefficient;
         parentAccordion.find('.minimum_wage').val(adjustedMinimumWage.toFixed(2));
 

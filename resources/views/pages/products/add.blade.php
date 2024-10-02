@@ -993,10 +993,10 @@
                                                                     parentAccordion.find('.branch_kubmetr').val(companyKubmetr.toFixed(2));
 
                                                                     let minimumWage = parseFloat(parentAccordion.find('.minimum_wage').val()) ||
-                                                                    340000; // Default or original value
+                                                                    375000; // Default or original value
                                                                     let coefficient = parseFloat(parentAccordion.find('.coefficient').val()) || 1;
 
-                                                                    let adjustedMinimumWage = 340000 * coefficient;
+                                                                    let adjustedMinimumWage = 375000 * coefficient;
                                                                     // let adjustedMinimumWage = minimumWage * coefficient;
                                                                     parentAccordion.find('.minimum_wage').val(adjustedMinimumWage.toFixed(2));
 
@@ -1203,7 +1203,7 @@
                                                                     for="basicpill-card-verification-input">@lang('global.bazaviy_xisoblash_miqdori')</label>
                                                                 <input type="number" class="form-control minimum_wage"
                                                                     placeholder="@lang('global.bazaviy_xisoblash_miqdori')"
-                                                                    value="{{ old('minimum_wage', '340000') }}" step="0.01"
+                                                                    value="{{ old('minimum_wage', '375000') }}" step="0.01"
                                                                     name="minimum_wage">
 
                                                                 @error('minimum_wage')
