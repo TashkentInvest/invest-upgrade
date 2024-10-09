@@ -69,7 +69,7 @@
                                             <!-- Last Name Search -->
                                             <div class="form-group row align-items-center my-2">
                                                 <div class="col-3">
-                                                    <h6>@lang('global.last_name')</h6>
+                                                    <h6>@lang('global.fio')</h6>
                                                 </div>
                                                 <div class="col-2">
                                                     <select class="form-control form-control-sm" name="last_operator">

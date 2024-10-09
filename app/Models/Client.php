@@ -264,7 +264,7 @@ class Client extends Model
         if ($request->filled('last_name')) {
             $operator = $request->input('last_operator', 'like');
             $value = '%' . $request->input('last_name') . '%';
-            $query->where('last_name', $operator, $value);
+            $query->where('last_name', $operator, $value)->orWhere('first_name', $operator, $value)->orWhere('father_name', $operator, $value);
         }
     
         return $query;
