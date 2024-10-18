@@ -185,7 +185,7 @@
                     <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; font-size:12pt;"><strong><span>ИНВЕСТОР</span></strong></p>
                     <div style="border-bottom-style:solid; border-bottom-width:1.5pt;">
                         <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:12pt;"><strong>&nbsp;</strong></p>
-                        <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:12pt;"><strong><span>Манзил:</span></strong><span>&nbsp;</span><span>{{$client->address->yuridik_address ?? ''}} {{$client->address->home_address ?? ''}}</span></p>
+                        <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:12pt;"><strong><span>Яшаш манзили:</span></strong><span>&nbsp;</span><span>{{$client->address->yuridik_address ?? ''}} {{$client->address->home_address ?? ''}}</span></p>
                         <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:12pt;"><strong><span>СТИР:</span></strong><span>&nbsp;</span><span>{{$client->company->stir ?? ''}}</span></p>
                         <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:12pt;"><strong><span>ЖШШИР:</span></strong><span>&nbsp;</span><span> {{$client->passport->passport_pinfl ?? ''}}</span></p>
                         <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; font-size:12pt;"><strong><span>Телефон:</span></strong><strong><span>&nbsp;</span></strong><span>{{$client->contact ?? ''}}</span></p>
