@@ -380,7 +380,7 @@ return [
     'loyiha_nomi' => 'Loyiha Nomi',
     "obyekt_boyicha_tolanishi_lozim" => "Qurilish xajmi",
     'bazaviy_xisoblash_miqdori' => 'Bazaviy xisoblash miqdori',
-    "jami_tolanishi_kerak" => "Jami to'lanishi kerak bo'lgan miqdor ( so\'m )",
+    "jami_tolanishi_kerak" => "Jami to'lanishi kerak bo'lgan miqdor ( soʼm )",
     'tolash_turlari' => "To'lash turlari",
     'toliq_xajimda_tolash' => "To'liq xajimda tolash",
     "bolib_tolash" => "Bolib tolash",
