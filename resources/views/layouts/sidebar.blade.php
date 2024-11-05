@@ -6,21 +6,30 @@
             <!-- Left Menu Start -->
             <ul class="metismenu list-unstyled" id="side-menu">
                 <li class="menu-title">@lang('cruds.menu_top.menu')</li>
-                <!-- Branches -->
-                @can('statistics.show')
 
-                <li class="{{ Request::is('statistics*') ? 'mm-active' : '' }}">
-                    <a href="{{ route('statistics.show') }}"
-                        class=" waves-effect {{ Request::is('statistics*') ? 'mm-active' : '' }}">
-                        <i class="bx bx-home-circle"></i>
+                <li class="{{ Request::is('report*') ? 'mm-active' : '' }}">
+                    <a href="{{ route('reports.index') }}"
+                        class=" waves-effect {{ Request::is('report*') ? 'mm-active' : '' }}">
+                        <i class="bx bx-file"></i>
 
-                        <span>@lang('global.dashboard')</span>
+                        <span>Excel</span>
                     </a>
                 </li>
+                <!-- Branches -->
+                @can('statistics.show')
+                    <li class="{{ Request::is('statistics*') ? 'mm-active' : '' }}">
+                        <a href="{{ route('statistics.show') }}"
+                            class=" waves-effect {{ Request::is('statistics*') ? 'mm-active' : '' }}">
+                            <i class="bx bx-home-circle"></i>
+
+                            <span>@lang('global.dashboard')</span>
+                        </a>
+                    </li>
                 @endcan
 
                 @can('apz.show')
-                    <li class="{{ Request::is('clients*') || Request::is('apz-second') || Request::is('client/confirm') ? 'mm-active' : '' }}">
+                    <li
+                        class="{{ Request::is('clients*') || Request::is('apz-second') || Request::is('client/confirm') ? 'mm-active' : '' }}">
                         <a href="javascript: void(0);"
                             class="has-arrow waves-effect {{ Request::is('clients*') || Request::is('apz-second') || Request::is('client/confirm') ? 'mm-active' : '' }}">
                             <i class="bx bx-file"></i>
@@ -29,7 +38,7 @@
                         </a>
                         <ul class="sub-menu {{ Request::is('clients*') || Request::is('apz-second') || Request::is('client/confirm') ? ' ' : 'd-none' }}"
                             aria-expanded="false">
-                            
+
                             <li class="{{ Request::is('clients*') ? 'mm-active' : '' }}">
                                 <a href="{{ route('clientIndex') }}"
                                     class=" waves-effect {{ Request::is('clients*') ? 'mm-active' : '' }}">
@@ -37,7 +46,7 @@
                                     <span>@lang('cruds.branches.title')</span>
                                 </a>
                             </li>
-        
+
                             <li class="{{ Request::is('apz-second*') ? 'mm-active' : '' }}">
                                 <a href="{{ route('apz.second') }}"
                                     class=" waves-effect {{ Request::is('apz-second*') ? 'mm-active' : '' }}">
@@ -45,7 +54,7 @@
                                     <span>@lang('cruds.branches.title') 2</span>
                                 </a>
                             </li>
-        
+
                             <li class="{{ Request::is('client/confirm') ? 'mm-active' : '' }}">
                                 <a href="{{ route('clientFormConfirm') }}"
                                     class=" waves-effect {{ Request::is('client/confirm') ? 'mm-active' : '' }}">
@@ -59,7 +68,7 @@
                     </li>
                 @endcan
 
-                
+
                 @can('history.show')
                     <li class="{{ Request::is('history') || Request::is('request-confirm') ? 'mm-active' : '' }}">
                         <a href="javascript: void(0);"
@@ -70,7 +79,7 @@
                         </a>
                         <ul class="sub-menu {{ Request::is('history') || Request::is('request-confirm') ? ' ' : 'd-none' }}"
                             aria-expanded="false">
-                            
+
                             <li class="{{ Request::is('history*') ? 'mm-active' : '' }}">
                                 <a href="{{ route('history.index') }}"
                                     class=" waves-effect {{ Request::is('history*') ? 'mm-active' : '' }}">
@@ -78,7 +87,7 @@
                                     <span>@lang('cruds.history.title')</span>
                                 </a>
                             </li>
-        
+
                             <li class="{{ Request::is('request-confirm*') ? 'mm-active' : '' }}">
                                 <a href="{{ route('request.confirm') }}"
                                     class=" waves-effect {{ Request::is('request-confirm*') ? 'mm-active' : '' }}">
@@ -202,7 +211,7 @@
                     </li>
                 @endcan
 
-                
+
                 @can('backup.show')
                     <li class="{{ Request::is('backup*') ? 'mm-active' : '' }}">
                         <a href="{{ route('backup.index') }}"

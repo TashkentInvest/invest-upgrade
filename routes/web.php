@@ -16,6 +16,7 @@ use App\Http\Controllers\FileController;
 use App\Http\Controllers\HistoryController;
 use App\Http\Controllers\ImportController;
 use App\Http\Controllers\NumberToTextController;
+use App\Http\Controllers\ReportController;
 use App\Http\Controllers\RevisionController;
 use App\Http\Controllers\TransactionController;
 
@@ -40,7 +41,7 @@ Route::get('/statistics', [HomeController::class, 'statistics'])->name('statisti
 // Web pages
 Route::group(['middleware' => ['auth', 'checkUserRole']], function () {
 
-    Route::get('/optimize-cache', [HomeController::class,'optimize'])->name('optimize.command');
+    Route::get('/optimize-cache', [HomeController::class, 'optimize'])->name('optimize.command');
 
     // Regions  
     Route::prefix('regions')->group(function () {
@@ -63,7 +64,7 @@ Route::group(['middleware' => ['auth', 'checkUserRole']], function () {
     // Products
     Route::prefix('clients')->group(function () {
         Route::get('/', [ClientController::class, 'index'])->name('clientIndex');
-        
+
         Route::get('/data', [ClientController::class, 'getClientsData'])->name('clients.data');
         Route::get('/add', [ClientController::class, 'add'])->name('clientAdd');
         Route::get('/{id}', [ClientController::class, 'show'])->name('clientDetails');
@@ -76,7 +77,7 @@ Route::group(['middleware' => ['auth', 'checkUserRole']], function () {
     Route::get('/apz-second', [ClientController::class, 'apz_second'])->name('apz.second');
     Route::get('/client/confirm', [ClientController::class, 'client_confirm'])->name('clientFormConfirm');
     // payment start
-// 
+    // 
     Route::get('/branches/{id}/installments', [ClientController::class, 'showInstallments'])->name('branches.installments');
     Route::get('/payments/create/{branch_id}', [ClientController::class, 'payment_create'])->name('payments.create');
     Route::post('/payments', [ClientController::class, 'payment_store'])->name('payments.store');
@@ -127,11 +128,11 @@ Route::group(['middleware' => ['auth', 'checkUserRole']], function () {
     });
     // Transactions
     Route::prefix('transactions')->group(function () {
-        Route::get('/all', [TransactionController::class,'index'])->name('transactions.index');
-        Route::get('/art', [TransactionController::class,'art'])->name('transactions.art');
-        Route::get('/ads', [TransactionController::class,'ads'])->name('transactions.ads');
-        Route::get('/payers', [TransactionController::class,'payers'])->name('transactions.payers');
-        Route::get('/{id}', [TransactionController::class,'show'])->name('transactions.show');
+        Route::get('/all', [TransactionController::class, 'index'])->name('transactions.index');
+        Route::get('/art', [TransactionController::class, 'art'])->name('transactions.art');
+        Route::get('/ads', [TransactionController::class, 'ads'])->name('transactions.ads');
+        Route::get('/payers', [TransactionController::class, 'payers'])->name('transactions.payers');
+        Route::get('/{id}', [TransactionController::class, 'show'])->name('transactions.show');
     });
     // Backup
     Route::prefix('backups')->group(function () {
@@ -149,7 +150,7 @@ Route::group(['middleware' => ['auth', 'checkUserRole']], function () {
         Route::get('/select-columns', [FileController::class, 'showColumnSelectionForm'])->name('select.columns');
         Route::get('/download-excel', [FileController::class, 'downloadExcel'])->name('download.excel');
     });
-    
+
     // History
     Route::get('/history', [HistoryController::class, 'index'])->name('history.index');
     Route::get('/request-confirm', [HistoryController::class, 'confirm'])->name('request.confirm');
@@ -165,7 +166,12 @@ Route::group(['middleware' => ['auth', 'checkUserRole']], function () {
 });
 
 Route::group(['middleware' => ['auth']], function () {
-   // Users
+
+    // report
+    Route::get('/reports', [ReportController::class, 'index'])->name('reports.index');
+    Route::get('/reports/export', [ReportController::class, 'export'])->name('reports.export');
+
+    // Users
     Route::prefix('users')->group(function () {
         Route::get('/', [UserController::class, 'index'])->name('userIndex');
         Route::get('/add', [UserController::class, 'add'])->name('userAdd');
@@ -177,24 +183,21 @@ Route::group(['middleware' => ['auth']], function () {
     });
     // Constructions
     Route::prefix('constructions')->group(function () {
-        Route::get('/', [ConstructionController::class,'index'])->name('construction.index');
-        Route::get('/{id}', [ConstructionController::class,'show'])->name('construction.show');
-        Route::get('/{id}/edit', [ConstructionController::class,'edit'])->name('construction.edit');
+        Route::get('/', [ConstructionController::class, 'index'])->name('construction.index');
+        Route::get('/{id}', [ConstructionController::class, 'show'])->name('construction.show');
+        Route::get('/{id}/edit', [ConstructionController::class, 'edit'])->name('construction.edit');
         Route::any('/update/{id}', [ConstructionController::class, 'update'])->name('construction.update');
         Route::post('/update-status', [ConstructionController::class, 'updateStatus'])->name('updateStatus');
     });
-    
+
     // Chat
     Route::get('/chat', [ChatController::class, 'index'])->name('chat.index');
     Route::post('/chat', [ChatController::class, 'store'])->name('chat.store');
     Route::put('/chat/{id}', [ChatController::class, 'update'])->name('chat.update');
     Route::delete('/chat/{id}', [ChatController::class, 'destroy'])->name('chat.destroy');
-
-    
-    
 });
-Route::get('/gerb/{id}', [FileController::class,'gerb'])->name('file.mobile');
-Route::get('/dopShow/{id}', [FileController::class,'dop'])->name('dopShow');
+Route::get('/gerb/{id}', [FileController::class, 'gerb'])->name('file.mobile');
+Route::get('/dopShow/{id}', [FileController::class, 'dop'])->name('dopShow');
 
 
 Route::get('/language/{lang}', function ($lang) {
