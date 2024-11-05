@@ -66,7 +66,7 @@
                 <tr>
                     <td>{{ $index + 1 }}</td>
                     <td>{{ $branch->client->company->stir ?? '' }}</td>
-                    <td>{{ !$branch->client->is_qonuniy ? $branch->client->pinfl : '' }}</td>
+                    <td>{{ $branch->client->passport ? $branch->client->passport->passport_pinfl : '' }}</td>
                     <td>{{ $branch->client->company->company_name ?? ($branch->client->first_name . ' ' . $branch->client->last_name) }}</td>
                     <td>{{ $branch->contract_apt }}</td>
                     <td>{{ $branch->contract_date ? $branch->contract_date->format('d/m/Y') : '' }}</td>
