@@ -27,19 +27,37 @@
             $totalTotalPayment = 0;
             $totalRemaining = 0;
         @endphp
-        @foreach($branches as $index => $branch)
+
+        @php
+            $regions = [
+                '01' => 'Учтепа',
+                '02' => 'Бектемир',
+                '03' => 'Чилонзор',
+                '04' => 'Яшнобод',
+                '05' => 'Яккасарой',
+                '06' => 'Сергели',
+                '07' => 'Юнусабод',
+                '08' => 'Олмазор',
+                '09' => 'Мирзо Улуғбек',
+                '10' => 'Шайхонтохур',
+                '11' => 'Миробод',
+                '12' => 'Янгихаёт',
+            ];
+        @endphp
+        @foreach ($branches as $index => $branch)
             <tr>
                 <td>{{ $index + 1 }}</td>
                 <td>{{ $branch->client->company->stir ?? '' }}</td>
                 <td>{{ $branch->client->passport ? $branch->client->passport->passport_pinfl : '' }}</td>
-                <td>{{ $branch->client->company->company_name ?? ($branch->client->first_name . ' ' . $branch->client->last_name) }}</td>
+                <td>{{ $branch->client->company->company_name ?? $branch->client->first_name . ' ' . $branch->client->last_name }}
+                </td>
                 <td>{{ $branch->contract_apt }}</td>
                 <td>{{ $branch->contract_date ? $branch->contract_date->format('d/m/Y') : '' }}</td>
                 <td>{{ $branch->payment_deadline ? $branch->payment_deadline->format('d/m/Y') : '' }}</td>
                 <td>{{ $branch->payment_type }}</td>
                 <td>{{ $branch->installment_quarterly }}</td>
                 <td>{{ $branch->first_payment_percent }}%</td>
-                <td>{{ $branch->region }}</td>
+                <td>{{ $regions[$branch->region] ?? 'Mavjud emas' }}</td>
                 {{-- <td>{{ number_format($branch->contract_value, 2, ',', ' ') }}</td>
                 <td>{{ number_format($branch->advance_payment, 2, ',', ' ') }}</td>
                 <td>{{ number_format($branch->monthly_payment, 2, ',', ' ') }}</td>
