@@ -95,11 +95,11 @@
                         <td>{{ $branch->installment_quarterly }}</td>
                         <td>{{ $branch->first_payment_percent }}%</td>
                         <td>{{ $regions[$branch->region] ?? '' }}</td>
-                        {{-- <td>{{ number_format($branch->contract_value, 2, ',', ' ') }}</td>
-                    <td>{{ number_format($branch->advance_payment, 2, ',', ' ') }}</td>
+                        <td>{{ number_format($branch->contract_value, 2, ',', ' ') }}</td>
+                    {{-- <td>{{ number_format($branch->advance_payment, 2, ',', ' ') }}</td>
                     <td>{{ number_format($branch->monthly_payment, 2, ',', ' ') }}</td>
                     <td>{{ number_format($branch->total_payment, 2, ',', ' ') }}</td>
-                    <td>{{ number_format($branch->remaining, 2, ',', ' ') }}</td> --}}
+                    <td>{{ number_format($branch->remaining, 2, ',', ' ') }}</td> --}} 
                     </tr>
                     @php
                         $totalContractValue += $branch->contract_value;
