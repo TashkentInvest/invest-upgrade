@@ -53,7 +53,7 @@
                 <td>{{ $branch->payment_deadline ? $branch->payment_deadline->format('d.m.Y') : '' }}</td>
                 <td>{{ $branch->payment_type }}</td>
                 <td>{{ $branch->installment_quarterly }}</td>
-                <td>{{ $branch->first_payment_percent }}%</td>
+                <td>{{ $branch->first_payment_percent }}</td>
                 <td>{{ $regions[$branch->region] ?? 'Mavjud emas' }}</td>
                 <td>{{ number_format($branch->contract_value, 2, ',', ' ') }}</td>
      
