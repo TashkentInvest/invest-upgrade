@@ -96,7 +96,7 @@
                             @endif
                         </td>
                         <td>{{ $branch->installment_quarterly }}</td>
-                        <td>{{ $branch->percentage_input }}</td>
+                        <td>{{ $branch->percentage_input }}%</td>
                         {{-- <td>{{ $branch->first_payment_percent }}</td> --}}
                         <td>{{ $regions[$branch->region] ?? '' }}</td>
                         <td>{{ number_format($branch->contract_value) }}</td>

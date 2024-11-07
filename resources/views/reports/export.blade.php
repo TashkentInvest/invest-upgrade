@@ -58,7 +58,7 @@
                         {{$branch->percentage_input}}/{{100 - $branch->percentage_input}}
                     @endif
                 </td>                <td>{{ $branch->installment_quarterly }}</td>
-                <td>{{ $branch->percentage_input }}</td>
+                <td>{{ $branch->percentage_input }}%</td>
                 <td>{{ $regions[$branch->region] ?? 'Mavjud emas' }}</td>
                 <td>{{ number_format($branch->contract_value) }}</td>
      
