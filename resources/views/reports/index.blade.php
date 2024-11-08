@@ -51,7 +51,7 @@
                     <th>Аванс</th>
                     <th>Туман</th>
                     <th>Шартнома қиймати</th>
-   
+
                 </tr>
             </thead>
             <tbody>
@@ -82,17 +82,28 @@
                     <tr>
                         <td>{{ $index + 1 }}</td>
                         <td>{{ $branch->client->company->stir ?? '' }}</td>
-                        <td>{{ $branch->client->passport ? $branch->client->passport->passport_pinfl : '' }}</td>
-                        <td>{{ $branch->client->company->company_name ?? $branch->client->first_name . ' ' . $branch->client->last_name }}
+                        @if (isset($branch->client->passport))
+                            <td>{{ $branch->client->passport ? $branch->client->passport->passport_pinfl : '' }}</td>
+                        @endif
+                        <td>
+                            {{ $branch->client && $branch->client->company ? $branch->client->company->company_name : ($branch->client ? $branch->client->first_name . ' ' . $branch->client->last_name : 'No Client') }}
                         </td>
+
                         <td>{{ $branch->contract_apt }}</td>
                         <td>{{ $branch->contract_date ? $branch->contract_date->format('d.m.Y') : '' }}</td>
-                        <td>{{ $branch->payment_deadline ? $branch->payment_deadline->format('d.m.Y') : '' }}</td>
                         <td>
-                            @if($branch->payment_type == 'pay_full')
+                            @php
+                                $quarterDays = ($branch->installment_quarterly / 4) * 365 + 1;
+                                $newDate = \Carbon\Carbon::parse($branch->payment_deadline)->addDays($quarterDays);
+                            @endphp
+                            {{ $newDate->format('Y-m-d') }}
+
+                        </td>
+                        <td>
+                            @if ($branch->payment_type == 'pay_full')
                                 100
                             @else
-                                {{$branch->percentage_input}}/{{100 - $branch->percentage_input}}
+                                {{ $branch->percentage_input }}/{{ 100 - $branch->percentage_input }}
                             @endif
                         </td>
                         <td>{{ $branch->installment_quarterly }}</td>
@@ -100,7 +111,7 @@
                         {{-- <td>{{ $branch->first_payment_percent }}</td> --}}
                         <td>{{ $regions[$branch->region] ?? '' }}</td>
                         <td>{{ number_format($branch->contract_value) }}</td>
-   
+
                     </tr>
                     @php
                         $totalContractValue += $branch->contract_value;
