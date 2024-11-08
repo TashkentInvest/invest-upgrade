@@ -45,12 +45,12 @@
             <tr>
                 <td>{{ $index + 1 }}</td>
                 <td>{{ $branch->client->company->stir ?? '' }}</td>
-                @if (isset($branch->client->passport))
-
-                <td>{{ sprintf('%.5E', $branch->client->passport ? $branch->client->passport->passport_pinfl : '') }}</td>
+                @if ($branch->client->passport)
+                    <td>{{ $branch->client->passport->passport_pinfl.' ' }}</td>
+                @else
+                    <td></td>
                 @endif
-                <td>
-                    {{ $branch->client && $branch->client->company ? $branch->client->company->company_name : ($branch->client ? $branch->client->first_name . ' ' . $branch->client->last_name : 'No Client') }}
+                <td>{{ $branch->client->company->company_name ?? $branch->client->first_name . ' ' . $branch->client->last_name }}
                 </td>
                 <td>{{ $branch->contract_apt }}</td>
                 <td>{{ $branch->contract_date ? $branch->contract_date->format('d.m.Y') : '' }}</td>
@@ -73,15 +73,15 @@
                 <td>{{ $regions[$branch->region] ?? 'Mavjud emas' }}</td>
                 <td>{{ number_format($branch->contract_value) }}</td>
 
-        </tr>
-        @php
-            $totalContractValue += $branch->contract_value;
-            $totalAdvancePayment += $branch->advance_payment;
-            $totalMonthlyPayment += $branch->monthly_payment;
-            $totalTotalPayment += $branch->total_payment;
-            $totalRemaining += $branch->remaining;
-        @endphp
-    @endforeach
+            </tr>
+            @php
+                $totalContractValue += $branch->contract_value;
+                $totalAdvancePayment += $branch->advance_payment;
+                $totalMonthlyPayment += $branch->monthly_payment;
+                $totalTotalPayment += $branch->total_payment;
+                $totalRemaining += $branch->remaining;
+            @endphp
+        @endforeach
 
-</tbody>
+    </tbody>
 </table>

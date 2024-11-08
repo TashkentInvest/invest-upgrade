@@ -83,7 +83,7 @@
                         <td>{{ $index + 1 }}</td>
                         <td>{{ $branch->client->company->stir ?? '' }}</td>
                         @if (isset($branch->client->passport))
-                        <td>{{ sprintf('%.5E', $branch->client->passport ? $branch->client->passport->passport_pinfl : 0) }}</td>
+                        <td>{{ strval($branch->client->passport ? $branch->client->passport->passport_pinfl : '') }}</td>
 
                         @endif
                         <td>
