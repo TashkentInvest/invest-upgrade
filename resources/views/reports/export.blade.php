@@ -47,7 +47,7 @@
                 <td>{{ $branch->client->company->stir ?? '' }}</td>
                 @if (isset($branch->client->passport))
 
-                    <td>{{ $branch->client->passport ? $branch->client->passport->passport_pinfl : '' }}</td>
+                <td>{{ strval($branch->client->passport ? $branch->client->passport->passport_pinfl : '') }}</td>
                 @endif
                 <td>
                     {{ $branch->client && $branch->client->company ? $branch->client->company->company_name : ($branch->client ? $branch->client->first_name . ' ' . $branch->client->last_name : 'No Client') }}
