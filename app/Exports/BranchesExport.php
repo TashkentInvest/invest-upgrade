@@ -22,12 +22,12 @@ class BranchesExport implements FromCollection, WithHeadings, WithColumnFormatti
         return $this->branches->map(function ($branch, $index) {
             $pinfl = (string)($branch->client->passport->passport_pinfl ?? '');
 
-            // Calculate completion date based on payment_deadline and installment_quarterly
-            $completion_date = $branch->payment_deadline && $branch->installment_quarterly
+            // Calculate completion date by adding days to payment_deadline based on installment_quarterly
+            $completion_date = $branch->payment_deadline
                 ? \Carbon\Carbon::parse($branch->payment_deadline)
-                    ->addMonths(($branch->installment_quarterly / 4) * 12) // Convert quarters to months
+                    ->addDays(($branch->installment_quarterly ?? 0) * 30) // Assume installment_quarterly is in months, convert to approx days
                     ->format('Y-m-d')
-                : null;
+                : 'N/A';
 
             return [
                 'index' => $index + 1,
@@ -37,7 +37,7 @@ class BranchesExport implements FromCollection, WithHeadings, WithColumnFormatti
                     ($branch->client ? $branch->client->first_name . ' ' . $branch->client->last_name : 'No Client'),
                 'contract_apt' => $branch->contract_apt,
                 'contract_date' => $branch->contract_date ? $branch->contract_date->format('d.m.Y') : '',
-                'completion_date' => $completion_date ?? 'N/A',  // Show "N/A" if completion date is not calculated
+                'completion_date' => $completion_date,
                 'payment_type' => $branch->payment_type == 'pay_full' ? '100%' : $branch->percentage_input . '/' . (100 - $branch->percentage_input),
                 'installment_quarterly' => $branch->installment_quarterly ?? 'N/A',
                 'percentage_input' => isset($branch->percentage_input) ? $branch->percentage_input . '%' : 'N/A',
