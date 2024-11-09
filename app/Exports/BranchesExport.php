@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Exports;
 
 use Maatwebsite\Excel\Concerns\FromCollection;
@@ -24,17 +25,19 @@ class BranchesExport implements FromCollection, WithHeadings, WithColumnFormatti
             return [
                 'index' => $index + 1,
                 'stir' => $branch->client->company->stir ?? '',
-                'pinfl' => $pinfl ? $pinfl .' ' : '',
+                'pinfl' => $pinfl ? $pinfl . ' ' : '',
                 'company_name' => $branch->client->company->company_name ?? 
-                                  ($branch->client ? $branch->client->first_name . ' ' . $branch->client->last_name : 'No Client'),
+                    ($branch->client ? $branch->client->first_name . ' ' . $branch->client->last_name : 'No Client'),
                 'contract_apt' => $branch->contract_apt,
                 'contract_date' => $branch->contract_date ? $branch->contract_date->format('d.m.Y') : '',
-                'completion_date' => \Carbon\Carbon::parse($branch->payment_deadline)->addDays(($branch->installment_quarterly / 4) * 365 + 1)->format('Y-m-d'),
-                'payment_type' => $branch->payment_type == 'pay_full' ? 100 : $branch->percentage_input . '/' . (100 - $branch->percentage_input),
-                'installment_quarterly' => $branch->installment_quarterly,
-                'percentage_input' => $branch->percentage_input . '%',
+                'completion_date' => $branch->payment_deadline
+                    ? \Carbon\Carbon::parse($branch->payment_deadline)->addMonths(($branch->installment_quarterly / 4) * 12)->format('Y-m-d')
+                    : '',
+                'payment_type' => $branch->payment_type == 'pay_full' ? '100%' : $branch->percentage_input . '/' . (100 - $branch->percentage_input),
+                'installment_quarterly' => $branch->installment_quarterly ?? 'N/A',
+                'percentage_input' => isset($branch->percentage_input) ? $branch->percentage_input . '%' : 'N/A',
                 'region' => $this->getRegionName($branch->region),
-                'contract_value' => number_format($branch->contract_value),
+                'contract_value' => $branch->contract_value ? number_format($branch->contract_value, 2) : '0.00',
             ];
         });
     }
@@ -42,15 +45,26 @@ class BranchesExport implements FromCollection, WithHeadings, WithColumnFormatti
     public function headings(): array
     {
         return [
-            '№', 'ИНН', 'ПИНФЛ', 'Корхона номи', 'Шарт. №', 'Шартнома санаси',
-            'Якунлаш сана', 'Тўлов шарти', 'Тўлов муддати', 'Аванс', 'Туман', 'Шартнома қиймати'
+            '№',
+            'ИНН',
+            'ПИНФЛ',
+            'Корхона номи',
+            'Шарт. №',
+            'Шартнома санаси',
+            'Якунлаш сана',
+            'Тўлов шарти',
+            'Тўлов муддати',
+            'Аванс',
+            'Туман',
+            'Шартнома қиймати'
         ];
     }
 
     public function columnFormats(): array
     {
         return [
-            'C' => NumberFormat::FORMAT_TEXT,
+            'C' => NumberFormat::FORMAT_TEXT,  // Ensures PINFL is treated as text
+            'L' => NumberFormat::FORMAT_NUMBER_COMMA_SEPARATED1,  // Format contract value with comma separator
         ];
     }
 
@@ -62,9 +76,18 @@ class BranchesExport implements FromCollection, WithHeadings, WithColumnFormatti
     private function getRegionName($regionCode)
     {
         $regions = [
-            '01' => 'Учтепа', '02' => 'Бектемир', '03' => 'Чилонзор', '04' => 'Яшнобод',
-            '05' => 'Яккасарой', '06' => 'Сергели', '07' => 'Юнусабод', '08' => 'Олмазор',
-            '09' => 'Мирзо Улуғбек', '10' => 'Шайхонтохур', '11' => 'Миробод', '12' => 'Янгихаёт',
+            '01' => 'Учтепа',
+            '02' => 'Бектемир',
+            '03' => 'Чилонзор',
+            '04' => 'Яшнобод',
+            '05' => 'Яккасарой',
+            '06' => 'Сергели',
+            '07' => 'Юнусабод',
+            '08' => 'Олмазор',
+            '09' => 'Мирзо Улуғбек',
+            '10' => 'Шайхонтохур',
+            '11' => 'Миробод',
+            '12' => 'Янгихаёт',
         ];
         return $regions[$regionCode] ?? 'Mavjud emas';
     }
