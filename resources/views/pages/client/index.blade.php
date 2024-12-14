@@ -29,6 +29,11 @@
                     <span class="fas fa-plus-circle"></span>
                     @lang('global.add')
                 </a>
+
+                <a href="{{ route('clientAddSecond') }}" class="btn btn-success waves-effect waves-light float-right">
+                    <span class="fas fa-plus-circle"></span>
+                    @lang('global.add') second
+                </a>
                 @endcan
             </div>
             <!-- /.card-header -->

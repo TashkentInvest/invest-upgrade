@@ -67,6 +67,7 @@ Route::group(['middleware' => ['auth', 'checkUserRole']], function () {
 
         Route::get('/data', [ClientController::class, 'getClientsData'])->name('clients.data');
         Route::get('/add', [ClientController::class, 'add'])->name('clientAdd');
+        Route::get('/add/second', [ClientController::class, 'add_second'])->name('clientAddSecond');
         Route::get('/{id}', [ClientController::class, 'show'])->name('clientDetails');
         Route::get('/edit/{id}', [ClientController::class, 'edit'])->name('clientEdit');
         Route::post('/create', [ClientController::class, 'create'])->name('clientCreate');

@@ -135,6 +135,13 @@ class ClientController extends Controller
         return view('pages.products.add', compact('regions','categories'));
     }
 
+    public function add_second()
+    {
+        $categories = Category::get()->all();
+        $regions = Regions::get()->all();
+        return view('pages.products.add_second', compact('regions','categories'));
+    }
+
     public function client_create()
     {
         $categories = Category::get()->all();

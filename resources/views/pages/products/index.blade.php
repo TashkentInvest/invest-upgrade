@@ -30,6 +30,11 @@
                         @lang('global.add')
                     </a>
 
+                    <a href="{{ route('clientAddSecond') }}" class="btn btn-sm btn-success waves-effect waves-light float-right">
+                        <span class="fas fa-plus-circle"></span>
+                        @lang('global.add') second
+                    </a>
+
                     <div class="btn-group float-right" role="group" aria-label="Basic example">
                         <button type="button" class="btn btn-sm btn-success waves-effect waves-light"
                             data-bs-toggle="modal" data-bs-target="#exampleModal_filter">
