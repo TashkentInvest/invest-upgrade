@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Exports;
 
 use Illuminate\Support\Facades\DB;
@@ -29,6 +30,7 @@ class ProductsExport implements FromCollection, WithHeadings, WithColumnFormatti
                 ->join('companies', 'clients.id', '=', 'companies.client_id')
                 ->join('branches', 'clients.id', '=', 'branches.client_id')
                 ->join('addresses', 'clients.id', '=', 'addresses.client_id')
+                ->join('passports', 'clients.id', '=', 'passports.client_id') // Join with passports table
                 ->select($this->buildSelectColumns())
                 ->distinct();
 
@@ -70,11 +72,14 @@ class ProductsExport implements FromCollection, WithHeadings, WithColumnFormatti
         }
     }
 
-
     protected function buildSelectColumns()
     {
         $columns = [
             'clients.id' => 'clients.id AS client_id',
+            'stir' => 'companies.stir AS stir',
+            'oked' => 'companies.oked AS oked',
+            'passport_serya' => 'passports.passport_serial AS passport_serya', // Updated to use passports table
+            'passport_pinfl' => 'passports.passport_pinfl AS passport_pinfl', // Updated to use passports table
             'application_number' => 'branches.application_number AS application_number',
             'contract_number' => 'branches.contract_apt AS contract_number',
             'contract_date' => 'branches.contract_date AS contract_date',
@@ -113,7 +118,6 @@ class ProductsExport implements FromCollection, WithHeadings, WithColumnFormatti
         return $selected;
     }
 
-
     protected function getFileCount($clientId, $path)
     {
         return DB::table('files')
@@ -125,6 +129,10 @@ class ProductsExport implements FromCollection, WithHeadings, WithColumnFormatti
     public function headings(): array
     {
         $headings = [
+            'stir' => 'Стир',
+            'oked' => 'Окэд',
+            'passport_serya' => 'Серия паспорта',
+            'passport_pinfl' => 'ПИНФЛ',
             'application_number' => 'Номер заявления',
             'contract_number' => '№ договора',
             'contract_date' => 'Дата договора',
@@ -162,7 +170,6 @@ class ProductsExport implements FromCollection, WithHeadings, WithColumnFormatti
         return array_values($selectedHeadings);
     }
 
-    
     public function columnFormats(): array
     {
         $alphabet = range('A', 'Z');
@@ -187,5 +194,4 @@ class ProductsExport implements FromCollection, WithHeadings, WithColumnFormatti
         }
         return $letters;
     }
-
 }

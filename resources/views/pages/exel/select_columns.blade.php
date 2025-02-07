@@ -61,6 +61,18 @@
         <div class="form-group">
             @php
                 $columns = [
+                    //stir
+                    //oked
+                    //passport serya
+                    //passport pinfl
+
+                    //-----------------------------------
+                    'stir' => 'Стир',
+                    'oked' => 'Окэд',
+                    'passport_serya' => 'Серия паспорта',
+                    'passport_pinfl' => 'ПИНФЛ',
+                    //-----------------------------------
+
                     'application_number' => 'Номер заявления',
                     'contract_number' => '№ договора',
                     'contract_date' => 'Дата договора',
