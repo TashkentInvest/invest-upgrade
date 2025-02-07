@@ -160,6 +160,11 @@
     <p style="margin-top:0.75pt; margin-bottom:0pt; text-indent:35.45pt; text-align:justify; background-color:#ffffff;">10.6.&nbsp;Мазкур шартнома ва унга иловалар саҳифаларининг сони давлат тилида (ўзбек тилида), икки асл нусхада тузилган, бир хил қонуний кучга эга бўлиб, асл нусхалардан бири Инвестор, иккинчиси эса Компания томонидан ўрнатилган тартибда сақланади.</p>
     <p style="margin-top:0.75pt; margin-bottom:0pt; text-indent:35.45pt; text-align:justify; background-color:#ffffff;">10.7.&nbsp;Мазкур шартномага иловалар мазкур шартноманинг ажралмас қисми ҳисобланади.</p>
     <p style="margin-top:0pt; margin-bottom:0pt; text-indent:35.45pt; text-align:justify;">10.8.&nbsp;Мазкур шартномада назарда тутилмаган бошқа барча ҳолатлар қонунчилик ҳужжатлари асосида ҳал этилади.</p>
+       
+    <p style="margin-top:0pt; margin-bottom:0pt; text-indent:35.45pt; text-align:justify;">10.9.&nbsp;Мазкур шартнома бўйича банк ва банклараро харажатлар қуйидагича тўланади:</p>
+    <p style="margin-top:0pt; margin-bottom:0pt; text-indent:35.45pt; text-align:justify;">10.9.1.&nbsp;Инвесторнинг банк харажатлари – Инвестор ҳисобидан;</p>
+    <p style="margin-top:0pt; margin-bottom:0pt; text-indent:35.45pt; text-align:justify;">10.9.2.&nbsp;Компаниянинг банки ва унинг корреспондент банклари харажатлари маблағ қайтарилган тақдирда– Инвестор ҳисобидан.</p>
+   
     <p style="margin-top:6pt; margin-bottom:0pt; text-align:center;"><strong>XI.</strong><strong>&nbsp;</strong><strong>Шартноманинг кучга кириши ва амал қилиш муддати</strong></p><br>
     <p style="margin-top:0.75pt; margin-bottom:0pt; text-indent:34.5pt; text-align:justify; background-color:#ffffff;">11.1.&nbsp;Мазкур шартнома имзоланган санадан бошлаб кучга киради ва Тарафлар<br>ўз мажбуриятларини тўлиқ бажаргунларига қадар амал қилади.</p>
     <p style="margin-top:0.75pt; margin-bottom:0pt; text-indent:34.5pt; text-align:justify; background-color:#ffffff;">11.2.&nbsp;Мазкур шартномадаги барча қоидалар Тарафлар учун имзоланган санадан бошлаб мажбурийдир.</p>
