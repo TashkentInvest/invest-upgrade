@@ -121,6 +121,10 @@
     <p style="margin-top:0pt; margin-bottom:0pt; text-indent:35.45pt; text-align:justify;">5.3.3.&nbsp;Инвестор тугатилган ёки тўловга қобилиятсиз деб топилганда;</p>
     <p style="margin-top:0pt; margin-bottom:0pt; text-indent:35.45pt; text-align:justify;">5.3.4.&nbsp;Инвестор томонидан ўз мажбуриятлари бажарилмаганида;</p>
     <p style="margin-top:0pt; margin-bottom:0pt; text-indent:35.45pt; text-align:justify;">5.3.5.&nbsp;Мазкур шартномани имзолаш жараёнида ишончсиз ва/ёки ёлғон маълумотли ҳужжатларни Компанияга тақдим этган ҳолати аниқланганида.</p>
+        
+    <p style="margin-top:0pt; margin-bottom:0pt; text-indent:35.45pt; text-align:justify;">5.3.6.&nbsp;Инвестор томонидан лойиҳавий бино (иншоот) бўйича ўрнатилган тартибда ишлаб чиқилган лойиҳа-смета ҳужатлари юзасидан Тошкент шаҳар архитектура-шаҳарсозлик кенгашининг келишишни рад этиш тўғрисидаги хулосаси олинганда.</p>
+    <p style="margin-top:0pt; margin-bottom:0pt; text-indent:35.45pt; text-align:justify;">5.3.7.&nbsp;Мазкур Шартнома қандай шаклда тузилган бўлса, тарафларнинг уни ўзгартириш ёки бекор қилиш тўғрисидаги келишуви ҳам шундай шаклда амалга оширилади.</p>
+   
     <p style="margin-top:6pt; margin-bottom:0pt; text-align:center;"><strong>VI.</strong><strong>&nbsp;</strong><strong>Тарафларнинг жавобгарлиги</strong></p><br>
     <p style="margin-top:0pt; margin-bottom:0pt; text-indent:27pt; text-align:justify;">6.1.&nbsp;Инвестор Компанияга қуйидаги ҳолатларда ва миқдорларда пеня тўлайди:</p>
     <p style="margin-top:0pt; margin-bottom:0pt; text-indent:27pt; text-align:justify;">&ndash;&nbsp;Йиғим тўлови муддатларини бузганлик учун кечктирилган ҳар бир кун учун тўлови кечиктирилган Йиғим суммасининг 0,01&nbsp;фоизи миқдорида, бироқ, тўлови кечиктирилган Йиғим суммасининг 15&nbsp; фоизидан ортиқ бўлмаган миқдорда;</p>
