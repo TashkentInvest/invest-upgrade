@@ -186,10 +186,10 @@
                     <p style="margin-top:0pt; margin-right:30pt; margin-bottom:0pt; text-align:justify; font-size:12pt;"><strong><span>Телефон:</span></strong><span>&nbsp;(+998) 71</span><span>&nbsp;</span><span>210</span><span>&nbsp;</span><span>02</span><span>&nbsp;</span><span>61&nbsp;</span></p>
                     <p style="margin-top:0pt; margin-right:30pt; margin-bottom:0pt; text-align:justify; font-size:12pt;"><strong><span>СТИР:&nbsp;</span></strong><span>310731897&nbsp;</span></p>
                     <p style="margin-top:0pt; margin-right:30pt; margin-bottom:0pt; font-size:12pt;"><strong>&nbsp;</strong></p>
-                    <p style="margin-top:0pt; margin-right:30pt; margin-bottom:0pt; font-size:12pt;"><strong><span>Банк номи:</span></strong><span>&nbsp;&ldquo;Микрокредитбанк&rdquo; АТБ</span></p>
-                    <p style="margin-top:0pt; margin-right:30pt; margin-bottom:0pt; font-size:12pt;"><strong><span>Хизмат кўрсатувчи банк таркибий бўлинмаси:</span></strong><span>&nbsp;Тошкент шаҳар бошқармаси Тошкент шаҳар банк хизматлари офиси</span></p>
-                    <p style="margin-top:0pt; margin-right:30pt; margin-bottom:0pt; text-align:justify; font-size:12pt;"><strong><span>Банк СТИР:</span></strong><span>&nbsp;200547792</span></p>
-                    <p style="margin-top:0pt; margin-right:30pt; margin-bottom:0pt; text-align:justify; font-size:12pt;"><strong><span>Банк коди: (МФО)</span></strong><span>&nbsp;00433</span></p>
+                    <p style="margin-top:0pt; margin-right:30pt; margin-bottom:0pt; font-size:12pt;"><strong><span>Банк номи:</span></strong><span>&nbsp;&ldquo;“Узсаноаткурилишбанк” АТБ</span></p>
+                    <p style="margin-top:0pt; margin-right:30pt; margin-bottom:0pt; font-size:12pt;"><strong><span>Хизмат кўрсатувчи банк таркибий бўлинмаси:</span></strong><span>&nbsp;Тошкент шахар Юнусобод тумани Шахрисабз кучаси 3 уй. ”Узсаноаткурилишбанк" АТБ Корпоратив маркази</span></p>
+                    <p style="margin-top:0pt; margin-right:30pt; margin-bottom:0pt; text-align:justify; font-size:12pt;"><strong><span>Банк СТИР:</span></strong><span>&nbsp;200833707</span></p>
+                    <p style="margin-top:0pt; margin-right:30pt; margin-bottom:0pt; text-align:justify; font-size:12pt;"><strong><span>Банк коди: (МФО)</span></strong><span>&nbsp;00440</span></p>
                     <div style="border-bottom-style:solid; border-bottom-width:1.5pt;">
                         <p style="margin-top:0pt; margin-right:30pt; margin-bottom:0pt; font-size:12pt;">&nbsp;</p>
                         <p style="margin-top:0pt; margin-right:30pt; margin-bottom:0pt; font-size:12pt;">&nbsp;</p>
