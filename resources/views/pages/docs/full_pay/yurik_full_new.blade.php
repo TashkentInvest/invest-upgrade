@@ -7,13 +7,13 @@
     <title>Document</title>
 </head>
 <body>
-    
-    
+
+
 <div>
     <p style="margin-top:0pt; margin-bottom:0pt; text-align:center;"><strong>Архитектура-режалаштириш топшириғи берилгани учун белгиланган</strong><br><strong>қўшимча йиғим тўловини амалга ошириш тўғрисидаги</strong></p>
     <p style="margin-top:0pt; margin-bottom:0pt; text-align:center;"><strong>АРТ-{{$branch->contract_apt ?? ''}}-сонли шартнома</strong></p>
     <div class="card-header">
-        <p class="card-title">Тошкент шахри 
+        <p class="card-title">Тошкент шахри
             <span style="display: inline-block; width: 300px; color: #ffffff; opacity: 0;">dghgfhgfhgfhgfhgfhgfhgfhgfhfghhgfhgfhfghgfhgfhgfhgfhgfdfgd</span>
             <span style="float: right;">{{$branch->contract_date ? $branch->contract_date->format('d-m-y') : '__-__-2024'}} Йил</span>        </p>
     </div>
@@ -120,10 +120,10 @@
     <p style="margin-top:0pt; margin-bottom:0pt; text-indent:35.45pt; text-align:justify;">5.3.3.&nbsp;Инвестор тугатилган ёки тўловга қобилиятсиз деб топилганда;</p>
     <p style="margin-top:0pt; margin-bottom:0pt; text-indent:35.45pt; text-align:justify;">5.3.4.&nbsp;Инвестор томонидан ўз мажбуриятлари бажарилмаганида;</p>
     <p style="margin-top:0pt; margin-bottom:0pt; text-indent:35.45pt; text-align:justify;">5.3.5.&nbsp;Мазкур шартномани имзолаш жараёнида ишончсиз ва/ёки ёлғон маълумотли ҳужжатларни Компанияга тақдим этган ҳолати аниқланганида.</p>
-        
+
     <p style="margin-top:0pt; margin-bottom:0pt; text-indent:35.45pt; text-align:justify;">5.3.6.&nbsp;Инвестор томонидан лойиҳавий бино (иншоот) бўйича ўрнатилган тартибда ишлаб чиқилган лойиҳа-смета ҳужатлари юзасидан Тошкент шаҳар архитектура-шаҳарсозлик кенгашининг келишишни рад этиш тўғрисидаги хулосаси олинганда.</p>
     <p style="margin-top:0pt; margin-bottom:0pt; text-indent:35.45pt; text-align:justify;">5.3.7.&nbsp;Мазкур Шартнома қандай шаклда тузилган бўлса, тарафларнинг уни ўзгартириш ёки бекор қилиш тўғрисидаги келишуви ҳам шундай шаклда амалга оширилади.</p>
-   
+
     <p style="margin-top:6pt; margin-bottom:0pt; text-align:center;"><strong>VI.</strong><strong>&nbsp;</strong><strong>Тарафларнинг жавобгарлиги</strong></p><br>
     <p style="margin-top:0pt; margin-bottom:0pt; text-indent:27pt; text-align:justify;">6.1.&nbsp;Инвестор Компанияга қуйидаги ҳолатларда ва миқдорларда пеня тўлайди:</p>
     <p style="margin-top:0pt; margin-bottom:0pt; text-indent:27pt; text-align:justify;">&ndash;&nbsp;Йиғим тўлови муддатларини бузганлик учун кечктирилган ҳар бир кун учун тўлови кечиктирилган Йиғим суммасининг 0,01&nbsp;фоизи миқдорида, бироқ, тўлови кечиктирилган Йиғим суммасининг 15&nbsp; фоизидан ортиқ бўлмаган миқдорда;</p>
@@ -148,7 +148,7 @@
     <p style="margin-top:0pt; margin-bottom:0pt; text-indent:35.45pt; text-align:justify;">9.1.&nbsp;Мазкур шартномани бажариш давомида юзага келадиган ҳар қандай низолар<br>ва келишмовчиликлар Тарафлар ўртасида музокаралар йўли билан ҳал этилади.</p>
     <p style="margin-top:0pt; margin-bottom:0pt; text-indent:35.45pt; text-align:justify;">9.2.&nbsp;Музокаралар орқали келишувга эришилмаган тақдирда манфаатдор Тараф иккинчи тарафга ёзма шаклда талабнома хат юборади.</p>
     <p style="margin-top:0pt; margin-bottom:0pt; text-indent:35.45pt; text-align:justify;">9.3.&nbsp;Низолар Тарафлардан бирининг ёзма шаклдаги талабномаси юборилган санадан бошлаб 30 (ўттиз) иш куни давомида ҳал қилинмаган тақдирда ушбу низо қонунчилик ҳужжатларига мувофиқ суд тартибида ҳал этилади.</p>
-    <p style="margin-top:6pt; margin-bottom:0pt; text-align:center;"><strong>XI.</strong><strong>&nbsp;</strong><strong>Алоҳида шартлар</strong></p><br>
+    <p style="margin-top:6pt; margin-bottom:0pt; text-align:center;"><strong>X.</strong><strong>&nbsp;</strong><strong>Алоҳида шартлар</strong></p><br>
     <p style="margin-top:0.75pt; margin-bottom:0pt; text-indent:35.45pt; text-align:justify; background-color:#ffffff;">10.1.&nbsp;Бир Тарафдан бошқа Тарафга берилган ахборотнинг махфийлик шартлари<br>ҳар қандай Тарафнинг ёзма талабига биноан белгиланиши мумкин. Махфий деб топилган<br>ҳар қандай ахборот ошкор қилинмаслиги лозим.</p>
     <p style="margin-top:0.75pt; margin-bottom:0pt; text-indent:35.45pt; text-align:justify; background-color:#ffffff;">10.2.&nbsp;Махфийлик шартлари қуйидаги ҳолатлар учун қўлланилмайди:</p>
     <p style="margin-top:0.75pt; margin-bottom:0pt; text-indent:35.45pt; text-align:justify; background-color:#ffffff;">10.2.1.&nbsp;Мазкур шартномани амалга ошириш мақсадида мазкур шартнома ва унинг шартлари тўғрисидаги ахборотни давлат органларига тақдим этишда;</p>
@@ -159,11 +159,11 @@
     <p style="margin-top:0.75pt; margin-bottom:0pt; text-indent:35.45pt; text-align:justify; background-color:#ffffff;">10.6.&nbsp;Мазкур шартнома ва унга иловалар саҳифаларининг сони давлат тилида (ўзбек тилида), икки асл нусхада тузилган, бир хил қонуний кучга эга бўлиб, асл нусхалардан бири Инвестор, иккинчиси эса Компания томонидан ўрнатилган тартибда сақланади.</p>
     <p style="margin-top:0.75pt; margin-bottom:0pt; text-indent:35.45pt; text-align:justify; background-color:#ffffff;">10.7.&nbsp;Мазкур шартномага иловалар мазкур шартноманинг ажралмас қисми ҳисобланади.</p>
     <p style="margin-top:0pt; margin-bottom:0pt; text-indent:35.45pt; text-align:justify;">10.8.&nbsp;Мазкур шартномада назарда тутилмаган бошқа барча ҳолатлар қонунчилик ҳужжатлари асосида ҳал этилади.</p>
-       
+
     <p style="margin-top:0pt; margin-bottom:0pt; text-indent:35.45pt; text-align:justify;">10.9.&nbsp;Мазкур шартнома бўйича банк ва банклараро харажатлар қуйидагича тўланади:</p>
     <p style="margin-top:0pt; margin-bottom:0pt; text-indent:35.45pt; text-align:justify;">10.9.1.&nbsp;Инвесторнинг банк харажатлари – Инвестор ҳисобидан;</p>
     <p style="margin-top:0pt; margin-bottom:0pt; text-indent:35.45pt; text-align:justify;">10.9.2.&nbsp;Компаниянинг банки ва унинг корреспондент банклари харажатлари маблағ қайтарилган тақдирда– Инвестор ҳисобидан.</p>
-   
+
     <p style="margin-top:6pt; margin-bottom:0pt; text-align:center;"><strong>XI.</strong><strong>&nbsp;</strong><strong>Шартноманинг кучга кириши ва амал қилиш муддати</strong></p><br>
     <p style="margin-top:0.75pt; margin-bottom:0pt; text-indent:34.5pt; text-align:justify; background-color:#ffffff;">11.1.&nbsp;Мазкур шартнома имзоланган санадан бошлаб кучга киради ва Тарафлар<br>ўз мажбуриятларини тўлиқ бажаргунларига қадар амал қилади.</p>
     <p style="margin-top:0.75pt; margin-bottom:0pt; text-indent:34.5pt; text-align:justify; background-color:#ffffff;">11.2.&nbsp;Мазкур шартномадаги барча қоидалар Тарафлар учун имзоланган санадан бошлаб мажбурийдир.</p>
@@ -180,7 +180,7 @@
                     <p style="margin-top:0pt; margin-right:30pt; margin-bottom:0pt; text-align:justify; font-size:12pt;"><strong><span>Манзил</span></strong><span>: Тошкент шаҳар, Чилонзор тумани, Бешёғоч МФЙ, Ислом Каримов кўчаси, 51 уй&nbsp;</span></p>
                     <p style="margin-top:0pt; margin-right:30pt; margin-bottom:0pt; text-align:justify; font-size:12pt;"><strong><span>Телефон:</span></strong><span>&nbsp;(+998) 71</span><span>&nbsp;</span><span>210</span><span>&nbsp;</span><span>02</span><span>&nbsp;</span><span>61&nbsp;</span></p>
                     <p style="margin-top:0pt; margin-right:30pt; margin-bottom:0pt; text-align:justify; font-size:12pt;"><strong><span>СТИР:&nbsp;</span></strong><span>310731897&nbsp;</span></p>
-                    
+
                     <p style="margin-top:0pt; margin-right:30pt; margin-bottom:0pt; font-size:12pt;"><strong><span>Банк номи:</span></strong><span>&nbsp;“Узсаноаткурилишбанк” АТБ</span></p>
                     <p style="margin-top:0pt; margin-right:30pt; margin-bottom:0pt; font-size:12pt;"><strong><span>Хизмат кўрсатувчи банк таркибий бўлинмаси:</span></strong><span>&nbsp;Тошкент шахар Юнусобод тумани Шахрисабз кучаси 3 уй. ”Узсаноаткурилишбанк" АТБ Корпоратив маркази</span></p>
                     <p style="margin-top:0pt; margin-right:30pt; margin-bottom:0pt; text-align:justify; font-size:12pt;"><strong><span>Банк СТИР:</span></strong><span>&nbsp;200833707</span></p>
