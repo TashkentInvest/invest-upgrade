@@ -27,7 +27,7 @@
       {{-- start  --}}
       <p style="margin-top:0pt; margin-bottom:0pt; text-indent:35.45pt; text-align:justify;"><span>Йиғим мазкур шартноманинг 2.2-бандида кўрсатилган ҳисобрақамларга, тўлов мақсадини 2.3-бандда кўрсатилган тартибда пул ўтказиш йўли билан амалга оширилади.</span></p>
       <p style="margin-top:0pt; margin-bottom:0pt; text-indent:35.45pt; text-align:justify;"><strong><span>2.2.</span></strong><strong><span>&nbsp;</span></strong><strong><span>Жамғарма банк реквизитлари:&nbsp;</span></strong></p>
-      <p style="margin-top:0pt; margin-bottom:0pt; text-indent:35.45pt; text-align:justify;"><strong><span>СТИР: 201623064;&nbsp;</span></strong></p>
+      <p style="margin-top:0pt; margin-bottom:0pt; text-indent:35.45pt; text-align:justify;"><strong><span>Жамғарма СТИР: 201623064;&nbsp;</span></strong></p>
       <p style="margin-top:0pt; margin-bottom:0pt; text-indent:35.45pt; text-align:justify;"><strong><span>Банк номи: “Узсаноаткурилишбанк” АТБ; Хизмат кўрсатувчи банк таркибий бўлинмаси: Корпоратив маркази;</span></strong></p>
       <p style="margin-top:0pt; margin-bottom:0pt; text-indent:35.45pt; text-align:justify;"><strong><span>Банк СТИР: 200833707;&nbsp;</span></strong></p>
       <p style="margin-top:0pt; margin-bottom:0pt; text-indent:35.45pt; text-align:justify;"><strong><span>Банк коди: (МФО) 00440;&nbsp;</span></strong></p>
