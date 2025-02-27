@@ -20,7 +20,7 @@ use App\Http\Controllers\ReportController;
 use App\Http\Controllers\RevisionController;
 use App\Http\Controllers\TransactionController;
 
-// this is test repo comment 
+// this is test repo comment
 
 // Default laravel auth routes
 Auth::routes(['register' => false]);
@@ -43,7 +43,7 @@ Route::group(['middleware' => ['auth', 'checkUserRole']], function () {
 
     Route::get('/optimize-cache', [HomeController::class, 'optimize'])->name('optimize.command');
 
-    // Regions  
+    // Regions
     Route::prefix('regions')->group(function () {
         Route::get('/', [RegionController::class, 'index'])->name('regionIndex');
         Route::get('/add', [RegionController::class, 'add'])->name('regionAdd');
@@ -52,7 +52,7 @@ Route::group(['middleware' => ['auth', 'checkUserRole']], function () {
         Route::post('/update/{id}', [RegionController::class, 'update'])->name('regionUpdate');
         Route::delete('/delete/{id}', [RegionController::class, 'destroy'])->name('regionDestroy');
     });
-    // Districts 
+    // Districts
     Route::prefix('districts')->group(function () {
         Route::get('/', [DistrictController::class, 'index'])->name('districtIndex');
         Route::get('/add', [DistrictController::class, 'add'])->name('districtAdd');
@@ -78,7 +78,7 @@ Route::group(['middleware' => ['auth', 'checkUserRole']], function () {
     Route::get('/apz-second', [ClientController::class, 'apz_second'])->name('apz.second');
     Route::get('/client/confirm', [ClientController::class, 'client_confirm'])->name('clientFormConfirm');
     // payment start
-    // 
+    //
     Route::get('/branches/{id}/installments', [ClientController::class, 'showInstallments'])->name('branches.installments');
     Route::get('/payments/create/{branch_id}', [ClientController::class, 'payment_create'])->name('payments.create');
     Route::post('/payments', [ClientController::class, 'payment_store'])->name('payments.store');
@@ -86,8 +86,6 @@ Route::group(['middleware' => ['auth', 'checkUserRole']], function () {
     Route::get('/payment/{id}', [ClientController::class, 'branch_show'])->name('payment.show');
     Route::put('/payment/{id}/update', [ClientController::class, 'payment_update'])->name('payment.update');
     Route::delete('/payment/{id}', [ClientController::class, 'payment_delete'])->name('paymentDestroy');
-
-
 
     // payment end
 
@@ -158,10 +156,6 @@ Route::group(['middleware' => ['auth', 'checkUserRole']], function () {
     Route::get('/history/{id}', [HistoryController::class, 'showHistory'])->name('history.show');
     Route::get('/revisions', [RevisionController::class, 'index'])->name('revisions.index');
     Route::get('/revisions/client/{id}', [RevisionController::class, 'clientDetails']);
-
-
-
-
 
     Route::get('/import/backup', [BackupController::class, 'import'])->name('backup.import');
 });
